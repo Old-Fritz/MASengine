@@ -32,27 +32,46 @@ bool MemoryManagerClass::Initialize(int stackSize, int tempSize, int oneFrameSiz
 	//initialize all stacks
 	m_stack = new StackAllocatorClass;
 	if (!m_stack)
+	{
+		LogManager.addLog("Error 1-4");
 		return false;
+	}
 
 	result = m_stack->Initialize(m_stackSize);
+	m_stack = new StackAllocatorClass;
 	if (!result)
+	{
+		LogManager.addLog("Error 1-5");
 		return false;
+	}
 
 	m_oneFrame = new StackAllocatorClass;
 	if (!m_oneFrame)
+	{
+		LogManager.addLog("Error 1-4");
 		return false;
+	}
 
 	result = m_oneFrame->Initialize(m_oneFrameSize);
 	if (!result)
+	{
+		LogManager.addLog("Error 1-5");
 		return false;
+	}
 
 	m_temp = new StackAllocatorClass;
 	if (!m_temp)
+	{
+		LogManager.addLog("Error 1-4");
 		return false;
+	}
 
 	result = m_temp->Initialize(m_tempSize);
 	if (!result)
+	{
+		LogManager.addLog("Error 1-5");
 		return false;
+	}
 
 	return true;
 

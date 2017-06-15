@@ -1,0 +1,40 @@
+////////////////////////////////////////////////////////////////////////////////
+// Filename: LogManagerClass.h
+////////////////////////////////////////////////////////////////////////////////
+#ifndef _LOGMANAGERCLASS_H_
+#define _LOGMANAGERCLASS_H_
+
+
+//////////////
+// INCLUDES //
+//////////////
+#include <fstream>
+#include <string>
+#include <ctime>
+
+////////////////////////////////////////////////////////////////////////////////
+// Class name: LogManagerClass
+////////////////////////////////////////////////////////////////////////////////
+class LogManagerClass
+{
+public:
+	LogManagerClass();
+	LogManagerClass(const LogManagerClass&);
+	~LogManagerClass();
+
+	bool Initialize(const std::string& filepath);
+	void Shutdown();
+
+	void addLog(const std::string& log);
+private:
+	const std::string& getTime();
+private:
+	std::ofstream m_file;
+};
+
+/////////////
+// GLOBALS //
+/////////////
+static LogManagerClass LogManager;
+
+#endif

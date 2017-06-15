@@ -20,12 +20,15 @@ bool PoolAllocatorClass::Initialize(size_t elSize, long int poolSize)
 	m_poolSize = poolSize;
 
 	char* mem = new char[elSize*poolSize];
+	if (!mem)
+	{
+		LogManager.addLog("Error 1-1");
+		return false;
+	}
 	//create new blocks of free memory
 	for (int i = 0;i < poolSize;i++)
 	{
 		void* element = mem + i*elSize;
-		if (!element)
-			return false;
 
 		m_freeEls.emplace_back(element);
 	}
@@ -37,12 +40,15 @@ bool PoolAllocatorClass::Initialize(size_t elSize, long int poolSize)
 bool PoolAllocatorClass::doublePool()
 {
 	char* mem = new char[m_elSize*m_poolSize];
+	if (!mem)
+	{
+		LogManager.addLog("Error 1-2");
+		return false;
+	}
 	//create new blocks of free memory
 	for (int i = 0;i < m_poolSize;i++)
 	{
 		void* element = mem + i*m_elSize;
-		if (!element)
-			return false;
 
 		m_freeEls.emplace_back(element);
 	}

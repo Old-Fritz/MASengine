@@ -112,6 +112,7 @@
   <ItemGroup>
     <ClCompile Include="CpuClass.cpp" />
     <ClCompile Include="FpsClass.cpp" />
+    <ClCompile Include="LogManagerClass.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MemoryManagerClass.cpp" />
     <ClCompile Include="PoolAllocatorClass.cpp" />
@@ -122,6 +123,7 @@
   <ItemGroup>
     <ClInclude Include="CpuClass.h" />
     <ClInclude Include="FpsClass.h" />
+    <ClInclude Include="LogManagerClass.h" />
     <ClInclude Include="MemoryManagerClass.h" />
     <ClInclude Include="PoolAllocatorClass.h" />
     <ClInclude Include="StackAllocatorClass.h" />

@@ -40,6 +40,9 @@ bool SystemStateManagerClass::Initialize()
 		return false;
 	result = m_timer->Initialize();
 	if (!result)
+	{
+		LogManager.addLog("Error 2-2");
+	}
 		return false;
 
 	return true;

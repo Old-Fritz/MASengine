@@ -4,7 +4,8 @@
 #ifndef _POOLALLOCATORCLASS_H_
 #define _POOLALLOCATORCLASS_H_
 
-#include<list>
+#include <list>
+#include "LogManagerClass.h"
 
 //////////////
 // INCLUDES //

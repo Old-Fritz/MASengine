@@ -51,6 +51,9 @@
     <ClCompile Include="SystemStateManagerClass.cpp">
       <Filter>Файлы исходного кода\SystemStateManagment</Filter>
     </ClCompile>
+    <ClCompile Include="LogManagerClass.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SystemClass.h">
@@ -76,6 +79,9 @@
     </ClInclude>
     <ClInclude Include="SystemStateManagerClass.h">
       <Filter>Заголовочные файлы\SystemStateManagment</Filter>
+    </ClInclude>
+    <ClInclude Include="LogManagerClass.h">
+      <Filter>Заголовочные файлы</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

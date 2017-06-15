@@ -21,9 +21,12 @@ bool StackAllocatorClass::Initialize(int stackSize)
 	m_stack = new char[stackSize];
 	m_stackSize = stackSize;
 	if (!m_stack)
-		return 0;
+	{
+		LogManager.addLog("Error 1-3");
+		return false;
+	}
 	else
-		return 1;
+		return true;
 }
 
 void* StackAllocatorClass::getMemory(size_t size)
