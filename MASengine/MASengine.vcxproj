@@ -132,11 +132,17 @@
     <ClInclude Include="FpsClass.h" />
     <ClInclude Include="LogManagerClass.h" />
     <ClInclude Include="MemoryManagerClass.h" />
+    <ClInclude Include="MeshClass.h" />
+    <ClInclude Include="MeshManagerClass.h" />
     <ClInclude Include="ModManagerClass.h" />
     <ClInclude Include="PoolAllocatorClass.h" />
+    <ClInclude Include="ResouceManagerClass.h" />
     <ClInclude Include="StackAllocatorClass.h" />
     <ClInclude Include="SystemClass.h" />
     <ClInclude Include="SystemStateManagerClass.h" />
+    <ClInclude Include="TextManagerClass.h" />
+    <ClInclude Include="TextureClass.h" />
+    <ClInclude Include="TextureManagerClass.h" />
     <ClInclude Include="TimerClass.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
