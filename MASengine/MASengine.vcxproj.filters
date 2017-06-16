@@ -25,6 +25,12 @@
     <Filter Include="Файлы исходного кода\SystemStateManagment">
       <UniqueIdentifier>{d0495db3-d6fc-468f-ba37-e915a573946d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Заголовочные файлы\CommandManagment">
+      <UniqueIdentifier>{9dbea3e9-fdce-43e8-ba6d-7a6394f8f61a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\CommandManagment">
+      <UniqueIdentifier>{32af528b-eeb4-48be-ae38-6f4b6f659ee6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -54,6 +60,18 @@
     <ClCompile Include="LogManagerClass.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
+    <ClCompile Include="ModManagerClass.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="CalculatorClass.cpp">
+      <Filter>Файлы исходного кода\CommandManagment</Filter>
+    </ClCompile>
+    <ClCompile Include="CommandClass.cpp">
+      <Filter>Файлы исходного кода\CommandManagment</Filter>
+    </ClCompile>
+    <ClCompile Include="CommandManagerClass.cpp">
+      <Filter>Файлы исходного кода\CommandManagment</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SystemClass.h">
@@ -81,6 +99,18 @@
       <Filter>Заголовочные файлы\SystemStateManagment</Filter>
     </ClInclude>
     <ClInclude Include="LogManagerClass.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="CommandManagerClass.h">
+      <Filter>Заголовочные файлы\CommandManagment</Filter>
+    </ClInclude>
+    <ClInclude Include="CommandClass.h">
+      <Filter>Заголовочные файлы\CommandManagment</Filter>
+    </ClInclude>
+    <ClInclude Include="CalculatorClass.h">
+      <Filter>Заголовочные файлы\CommandManagment</Filter>
+    </ClInclude>
+    <ClInclude Include="ModManagerClass.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
   </ItemGroup>

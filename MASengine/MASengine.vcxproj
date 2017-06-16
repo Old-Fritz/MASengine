@@ -110,21 +110,29 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CalculatorClass.cpp" />
+    <ClCompile Include="CommandClass.cpp" />
+    <ClCompile Include="CommandManagerClass.cpp" />
     <ClCompile Include="CpuClass.cpp" />
     <ClCompile Include="FpsClass.cpp" />
     <ClCompile Include="LogManagerClass.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MemoryManagerClass.cpp" />
+    <ClCompile Include="ModManagerClass.cpp" />
     <ClCompile Include="PoolAllocatorClass.cpp" />
     <ClCompile Include="StackAllocatorClass.cpp" />
     <ClCompile Include="SystemStateManagerClass.cpp" />
     <ClCompile Include="TimerClass.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CalculatorClass.h" />
+    <ClInclude Include="CommandClass.h" />
+    <ClInclude Include="CommandManagerClass.h" />
     <ClInclude Include="CpuClass.h" />
     <ClInclude Include="FpsClass.h" />
     <ClInclude Include="LogManagerClass.h" />
     <ClInclude Include="MemoryManagerClass.h" />
+    <ClInclude Include="ModManagerClass.h" />
     <ClInclude Include="PoolAllocatorClass.h" />
     <ClInclude Include="StackAllocatorClass.h" />
     <ClInclude Include="SystemClass.h" />
