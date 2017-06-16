@@ -22,10 +22,26 @@ void MeshManagerClass::Shutdown()
 
 bool MeshManagerClass::addModel(ID3D10Device * device, const std::string & filename)
 {
-	return false;
+	bool result;
+
+	//create new model
+	MeshClass* newModel = (MeshClass*)MemoryManager.getPoolMemory(sizeof(MeshClass));
+	if (!newModel)
+		return false;
+
+	result = newModel->Initialize(device, filename);
+	if (!result)
+	{
+		LogManager.addLog("Error 4-1");
+		return false;
+	}
+
+	m_models.emplace(std::pair<long long, MeshClass*>(ModManager.getHash(filename),newModel));
+
+	return true;
 }
 
 MeshClass * MeshManagerClass::getModel(const std::string & filename)
 {
-	return nullptr;
+	return m_models.find(ModManager.getHash(filename))->second;
 }

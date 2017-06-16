@@ -46,6 +46,9 @@
     <Filter Include="Файлы исходного кода\GlobalManager\ResourceManagment">
       <UniqueIdentifier>{1dd4f56d-4e6d-4883-b517-9e7bd85b638e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы исходного кода\Resources">
+      <UniqueIdentifier>{780c8322-112b-4443-b5d5-da16c7e35a17}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -92,6 +95,18 @@
     </ClCompile>
     <ClCompile Include="MeshManagerClass.cpp">
       <Filter>Файлы исходного кода\GlobalManager\ResourceManagment</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureManagerClass.cpp">
+      <Filter>Файлы исходного кода\GlobalManager\ResourceManagment</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureClass.cpp">
+      <Filter>Файлы исходного кода\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshClass.cpp">
+      <Filter>Файлы исходного кода\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="TextManagerClass.cpp">
+      <Filter>Файлы исходного кода</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -10,7 +10,7 @@
 //////////////
 #include <d3d10.h>
 #include <d3dx10.h>
-
+#include <string>
 
 ////////////////////////////////////////////////////////////////////////////////
 // Class name: TextureClass
@@ -22,7 +22,7 @@ public:
 	TextureClass(const TextureClass&);
 	~TextureClass();
 
-	bool Initialize(ID3D10Device* device, WCHAR* filename);
+	bool Initialize(ID3D10Device* device, const std::string& filename);
 	void Shutdown();
 	ID3D10ShaderResourceView* GetTexture();
 

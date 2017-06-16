@@ -35,7 +35,7 @@ public:
 
 private:
 	std::map<long long, TextureClass*> m_textures;
-	std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> m_converter;
+	
 };
 
 #endif
