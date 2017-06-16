@@ -43,6 +43,9 @@
     <Filter Include="Заголовочные файлы\Resources">
       <UniqueIdentifier>{ae9ae0ac-5a7b-404b-bedc-60c585aeb757}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы исходного кода\GlobalManager\ResourceManagment">
+      <UniqueIdentifier>{1dd4f56d-4e6d-4883-b517-9e7bd85b638e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -83,6 +86,12 @@
     </ClCompile>
     <ClCompile Include="ModManagerClass.cpp">
       <Filter>Файлы исходного кода\GlobalManager</Filter>
+    </ClCompile>
+    <ClCompile Include="ResouceManagerClass.cpp">
+      <Filter>Файлы исходного кода\GlobalManager\ResourceManagment</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshManagerClass.cpp">
+      <Filter>Файлы исходного кода\GlobalManager\ResourceManagment</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

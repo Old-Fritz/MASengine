@@ -21,6 +21,7 @@ void CommandManagerClass::Shutdown()
 		while (!m_commands.begin()->second.empty())
 		{
 			m_commands.begin()->second.begin()->second->Shutdown(); //delete all commands
+			MemoryManager.deletePool(m_commands.begin()->second.begin()->second,sizeof(m_commands.begin()->second.begin()->second));
 			m_commands.begin()->second.erase(m_commands.begin()->second.begin());
 		}
 		m_commands.erase(m_commands.begin());

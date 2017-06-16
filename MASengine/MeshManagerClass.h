@@ -2,8 +2,8 @@
 // Filename: MeshManagerClass.h
 ////////////////////////////////////////////////////////////////////////////////
 
-#ifndef _MODELSARRAYCLASS_H_
-#define _MODELSARRAYCLASS_H_
+#ifndef _MESHMANAGERCLASS_H_
+#define _MESHMANAGERCLASS_H_
 
 //////////////
 // INCLUDES //
@@ -17,30 +17,25 @@
 #include "ModManagerClass.h"
 
 
-using namespace std;
-
 ////////////////////////////////////////////////////////////////////////////////
-// Class name: ModelsArrayClass
+// Class name: MeshManagerClass
 ////////////////////////////////////////////////////////////////////////////////
 
-class ModelsArrayClass
+class MeshManagerClass
 {
 public:
 
-	ModelsArrayClass();
-	ModelsArrayClass(const ModelsArrayClass&);
-	~ModelsArrayClass();
+	MeshManagerClass();
+	MeshManagerClass(const MeshManagerClass&);
+	~MeshManagerClass();
 
 	void Shutdown();
 
-	bool addModel(ID3D10Device* device, string filename);
-	MeshClass* getModel(string filename);
-	void setModChanges(map<string, string>* modChanges);
+	bool addModel(ID3D10Device* device, const std::string& filename);
+	MeshClass* getModel(const std::string& filename);
 
 private:
-	map<string, string>* m_modChanges;
-	map<string, MeshClass*> m_models;
-	string getPrefix(string filename);
+	std::map<long long, MeshClass*> m_models;
 };
 
 #endif

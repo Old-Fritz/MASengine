@@ -96,6 +96,6 @@ void ModManagerClass::loadMod(const std::string & name, const std::string & modD
 		filenames[i].erase(0, (modDirectory + "/" + name).size());
 		transform(filenames[i].begin(), filenames[i].end(), filenames[i].begin(), tolower);
 		//add to map of directories
-		m_modChanges.insert(std::pair<long long, const std::string >(getHash(filenames[i]), (modDirectory + "/" + name)));
+		m_modChanges.insert(std::pair<long long, std::string >(getHash(filenames[i]), (modDirectory + "/" + name)));
 	}
 }

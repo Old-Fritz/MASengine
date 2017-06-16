@@ -118,8 +118,10 @@
     <ClCompile Include="LogManagerClass.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MemoryManagerClass.cpp" />
+    <ClCompile Include="MeshManagerClass.cpp" />
     <ClCompile Include="ModManagerClass.cpp" />
     <ClCompile Include="PoolAllocatorClass.cpp" />
+    <ClCompile Include="ResouceManagerClass.cpp" />
     <ClCompile Include="StackAllocatorClass.cpp" />
     <ClCompile Include="SystemStateManagerClass.cpp" />
     <ClCompile Include="TimerClass.cpp" />
