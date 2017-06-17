@@ -90,9 +90,6 @@
     <ClCompile Include="ModManagerClass.cpp">
       <Filter>Файлы исходного кода\GlobalManager</Filter>
     </ClCompile>
-    <ClCompile Include="ResouceManagerClass.cpp">
-      <Filter>Файлы исходного кода\GlobalManager\ResourceManagment</Filter>
-    </ClCompile>
     <ClCompile Include="MeshManagerClass.cpp">
       <Filter>Файлы исходного кода\GlobalManager\ResourceManagment</Filter>
     </ClCompile>
@@ -106,7 +103,16 @@
       <Filter>Файлы исходного кода\Resources</Filter>
     </ClCompile>
     <ClCompile Include="TextManagerClass.cpp">
-      <Filter>Файлы исходного кода</Filter>
+      <Filter>Файлы исходного кода\GlobalManager\ResourceManagment</Filter>
+    </ClCompile>
+    <ClCompile Include="SettingsClass.cpp">
+      <Filter>Файлы исходного кода\GlobalManager</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceManagerClass.cpp">
+      <Filter>Файлы исходного кода\GlobalManager\ResourceManagment</Filter>
+    </ClCompile>
+    <ClCompile Include="GlobalManagerClass.cpp">
+      <Filter>Файлы исходного кода\GlobalManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -149,9 +155,6 @@
     <ClInclude Include="ModManagerClass.h">
       <Filter>Заголовочные файлы\GlobalManager</Filter>
     </ClInclude>
-    <ClInclude Include="ResouceManagerClass.h">
-      <Filter>Заголовочные файлы\GlobalManager\ResourceManagment</Filter>
-    </ClInclude>
     <ClInclude Include="TextureManagerClass.h">
       <Filter>Заголовочные файлы\GlobalManager\ResourceManagment</Filter>
     </ClInclude>
@@ -166,6 +169,15 @@
     </ClInclude>
     <ClInclude Include="MeshClass.h">
       <Filter>Заголовочные файлы\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="SettingsClass.h">
+      <Filter>Заголовочные файлы\GlobalManager</Filter>
+    </ClInclude>
+    <ClInclude Include="GlobalManagerClass.h">
+      <Filter>Заголовочные файлы\GlobalManager</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceManagerClass.h">
+      <Filter>Заголовочные файлы\GlobalManager\ResourceManagment</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

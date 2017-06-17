@@ -25,6 +25,27 @@ bool SettingsClass::Initialize(const std::string & filename)
 void SettingsClass::save(const std::string & filename)
 {
 	std::ofstream file;
+	file.open(filename);
+
+	if (!file.is_open())
+		return;
+
+	for (auto param = m_parameters.begin();param != m_parameters.end();param++)
+	{
+		switch (param->second.type)
+		{
+		case(0):
+			file << param->second.name << " {" << *(int*)(param->second.pointer) << "}" << std::endl;
+		case(1):
+			file << param->second.name << " {" << *(float*)(param->second.pointer) << "}" << std::endl;
+		case(2):
+			file << param->second.name << " {" << *(std::string*)(param->second.pointer) << "}" << std::endl;
+		default:
+			file << param->second.name << " {" << *(int*)(param->second.pointer) << "}" << std::endl;;
+		}
+	}
+
+	file.close();
 }
 void SettingsClass::Shutdown()
 {
@@ -75,11 +96,11 @@ bool SettingsClass::readFromFile(const std::string & filename)
 	for (int i = 0;i < paramsNum;i++)
 	{
 		Parameter param;
-		std::string paramName;
 		//get type of param and name first
 		int valueType;
 		generalFile >> valueType;
-		generalFile >> paramName;
+		generalFile >> param.name;
+		
 		param.type = valueType;
 		switch (valueType)
 		{
@@ -88,9 +109,9 @@ bool SettingsClass::readFromFile(const std::string & filename)
 		{
 			param.size = sizeof(int);
 			param.pointer = MemoryManager.getPoolMemory(param.size);
-			temp = getTextFromFile(paramName, m_filename);
+			temp = getTextFromFile(param.name, m_filename);
 			if (temp.size()>0)
-				temp = getTextFromFile(paramName, filename);
+				temp = getTextFromFile(param.name, filename);
 			if (temp.size()>0)
 				*(int*)param.pointer = stoi(temp);
 			else
@@ -101,9 +122,9 @@ bool SettingsClass::readFromFile(const std::string & filename)
 		{
 			param.size = sizeof(float);
 			param.pointer = MemoryManager.getPoolMemory(param.size);
-			temp = getTextFromFile(paramName, m_filename);
+			temp = getTextFromFile(param.name, m_filename);
 			if (temp.size()>0)
-				temp = getTextFromFile(paramName, filename);
+				temp = getTextFromFile(param.name, filename);
 			if (temp.size()>0)
 				*(float*)param.pointer = stof(temp);
 			else
@@ -114,9 +135,9 @@ bool SettingsClass::readFromFile(const std::string & filename)
 		{
 			param.size = sizeof(std::string);
 			param.pointer = MemoryManager.getPoolMemory(param.size);
-			temp = getTextFromFile(paramName, m_filename);
+			temp = getTextFromFile(param.name, m_filename);
 			if (temp.size()>0)
-				temp = getTextFromFile(paramName, filename);
+				temp = getTextFromFile(param.name, filename);
 			*(std::string*)param.pointer = temp;
 		}
 		default:
@@ -125,8 +146,10 @@ bool SettingsClass::readFromFile(const std::string & filename)
 			*(int*)param.pointer = 0;
 		}
 		//add new param to map
-		m_parameters.emplace(std::pair<long long, Parameter>(ModManager.getHash(paramName), param));
+		m_parameters.emplace(std::pair<long long, Parameter>(ModManager.getHash(param.name), param));
 	}
+
+	generalFile.close();
 
 }
 const std::string& SettingsClass::getTextFromFile(const std::string & name, const std::string & filename)
@@ -148,7 +171,11 @@ const std::string& SettingsClass::getTextFromFile(const std::string & name, cons
 		temp1 = temp2;
 	}
 	if (temp2 != name)
+	{
+		file.close();
 		return "";
+	}
+		
 	else
 	{
 		temp1 = "";
@@ -165,6 +192,7 @@ const std::string& SettingsClass::getTextFromFile(const std::string & name, cons
 			temp1 += a;
 			a = file.get();
 		}
+		file.close();
 		return temp1;
 	}
 }

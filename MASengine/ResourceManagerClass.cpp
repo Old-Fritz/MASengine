@@ -1,4 +1,4 @@
-#include "ResouceManagerClass.h"
+#include "ResourceManagerClass.h"
 
 ResourceManagerClass::ResourceManagerClass()
 {
@@ -70,3 +70,4 @@ MeshManagerClass * ResourceManagerClass::getModels()
 {
 	return m_models;
 }
+

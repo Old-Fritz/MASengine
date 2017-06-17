@@ -18,6 +18,7 @@ bool ModManagerClass::Initialize(const std::string & modDirectory)
 	if (!modFile.is_open())
 	{
 		LogManager.addLog("Error 3-1");
+		modFile.close();
 		return false;
 	}
 
@@ -32,6 +33,7 @@ bool ModManagerClass::Initialize(const std::string & modDirectory)
 		loadMod(temp, modDirectory);
 	}
 
+	modFile.close();
 	return true;
 }
 

@@ -48,7 +48,11 @@ std::wstring & TextManagerClass::getTextFromFile(const std::string & name, const
 		temp1 = temp2;
 	}
 	if (temp2 != m_converter.from_bytes(name))
+	{
+		file.close();
 		return m_converter.from_bytes(name);
+	}
+		
 	else
 	{
 		temp1.clear();
@@ -65,6 +69,7 @@ std::wstring & TextManagerClass::getTextFromFile(const std::string & name, const
 			temp1 += a;
 			a = file.get();
 		}
+		file.close();
 		return temp1;
 	}
 }

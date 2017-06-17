@@ -36,4 +36,9 @@ private:
 	TimerClass* m_timer;
 };
 
+/////////////
+// GLOBALS //
+/////////////
+static SystemStateManagerClass SystemStateManager;
+
 #endif

@@ -46,4 +46,9 @@ private:
 	float m_frametime;
 };
 
+/////////////
+// GLOBALS //
+/////////////
+static ResourceManagerClass ResourceManager;
+
 #endif

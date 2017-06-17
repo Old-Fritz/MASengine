@@ -106,7 +106,11 @@ const std::string & CommandManagerClass::getTextFromFile(const std::string & nam
 		temp1 = temp2;
 	}
 	if (temp2 != name)
+	{
+		file.close();
 		return name;
+	}
+		
 	else
 	{
 		temp1 = "";
@@ -123,6 +127,7 @@ const std::string & CommandManagerClass::getTextFromFile(const std::string & nam
 			temp1 += a;
 			a = file.get();
 		}
+		file.close();
 		return temp1;
 	}
 }

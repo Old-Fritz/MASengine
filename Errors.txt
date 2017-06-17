@@ -2,3 +2,11 @@ Error 3-1 Problem with opening Mod File
 Error 4-1 Problem with model loading
 Error 4-2 Problem with texture loading
 Error 5-1 Problem with reading settings file
+Error 5-2 Problem with readding general settings file
+
+Error 6-1 Problem with MemoryManager Initialization
+Error 6-2 Problem with ModManager Initialization
+Error 6-3 Problem with CommandManager Initialization
+Error 6-4 Problem with ResourceManager Initialization
+Error 6-5 Problem with SystemStateManager Initialization
+Error 6-6 Problem with Settings Initialization
