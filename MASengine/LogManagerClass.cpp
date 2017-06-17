@@ -14,7 +14,8 @@ LogManagerClass::~LogManagerClass()
 bool LogManagerClass::Initialize(const std::string & filepath)
 {
 	//create file for logging
-	m_file.open(filepath + "LOG" + getTime());
+
+	m_file.open(filepath + "/LOG" + getTime() + ".txt");
 
 	if (!m_file.is_open())
 		return false;
@@ -32,12 +33,17 @@ void LogManagerClass::addLog(const std::string & log)
 	m_file << getTime() + " " + log << std::endl;
 }
 
-const std::string& LogManagerClass::getTime()
+std::string LogManagerClass::getTime()
 {
 	//get time and data from system
 	char dateStr[9];
 	char timeStr[9];
 	_strdate_s(dateStr);
 	_strtime_s(timeStr);
+	dateStr[2] = '-';
+	dateStr[5] = '-';
+	timeStr[2] = '-';
+	timeStr[5] = '-';
+	
 	return (std::string)dateStr + "_" + (std::string)timeStr;
 }

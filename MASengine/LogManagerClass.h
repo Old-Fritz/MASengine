@@ -27,7 +27,7 @@ public:
 
 	void addLog(const std::string& log);
 private:
-	const std::string& getTime();
+	std::string getTime();
 private:
 	std::ofstream m_file;
 };

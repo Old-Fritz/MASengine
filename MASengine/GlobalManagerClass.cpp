@@ -13,16 +13,34 @@ GlobalManagerClass::~GlobalManagerClass()
 bool GlobalManagerClass::Initialize(const std::string & filepath)
 {
 	bool result;
+
+	std::ifstream file;
+	file.open(filepath);
+	if (!file.is_open())
+		return false;
+
+	std::string logFilepath;
+	std::string modFilename;
+	std::string settingsFilename;
+	int stackSize;
+	int tempSize;
+	int oneFrameSize;
+	int poolSize;
+
+	file >> logFilepath >> modFilename >> settingsFilename;
+	file >> stackSize >> tempSize >> oneFrameSize >> poolSize;
+
 	//Init LogManager
-	result = LogManager.Initialize(filepath);
+	result = LogManager.Initialize(logFilepath);
 	if(!result)
 	{
 		return false;
 	}
 	LogManager.addLog("LogManager Initialized");
 
+
 	//Init MemoryManager
-	result = MemoryManager.Initialize(0, 0, 0, 0);
+	result = MemoryManager.Initialize(stackSize, tempSize, oneFrameSize, poolSize);
 	if (!result)
 	{
 		LogManager.addLog("Error 6-1");
@@ -31,7 +49,7 @@ bool GlobalManagerClass::Initialize(const std::string & filepath)
 	LogManager.addLog("MemoryManager Initialized");
 
 	//Init ModManager
-	result = ModManager.Initialize(filepath);
+	result = ModManager.Initialize(modFilename);
 	if (!result)
 	{
 		LogManager.addLog("Error 6-2");
@@ -40,7 +58,7 @@ bool GlobalManagerClass::Initialize(const std::string & filepath)
 	LogManager.addLog("ModManager Initialized");
 
 	//Init Settings
-	result = Settings.Initialize(filepath);
+	result = Settings.Initialize(settingsFilename);
 	if (!result)
 	{
 		LogManager.addLog("Error 6-6");

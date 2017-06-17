@@ -152,7 +152,7 @@ bool SettingsClass::readFromFile(const std::string & filename)
 	generalFile.close();
 
 }
-const std::string& SettingsClass::getTextFromFile(const std::string & name, const std::string & filename)
+std::string SettingsClass::getTextFromFile(const std::string & name, const std::string & filename)
 {
 	std::ifstream file;
 	file.open(filename);

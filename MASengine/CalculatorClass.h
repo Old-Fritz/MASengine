@@ -26,6 +26,9 @@
 class CalculatorClass
 {
 public:
+	CalculatorClass();
+
+
 	double calculate(const std::string& expression);
 private:
 	//the main function, checks EOF, ' ', floats and incorrect input.
@@ -43,7 +46,7 @@ private:
 	double expr();
 
 private:
-	std::string& m_expression;
+	std::string m_expression;
 	int m_position = 0;
 	int m_group;
 	double m_groupval;

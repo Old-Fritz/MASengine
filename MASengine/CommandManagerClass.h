@@ -31,7 +31,7 @@ public:
 
 	bool addCommand(const std::string& name, const std::string& filename);
 private:
-	const std::string& getTextFromFile(const std::string& name, const std::string& filename);
+	 std::string getTextFromFile(const std::string& name, const std::string& filename);
 private:
 	std::queue<CommandClass*> m_commandsQueue;
 	std::map<long long, std::map<long long, CommandClass*>> m_commands;

@@ -126,6 +126,7 @@
     <ClCompile Include="ResourceManagerClass.cpp" />
     <ClCompile Include="SettingsClass.cpp" />
     <ClCompile Include="StackAllocatorClass.cpp" />
+    <ClCompile Include="SystemClass.cpp" />
     <ClCompile Include="SystemStateManagerClass.cpp" />
     <ClCompile Include="TextManagerClass.cpp" />
     <ClCompile Include="TextureClass.cpp" />

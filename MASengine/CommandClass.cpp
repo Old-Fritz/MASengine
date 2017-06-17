@@ -18,7 +18,7 @@ CommandClass::~CommandClass()
 void CommandClass::Initialize(const std::string& strCommand)
 {
 	std::string tempStr;
-	std::vector<std::string&> tempArr;
+	std::vector<std::string> tempArr;
 	m_commandsNum = 0;
 	for (int i = 0; i < strCommand.size(); i++)
 	{
@@ -73,7 +73,7 @@ int CommandClass::getParamsNum(int commandNumber)
 	else
 		return 0;
 }
-const std::string& CommandClass::getParam(int commandNumber, int ParamNum)
+ std::string CommandClass::getParam(int commandNumber, int ParamNum)
 {
 	//if all indexes in array then give param element
 	if (commandNumber < m_commandsNum)
@@ -91,7 +91,7 @@ const std::string& CommandClass::getParam(int commandNumber, int ParamNum)
 
 void CommandClass::addChange(const std::string& key, float value)
 {
-	m_changes.emplace_back(std::pair<const std::string&, float>(key, value));
+	m_changes.emplace_back(std::pair<std::string, float>(key, value));
 }
 
 void CommandClass::makeChanges()

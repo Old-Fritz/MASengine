@@ -1,5 +1,9 @@
 #include "CalculatorClass.h"
 
+CalculatorClass::CalculatorClass()
+{
+}
+
 double CalculatorClass::calculate(const std::string& expression)
 {
 	m_expression = expression;

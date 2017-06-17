@@ -31,14 +31,14 @@ public:
 
 	void Shutdown();
 
-	bool addText(const std::string& name, const std::string& filename);
-	const std::wstring& getText(const std::string& name, const std::string& filename);
+	void addText(const std::string& name, const std::string& filename);
+	std::wstring getText(const std::string& name, const std::string& filename);
 
 private:
-	std::wstring& getTextFromFile(const std::string& name, const std::string& filename);
+	std::wstring getTextFromFile(const std::string& name, const std::string& filename);
 
 private:
-	std::map<long long, std::wstring&> m_texts;
+	std::map<long long, std::wstring> m_texts;
 	std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> m_converter;
 };
 

@@ -44,7 +44,7 @@ public:
 
 private:
 	bool readFromFile(const std::string&  filename);
-	const std::string& getTextFromFile(const std::string&  name, const std::string&  filename);
+	std::string getTextFromFile(const std::string&  name, const std::string&  filename);
 private:
 	std::string m_filename;
 	std::map<long long, Parameter> m_parameters;

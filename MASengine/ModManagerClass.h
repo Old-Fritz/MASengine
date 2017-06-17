@@ -40,13 +40,13 @@ public:
 
 
 	long long getHash(const std::string& str);
-	const std::string& getDirectory(long long hash);
+	std::string getDirectory(long long hash);
 
 private:
 	void loadMod(const std::string& name, const std::string& modDirectory);
 private:
-	std::map<long long, std::string&> m_modChanges;
-	std::vector<std::string&> m_modNames;
+	std::map<long long, std::string> m_modChanges;
+	std::vector<std::string> m_modNames;
 };
 
 /////////////

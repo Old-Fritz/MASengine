@@ -1,0 +1,4 @@
+logs
+mods/modSettings.txt
+data/init/defSettings.txt
+12800 12800 12800 100

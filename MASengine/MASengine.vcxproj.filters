@@ -114,6 +114,9 @@
     <ClCompile Include="GlobalManagerClass.cpp">
       <Filter>Файлы исходного кода\GlobalManager</Filter>
     </ClCompile>
+    <ClCompile Include="SystemClass.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SystemClass.h">

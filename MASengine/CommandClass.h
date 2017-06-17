@@ -29,15 +29,15 @@ public:
 	int getCommandsNum();
 	int getParamsNum(int commandNumber);
 
-	const std::string& getParam(int commandNumber, int ParamNum);
+	std::string getParam(int commandNumber, int ParamNum);
 
 	//work with changes
 	void addChange(const std::string& key, float value);
 	void makeChanges();
 private:
 	int m_commandsNum;
-	std::vector<std::vector<std::string&>> m_commands;
-	std::vector<std::pair<const std::string&, float>> m_changes;
+	std::vector<std::vector<std::string>> m_commands;
+	std::vector<std::pair<std::string, float>> m_changes;
 };
 
 #endif

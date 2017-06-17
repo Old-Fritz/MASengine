@@ -30,7 +30,7 @@ void CommandManagerClass::Shutdown()
 
 bool CommandManagerClass::isFull()
 {
-	if (m_commandsQueue.size > 0)
+	if (m_commandsQueue.size() > 0)
 		return true;
 	else
 		return false;
@@ -87,7 +87,7 @@ bool CommandManagerClass::addCommand(const std::string & name, const std::string
 	//return getTextFromFile(commandName, commandFilename);
 }
 
-const std::string & CommandManagerClass::getTextFromFile(const std::string & name, const std::string & filename)
+ std::string  CommandManagerClass::getTextFromFile(const std::string & name, const std::string & filename)
 {
 	std::ifstream file;
 	file.open(ModManager.getDirectory(ModManager.getHash(filename)) + filename);

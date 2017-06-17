@@ -1,0 +1,3 @@
+06,17,17_23,25,51 LogManager Initialized
+06,17,17_23,25,54 MemoryManager Initialized
+06,17,17_23,25,57 Error 6-2

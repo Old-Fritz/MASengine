@@ -70,7 +70,7 @@ long long ModManagerClass::getHash(const std::string & str)
 
 }
 
-const std::string & ModManagerClass::getDirectory(long long hash)
+ std::string  ModManagerClass::getDirectory(long long hash)
 {
 	auto directory = m_modChanges.find(hash);
 	return directory->second;
@@ -79,7 +79,7 @@ const std::string & ModManagerClass::getDirectory(long long hash)
 void ModManagerClass::loadMod(const std::string & name, const std::string & modDirectory)
 {
 	//get all filepaths in directory
-	std::vector<std::string&> filenames;
+	std::vector<std::string> filenames;
 	for (recursive_directory_iterator i((modDirectory + "/" + name).c_str()), end; i != end; ++i)
 	{
 		if (!is_directory(i->path()))
