@@ -1,5 +1,7 @@
 #include "MemoryManagerClass.h"
 
+MemoryManagerClass * MemoryManagerClass::m_instance = 0;
+
 MemoryManagerClass::MemoryManagerClass()
 {
 	m_stackSize = 0;
@@ -33,48 +35,54 @@ bool MemoryManagerClass::Initialize(int stackSize, int tempSize, int oneFrameSiz
 	m_stack = new StackAllocatorClass;
 	if (!m_stack)
 	{
-		LogManager.addLog("Error 1-4");
+		LogManagerClass::getI().addLog("Error 1-4");
 		return false;
 	}
 
 	result = m_stack->Initialize(m_stackSize);
-	m_stack = new StackAllocatorClass;
 	if (!result)
 	{
-		LogManager.addLog("Error 1-5");
+		LogManagerClass::getI().addLog("Error 1-5");
 		return false;
 	}
 
 	m_oneFrame = new StackAllocatorClass;
 	if (!m_oneFrame)
 	{
-		LogManager.addLog("Error 1-4");
+		LogManagerClass::getI().addLog("Error 1-4");
 		return false;
 	}
 
 	result = m_oneFrame->Initialize(m_oneFrameSize);
 	if (!result)
 	{
-		LogManager.addLog("Error 1-5");
+		LogManagerClass::getI().addLog("Error 1-5");
 		return false;
 	}
 
 	m_temp = new StackAllocatorClass;
 	if (!m_temp)
 	{
-		LogManager.addLog("Error 1-4");
+		LogManagerClass::getI().addLog("Error 1-4");
 		return false;
 	}
 
 	result = m_temp->Initialize(m_tempSize);
 	if (!result)
 	{
-		LogManager.addLog("Error 1-5");
+		LogManagerClass::getI().addLog("Error 1-5");
 		return false;
 	}
 
 	return true;
 
+}
+
+MemoryManagerClass & MemoryManagerClass::getI()
+{
+	if (!m_instance)
+		m_instance = new MemoryManagerClass;
+	return *m_instance;
 }
 
 //allocate memory
@@ -199,3 +207,28 @@ void MemoryManagerClass::Shutdown()
 	
 	return;
 }
+
+
+  void* operator new(size_t size)
+  {
+	  return malloc(size);
+  }
+
+  void * operator new(size_t size, int type)
+  {
+	  switch (type)
+	  {
+	  case(1):
+		  return MemoryManagerClass::getI().getStackMemory(size);
+	  case(2):
+		  return MemoryManagerClass::getI().getOneFrameMemory(size);
+	  case(3):
+		  return MemoryManagerClass::getI().getTempMemory(size);
+	  case(4):
+		  return MemoryManagerClass::getI().getPoolMemory(size);
+	  default:
+		  return malloc(size);
+		  break;
+	  }
+
+  }

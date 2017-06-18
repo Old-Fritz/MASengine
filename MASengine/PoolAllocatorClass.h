@@ -23,19 +23,19 @@ public:
 	~PoolAllocatorClass();
 
 	bool Initialize(size_t elSize, long int poolSize);
-	bool doublePool();
+	 bool doublePool();
 	size_t getSize();
 
-	void* getMemory();
-	void deleteEl(void* pointer);
+	 void* getMemory();
+	 void deleteEl(void* pointer);
 
 	void clean();
 	void Shutdown();
 private:
-	std::list<void*> m_occupEls;
-	std::list<void*> m_freeEls;
-	size_t m_elSize;
-	int m_poolSize;
+	 std::list<void*> m_occupEls;
+	 std::list<void*> m_freeEls;
+	 size_t m_elSize;
+	 int m_poolSize;
 };
 
 #endif

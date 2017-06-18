@@ -1,4 +1,4 @@
 logs
-mods/modSettings.txt
+mods
 data/init/defSettings.txt
 12800 12800 12800 100

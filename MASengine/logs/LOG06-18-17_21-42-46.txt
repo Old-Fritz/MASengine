@@ -1,0 +1,5 @@
+06-18-17_21-42-46 LogManager Initialized
+06-18-17_21-42-46 MemoryManager Initialized
+06-18-17_21-42-46 ModManager Initialized
+06-18-17_21-42-46 Settings Initialized
+06-18-17_21-42-46 CommandManager Initialized

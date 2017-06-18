@@ -22,7 +22,7 @@ bool PoolAllocatorClass::Initialize(size_t elSize, long int poolSize)
 	char* mem = new char[elSize*poolSize];
 	if (!mem)
 	{
-		LogManager.addLog("Error 1-1");
+		LogManagerClass::getI().addLog("Error 1-1");
 		return false;
 	}
 	//create new blocks of free memory
@@ -42,7 +42,7 @@ bool PoolAllocatorClass::doublePool()
 	char* mem = new char[m_elSize*m_poolSize];
 	if (!mem)
 	{
-		LogManager.addLog("Error 1-2");
+		LogManagerClass::getI().addLog("Error 1-2");
 		return false;
 	}
 	//create new blocks of free memory
@@ -122,3 +122,4 @@ void PoolAllocatorClass::Shutdown()
 
 	return;
 }
+

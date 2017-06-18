@@ -1,5 +1,8 @@
 #include "LogManagerClass.h"
 
+static LogManagerClass* m_instance;
+
+LogManagerClass * LogManagerClass::m_instance = 0;
 
 LogManagerClass::LogManagerClass()
 {
@@ -25,6 +28,13 @@ bool LogManagerClass::Initialize(const std::string & filepath)
 void LogManagerClass::Shutdown()
 {
 	m_file.close();
+}
+
+LogManagerClass& LogManagerClass::getI()
+{
+	if (!m_instance)
+		m_instance = new LogManagerClass();
+	return *m_instance;
 }
 
 void LogManagerClass::addLog(const std::string & log)

@@ -22,7 +22,7 @@ bool StackAllocatorClass::Initialize(int stackSize)
 	m_stackSize = stackSize;
 	if (!m_stack)
 	{
-		LogManager.addLog("Error 1-3");
+		LogManagerClass::getI().addLog("Error 1-3");
 		return false;
 	}
 	else
@@ -82,3 +82,5 @@ void StackAllocatorClass::Shutdown()
 
 	return;
 }
+
+

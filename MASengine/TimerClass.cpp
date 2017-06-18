@@ -24,7 +24,7 @@ bool TimerClass::Initialize()
 	QueryPerformanceFrequency((LARGE_INTEGER*)&m_frequency);
 	if (m_frequency == 0)
 	{
-		LogManager.addLog("Error 2-1");
+		LogManagerClass::getI().addLog("Error 2-1");
 		return false;
 	}
 

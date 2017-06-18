@@ -17,24 +17,25 @@
 ////////////////////////////////////////////////////////////////////////////////
 class LogManagerClass
 {
+private:
+	static LogManagerClass* m_instance;
+	std::ofstream m_file;
 public:
-	LogManagerClass();
-	LogManagerClass(const LogManagerClass&);
-	~LogManagerClass();
+	
 
 	bool Initialize(const std::string& filepath);
 	void Shutdown();
 
+	static LogManagerClass& getI();
+
 	void addLog(const std::string& log);
 private:
+	LogManagerClass();
+	LogManagerClass(const LogManagerClass&);
+	~LogManagerClass();
 	std::string getTime();
-private:
-	std::ofstream m_file;
+
 };
 
-/////////////
-// GLOBALS //
-/////////////
-static LogManagerClass LogManager;
 
 #endif

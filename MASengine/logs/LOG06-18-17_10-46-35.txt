@@ -1,0 +1,3 @@
+06-18-17_10-46-35 LogManager Initialized
+06-18-17_10-50-13 MemoryManager Initialized
+06-18-17_10-50-18 ModManager Initialized

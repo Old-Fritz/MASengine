@@ -1,0 +1,5 @@
+06-18-17_18-31-15 LogManager Initialized
+06-18-17_18-31-15 MemoryManager Initialized
+06-18-17_18-31-15 ModManager Initialized
+06-18-17_18-31-15 Error 5-1
+06-18-17_18-31-15 Error 6-6

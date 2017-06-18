@@ -16,7 +16,7 @@ bool SettingsClass::Initialize(const std::string & filename)
 	result = readFromFile(filename);
 	if (!result)
 	{
-		LogManager.addLog("Error 5-1");
+		LogManagerClass::getI().addLog("Error 5-1");
 		return false;
 	}
 
@@ -52,7 +52,7 @@ void SettingsClass::Shutdown()
 	save(m_filename);
 	while (!m_parameters.empty())
 	{
-		MemoryManager.deletePool(m_parameters.begin()->second.pointer, m_parameters.begin()->second.size);
+		MemoryManagerClass::getI().deletePool(m_parameters.begin()->second.pointer, m_parameters.begin()->second.size);
 		m_parameters.erase(m_parameters.begin());
 	}
 }
@@ -82,7 +82,7 @@ bool SettingsClass::readFromFile(const std::string & filename)
 	generalFile.open(filename);
 	if (!generalFile.is_open())
 	{
-		LogManager.addLog("Error 5-2");
+		LogManagerClass::getI().addLog("Error 5-2");
 		return false;
 	}
 	
@@ -108,7 +108,7 @@ bool SettingsClass::readFromFile(const std::string & filename)
 		case(0):
 		{
 			param.size = sizeof(int);
-			param.pointer = MemoryManager.getPoolMemory(param.size);
+			param.pointer = MemoryManagerClass::getI().getPoolMemory(param.size);
 			temp = getTextFromFile(param.name, m_filename);
 			if (temp.size()>0)
 				temp = getTextFromFile(param.name, filename);
@@ -121,7 +121,7 @@ bool SettingsClass::readFromFile(const std::string & filename)
 		case(1):
 		{
 			param.size = sizeof(float);
-			param.pointer = MemoryManager.getPoolMemory(param.size);
+			param.pointer = MemoryManagerClass::getI().getPoolMemory(param.size);
 			temp = getTextFromFile(param.name, m_filename);
 			if (temp.size()>0)
 				temp = getTextFromFile(param.name, filename);
@@ -134,7 +134,7 @@ bool SettingsClass::readFromFile(const std::string & filename)
 		case(2):
 		{
 			param.size = sizeof(std::string);
-			param.pointer = MemoryManager.getPoolMemory(param.size);
+			param.pointer = MemoryManagerClass::getI().getPoolMemory(param.size);
 			temp = getTextFromFile(param.name, m_filename);
 			if (temp.size()>0)
 				temp = getTextFromFile(param.name, filename);
@@ -142,7 +142,7 @@ bool SettingsClass::readFromFile(const std::string & filename)
 		}
 		default:
 			param.size = sizeof(int);
-			param.pointer = MemoryManager.getPoolMemory(param.size);
+			param.pointer = MemoryManagerClass::getI().getPoolMemory(param.size);
 			*(int*)param.pointer = 0;
 		}
 		//add new param to map

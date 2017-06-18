@@ -21,15 +21,15 @@ public:
 
 	bool Initialize(int stackSize);
 
-	void* getMemory(size_t size);
+	 void* getMemory(size_t size);
 	void deleteEl(void* pointer, size_t size);
 
 	void clean();
 	void Shutdown();
 private:
-	void* m_stack;
-	long int m_position;
-	int m_stackSize;
+	 void* m_stack;
+	 long int m_position;
+	 int m_stackSize;
 };
 
 #endif

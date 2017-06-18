@@ -1,3 +1,4 @@
+#pragma once
 ////////////////////////////////////////////////////////////////////////////////
 // Filename: MemoryManagerClass.h
 ////////////////////////////////////////////////////////////////////////////////
@@ -15,19 +16,22 @@
 // Class name: MemoryManagerClass
 ////////////////////////////////////////////////////////////////////////////////
 
+void* operator new (size_t size, int type);
+	
 class MemoryManagerClass {
 public:
-	MemoryManagerClass();
-	MemoryManagerClass(const MemoryManagerClass&);
-	~MemoryManagerClass();
 
 	bool Initialize(int stackSize, int tempSize, int oneFrameSize, int poolSize);
 
+	static MemoryManagerClass& getI();
+
+	
+
 	//allocate memory
-	void* getStackMemory(size_t size);
-	void* getOneFrameMemory(size_t size);
-	void* getTempMemory(size_t size);
-	void* getPoolMemory(size_t size);
+	 void* getStackMemory(size_t size);
+	 void* getOneFrameMemory(size_t size);
+	 void* getTempMemory(size_t size);
+	 void* getPoolMemory(size_t size);
 	
 	//delete element from memory
 	void deleteStack(void* pointer, size_t size);
@@ -41,22 +45,23 @@ public:
 	void cleanPool();
 
 	void Shutdown();
-private:
 
-	StackAllocatorClass* m_stack;
-	StackAllocatorClass* m_oneFrame;
-	StackAllocatorClass* m_temp;
-	std::list<PoolAllocatorClass*> m_pools;
+private:
+	MemoryManagerClass();
+	MemoryManagerClass(const MemoryManagerClass&);
+	~MemoryManagerClass();
+private:
+	static MemoryManagerClass* m_instance;
+
+	 StackAllocatorClass* m_stack;
+	 StackAllocatorClass* m_oneFrame;
+	 StackAllocatorClass* m_temp;
+	 std::list<PoolAllocatorClass*> m_pools;
 
 	int m_stackSize;
 	int m_oneFrameSize;
 	int m_tempSize;
-	int m_poolSize;
+	 int m_poolSize;
 };
-
-/////////////
-// GLOBALS //
-/////////////
-static MemoryManagerClass MemoryManager;
 
 #endif

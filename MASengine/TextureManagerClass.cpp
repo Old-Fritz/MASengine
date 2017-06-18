@@ -15,7 +15,7 @@ void TextureManagerClass::Shutdown()
 	while (!m_textures.empty())
 	{
 		m_textures.begin()->second->Shutdown(); //delete texture
-		MemoryManager.deletePool(m_textures.begin()->second, sizeof(m_textures.begin()->second));
+		MemoryManagerClass::getI().deletePool(m_textures.begin()->second, sizeof(m_textures.begin()->second));
 		m_textures.erase(m_textures.begin());
 	}
 }
@@ -25,14 +25,14 @@ bool TextureManagerClass::addTexture(ID3D10Device * device, const std::string & 
 	bool result;
 
 	//create new texture
-	TextureClass* newTexture = (TextureClass*)MemoryManager.getPoolMemory(sizeof(TextureClass));
+	TextureClass* newTexture = (TextureClass*)MemoryManagerClass::getI().getPoolMemory(sizeof(TextureClass));
 	if (!newTexture)
 		return false;
 
 	result = newTexture->Initialize(device, filename);
 	if (!result)
 	{
-		LogManager.addLog("Error 4-2");
+		LogManagerClass::getI().addLog("Error 4-2");
 		return false;
 	}
 

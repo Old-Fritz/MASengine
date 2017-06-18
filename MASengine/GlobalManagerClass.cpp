@@ -31,67 +31,67 @@ bool GlobalManagerClass::Initialize(const std::string & filepath)
 	file >> stackSize >> tempSize >> oneFrameSize >> poolSize;
 
 	//Init LogManager
-	result = LogManager.Initialize(logFilepath);
+	result = LogManagerClass::getI().Initialize(logFilepath);
 	if(!result)
 	{
 		return false;
 	}
-	LogManager.addLog("LogManager Initialized");
+	LogManagerClass::getI().addLog("LogManager Initialized");
 
 
 	//Init MemoryManager
-	result = MemoryManager.Initialize(stackSize, tempSize, oneFrameSize, poolSize);
+	result = MemoryManagerClass::getI().Initialize(stackSize, tempSize, oneFrameSize, poolSize);
 	if (!result)
 	{
-		LogManager.addLog("Error 6-1");
+		LogManagerClass::getI().addLog("Error 6-1");
 		return false;
 	}
-	LogManager.addLog("MemoryManager Initialized");
+	LogManagerClass::getI().addLog("MemoryManager Initialized");
 
 	//Init ModManager
 	result = ModManager.Initialize(modFilename);
 	if (!result)
 	{
-		LogManager.addLog("Error 6-2");
+		LogManagerClass::getI().addLog("Error 6-2");
 		return false;
 	}
-	LogManager.addLog("ModManager Initialized");
+	LogManagerClass::getI().addLog("ModManager Initialized");
 
 	//Init Settings
 	result = Settings.Initialize(settingsFilename);
 	if (!result)
 	{
-		LogManager.addLog("Error 6-6");
+		LogManagerClass::getI().addLog("Error 6-6");
 		return false;
 	}
-	LogManager.addLog("Settings Initialized");
+	LogManagerClass::getI().addLog("Settings Initialized");
 
 	//Init CommandManager
 	result = CommandManager.Initialize();
 	if (!result)
 	{
-		LogManager.addLog("Error 6-3");
+		LogManagerClass::getI().addLog("Error 6-3");
 		return false;
 	}
-	LogManager.addLog("CommandManager Initialized");
+	LogManagerClass::getI().addLog("CommandManager Initialized");
 
 	//Init ResourceManager
 	result = ResourceManager.Initialize();
 	if (!result)
 	{
-		LogManager.addLog("Error 6-4");
+		LogManagerClass::getI().addLog("Error 6-4");
 		return false;
 	}
-	LogManager.addLog("ResourceManager Initialized");
+	LogManagerClass::getI().addLog("ResourceManager Initialized");
 
 	//Init SystemStateManager
 	result = SystemStateManager.Initialize();
 	if (!result)
 	{
-		LogManager.addLog("Error 6-5");
+		LogManagerClass::getI().addLog("Error 6-5");
 		return false;
 	}
-	LogManager.addLog("SystemStateManager Initialized");
+	LogManagerClass::getI().addLog("SystemStateManager Initialized");
 
 	
 
@@ -106,6 +106,6 @@ void GlobalManagerClass::Shutdown()
 	CommandManager.Shutdown();
 	Settings.Shutdown();
 	ModManager.Shutdown();
-	MemoryManager.Shutdown();
-	LogManager.Shutdown();
+	MemoryManagerClass::getI().Shutdown();
+	LogManagerClass::getI().Shutdown();
 }

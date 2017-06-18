@@ -74,14 +74,14 @@ bool MeshClass::InitializeBuffers(ID3D10Device * device)
 
 
 	// Create the vertex array.
-	vertices = (VertexType*)MemoryManager.getTempMemory(sizeof(VertexType)*m_vertexCount);
+	vertices = (VertexType*)MemoryManagerClass::getI().getTempMemory(sizeof(VertexType)*m_vertexCount);
 	if (!vertices)
 	{
 		return false;
 	}
 
 	// Create the index array.
-	indices = (unsigned long*)MemoryManager.getTempMemory(sizeof(unsigned long)*m_indexCount);
+	indices = (unsigned long*)MemoryManagerClass::getI().getTempMemory(sizeof(unsigned long)*m_indexCount);
 	if (!indices)
 	{
 		return false;
@@ -132,7 +132,7 @@ bool MeshClass::InitializeBuffers(ID3D10Device * device)
 	}
 
 	// Release the arrays now that the vertex and index buffers have been created and loaded.
-	MemoryManager.cleanTemp();
+	MemoryManagerClass::getI().cleanTemp();
 
 	return true;
 }
@@ -209,7 +209,7 @@ bool MeshClass::LoadModel(const std::string& filename)
 	m_indexCount = m_vertexCount;
 
 	// Create the model using the vertex count that was read in.
-	m_model = (ModelType*)MemoryManager.getPoolMemory(sizeof(ModelType)*m_vertexCount);
+	m_model = (ModelType*)MemoryManagerClass::getI().getPoolMemory(sizeof(ModelType)*m_vertexCount);
 	if (!m_model)
 	{
 		return false;
@@ -242,7 +242,7 @@ void MeshClass::ReleaseModel()
 {
 	if (m_model)
 	{
-		MemoryManager.deletePool(m_model, sizeof(ModelType)*m_vertexCount);
+		MemoryManagerClass::getI().deletePool(m_model, sizeof(ModelType)*m_vertexCount);
 		m_model = 0;
 	}
 
