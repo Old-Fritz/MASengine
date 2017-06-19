@@ -10,3 +10,17 @@ Error 6-3 Problem with CommandManager Initialization
 Error 6-4 Problem with ResourceManager Initialization
 Error 6-5 Problem with SystemStateManager Initialization
 Error 6-6 Problem with Settings Initialization
+
+Error 7-1 Problem with DirectInput8 creating
+Error 7-2 Problem with creating interface for keyboard
+Error 7-3 Problem with setting keyboard data format
+Error 7-4 Problem with setting Cooperative level for keyboard
+Error 7-5 Problem with acquire keyboard
+Error 7-6 Problem with creating interface for mouse
+Error 7-7 Problem with setting mouse data format
+Error 7-8 Problem with setting Cooperative level for mouse
+Error 7-9 Problem with acquire mouse
+Error 7-10 Problem with reading keyboard
+Error 7-11 Problem with reading mouse
+Error 7-12 Problem with Input Initialization
+Error 7-13 Problem with input Frame

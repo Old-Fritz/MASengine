@@ -20,14 +20,41 @@ bool SystemClass::Initialize()
 	result = GlobalManagerClass::getI().Initialize("data/init/init.txt");
 	if (!result)
 		return false;
+	LogManagerClass::getI().addLog("All global system Initialized");
 
 	// Initialize the windows api.
 	InitializeWindows(SettingsClass::getI().getIntParameter("ScreenWidth"), SettingsClass::getI().getIntParameter("ScreenHeight"));
+	LogManagerClass::getI().addLog("Windows Initialization");
+
+
+	//Initialize input
+	m_input = new(1) InputClass;
+	if (!m_input)
+		return false;
+	result = m_input->Initialize(m_hinstance,m_hwnd);
+	if (!result)
+	{
+		LogManagerClass::getI().addLog("Error 7-12");
+		return false;
+	}
+	LogManagerClass::getI().addLog("input Initialization");
 
 	return true;
 }
 void SystemClass::Shutdown()
 {
+	//save settings first
+	SettingsClass::getI().save();
+
+	//Shutdown Input
+	if (m_input)
+	{
+		m_input->Shutdown();
+		::operator delete(m_input, sizeof(InputClass), 1);
+		m_input = 0;
+	}
+
+	//Shutdown other
 	ShutdownWindows();
 	GlobalManagerClass::getI().Shutdown();
 }
@@ -77,7 +104,17 @@ void SystemClass::Run()
 
 bool SystemClass::Frame()
 {
+	bool result;
+
 	SystemStateManagerClass::getI().Frame();
+
+	//process input
+	result = m_input->Frame();
+	if (!result)
+	{
+		LogManagerClass::getI().addLog("Error 7-13");
+		return false;
+	}
 
 	return true;
 }

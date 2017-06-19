@@ -116,6 +116,7 @@
     <ClCompile Include="CpuClass.cpp" />
     <ClCompile Include="FpsClass.cpp" />
     <ClCompile Include="GlobalManagerClass.cpp" />
+    <ClCompile Include="InputClass.cpp" />
     <ClCompile Include="LogManagerClass.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MemoryManagerClass.cpp" />
@@ -140,6 +141,7 @@
     <ClInclude Include="CpuClass.h" />
     <ClInclude Include="FpsClass.h" />
     <ClInclude Include="GlobalManagerClass.h" />
+    <ClInclude Include="InputClass.h" />
     <ClInclude Include="LogManagerClass.h" />
     <ClInclude Include="MemoryManagerClass.h" />
     <ClInclude Include="MeshClass.h" />

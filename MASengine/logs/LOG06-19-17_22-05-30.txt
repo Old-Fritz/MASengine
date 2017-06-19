@@ -1,0 +1,6 @@
+06-19-17_22-05-30 LogManager Initialized
+06-19-17_22-05-30 MemoryManager Initialized
+06-19-17_22-05-31 ModManager Initialized
+06-19-17_22-05-33 Settings Initialized
+06-19-17_22-05-33 CommandManager Initialized
+06-19-17_22-05-35 ResourceManager Initialized

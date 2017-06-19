@@ -82,7 +82,10 @@ long long ModManagerClass::getHash(const std::string & str)
  std::string  ModManagerClass::getDirectory(long long hash)
 {
 	auto directory = m_modChanges.find(hash);
-	return directory->second;
+	if (directory != m_modChanges.end())
+		return directory->second;
+	else
+		return "";
 }
 
 void ModManagerClass::loadMod(const std::string & name, const std::string & modDirectory)

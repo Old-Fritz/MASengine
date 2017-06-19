@@ -41,7 +41,7 @@ private:
 public:
 
 	bool Initialize(const std::string& filename);
-	void save(const std::string& filename);
+	void save();
 	void Shutdown();
 
 	static SettingsClass& getI();

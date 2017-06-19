@@ -111,12 +111,12 @@ void PoolAllocatorClass::Shutdown()
 	//delete all elements in both lists
 	for (auto ptr = m_occupEls.begin();ptr != m_occupEls.end();ptr++)
 	{
-		free(*ptr);
+		::operator delete(*ptr, m_elSize);
 	}
 	m_occupEls.clear();
 	for (auto ptr = m_freeEls.begin();ptr != m_freeEls.end();ptr++)
 	{
-		free(*ptr);
+		::operator delete(*ptr, m_elSize);
 	}
 	m_freeEls.clear();
 

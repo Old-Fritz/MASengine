@@ -1,6 +1,9 @@
 Settings.txt
 data/init/defSettings.txt
-3
+5
 0 ScreenWidth
 0 ScreenHeight
 0 Fullscreen
+0 MouseSensitivity
+
+2 ButCommandFilename

@@ -23,7 +23,7 @@ void CommandManagerClass::Shutdown()
 		while (!m_commands.begin()->second.empty())
 		{
 			m_commands.begin()->second.begin()->second->Shutdown(); //delete all commands
-			::operator delete(m_commands.begin()->second.begin()->second, sizeof(m_commands.begin()->second.begin()->second),2);
+			::operator delete(m_commands.begin()->second.begin()->second, sizeof(CommandClass),2);
 			m_commands.begin()->second.erase(m_commands.begin()->second.begin());
 		}
 		m_commands.erase(m_commands.begin());
@@ -69,7 +69,7 @@ bool CommandManagerClass::addCommand(const std::string & name, const std::string
 		}
 		else //add new command in group
 		{
-			CommandClass* newCommand = new CommandClass;
+			CommandClass* newCommand = new(4) CommandClass;
 			if (!newCommand)
 				return false;
 			newCommand->Initialize(getTextFromFile(name, filename));
@@ -81,7 +81,7 @@ bool CommandManagerClass::addCommand(const std::string & name, const std::string
 	else //add new group
 	{
 		//create new command
-		CommandClass* newCommand = new CommandClass;
+		CommandClass* newCommand = new(4) CommandClass;
 		if (!newCommand)
 			return false;
 		newCommand->Initialize(getTextFromFile(name, filename));

@@ -136,7 +136,7 @@ void * MemoryManagerClass::getPoolMemory(size_t size)
 	PoolAllocatorClass* pool = new(5) PoolAllocatorClass;
 	if (!pool)
 		return 0;
-	result = pool->Initialize(size, m_poolSize);
+	result = pool->Initialize(poolSize, m_poolSize);
 	if (!result)
 		return 0;
 	m_pools.emplace_back(pool);

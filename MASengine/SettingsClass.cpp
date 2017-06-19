@@ -24,10 +24,10 @@ bool SettingsClass::Initialize(const std::string & filename)
 
 	return true;
 }
-void SettingsClass::save(const std::string & filename)
+void SettingsClass::save()
 {
 	std::ofstream file;
-	file.open(filename);
+	file.open(m_filename);
 
 	if (!file.is_open())
 		return;
@@ -46,7 +46,6 @@ void SettingsClass::save(const std::string & filename)
 }
 void SettingsClass::Shutdown()
 {
-	save(m_filename);
 	//delete all params
 	while (!m_intParameters.empty())
 	{

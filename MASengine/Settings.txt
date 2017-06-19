@@ -1,5 +1,7 @@
 Fullscreen {0}
 ScreenWidth {1280}
+MouseSensitivity {0}
 ScreenHeight {720}
 
 
+ButCommandFilename {}

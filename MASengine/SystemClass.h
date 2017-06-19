@@ -22,6 +22,7 @@
 ///////////////////////
 
 #include "GlobalManagerClass.h"
+#include "InputClass.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // Class name: SystemClass
@@ -47,6 +48,9 @@ private:
 	LPCSTR m_applicationName;
 	HINSTANCE m_hinstance;
 	HWND m_hwnd;
+
+	//blocks
+	InputClass* m_input;
 };
 
 
