@@ -39,6 +39,8 @@ void* StackAllocatorClass::getMemory(size_t size)
 
 	m_position += size;
 
+	return ptr;
+
 	//add size of last element after it
 	((size_t*)((char*)m_stack + m_position))[0] = size;
 	m_position += sizeof(size);
@@ -52,7 +54,9 @@ void* StackAllocatorClass::getMemory(size_t size)
 
 void StackAllocatorClass::deleteEl(void* pointer, size_t size)
 {
+	m_position -= size;
 	
+	return;
 	// check if element is in stack
 	if (pointer < m_stack || pointer>=(void*)((char*)m_stack + m_stackSize))
 		return;

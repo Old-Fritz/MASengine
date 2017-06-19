@@ -1,6 +1,7 @@
 #include "MemoryManagerClass.h"
 
 MemoryManagerClass * MemoryManagerClass::m_instance = 0;
+bool MemoryManagerClass::m_isInit = false;
 
 MemoryManagerClass::MemoryManagerClass()
 {
@@ -74,6 +75,8 @@ bool MemoryManagerClass::Initialize(int stackSize, int tempSize, int oneFrameSiz
 		return false;
 	}
 
+	m_isInit = true;
+
 	return true;
 
 }
@@ -81,8 +84,13 @@ bool MemoryManagerClass::Initialize(int stackSize, int tempSize, int oneFrameSiz
 MemoryManagerClass & MemoryManagerClass::getI()
 {
 	if (!m_instance)
-		m_instance = new MemoryManagerClass;
+		m_instance = new(5) MemoryManagerClass;
 	return *m_instance;
+}
+
+bool MemoryManagerClass::isInit()
+{
+	return m_isInit;
 }
 
 //allocate memory
@@ -103,7 +111,10 @@ void * MemoryManagerClass::getPoolMemory(size_t size)
 	bool result;
 
 	size_t poolSize = 1;
+	void* mem;
+
 	//find best pool
+	m_isInit = false;
 	while (size > poolSize)
 		poolSize *= 2;
 
@@ -112,12 +123,17 @@ void * MemoryManagerClass::getPoolMemory(size_t size)
 		for (auto pool = m_pools.begin(); pool != m_pools.end();pool++)
 		{
 			if ((*pool)->getSize() == poolSize)
-				return (*pool)->getMemory();
+			{
+				mem = (*pool)->getMemory();
+				m_isInit = true;
+				return mem;
+			}
+				
 		}
 	}
 
 	//create new pool if no best pool
-	PoolAllocatorClass* pool = new PoolAllocatorClass;
+	PoolAllocatorClass* pool = new(5) PoolAllocatorClass;
 	if (!pool)
 		return 0;
 	result = pool->Initialize(size, m_poolSize);
@@ -125,7 +141,9 @@ void * MemoryManagerClass::getPoolMemory(size_t size)
 		return 0;
 	m_pools.emplace_back(pool);
 
-	return pool->getMemory();
+	mem = pool->getMemory();
+	m_isInit = true;
+	return mem;
 
 }
 
@@ -177,6 +195,7 @@ void MemoryManagerClass::cleanPool()
 
 void MemoryManagerClass::Shutdown()
 {
+	m_isInit = false;
 	//shutdown all stacks
 	if(m_stack)
 	{
@@ -209,26 +228,74 @@ void MemoryManagerClass::Shutdown()
 }
 
 
-  void* operator new(size_t size)
-  {
-	  return malloc(size);
-  }
+void * operator new(size_t size, int type)
+{
+	switch (type)
+	{
+	case(1):
+		return MemoryManagerClass::getI().getStackMemory(size);
+	case(2):
+		return MemoryManagerClass::getI().getOneFrameMemory(size);
+	case(3):
+		return MemoryManagerClass::getI().getTempMemory(size);
+	case(4):
+		return MemoryManagerClass::getI().getPoolMemory(size);
+	default:
+		return malloc(size);
+		break;
+	}
+}
 
-  void * operator new(size_t size, int type)
-  {
-	  switch (type)
-	  {
-	  case(1):
-		  return MemoryManagerClass::getI().getStackMemory(size);
-	  case(2):
-		  return MemoryManagerClass::getI().getOneFrameMemory(size);
-	  case(3):
-		  return MemoryManagerClass::getI().getTempMemory(size);
-	  case(4):
-		  return MemoryManagerClass::getI().getPoolMemory(size);
-	  default:
-		  return malloc(size);
-		  break;
-	  }
+void* operator new[](size_t size, int type)
+{
+	switch (type)
+	{
+	case(1):
+		return MemoryManagerClass::getI().getStackMemory(size);
+	case(2):
+		return MemoryManagerClass::getI().getOneFrameMemory(size);
+	case(3):
+		return MemoryManagerClass::getI().getTempMemory(size);
+	case(4):
+		return MemoryManagerClass::getI().getPoolMemory(size);
+	case(5):
+		return malloc(size);
+	default:
+		return malloc(size);
+		break;
+	}
+}
 
-  }
+
+void operator delete(void * mem, size_t size, int type)
+{
+	switch (type)
+	{
+	case(1):
+		MemoryManagerClass::getI().deleteStack(mem,size);
+		break;
+	case(2):
+		MemoryManagerClass::getI().deletePool(mem, size);
+		break;
+	default:
+		free(mem);
+		break;
+	}
+}
+
+
+void operator delete[](void * mem, size_t size, int type)
+{
+	switch (type)
+	{
+	case(1):
+		MemoryManagerClass::getI().deleteStack(mem, size);
+		break;
+	case(2):
+		MemoryManagerClass::getI().deletePool(mem, size);
+		break;
+	default:
+		free(mem);
+		break;
+	}
+}

@@ -30,14 +30,13 @@ using namespace std::tr2::sys;
 class ModManagerClass
 {
 public:
-
+	
 	ModManagerClass();
 	ModManagerClass(const ModManagerClass&);
 	~ModManagerClass();
 
 	bool Initialize(const std::string& modDirectory);
 	void Shutdown();
-
 
 	long long getHash(const std::string& str);
 	std::string getDirectory(long long hash);

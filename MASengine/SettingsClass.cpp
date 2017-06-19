@@ -52,7 +52,7 @@ void SettingsClass::Shutdown()
 	save(m_filename);
 	while (!m_parameters.empty())
 	{
-		MemoryManagerClass::getI().deletePool(m_parameters.begin()->second.pointer, m_parameters.begin()->second.size);
+		::operator delete(m_parameters.begin()->second.pointer, m_parameters.begin()->second.size, 2);
 		m_parameters.erase(m_parameters.begin());
 	}
 }
@@ -108,7 +108,7 @@ bool SettingsClass::readFromFile(const std::string & filename)
 		case(0):
 		{
 			param.size = sizeof(int);
-			param.pointer = MemoryManagerClass::getI().getPoolMemory(param.size);
+			param.pointer = new(4) Parameter;
 			temp = getTextFromFile(param.name, m_filename);
 			if (temp.size()>0)
 				temp = getTextFromFile(param.name, filename);
@@ -121,7 +121,7 @@ bool SettingsClass::readFromFile(const std::string & filename)
 		case(1):
 		{
 			param.size = sizeof(float);
-			param.pointer = MemoryManagerClass::getI().getPoolMemory(param.size);
+			param.pointer = new(4) Parameter;
 			temp = getTextFromFile(param.name, m_filename);
 			if (temp.size()>0)
 				temp = getTextFromFile(param.name, filename);
@@ -134,7 +134,7 @@ bool SettingsClass::readFromFile(const std::string & filename)
 		case(2):
 		{
 			param.size = sizeof(std::string);
-			param.pointer = MemoryManagerClass::getI().getPoolMemory(param.size);
+			param.pointer = new(4) Parameter;
 			temp = getTextFromFile(param.name, m_filename);
 			if (temp.size()>0)
 				temp = getTextFromFile(param.name, filename);
@@ -142,7 +142,7 @@ bool SettingsClass::readFromFile(const std::string & filename)
 		}
 		default:
 			param.size = sizeof(int);
-			param.pointer = MemoryManagerClass::getI().getPoolMemory(param.size);
+			param.pointer = new(4) Parameter;
 			*(int*)param.pointer = 0;
 		}
 		//add new param to map

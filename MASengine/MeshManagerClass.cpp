@@ -15,7 +15,7 @@ void MeshManagerClass::Shutdown()
 	while (!m_models.empty())
 	{
 		m_models.begin()->second->Shutdown(); //delete all commands
-		MemoryManagerClass::getI().deletePool(m_models.begin()->second, sizeof(m_models.begin()->second));
+		::operator delete(m_models.begin()->second, sizeof(m_models.begin()->second),2);
 		m_models.erase(m_models.begin());
 	}
 }
@@ -25,7 +25,7 @@ bool MeshManagerClass::addModel(ID3D10Device * device, const std::string & filen
 	bool result;
 
 	//create new model
-	MeshClass* newModel = (MeshClass*)MemoryManagerClass::getI().getPoolMemory(sizeof(MeshClass));
+	MeshClass* newModel = new MeshClass;
 	if (!newModel)
 		return false;
 

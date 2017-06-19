@@ -15,7 +15,7 @@ void TextureManagerClass::Shutdown()
 	while (!m_textures.empty())
 	{
 		m_textures.begin()->second->Shutdown(); //delete texture
-		MemoryManagerClass::getI().deletePool(m_textures.begin()->second, sizeof(m_textures.begin()->second));
+		::operator delete(m_textures.begin()->second, sizeof(m_textures.begin()->second), 2);
 		m_textures.erase(m_textures.begin());
 	}
 }
@@ -25,7 +25,7 @@ bool TextureManagerClass::addTexture(ID3D10Device * device, const std::string & 
 	bool result;
 
 	//create new texture
-	TextureClass* newTexture = (TextureClass*)MemoryManagerClass::getI().getPoolMemory(sizeof(TextureClass));
+	TextureClass* newTexture = new(4) TextureClass;
 	if (!newTexture)
 		return false;
 

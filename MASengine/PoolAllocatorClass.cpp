@@ -1,5 +1,8 @@
 #include "PoolAllocatorClass.h"
 
+ std::list<void*> PoolAllocatorClass::m_occupEls;
+ std::list<void*> PoolAllocatorClass::m_freeEls;
+
 PoolAllocatorClass::PoolAllocatorClass()
 {
 	m_elSize = 0;

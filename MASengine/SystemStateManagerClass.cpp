@@ -22,28 +22,28 @@ bool SystemStateManagerClass::Initialize()
 	bool result;
 
 	//init cpu
-	m_cpu = (CpuClass*)MemoryManagerClass::getI().getStackMemory(sizeof(CpuClass));
+	m_cpu = new(1) CpuClass;
 	if (!m_cpu)
 		return false;
 
 	m_cpu->Initialize();
 
 	//init fps
-	m_fps = (FpsClass*)MemoryManagerClass::getI().getStackMemory(sizeof(FpsClass));
+	m_fps = new(1) FpsClass;
 	if (!m_fps)
 		return false;
 	m_fps->Initialize();
 
 	//init timer
-	m_timer = (TimerClass*)MemoryManagerClass::getI().getStackMemory(sizeof(TimerClass));
+	m_timer = new(1) TimerClass;
 	if (!m_timer)
 		return false;
 	result = m_timer->Initialize();
 	if (!result)
 	{
 		LogManagerClass::getI().addLog("Error 2-2");
-	}
 		return false;
+	}
 
 	return true;
 }
@@ -57,18 +57,19 @@ void SystemStateManagerClass::Shutdown()
 {
 	if (m_timer)
 	{
-		MemoryManagerClass::getI().deleteStack(m_timer, sizeof(*m_timer));
+		::operator delete(m_timer, sizeof(*m_timer), 1);
 		m_timer = 0;
 	}
 	if (m_fps)
 	{
-		MemoryManagerClass::getI().deleteStack(m_fps, sizeof(*m_fps));
+		::operator delete(m_fps, sizeof(*m_fps), 1);
 		m_fps = 0;
 	}
 	if (m_cpu)
 	{
 		m_cpu->Shutdown();
-		MemoryManagerClass::getI().deleteStack(m_cpu, sizeof(*m_cpu));
+		::operator delete(m_cpu, sizeof(*m_cpu), 1);
+
 		m_cpu = 0;
 	}
 }

@@ -18,15 +18,14 @@ bool ResourceManagerClass::Initialize()
 	//create all blocks
 
 	m_textures = new(1) TextureManagerClass;
-	//m_textures = static_cast<TextureManagerClass*>(MemoryManagerClass::getI().getStackMemory(sizeof(TextureManagerClass)));
 	if (!m_textures)
 		return false;
 
-	m_texts = (TextManagerClass*)MemoryManagerClass::getI().getStackMemory(sizeof(TextManagerClass));
+	m_texts = new(1) TextManagerClass;
 	if (!m_texts)
 		return false;
 
-	m_models = (MeshManagerClass*)MemoryManagerClass::getI().getStackMemory(sizeof(MeshManagerClass));
+	m_models = new(1) MeshManagerClass;
 	if (!m_models)
 		return false;
 
@@ -39,19 +38,19 @@ void ResourceManagerClass::Shutdown()
 	if (m_models)
 	{
 		m_models->Shutdown();
-		MemoryManagerClass::getI().deleteStack(m_models, sizeof(m_models));
+		::operator delete(m_models, sizeof(MeshManagerClass), 1);
 		m_models = 0;
 	}
 	if (m_texts)
 	{
 		m_texts->Shutdown();
-		MemoryManagerClass::getI().deleteStack(m_texts, sizeof(m_texts));
+		::operator delete(m_texts, sizeof(TextManagerClass), 1);
 		m_texts = 0;
 	}
 	if (m_textures)
 	{
 		m_textures->Shutdown();
-		MemoryManagerClass::getI().deleteStack(m_textures, sizeof(m_textures));
+		::operator delete(m_textures, sizeof(TextureManagerClass), 1);
 		m_textures = 0;
 	}
 

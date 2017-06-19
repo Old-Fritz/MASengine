@@ -32,8 +32,8 @@ public:
 	void clean();
 	void Shutdown();
 private:
-	 std::list<void*> m_occupEls;
-	 std::list<void*> m_freeEls;
+	 static std::list<void*> m_occupEls;
+	 static std::list<void*> m_freeEls;
 	 size_t m_elSize;
 	 int m_poolSize;
 };

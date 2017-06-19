@@ -29,6 +29,7 @@ bool SystemClass::Initialize()
 void SystemClass::Shutdown()
 {
 	GlobalManager.Shutdown();
+	ShutdownWindows();
 }
 void SystemClass::Run()
 {

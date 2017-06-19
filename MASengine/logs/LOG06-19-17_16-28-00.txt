@@ -1,0 +1,7 @@
+06-19-17_16-28-00 LogManager Initialized
+06-19-17_16-28-00 MemoryManager Initialized
+06-19-17_16-28-00 ModManager Initialized
+06-19-17_16-28-00 Settings Initialized
+06-19-17_16-28-00 CommandManager Initialized
+06-19-17_16-28-48 ResourceManager Initialized
+06-19-17_16-28-49 Error 6-5

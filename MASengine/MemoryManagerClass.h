@@ -17,6 +17,10 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 void* operator new (size_t size, int type);
+void* operator new[] (size_t size, int type);
+
+void operator delete(void* mem, size_t size, int type);
+void operator delete[](void* mem, size_t size, int type);
 	
 class MemoryManagerClass {
 public:
@@ -25,7 +29,7 @@ public:
 
 	static MemoryManagerClass& getI();
 
-	
+	static bool isInit();
 
 	//allocate memory
 	 void* getStackMemory(size_t size);
@@ -61,7 +65,9 @@ private:
 	int m_stackSize;
 	int m_oneFrameSize;
 	int m_tempSize;
-	 int m_poolSize;
+	int m_poolSize;
+
+	static bool m_isInit;
 };
 
 #endif
