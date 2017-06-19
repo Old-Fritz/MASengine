@@ -21,18 +21,18 @@ void TextManagerClass::Shutdown()
 
 void TextManagerClass::addText(const std::string & name, const std::string & filename)
 {
-	m_texts.emplace(std::pair<long long, std::wstring>(ModManager.getHash(name), getTextFromFile(name, filename)));
+	m_texts.emplace(std::pair<long long, std::wstring>(ModManagerClass::getI().getHash(name), getTextFromFile(name, filename)));
 }
 
 std::wstring TextManagerClass::getText(const std::string & name, const std::string & filename)
 {
-	return m_texts.find(ModManager.getHash(name))->second;
+	return m_texts.find(ModManagerClass::getI().getHash(name))->second;
 }
 
 std::wstring TextManagerClass::getTextFromFile(const std::string & name, const std::string & filename)
 {
 	std::wifstream file;
-	file.open(ModManager.getDirectory(ModManager.getHash(filename)) + filename);
+	file.open(ModManagerClass::getI().getDirectory(ModManagerClass::getI().getHash(filename)) + filename);
 	std::wstring temp1 = m_converter.from_bytes("}");
 	std::wstring temp2;
 	while (file)

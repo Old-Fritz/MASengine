@@ -26,17 +26,22 @@ class ResourceManagerClass
 {
 public:
 
-	ResourceManagerClass();
-	ResourceManagerClass(const ResourceManagerClass&);
-	~ResourceManagerClass();
-
+	
 	bool Initialize();
 	void Shutdown();
+
+	static ResourceManagerClass& getI();
 
 	//get modules
 	TextureManagerClass* getTextures();
 	TextManagerClass* getTexts();
 	MeshManagerClass* getModels();
+
+private:
+	ResourceManagerClass();
+	ResourceManagerClass(const ResourceManagerClass&);
+	~ResourceManagerClass();
+
 private:
 	//modules
 	TextureManagerClass* m_textures;
@@ -44,11 +49,8 @@ private:
 	MeshManagerClass* m_models;
 
 	float m_frametime;
-};
 
-/////////////
-// GLOBALS //
-/////////////
-static ResourceManagerClass ResourceManager;
+	static ResourceManagerClass* m_instance;
+};
 
 #endif

@@ -30,27 +30,24 @@ using namespace std::tr2::sys;
 class ModManagerClass
 {
 public:
-	
-	ModManagerClass();
-	ModManagerClass(const ModManagerClass&);
-	~ModManagerClass();
-
 	bool Initialize(const std::string& modDirectory);
 	void Shutdown();
+	
+	static ModManagerClass& getI();
 
 	long long getHash(const std::string& str);
 	std::string getDirectory(long long hash);
 
 private:
+	ModManagerClass();
+	ModManagerClass(const ModManagerClass&);
+	~ModManagerClass();
 	void loadMod(const std::string& name, const std::string& modDirectory);
 private:
 	std::map<long long, std::string> m_modChanges;
 	std::vector<std::string> m_modNames;
-};
 
-/////////////
-// GLOBALS //
-/////////////
-static ModManagerClass ModManager;
+	static ModManagerClass* m_instance;
+};
 
 #endif

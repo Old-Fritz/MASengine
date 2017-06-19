@@ -1,0 +1,6 @@
+Settings.txt
+data/init/defSettings.txt
+3
+0 ScreenWidth
+0 ScreenHeight
+0 Fullscreen

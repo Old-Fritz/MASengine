@@ -1,5 +1,7 @@
 #include "SettingsClass.h"
 
+SettingsClass* SettingsClass::m_instance = 0;
+
 SettingsClass::SettingsClass()
 {
 }
@@ -30,46 +32,87 @@ void SettingsClass::save(const std::string & filename)
 	if (!file.is_open())
 		return;
 
-	for (auto param = m_parameters.begin();param != m_parameters.end();param++)
-	{
-		switch (param->second.type)
-		{
-		case(0):
-			file << param->second.name << " {" << *(int*)(param->second.pointer) << "}" << std::endl;
-		case(1):
-			file << param->second.name << " {" << *(float*)(param->second.pointer) << "}" << std::endl;
-		case(2):
-			file << param->second.name << " {" << *(std::string*)(param->second.pointer) << "}" << std::endl;
-		default:
-			file << param->second.name << " {" << *(int*)(param->second.pointer) << "}" << std::endl;;
-		}
-	}
+	//write all params in file
+	for (auto param = m_intParameters.begin();param != m_intParameters.end();param++)
+		file << param->second->name << " {" << param->second->value << "}" << std::endl;
+	file << std::endl;
+	for (auto param = m_floatParameters.begin();param != m_floatParameters.end();param++)
+		file << param->second->name << " {" << param->second->value << "}" << std::endl;
+	file << std::endl;
+	for (auto param = m_strParameters.begin();param != m_strParameters.end();param++)
+		file << param->second->name << " {" << param->second->value << "}" << std::endl;
 
 	file.close();
 }
 void SettingsClass::Shutdown()
 {
 	save(m_filename);
-	while (!m_parameters.empty())
+	//delete all params
+	while (!m_intParameters.empty())
 	{
-		::operator delete(m_parameters.begin()->second.pointer, m_parameters.begin()->second.size, 2);
-		m_parameters.erase(m_parameters.begin());
+		m_intParameters.begin()->second->name.clear();
+		::operator delete(m_intParameters.begin()->second,sizeof(IntParameter), 2);
+		m_intParameters.erase(m_intParameters.begin());
+	}
+	while (!m_floatParameters.empty())
+	{
+		m_floatParameters.begin()->second->name.clear();
+		::operator delete(m_floatParameters.begin()->second, sizeof(FloatParameter), 2);
+		m_floatParameters.erase(m_floatParameters.begin());
+	}
+	while (!m_strParameters.empty())
+	{
+		m_strParameters.begin()->second->name.clear();
+		m_strParameters.begin()->second->value.clear();
+		::operator delete(m_strParameters.begin()->second, sizeof(StrParameter), 2);
+		m_strParameters.erase(m_strParameters.begin());
 	}
 }
 
-void * SettingsClass::getParameter(const std::string & name)
+SettingsClass & SettingsClass::getI()
 {
-	if (m_parameters.find(ModManager.getHash(name)) != m_parameters.end())
-		return m_parameters.find(ModManager.getHash(name))->second.pointer;
+	if (!m_instance)
+		m_instance = new(1) SettingsClass;
+	return *m_instance;
+}
+
+
+int SettingsClass::getIntParameter(const std::string & name)
+{
+	if (m_intParameters.find(ModManagerClass::getI().getHash(name)) != m_intParameters.end())
+		return m_intParameters.find(ModManagerClass::getI().getHash(name))->second->value;
 	else
 		return 0;
 }
-void SettingsClass::setParameter(const std::string & name, void * pointer)
+float SettingsClass::getFloatParameter(const std::string & name)
 {
-	if (m_parameters.find(ModManager.getHash(name)) != m_parameters.end())
-	{
-		m_parameters.find(ModManager.getHash(name))->second.pointer = pointer;
-	}
+	if (m_floatParameters.find(ModManagerClass::getI().getHash(name)) != m_floatParameters.end())
+		return m_floatParameters.find(ModManagerClass::getI().getHash(name))->second->value;
+	else
+		return 0;
+}
+std::string SettingsClass::getStrParameter(const std::string & name)
+{
+	if (m_strParameters.find(ModManagerClass::getI().getHash(name)) != m_strParameters.end())
+		return m_strParameters.find(ModManagerClass::getI().getHash(name))->second->value;
+	else
+		return "";
+}
+
+void SettingsClass::setIntParameter(const std::string & name, int value)
+{
+	if (m_intParameters.find(ModManagerClass::getI().getHash(name)) != m_intParameters.end())
+		m_intParameters.find(ModManagerClass::getI().getHash(name))->second->value = value;
+}
+void SettingsClass::setFloatParameter(const std::string & name, float value)
+{
+	if (m_floatParameters.find(ModManagerClass::getI().getHash(name)) != m_floatParameters.end())
+		m_floatParameters.find(ModManagerClass::getI().getHash(name))->second->value = value;
+}
+void SettingsClass::setStrParameter(const std::string & name, const std::string & value)
+{
+	if (m_strParameters.find(ModManagerClass::getI().getHash(name)) != m_strParameters.end())
+		m_strParameters.find(ModManagerClass::getI().getHash(name))->second->value = value;
 }
 
 
@@ -77,6 +120,7 @@ bool SettingsClass::readFromFile(const std::string & filename)
 {
 	bool result;
 
+	std::string defSettingsFileName;
 	//open general file with default settings
 	std::ifstream generalFile;
 	generalFile.open(filename);
@@ -88,6 +132,7 @@ bool SettingsClass::readFromFile(const std::string & filename)
 	
 	//first value is filename
 	generalFile >> m_filename;
+	generalFile >> defSettingsFileName;
 
 	//load all params
 	int paramsNum;
@@ -95,58 +140,66 @@ bool SettingsClass::readFromFile(const std::string & filename)
 	std::string temp;
 	for (int i = 0;i < paramsNum;i++)
 	{
-		Parameter param;
 		//get type of param and name first
 		int valueType;
-		generalFile >> valueType;
-		generalFile >> param.name;
-		
-		param.type = valueType;
+		generalFile >> valueType;		
 		switch (valueType)
 		{
 		//0 is INT
 		case(0):
 		{
-			param.size = sizeof(int);
-			param.pointer = new(4) Parameter;
-			temp = getTextFromFile(param.name, m_filename);
+			IntParameter* param = new(4) IntParameter;
+			generalFile >> param->name;
+			//first check for normal settings
+			temp = getTextFromFile(param->name, m_filename);
+			if (temp.size()<=0)
+				//if no settings in normal file? take default
+				temp = getTextFromFile(param->name, defSettingsFileName);
 			if (temp.size()>0)
-				temp = getTextFromFile(param.name, filename);
-			if (temp.size()>0)
-				*(int*)param.pointer = stoi(temp);
+				param->value = stoi(temp);
 			else
-				*(int*)param.pointer = 0;
+				param->value = 0;
+			//add parameter to map
+			m_intParameters.emplace(std::pair<long long, IntParameter*>(ModManagerClass::getI().getHash(param->name),param));
+			break;
 		}
 		//1 is FLOAT
 		case(1):
 		{
-			param.size = sizeof(float);
-			param.pointer = new(4) Parameter;
-			temp = getTextFromFile(param.name, m_filename);
+			FloatParameter* param = new(4) FloatParameter;
+			generalFile >> param->name;
+			//first check for normal settings
+			temp = getTextFromFile(param->name, m_filename);
+			if (temp.size() <= 0)
+				//if no settings in normal file? take default
+				temp = getTextFromFile(param->name, defSettingsFileName);
 			if (temp.size()>0)
-				temp = getTextFromFile(param.name, filename);
-			if (temp.size()>0)
-				*(float*)param.pointer = stof(temp);
+				param->value = stof(temp);
 			else
-				*(float*)param.pointer = 0;
+				param->value = 0;
+			//add parameter to map
+			m_floatParameters.emplace(std::pair<long long, FloatParameter*>(ModManagerClass::getI().getHash(param->name), param));
+			break;
 		}
 		//2 is STRING
 		case(2):
 		{
-			param.size = sizeof(std::string);
-			param.pointer = new(4) Parameter;
-			temp = getTextFromFile(param.name, m_filename);
-			if (temp.size()>0)
-				temp = getTextFromFile(param.name, filename);
-			*(std::string*)param.pointer = temp;
+			StrParameter* param = new(4) StrParameter;
+			generalFile >> param->name;
+			//first check for normal settings
+			temp = getTextFromFile(param->name, m_filename);
+			if (temp.size() <= 0)
+				//if no settings in normal file? take default
+				temp = getTextFromFile(param->name, defSettingsFileName);
+			param->value = temp;
+			//add parameter to map
+			m_strParameters.emplace(std::pair<long long, StrParameter*>(ModManagerClass::getI().getHash(param->name), param));
+			break;
 		}
 		default:
-			param.size = sizeof(int);
-			param.pointer = new(4) Parameter;
-			*(int*)param.pointer = 0;
+			break;
 		}
 		//add new param to map
-		m_parameters.emplace(std::pair<long long, Parameter>(ModManager.getHash(param.name), param));
 	}
 
 	generalFile.close();

@@ -17,9 +17,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 class LogManagerClass
 {
-private:
-	static LogManagerClass* m_instance;
-	std::ofstream m_file;
+
 public:
 	
 
@@ -34,6 +32,10 @@ private:
 	LogManagerClass(const LogManagerClass&);
 	~LogManagerClass();
 	std::string getTime();
+
+private:
+	static LogManagerClass* m_instance;
+	std::ofstream m_file;
 
 };
 

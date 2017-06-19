@@ -17,19 +17,19 @@ bool SystemClass::Initialize()
 	srand(time(0));
 
 	// Initialize GlobalManager
-	result = GlobalManager.Initialize("data/init/init.txt");
+	result = GlobalManagerClass::getI().Initialize("data/init/init.txt");
 	if (!result)
 		return false;
 
 	// Initialize the windows api.
-	InitializeWindows(*(int*)Settings.getParameter("ScreenWidth"), *(int*)Settings.getParameter("ScreenHeight"));
+	InitializeWindows(SettingsClass::getI().getIntParameter("ScreenWidth"), SettingsClass::getI().getIntParameter("ScreenHeight"));
 
 	return true;
 }
 void SystemClass::Shutdown()
 {
-	GlobalManager.Shutdown();
 	ShutdownWindows();
+	GlobalManagerClass::getI().Shutdown();
 }
 void SystemClass::Run()
 {
@@ -77,7 +77,7 @@ void SystemClass::Run()
 
 bool SystemClass::Frame()
 {
-	SystemStateManager.Frame();
+	SystemStateManagerClass::getI().Frame();
 
 	return true;
 }
@@ -119,7 +119,7 @@ void SystemClass::InitializeWindows(int screenWidth, int screenHeight)
 	posX = posY = 0;
 
 	// Setup the screen settings depending on whether it is running in full screen or in windowed mode.
-	if (*(int*)Settings.getParameter("Fullscreen"))
+	if (SettingsClass::getI().getIntParameter("Fullscreen"))
 	{
 		// Determine the resolution of the clients desktop screen.
 		//screenWidth = GetSystemMetrics(SM_CXSCREEN);
@@ -163,7 +163,7 @@ void SystemClass::ShutdownWindows()
 	ShowCursor(true);
 
 	// Fix the display settings if leaving full screen mode.
-	if (*(int*)Settings.getParameter("Fullscreen"))
+	if (SettingsClass::getI().getIntParameter("Fullscreen"))
 	{
 		ChangeDisplaySettings(NULL, 0);
 	}

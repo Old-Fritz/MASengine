@@ -221,8 +221,8 @@ void MemoryManagerClass::Shutdown()
 		(*pool)->Shutdown();
 		delete *pool;
 		*pool = 0;
-		m_pools.erase(pool);
 	}
+	m_pools.clear();
 	
 	return;
 }

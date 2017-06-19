@@ -19,26 +19,27 @@
 class SystemStateManagerClass
 {
 public:
-	SystemStateManagerClass();
-	SystemStateManagerClass(const SystemStateManagerClass&);
-	~SystemStateManagerClass();
+	
 
 	bool Initialize();
 	void Frame();
 	void Shutdown();
 
+	static SystemStateManagerClass& getI();
+
 	float GetTime();
 	int GetCpuPercentage();
 	int GetFps();
 private:
+	SystemStateManagerClass();
+	SystemStateManagerClass(const SystemStateManagerClass&);
+	~SystemStateManagerClass();
+private:
 	CpuClass* m_cpu;
 	FpsClass* m_fps;
 	TimerClass* m_timer;
-};
 
-/////////////
-// GLOBALS //
-/////////////
-static SystemStateManagerClass SystemStateManager;
+	static SystemStateManagerClass* m_instance;
+};
 
 #endif

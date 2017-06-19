@@ -19,27 +19,28 @@
 class CommandManagerClass
 {
 public:
-	CommandManagerClass();
-	CommandManagerClass(const CommandManagerClass&);
-	~CommandManagerClass();
+	
 
 	bool Initialize();
 	void Shutdown();
+
+	static CommandManagerClass& getI();
 
 	bool isFull();
 	CommandClass* nextCommand();
 
 	bool addCommand(const std::string& name, const std::string& filename);
 private:
-	 std::string getTextFromFile(const std::string& name, const std::string& filename);
+	CommandManagerClass();
+	CommandManagerClass(const CommandManagerClass&);
+	~CommandManagerClass();
+
+	std::string getTextFromFile(const std::string& name, const std::string& filename);
 private:
 	std::queue<CommandClass*> m_commandsQueue;
 	std::map<long long, std::map<long long, CommandClass*>> m_commands;
-};
 
-/////////////
-// GLOBALS //
-/////////////
-static CommandManagerClass CommandManager;
+	static CommandManagerClass* m_instance;
+};
 
 #endif

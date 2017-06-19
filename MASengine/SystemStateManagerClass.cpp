@@ -4,6 +4,8 @@
 
 #include "SystemStateManagerClass.h"
 
+SystemStateManagerClass* SystemStateManagerClass::m_instance = 0;
+
 SystemStateManagerClass::SystemStateManagerClass()
 {
 	m_cpu = 0;
@@ -72,6 +74,13 @@ void SystemStateManagerClass::Shutdown()
 
 		m_cpu = 0;
 	}
+}
+
+SystemStateManagerClass & SystemStateManagerClass::getI()
+{
+	if (!m_instance)
+		m_instance = new(1) SystemStateManagerClass;
+	return *m_instance;
 }
 
 float SystemStateManagerClass::GetTime()

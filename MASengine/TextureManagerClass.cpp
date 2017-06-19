@@ -36,12 +36,12 @@ bool TextureManagerClass::addTexture(ID3D10Device * device, const std::string & 
 		return false;
 	}
 
-	m_textures.emplace(std::pair<long long, TextureClass*>(ModManager.getHash(filename), newTexture));
+	m_textures.emplace(std::pair<long long, TextureClass*>(ModManagerClass::getI().getHash(filename), newTexture));
 
 	return true;
 }
 
 ID3D10ShaderResourceView * TextureManagerClass::getTexture(const std::string & filename)
 {
-	return m_textures.find(ModManager.getHash(filename))->second->GetTexture();
+	return m_textures.find(ModManagerClass::getI().getHash(filename))->second->GetTexture();
 }

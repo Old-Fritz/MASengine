@@ -1,5 +1,7 @@
 #include "CommandManagerClass.h"
 
+CommandManagerClass* CommandManagerClass::m_instance = 0;
+
 CommandManagerClass::CommandManagerClass()
 {
 }
@@ -28,6 +30,13 @@ void CommandManagerClass::Shutdown()
 	}
 }
 
+CommandManagerClass & CommandManagerClass::getI()
+{
+	if (!m_instance)
+		m_instance = new(1) CommandManagerClass;
+	return *m_instance;
+}
+
 bool CommandManagerClass::isFull()
 {
 	if (m_commandsQueue.size() > 0)
@@ -47,8 +56,8 @@ bool CommandManagerClass::addCommand(const std::string & name, const std::string
 {
 	bool result;
 
-	long long filenameHash = ModManager.getHash(filename);
-	long long nameHash = ModManager.getHash(name);
+	long long filenameHash = ModManagerClass::getI().getHash(filename);
+	long long nameHash = ModManagerClass::getI().getHash(name);
 	//pair<string, map<string, string>*> commandGroup;
 	auto commandGroup = m_commands.find(filenameHash);
 	if (commandGroup != m_commands.end()) //check for existing group
@@ -90,7 +99,7 @@ bool CommandManagerClass::addCommand(const std::string & name, const std::string
  std::string  CommandManagerClass::getTextFromFile(const std::string & name, const std::string & filename)
 {
 	std::ifstream file;
-	file.open(ModManager.getDirectory(ModManager.getHash(filename)) + filename);
+	file.open(ModManagerClass::getI().getDirectory(ModManagerClass::getI().getHash(filename)) + filename);
 	std::string temp1 = "}";
 	std::string temp2;
 	while (file)

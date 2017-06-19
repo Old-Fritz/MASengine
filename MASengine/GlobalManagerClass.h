@@ -23,17 +23,19 @@
 class GlobalManagerClass
 {
 public:
-	GlobalManagerClass();
-	GlobalManagerClass(const GlobalManagerClass&);
-	~GlobalManagerClass();
+	
 
 	bool Initialize(const std::string& filepath);
 	void Shutdown();
-};
 
-/////////////
-// GLOBALS //
-/////////////
-static GlobalManagerClass GlobalManager;
+	static GlobalManagerClass& getI();
+
+private:
+	GlobalManagerClass();
+	GlobalManagerClass(const GlobalManagerClass&);
+	~GlobalManagerClass();
+private:
+	static GlobalManagerClass* m_instance;
+};
 
 #endif

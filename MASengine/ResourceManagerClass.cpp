@@ -1,5 +1,7 @@
 #include "ResourceManagerClass.h"
 
+ResourceManagerClass* ResourceManagerClass::m_instance = 0;
+
 ResourceManagerClass::ResourceManagerClass()
 {
 	m_textures = 0;
@@ -55,6 +57,13 @@ void ResourceManagerClass::Shutdown()
 	}
 
 	return;
+}
+
+ResourceManagerClass & ResourceManagerClass::getI()
+{
+	if (!m_instance)
+		m_instance = new(1) ResourceManagerClass;
+	return *m_instance;
 }
 
 TextureManagerClass * ResourceManagerClass::getTextures()

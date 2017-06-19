@@ -1,5 +1,7 @@
 #include "GlobalManagerClass.h"
 
+GlobalManagerClass* GlobalManagerClass::m_instance = 0;
+
 GlobalManagerClass::GlobalManagerClass()
 {
 }
@@ -49,7 +51,7 @@ bool GlobalManagerClass::Initialize(const std::string & filepath)
 	LogManagerClass::getI().addLog("MemoryManager Initialized");
 
 	//Init ModManager
-	result = ModManager.Initialize(modFilename);
+	result = ModManagerClass::getI().Initialize(modFilename);
 	if (!result)
 	{
 		LogManagerClass::getI().addLog("Error 6-2");
@@ -58,7 +60,7 @@ bool GlobalManagerClass::Initialize(const std::string & filepath)
 	LogManagerClass::getI().addLog("ModManager Initialized");
 
 	//Init Settings
-	result = Settings.Initialize(settingsFilename);
+	result = SettingsClass::getI().Initialize(settingsFilename);
 	if (!result)
 	{
 		LogManagerClass::getI().addLog("Error 6-6");
@@ -67,7 +69,7 @@ bool GlobalManagerClass::Initialize(const std::string & filepath)
 	LogManagerClass::getI().addLog("Settings Initialized");
 
 	//Init CommandManager
-	result = CommandManager.Initialize();
+	result = CommandManagerClass::getI().Initialize();
 	if (!result)
 	{
 		LogManagerClass::getI().addLog("Error 6-3");
@@ -76,7 +78,7 @@ bool GlobalManagerClass::Initialize(const std::string & filepath)
 	LogManagerClass::getI().addLog("CommandManager Initialized");
 
 	//Init ResourceManager
-	result = ResourceManager.Initialize();
+	result = ResourceManagerClass::getI().Initialize();
 	if (!result)
 	{
 		LogManagerClass::getI().addLog("Error 6-4");
@@ -85,7 +87,7 @@ bool GlobalManagerClass::Initialize(const std::string & filepath)
 	LogManagerClass::getI().addLog("ResourceManager Initialized");
 
 	//Init SystemStateManager
-	result = SystemStateManager.Initialize();
+	result = SystemStateManagerClass::getI().Initialize();
 	if (!result)
 	{
 		LogManagerClass::getI().addLog("Error 6-5");
@@ -101,11 +103,18 @@ bool GlobalManagerClass::Initialize(const std::string & filepath)
 void GlobalManagerClass::Shutdown()
 {
 	//Shutdown all managers
-	SystemStateManager.Shutdown();
-	ResourceManager.Shutdown();
-	CommandManager.Shutdown();
-	Settings.Shutdown();
-	ModManager.Shutdown();
+	SystemStateManagerClass::getI().Shutdown();
+	ResourceManagerClass::getI().Shutdown();
+	CommandManagerClass::getI().Shutdown();
+	SettingsClass::getI().Shutdown();
+	ModManagerClass::getI().Shutdown();
 	MemoryManagerClass::getI().Shutdown();
 	LogManagerClass::getI().Shutdown();
+}
+
+GlobalManagerClass & GlobalManagerClass::getI()
+{
+	if (!m_instance)
+		m_instance = new GlobalManagerClass;
+	return *m_instance;
 }

@@ -23,38 +23,52 @@ class SettingsClass
 {
 
 private:
-	struct Parameter
+	struct IntParameter
 	{
 		std::string name;
-		void* pointer;
-		size_t size;
-		int type;
+		int value;
+	};
+	struct FloatParameter
+	{
+		std::string name;
+		float value;
+	};
+	struct StrParameter
+	{
+		std::string name;
+		std::string value;
 	};
 public:
-	SettingsClass();
-	SettingsClass(const SettingsClass&);
-	~SettingsClass();
 
 	bool Initialize(const std::string& filename);
 	void save(const std::string& filename);
 	void Shutdown();
 
-	void* getParameter(const std::string& name);
-	void setParameter(const std::string& name, void* pointer);
+	static SettingsClass& getI();
+
+	int getIntParameter(const std::string& name);
+	float getFloatParameter(const std::string& name);
+	std::string getStrParameter(const std::string& name);
+
+	void setIntParameter(const std::string& name, int value);
+	void setFloatParameter(const std::string& name, float value);
+	void setStrParameter(const std::string& name, const std::string& value);
+
 
 private:
+	SettingsClass();
+	SettingsClass(const SettingsClass&);
+	~SettingsClass();
 	bool readFromFile(const std::string&  filename);
 	std::string getTextFromFile(const std::string&  name, const std::string&  filename);
 private:
 	std::string m_filename;
-	std::map<long long, Parameter> m_parameters;
+	std::map<long long, IntParameter*> m_intParameters;
+	std::map<long long, FloatParameter*> m_floatParameters;
+	std::map<long long, StrParameter*> m_strParameters;
 
+
+	static SettingsClass* m_instance;
 };
-
-
-/////////////
-// GLOBALS //
-/////////////
-static SettingsClass Settings;
 
 #endif

@@ -36,12 +36,12 @@ bool MeshManagerClass::addModel(ID3D10Device * device, const std::string & filen
 		return false;
 	}
 
-	m_models.emplace(std::pair<long long, MeshClass*>(ModManager.getHash(filename),newModel));
+	m_models.emplace(std::pair<long long, MeshClass*>(ModManagerClass::getI().getHash(filename),newModel));
 
 	return true;
 }
 
 MeshClass * MeshManagerClass::getModel(const std::string & filename)
 {
-	return m_models.find(ModManager.getHash(filename))->second;
+	return m_models.find(ModManagerClass::getI().getHash(filename))->second;
 }

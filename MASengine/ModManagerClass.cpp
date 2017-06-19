@@ -1,6 +1,6 @@
 #include "ModManagerClass.h"
 
-
+ModManagerClass* ModManagerClass::m_instance = 0;
 
 ModManagerClass::ModManagerClass()
 {
@@ -54,6 +54,13 @@ void ModManagerClass::Shutdown()
 	}
 
 	return;
+}
+
+ModManagerClass & ModManagerClass::getI()
+{
+	if (!m_instance)
+		m_instance = new(1) ModManagerClass;
+	return *m_instance;
 }
 
 long long ModManagerClass::getHash(const std::string & str)
