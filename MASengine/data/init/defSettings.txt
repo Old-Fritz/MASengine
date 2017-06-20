@@ -1,3 +1,5 @@
 ScreenWidth = {1280}
 ScreenHeight = {720}
 Fullscreen = {0}
+Sample = {1}
+Vsync = {0}

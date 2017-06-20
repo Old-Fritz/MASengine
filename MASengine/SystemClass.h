@@ -24,6 +24,7 @@
 #include "GlobalManagerClass.h"
 #include "InputClass.h"
 #include "PositionClass.h"
+#include "GraphicsClass.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // Class name: SystemClass
@@ -53,6 +54,7 @@ private:
 	//blocks
 	InputClass* m_input;
 	PositionClass* m_position;
+	GraphicsClass* m_graphics;
 
 };
 

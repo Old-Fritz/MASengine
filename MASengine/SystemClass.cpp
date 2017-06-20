@@ -2,6 +2,9 @@
 
 SystemClass::SystemClass()
 {
+	m_input = 0;
+	m_position = 0;
+	m_graphics = 0;
 }
 SystemClass::SystemClass(const SystemClass &)
 {
@@ -43,8 +46,20 @@ bool SystemClass::Initialize()
 	m_position = new(1) PositionClass;
 	if (!m_position)
 		return false;
-
 	LogManagerClass::getI().addLog("Position Initialization");
+
+	//Initialize graphics
+	m_graphics = new(1) GraphicsClass;
+	if (!m_graphics)
+		return false;
+	result = m_graphics->Initialize(m_hwnd);
+	if (!result)
+	{
+		LogManagerClass::getI().addLog("Error 8-1");
+		return false;
+	}
+	LogManagerClass::getI().addLog("Graphics Initialization");
+
 
 	return true;
 }
@@ -53,6 +68,13 @@ void SystemClass::Shutdown()
 	//save settings first
 	SettingsClass::getI().save();
 
+	//Shutdown graphics
+	if (m_graphics)
+	{
+		m_graphics->Shutdown();
+		::operator delete(m_graphics, sizeof(GraphicsClass), 1);
+		m_graphics = 0;
+	}
 	//Shutdown position
 	if (m_position)
 	{
@@ -131,6 +153,14 @@ bool SystemClass::Frame()
 
 	//process position
 	m_position->Move();
+
+	//process graphics
+	result = m_graphics->Frame();
+	if (!result)
+	{
+		LogManagerClass::getI().addLog("Error 8-2");
+		return false;
+	}
 
 	return true;
 }

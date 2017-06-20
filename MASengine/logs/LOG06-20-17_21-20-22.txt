@@ -1,0 +1,8 @@
+06-20-17_21-20-22 LogManager Initialized
+06-20-17_21-20-22 MemoryManager Initialized
+06-20-17_21-20-22 ModManager Initialized
+06-20-17_21-20-22 Settings Initialized
+06-20-17_21-20-22 CommandManager Initialized
+06-20-17_21-20-22 ResourceManager Initialized
+06-20-17_21-20-23 SystemStateManager Initialized
+06-20-17_21-20-23 All global system Initialized

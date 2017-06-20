@@ -49,6 +49,12 @@
     <Filter Include="Файлы исходного кода\Resources">
       <UniqueIdentifier>{780c8322-112b-4443-b5d5-da16c7e35a17}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Заголовочные файлы\Graphics">
+      <UniqueIdentifier>{2a2a5fb8-2296-4b3a-bb97-6fdfa15abbee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\Graphics">
+      <UniqueIdentifier>{d2e9f6b8-8670-4008-82fd-73206901e635}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -123,6 +129,12 @@
     <ClCompile Include="PositionClass.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
+    <ClCompile Include="D3DClass.cpp">
+      <Filter>Файлы исходного кода\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicsClass.cpp">
+      <Filter>Файлы исходного кода\Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SystemClass.h">
@@ -193,6 +205,12 @@
     </ClInclude>
     <ClInclude Include="PositionClass.h">
       <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="D3DClass.h">
+      <Filter>Заголовочные файлы\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsClass.h">
+      <Filter>Заголовочные файлы\Graphics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

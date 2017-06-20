@@ -24,3 +24,25 @@ Error 7-10 Problem with reading keyboard
 Error 7-11 Problem with reading mouse
 Error 7-12 Problem with Input Initialization
 Error 7-13 Problem with input Frame
+
+Error 8-1 Problem with Graphics Initialization
+Error 8-2 Problem with Graphics Frame
+Error 8-3 Problem with Graphics Render
+
+Error 9-1 Problem with Directx fraphics interface factory
+Error 9-2 Problem with creating adapter to video card
+Error 9-3 Problem with enumerate monitor
+Error 9-4 Problem with getting number of display modes
+Error 9-5 Problem with creating list of diplay modes
+Error 9-6 Problem with filling display mode list
+Error 9-7 Problem with getting video card desc
+Error 9-8 Problem storing videocard name
+Error 9-9 Problem with creating device or swapchain
+Error 9-10 Problem with getting pointer to back buffer
+Error 9-11 Problem with Creating the render target view with the back buffer pointer.
+Error 9-12 Problem with Creating the texture for the depth buffer 
+Error 9-13 Problem with Create the depth stencil state.
+Error 9-14 Problem with Create the depth stencil view.
+Error 9-15 Problem with Create the rasterizer state 
+Error 9-16 Problem with Create the state using the device.
+Error 9-17 Problem with Directx Initialization

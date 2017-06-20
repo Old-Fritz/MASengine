@@ -1,0 +1,12 @@
+06-20-17_21-20-02 LogManager Initialized
+06-20-17_21-20-02 MemoryManager Initialized
+06-20-17_21-20-02 ModManager Initialized
+06-20-17_21-20-02 Settings Initialized
+06-20-17_21-20-02 CommandManager Initialized
+06-20-17_21-20-02 ResourceManager Initialized
+06-20-17_21-20-03 SystemStateManager Initialized
+06-20-17_21-20-03 All global system Initialized
+06-20-17_21-20-03 Windows Initialization
+06-20-17_21-20-03 input Initialization
+06-20-17_21-20-03 Position Initialization
+06-20-17_21-20-04 Graphics Initialization
