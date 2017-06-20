@@ -39,6 +39,13 @@ bool SystemClass::Initialize()
 	}
 	LogManagerClass::getI().addLog("input Initialization");
 
+	//Initialize position
+	m_position = new(1) PositionClass;
+	if (!m_position)
+		return false;
+
+	LogManagerClass::getI().addLog("Position Initialization");
+
 	return true;
 }
 void SystemClass::Shutdown()
@@ -46,6 +53,12 @@ void SystemClass::Shutdown()
 	//save settings first
 	SettingsClass::getI().save();
 
+	//Shutdown position
+	if (m_position)
+	{
+		::operator delete(m_position, sizeof(PositionClass), 1);
+		m_position = 0;
+	}
 	//Shutdown Input
 	if (m_input)
 	{
@@ -116,6 +129,9 @@ bool SystemClass::Frame()
 		return false;
 	}
 
+	//process position
+	m_position->Move();
+
 	return true;
 }
 
@@ -133,7 +149,7 @@ void SystemClass::InitializeWindows(int screenWidth, int screenHeight)
 	m_hinstance = GetModuleHandle(NULL);
 
 	// Give the application a name.
-	m_applicationName = "Demo";
+	m_applicationName = L"Demo";
 
 	// Setup the windows class with default settings.
 	wc.style = CS_HREDRAW | CS_VREDRAW | CS_OWNDC;

@@ -20,7 +20,7 @@ void TextureManagerClass::Shutdown()
 	}
 }
 
-bool TextureManagerClass::addTexture(ID3D10Device * device, const std::string & filename)
+bool TextureManagerClass::addTexture(ID3D11Device * device, const std::string & filename)
 {
 	bool result;
 
@@ -29,7 +29,7 @@ bool TextureManagerClass::addTexture(ID3D10Device * device, const std::string & 
 	if (!newTexture)
 		return false;
 
-	result = newTexture->Initialize(device, filename);
+	result = newTexture->Initialize(device, m_converter.from_bytes(filename).c_str());
 	if (!result)
 	{
 		LogManagerClass::getI().addLog("Error 4-2");
@@ -41,7 +41,7 @@ bool TextureManagerClass::addTexture(ID3D10Device * device, const std::string & 
 	return true;
 }
 
-ID3D10ShaderResourceView * TextureManagerClass::getTexture(const std::string & filename)
+ID3D11ShaderResourceView * TextureManagerClass::getTexture(const std::string & filename)
 {
 	return m_textures.find(ModManagerClass::getI().getHash(filename))->second->GetTexture();
 }

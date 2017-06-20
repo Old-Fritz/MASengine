@@ -13,7 +13,7 @@ MeshClass::~MeshClass()
 {
 }
 
-bool MeshClass::Initialize(ID3D10Device * device, const std::string& filename)
+bool MeshClass::Initialize(ID3D11Device * device, const std::string& filename)
 {
 	bool result;
 
@@ -31,6 +31,7 @@ bool MeshClass::Initialize(ID3D10Device * device, const std::string& filename)
 	{
 		return false;
 	}
+	
 
 	return true;
 }
@@ -45,10 +46,10 @@ void MeshClass::Shutdown()
 	ReleaseModel();
 }
 
-void MeshClass::Render(ID3D10Device * device)
+void MeshClass::Render(ID3D11DeviceContext* deviceContext)
 {
 	// Put the vertex and index buffers on the graphics pipeline to prepare them for drawing.
-	RenderBuffers(device);
+	RenderBuffers(deviceContext);
 
 	return;
 }
@@ -63,12 +64,12 @@ void MeshClass::getBox(float & xSize, float & ySize, float & zSize)
 	xSize = ySize = zSize = 1;
 }
 
-bool MeshClass::InitializeBuffers(ID3D10Device * device)
+bool MeshClass::InitializeBuffers(ID3D11Device * device)
 {
 	VertexType* vertices;
 	unsigned long* indices;
-	D3D10_BUFFER_DESC vertexBufferDesc, indexBufferDesc;
-	D3D10_SUBRESOURCE_DATA vertexData, indexData;
+	D3D11_BUFFER_DESC vertexBufferDesc, indexBufferDesc;
+	D3D11_SUBRESOURCE_DATA vertexData, indexData;
 	HRESULT result;
 	int i;
 
@@ -98,9 +99,9 @@ bool MeshClass::InitializeBuffers(ID3D10Device * device)
 	}
 
 	// Set up the description of the vertex buffer.
-	vertexBufferDesc.Usage = D3D10_USAGE_DEFAULT;
+	vertexBufferDesc.Usage = D3D11_USAGE_DEFAULT;
 	vertexBufferDesc.ByteWidth = sizeof(VertexType)* m_vertexCount;
-	vertexBufferDesc.BindFlags = D3D10_BIND_VERTEX_BUFFER;
+	vertexBufferDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
 	vertexBufferDesc.CPUAccessFlags = 0;
 	vertexBufferDesc.MiscFlags = 0;
 
@@ -115,9 +116,9 @@ bool MeshClass::InitializeBuffers(ID3D10Device * device)
 	}
 
 	// Set up the description of the index buffer.
-	indexBufferDesc.Usage = D3D10_USAGE_DEFAULT;
+	indexBufferDesc.Usage = D3D11_USAGE_DEFAULT;
 	indexBufferDesc.ByteWidth = sizeof(unsigned long)* m_indexCount;
-	indexBufferDesc.BindFlags = D3D10_BIND_INDEX_BUFFER;
+	indexBufferDesc.BindFlags = D3D11_BIND_INDEX_BUFFER;
 	indexBufferDesc.CPUAccessFlags = 0;
 	indexBufferDesc.MiscFlags = 0;
 
@@ -156,7 +157,7 @@ void MeshClass::ShutdownBuffers()
 	return;
 }
 
-void MeshClass::RenderBuffers(ID3D10Device * device)
+void MeshClass::RenderBuffers(ID3D11DeviceContext* deviceContext)
 {
 	unsigned int stride;
 	unsigned int offset;
@@ -167,13 +168,13 @@ void MeshClass::RenderBuffers(ID3D10Device * device)
 	offset = 0;
 
 	// Set the vertex buffer to active in the input assembler so it can be rendered.
-	device->IASetVertexBuffers(0, 1, &m_vertexBuffer, &stride, &offset);
+	deviceContext->IASetVertexBuffers(0, 1, &m_vertexBuffer, &stride, &offset);
 
 	// Set the index buffer to active in the input assembler so it can be rendered.
-	device->IASetIndexBuffer(m_indexBuffer, DXGI_FORMAT_R32_UINT, 0);
+	deviceContext->IASetIndexBuffer(m_indexBuffer, DXGI_FORMAT_R32_UINT, 0);
 
 	// Set the type of primitive that should be rendered from this vertex buffer, in this case triangles.
-	device->IASetPrimitiveTopology(D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+	deviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
 	return;
 }

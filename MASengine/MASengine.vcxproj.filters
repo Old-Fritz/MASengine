@@ -120,6 +120,9 @@
     <ClCompile Include="InputClass.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
+    <ClCompile Include="PositionClass.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SystemClass.h">
@@ -186,6 +189,9 @@
       <Filter>Заголовочные файлы\GlobalManager\ResourceManagment</Filter>
     </ClInclude>
     <ClInclude Include="InputClass.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionClass.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
   </ItemGroup>

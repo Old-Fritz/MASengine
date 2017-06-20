@@ -1,4 +1,3 @@
-#pragma once
 ////////////////////////////////////////////////////////////////////////////////
 // Filename: textureclass.h
 ////////////////////////////////////////////////////////////////////////////////
@@ -9,9 +8,9 @@
 //////////////
 // INCLUDES //
 //////////////
-#include <d3d10.h>
-#include <d3dx10.h>
-#include <string>
+#include <d3d11.h>
+#include <d3dx11.h>
+//#include <wchar.h>
 
 ////////////////////////////////////////////////////////////////////////////////
 // Class name: TextureClass
@@ -23,12 +22,13 @@ public:
 	TextureClass(const TextureClass&);
 	~TextureClass();
 
-	bool Initialize(ID3D10Device* device, const std::string& filename);
+	
+	bool Initialize(ID3D11Device* device, const WCHAR* filename);
 	void Shutdown();
-	ID3D10ShaderResourceView* GetTexture();
+	ID3D11ShaderResourceView* GetTexture();
 
 private:
-	ID3D10ShaderResourceView* m_texture;
+	ID3D11ShaderResourceView* m_texture;
 };
 
 #endif

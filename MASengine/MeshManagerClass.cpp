@@ -20,7 +20,7 @@ void MeshManagerClass::Shutdown()
 	}
 }
 
-bool MeshManagerClass::addModel(ID3D10Device * device, const std::string & filename)
+bool MeshManagerClass::addModel(ID3D11Device * device, const std::string & filename)
 {
 	bool result;
 

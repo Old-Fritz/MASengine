@@ -30,11 +30,12 @@ public:
 
 	void Shutdown();
 
-	bool addTexture(ID3D10Device* device, const std::string& filename);
-	ID3D10ShaderResourceView* getTexture(const std::string& filename);
+	bool addTexture(ID3D11Device* device, const std::string& filename);
+	ID3D11ShaderResourceView* getTexture(const std::string& filename);
 
 private:
 	std::map<long long, TextureClass*> m_textures;
+	std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> m_converter;
 	
 };
 

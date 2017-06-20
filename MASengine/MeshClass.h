@@ -14,8 +14,9 @@
 ///////////////////////
 // MY CLASS INCLUDES //
 ///////////////////////
-#include <d3d10.h>
-#include <d3dx10.h>
+#include <d3d11.h>
+#include <d3dx11.h>
+#include <d3dx10math.h>
 #include "MemoryManagerClass.h"
 
 
@@ -44,22 +45,22 @@ public:
 	MeshClass(const MeshClass&);
 	~MeshClass();
 
-	bool Initialize(ID3D10Device* device, const std::string& filename);
+	bool Initialize(ID3D11Device* device, const std::string& filename);
 	void Shutdown();
-	void Render(ID3D10Device* device);
+	void Render(ID3D11DeviceContext* deviceContext);
 
 	int GetIndexCount();
 	void getBox(float& xSize, float& ySize, float& zSize);
 private:
-	bool InitializeBuffers(ID3D10Device* device);
+	bool InitializeBuffers(ID3D11Device* device);
 	void ShutdownBuffers();
-	void RenderBuffers(ID3D10Device* device);
+	void RenderBuffers(ID3D11DeviceContext* deviceContext);
 
 	bool LoadModel(const std::string& filename);
 	void ReleaseModel();
 
 private:
-	ID3D10Buffer *m_vertexBuffer, *m_indexBuffer;
+	ID3D11Buffer *m_vertexBuffer, *m_indexBuffer;
 	int m_vertexCount, m_indexCount;
 	ModelType* m_model;
 };

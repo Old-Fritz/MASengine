@@ -31,7 +31,7 @@ public:
 
 	void Shutdown();
 
-	bool addModel(ID3D10Device* device, const std::string& filename);
+	bool addModel(ID3D11Device* device, const std::string& filename);
 	MeshClass* getModel(const std::string& filename);
 
 private:

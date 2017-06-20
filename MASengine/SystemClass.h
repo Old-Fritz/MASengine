@@ -23,6 +23,7 @@
 
 #include "GlobalManagerClass.h"
 #include "InputClass.h"
+#include "PositionClass.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // Class name: SystemClass
@@ -45,12 +46,14 @@ private:
 	void InitializeWindows(int screenWidth, int screenHeight);
 	void ShutdownWindows();
 private:
-	LPCSTR m_applicationName;
+	LPCWSTR m_applicationName;
 	HINSTANCE m_hinstance;
 	HWND m_hwnd;
 
 	//blocks
 	InputClass* m_input;
+	PositionClass* m_position;
+
 };
 
 
