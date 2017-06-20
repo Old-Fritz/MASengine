@@ -4,4 +4,4 @@ MouseSensitivity {0}
 ScreenHeight {720}
 
 
-ButCommandFilename {}
+ButCommandFilename { ýýýo g  $ฉ m    ซ                     Q   ýýýýออออออออออออออออออออออออออออออออýýýý\ }

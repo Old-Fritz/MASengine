@@ -133,7 +133,7 @@ void * MemoryManagerClass::getPoolMemory(size_t size)
 	}
 
 	//create new pool if no best pool
-	PoolAllocatorClass* pool = new(5) PoolAllocatorClass;
+	PoolAllocatorClass* pool = new PoolAllocatorClass;
 	if (!pool)
 		return 0;
 	result = pool->Initialize(poolSize, m_poolSize);
@@ -228,6 +228,7 @@ void MemoryManagerClass::Shutdown()
 }
 
 
+
 void * operator new(size_t size, int type)
 {
 	switch (type)
@@ -265,7 +266,6 @@ void* operator new[](size_t size, int type)
 		break;
 	}
 }
-
 
 void operator delete(void * mem, size_t size, int type)
 {

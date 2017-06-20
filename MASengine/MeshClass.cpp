@@ -242,7 +242,7 @@ void MeshClass::ReleaseModel()
 {
 	if (m_model)
 	{
-		::operator delete(m_model, sizeof(m_model)*m_vertexCount, 2);
+		::operator delete(m_model, sizeof(ModelType)*m_vertexCount, 2);
 		m_model = 0;
 	}
 

@@ -59,18 +59,18 @@ void SystemStateManagerClass::Shutdown()
 {
 	if (m_timer)
 	{
-		::operator delete(m_timer, sizeof(*m_timer), 1);
+		::operator delete(m_timer, sizeof(TimerClass), 1);
 		m_timer = 0;
 	}
 	if (m_fps)
 	{
-		::operator delete(m_fps, sizeof(*m_fps), 1);
+		::operator delete(m_fps, sizeof(FpsClass), 1);
 		m_fps = 0;
 	}
 	if (m_cpu)
 	{
 		m_cpu->Shutdown();
-		::operator delete(m_cpu, sizeof(*m_cpu), 1);
+		::operator delete(m_cpu, sizeof(CpuClass), 1);
 
 		m_cpu = 0;
 	}

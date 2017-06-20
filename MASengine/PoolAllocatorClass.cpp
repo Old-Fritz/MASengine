@@ -26,7 +26,7 @@ bool PoolAllocatorClass::Initialize(size_t elSize, long int poolSize)
 	//create new blocks of free memory
 	for (int i = 0;i < poolSize;i++)
 	{
-		char* element = new char[elSize];
+		void* element = new char[elSize];
 		if (!element)
 		{
 			LogManagerClass::getI().addLog("Error 1-1");
@@ -46,7 +46,7 @@ bool PoolAllocatorClass::doublePool()
 	//create new blocks of free memory
 	for (int i = 0;i < m_poolSize;i++)
 	{
-		char* element = new char[m_elSize];
+		void* element = new char[m_elSize];
 		if (!element)
 		{
 			LogManagerClass::getI().addLog("Error 1-1");
@@ -111,12 +111,12 @@ void PoolAllocatorClass::Shutdown()
 	//delete all elements in both lists
 	for (auto ptr = m_occupEls.begin();ptr != m_occupEls.end();ptr++)
 	{
-		::operator delete(*ptr, m_elSize);
+		delete (char*)*ptr;
 	}
 	m_occupEls.clear();
 	for (auto ptr = m_freeEls.begin();ptr != m_freeEls.end();ptr++)
 	{
-		::operator delete(*ptr, m_elSize);
+		delete (char*)*ptr;
 	}
 	m_freeEls.clear();
 

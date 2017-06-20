@@ -15,7 +15,7 @@ void TextureManagerClass::Shutdown()
 	while (!m_textures.empty())
 	{
 		m_textures.begin()->second->Shutdown(); //delete texture
-		::operator delete(m_textures.begin()->second, sizeof(m_textures.begin()->second), 2);
+		::operator delete(m_textures.begin()->second, sizeof(TextureClass), 2);
 		m_textures.erase(m_textures.begin());
 	}
 }

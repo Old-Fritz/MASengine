@@ -19,11 +19,11 @@ bool TextureClass::Initialize(ID3D10Device* device, const std::string& filename)
 	HRESULT result;
 	
 	// Load the texture in.
-	//result = D3DX10CreateShaderResourceViewFromFile(device, filename.c_str(), NULL, NULL, &m_texture, NULL);
-	//if (FAILED(result))
-	//{
-	//	return false;
-	//}
+	result = D3DX10CreateShaderResourceViewFromFile(device, filename.c_str(), NULL, NULL, &m_texture, NULL);
+	if (FAILED(result))
+	{
+		return false;
+	}
 
 	return true;
 }
