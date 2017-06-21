@@ -9,6 +9,8 @@
 ///////////////////////
 #include "d3dclass.h"
 #include "ShaderManagerClass.h"
+#include "CameraClass.h"
+#include "BitmapClass.h"
 
 /////////////
 // GLOBALS //
@@ -36,9 +38,13 @@ private:
 
 private:
 
+	BitmapClass* m_test;
+
 	//blocks
 	D3DClass* m_D3D;
+	CameraClass * m_camera;
 	ShaderManagerClass* m_shaderManager;
+
 };
 
 #endif

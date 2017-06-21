@@ -115,7 +115,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BitmapClass.cpp" />
     <ClCompile Include="CalculatorClass.cpp" />
+    <ClCompile Include="CameraClass.cpp" />
     <ClCompile Include="CommandClass.cpp" />
     <ClCompile Include="CommandManagerClass.cpp" />
     <ClCompile Include="CpuClass.cpp" />
@@ -145,7 +147,9 @@
     <ClCompile Include="TimerClass.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BitmapClass.h" />
     <ClInclude Include="CalculatorClass.h" />
+    <ClInclude Include="CameraClass.h" />
     <ClInclude Include="CommandClass.h" />
     <ClInclude Include="CommandManagerClass.h" />
     <ClInclude Include="CpuClass.h" />
@@ -154,7 +158,10 @@
     <ClInclude Include="GlobalManagerClass.h" />
     <ClInclude Include="GraphicsClass.h" />
     <ClInclude Include="InputClass.h" />
+    <ClInclude Include="InterfaceClass.h" />
+    <ClInclude Include="InterfaceElementClass.h" />
     <ClInclude Include="InterfaceShaderClass.h" />
+    <ClInclude Include="ListElementClass.h" />
     <ClInclude Include="LogManagerClass.h" />
     <ClInclude Include="MemoryManagerClass.h" />
     <ClInclude Include="MeshClass.h" />
@@ -165,16 +172,29 @@
     <ClInclude Include="ResourceManagerClass.h" />
     <ClInclude Include="SettingsClass.h" />
     <ClInclude Include="ShaderManagerClass.h" />
+    <ClInclude Include="SliderElementClass.h" />
     <ClInclude Include="StackAllocatorClass.h" />
     <ClInclude Include="SystemClass.h" />
     <ClInclude Include="SystemStateManagerClass.h" />
+    <ClInclude Include="TextClass.h" />
     <ClInclude Include="TextManagerClass.h" />
     <ClInclude Include="TextureClass.h" />
     <ClInclude Include="TextureManagerClass.h" />
     <ClInclude Include="TimerClass.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="interface.vs" />
+    <None Include="interfaceVS.fx">
+      <FileType>Document</FileType>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </ExcludedFromBuild>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </DeploymentContent>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="interfacePS.fx">
+      <FileType>Document</FileType>
+    </None>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

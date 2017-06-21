@@ -46,3 +46,8 @@ Error 9-14 Problem with Create the depth stencil view.
 Error 9-15 Problem with Create the rasterizer state 
 Error 9-16 Problem with Create the state using the device.
 Error 9-17 Problem with Directx Initialization
+Error 9-18 Problem with creating alphaEnableBlendingState
+Error 9-19 Problem with creating alphaDisableBlendingState
+
+Error 10-1 Problem with Interface Shader Initialization
+Error 10-2 Problem with Interface Shader Render

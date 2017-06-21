@@ -22,7 +22,7 @@ bool InterfaceShaderClass::Initialize(ID3D11Device * device, HWND hwnd)
 
 
 	// Initialize the vertex and pixel shaders.
-	result = InitializeShader(device, hwnd, L"../Engine/interface.vs", L"../Engine/interface.ps");
+	result = InitializeShader(device, hwnd, L"interfaceVS.fx", L"interfacePS.fx");
 	if (!result)
 	{
 		return false;
@@ -50,6 +50,7 @@ bool InterfaceShaderClass::Render(ID3D11DeviceContext * deviceContext, int index
 		selIntensivity, transparency);
 	if (!result)
 	{
+		LogManagerClass::getI().addLog("Error 10-2");
 		return false;
 	}
 
@@ -65,7 +66,7 @@ bool InterfaceShaderClass::InitializeShader(ID3D11Device * device, HWND hwnd, WC
 	ID3D10Blob* errorMessage;
 	ID3D10Blob* vertexShaderBuffer;
 	ID3D10Blob* pixelShaderBuffer;
-	D3D11_INPUT_ELEMENT_DESC polygonLayout[3];
+	D3D11_INPUT_ELEMENT_DESC polygonLayout[2];
 	unsigned int numElements;
 	D3D11_SAMPLER_DESC samplerDesc;
 	D3D11_BUFFER_DESC matrixBufferDesc;
@@ -78,7 +79,7 @@ bool InterfaceShaderClass::InitializeShader(ID3D11Device * device, HWND hwnd, WC
 	pixelShaderBuffer = 0;
 
 	// Compile the vertex shader code.
-	result = D3DX11CompileFromFile(vsFilename, NULL, NULL, "LightVertexShader", "vs_5_0", D3D10_SHADER_ENABLE_STRICTNESS, 0, NULL,
+	result = D3DX11CompileFromFile(vsFilename, NULL, NULL, "InterfaceVertexShader", "vs_5_0", D3D10_SHADER_ENABLE_STRICTNESS, 0, NULL,
 		&vertexShaderBuffer, &errorMessage, NULL);
 	if (FAILED(result))
 	{
@@ -97,7 +98,7 @@ bool InterfaceShaderClass::InitializeShader(ID3D11Device * device, HWND hwnd, WC
 	}
 
 	// Compile the pixel shader code.
-	result = D3DX11CompileFromFile(psFilename, NULL, NULL, "LightPixelShader", "ps_5_0", D3D10_SHADER_ENABLE_STRICTNESS, 0, NULL,
+	result = D3DX11CompileFromFile(psFilename, NULL, NULL, "InterfacePixelShader", "ps_5_0", D3D10_SHADER_ENABLE_STRICTNESS, 0, NULL,
 		&pixelShaderBuffer, &errorMessage, NULL);
 	if (FAILED(result))
 	{
@@ -146,14 +147,6 @@ bool InterfaceShaderClass::InitializeShader(ID3D11Device * device, HWND hwnd, WC
 	polygonLayout[1].AlignedByteOffset = D3D11_APPEND_ALIGNED_ELEMENT;
 	polygonLayout[1].InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA;
 	polygonLayout[1].InstanceDataStepRate = 0;
-
-	polygonLayout[2].SemanticName = "NORMAL";
-	polygonLayout[2].SemanticIndex = 0;
-	polygonLayout[2].Format = DXGI_FORMAT_R32G32B32_FLOAT;
-	polygonLayout[2].InputSlot = 0;
-	polygonLayout[2].AlignedByteOffset = D3D11_APPEND_ALIGNED_ELEMENT;
-	polygonLayout[2].InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA;
-	polygonLayout[2].InstanceDataStepRate = 0;
 
 	// Get a count of the elements in the layout.
 	numElements = sizeof(polygonLayout) / sizeof(polygonLayout[0]);
@@ -214,7 +207,7 @@ bool InterfaceShaderClass::InitializeShader(ID3D11Device * device, HWND hwnd, WC
 	// Setup the description of the light dynamic constant buffer that is in the pixel shader.
 	// Note that ByteWidth always needs to be a multiple of 16 if using D3D11_BIND_CONSTANT_BUFFER or CreateBuffer will fail.
 	paramsBufferDesc.Usage = D3D11_USAGE_DYNAMIC;
-	paramsBufferDesc.ByteWidth = sizeof(paramsBufferDesc);
+	paramsBufferDesc.ByteWidth = sizeof(ParamsBufferType);
 	paramsBufferDesc.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
 	paramsBufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
 	paramsBufferDesc.MiscFlags = 0;

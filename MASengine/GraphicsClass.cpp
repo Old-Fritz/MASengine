@@ -4,6 +4,8 @@ GraphicsClass::GraphicsClass()
 {
 	m_D3D = 0;
 	m_shaderManager = 0;
+	m_camera = 0;
+	m_test = 0;
 }
 
 GraphicsClass::GraphicsClass(const GraphicsClass &)
@@ -34,6 +36,7 @@ bool GraphicsClass::Initialize(HWND hwnd)
 		MessageBox(hwnd, L"Could not initialize Direct3D", L"Error", MB_OK);
 		return false;
 	}
+	LogManagerClass::getI().addLog("Directx Initialization");
 
 	//Initialize Shader Manager
 	m_shaderManager = new(1) ShaderManagerClass;
@@ -45,18 +48,52 @@ bool GraphicsClass::Initialize(HWND hwnd)
 		MessageBox(hwnd, L"Could not initialize Shaders", L"Error", MB_OK);
 		return false;
 	}
+	LogManagerClass::getI().addLog("Shaders Initialization");
+
+	//initialize Camera
+	m_camera = new(1) CameraClass;
+	if (!m_camera)
+		return false;
+
+	// Set the initial position of the camera.
+	m_camera->SetPosition(D3DXVECTOR3(0,0,-10));
+
+	//Init test
+	m_test = new BitmapClass;
+	if (!result)
+		return false;
+	result = m_test->Initialize(m_D3D->GetDevice(),SettingsClass::getI().getIntParameter("ScreenWidth"), SettingsClass::getI().getIntParameter("ScreenHeight"),"test.dds",256,256);
+	if (!result)
+	{
+		MessageBox(hwnd, L"Could not initialize test", L"Error", MB_OK);
+		return false;
+	}
 
 	return true;
 }
 
 void GraphicsClass::Shutdown()
 {
+	if (m_test)
+	{
+		m_test->Shutdown();
+		::operator delete(m_test, sizeof(BitmapClass), 1);
+		m_test = 0;
+	}
+
+	if (m_camera)
+	{
+		::operator delete(m_camera, sizeof(CameraClass), 1);
+		m_camera = 0;
+	}
+
 	if (m_shaderManager)
 	{
 		m_shaderManager->Shutdown();
 		::operator delete(m_shaderManager, sizeof(ShaderManagerClass), 1);
 		m_shaderManager = 0;
 	}
+
 	if (m_D3D)
 	{
 		m_D3D->Shutdown();
@@ -83,9 +120,40 @@ bool GraphicsClass::Frame()
 
 bool GraphicsClass::Render()
 {
-	// Clear the buffers to begin the scene.
-	m_D3D->BeginScene(D3DXVECTOR4(0.5f, 0.5f, 0.5f, 1.0f));
+	D3DXMATRIX worldMatrix, viewMatrix, projectionMatrix, orthoMatrix;
+	bool result;
 
+	// Clear the buffers to begin the scene.
+	m_D3D->BeginScene(D3DXVECTOR4(0.0f, 0.0f, 0.0f, 1.0f));
+
+	// Generate the view matrix based on the camera's position.
+	m_camera->Render();
+
+	// Get the world, view, projection, and ortho matrices from the camera and d3d objects.
+	m_camera->GetViewMatrix(viewMatrix);
+	m_D3D->GetWorldMatrix(worldMatrix);
+	m_D3D->GetProjectionMatrix(projectionMatrix);
+	m_D3D->GetOrthoMatrix(orthoMatrix);
+
+	m_D3D->TurnZBufferOff();
+
+
+	result = m_test->Render(m_D3D->GetDeviceContext(),10,10);
+	if (!result)
+	{
+		LogManagerClass::getI().addLog("Could not render test");
+		return false;
+	}
+
+	result = m_shaderManager->getInterfaceShader()->Render(m_D3D->GetDeviceContext(), m_test->GetIndexCount(), worldMatrix,
+		viewMatrix, orthoMatrix, m_test->GetTexture(), 0, 0, D3DXVECTOR4(0, 0, 0, 0), 0, 1);
+	if (!result)
+	{
+		LogManagerClass::getI().addLog("Could not render test");
+		return false;
+	}
+
+	m_D3D->TurnZBufferOn();
 
 	// Present the rendered scene to the screen.
 	m_D3D->EndScene();

@@ -70,6 +70,24 @@
     <Filter Include="Файлы ресурсов\Shaders">
       <UniqueIdentifier>{732ac5e2-72a9-4bb6-9ef8-afbf4d5f036c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Заголовочные файлы\Graphics\Interface">
+      <UniqueIdentifier>{141d93cc-2f3d-4ddb-a7f2-4a1b5ed6eaa5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\Graphics\Interface\InterfaceElements">
+      <UniqueIdentifier>{600eb2d7-c300-44fa-aa99-6b9c8cb6302d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\Graphics\Interface\InterfaceBlocks">
+      <UniqueIdentifier>{483fd4a8-8f83-485f-a6df-d3937bcac2d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\Graphics\Interface">
+      <UniqueIdentifier>{56523605-28a8-4ea5-b3a7-923f1a2801a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\Graphics\Interface\InterfaceElements">
+      <UniqueIdentifier>{63db7948-f37f-4aee-a560-6d24034f2be9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\Graphics\Interface\InterfaceBocks">
+      <UniqueIdentifier>{6ef9fa94-8b99-4404-9546-90a13470d2a8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -156,6 +174,12 @@
     <ClCompile Include="InterfaceShaderClass.cpp">
       <Filter>Файлы исходного кода\Graphics\ShaderManagment\Shaders</Filter>
     </ClCompile>
+    <ClCompile Include="BitmapClass.cpp">
+      <Filter>Файлы исходного кода\Graphics\Interface\InterfaceBocks</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraClass.cpp">
+      <Filter>Файлы исходного кода\Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SystemClass.h">
@@ -239,9 +263,33 @@
     <ClInclude Include="InterfaceShaderClass.h">
       <Filter>Заголовочные файлы\Graphics\ShaderManagment\Shaders</Filter>
     </ClInclude>
+    <ClInclude Include="InterfaceClass.h">
+      <Filter>Заголовочные файлы\Graphics\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="BitmapClass.h">
+      <Filter>Заголовочные файлы\Graphics\Interface\InterfaceBlocks</Filter>
+    </ClInclude>
+    <ClInclude Include="TextClass.h">
+      <Filter>Заголовочные файлы\Graphics\Interface\InterfaceBlocks</Filter>
+    </ClInclude>
+    <ClInclude Include="InterfaceElementClass.h">
+      <Filter>Заголовочные файлы\Graphics\Interface\InterfaceElements</Filter>
+    </ClInclude>
+    <ClInclude Include="ListElementClass.h">
+      <Filter>Заголовочные файлы\Graphics\Interface\InterfaceElements</Filter>
+    </ClInclude>
+    <ClInclude Include="SliderElementClass.h">
+      <Filter>Заголовочные файлы\Graphics\Interface\InterfaceElements</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraClass.h">
+      <Filter>Заголовочные файлы\Graphics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="interface.vs">
+    <None Include="interfaceVS.fx">
+      <Filter>Файлы ресурсов\Shaders</Filter>
+    </None>
+    <None Include="interfacePS.fx">
       <Filter>Файлы ресурсов\Shaders</Filter>
     </None>
   </ItemGroup>

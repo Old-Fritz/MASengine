@@ -8,10 +8,8 @@
 //////////////
 // INCLUDES //
 //////////////
-#include <math.h>
-#include <d3dx10math.h>
 #include "GlobalManagerClass.h"
-
+#include "InterfaceShaderClass.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // Class name: ShaderManagerClass
@@ -26,8 +24,9 @@ public:
 	bool Initialize(ID3D11Device* device, HWND hwnd);
 	void Shutdown();
 
+	InterfaceShaderClass* getInterfaceShader();
 private:
-
+	InterfaceShaderClass* m_interfaceShader;
 };
 
 #endif
