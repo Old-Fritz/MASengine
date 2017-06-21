@@ -8,6 +8,7 @@
 // MY CLASS INCLUDES //
 ///////////////////////
 #include "d3dclass.h"
+#include "ShaderManagerClass.h"
 
 /////////////
 // GLOBALS //
@@ -26,7 +27,7 @@ public:
 	GraphicsClass(const GraphicsClass&);
 	~GraphicsClass();
 
-	bool Initialize(HWND);
+	bool Initialize(HWND hwnd);
 	void Shutdown();
 	bool Frame();
 
@@ -34,7 +35,10 @@ private:
 	bool Render();
 
 private:
+
+	//blocks
 	D3DClass* m_D3D;
+	ShaderManagerClass* m_shaderManager;
 };
 
 #endif

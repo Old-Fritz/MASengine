@@ -124,6 +124,7 @@
     <ClCompile Include="GlobalManagerClass.cpp" />
     <ClCompile Include="GraphicsClass.cpp" />
     <ClCompile Include="InputClass.cpp" />
+    <ClCompile Include="InterfaceShaderClass.cpp" />
     <ClCompile Include="LogManagerClass.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MemoryManagerClass.cpp" />
@@ -134,6 +135,7 @@
     <ClCompile Include="PositionClass.cpp" />
     <ClCompile Include="ResourceManagerClass.cpp" />
     <ClCompile Include="SettingsClass.cpp" />
+    <ClCompile Include="ShaderManagerClass.cpp" />
     <ClCompile Include="StackAllocatorClass.cpp" />
     <ClCompile Include="SystemClass.cpp" />
     <ClCompile Include="SystemStateManagerClass.cpp" />
@@ -152,6 +154,7 @@
     <ClInclude Include="GlobalManagerClass.h" />
     <ClInclude Include="GraphicsClass.h" />
     <ClInclude Include="InputClass.h" />
+    <ClInclude Include="InterfaceShaderClass.h" />
     <ClInclude Include="LogManagerClass.h" />
     <ClInclude Include="MemoryManagerClass.h" />
     <ClInclude Include="MeshClass.h" />
@@ -161,6 +164,7 @@
     <ClInclude Include="PositionClass.h" />
     <ClInclude Include="ResourceManagerClass.h" />
     <ClInclude Include="SettingsClass.h" />
+    <ClInclude Include="ShaderManagerClass.h" />
     <ClInclude Include="StackAllocatorClass.h" />
     <ClInclude Include="SystemClass.h" />
     <ClInclude Include="SystemStateManagerClass.h" />
@@ -168,6 +172,9 @@
     <ClInclude Include="TextureClass.h" />
     <ClInclude Include="TextureManagerClass.h" />
     <ClInclude Include="TimerClass.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="interface.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

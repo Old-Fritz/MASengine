@@ -234,13 +234,13 @@ void * operator new(size_t size, int type)
 	switch (type)
 	{
 	case(1):
-		return MemoryManagerClass::getI().getStackMemory(size);
+		return ::operator new(size,MemoryManagerClass::getI().getStackMemory(size));
 	case(2):
-		return MemoryManagerClass::getI().getOneFrameMemory(size);
+		return ::operator new(size, MemoryManagerClass::getI().getOneFrameMemory(size));
 	case(3):
-		return MemoryManagerClass::getI().getTempMemory(size);
-	case(4):
-		return MemoryManagerClass::getI().getPoolMemory(size);
+		return ::operator new(size, MemoryManagerClass::getI().getTempMemory(size));
+	//case(4):
+		//return ::operator new(size, MemoryManagerClass::getI().getPoolMemory(size));
 	default:
 		return malloc(size);
 		break;
@@ -252,15 +252,13 @@ void* operator new[](size_t size, int type)
 	switch (type)
 	{
 	case(1):
-		return MemoryManagerClass::getI().getStackMemory(size);
+		return ::operator new[](size, MemoryManagerClass::getI().getStackMemory(size));
 	case(2):
-		return MemoryManagerClass::getI().getOneFrameMemory(size);
+		return ::operator new[](size, MemoryManagerClass::getI().getOneFrameMemory(size));
 	case(3):
-		return MemoryManagerClass::getI().getTempMemory(size);
-	case(4):
-		return MemoryManagerClass::getI().getPoolMemory(size);
-	case(5):
-		return malloc(size);
+		return ::operator new[](size, MemoryManagerClass::getI().getTempMemory(size));
+	//case(4):
+		//return ::operator new[](size, MemoryManagerClass::getI().getPoolMemory(size));
 	default:
 		return malloc(size);
 		break;
@@ -274,9 +272,9 @@ void operator delete(void * mem, size_t size, int type)
 	case(1):
 		MemoryManagerClass::getI().deleteStack(mem,size);
 		break;
-	case(2):
-		MemoryManagerClass::getI().deletePool(mem, size);
-		break;
+	//case(2):
+	//	MemoryManagerClass::getI().deletePool(mem, size);
+		//break;
 	default:
 		free(mem);
 		break;
@@ -291,9 +289,9 @@ void operator delete[](void * mem, size_t size, int type)
 	case(1):
 		MemoryManagerClass::getI().deleteStack(mem, size);
 		break;
-	case(2):
-		MemoryManagerClass::getI().deletePool(mem, size);
-		break;
+	//case(2):
+		//MemoryManagerClass::getI().deletePool(mem, size);
+		//break;
 	default:
 		free(mem);
 		break;

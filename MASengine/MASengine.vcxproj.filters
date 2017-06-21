@@ -55,6 +55,21 @@
     <Filter Include="Файлы исходного кода\Graphics">
       <UniqueIdentifier>{d2e9f6b8-8670-4008-82fd-73206901e635}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Заголовочные файлы\Graphics\ShaderManagment">
+      <UniqueIdentifier>{7c7b4c8a-03d4-4ae5-ad32-322e83c2e4fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\Graphics\ShaderManagment">
+      <UniqueIdentifier>{5fdd29f6-0fad-44a7-b6be-87278fa1bd15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\Graphics\ShaderManagment\Shaders">
+      <UniqueIdentifier>{a1cdaf44-6cd1-4177-bb3a-8c1edee5c26a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\Graphics\ShaderManagment\Shaders">
+      <UniqueIdentifier>{e4d5f0c8-31e6-4482-a14a-54c208614ea3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы ресурсов\Shaders">
+      <UniqueIdentifier>{732ac5e2-72a9-4bb6-9ef8-afbf4d5f036c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -135,6 +150,12 @@
     <ClCompile Include="GraphicsClass.cpp">
       <Filter>Файлы исходного кода\Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="ShaderManagerClass.cpp">
+      <Filter>Файлы исходного кода\Graphics\ShaderManagment</Filter>
+    </ClCompile>
+    <ClCompile Include="InterfaceShaderClass.cpp">
+      <Filter>Файлы исходного кода\Graphics\ShaderManagment\Shaders</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SystemClass.h">
@@ -212,5 +233,16 @@
     <ClInclude Include="GraphicsClass.h">
       <Filter>Заголовочные файлы\Graphics</Filter>
     </ClInclude>
+    <ClInclude Include="ShaderManagerClass.h">
+      <Filter>Заголовочные файлы\Graphics\ShaderManagment</Filter>
+    </ClInclude>
+    <ClInclude Include="InterfaceShaderClass.h">
+      <Filter>Заголовочные файлы\Graphics\ShaderManagment\Shaders</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="interface.vs">
+      <Filter>Файлы ресурсов\Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

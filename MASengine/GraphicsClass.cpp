@@ -3,6 +3,7 @@
 GraphicsClass::GraphicsClass()
 {
 	m_D3D = 0;
+	m_shaderManager = 0;
 }
 
 GraphicsClass::GraphicsClass(const GraphicsClass &)
@@ -34,13 +35,28 @@ bool GraphicsClass::Initialize(HWND hwnd)
 		return false;
 	}
 
-	
+	//Initialize Shader Manager
+	m_shaderManager = new(1) ShaderManagerClass;
+	if (!m_shaderManager)
+		return false;
+	result = m_shaderManager->Initialize(m_D3D->GetDevice(), hwnd);
+	if (!result)
+	{
+		MessageBox(hwnd, L"Could not initialize Shaders", L"Error", MB_OK);
+		return false;
+	}
 
 	return true;
 }
 
 void GraphicsClass::Shutdown()
 {
+	if (m_shaderManager)
+	{
+		m_shaderManager->Shutdown();
+		::operator delete(m_shaderManager, sizeof(ShaderManagerClass), 1);
+		m_shaderManager = 0;
+	}
 	if (m_D3D)
 	{
 		m_D3D->Shutdown();
