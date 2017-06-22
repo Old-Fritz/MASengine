@@ -74,6 +74,12 @@ void SystemStateManagerClass::Shutdown()
 
 		m_cpu = 0;
 	}
+
+	if (m_instance)
+	{
+		::operator delete(m_instance, sizeof(*m_instance), 1);
+		m_instance = 0;
+	}
 }
 
 SystemStateManagerClass & SystemStateManagerClass::getI()

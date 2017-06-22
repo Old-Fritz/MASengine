@@ -46,20 +46,29 @@ float4 InterfacePixelShader(PixelInputType input) : SV_TARGET
         textureColor.a = 0.0f;
 
     //delete some parts of image on horizontal
-    if (horPercent < 0) //if < 0, delete left part
+    if (horPercent < 0) //if < 0, delete left part]
+    {
         if (input.tex.x <= horPercent + 1.0f)
             textureColor = float4(0.0f, 0.0f, 0.0f, 0.0f);
+    }
     else
+    {
         if (input.tex.x >= horPercent)
             textureColor = float4(0.0f, 0.0f, 0.0f, 0.0f);
+    }
+        
 
     //delete some parts of image on vertical
     if (vertPercent < 0) //if < 0, delete left part
+    {
         if (input.tex.y <= vertPercent + 1.0f)
             textureColor = float4(0.0f, 0.0f, 0.0f, 0.0f);
+    }
     else
+    {
         if (input.tex.y >= vertPercent)
             textureColor = float4(0.0f, 0.0f, 0.0f, 0.0f);
+    }
 
     //save alpha
     float lastA = textureColor.a;
@@ -74,5 +83,5 @@ float4 InterfacePixelShader(PixelInputType input) : SV_TARGET
     //calculate alpha
     textureColor.a = lastA * transparency;
 
-    return shaderTexture.Sample(SampleType, input.tex);
+    return textureColor;
 }

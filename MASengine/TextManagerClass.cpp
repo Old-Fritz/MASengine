@@ -1,5 +1,7 @@
 #include "TextManagerClass.h"
 
+TextManagerClass* TextManagerClass::m_instance = 0;
+
 TextManagerClass::TextManagerClass()
 {
 }
@@ -17,6 +19,19 @@ void TextManagerClass::Shutdown()
 		m_texts.begin()->second.clear(); //delete all commands
 		m_texts.erase(m_texts.begin());
 	}
+
+	if (m_instance)
+	{
+		::operator delete(m_instance, sizeof(*m_instance), 1);
+		m_instance = 0;
+	}
+}
+
+TextManagerClass & TextManagerClass::getI()
+{
+	if (!m_instance)
+		m_instance = new(1) TextManagerClass;
+	return *m_instance;
 }
 
 void TextManagerClass::addText(const std::string & name, const std::string & filename)

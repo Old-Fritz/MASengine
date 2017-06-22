@@ -1,0 +1,16 @@
+06-22-17_09-09-36 LogManager Initialized
+06-22-17_09-09-36 MemoryManager Initialized
+06-22-17_09-09-36 ModManager Initialized
+06-22-17_09-09-36 Settings Initialized
+06-22-17_09-09-36 CommandManager Initialized
+06-22-17_09-09-36 ResourceManager Initialized
+06-22-17_09-09-38 SystemStateManager Initialized
+06-22-17_09-09-38 All global system Initialized
+06-22-17_09-09-38 Windows Initialization
+06-22-17_09-09-38 input Initialization
+06-22-17_09-09-38 Position Initialization
+06-22-17_09-09-38 Directx Initialization
+06-22-17_09-09-38 Interface Shader Initialization
+06-22-17_09-09-38 Font Shader Initialization
+06-22-17_09-09-38 Shaders Initialization
+06-22-17_09-09-38 Graphics Initialization

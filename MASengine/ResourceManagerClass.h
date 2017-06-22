@@ -17,6 +17,7 @@
 #include "TextureManagerClass.h"
 #include "TextManagerClass.h"
 #include "MeshManagerClass.h"
+#include "FontManagerClass.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // Class name: ResourceManagerClass
@@ -32,23 +33,12 @@ public:
 
 	static ResourceManagerClass& getI();
 
-	//get modules
-	TextureManagerClass* getTextures();
-	TextManagerClass* getTexts();
-	MeshManagerClass* getModels();
-
 private:
 	ResourceManagerClass();
 	ResourceManagerClass(const ResourceManagerClass&);
 	~ResourceManagerClass();
 
 private:
-	//modules
-	TextureManagerClass* m_textures;
-	TextManagerClass* m_texts;
-	MeshManagerClass* m_models;
-
-	float m_frametime;
 
 	static ResourceManagerClass* m_instance;
 };

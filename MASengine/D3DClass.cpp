@@ -429,6 +429,9 @@ bool D3DClass::Initialize(HWND hwnd, float screenDepth, float screenNear)
 		return false;
 	}
 
+	//By default alpha blending is on
+	TurnOnAlphaBlending();
+
 	return true;
 
 }

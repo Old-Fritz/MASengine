@@ -66,6 +66,12 @@ void SettingsClass::Shutdown()
 		::operator delete(m_strParameters.begin()->second, sizeof(StrParameter), 2);
 		m_strParameters.erase(m_strParameters.begin());
 	}
+
+	if (m_instance)
+	{
+		::operator delete(m_instance, sizeof(*m_instance), 1);
+		m_instance = 0;
+	}
 }
 
 SettingsClass & SettingsClass::getI()

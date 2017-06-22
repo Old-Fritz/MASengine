@@ -59,15 +59,17 @@ bool GraphicsClass::Initialize(HWND hwnd)
 	m_camera->SetPosition(D3DXVECTOR3(0,0,-10));
 
 	//Init test
-	m_test = new BitmapClass;
+	m_test = new TextClass;
 	if (!result)
 		return false;
-	result = m_test->Initialize(m_D3D->GetDevice(),SettingsClass::getI().getIntParameter("ScreenWidth"), SettingsClass::getI().getIntParameter("ScreenHeight"),"test.dds",256,256);
+	result = m_test->Initialize(m_D3D->GetDevice(),m_D3D->GetDeviceContext(), hwnd, SettingsClass::getI().getIntParameter("ScreenWidth"), SettingsClass::getI().getIntParameter("ScreenHeight"),
+		1,100,1,"data/fonts/font.txt");
 	if (!result)
 	{
 		MessageBox(hwnd, L"Could not initialize test", L"Error", MB_OK);
 		return false;
 	}
+	result = m_test->UpdateSentence(m_D3D->GetDeviceContext(), 0, L"มหÝา NAVAAAALNY", 10, 10, 1, 0, 0, 50, 400);
 
 	return true;
 }
@@ -77,7 +79,7 @@ void GraphicsClass::Shutdown()
 	if (m_test)
 	{
 		m_test->Shutdown();
-		::operator delete(m_test, sizeof(BitmapClass), 1);
+		::operator delete(m_test, sizeof(TextClass), 1);
 		m_test = 0;
 	}
 
@@ -137,21 +139,7 @@ bool GraphicsClass::Render()
 
 	m_D3D->TurnZBufferOff();
 
-
-	result = m_test->Render(m_D3D->GetDeviceContext(),10,10);
-	if (!result)
-	{
-		LogManagerClass::getI().addLog("Could not render test");
-		return false;
-	}
-
-	result = m_shaderManager->getInterfaceShader()->Render(m_D3D->GetDeviceContext(), m_test->GetIndexCount(), worldMatrix,
-		viewMatrix, orthoMatrix, m_test->GetTexture(), 0, 0, D3DXVECTOR4(0, 0, 0, 0), 0, 1);
-	if (!result)
-	{
-		LogManagerClass::getI().addLog("Could not render test");
-		return false;
-	}
+	m_test->Render(m_shaderManager->getFontShader(), m_D3D->GetDeviceContext(),worldMatrix,orthoMatrix,viewMatrix);
 
 	m_D3D->TurnZBufferOn();
 

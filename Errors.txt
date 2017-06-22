@@ -1,6 +1,8 @@
 Error 3-1 Problem with opening Mod File
+
 Error 4-1 Problem with model loading
 Error 4-2 Problem with texture loading
+
 Error 5-1 Problem with reading settings file
 Error 5-2 Problem with readding general settings file
 
@@ -51,3 +53,8 @@ Error 9-19 Problem with creating alphaDisableBlendingState
 
 Error 10-1 Problem with Interface Shader Initialization
 Error 10-2 Problem with Interface Shader Render
+Error 10-3 Problem with Font Shader Initialization
+Error 10-4 Problem with Font Shader Render
+
+Error 11-1 Problem with font manager Initialization
+Error 11-2 Problem with font Initialization

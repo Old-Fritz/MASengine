@@ -28,6 +28,12 @@ void CommandManagerClass::Shutdown()
 		}
 		m_commands.erase(m_commands.begin());
 	}
+
+	if (m_instance)
+	{
+		::operator delete(m_instance, sizeof(*m_instance), 1);
+		m_instance = 0;
+	}
 }
 
 CommandManagerClass & CommandManagerClass::getI()

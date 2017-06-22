@@ -1,5 +1,7 @@
 #include "TextureManagerClass.h"
 
+TextureManagerClass* TextureManagerClass::m_instance = 0;
+
 TextureManagerClass::TextureManagerClass()
 {
 }
@@ -18,6 +20,19 @@ void TextureManagerClass::Shutdown()
 		::operator delete(m_textures.begin()->second, sizeof(TextureClass), 2);
 		m_textures.erase(m_textures.begin());
 	}
+
+	if (m_instance)
+	{
+		::operator delete(m_instance, sizeof(*m_instance), 1);
+		m_instance = 0;
+	}
+}
+
+TextureManagerClass & TextureManagerClass::getI()
+{
+	if (!m_instance)
+		m_instance = new(1) TextureManagerClass;
+	return *m_instance;
 }
 
 bool TextureManagerClass::addTexture(ID3D11Device * device, const std::string & filename)

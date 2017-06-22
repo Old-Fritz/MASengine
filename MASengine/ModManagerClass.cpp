@@ -53,6 +53,12 @@ void ModManagerClass::Shutdown()
 		m_modNames.erase(m_modNames.begin());
 	}
 
+	if (m_instance)
+	{
+		::operator delete(m_instance, sizeof(*m_instance), 1);
+		m_instance = 0;
+	}
+
 	return;
 }
 

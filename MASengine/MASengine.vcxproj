@@ -122,6 +122,9 @@
     <ClCompile Include="CommandManagerClass.cpp" />
     <ClCompile Include="CpuClass.cpp" />
     <ClCompile Include="D3DClass.cpp" />
+    <ClCompile Include="FontClass.cpp" />
+    <ClCompile Include="FontManagerClass.cpp" />
+    <ClCompile Include="FontShaderClass.cpp" />
     <ClCompile Include="FpsClass.cpp" />
     <ClCompile Include="GlobalManagerClass.cpp" />
     <ClCompile Include="GraphicsClass.cpp" />
@@ -141,6 +144,7 @@
     <ClCompile Include="StackAllocatorClass.cpp" />
     <ClCompile Include="SystemClass.cpp" />
     <ClCompile Include="SystemStateManagerClass.cpp" />
+    <ClCompile Include="TextClass.cpp" />
     <ClCompile Include="TextManagerClass.cpp" />
     <ClCompile Include="TextureClass.cpp" />
     <ClCompile Include="TextureManagerClass.cpp" />
@@ -154,6 +158,9 @@
     <ClInclude Include="CommandManagerClass.h" />
     <ClInclude Include="CpuClass.h" />
     <ClInclude Include="D3DClass.h" />
+    <ClInclude Include="FontClass.h" />
+    <ClInclude Include="FontManagerClass.h" />
+    <ClInclude Include="FontShaderClass.h" />
     <ClInclude Include="FpsClass.h" />
     <ClInclude Include="GlobalManagerClass.h" />
     <ClInclude Include="GraphicsClass.h" />
@@ -193,6 +200,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="interfacePS.fx">
+      <FileType>Document</FileType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="fontPS.fx">
       <FileType>Document</FileType>
     </None>
   </ItemGroup>

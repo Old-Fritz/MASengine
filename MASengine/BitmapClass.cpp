@@ -41,7 +41,7 @@ bool BitmapClass::Initialize(ID3D11Device* device, int screenWidth, int screenHe
 
 	// Load textures
 	m_filename = textureFilename;
-	result = ResourceManagerClass::getI().getTextures()->addTexture(device, textureFilename);
+	result = TextureManagerClass::getI().addTexture(device, textureFilename);
 	if (!result)
 	{
 		return false;
@@ -294,6 +294,6 @@ void BitmapClass::RenderBuffers(ID3D11DeviceContext* deviceContext)
 
 ID3D11ShaderResourceView* BitmapClass::GetTexture()
 {
-	return ResourceManagerClass::getI().getTextures()->getTexture(m_filename);
+	return TextureManagerClass::getI().getTexture(m_filename);
 }
 

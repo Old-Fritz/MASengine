@@ -180,6 +180,18 @@
     <ClCompile Include="CameraClass.cpp">
       <Filter>Файлы исходного кода\Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="FontShaderClass.cpp">
+      <Filter>Файлы исходного кода\Graphics\ShaderManagment\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="FontManagerClass.cpp">
+      <Filter>Файлы исходного кода\GlobalManager\ResourceManagment</Filter>
+    </ClCompile>
+    <ClCompile Include="FontClass.cpp">
+      <Filter>Файлы исходного кода\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="TextClass.cpp">
+      <Filter>Файлы исходного кода\Graphics\Interface\InterfaceBocks</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SystemClass.h">
@@ -284,12 +296,24 @@
     <ClInclude Include="CameraClass.h">
       <Filter>Заголовочные файлы\Graphics</Filter>
     </ClInclude>
+    <ClInclude Include="FontShaderClass.h">
+      <Filter>Заголовочные файлы\Graphics\ShaderManagment\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="FontClass.h">
+      <Filter>Заголовочные файлы\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="FontManagerClass.h">
+      <Filter>Заголовочные файлы\GlobalManager\ResourceManagment</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="interfaceVS.fx">
       <Filter>Файлы ресурсов\Shaders</Filter>
     </None>
     <None Include="interfacePS.fx">
+      <Filter>Файлы ресурсов\Shaders</Filter>
+    </None>
+    <None Include="fontPS.fx">
       <Filter>Файлы ресурсов\Shaders</Filter>
     </None>
   </ItemGroup>
