@@ -1,0 +1,17 @@
+06-26-17_14-05-52 LogManager Initialized
+06-26-17_14-05-52 MemoryManager Initialized
+06-26-17_14-05-52 ModManager Initialized
+06-26-17_14-05-52 Settings Initialized
+06-26-17_14-05-52 CommandManager Initialized
+06-26-17_14-05-52 ResourceManager Initialized
+06-26-17_14-05-54 SystemStateManager Initialized
+06-26-17_14-05-54 All global system Initialized
+06-26-17_14-05-54 Windows Initialization
+06-26-17_14-05-54 input Initialization
+06-26-17_14-05-54 Position Initialization
+06-26-17_14-05-54 Directx Initialization
+06-26-17_14-05-54 Interface Shader Initialization
+06-26-17_14-05-55 Font Shader Initialization
+06-26-17_14-05-55 Shaders Initialization
+06-26-17_14-05-55 Error 4-2
+06-26-17_14-05-59 Error 8-1

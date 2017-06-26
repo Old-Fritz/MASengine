@@ -58,3 +58,26 @@ Error 10-4 Problem with Font Shader Render
 
 Error 11-1 Problem with font manager Initialization
 Error 11-2 Problem with font Initialization
+Error 11-3 Problem with font file open
+Error 11-4 Problem with loading font data
+Error 11-5 Problem with loading font texture
+Error 11-6 Problem with font data file open
+
+Error 12-1 Problem with adding font dor text element
+Error 12-2 Problem with sentence initialization in text
+Error 12-3 Problem with sentence update
+Error 12-4 Problem with creating vertex buffer for sentence
+Error 12-5 Problem with creating index buffer for sentence
+Error 12-6 Index of sentence not in text
+Error 12-7 Length of sentence more than max length
+Error 12-8 Problem with mapping vertex budder of sentence
+Error 12-9 Problem with sentence render
+
+Error 13-1 Problem with reading from file
+Error 13-2 Problem with interface element bitmap initialization
+Error 13-3 Problem with interface element text initialization
+Error 13-4 Problem with first sentence update in interface element
+Error 13-5 Problem with updating sentence in interface element
+Error 13-6 Problem with open file of interface element
+Error 13-7 Problem with reading bitmap info from file
+Error 13-8 Problem with reading text info from file

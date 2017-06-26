@@ -26,8 +26,10 @@ bool FontClass::Initialize(ID3D11Device* device, const std::string& filename)
 	std::ifstream file;
 	file.open(ModManagerClass::getI().getDirectory(ModManagerClass::getI().getHash(filename))+filename);
 	if (!file.is_open())
+	{
+		LogManagerClass::getI().addLog("Error 11-3");
 		return false;
-
+	}
 	file >> fontFilename >> textureFilename;
 
 	file.close();
@@ -36,6 +38,7 @@ bool FontClass::Initialize(ID3D11Device* device, const std::string& filename)
 	result = LoadFontData(fontFilename);
 	if (!result)
 	{
+		LogManagerClass::getI().addLog("Error 11-4");
 		return false;
 	}
 
@@ -45,6 +48,7 @@ bool FontClass::Initialize(ID3D11Device* device, const std::string& filename)
 	result = TextureManagerClass::getI().addTexture(device, textureFilename);
 	if (!result)
 	{
+		LogManagerClass::getI().addLog("Error 11-5");
 		return false;
 	}
 
@@ -71,6 +75,7 @@ bool FontClass::LoadFontData(const std::string& filename)
 	fin.open(filename);
 	if (fin.fail())
 	{
+		LogManagerClass::getI().addLog("Error 11-6");
 		return false;
 	}
 

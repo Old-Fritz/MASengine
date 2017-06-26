@@ -59,17 +59,15 @@ bool GraphicsClass::Initialize(HWND hwnd)
 	m_camera->SetPosition(D3DXVECTOR3(0,0,-10));
 
 	//Init test
-	m_test = new TextClass;
+	m_test = new InterfaceElementClass;
 	if (!result)
 		return false;
-	result = m_test->Initialize(m_D3D->GetDevice(),m_D3D->GetDeviceContext(), hwnd, SettingsClass::getI().getIntParameter("ScreenWidth"), SettingsClass::getI().getIntParameter("ScreenHeight"),
-		1,100,1,"data/fonts/font.txt");
+	result = m_test->Initialize(m_D3D->GetDevice(),m_D3D->GetDeviceContext(), hwnd, "data/interface/testEl.txt", SettingsClass::getI().getIntParameter("ScreenWidth"), SettingsClass::getI().getIntParameter("ScreenHeight"));
 	if (!result)
 	{
 		MessageBox(hwnd, L"Could not initialize test", L"Error", MB_OK);
 		return false;
 	}
-	result = m_test->UpdateSentence(m_D3D->GetDeviceContext(), 0, L"มหÝา NAVAAAALNY", 10, 10, 1, 0, 0, 50, 400);
 
 	return true;
 }
@@ -108,7 +106,11 @@ bool GraphicsClass::Frame()
 {
 	bool result;
 
-
+	result = m_test->updateTSadding(m_D3D->GetDeviceContext(), "maga", 0, std::to_string(SystemStateManagerClass::getI().GetFps()));
+	if(!result)
+	{
+		return false;
+	}
 	// Render the graphics scene.
 	result = Render();
 	if (!result)
@@ -116,6 +118,7 @@ bool GraphicsClass::Frame()
 		LogManagerClass::getI().addLog("Error 8-3");
 		return false;
 	}
+
 
 	return true;
 }
@@ -139,7 +142,7 @@ bool GraphicsClass::Render()
 
 	m_D3D->TurnZBufferOff();
 
-	m_test->Render(m_shaderManager->getFontShader(), m_D3D->GetDeviceContext(),worldMatrix,orthoMatrix,viewMatrix);
+	m_test->Render(m_shaderManager->getFontShader(), m_shaderManager->getInterfaceShader(), m_D3D->GetDeviceContext(), worldMatrix,orthoMatrix, viewMatrix);
 
 	m_D3D->TurnZBufferOn();
 

@@ -1,0 +1,178 @@
+ElementName = Test
+Bitmap_num = 9
+Text_num = 1
+Actions =  data/interface/actions/TestElementACTION.txt
+width = screenWidth
+height = screenHeight
+posX = 0
+posY = 0
+VertOrientation = top
+HorOrientation = left
+Bitmaps:
+{
+	Background:
+	{
+		name = tramp
+		texture =  data/interface/textures/tramp.dds
+		width = 74
+		height = 41
+		posX = 50
+		posY = 50
+		Selaction = selactiont
+		Unselaction = unselactiont
+		Pickaction = pickactiont
+		Unpickaction = unpickactiont
+		
+	}
+	Bitmap1:
+	{
+		name = test1
+		texture =  data/interface/textures/test1.dds
+		width = 100
+		height = 100
+		posX = 200
+		posY = 100
+		Selaction = selaction1
+		Unselaction = unselaction1
+		Pickaction = pickaction1
+		Unpickaction = unpickaction1
+		
+	}
+	Bitmap2:
+	{
+		name = test2
+		texture =  data/interface/textures/test2.dds
+		width = 100
+		height = 100
+		posX = 300
+		posY = 100
+		Selaction = selaction2
+		Unselaction = unselaction2
+		Pickaction = pickaction2
+		Unpickaction = unpickaction2
+		
+	}
+	Bitmap3:
+	{
+		name = test3
+		texture =  data/interface/textures/test3.dds
+		width = 100
+		height = 100
+		posX = 400
+		posY = 100
+		Selaction = selaction3
+		Unselaction = unselaction3
+		Pickaction = pickaction3
+		Unpickaction = unpickaction3
+		
+	}
+	Bitmap4:
+	{
+		name = test4
+		texture =  data/interface/textures/test4.dds
+		width = 100
+		height = 100
+		posX = 500
+		posY = 100
+		Selaction = selaction4
+		Unselaction = unselaction4
+		Pickaction = pickaction4
+		Unpickaction = unpickaction4
+		
+	}
+	Bitmap5:
+	{
+		name = test5
+		texture =  data/interface/textures/test5.dds
+		width = 100
+		height = 100
+		posX = 200
+		posY = 200
+		Selaction = selaction5
+		Unselaction = unselaction5
+		Pickaction = pickaction5
+		Unpickaction = unpickaction5
+	}
+	Bitmap6:
+	{
+		name = test6
+		texture =  data/interface/textures/test6.dds
+		width = 100
+		height = 100
+		posX = 300
+		posY = 200
+		Selaction = selaction6
+		Unselaction = unselaction6
+		Pickaction = pickaction6
+		Unpickaction = unpickaction6
+		
+	}
+	Bitmap7:
+	{
+		name = test7
+		texture =  data/interface/textures/test7.dds
+		width = 100
+		height = 100
+		posX = 400
+		posY = 200
+		Selaction = selaction7
+		Unselaction = unselaction7
+		Pickaction = pickaction7
+		Unpickaction = unpickaction7
+		
+	}
+	Bitmap8:
+	{
+		name = test8
+		texture =  data/interface/textures/test8.dds
+		width = 100
+		height = 100
+		posX = 500
+		posY = 200
+		Selaction = selaction8
+		Unselaction = unselaction8
+		Pickaction = pickaction8
+		Unpickaction = unpickaction8
+	}
+
+}
+Texts:
+{
+	Text:
+	{
+		name = maga
+		font = data/fonts/font.txt
+		Textfile =  data/interface/texts/XXX___text.txt
+		Max_Length = 50
+		Strings_num = 3
+		Orientation = LEFT
+		string:
+		{
+			text = make
+			maxwidth = 1000
+			size = 76
+			color = 1 1 1 1
+			posX = 100
+			posY = 350
+		}
+		string:
+		{
+			text = america
+			maxwidth = 1000
+			size = 112
+			color = 0 0 1 1
+			posX = 100
+			posY = 480
+		}
+		string:
+		{
+			text = great_again
+			maxwidth = 1000
+			size = 74
+			color = 1 0 0 1
+			posX = 100
+			posY = 570
+		}
+	}
+
+}

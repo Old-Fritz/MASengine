@@ -35,6 +35,7 @@ bool TextClass::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceCont
 	result = FontManagerClass::getI().addFont(device, m_fontFilename);
 	if (!result)
 	{
+		LogManagerClass::getI().addLog("Error 12-1");
 		MessageBox(hwnd, L"Could not initialize the font object.", L"Error", MB_OK);
 		return false;
 	}
@@ -44,7 +45,10 @@ bool TextClass::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceCont
 	m_sentencesNum = sentencesNum;
 	m_sentences = new(4) SentenceType*[sentencesNum];
 	if (!m_sentences)
+	{
 		return false;
+	}
+
 
 	// Initialize all sentences.
 	for (int i = 0; i < sentencesNum; i++)
@@ -52,12 +56,14 @@ bool TextClass::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceCont
 		result = InitializeSentence(device, &m_sentences[i], maxLength);
 		if (!result)
 		{
+			LogManagerClass::getI().addLog("Error 12-2");
 			return false;
 		}
 		// Now update the sentence vertex buffer with the usual information.
-		result = UpdateSentence(deviceContext, i, L" ", 0, 0, 0.0f, 0.0f, 0.0f, 0.35f, 0);
+		result = UpdateSentence(deviceContext, i, L" ", 0, 0, 0.35f, 0, D3DXVECTOR4(0,0,0,0));
 		if (!result)
 		{
+			LogManagerClass::getI().addLog("Error 12-3");
 			return false;
 		}
 	}
@@ -76,15 +82,22 @@ void TextClass::Shutdown()
 	return;
 }
 
-void TextClass::Render(FontShaderClass* FontShader, ID3D11DeviceContext* deviceContext, D3DXMATRIX worldMatrix, D3DXMATRIX orthoMatrix, D3DXMATRIX baseViewMatrix)
+bool TextClass::Render(FontShaderClass* FontShader, ID3D11DeviceContext* deviceContext, D3DXMATRIX worldMatrix, D3DXMATRIX orthoMatrix, D3DXMATRIX baseViewMatrix)
 {
+	bool result;
+
 	// Draw all sentences.
 	for (int i = 0; i < m_sentencesNum; i++)
 	{
-		RenderSentence(FontShader, deviceContext, m_sentences[i], worldMatrix, orthoMatrix, baseViewMatrix);
+		result = RenderSentence(FontShader, deviceContext, m_sentences[i], worldMatrix, orthoMatrix, baseViewMatrix);
+		if (!result)
+		{
+			LogManagerClass::getI().addLog("Error 12-9");
+			return false;
+		}
 	}
 
-	return;
+	return true;
 }
 
 bool TextClass::InitializeSentence(ID3D11Device* device, SentenceType** sentence, int maxLength)
@@ -157,6 +170,7 @@ bool TextClass::InitializeSentence(ID3D11Device* device, SentenceType** sentence
 	result = device->CreateBuffer(&vertexBufferDesc, &vertexData, &(*sentence)->vertexBuffer);
 	if (FAILED(result))
 	{
+		LogManagerClass::getI().addLog("Error 12-4");
 		return false;
 	}
 
@@ -175,6 +189,7 @@ bool TextClass::InitializeSentence(ID3D11Device* device, SentenceType** sentence
 	result = device->CreateBuffer(&indexBufferDesc, &indexData, &(*sentence)->indexBuffer);
 	if (FAILED(result))
 	{
+		LogManagerClass::getI().addLog("Error 12-5");
 		return false;
 	}
 
@@ -186,7 +201,7 @@ bool TextClass::InitializeSentence(ID3D11Device* device, SentenceType** sentence
 	return true;
 }
 
-bool TextClass::UpdateSentence(ID3D11DeviceContext* deviceContext, int sentenceNum, const std::wstring& text, int positionX, int positionY, float red, float green, float blue, float size, float width)
+bool TextClass::UpdateSentence(ID3D11DeviceContext* deviceContext, int sentenceNum, const std::wstring& text, int positionX, int positionY,  float size, float width, D3DXVECTOR4 color)
 {
 	int numLetters;
 	VertexType* vertices;
@@ -202,13 +217,12 @@ bool TextClass::UpdateSentence(ID3D11DeviceContext* deviceContext, int sentenceN
 	}
 	else
 	{
+		LogManagerClass::getI().addLog("Error 12-6");
 		return false;
 	}
 
 	// Store the color of the sentence.
-	sentence->red = red;
-	sentence->green = green;
-	sentence->blue = blue;
+	sentence->color = color;
 
 	// Get the number of letters in the sentence.
 	numLetters = text.size();
@@ -216,6 +230,7 @@ bool TextClass::UpdateSentence(ID3D11DeviceContext* deviceContext, int sentenceN
 	// Check for possible buffer overflow.
 	if (numLetters > sentence->maxLength)
 	{
+		LogManagerClass::getI().addLog("Error 12-7");
 		return false;
 	}
 
@@ -243,6 +258,7 @@ bool TextClass::UpdateSentence(ID3D11DeviceContext* deviceContext, int sentenceN
 	result = deviceContext->Map(sentence->vertexBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource);
 	if (FAILED(result))
 	{
+		LogManagerClass::getI().addLog("Error 12-8");
 		return false;
 	}
 
@@ -288,10 +304,10 @@ void TextClass::ReleaseSentence(SentenceType** sentence)
 	return;
 }
 
-void TextClass::RenderSentence(FontShaderClass* FontShader, ID3D11DeviceContext* deviceContext, SentenceType* sentence, D3DXMATRIX worldMatrix, D3DXMATRIX orthoMatrix, D3DXMATRIX baseViewMatrix)
+bool TextClass::RenderSentence(FontShaderClass* FontShader, ID3D11DeviceContext* deviceContext, SentenceType* sentence, D3DXMATRIX worldMatrix, D3DXMATRIX orthoMatrix, D3DXMATRIX baseViewMatrix)
 {
+	bool result;
 	unsigned int stride, offset;
-	D3DXVECTOR4 pixelColor;
 
 
 	// Set vertex buffer stride and offset.
@@ -307,12 +323,13 @@ void TextClass::RenderSentence(FontShaderClass* FontShader, ID3D11DeviceContext*
 	// Set the type of primitive that should be rendered from this vertex buffer, in this case triangles.
 	deviceContext->IASetPrimitiveTopology(D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
-	// Create a pixel color vector with the input sentence color.
-	pixelColor = D3DXVECTOR4(sentence->red, sentence->green, sentence->blue, 1.0f);
-
 	// Render the text using the font shader.
-	FontShader->Render(deviceContext, sentence->indexCount, worldMatrix, baseViewMatrix, orthoMatrix, FontManagerClass::getI().getFont(m_fontFilename)->GetTexture(), pixelColor);
+	result = FontShader->Render(deviceContext, sentence->indexCount, worldMatrix, baseViewMatrix, orthoMatrix, FontManagerClass::getI().getFont(m_fontFilename)->GetTexture(), sentence->color);
+	if (!result)
+	{
+		return false;
+	}
 
-	return;
+	return true;
 }
 

@@ -10,7 +10,7 @@
 #include "d3dclass.h"
 #include "ShaderManagerClass.h"
 #include "CameraClass.h"
-#include "TextClass.h"
+#include "InterfaceElementClass.h"
 
 
 /////////////
@@ -39,7 +39,7 @@ private:
 
 private:
 
-	TextClass* m_test;
+	InterfaceElementClass* m_test;
 
 	//blocks
 	D3DClass* m_D3D;

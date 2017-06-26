@@ -3,3 +3,5 @@ ScreenHeight = {720}
 Fullscreen = {0}
 Sample = {1}
 Vsync = {0}
+
+Language = {ENG}

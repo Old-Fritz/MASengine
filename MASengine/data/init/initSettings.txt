@@ -1,6 +1,6 @@
 Settings.txt
 data/init/defSettings.txt
-7
+8
 0 ScreenWidth
 0 ScreenHeight
 0 Fullscreen
@@ -9,3 +9,4 @@ data/init/defSettings.txt
 0 Vsync
 
 2 ButCommandFilename
+2 Language
