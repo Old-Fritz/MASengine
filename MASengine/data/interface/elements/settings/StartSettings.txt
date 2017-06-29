@@ -1,0 +1,428 @@
+ElementName = StartSettings
+Bitmap_num = 17
+Text_num = 3
+Actions =  /data/interface/actions/settingsACTION.txt
+FontFileName =  /data/fonts/fonts.txt
+DescFileName =  /data/interface/texts/XXX___text.txt
+width = 1024
+height = 640
+posX = middle
+posY = 600
+VertOrientation = bottom
+HorOrientation = left
+Bitmaps:
+{
+	Bitmap1:
+	{
+		name = startSettingsMenuBack
+		texture =  /data/interface/textures/autorsBack.dds
+		width = 1024
+		height = 640
+		posX = 0
+		posY = 0
+		Selaction = selaction
+		Unselaction = unselaction
+		Pickaction = pickaction
+		Unpickaction = unpickaction
+		Description = None
+	}
+	Bitmap2:
+	{
+		name = cross
+		texture =  /data/interface/textures/cross.dds
+		width = 48
+		height = 48
+		posX = 960
+		posY = 0
+		Selaction = selSSetCross
+		Unselaction = unSelSSetCross
+		Pickaction = pickSSetCross
+		Unpickaction = unPickSSetCross
+		Description = close
+	}
+	Bitmap3:
+	{
+		name = backMenu
+		texture =  /data/interface/textures/background.dds
+		width = 800
+		height = 560
+		posX = 112
+		posY = -38
+		Selaction = selaction
+		Unselaction = unselaction
+		Pickaction = pickaction
+		Unpickaction = unpickaction
+		Description = None
+	}
+	Bitmap4:
+	{
+		name = graphicsMenu
+		texture =  /data/interface/textures/button.dds
+		width = 300
+		height = 30
+		posX = 200
+		posY = -8
+		Selaction = selGraphicsMenu
+		Unselaction = unSelGraphicsMenu
+		Pickaction = pickGraphicsMenu
+		Unpickaction = unPickGraphicsMenu
+		Description = graphicsMenu_desc
+	}
+	Bitmap5:
+	{
+		name = gameMenu
+		texture =  /data/interface/textures/button.dds
+		width = 300
+		height = 30
+		posX = 524
+		posY = -8
+		Selaction = selGameMenu
+		Unselaction = unSelGameMenu
+		Pickaction = pickGameMenu
+		Unpickaction = unPickGameMenu
+		Description = gameMenu_desc
+	}
+	Bitmap6:
+	{
+		name = resolutionBack
+		texture =  /data/interface/textures/field.dds
+		width = 500
+		height = 40
+		posX = 231
+		posY = -120
+		Selaction = selResolutionBack
+		Unselaction = unSelResolutionBack
+		Pickaction = pickResolutionBack
+		Unpickaction = unPickResolutionBack
+		Description = resolutionBack_desc
+	}
+	Bitmap7:
+	{
+		name = resolutionShowMenu
+		texture =  /data/interface/textures/openlist.dds
+		width = 40
+		height = 40
+		posX = 733
+		posY = -120
+		Selaction = selResolutionShowMenu
+		Unselaction = unSelResolutionShowMenu
+		Pickaction = pickResolutionShowMenu
+		Unpickaction = unPickResolutionShowMenu
+		Description = resolutionShowMenu_desc
+	}
+	Bitmap8:
+	{
+		name = sampleBack
+		texture =  /data/interface/textures/field.dds
+		width = 500
+		height = 40
+		posX = 231
+		posY = -220
+		Selaction = selSampleBack
+		Unselaction = unSelSampleBack
+		Pickaction = pickSampleBack
+		Unpickaction = unPickSampleBack
+		Description = sampleBack_desc
+	}
+	Bitmap9:
+	{
+		name = sampleShowMenu
+		texture =  /data/interface/textures/openlist.dds
+		width = 40
+		height = 40
+		posX = 733
+		posY = -220
+		Selaction = selSampleShowMenu
+		Unselaction = unSampleShowMenu
+		Pickaction = pickSampleShowMenu
+		Unpickaction = unPickSampleShowMenu
+		Description = sampleShowMenu_desc
+	}
+	Bitmap10:
+	{
+		name = texturesQBack
+		texture =  /data/interface/textures/field.dds
+		width = 500
+		height = 40
+		posX = 231
+		posY = -320
+		Selaction = selTexturesQBack
+		Unselaction = unSelTexturesQBack
+		Pickaction = pickTexturesQBack
+		Unpickaction = unPickTexturesQnBack
+		Description = texturesQBack_desc
+	}
+	Bitmap11:
+	{
+		name = texturesQShowMenu
+		texture =  /data/interface/textures/openlist.dds
+		width = 40
+		height = 40
+		posX = 733
+		posY = -320
+		Selaction = selTexturesQShowMenu
+		Unselaction = unTexturesQShowMenu
+		Pickaction = pickTexturesQShowMenu
+		Unpickaction = unPickTexturesQShowMenu
+		Description = texturesQShowMenu_desc
+	}
+	Bitmap12:
+	{
+		name = langBack
+		texture =  /data/interface/textures/field.dds
+		width = 500
+		height = 40
+		posX = 231
+		posY = -120
+		Selaction = selLangBack
+		Unselaction = unSelLangBack
+		Pickaction = pickLangBack
+		Unpickaction = unPickLangBack
+		Description = langBack_desc
+	}
+	Bitmap13:
+	{
+		name = langShowMenu
+		texture =  /data/interface/textures/openlist.dds
+		width = 40
+		height = 40
+		posX = 733
+		posY = -120
+		Selaction = selLangShowMenu
+		Unselaction = unLangShowMenu
+		Pickaction = pickLangShowMenu
+		Unpickaction = unPickLangShowMenu
+		Description = langShowMenu_desc
+	}
+	Bitmap15:
+	{
+		name = noFullscreen
+		texture =  /data/interface/textures/ofsquare.dds
+		width = 40
+		height = 40
+		posX = 753
+		posY = -480
+		Selaction = selNoFullscreen
+		Unselaction = unSelNoFullscreen
+		Pickaction = pickNoFullscreen
+		Unpickaction = unPickNoFullscreen
+		Description = noFullscreen_desc
+	}
+	Bitmap14:
+	{
+		name = isFullscreen
+		texture =  /data/interface/textures/onsquare.dds
+		width = 40
+		height = 40
+		posX = 753
+		posY = -480
+		Selaction = selIsFullscreen
+		Unselaction = unSelIsFullscreen
+		Pickaction = pickIsFullscreen
+		Unpickaction = unPickIsFullscreen
+		Description = isFullscreen_desc
+	}
+	Bitmap17:
+	{
+		name = noVsync
+		texture =  /data/interface/textures/ofsquare.dds
+		width = 40
+		height = 40
+		posX = 753
+		posY = -540
+		Selaction = selNoVsync
+		Unselaction = unSelNoVsync
+		Pickaction = pickNoVsync
+		Unpickaction = unPickNoVsync
+		Description = noVsync_desc
+	}
+	Bitmap16:
+	{
+		name = isVsync
+		texture =  /data/interface/textures/onsquare.dds
+		width = 40
+		height = 40
+		posX = 753
+		posY = -540
+		Selaction = selIsVsync
+		Unselaction = unSelIsVsync
+		Pickaction = pickIsVsync
+		Unpickaction = unPickIsVsync
+		Description = isVsync_desc
+	}
+	
+}
+Texts:
+{
+	Text:
+	{
+		name = mainText
+		font = f1
+		Textfile =  /data/interface/texts/XXX___text.txt
+		Max_Length = 200
+		Strings_num = 2
+		Orientation = MIDDLE
+		string0:
+		{
+			text = graphicsMenu
+			maxwidth = 300
+			size = 20
+			color = 1 1 1
+			posX = 200
+			posY = -13
+		}
+		string1:
+		{
+			text = gameMenu
+			maxwidth = 300
+			size = 20
+			color = 1 1 1
+			posX = 524
+			posY = -13
+		}
+	}
+	Text:
+	{
+		name = graphicsText
+		font = f1
+		Textfile =  /data/interface/texts/XXX___text.txt
+		Max_Length = 200
+		Strings_num = 9
+		Orientation = LEFT
+		string1:
+		{
+			text = resolution
+			maxwidth = 560
+			size = 30
+			color = 1 1 1
+			posX = 251
+			posY = -80
+		}
+		string2:
+		{
+			text = XXX
+			maxwidth = 500
+			size = 20
+			color = 1 1 1
+			posX = 300
+			posY = -129
+		}
+		string3:
+		{
+			text = multisampling
+			maxwidth = 560
+			size = 30
+			color = 1 1 1
+			posX = 251
+			posY = -180
+		}
+		string4:
+		{
+			text = XXX
+			maxwidth = 500
+			size = 20
+			color = 1 1 1
+			posX = 300
+			posY = -229
+		}
+		string5:
+		{
+			text = texturesQ
+			maxwidth = 560
+			size = 30
+			color = 1 1 1
+			posX = 251
+			posY = -280
+		}
+		string6:
+		{
+			text = XXX
+			maxwidth = 500
+			size = 20
+			color = 1 1 1
+			posX = 300
+			posY = -329
+		}
+		string7:
+		{
+			text = renderDist
+			maxwidth = 560
+			size = 30
+			color = 1 1 1
+			posX = 251
+			posY = -380
+		}
+		string8:
+		{
+			text = onFullscreen
+			maxwidth = 560
+			size = 30
+			color = 1 1 1
+			posX = 251
+			posY = -485
+		}
+		string9:
+		{
+			text = onVsync
+			maxwidth = 560
+			size = 30
+			color = 1 1 1
+			posX = 251
+			posY = -545
+		}
+	}
+	Text:
+	{
+		name = gameText
+		font = f1
+		Textfile =  /data/interface/texts/XXX___text.txt
+		Max_Length = 200
+		Strings_num = 5
+		Orientation = LEFT
+		string1:
+		{
+			text = language
+			maxwidth = 560
+			size = 30
+			color = 1 1 1
+			posX = 251
+			posY = -80
+		}
+		string2:
+		{
+			text = XXX
+			maxwidth = 500
+			size = 20
+			color = 1 1 1
+			posX = 300
+			posY = -129
+		}
+		string3:
+		{
+			text = changingColor
+			maxwidth = 560
+			size = 30
+			color = 1 1 1
+			posX = 251
+			posY = -180
+		}
+		string4:
+		{
+			text = mouseSensitivity
+			maxwidth = 560
+			size = 30
+			color = 1 1 1
+			posX = 251
+			posY = -280
+		}
+		string5:
+		{
+			text = moveSpeed
+			maxwidth = 560
+			size = 30
+			color = 1 1 1
+			posX = 251
+			posY = -380
+		}
+	}
+}

@@ -1,0 +1,216 @@
+ElementName = AutorsMenu
+Bitmap_num = 9
+Text_num = 1
+Actions =  /data/interface/actions/startMenuElementACTION.txt
+FontFileName =  /data/fonts/fonts.txt
+DescFileName =  /data/interface/texts/XXX___text.txt
+width = 1024
+height = 640
+posX = middle
+posY = 600
+VertOrientation = bottom
+HorOrientation = left
+Bitmaps:
+{
+	Bitmap1:
+	{
+		name = autorsMenuBack
+		texture =  /data/interface/textures/autorsBack.dds
+		width = 1024
+		height = 640
+		posX = 0
+		posY = 0
+		Selaction = selaction
+		Unselaction = unselaction
+		Pickaction = pickaction
+		Unpickaction = unpickaction
+		Description = None
+	}
+	Bitmap2:
+	{
+		name = cross
+		texture =  /data/interface/textures/cross.dds
+		width = 48
+		height = 48
+		posX = 960
+		posY = 0
+		Selaction = selAutCross
+		Unselaction = unSelAutCross
+		Pickaction = pickAutCross
+		Unpickaction = unPickAutCross
+		Description = close
+	}
+	Bitmap3:
+	{
+		name = developer1
+		texture =  /data/interface/textures/dev1.dds
+		width = 256
+		height = 256
+		posX = 32
+		posY = -50
+		Selaction = selaction
+		Unselaction = unselaction
+		Pickaction = pickaction
+		Unpickaction = unpickaction
+		Description = dev1_desc
+	}
+	Bitmap4:
+	{
+		name = developer2
+		texture =  /data/interface/textures/dev2.dds
+		width = 256
+		height = 256
+		posX = 384
+		posY = -50
+		Selaction = selaction
+		Unselaction = unselaction
+		Pickaction = pickaction
+		Unpickaction = unpickaction
+		Description = dev2_desc
+	}
+	Bitmap5:
+	{
+		name = developer3
+		texture =  /data/interface/textures/dev3.dds
+		width = 256
+		height = 256
+		posX = 736
+		posY = -50
+		Selaction = selaction
+		Unselaction = unselaction
+		Pickaction = pickaction
+		Unpickaction = unpickaction
+		Description = dev3_desc
+	}
+	Bitmap6:
+	{
+		name = developer4
+		texture =  /data/interface/textures/dev4.dds
+		width = 192
+		height = 192
+		posX = 32
+		posY = -356
+		Selaction = selaction
+		Unselaction = unselaction
+		Pickaction = pickaction
+		Unpickaction = unpickaction
+		Description = dev4_desc
+	}
+	Bitmap7:
+	{
+		name = developer5
+		texture =  /data/interface/textures/dev5.dds
+		width = 192
+		height = 192
+		posX = 288
+		posY = -356
+		Selaction = selaction
+		Unselaction = unselaction
+		Pickaction = pickaction
+		Unpickaction = unpickaction
+		Description = dev5_desc
+	}
+	Bitmap8:
+	{
+		name = developer6
+		texture =  /data/interface/textures/dev6.dds
+		width = 192
+		height = 192
+		posX = 544
+		posY = -356
+		Selaction = selaction
+		Unselaction = unselaction
+		Pickaction = pickaction
+		Unpickaction = unpickaction
+		Description = dev6_desc
+	}
+	Bitmap9:
+	{
+		name = developer7
+		texture =  /data/interface/textures/dev7.dds
+		width = 192
+		height = 192
+		posX = 800
+		posY = -356
+		Selaction = selaction
+		Unselaction = unselaction
+		Pickaction = pickaction
+		Unpickaction = unpickaction
+		Description = dev7_desc
+	}
+}
+Texts:
+{
+	Text:
+	{
+		name = buttonsText
+		font = f1
+		Textfile =  /data/interface/texts/XXX___text.txt
+		Max_Length = 200
+		Strings_num = 7
+		Orientation = LEFT
+		string1:
+		{
+			text = developer1
+			maxwidth = 400
+			size = 20
+			color = 1 1 1
+			posX = 32
+			posY = -310
+		}
+		string2:
+		{
+			text = developer2
+			maxwidth = 400
+			size = 20
+			color = 1 1 1
+			posX = 384
+			posY = -310
+		}
+		string3:
+		{
+			text = developer3
+			maxwidth = 400
+			size = 20
+			color = 1 1 1
+			posX = 736
+			posY = -310
+		}
+		string4:
+		{
+			text = developer4
+			maxwidth = 400
+			size = 20
+			color = 1 1 1
+			posX = 32
+			posY = -552
+		}
+		string5:
+		{
+			text = developer5
+			maxwidth = 400
+			size = 20
+			color = 1 1 1
+			posX = 288
+			posY = -552
+		}
+		string6:
+		{
+			text = developer6
+			maxwidth = 400
+			size = 20
+			color = 1 1 1
+			posX = 544
+			posY = -552
+		}
+		string7:
+		{
+			text = developer7
+			maxwidth = 400
+			size = 20
+			color = 1 1 1
+			posX = 800
+			posY = -552
+		}
+	}
+}

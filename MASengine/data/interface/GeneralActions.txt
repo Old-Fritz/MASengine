@@ -1,0 +1,27 @@
+startAction = 
+{
+	updateInterface setElVisible LoadScreen 0;
+	updateInterface setElVisible StartMenuDown 1;
+	updateInterface setElVisible StartMenuBack 1;
+	updateInterface setElVisible Cursor 1;
+	updateInterface setElVisible Version 1;
+	updateInterface setElVisible Descwindow 1;
+
+	updateSystem cameraPosition 0 -1000 0;
+	updateSystem cameraRotation 90 0 0;
+}
+terrainPickAction =
+{
+	updateInterface TSlastword Image_info image_info 5 
+	PROVNUM  /data/interface/texts/XXX___text.txt;
+	setParam provName Image_info image_info 0 PROVNUM;
+	setParam provPopulation Image_info image_info 1 PROVNUM;
+}
+frameAction =
+{
+	updateTime getDate SpeedMenu dataText 0 /data/interface/texts/XXX___text.txt;
+}
+monthTask = 
+{
+	updateTime getSeason SpeedMenu back;
+}

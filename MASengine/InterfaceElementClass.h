@@ -123,10 +123,10 @@ public:
 
 	//Actions on click
 	virtual  std::string pick(int posX, int posY);
-	virtual  std::string getSelCommand(const std::string& name);
-	virtual  std::string getUnSelCommand(const std::string& name);
-	virtual  std::string getPickCommand(const std::string& name);
-	virtual  std::string getUnPickCommand(const std::string& name);
+	virtual  void addSelCommand(const std::string& name);
+	virtual  void addUnSelCommand(const std::string& name);
+	virtual  void addPickCommand(const std::string& name);
+	virtual  void addUnPickCommand(const std::string& name);
 
 	virtual  void setSelCommand(const std::string& name, const std::string& action);
 	virtual  void setUnSelCommand(const std::string& name, const std::string& action);

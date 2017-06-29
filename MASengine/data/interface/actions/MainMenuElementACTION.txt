@@ -1,0 +1,142 @@
+selBack = 
+{
+	
+	updateInterface BMselIntens MainMenu back 0.4f;
+}
+selSettings =
+{
+	updateInterface BMselIntens MainMenu settings 0.4f;
+}
+selStartMenu =
+{
+	updateInterface BMselIntens MainMenu startMenu 0.4f;
+}
+selExit = 
+{
+	updateInterface BMselIntens MainMenu exit 0.4f;
+}
+selMainMenu =
+{
+	updateInterface BMselIntens MainMenu mainMenu 0.4f;
+}
+
+
+unSelBack =
+{
+	updateInterface BMselIntens MainMenu back 0.05f;
+	updateInterface BMtranspar MainMenu back 0.96f;
+}
+unSelSettings =
+{
+	updateInterface BMselIntens MainMenu settings 0.05f;
+	updateInterface BMtranspar MainMenu settings 0.96f;
+}
+unSelStartMenu = 
+{
+	updateInterface BMselIntens MainMenu startMenu 0.05f;
+	updateInterface BMtranspar MainMenu startMenu 0.96f;
+}
+unSelExit =
+{
+	updateInterface BMselIntens MainMenu exit 0.05f;
+	updateInterface BMtranspar MainMenu exit 0.96f;
+}
+unSelMainMenu = 
+{
+	updateInterface BMselIntens MainMenu mainMenu 0.05f;
+	updateInterface BMtranspar MainMenu mainMenu 0.96f;
+}
+
+
+pickBack = 
+{
+	updateInterface BMselIntens MainMenu back -0.4f;
+}
+pickSettings =
+{
+	updateInterface BMselIntens MainMenu settings -0.4f;
+}
+pickStartMenu =
+{
+	updateInterface BMselIntens MainMenu startMenu -0.4f;
+}
+pickExit =
+{
+	updateInterface BMselIntens MainMenu exit -0.4f;
+}
+pickMainMenu =
+{
+	updateInterface BMselIntens MainMenu mainMenu -0.4f;
+}
+unPickBack =
+{
+	updateInterface setBMvisible MainMenu menuBack 0;
+	updateInterface setBMvisible MainMenu settings 0;
+	updateInterface setBMvisible MainMenu unSettings 0;
+	updateInterface setBMvisible MainMenu startMenu 0;
+	updateInterface setBMvisible MainMenu exit 0;
+	updateInterface setBMvisible MainMenu back 0;
+	updateInterface setBMvisible MainMenu unMainMenu 0;
+	updateInterface setTvisible MainMenu mainMenu 0;
+	updateSystem setButCommand 1 unPickCommand 1unPickCommandMainGame;
+}
+unPickSettings =
+{
+	updateInterface setElVisible MenuSettings 1;
+	
+	updateInterface setBMvisible MenuSettings noVsync 1;
+	updateInterface setBMvisible MenuSettings isDebug 1;
+	updateInterface setTvisible MenuSettings graphicsText 1;
+	updateInterface setTvisible MenuSettings gameText 0;
+	
+	updateInterface setElVisible MenuRenderSlider 1;
+	updateInterface getSettings MenuRenderSlider condition 0 renderDistance
+	 /data/interface/texts/XXX___text.txt;
+	updateInterface getSettings MenuSettings isVsync 0 vsync
+	 /data/interface/texts/XXX___text.txt; 
+	updateSystem setButCommand 1 unPickCommand 1unPickMainSettings;
+	
+}
+unPickUnSettings =
+{
+	updateInterface setElVisible Debug_info 0;
+	updateInterface setBMvisible MainMenu unSettings 0;
+}
+unPickStartMenu =
+{
+	reboot;
+}
+unPickExit =
+{
+	stop;
+}
+unPickMainMenu =
+{
+	updateInterface setBMvisible MainMenu menuBack 1;
+	updateInterface setBMvisible MainMenu settings 1;
+	updateInterface setBMvisible MainMenu startMenu 1;
+	updateInterface setBMvisible MainMenu exit 1;
+	updateInterface setBMvisible MainMenu back 1;
+	updateInterface setBMvisible MainMenu unMainMenu 1;
+	updateInterface setTvisible MainMenu mainMenu 1;
+	updateSystem setButCommand 1 unPickCommand 1unPickCommandMainMenu;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

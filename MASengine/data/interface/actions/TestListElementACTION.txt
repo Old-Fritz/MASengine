@@ -1,0 +1,45 @@
+selAddElement =
+{
+	updateInterface BMselIntens TestList addElement 0.4f;
+}
+unSelAddElement =
+{
+	updateInterface BMselIntens TestList addElement 0.0f;
+}
+pickAddElement =
+{
+	updateInterface BMselIntens TestList addElement -0.4f;
+}
+unPickAddElement =
+{
+	updateInterface addElement TestList;
+	updateInterface TSlastword _ELSLENGTHTestList+1_TestList condition 0
+	 ELSLENGTHTestList  /data/interface/texts/XXX___text.txt;
+}
+
+selDeleteElement =
+{
+	updateInterface BMselIntens TestList deleteElement 0.4f;
+}
+unSelDeleteElement =
+{
+	updateInterface BMselIntens TestList deleteElement 0.0f;
+}
+pickDeleteElement =
+{
+	updateInterface BMselIntens TestList deleteElement -0.4f;
+}
+unPickDeleteElement =
+{
+	updateInterface deleteElement TestList ELSLENGTHTestList-1_;
+}
+
+pickBackground = 
+{
+	updateInterface startDrag TestList;
+}
+unPickBackground = 
+{
+	updateInterface endDrag TestList;
+}
+

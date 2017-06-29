@@ -1,0 +1,109 @@
+ElementName = MoveSpeedSlider
+Bitmap_num = 5
+Text_num = 1
+sectorsNum = 100
+orientation = horizontal
+sliderCommand = sliderCommand
+Actions =  /data/interface/actions/SettingsMoveSpeedSliderACTION.txt
+FontFileName =  /data/fonts/fonts.txt
+DescFileName =  /data/interface/texts/XXX___text.txt
+width = 560
+height = 40
+posX = middle
+posY = 380
+VertOrientation = bottom
+HorOrientation = left
+Bitmaps:
+{
+	Background
+	{
+		name = Background
+		texture =  /data/interface/textures/empty.dds
+		width = 560
+		height = 40
+		posX = 0
+		posY = 0
+		Selaction = selBackground
+		Unselaction = unSelBackground
+		Pickaction = pickBackground
+		Unpickaction = unPickBackground
+		Description = None
+	}
+	backLine
+	{
+		name = backLine
+		texture =  /data/interface/textures/sliderline.dds
+		width = 500
+		height = 16
+		posX = 30
+		posY = -17
+		Selaction = selBackLine
+		Unselaction = unSelBackLine
+		Pickaction = pickBackLine
+		Unpickaction = unPickBackLine
+		Description = None
+	}
+	slider:
+	{
+		name = slider
+		texture =  /data/interface/textures/slider.dds
+		width = 35
+		height = 22
+		posX = 30
+		posY = -14
+		Selaction = selSlider
+		Unselaction = unSelSlider
+		Pickaction = pickSlider
+		Unpickaction = unPickSlider
+		Description = None
+	}
+	button1:
+	{
+		name = backSector
+		texture =  /data/interface/textures/leftarrow.dds
+		width = 40
+		height = 40
+		posX = -10
+		posY = -5
+		Selaction = selBackSector
+		Unselaction = unSelBackSector
+		Pickaction = pickBackSector
+		Unpickaction = unPickBackSector
+		Description = backSector
+	{
+	button2:
+	{
+		name = nextSector
+		texture =  /data/interface/textures/rightarrow.dds
+		width = 40
+		height = 40
+		posX = 530
+		posY = -5
+		Selaction = selNextSector
+		Unselaction = unSelNextSector
+		Pickaction = pickNextSector
+		Unpickaction = unPickNextSector
+		Description = nextSector
+	{
+}
+Texts:
+{
+	Text:
+	{
+		name = condition
+		font = f1
+		Textfile =  /data/interface/texts/XXX___text.txt
+		Max_Length = 50
+		Strings_num = 1
+		Orientation = RIGHT
+		string:
+		{
+			text = 0
+			maxwidth = 280
+			size = 30
+			color = 1 1 0
+			posX = 280
+			posY = 30
+		}
+	}
+}

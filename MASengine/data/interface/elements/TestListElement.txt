@@ -1,0 +1,51 @@
+ElementName = TestListElement
+Bitmap_num = 1
+Text_num = 1
+Actions =  /data/interface/actions/TestListElementACTION.txt
+FontFileName =  /data/fonts/fonts.txt
+DescFileName =  /data/interface/texts/XXX___text.txt
+width = screenWidth
+height = screenHeight
+posX = 50
+posY = 100
+VertOrientation = top
+HorOrientation = left
+Bitmaps:
+{
+	Background:
+	{
+		name = background
+		texture =  /data/interface/textures/button.dds
+		width = 600
+		height = 50
+		posX = 0
+		posY = 0
+		Selaction = selListElement
+		Unselaction = unSelListElement
+		Pickaction = pickListElement
+		Unpickaction = unPickListElement
+		Description = tramp
+	}
+}
+Texts:
+{
+	Text:
+	{
+		name = condition
+		font = f1
+		Textfile =  /data/interface/texts/XXX___text.txt
+		Max_Length = 50
+		Strings_num = 1
+		Orientation = LEFT
+		string:
+		{
+			text = 0
+			maxwidth = 600
+			size = 30
+			color = 1 1 0
+			posX = 100
+			posY = 10
+		}
+	}
+
+}

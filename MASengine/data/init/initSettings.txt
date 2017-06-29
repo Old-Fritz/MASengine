@@ -1,6 +1,6 @@
 Settings.txt
 data/init/defSettings.txt
-8
+9
 0 ScreenWidth
 0 ScreenHeight
 0 Fullscreen
@@ -10,3 +10,4 @@ data/init/defSettings.txt
 
 2 ButCommandFilename
 2 Language
+2 ElementsFilename

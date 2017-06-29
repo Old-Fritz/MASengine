@@ -1,0 +1,97 @@
+ElementName = RebootWindow
+Bitmap_num = 3
+Text_num = 1
+
+Actions =  /data/interface/actions/RebootWindowACTION.txt
+FontFileName =  /data/fonts/fonts.txt
+DescFileName =  /data/interface/texts/XXX___text.txt
+width = 400
+height = 300
+posX = middle
+posY = 300
+VertOrientation = top
+HorOrientation = left
+Bitmaps:
+{
+	Bitmap1:
+	{
+		name = startSettingsMenuBack
+		texture =  /data/interface/textures/autorsBack.dds
+		width = 400
+		height = 300
+		posX = 0
+		posY = 0
+		Selaction = selaction
+		Unselaction = unselaction
+		Pickaction = pickaction
+		Unpickaction = unpickaction
+		Description = None
+	}
+	Bitmap2:
+	{
+		name = rebootBut
+		texture =  /data/interface/textures/button.dds
+		width = 130
+		height = 50
+		posX = 50
+		posY = 200
+		Selaction = selRebootBut
+		Unselaction = unSelRebootBut
+		Pickaction = pickRebootBut
+		Unpickaction = unPickRebootBut
+		Description = RebootBut_desc
+	}
+	Bitmap3:
+	{
+		name = laterBut
+		texture =  /data/interface/textures/button.dds
+		width = 130
+		height = 50
+		posX = 220
+		posY = 200
+		Selaction = selLaterBut
+		Unselaction = unSelLaterBut
+		Pickaction = pickLaterBut
+		Unpickaction = unPickLaterBut
+		Description = LaterBut_desc
+	}
+}
+Texts:
+{
+	Text:
+	{
+		name = butsText
+		font = f1
+		Textfile =  /data/interface/texts/XXX___text.txt
+		Max_Length = 200
+		Strings_num = 3
+		Orientation = MIDDLE
+		string1:
+		{
+			text = reboot
+			maxwidth = 130
+			size = 30
+			color = 1 1 1
+			posX = 50
+			posY = 210
+		}
+		string2:
+		{
+			text = later
+			maxwidth = 130
+			size = 30
+			color = 1 1 1
+			posX = 220
+			posY = 210
+		}
+		string3:
+		{
+			text = RebootText
+			maxwidth = 300
+			size = 30
+			color = 1 1 1
+			posX = 50
+			posY = 50
+		}
+	}
+}

@@ -1,0 +1,33 @@
+selRebootBut = 
+{
+	updateInterface BMselIntens RebootWindow rebootBut 0.4f;
+}
+unSelRebootBut = 
+{
+	updateInterface BMselIntens RebootWindow rebootBut 0.0f;
+}
+pickRebootBut = 
+{
+	updateInterface BMselIntens RebootWindow rebootBut -0.4f;
+}
+unPickRebootBut = 
+{
+	reboot;
+}
+
+selLaterBut = 
+{
+	updateInterface BMselIntens RebootWindow laterBut 0.4f;
+}
+unSelLaterBut = 
+{
+	updateInterface BMselIntens RebootWindow laterBut 0.0f;
+}
+pickLaterBut = 
+{
+	updateInterface BMselIntens RebootWindow laterBut -0.4f;
+}
+unPickLaterBut = 
+{
+	updateInterface setElVisible RebootWindow 0;
+}

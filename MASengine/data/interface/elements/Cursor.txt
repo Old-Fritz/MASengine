@@ -1,0 +1,29 @@
+ElementName = Cursor
+Bitmap_num = 1
+Text_num = 0
+Actions =  data/interface/CursorElementACTION.txt
+width = screenWidth
+height = screenHeight
+posX = 0
+posY = 0
+VertOrientation = top
+HorOrientation = right
+Bitmaps:
+{
+	Background:
+	{
+		name = cursor
+		texture =  data/interface/textures/cursor.dds
+		width = 64
+		height = 64
+		posX = 0
+		posY = 0
+		Selaction = selaction
+		Unselaction = unselaction
+		Pickaction = pickaction
+		Unpickaction = unpickaction
+	}
+}
+Texts:
+{
+}

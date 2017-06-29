@@ -1,0 +1,134 @@
+ElementName = Debug_info
+Bitmap_num = 0
+Text_num = 1
+Actions =  data/interface/DebugElementACTION.txt
+width = screenWidth
+height = screenHeight
+posX = 30
+posY = 0
+VertOrientation = top
+HorOrientation = left
+Bitmaps:
+{
+}
+Texts:
+{
+	Text:
+	{
+		name = debug_info
+		font = data/fonts/font.txt
+		Textfile =  data/interface/texts/XXX___text.txt
+		Max_Length = 50
+		Strings_num = 12
+		Orientation = LEFT
+		string1:
+		{
+			text = mouseX
+			maxwidth = 200
+			size = 20
+			color = 1 1 1
+			posX = 20
+			posY = 20
+		}
+		string2:
+		{
+			text = mouseY
+			maxwidth = 200
+			size = 20
+			color = 1 1 1
+			posX = 20
+			posY = 40
+		}
+		string3:
+		{
+			text = fps
+			maxwidth = 200
+			size = 20
+			color = 0 1 0
+			posX = 20
+			posY = 60
+		}
+		string4:
+		{
+			text = cpu
+			maxwidth = 200
+			size = 20
+			color = 0 1 0
+			posX = 20
+			posY = 80
+		}
+		string5:
+		{
+			text = keyboardtext
+			maxwidth = 200
+			size = 20
+			color = 1 0 0
+			posX = 20
+			posY = 100
+		}
+		string6:
+		{
+			text = keyboardstring
+			maxwidth = 200
+			size = 20
+			color = 1 0 0
+			posX = 80
+			posY = 100
+		}
+		string7:
+		{
+			text = cam_posX
+			maxwidth = 200
+			size = 20
+			color = 1 0 0
+			posX = 20
+			posY = 140
+		}
+		string8:
+		{
+			text = cam_posY
+			maxwidth = 200
+			size = 20
+			color = 1 0 0
+			posX = 20
+			posY = 160
+		}
+		string9:
+		{
+			text = cam_posZ
+			maxwidth = 200
+			size = 20
+			color = 1 0 0
+			posX = 20
+			posY = 180
+		}
+		string10:
+		{
+			text = cam_rotX
+			maxwidth = 200
+			size = 20
+			color = 1 0 0
+			posX = 20
+			posY = 220
+		}
+		string11:
+		{
+			text = cam_rotY
+			maxwidth = 200
+			size = 20
+			color = 1 0 0
+			posX = 20
+			posY = 240
+		}
+		string12:
+		{
+			text = cam_rotZ
+			maxwidth = 200
+			size = 20
+			color = 1 0 0
+			posX = 20
+			posY = 260
+		}
+	}
+
+}

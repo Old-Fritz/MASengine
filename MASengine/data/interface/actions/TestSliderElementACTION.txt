@@ -1,0 +1,68 @@
+selBackSector = 
+{
+	updateInterface BMselIntens TestSlider backSector 0.4f;
+}
+unSelBackSector =
+{
+	updateInterface BMselIntens TestSlider backSector 0.0f;
+}
+pickBackSector = 
+{
+	updateInterface BMselIntens TestSlider backSector -0.4f;
+}
+unPickBackSector =
+{
+	updateInterface backSector TestSlider;
+}
+
+selNextSector =
+{
+	updateInterface BMselIntens TestSlider nextSector 0.4f;
+}
+unSelNextSector =
+{
+	updateInterface BMselIntens TestSlider nextSector 0.0f;
+}
+pickNextSector =
+{
+	updateInterface BMselIntens TestSlider nextSector -0.4f;
+}
+unPickNextSector =
+{
+	updateInterface nextSector TestSlider;
+}
+
+sliderCommand = 
+{
+	updateInterface TStext TestSlider condition 0 0 end
+	 NUMTestSlider  /data/interface/texts/XXX___text.txt;
+}
+
+
+selSlider = 
+{
+	updateInterface BMselIntens TestSlider slider 0.4f;
+}
+unSelSlider = 
+{
+	updateInterface BMselIntens TestSlider slider 0.0f;
+	updateInterface endDrag TestSlider;
+}
+pickSlider = 
+{
+	updateInterface BMselIntens TestSlider slider -0.4f;
+	updateInterface startDrag TestSlider;
+}
+unPickSlider = 
+{
+	updateInterface endDrag TestSlider;
+}
+
+pickBackground = 
+{
+	updateInterface startDrag TestSlider;
+}
+unPickBackground = 
+{
+	updateInterface endDrag TestSlider;
+}

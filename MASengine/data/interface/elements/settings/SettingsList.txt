@@ -1,0 +1,28 @@
+ElementName = SettingsList
+Bitmap_num = 0
+Text_num = 0
+
+maxSize = 6
+orientation = vertical
+interval = 40
+elementPosX = 0
+elementPosY = 0
+slider =  /data/interface/elements/settings/settingsSlider.txt
+element =  /data/interface/elements/settings/settingsListElement.txt
+elementType = element
+
+Actions =  /data/interface/actions/SettingsACTION.txt
+FontFileName =  /data/fonts/fonts.txt
+DescFileName =  /data/interface/texts/XXX___text.txt
+width = 500
+height = 600
+posX = 0
+posY = 0
+VertOrientation = top
+HorOrientation = left
+Bitmaps:
+{
+}
+Texts:
+{
+}

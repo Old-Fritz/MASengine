@@ -1,0 +1,176 @@
+ElementName = MainMenu
+Bitmap_num = 8
+Text_num = 1
+Actions =  /data/interface/actions/MainMenuElementACTION.txt
+FontFileName =  /data/fonts/fonts.txt
+DescFileName =  /data/interface/texts/XXX___text.txt
+width = screenWidth
+height = screenHeight
+posX = 0
+posY = 0
+VertOrientation = up
+HorOrientation = left
+Bitmaps:
+{
+	Bitmap1:
+	{
+		name = menuBack
+		texture =  /data/interface/textures/MainMenuBack.dds
+		width = 330
+		height = 384
+		posX = middle
+		posY = 180
+		Selaction = selaction
+		Unselaction = unselaction
+		Pickaction = pickaction
+		Unpickaction = unpickaction
+		Description = None
+	}
+	Button1:
+	{
+		name = back
+		texture =  /data/interface/textures/button.dds
+		width = 178
+		height = 64
+		posX = middle
+		posY = 220
+		Selaction = selBack
+		Unselaction = unSelBack
+		Pickaction = pickBack
+		Unpickaction = unPickBack
+		Description = backBut_desc
+	}
+	Button2:
+	{
+		name = settings
+		texture =  /data/interface/textures/button.dds
+		width = 178
+		height = 64
+		posX = middle
+		posY = 300
+		Selaction = selSettings
+		Unselaction = unSelSettings
+		Pickaction = pickSettings
+		Unpickaction = unPickSettings
+		Description = msettingsBut_desc
+	}
+	UnButton2:
+	{
+		name = unSettings
+		texture =  /data/interface/textures/empty.dds
+		width = 178
+		height = 64
+		posX = middle
+		posY = 300
+		Selaction = selSettings
+		Unselaction = unSelSettings
+		Pickaction = pickSettings
+		Unpickaction = unPickUnSettings
+		Description = settingsUnBut_desc
+	}
+	Button3:
+	{
+		name = startMenu
+		texture =  /data/interface/textures/button.dds
+		width = 178
+		height = 64
+		posX = middle
+		posY = 380
+		Selaction = selStartMenu
+		Unselaction = unSelStartMenu
+		Pickaction = pickStartMenu
+		Unpickaction = unPickStartMenu
+		Description = startMenuBut_desc
+	}
+	Button4:
+	{
+		name = exit
+		texture =  /data/interface/textures/button.dds
+		width = 178
+		height = 64
+		posX = middle
+		posY = 460
+		Selaction = selExit
+		Unselaction = unSelExit
+		Pickaction = pickExit
+		Unpickaction = unPickExit
+		Description = exitBut_desc
+	}
+	Button5:
+	{
+		name = mainMenu
+		texture =  /data/interface/textures/mainMenuBut.dds
+		width = 32
+		height = 32
+		posX = 2
+		posY = 2
+		Selaction = selMainMenu
+		Unselaction = unSelMainMenu
+		Pickaction = pickMainMenu
+		Unpickaction = unPickMainMenu
+		Description = mainMenuBut_desc
+	}
+	UnButton5:
+	{
+		name = unMainMenu
+		texture =  /data/interface/textures/empty.dds
+		width = 32
+		height = 32
+		posX = 2
+		posY = 2
+		Selaction = selMainMenu
+		Unselaction = unSelMainMenu
+		Pickaction = pickMainMenu
+		Unpickaction = unPickBack
+		Description = backBut_desc
+	}
+}
+Texts:
+{
+	Text:
+	{
+		name = mainMenu
+		font = f1
+		Textfile =  /data/interface/texts/XXX___text.txt
+		Max_Length = 200
+		Strings_num = 4
+		Orientation = MIDDLE
+		string1:
+		{
+			text = backBut
+			maxwidth = 160
+			size = 40
+			color = 1 1 1
+			posX = middle
+			posY = 232
+		}
+		string2:
+		{
+			text = settingsBut
+			maxwidth = 160
+			size = 40
+			color = 1 1 1
+			posX = middle
+			posY = 312
+		}
+		string3:
+		{
+			text = startMenuBut
+			maxwidth = 160
+			size = 40
+			color = 1 1 1
+			posX = middle
+			posY = 392
+		}
+		string4:
+		{
+			text = exitBut
+			maxwidth = 160
+			size = 40
+			color = 1 1 1
+			posX = middle
+			posY = 472
+		}
+	}
+
+}

@@ -26,10 +26,10 @@ public:
 	void SetPosition(D3DXVECTOR3 position);
 	void SetRotation(D3DXVECTOR3 rotation);
 
-	void GetPosition(D3DXVECTOR3& position);
-	void GetRealPosition(D3DXVECTOR3& positionz);
-	void GetRotation(D3DXVECTOR3& rotation);
-	void GetRealRotation(D3DXVECTOR3& rotation);
+	D3DXVECTOR3 GetPosition();
+	D3DXVECTOR3 GetRealPosition();
+	D3DXVECTOR3 GetRotation();
+	D3DXVECTOR3 GetRealRotation();
 
 	void SetFrameTime(float time);
 

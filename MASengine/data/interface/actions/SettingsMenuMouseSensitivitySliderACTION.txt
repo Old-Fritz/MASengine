@@ -1,0 +1,58 @@
+selSlider =
+{
+	updateInterface BMselIntens MenuMouseSensitivitySlider slider 0.4f;
+}
+unSelSlider =
+{
+	updateInterface BMselIntens MenuMouseSensitivitySlider slider 0.0f;
+	updateInterface endDrag MenuMouseSensitivitySlider;
+}
+pickSlider =
+{
+	updateInterface BMselIntens MenuMouseSensitivitySlider slider -0.4f;
+	updateInterface startDrag MenuMouseSensitivitySlider;
+}
+unPickSlider =
+{
+	updateInterface endDrag MenuMouseSensitivitySlider;
+}
+
+selBackSector =
+{
+	updateInterface BMselIntens MenuMouseSensitivitySlider backSector 0.4f;
+}
+unSelBackSector =
+{
+	updateInterface BMselIntens MenuMouseSensitivitySlider backSector 0.0f;
+}
+pickBackSector =
+{
+	updateInterface BMselIntens MenuMouseSensitivitySlider backSector -0.4f;
+}
+unPickBackSector =
+{
+	updateInterface backSector MenuMouseSensitivitySlider;
+}
+
+selNextSector =
+{
+	updateInterface BMselIntens MenuMouseSensitivitySlider nextSector 0.4f;
+}
+unSelNextSector =
+{
+	updateInterface BMselIntens MenuMouseSensitivitySlider nextSector 0.0f;
+}
+pickNextSector =
+{
+	updateInterface BMselIntens MenuMouseSensitivitySlider nextSector -0.4f;
+}
+unPickNextSector =
+{
+	updateInterface nextSector MenuMouseSensitivitySlider;
+}
+
+sliderCommand = 
+{
+	updateSystem setSettings mouseSensitivity NUMMenuMouseSensitivitySlider;
+	updateInterface getSettings MenuMouseSensitivitySlider condition 0 mouseSensitivity
+	 /data/interface/texts/XXX___text.txt;

@@ -44,6 +44,7 @@ public:
 
 private:
 	bool Frame();
+	bool doCommands();
 	void InitializeWindows(int screenWidth, int screenHeight);
 	void ShutdownWindows();
 private:

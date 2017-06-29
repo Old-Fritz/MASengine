@@ -1,0 +1,126 @@
+selContinue =
+{
+	updateInterface BMselIntens SpeedMenu continue 0.4f;
+}
+unselContinue =
+{
+	updateInterface BMselIntens SpeedMenu continue 0.0f;
+}
+pickContinue =
+{	
+	updateInterface BMselIntens SpeedMenu continue -0.4f;
+}	
+unPickContinue =
+{
+	updateTime setPause 0;
+	updateInterface setBMvisible SpeedMenu pause 1;
+	updateInterface setBMvisible SpeedMenu continue 0;
+	playSound /data/sounds/sound01.wav;
+}
+
+selPause = 
+{
+	updateInterface BMselIntens SpeedMenu pause 0.4f;
+}
+unSelPause = 
+{
+	updateInterface BMselIntens SpeedMenu pause 0.0f;
+}
+pickPause = 
+{
+	updateInterface BMselIntens SpeedMenu pause -0.4f;
+}
+unPickPause = 
+{
+	updateTime setPause 1;
+	updateInterface setBMvisible SpeedMenu pause 0;
+	updateInterface setBMvisible SpeedMenu continue 1;
+	playSound /data/sounds/sound01.wav;
+}
+
+selSlower =
+{
+	updateInterface BMselIntens SpeedMenu slower 0.4f;
+}
+unSelSlower =
+{
+	updateInterface BMselIntens SpeedMenu slower 0.0f;
+}
+pickSlower =
+{
+	updateInterface BMselIntens SpeedMenu slower -0.4f;
+}
+	
+selFaster =
+{
+	updateInterface BMselIntens SpeedMenu faster 0.4f;
+}
+unSelFaster =
+{
+	updateInterface BMselIntens SpeedMenu faster 0.0f;
+}
+pickFaster =
+{
+	updateInterface BMselIntens SpeedMenu faster -0.4f;
+}
+
+setSpeed1 =
+{
+	updateInterface setBMvisible SpeedMenu speed1 1;
+	updateInterface setBMvisible SpeedMenu speed2 0;
+	updateInterface setBMvisible SpeedMenu speed3 0;
+	updateInterface setBMvisible SpeedMenu speed4 0;
+	updateInterface setBMvisible SpeedMenu speed5 0;
+	updateTime setSpeed 1;
+	updateInterface setBMCommand SpeedMenu slower unPick setSpeed1;
+	updateInterface setBMCommand SpeedMenu faster unPick setSpeed2;
+	playSound /data/sounds/sound01.wav;
+}
+setSpeed2 =
+{
+	updateInterface setBMvisible SpeedMenu speed1 0;
+	updateInterface setBMvisible SpeedMenu speed2 1;
+	updateInterface setBMvisible SpeedMenu speed3 0;
+	updateInterface setBMvisible SpeedMenu speed4 0;
+	updateInterface setBMvisible SpeedMenu speed5 0;
+	updateTime setSpeed 2;
+	updateInterface setBMCommand SpeedMenu slower unPick setSpeed1;
+	updateInterface setBMCommand SpeedMenu faster unPick setSpeed3;
+	playSound /data/sounds/sound01.wav;
+}
+setSpeed3 =
+{
+	updateInterface setBMvisible SpeedMenu speed1 0;
+	updateInterface setBMvisible SpeedMenu speed2 0;
+	updateInterface setBMvisible SpeedMenu speed3 1;
+	updateInterface setBMvisible SpeedMenu speed4 0;
+	updateInterface setBMvisible SpeedMenu speed5 0;
+	updateTime setSpeed 3;
+	updateInterface setBMCommand SpeedMenu slower unPick setSpeed2;
+	updateInterface setBMCommand SpeedMenu faster unPick setSpeed4;
+	playSound /data/sounds/sound01.wav;
+}
+setSpeed4 =
+{
+	uupdateInterface setBMvisible SpeedMenu speed1 0;
+	updateInterface setBMvisible SpeedMenu speed2 0;
+	updateInterface setBMvisible SpeedMenu speed3 0;
+	updateInterface setBMvisible SpeedMenu speed4 1;
+	updateInterface setBMvisible SpeedMenu speed5 0;
+	updateTime setSpeed 4;
+	updateInterface setBMCommand SpeedMenu slower unPick setSpeed3;
+	updateInterface setBMCommand SpeedMenu faster unPick setSpeed5;
+	playSound /data/sounds/sound01.wav;
+}
+setSpeed5 =
+{
+	updateInterface setBMvisible SpeedMenu speed1 0;
+	updateInterface setBMvisible SpeedMenu speed2 0;
+	updateInterface setBMvisible SpeedMenu speed3 0;
+	updateInterface setBMvisible SpeedMenu speed4 0;
+	updateInterface setBMvisible SpeedMenu speed5 1;
+	updateTime setSpeed 5;
+	updateInterface setBMCommand SpeedMenu slower unPick setSpeed4;
+	updateInterface setBMCommand SpeedMenu faster unPick setSpeed5;
+	playSound /data/sounds/sound01.wav;
+}

@@ -1,0 +1,29 @@
+ElementName = Logo
+Bitmap_num = 1
+Text_num = 0
+Actions =  data/interface/LogoElementACTION.txt
+width = screenWidth
+height = screenHeight
+posX = 0
+posY = 0
+VertOrientation = top
+HorOrientation = right
+Bitmaps:
+{
+	Background:
+	{
+		name = logo
+		texture =  data/interface/textures/logo.dds
+		width = 256
+		height = 368
+		posX = 270
+		posY = 30
+		Selaction = selaction
+		Unselaction = unselaction
+		Pickaction = pickaction
+		Unpickaction = unpickaction
+	}
+}
+Texts:
+{
+}

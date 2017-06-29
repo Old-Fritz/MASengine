@@ -1,0 +1,150 @@
+selStart = 
+{
+	updateInterface BMselIntens StartMenuDown start 0.4f;
+}
+selSettings = 
+{
+	updateInterface BMselIntens StartMenuDown settings 0.4f;
+}
+selAutors = 
+{
+	updateInterface BMselIntens StartMenuDown autors 0.4f;
+}
+selExit = 
+{
+	updateInterface BMselIntens StartMenuDown exit 0.4f;
+}
+selAutCross = 
+{
+	updateInterface BMselIntens AutorsMenu cross 0.4f;
+}
+
+
+unSelStart = 
+{
+	updateInterface BMselIntens StartMenuDown start 0.05f;
+	updateInterface BMtranspar StartMenuDown start 0.96f;
+}
+unSelSettings = 
+{
+	updateInterface BMselIntens StartMenuDown settings 0.05f;
+	updateInterface BMtranspar StartMenuDown settings 0.96f;
+}
+unSelAutors = 
+{
+	updateInterface BMselIntens StartMenuDown autors 0.05f;
+	updateInterface BMtranspar StartMenuDown autors 0.96f;
+}
+unSelExit = 
+{
+	updateInterface BMselIntens StartMenuDown exit 0.05f;
+	updateInterface BMtranspar StartMenuDown exit 0.96f;
+}
+unSelAutCross = 
+{
+	updateInterface BMselIntens AutorsMenu cross 0.05f;
+	updateInterface BMtranspar AutorsMenu cross 0.96f;
+}
+
+
+pickStart = 
+{
+	updateInterface BMselIntens StartMenuDown start -0.4f;
+}
+pickSettings = 
+{
+	updateInterface BMselIntens StartMenuDown settings -0.4f;
+}
+pickAutors = 
+{
+	updateInterface BMselIntens StartMenuDown autors -0.4f;
+}
+pickExit = 
+{
+	updateInterface BMselIntens StartMenuDown exit -0.4f;
+}
+pickAutCross = 
+{
+	updateInterface BMselIntens AutorsMenu cross -0.4f;
+}
+
+
+unPickStart = 
+{
+	updateInterface setElVisible StartMenuDown 0;
+	updateInterface setElVisible StartMenuBack 0;
+	updateInterface setElVisible MainMenu 1;
+	updateInterface setElVisible Image_info 1;
+	updateInterface setElVisible SpeedMenu 1;
+
+	updateInterface setBMvisible MainMenu menuBack 0;
+	updateInterface setBMvisible MainMenu settings 0;
+	updateInterface setBMvisible MainMenu unSettings 0;
+	updateInterface setBMvisible MainMenu startMenu 0;
+	updateInterface setBMvisible MainMenu exit 0;
+	updateInterface setBMvisible MainMenu back 0;
+	updateInterface setBMvisible MainMenu unMainMenu 0;
+	updateInterface setTvisible MainMenu mainMenu 0;
+
+	updateSystem cameraPosition 253 585 237
+	updateSystem cameraRotation 88 0 0;
+	updateSystem setButCommand 1 unPickCommand 1unPickCommandMainGame;
+}
+unPickSettings = 
+{
+	updateSystem setButCommand 1 unPickCommand 1unPickCommandSettingsMenu;
+	
+	updateInterface setElVisible StartSettings 1;
+	updateInterface setElVisible RenderSlider 1;
+	updateInterface getSettings RenderSlider condition 0 renderDistance
+	 /data/interface/texts/XXX___text.txt;
+	
+	
+	updateInterface setBMvisible StartSettings noVsync 1;
+	updateInterface setBMvisible StartSettings noFullscreen 1;
+	updateInterface setBMvisible StartSettings resolutionBack 1;
+	updateInterface setBMvisible StartSettings resolutionShowMenu 1;
+	updateInterface setBMvisible StartSettings sampleBack 1;
+	updateInterface setBMvisible StartSettings sampleShowMenu 1;
+	updateInterface setBMvisible StartSettings texturesQBack 1;
+	updateInterface setBMvisible StartSettings texturesQShowMenu 1;
+	updateInterface setBMvisible StartSettings langBack 0;
+	updateInterface setBMvisible StartSettings langShowMenu 0;
+	updateInterface setTvisible StartSettings graphicsText 1;
+	updateInterface setTvisible StartSettings gameText 0;
+	
+	
+	
+	updateInterface getSettings StartSettings graphicsText 1 resolution 
+	 /data/interface/texts/XXX___text.txt; 
+	updateInterface getSettings StartSettings graphicsText 3 sample 
+	 /data/interface/texts/XXX___text.txt; 
+	updateInterface getSettings StartSettings graphicsText 5 texturesQ
+	 /data/interface/texts/XXX___text.txt; 
+	updateInterface getSettings StartSettings gameText 1 lang
+	 /data/interface/texts/XXX___text.txt; 
+	updateInterface getSettings StartSettings isFullscreen 0 fullscreen
+	 /data/interface/texts/XXX___text.txt; 
+	updateInterface getSettings StartSettings isVsync 0 vsync
+	 /data/interface/texts/XXX___text.txt;
+	
+	updateInterface setBMCommand StartSettings resolutionShowMenu unPick unPickResolutionShowMenu;
+	updateInterface setBMCommand StartSettings sampleShowMenu unPick unPickSampleShowMenu;
+	updateInterface setBMCommand StartSettings texturesQShowMenu unPick unPickTexturesQShowMenu;
+	updateInterface setBMCommand StartSettings langShowMenu unPick unPickLangShowMenu;
+}
+unPickAutors = 
+{
+	updateInterface setElVisible StartMenuDown 0;
+	updateInterface setElVisible AutorsMenu 1;
+	updateSystem setButCommand 1 unPickCommand 1unPickCommandAutorsMenu;
+}
+unPickExit = 
+{
+	stop;
+}
+unPickAutCross = 
+{
+	updateInterface setElVisible StartMenuDown 1;
+	updateInterface setElVisible AutorsMenu 0;
+}

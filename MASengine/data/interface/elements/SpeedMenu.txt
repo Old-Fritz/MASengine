@@ -1,0 +1,235 @@
+ElementName = SpeedMenu
+Bitmap_num = 14
+Text_num = 1
+Actions =  /data/interface/actions/SpeedMenuElementACTION.txt
+FontFileName =  /data/fonts/fonts.txt
+DescFileName =  /data/interface/texts/XXX___text.txt
+width = 500
+height = 200
+posX = middle
+posY = 0
+VertOrientation = up
+HorOrientation = left
+Bitmaps:
+{
+
+	Button2:
+	{
+		name = speed2
+		texture =  /data/interface/textures/ClockSpeed1.dds
+		width = 77
+		height = 71
+		posX = 12
+		posY = 112
+		Selaction = selaction
+		Unselaction = unselaction
+		Pickaction = pickaction
+		Unpickaction = unpickaction
+		Description = speed2_desc
+	}
+	Button3:
+	{
+		name = speed3
+		texture =  /data/interface/textures/ClockSpeed2.dds
+		width = 77
+		height = 71
+		posX = 12
+		posY = 112
+		Selaction = selaction
+		Unselaction = unselaction
+		Pickaction = pickaction
+		Unpickaction = unpickaction
+		Description = speed3_desc
+	}
+	Button4:
+	{
+		name = speed4
+		texture =  /data/interface/textures/ClockSpeed3.dds
+		width = 77
+		height = 71
+		posX = 12
+		posY = 112
+		Selaction = selaction
+		Unselaction = unselaction
+		Pickaction = pickaction
+		Unpickaction = unpickaction
+		Description = speed4_desc
+	}
+	Button5:
+	{
+		name = speed5
+		texture =  /data/interface/textures/ClockSpeed4.dds
+		width = 77
+		height = 71
+		posX = 12
+		posY = 112
+		Selaction = selaction
+		Unselaction = unselaction
+		Pickaction = pickaction
+		Unpickaction = unpickaction
+		Description = speed5_desc
+	}
+	Button1:
+	{
+		name = speed1
+		texture =  /data/interface/textures/ClockSpeed0.dds
+		width = 77
+		height = 71
+		posX = 12
+		posY = 112
+		Selaction = selaction
+		Unselaction = unselaction
+		Pickaction = pickaction
+		Unpickaction = unpickaction
+		Description = speed1_desc
+	}
+	Image6
+	{
+		name = back0
+		texture =  /data/interface/textures/ClockBack0.dds
+		width = 113
+		height = 113
+		posX = 33
+		posY = 50
+		Selaction = selaction
+		Unselaction = unselaction
+		Pickaction = pickaction
+		Unpickaction = unpickaction
+		Description = winter
+	}
+	Image7
+	{
+		name = back1
+		texture =  /data/interface/textures/ClockBack1.dds
+		width = 113
+		height = 113
+		posX = 33
+		posY = 50
+		Selaction = selaction
+		Unselaction = unselaction
+		Pickaction = pickaction
+		Unpickaction = unpickaction
+		Description = spring
+	}
+	Image8
+	{
+		name = back2
+		texture =  /data/interface/textures/ClockBack2.dds
+		width = 113
+		height = 113
+		posX = 33
+		posY = 50
+		Selaction = selaction
+		Unselaction = unselaction
+		Pickaction = pickaction
+		Unpickaction = unpickaction
+		Description = summer
+	}
+	Image9
+	{
+		name = back3
+		texture =  /data/interface/textures/ClockBack3.dds
+		width = 113
+		height = 113
+		posX = 33
+		posY = 50
+		Selaction = selaction
+		Unselaction = unselaction
+		Pickaction = pickaction
+		Unpickaction = unpickaction
+		Description = autumn
+	}
+	Bitmap1:
+	{
+		name = menuBack
+		texture =  /data/interface/textures/ClockBackPanel.dds
+		width = 500
+		height = 171
+		posX = 0
+		posY = 0
+		Selaction = selaction
+		Unselaction = unselaction
+		Pickaction = pickaction
+		Unpickaction = unpickaction
+		Description = None
+	}
+	Button1:
+	{
+		name = continue
+		texture =  /data/interface/textures/ClockContinue.dds
+		width = 38
+		height = 30
+		posX = 91
+		posY = 164
+		Selaction = selContinue
+		Unselaction = unselContinue
+		Pickaction = pickContinue
+		Unpickaction = unPickContinue
+		Description = continue
+	}
+	Button2:
+	{
+		name = pause
+		texture =  /data/interface/textures/ClockPause.dds
+		width = 38
+		height = 30
+		posX = 91
+		posY = 164
+		Selaction = selPause
+		Unselaction = unSelPause
+		Pickaction = pickPause
+		Unpickaction = unPickPause
+		Description = pause
+	}
+	Button3:
+	{
+		name = slower
+		texture =  /data/interface/textures/ClockSlower.dds
+		width = 39
+		height = 36
+		posX = 119
+		posY = 142
+		Selaction = selSlower
+		Unselaction = unSelSlower
+		Pickaction = pickSlower
+		Unpickaction = setSpeed1
+		Description = slower
+	}
+	Button4:
+	{
+		name = faster
+		texture =  /data/interface/textures/ClockFaster.dds
+		width = 34
+		height = 36
+		posX = 140
+		posY = 112
+		Selaction = selFaster
+		Unselaction = unSelFaster
+		Pickaction = pickFaster
+		Unpickaction = setSpeed2
+		Description = faster
+	}
+	
+}
+Texts:
+{
+	Text:
+	{
+		name = dataText
+		font = f1
+		Textfile =  /data/interface/texts/XXX___text.txt
+		Max_Length = 200
+		Strings_num = 1
+		Orientation = left
+		string1:
+		{
+			text = HH:MM_DD:MM:YYYY
+			maxwidth = 200
+			size = 25
+			color = 1 1 1
+			posX = 215
+			posY = 38
+		}
+	}
+
+}

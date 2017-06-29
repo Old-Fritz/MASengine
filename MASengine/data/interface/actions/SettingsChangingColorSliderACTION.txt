@@ -1,0 +1,59 @@
+selSlider =
+{
+	updateInterface BMselIntens ChangingColorSlider slider 0.4f;
+}
+unSelSlider =
+{
+	updateInterface BMselIntens ChangingColorSlider slider 0.0f;
+	updateInterface endDrag ChangingColorSlider;
+}
+pickSlider =
+{
+	updateInterface BMselIntens ChangingColorSlider slider -0.4f;
+	updateInterface startDrag ChangingColorSlider;
+}
+unPickSlider =
+{
+	updateInterface endDrag ChangingColorSlider;
+}
+
+selBackSector =
+{
+	updateInterface BMselIntens ChangingColorSlider backSector 0.4f;
+}
+unSelBackSector =
+{
+	updateInterface BMselIntens ChangingColorSlider backSector 0.0f;
+}
+pickBackSector =
+{
+	updateInterface BMselIntens ChangingColorSlider backSector -0.4f;
+}
+unPickBackSector =
+{
+	updateInterface backSector ChangingColorSlider;
+}
+
+selNextSector =
+{
+	updateInterface BMselIntens ChangingColorSlider nextSector 0.4f;
+}
+unSelNextSector =
+{
+	updateInterface BMselIntens ChangingColorSlider nextSector 0.0f;
+}
+pickNextSector =
+{
+	updateInterface BMselIntens ChangingColorSlider nextSector -0.4f;
+}
+unPickNextSector =
+{
+	updateInterface nextSector ChangingColorSlider;
+}
+
+sliderCommand = 
+{
+	updateSystem setSettings changableColor NUMChangingColorSlider;
+	updateInterface getSettings ChangingColorSlider condition 0 changableColor
+	 /data/interface/texts/XXX___text.txt;
+}

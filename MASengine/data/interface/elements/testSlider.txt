@@ -1,0 +1,110 @@
+ElementName = TestSlider
+Bitmap_num = 5
+Text_num = 1
+sectorsNum = 400
+orientation = vertical
+sliderCommand = sliderCommand
+Actions =  /data/interface/actions/TestSliderElementACTION.txt
+FontFileName =  /data/fonts/fonts.txt
+DescFileName =  /data/interface/texts/XXX___text.txt
+width = 60
+height = 600
+posX = 500
+posY = 20
+VertOrientation = top
+HorOrientation = left
+Bitmaps:
+{
+	Background
+	{
+		name = Background
+		texture =  /data/interface/textures/MainMenuBack.dds
+		width = 60
+		height = 600
+		posX = 0
+		posY = 0
+		Selaction = selBackground
+		Unselaction = unSelBackground
+		Pickaction = pickBackground
+		Unpickaction = unPickBackground
+		Description = None
+	}
+	backLine
+	{
+		name = backLine
+		texture =  /data/interface/textures/loadLine.dds
+		width = 20
+		height = 560
+		posX = 20
+		posY = 20
+		Selaction = selBackLine
+		Unselaction = unSelBackLine
+		Pickaction = pickBackLine
+		Unpickaction = unPickBackLine
+		Description = backLine
+	}
+	slider:
+	{
+		name = slider
+		texture =  /data/interface/textures/logo.dds
+		width = 30
+		height = 20
+		posX = 15
+		posY = 20
+		Selaction = selSlider
+		Unselaction = unSelSlider
+		Pickaction = pickSlider
+		Unpickaction = unPickSlider
+		Description = slider
+	}
+	button1:
+	{
+		name = backSector
+		texture =  /data/interface/textures/button.dds
+		width = 40
+		height = 18
+		posX = 10
+		posY = 1
+		Selaction = selBackSector
+		Unselaction = unSelBackSector
+		Pickaction = pickBackSector
+		Unpickaction = unPickBackSector
+		Description = backSector
+	{
+	button2:
+	{
+		name = nextSector
+		texture =  /data/interface/textures/button.dds
+		width = 40
+		height = 18
+		posX = 10
+		posY = 581
+		Selaction = selNextSector
+		Unselaction = unSelNextSector
+		Pickaction = pickNextSector
+		Unpickaction = unPickNextSector
+		Description = nextSector
+	{
+}
+Texts:
+{
+	Text:
+	{
+		name = condition
+		font = f1
+		Textfile =  /data/interface/texts/XXX___text.txt
+		Max_Length = 50
+		Strings_num = 1
+		Orientation = LEFT
+		string:
+		{
+			text = 0
+			maxwidth = 100
+			size = 60
+			color = 1 1 0
+			posX = 100
+			posY = 50
+		}
+	}
+
+}

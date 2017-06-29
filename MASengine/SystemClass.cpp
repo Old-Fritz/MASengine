@@ -140,6 +140,7 @@ void SystemClass::Run()
 bool SystemClass::Frame()
 {
 	bool result;
+	int mouseX, mouseY;
 
 	SystemStateManagerClass::getI().Frame();
 
@@ -151,18 +152,54 @@ bool SystemClass::Frame()
 		return false;
 	}
 
+	m_input->GetMouseLocation(mouseX, mouseY);
+
 	//process position
 	m_position->Move();
 
 	//process graphics
-	result = m_graphics->Frame();
+	result = m_graphics->Frame(m_position->GetPosition(), m_position->GetRotation(), mouseX, mouseY,m_input->IsLeftMouseButtonDown()); 
 	if (!result)
 	{
 		LogManagerClass::getI().addLog("Error 8-2");
 		return false;
 	}
 
+	doCommands();
+
 	return true;
+}
+
+bool SystemClass::doCommands()
+{
+	CommandClass* command;
+
+	while (CommandManagerClass::getI().isFull())
+	{
+		command = CommandManagerClass::getI().nextCommand();
+
+		for (int i = 0; i < command->getCommandsNum(); i++)
+		{
+			std::string commandType = command->getParam(i, 0);
+			if (commandType == "updateInterface")
+				m_graphics->updateInterface(command,i);
+			//else if (commandType == "updateSystem")
+			//	updateSystem(command, i);
+			//else if (commandType == "updateTime")
+			//	updateTime(command, i);
+			//else if (commandType == "setParam")
+			//	command->add(setParam(command->getSingleCommand(i)));
+			//else if (commandType == "playSound")
+			//	m_resources->getSound()->playSound(command->getParam(i, 1));
+			else if (commandType == "reboot")
+			{
+				Shutdown();
+				Initialize();
+			}
+			else if (commandType == "stop")
+				return false;
+		}
+	}
 }
 
 void SystemClass::InitializeWindows(int screenWidth, int screenHeight)

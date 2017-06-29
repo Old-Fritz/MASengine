@@ -1,0 +1,22 @@
+ElementName = TestGroup
+Bitmap_num = 0
+Text_num = 0
+
+element =  /data/interface/elements/TestGroupList.txt
+elementType = list
+
+Actions =  /data/interface/actions/TestGroupElementACTION.txt
+FontFileName =  /data/fonts/fonts.txt
+DescFileName =  /data/interface/texts/XXX___text.txt
+width = 600
+height = 600
+posX = 200
+posY = 20
+VertOrientation = top
+HorOrientation = left
+Bitmaps:
+{
+}
+Texts:
+{
+}

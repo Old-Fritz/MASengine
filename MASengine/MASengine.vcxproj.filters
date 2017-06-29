@@ -195,6 +195,9 @@
     <ClCompile Include="InterfaceElementClass.cpp">
       <Filter>Файлы исходного кода\Graphics\Interface\InterfaceElements</Filter>
     </ClCompile>
+    <ClCompile Include="InterfaceClass.cpp">
+      <Filter>Файлы исходного кода\Graphics\Interface</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SystemClass.h">

@@ -1,0 +1,44 @@
+selAddElement =
+{
+	updateInterface BMselIntens _NUMTestGroup_TestGroup addElement 0.4f;
+}
+unSelAddElement =
+{
+	updateInterface BMselIntens _NUMTestGroup_TestGroup addElement 0.0f;
+}
+pickAddElement =
+{
+	updateInterface BMselIntens _NUMTestGroup_TestGroup addElement -0.4f;
+}
+unPickAddElement =
+{
+	updateInterface addElement _NUMTestGroup_TestGroup;
+	updateInterface TSlastword _NUMTestGroup__ELSLENGTHTestGroupList+1_TestGroup condition 0
+	 ELSLENGTHTestGroupList  /data/interface/texts/XXX___text.txt;
+}
+
+selDeleteElement =
+{
+	updateInterface BMselIntens _NUMTestGroup_TestGroup deleteElement 0.4f;
+}
+unSelDeleteElement =
+{
+	updateInterface BMselIntens _NUMTestGroup_TestGroup deleteElement 0.0f;
+}
+pickDeleteElement =
+{
+	updateInterface BMselIntens _NUMTestGroup_TestGroup deleteElement -0.4f;
+}
+unPickDeleteElement =
+{
+	updateInterface deleteElement _NUMTestGroup_TestGroup ELSLENGTHTestGroupList-1_;
+}
+
+pickBackground = 
+{
+	updateInterface startDrag _NUMTestGroup_TestGroup;
+}
+unPickBackground = 
+{
+	updateInterface endDrag _NUMTestGroup_TestGroup;
+}

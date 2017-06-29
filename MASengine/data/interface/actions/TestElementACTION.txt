@@ -1,0 +1,220 @@
+selaction1 = 
+{
+	updateInterface BMselIntens Test test1 0.1f;
+	updateInterface BMvertPercent Test test1 0.5f;
+}
+selaction2 = 
+{
+	updateInterface BMselIntens Test test2 0.2f;
+	updateInterface BMhorPercent Test test2 0.5f;
+}
+selaction3 = 
+{
+	updateInterface BMselIntens Test test3 0.3f;
+	updateInterface BMtranspar Test test3 0.5f;
+}
+selaction4 = 
+{
+	updateInterface BMselIntens Test test4 0.4f;
+	updateInterface BMselCol Test test4 1 0 0 1;
+}
+selaction5 = 
+{
+	updateInterface BMselIntens Test test5 0.5f;
+	updateInterface BMhorPercent Test test5 -0.5f;
+}
+selaction6 = 
+{
+	updateInterface BMselIntens Test test6 0.6f;
+	updateInterface BMvertPercent Test test6 -0.5f;
+}
+selaction7 = 
+{
+	updateInterface BMselIntens Test test7 0.7f;
+	updateInterface TStext Test maga 1 0 5
+	 _RUSSI  /data/interface/texts/XXX___text.txt;
+	updateInterface setBMvisible Logo logo 0;
+}
+selaction8 = 
+{
+	updateInterface BMselIntens Test test8 0.8f;
+	updateInterface TStext Test maga 1 0 end
+	 america  /data/interface/texts/XXX___text.txt;
+	updateInterface setBMvisible Logo logo 1;
+}
+selactiont = 
+{
+	updateInterface BMselIntens Test tramp 1.0f;
+	
+	updateInterface BMtranspar Test test1 0.02f;
+	updateInterface BMtranspar Test test2 0.0f;
+	updateInterface BMtranspar Test test3 0.49f;
+	updateInterface BMtranspar Test test4 0.59f;
+	updateInterface BMtranspar Test test5 0.69f;
+	updateInterface BMtranspar Test test6 0.79f;
+	updateInterface BMtranspar Test test7 0.89f;
+	updateInterface BMtranspar Test test8 0.99f;
+}
+unselaction1 = 
+{
+	updateInterface BMselIntens Test test1 0;
+	updateInterface BMvertPercent Test test1 1;
+	updateInterface BMhorPercent Test test1 1;
+	updateInterface BMtranspar Test test1 1;
+	updateInterface BMselCol Test test1 1 1 1 1;
+}
+unselaction2 = 
+{
+	updateInterface BMselIntens Test test2 0;
+	updateInterface BMvertPercent Test test2 1;
+	updateInterface BMhorPercent Test test2 1;
+	updateInterface BMtranspar Test test2 1;
+	updateInterface BMselCol Test test2 1 1 1 1;
+}
+unselaction3 = 
+{
+	updateInterface BMselIntens Test test3 0;
+	updateInterface BMvertPercent Test test3 1;
+	updateInterface BMhorPercent Test test3 1;
+	updateInterface BMtranspar Test test3 1;
+	updateInterface BMselCol Test test3 1 1 1 1;
+}
+unselaction4 = 
+{
+	updateInterface BMselIntens Test test4 0;
+	updateInterface BMvertPercent Test test4 1;
+	updateInterface BMhorPercent Test test4 1;
+	updateInterface BMtranspar Test test4 1;
+	updateInterface BMselCol Test test4 1 1 1 1;
+}
+unselaction5 = 
+{
+	updateInterface BMselIntens Test test5 0;
+	updateInterface BMvertPercent Test test5 1;
+	updateInterface BMhorPercent Test test5 1;
+	updateInterface BMtranspar Test test5 1;
+	updateInterface BMselCol Test test5 1 1 1 1;
+}
+unselaction6 = 
+{
+	updateInterface BMselIntens Test test6 0;
+	updateInterface BMvertPercent Test test6 1;
+	updateInterface BMhorPercent Test test6 1;
+	updateInterface BMtranspar Test test6 1;
+	updateInterface BMselCol Test test6 1 1 1 1;
+}
+unselaction7 = 
+{
+	updateInterface BMselIntens Test test7 0;
+	updateInterface BMvertPercent Test test7 1;
+	updateInterface BMhorPercent Test test7 1;
+	updateInterface BMtranspar Test test7 1;
+	updateInterface BMselCol Test test7 1 1 1 1;
+}
+unselaction8 = 
+{
+	updateInterface BMselIntens Test test8 0;
+	updateInterface BMvertPercent Test test8 1;
+	updateInterface BMhorPercent Test test8 1;
+	updateInterface BMtranspar Test test8 1;
+	updateInterface BMselCol Test test8 1 1 1 1;
+}
+unselactiont = 
+{
+	updateInterface BMselIntens Test tramp 0;
+	updateInterface BMvertPercent Test tramp 1;
+	updateInterface BMhorPercent Test tramp 1;
+	updateInterface BMtranspar Test tramp 1;
+	updateInterface BMselCol Test tramp 1 1 1 1;
+	
+	updateInterface BMtranspar Test test1 1;
+	updateInterface BMtranspar Test test2 1;
+	updateInterface BMtranspar Test test3 1;
+	updateInterface BMtranspar Test test4 1;
+	updateInterface BMtranspar Test test5 1;
+	updateInterface BMtranspar Test test6 1;
+	updateInterface BMtranspar Test test7 1;
+	updateInterface BMtranspar Test test8 1;
+	
+}
+unpickaction1 = 
+{
+	updateInterface BMselIntens Test test1 0;
+	updateInterface setBMvisible Logo logo 0;
+}
+unpickaction2 = 
+{
+	updateInterface BMselIntens Test test2 0;
+	updateInterface setBMvisible Logo logo 0;
+}
+unpickaction3 = 
+{
+	updateInterface BMselIntens Test test3 0;
+	updateInterface setBMvisible Logo logo 1;
+}
+unpickaction4 = 
+{
+	updateInterface BMselIntens Test test4 0;
+	updateInterface setBMvisible Logo logo 0;
+}
+unpickaction5 = 
+{
+	updateInterface BMselIntens Test test5 0;
+	updateInterface setBMvisible Logo logo 0;
+}
+unpickaction6 = 
+{
+	updateInterface BMselIntens Test test6 0;
+	updateInterface setBMvisible Logo logo 1;
+}
+unpickaction7 = 
+{
+	updateInterface BMselIntens Test test7 0;
+	updateInterface setBMvisible Logo logo 0;
+}
+unpickaction8 = 
+{
+	updateInterface BMselIntens Test test8 0;
+	updateInterface setBMvisible Logo logo 1;
+}
+unpickactiont = 
+{
+	updateInterface BMselIntens Test tramp 0;
+	updateInterface setBMvisible Logo logo 0;
+}
+pickaction1 = 
+{
+	updateInterface BMselIntens Test test1 -0.1f;
+}
+pickaction2 = 
+{
+	updateInterface BMselIntens Test test2 -0.2f;
+}
+pickaction3 = 
+{
+	updateInterface BMselIntens Test test3 -0.3f;
+}
+pickaction4 = 
+{
+	updateInterface BMselIntens Test test4 -0.4f;
+}
+pickaction5 = 
+{
+	updateInterface BMselIntens Test test5 -0.5f;
+}
+pickaction6 = 
+{
+	updateInterface BMselIntens Test test6 -0.6f;
+}
+pickaction7 = 
+{
+	updateInterface BMselIntens Test test7 -0.7f;
+}
+pickaction8 = 
+{
+	updateInterface BMselIntens Test test8 -0.8f;
+}
+pickactiont = 
+{
+	updateInterface BMselIntens Test tramp -0.9f;
+}

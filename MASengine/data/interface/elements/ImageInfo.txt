@@ -1,0 +1,82 @@
+ElementName = Image_info
+Bitmap_num = 0
+Text_num = 1
+Actions =  /data/interface/ImageElementACTION.txt
+FontFileName =  /data/fonts/fonts.txt
+DescFileName =  /data/interface/texts/XXX___text.txt
+width = screenWidth
+height = screenHeight
+posX = 0
+posY = 0
+VertOrientation = bottom
+HorOrientation = left
+Bitmaps:
+{
+}
+Texts:
+{
+	Text:
+	{
+		name = image_info
+		font = f1
+		Textfile =  /data/interface/texts/XXX___text.txt
+		Max_Length = 50
+		Strings_num = 6
+		Orientation = LEFT
+		string1:
+		{
+			text = imageX
+			maxwidth = 300
+			size = 20
+			color = 1 1 1
+			posX = 20
+			posY = 100
+		}
+		string2:
+		{
+			text = imageY
+			maxwidth = 300
+			size = 20
+			color = 1 1 1
+			posX = 20
+			posY = 80
+		}
+		string3:
+		{
+			text = provcolR 
+			maxwidth = 100
+			size = 20
+			color = 1 0 0
+			posX = 20
+			posY = 60
+		}
+		string4:
+		{
+			text = provcolG
+			maxwidth = 100
+			size = 20
+			color = 1 0 0
+			posX = 70
+			posY = 60
+		}
+		string5:
+		{
+			text = provcolB
+			maxwidth = 100
+			size = 20
+			color = 1 0 0
+			posX = 120
+			posY = 60
+		}
+		string6:
+		{
+			text = provnum
+			maxwidth = 200
+			size = 20
+			color = 1 0 0
+			posX = 20
+			posY = 20
+		}
+	}
+
+}

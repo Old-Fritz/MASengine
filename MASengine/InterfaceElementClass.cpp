@@ -289,7 +289,10 @@ void  InterfaceElementClass::setBMvisible(const std::string& name, bool visible)
 {
 	int i = findBMbyName(name);
 	if (i < m_bitmapsNum)
+	{
 		m_bitmapsInfo[i].visible = visible;
+		CommandManagerClass::getI().addCommand(m_bitmapsInfo[i].unSelAction, m_actionsFileName);
+	}
 }
 void InterfaceElementClass::updateBMposX(const std::string& name, int posX)
 {
@@ -455,29 +458,29 @@ std::string InterfaceElementClass::pick(int posX, int posY)
 	}
 	return "";
 }
-std::string InterfaceElementClass::getSelCommand(const std::string& name)
+void InterfaceElementClass::addSelCommand(const std::string& name)
 {
 	int i = findBMbyName(name);
 
-	return m_bitmapsInfo[i].selAction;
+	CommandManagerClass::getI().addCommand(m_bitmapsInfo[i].selAction, m_actionsFileName);
 }
-std::string InterfaceElementClass::getUnSelCommand(const std::string& name)
+void InterfaceElementClass::addUnSelCommand(const std::string& name)
 {
 	int i = findBMbyName(name);
 
-	return m_bitmapsInfo[i].unSelAction;
+	CommandManagerClass::getI().addCommand(m_bitmapsInfo[i].unSelAction, m_actionsFileName);
 }
-std::string InterfaceElementClass::getPickCommand(const std::string& name)
+void InterfaceElementClass::addPickCommand(const std::string& name)
 {
 	int i = findBMbyName(name);
 	
-	return m_bitmapsInfo[i].pickAction;
+	CommandManagerClass::getI().addCommand(m_bitmapsInfo[i].pickAction, m_actionsFileName);
 }
-std::string InterfaceElementClass::getUnPickCommand(const std::string& name)
+void InterfaceElementClass::addUnPickCommand(const std::string& name)
 {
 	int i = findBMbyName(name);
 	
-	return m_bitmapsInfo[i].unPickAction;
+	CommandManagerClass::getI().addCommand(m_bitmapsInfo[i].unPickAction, m_actionsFileName);
 }
 void InterfaceElementClass::setSelCommand(const std::string& name, const std::string& action)
 {

@@ -1,0 +1,32 @@
+leftSelAction = 
+{
+	updateSystem setMoving 0 1;
+}
+leftUnSelAction =
+{
+	updateSystem setMoving 0 0;
+}
+upSelAction =
+{
+	updateSystem setMoving 2 1;
+}
+upUnSelAction =
+{
+	updateSystem setMoving 2 0;
+}
+rightSelAction =
+{
+	updateSystem setMoving 1 1;
+}
+rightUnSelAction =
+{
+	updateSystem setMoving 1 0;
+}
+bottomSelAction =
+{
+	updateSystem setMoving 3 1;
+}
+bottomUnSelAction =
+{
+	updateSystem setMoving 3 0;
+}

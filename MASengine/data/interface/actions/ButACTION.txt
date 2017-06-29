@@ -1,0 +1,141 @@
+upWheelCommand = 
+{
+	updateSystem cameraPosition posX+(mouseX-screenWidth/2)*(posY/4000)_ posY/(5/4)_ posZ-(mouseY-screenHeight/2)*(posY/4000)_;
+	updateSystem cameraRotation 90-600/posY_ rotY rotZ;
+}
+downWheelCommand = 
+{
+	updateSystem cameraPosition posX+(mouseX-screenWidth/2)*(posY/4000)_ posY*(5/4)_ posZ-(mouseY-screenHeight/2)*(posY/4000)_;
+	updateSystem cameraRotation 90-600/posY_ rotY rotZ;
+}
+1unPickCommandAutorsMenu =
+{
+	updateInterface setElVisible StartMenuDown 1;
+	updateInterface setElVisible AutorsMenu 0;
+	updateSystem setButCommand 1 unPickCommand 1unPickCommand;
+}
+1unPickCommandMainGame =
+{
+	updateInterface setBMvisible MainMenu menuBack 1;
+	updateInterface setBMvisible MainMenu settings 1;
+	updateInterface setBMvisible MainMenu startMenu 1;
+	updateInterface setBMvisible MainMenu exit 1;
+	updateInterface setBMvisible MainMenu back 1;
+	updateInterface setBMvisible MainMenu unMainMenu 1;
+	updateInterface setTvisible MainMenu mainMenu 1;
+	updateSystem setButCommand 1 unPickCommand 1unPickCommandMainMenu;
+}
+1unPickCommandMainMenu =
+{
+	updateInterface setBMvisible MainMenu menuBack 0;
+	updateInterface setBMvisible MainMenu settings 0;
+	updateInterface setBMvisible MainMenu unSettings 0;
+	updateInterface setBMvisible MainMenu startMenu 0;
+	updateInterface setBMvisible MainMenu exit 0;
+	updateInterface setBMvisible MainMenu back 0;
+	updateInterface setBMvisible MainMenu unMainMenu 0;
+	updateInterface setTvisible MainMenu mainMenu 0;
+	updateSystem setButCommand 1 unPickCommand 1unPickCommandMainGame;
+}
+1unPickCommandSettingsMenu =
+{
+	updateInterface setElVisible StartSettings 0;
+	updateInterface setElVisible SettingsList 0;
+	updateInterface clearElement SettingsList;
+	updateInterface setElVisible MouseSensitivitySlider 0;
+	updateInterface setElVisible MoveSpeedSlider 0;
+	updateInterface setElVisible RenderSlider 0;
+	updateInterface setElVisible ChangingColorSlider 0;
+	updateSystem setButCommand 1 unPickCommand 1unPickCommand;
+}
+1unPickMainSettings =
+{
+	updateInterface setElVisible MenuSettings 0;
+	updateInterface setElVisible MenuRenderSlider 0;
+	updateInterface setElVisible MenuMouseSensitivitySlider 0;
+	updateInterface setElVisible MenuMoveSpeedSlider 0;
+	updateInterface setElVisible MenuChangingColorSlider 0;
+	updateSystem setButCommand 1 unPickCommand 1unPickCommandMainMenu;
+	
+}
+
+16pickCommand = 
+{
+	updateSystem setMoving 6 1;
+}
+16unPickCommand = 
+{
+	updateSystem setMoving 6 0;
+}
+200pickCommand = 
+{
+	updateSystem setMoving 2 1;
+}
+200unPickCommand = 
+{
+	updateSystem setMoving 2 0;
+}
+18pickCommand = 
+{
+	updateSystem setMoving 7 1;
+}
+18unPickCommand = 
+{
+	updateSystem setMoving 7 0;
+}
+203pickCommand = 
+{
+	updateSystem setMoving 0 1;
+}
+203unPickCommand = 
+{
+	updateSystem setMoving 0 0;
+}
+208pickCommand = 
+{
+	updateSystem setMoving 3 1;
+}
+208unPickCommand = 
+{
+	updateSystem setMoving 3 0;
+}
+205pickCommand = 
+{
+	updateSystem setMoving 1 1;
+}
+205unPickCommand = 
+{
+	updateSystem setMoving 1 0;
+}
+44pickCommand = 
+{
+	updateSystem setMoving 5 1;
+}
+44unPickCommand = 
+{
+	updateSystem setMoving 5 0;
+}
+30pickCommand = 
+{
+	updateSystem setMoving 4 1;
+}
+30unPickCommand = 
+{
+	updateSystem setMoving 4 0;
+}
+31pickCommand = 
+{
+	updateSystem setMoving 8 1;
+}
+31unPickCommand = 
+{
+	updateSystem setMoving 8 0;
+}
+45pickCommand = 
+{
+	updateSystem setMoving 9 1;
+}
+45unPickCommand = 
+{
+	updateSystem setMoving 9 0;
+}

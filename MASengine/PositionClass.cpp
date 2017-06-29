@@ -75,35 +75,27 @@ void PositionClass::SetRotation(D3DXVECTOR3 rotation)
 	return;
 }
 
-void PositionClass::GetPosition(D3DXVECTOR3& position)
+D3DXVECTOR3 PositionClass::GetPosition()
 {
-	position = m_position;
-
-	return;
+	return m_position;
 }
 
-void PositionClass::GetRealPosition(D3DXVECTOR3& position)
+D3DXVECTOR3 PositionClass::GetRealPosition()
 {
 	//get position with unfinished animations
-	position = m_position + m_posTempSpeed*m_posSpeed;
-
-	return;
+	return m_position + m_posTempSpeed*m_posSpeed;
 }
 
 
-void PositionClass::GetRotation(D3DXVECTOR3& rotation)
+D3DXVECTOR3 PositionClass::GetRotation()
 {
-	rotation = m_rotation;
-
-	return;
+	return m_rotation;
 }
 
-void PositionClass::GetRealRotation(D3DXVECTOR3& rotation)
+D3DXVECTOR3 PositionClass::GetRealRotation()
 {
 	//get rotation with unfinished animations
-	rotation = m_rotation + m_posTempSpeed*m_rotSpeed;
-
-	return;
+	return m_rotation + m_posTempSpeed*m_rotSpeed;
 }
 
 void PositionClass::SetFrameTime(float time)

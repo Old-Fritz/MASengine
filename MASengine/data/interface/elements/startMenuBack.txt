@@ -1,0 +1,29 @@
+ElementName = StartMenuBack
+Bitmap_num = 1
+Text_num = 0
+Actions =  /data/interface/actions/startMenuElementACTION.txt
+FontFileName =  /data/fonts/fonts.txt
+DescFileName =  /data/interface/texts/XXX___text.txt
+width = screenWidth
+height = screenWidth
+posX = 0
+posY = 0
+VertOrientation = up
+HorOrientation = left
+Bitmaps:
+{
+	Bitmap1:
+	{
+		name = menuBack
+		texture =  /data/interface/textures/StartMenuBack.dds
+		width = screenWidth
+		height = screenHeight
+		posX = 0
+		posY = 0
+		Selaction = selaction
+		Unselaction = unselaction
+		Pickaction = pickaction
+		Unpickaction = unpickaction
+		Description = None
+	}
+}

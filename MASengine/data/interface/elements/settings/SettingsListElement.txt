@@ -1,0 +1,51 @@
+ElementName = SettingsListElement
+Bitmap_num = 1
+Text_num = 1
+Actions =  /data/interface/actions/SettingsACTION.txt
+FontFileName =  /data/fonts/fonts.txt
+DescFileName =  /data/interface/texts/XXX___text.txt
+width = screenWidth
+height = screenHeight
+posX = 50
+posY = 100
+VertOrientation = top
+HorOrientation = left
+Bitmaps:
+{
+	Background:
+	{
+		name = background
+		texture =  /data/interface/textures/field.dds
+		width = 500
+		height = 40
+		posX = 0
+		posY = 0
+		Selaction = selListElement
+		Unselaction = unSelListElement
+		Pickaction = pickListElement
+		Unpickaction = unPickListElement
+		Description = None
+	}
+}
+Texts:
+{
+	Text:
+	{
+		name = condition
+		font = f1
+		Textfile =  /data/interface/texts/XXX___text.txt
+		Max_Length = 50
+		Strings_num = 1
+		Orientation = MIDDLE
+		string:
+		{
+			text = 0
+			maxwidth = 500
+			size = 20
+			color = 1 1 0
+			posX = 0
+			posY = 10
+		}
+	}
+
+}

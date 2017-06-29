@@ -1,0 +1,59 @@
+selBackSector = 
+{
+	updateInterface BMselIntens _0_TestList backSector 0.4f;
+}
+unSelBackSector =
+{
+	updateInterface BMselIntens _0_TestList backSector 0.0f;
+}
+pickBackSector = 
+{
+	updateInterface BMselIntens _0_TestList backSector -0.4f;
+}
+unPickBackSector =
+{
+	updateInterface backSector _0_TestList;
+}
+
+selNextSector =
+{
+	updateInterface BMselIntens _0_TestList nextSector 0.4f;
+}
+unSelNextSector =
+{
+	updateInterface BMselIntens _0_TestList nextSector 0.0f;
+}
+pickNextSector =
+{
+	updateInterface BMselIntens _0_TestList nextSector -0.4f;
+}
+unPickNextSector =
+{
+	updateInterface nextSector _0_TestList;
+}
+
+
+sliderCommand = 
+{
+	updateInterface setLastElement TestList NUMTestListSlider+5_;
+}
+
+
+selSlider = 
+{
+	updateInterface BMselIntens _0_TestList slider 0.4f;
+}
+unSelSlider = 
+{
+	updateInterface BMselIntens _0_TestList slider 0.0f;
+	updateInterface endDrag _0_TestList;
+}
+pickSlider = 
+{
+	updateInterface BMselIntens _0_TestList slider -0.4f;
+	updateInterface startDrag _0_TestList;
+}
+unPickSlider = 
+{
+	updateInterface endDrag _0_TestList;
+}

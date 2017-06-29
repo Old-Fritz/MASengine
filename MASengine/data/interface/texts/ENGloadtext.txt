@@ -1,0 +1,6 @@
+quote1 = {"Zobavno" (ñ) Artyom Troshkov}
+quote2 = {"Everything is fine" (ñ) Artyom Troshkov}
+quote3 = {Brut! Where are my legions!}
+quote4 = {Win to get victory}
+quote5 = {2.6123753488}
+quote6 = {Best game ever!}

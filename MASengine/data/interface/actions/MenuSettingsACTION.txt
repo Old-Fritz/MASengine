@@ -1,0 +1,142 @@
+selGraphicsMenu =
+{
+	updateInterface BMselIntens MenuSettings graphicsMenu 0.4f;
+}
+unSelGraphicsMenu =
+{
+	updateInterface BMselIntens MenuSettings graphicsMenu 0.0f;
+}
+pickGraphicsMenu =
+{
+	updateInterface BMselIntens MenuSettings graphicsMenu -0.4f;
+}
+unPickGraphicsMenu =
+{
+	updateInterface setBMvisible MenuSettings noVsync 1;
+	updateInterface setBMvisible MenuSettings isDebug 1;
+	updateInterface setTvisible MenuSettings graphicsText 1;
+	updateInterface setTvisible MenuSettings gameText 0;
+	
+	updateInterface setElVisible MenuRenderSlider 1;
+	updateInterface getSettings MenuRenderSlider condition 0 renderDistance
+	 /data/interface/texts/XXX___text.txt;
+	updateInterface getSettings MenuSettings isVsync 0 vsync
+	 /data/interface/texts/XXX___text.txt; 
+	updateInterface setElVisible MenuMouseSensitivitySlider 0;
+	updateInterface setElVisible MenuMoveSpeedSlider 0;
+	updateInterface setElVisible MenuChangingColorSlider 0;
+}
+
+selGameMenu =
+{
+	updateInterface BMselIntens MenuSettings gameMenu 0.4f;
+}
+unSelGameMenu =
+{
+	updateInterface BMselIntens MenuSettings gameMenu 0.0f;
+}
+pickGameMenu =
+{
+	updateInterface BMselIntens MenuSettings gameMenu -0.4f;
+}
+unPickGameMenu =
+{	
+	updateInterface setBMvisible MenuSettings isVsync 0;
+	updateInterface setBMvisible MenuSettings noVsync 0;
+	updateInterface setTvisible MenuSettings graphicsText 0;
+	updateInterface setTvisible MenuSettings gameText 1;
+	updateInterface setBMvisible MenuSettings isDebug 0;
+
+	updateInterface setElVisible MenuRenderSlider 0;
+	updateInterface setElVisible MenuMouseSensitivitySlider 1;
+	updateInterface getSettings MenuMouseSensitivitySlider condition 0 mouseSensitivity
+	 /data/interface/texts/XXX___text.txt;
+	updateInterface setElVisible MenuMoveSpeedSlider 1;
+	updateInterface getSettings MenuMoveSpeedSlider condition 0 moveSpeed
+	 /data/interface/texts/XXX___text.txt;
+	updateInterface setElVisible MenuChangingColorSlider 1;
+	updateInterface getSettings MenuChangingColorSlider condition 0 changableColor
+	 /data/interface/texts/XXX___text.txt;
+}
+
+selIsVsync = 
+{
+	updateInterface BMselIntens MenuSettings isVsync 0.4f;
+}
+unSelIsVsync = 
+{
+	updateInterface BMselIntens MenuSettings isVsync 0.0f;
+}
+{
+	updateInterface BMselIntens MenuSettings isVsync -0.4f;
+}
+unPickIsVsync = 
+{
+	updateInterface setBMvisible MenuSettings isVsync 0;
+	updateSystem setSettings vsync 0;
+}
+
+selNoVsync = 
+{
+	updateInterface BMselIntens MenuSettings noVsync 0.4f;
+}
+unSelNoVsync = 
+{
+	updateInterface BMselIntens MenuSettings noVsync 0.0f;
+}
+pickNoVsync = 
+{
+	updateInterface BMselIntens MenuSettings noVsync -0.4f;
+}
+unPickNoVsync = 
+{
+	updateInterface setBMvisible MenuSettings isVsync 1;
+	updateSystem setSettings vsync 1;
+}
+
+selBack = 
+{
+	updateInterface BMselIntens MenuSettings back 0.4f;
+}
+unSelBack =
+{
+	updateInterface BMselIntens MenuSettings back 0.05f;
+	updateInterface BMtranspar MenuSettings back 0.96f;
+}
+pickBack = 
+{
+	updateInterface BMselIntens MenuSettings back -0.4f;
+}
+unPickBack =
+{
+	updateInterface setElVisible MenuSettings 0;
+	updateInterface setElVisible MenuRenderSlider 0;
+	updateInterface setElVisible MenuMouseSensitivitySlider 0;
+	updateInterface setElVisible MenuMoveSpeedSlider 0;
+	updateInterface setElVisible MenuChangingColorSlider 0;
+	updateSystem setButCommand 1 unPickCommand 1unPickCommandMainMenu;
+}
+
+selIsDebug = 
+{
+	updateInterface BMselIntens MenuSettings isDebug 0.4f;
+}
+unSelIsDebug = 
+{
+	updateInterface BMselIntens MenuSettings isDebug 0.0f;
+}
+pickIsDebug = 
+{
+	updateInterface BMselIntens MenuSettings isDebug -0.4f;
+}
+unPickIsDebug = 
+{
+	updateInterface setElVisible Debug_info 1;
+	updateInterface setBMCommand MenuSettings isDebug unPick unPickNoDebug;
+}
+unPickNoDebug = 
+{
+	updateInterface setElVisible Debug_info 0;
+	updateInterface setBMCommand MenuSettings isDebug unPick unPickIsDebug;
+}
+

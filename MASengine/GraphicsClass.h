@@ -10,7 +10,7 @@
 #include "d3dclass.h"
 #include "ShaderManagerClass.h"
 #include "CameraClass.h"
-#include "InterfaceElementClass.h"
+#include "InterfaceClass.h"
 
 
 /////////////
@@ -32,20 +32,29 @@ public:
 
 	bool Initialize(HWND hwnd);
 	void Shutdown();
-	bool Frame();
+	bool Frame(D3DXVECTOR3 pos, D3DXVECTOR3 rot, int mouseX, int mouseY, bool isLBMDown);
 
+	bool updateInterface(CommandClass* command, int ind);
+	bool updateGraphics(CommandClass* command,int ind);
+
+	
 private:
 	bool Render();
 
+	// Functions on pick
+	void pick(int mouseX, int mouseY);
+	void unPick(int mouseX, int mouseY);
+	bool interfacePick(int mouseX, int mouseY, int& ind, std::string& name);
 private:
-
-	InterfaceElementClass* m_test;
+	//params
+	bool m_LBMDown;
+	
 
 	//blocks
 	D3DClass* m_D3D;
 	ShaderManagerClass* m_shaderManager;
 	CameraClass * m_camera;
-
+	InterfaceClass* m_interface;
 
 };
 

@@ -1,0 +1,58 @@
+selSlider =
+{
+	updateInterface BMselIntens MenuMoveSpeedSlider slider 0.4f;
+}
+unSelSlider =
+{
+	updateInterface BMselIntens MenuMoveSpeedSlider slider 0.0f;
+	updateInterface endDrag MenuMoveSpeedSlider;
+}
+pickSlider =
+{
+	updateInterface BMselIntens MenuMoveSpeedSlider slider -0.4f;
+	updateInterface startDrag MenuMoveSpeedSlider;
+}
+unPickSlider =
+{
+	updateInterface endDrag MenuMoveSpeedSlider;
+}
+
+selBackSector =
+{
+	updateInterface BMselIntens MenuMoveSpeedSlider backSector 0.4f;
+}
+unSelBackSector =
+{
+	updateInterface BMselIntens MenuMoveSpeedSlider backSector 0.0f;
+}
+pickBackSector =
+{
+	updateInterface BMselIntens MenuMoveSpeedSlider backSector -0.4f;
+}
+unPickBackSector =
+{
+	updateInterface backSector MenuMoveSpeedSlider;
+}
+
+selNextSector =
+{
+	updateInterface BMselIntens MenuMoveSpeedSlider nextSector 0.4f;
+}
+unSelNextSector =
+{
+	updateInterface BMselIntens MenuMoveSpeedSlider nextSector 0.0f;
+}
+pickNextSector =
+{
+	updateInterface BMselIntens MenuMoveSpeedSlider nextSector -0.4f;
+}
+unPickNextSector =
+{
+	updateInterface nextSector MenuMoveSpeedSlider;
+}
+
+sliderCommand = 
+{
+	updateSystem setSettings moveSpeed NUMMenuMoveSpeedSlider;
+	updateInterface getSettings MenuMoveSpeedSlider condition 0 moveSpeed
+	 /data/interface/texts/XXX___text.txt;

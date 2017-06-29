@@ -129,6 +129,7 @@
     <ClCompile Include="GlobalManagerClass.cpp" />
     <ClCompile Include="GraphicsClass.cpp" />
     <ClCompile Include="InputClass.cpp" />
+    <ClCompile Include="InterfaceClass.cpp" />
     <ClCompile Include="InterfaceElementClass.cpp" />
     <ClCompile Include="InterfaceShaderClass.cpp" />
     <ClCompile Include="LogManagerClass.cpp" />

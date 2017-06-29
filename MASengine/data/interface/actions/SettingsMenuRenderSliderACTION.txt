@@ -1,0 +1,59 @@
+selSlider =
+{
+	updateInterface BMselIntens MenuRenderSlider slider 0.4f;
+}
+unSelSlider =
+{
+	updateInterface BMselIntens MenuRenderSlider slider 0.0f;
+	updateInterface endDrag MenuRenderSlider;
+}
+pickSlider =
+{
+	updateInterface BMselIntens MenuRenderSlider slider -0.4f;
+	updateInterface startDrag MenuRenderSlider;
+}
+unPickSlider =
+{
+	updateInterface endDrag MenuRenderSlider;
+}
+
+selBackSector =
+{
+	updateInterface BMselIntens MenuRenderSlider backSector 0.4f;
+}
+unSelBackSector =
+{
+	updateInterface BMselIntens MenuRenderSlider backSector 0.0f;
+}
+pickBackSector =
+{
+	updateInterface BMselIntens MenuRenderSlider backSector -0.4f;
+}
+unPickBackSector =
+{
+	updateInterface backSector MenuRenderSlider;
+}
+
+selNextSector =
+{
+	updateInterface BMselIntens MenuRenderSlider nextSector 0.4f;
+}
+unSelNextSector =
+{
+	updateInterface BMselIntens MenuRenderSlider nextSector 0.0f;
+}
+pickNextSector =
+{
+	updateInterface BMselIntens MenuRenderSlider nextSector -0.4f;
+}
+unPickNextSector =
+{
+	updateInterface nextSector MenuRenderSlider;
+}
+
+sliderCommand = 
+{
+	updateSystem setSettings renderDistance NUMMenuRenderSlider;
+	updateInterface getSettings MenuRenderSlider condition 0 renderDistance
+	 /data/interface/texts/XXX___text.txt;
+}

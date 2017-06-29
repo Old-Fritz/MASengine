@@ -1,0 +1,35 @@
+ElementName = Version
+Bitmap_num = 0
+Text_num = 1
+Actions =  data/interface/versionElementACTION.txt
+width = screenWidth
+height = screenHeight
+posX = 0
+posY = 0
+VertOrientation = bottom
+HorOrientation = right
+Bitmaps:
+{
+}
+Texts:
+{
+	Text:
+	{
+		name = version
+		font = data/fonts/font.txt
+		Textfile =  data/interface/texts/XXX___text.txt
+		Max_Length = 50
+		Strings_num = 1
+		Orientation = LEFT
+		string1:
+		{
+			text = corversion
+			maxwidth = 100
+			size = 20
+			color = 1 1 1
+			posX = 200
+			posY = 50
+		}
+	}
+
+}

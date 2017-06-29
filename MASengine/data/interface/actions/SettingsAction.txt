@@ -1,0 +1,435 @@
+selSSetCross =
+{
+	updateInterface BMselIntens StartSettings cross 0.4f;
+}
+unSelSSetCross =
+{
+	updateInterface BMselIntens StartSettings cross 0.0f;
+}
+pickSSetCross =
+{
+	updateInterface BMselIntens StartSettings cross -0.4f;
+}
+unPickSSetCross =
+{
+	updateInterface setElVisible MouseSensitivitySlider 0;
+	updateInterface setElVisible MoveSpeedSlider 0;
+	updateInterface setElVisible RenderSlider 0;
+	updateInterface setElVisible ChangingColorSlider 0;
+	updateInterface setElVisible StartSettings 0;
+	updateInterface setElVisible SettingsList 0;
+	updateInterface clearElement SettingsList;
+}
+
+selGraphicsMenu =
+{
+	updateInterface BMselIntens StartSettings graphicsMenu 0.4f;
+}
+unSelGraphicsMenu =
+{
+	updateInterface BMselIntens StartSettings graphicsMenu 0.0f;
+}
+pickGraphicsMenu =
+{
+	updateInterface BMselIntens StartSettings graphicsMenu -0.4f;
+}
+unPickGraphicsMenu =
+{
+	updateInterface setElVisible SettingsList 0;
+	updateInterface clearElement SettingsList;
+	updateInterface setBMvisible StartSettings noVsync 1;
+	updateInterface setBMvisible StartSettings noFullscreen 1;
+	updateInterface setBMvisible StartSettings resolutionBack 1;
+	updateInterface setBMvisible StartSettings resolutionShowMenu 1;
+	updateInterface setBMvisible StartSettings sampleBack 1;
+	updateInterface setBMvisible StartSettings sampleShowMenu 1;
+	updateInterface setBMvisible StartSettings texturesQBack 1;
+	updateInterface setBMvisible StartSettings texturesQShowMenu 1;
+	updateInterface setBMvisible StartSettings langBack 0;
+	updateInterface setBMvisible StartSettings langShowMenu 0;
+	updateInterface setTvisible StartSettings graphicsText 1;
+	updateInterface setTvisible StartSettings gameText 0;
+	
+	updateInterface setBMCommand StartSettings resolutionShowMenu unPick unPickResolutionShowMenu;
+	updateInterface setBMCommand StartSettings sampleShowMenu unPick unPickSampleShowMenu;
+	updateInterface setBMCommand StartSettings texturesQShowMenu unPick unPickTexturesQShowMenu;
+	updateInterface setBMCommand StartSettings langShowMenu unPick unPickLangShowMenu;
+	
+	updateInterface setElVisible RenderSlider 1;
+	updateInterface getSettings RenderSlider condition 0 renderDistance
+	 /data/interface/texts/XXX___text.txt;
+	updateInterface getSettings StartSettings isFullscreen 0 fullscreen
+	 /data/interface/texts/XXX___text.txt; 
+	updateInterface getSettings StartSettings isVsync 0 vsync
+	 /data/interface/texts/XXX___text.txt; 
+	updateInterface setElVisible MouseSensitivitySlider 0;
+	updateInterface setElVisible MoveSpeedSlider 0;
+	updateInterface setElVisible ChangingColorSlider 0;
+	
+	
+	
+}
+
+selGameMenu =
+{
+	updateInterface BMselIntens StartSettings gameMenu 0.4f;
+}
+unSelGameMenu =
+{
+	updateInterface BMselIntens StartSettings gameMenu 0.0f;
+}
+pickGameMenu =
+{
+	updateInterface BMselIntens StartSettings gameMenu -0.4f;
+}
+unPickGameMenu =
+{
+	updateInterface setElVisible SettingsList 0;
+	updateInterface clearElement SettingsList;
+	updateInterface setBMvisible StartSettings isVsync 0;
+	updateInterface setBMvisible StartSettings isFullscreen 0;
+	updateInterface setBMvisible StartSettings noVsync 0;
+	updateInterface setBMvisible StartSettings noFullscreen 0;
+	updateInterface setBMvisible StartSettings resolutionBack 0;
+	updateInterface setBMvisible StartSettings resolutionShowMenu 0;
+	updateInterface setBMvisible StartSettings sampleBack 0;
+	updateInterface setBMvisible StartSettings sampleShowMenu 0;
+	updateInterface setBMvisible StartSettings texturesQBack 0;
+	updateInterface setBMvisible StartSettings texturesQShowMenu 0;
+	updateInterface setBMvisible StartSettings langBack 1;
+	updateInterface setBMvisible StartSettings langShowMenu 1;
+	updateInterface setTvisible StartSettings graphicsText 0;
+	updateInterface setTvisible StartSettings gameText 1;
+	
+	updateInterface setBMCommand StartSettings resolutionShowMenu unPick unPickResolutionShowMenu;
+	updateInterface setBMCommand StartSettings sampleShowMenu unPick unPickSampleShowMenu;
+	updateInterface setBMCommand StartSettings texturesQShowMenu unPick unPickTexturesQShowMenu;
+	updateInterface setBMCommand StartSettings langShowMenu unPick unPickLangShowMenu;
+	
+	updateInterface setElVisible RenderSlider 0;
+	updateInterface setElVisible MouseSensitivitySlider 1;
+	updateInterface getSettings MouseSensitivitySlider condition 0 mouseSensitivity
+	 /data/interface/texts/XXX___text.txt;
+	updateInterface setElVisible MoveSpeedSlider 1;
+	updateInterface getSettings MoveSpeedSlider condition 0 moveSpeed
+	 /data/interface/texts/XXX___text.txt;
+	updateInterface setElVisible ChangingColorSlider 1;
+	updateInterface getSettings ChangingColorSlider condition 0 changableColor
+	 /data/interface/texts/XXX___text.txt;
+}
+
+selResolutionShowMenu =
+{
+	updateInterface BMselIntens StartSettings resolutionShowMenu 0.4f;
+}
+unSelResolutionShowMenu =
+{
+	updateInterface BMselIntens StartSettings resolutionShowMenu 0.0f;
+}
+pickResolutionShowMenu =
+{
+	updateInterface BMselIntens StartSettings resolutionShowMenu -0.4f;
+}
+unPickResolutionShowMenu =
+{	
+	updateInterface setElVisible SettingsList 1;
+	updateInterface elPos SettingsList 231+(screenWidth-1024)/2_ screenHeight-600+160_;
+	updateInterface getSettings SettingsList condition 0 resolutionsList  /data/interface/texts/XXX___text.txt;
+	updateInterface setBMCommand StartSettings resolutionShowMenu unPick unPickResolutionShowMenu2;
+
+	updateInterface setBMCommand StartSettings sampleShowMenu unPick unPickSampleShowMenu;
+	updateInterface setBMCommand StartSettings texturesQShowMenu unPick unPickTexturesQShowMenu;
+	updateInterface setBMCommand StartSettings langShowMenu unPick unPickLangShowMenu;
+}
+unPickResolutionShowMenu2 =
+{	
+	updateInterface setElVisible SettingsList 0;
+	updateInterface clearElement SettingsList;
+	updateInterface setBMCommand StartSettings resolutionShowMenu unPick unPickResolutionShowMenu;
+}
+
+selSampleShowMenu =
+{
+	updateInterface BMselIntens StartSettings sampleShowMenu 0.4f;
+}
+unSampleShowMenu =
+{
+	updateInterface BMselIntens StartSettings sampleShowMenu 0.0f;
+}
+pickSampleShowMenu =
+{
+	updateInterface BMselIntens StartSettings sampleShowMenu -0.4f;
+}
+unPickSampleShowMenu =
+{
+	updateInterface setElVisible SettingsList 1;
+	updateInterface elPos SettingsList 231+(screenWidth-1024)/2_ screenHeight-600+260_;
+	updateInterface getSettings SettingsList condition 0 samplesList  /data/interface/texts/XXX___text.txt;
+	updateInterface setBMCommand StartSettings sampleShowMenu unPick unPickSampleShowMenu2;
+	
+	updateInterface setBMCommand StartSettings resolutionShowMenu unPick unPickResolutionShowMenu;
+	updateInterface setBMCommand StartSettings texturesQShowMenu unPick unPickTexturesQShowMenu;
+	updateInterface setBMCommand StartSettings langShowMenu unPick unPickLangShowMenu;
+}
+unPickSampleShowMenu2 =
+{
+	updateInterface setElVisible SettingsList 0;
+	updateInterface clearElement SettingsList;
+	updateInterface setBMCommand StartSettings sampleShowMenu unPick unPickSampleShowMenu;
+}
+
+selTexturesQShowMenu =
+{
+	updateInterface BMselIntens StartSettings texturesQShowMenu 0.4f;
+}
+unTexturesQShowMenu =
+{
+	updateInterface BMselIntens StartSettings texturesQShowMenu 0.0f;
+}
+pickTexturesQShowMenu =
+{
+	updateInterface BMselIntens StartSettings texturesQShowMenu -0.4f;
+}
+unPickTexturesQShowMenu =
+{
+	updateInterface setElVisible SettingsList 1;
+	updateInterface elPos SettingsList 231+(screenWidth-1024)/2_ screenHeight-600+360_;
+	updateInterface getSettings SettingsList condition 0 texturesQList  /data/interface/texts/XXX___text.txt;
+	updateInterface setBMCommand StartSettings texturesQShowMenu unPick unPickTexturesQShowMenu2;
+	
+	updateInterface setBMCommand StartSettings resolutionShowMenu unPick unPickResolutionShowMenu;
+	updateInterface setBMCommand StartSettings sampleShowMenu unPick unPickSampleShowMenu;
+	updateInterface setBMCommand StartSettings langShowMenu unPick unPickLangShowMenu;
+}
+unPickTexturesQShowMenu2 =
+{
+	updateInterface setElVisible SettingsList 0;
+	updateInterface clearElement SettingsList;
+	updateInterface setBMCommand StartSettings texturesQShowMenu unPick unPickTexturesQShowMenu;
+}
+
+selLangShowMenu =
+{
+	updateInterface BMselIntens StartSettings langShowMenu 0.4f;
+}
+unLangShowMenu =
+{
+	updateInterface BMselIntens StartSettings langShowMenu 0.0f;
+}
+pickLangShowMenu =
+{
+	updateInterface BMselIntens StartSettings langShowMenu -0.4f;
+}
+unPickLangShowMenu =
+{
+	updateInterface setElVisible SettingsList 1;
+	updateInterface elPos SettingsList 231+(screenWidth-1024)/2_ screenHeight-600+160_;
+	updateInterface getSettings SettingsList condition 0 langsList  /data/interface/texts/XXX___text.txt;
+	updateInterface setBMCommand StartSettings langShowMenu unPick unPickLangShowMenu2;
+	
+	updateInterface setBMCommand StartSettings resolutionShowMenu unPick unPickResolutionShowMenu;
+	updateInterface setBMCommand StartSettings sampleShowMenu unPick unPickSampleShowMenu;
+	updateInterface setBMCommand StartSettings texturesQShowMenu unPick unPickTexturesQShowMenu;
+}
+unPickLangShowMenu2 =
+{
+	updateInterface setElVisible SettingsList 0;
+	updateInterface clearElement SettingsList;
+	updateInterface setBMCommand StartSettings langShowMenu unPick unPickLangShowMenu;
+}
+
+selListElement = 
+{
+	updateInterface BMselIntens _NUMSettingsList_SettingsList background 0.4f;
+}
+unSelListElement =
+{
+	updateInterface BMselIntens _NUMSettingsList_SettingsList background 0.0f;
+}
+pickListElement =
+{
+	updateInterface BMselIntens _NUMSettingsList_SettingsList background -0.4f;
+}
+unPickListElement =
+{
+}
+
+
+selIsFullscreen = 
+{
+	updateInterface BMselIntens StartSettings isFullscreen 0.4f;
+}
+unSelIsFullscreen = 
+{
+	updateInterface BMselIntens StartSettings isFullscreen 0.0f;
+}
+pickIsFullscreen = 
+{
+	updateInterface BMselIntens StartSettings isFullscreen -0.4f;
+}
+unPickIsFullscreen = 
+{
+	updateInterface setBMvisible StartSettings isFullscreen 0;
+	updateSystem setSettings fullscreen 0;
+	updateInterface setElVisible RebootWindow 1;
+}
+
+selNoFullscreen = 
+{
+	updateInterface BMselIntens StartSettings noFullscreen 0.4f;
+}
+unSelNoFullscreen = 
+{
+	updateInterface BMselIntens StartSettings noFullscreen 0.0f;
+}
+pickNoFullscreen = 
+{
+	updateInterface BMselIntens StartSettings noFullscreen -0.4f;
+}
+unPickNoFullscreen = 
+{
+	updateInterface setBMvisible StartSettings isFullscreen 1;
+	updateSystem setSettings fullscreen 1;
+	updateInterface setElVisible RebootWindow 1;
+}
+
+selIsVsync = 
+{
+	updateInterface BMselIntens StartSettings isVsync 0.4f;
+}
+unSelIsVsync = 
+{
+	updateInterface BMselIntens StartSettings isVsync 0.0f;
+}
+pickIsVsync = 
+{
+	updateInterface BMselIntens StartSettings isVsync -0.4f;
+}
+unPickIsVsync = 
+{
+	updateInterface setBMvisible StartSettings isVsync 0;
+	updateSystem setSettings vsync 0;
+}
+
+selNoVsync = 
+{
+	updateInterface BMselIntens StartSettings noVsync 0.4f;
+}
+unSelNoVsync = 
+{
+	updateInterface BMselIntens StartSettings noVsync 0.0f;
+}
+pickNoVsync = 
+{
+	updateInterface BMselIntens StartSettings noVsync -0.4f;
+}
+unPickNoVsync = 
+{
+	updateInterface setBMvisible StartSettings isVsync 1;
+	updateSystem setSettings vsync 1;
+}
+
+
+800x600command =
+{
+	updateSystem setSettings resolution 800 600;
+	updateInterface setElVisible SettingsList 0;
+	updateInterface clearElement SettingsList;
+	updateInterface setBMCommand StartSettings resolutionShowMenu unPick unPickResolutionShowMenu;
+	updateInterface getSettings StartSettings graphicsText 1 resolution 
+	 /data/interface/texts/XXX___text.txt; 
+	updateInterface setElVisible RebootWindow 1;
+}
+1024x768command =
+{
+	updateSystem setSettings resolution 1024 768;
+	updateInterface setElVisible SettingsList 0;
+	updateInterface clearElement SettingsList;
+	updateInterface setBMCommand StartSettings resolutionShowMenu unPick unPickResolutionShowMenu;
+	updateInterface getSettings StartSettings graphicsText 1 resolution 
+	 /data/interface/texts/XXX___text.txt; 
+	updateInterface setElVisible RebootWindow 1;
+}
+1280x720command =
+{
+	updateSystem setSettings resolution 1280 720;
+	updateInterface setElVisible SettingsList 0;
+	updateInterface clearElement SettingsList;
+	updateInterface setBMCommand StartSettings resolutionShowMenu unPick unPickResolutionShowMenu;
+	updateInterface getSettings StartSettings graphicsText 1 resolution 
+	 /data/interface/texts/XXX___text.txt; 
+	updateInterface setElVisible RebootWindow 1;
+}
+1366x768command =
+{
+	updateSystem setSettings resolution 1366 768;
+	updateInterface setElVisible SettingsList 0;
+	updateInterface clearElement SettingsList;
+	updateInterface setBMCommand StartSettings resolutionShowMenu unPick unPickResolutionShowMenu;
+	updateInterface getSettings StartSettings graphicsText 1 resolution 
+	 /data/interface/texts/XXX___text.txt; 
+	updateInterface setElVisible RebootWindow 1;
+}
+1440x900command =
+{
+	updateSystem setSettings resolution 1440 900;
+	updateInterface setElVisible SettingsList 0;
+	updateInterface clearElement SettingsList;
+	updateInterface setBMCommand StartSettings resolutionShowMenu unPick unPickResolutionShowMenu;
+	updateInterface getSettings StartSettings graphicsText 1 resolution 
+	 /data/interface/texts/XXX___text.txt; 
+	updateInterface setElVisible RebootWindow 1;
+}
+1920x1080command =
+{
+	updateSystem setSettings resolution 1920 1080;
+	updateInterface setElVisible SettingsList 0;
+	updateInterface clearElement SettingsList;
+	updateInterface setBMCommand StartSettings resolutionShowMenu unPick unPickResolutionShowMenu;
+	updateInterface getSettings StartSettings graphicsText 1 resolution 
+	 /data/interface/texts/XXX___text.txt; 
+	updateInterface setElVisible RebootWindow 1;
+}
+
+1samplecommand =
+{
+	updateSystem setSettings sample 1;
+	updateInterface setElVisible SettingsList 0;
+	updateInterface clearElement SettingsList;
+	updateInterface setBMCommand StartSettings sampleShowMenu unPick unPickSampleShowMenu;
+	updateInterface getSettings StartSettings graphicsText 3 sample 
+	 /data/interface/texts/XXX___text.txt; 
+	updateInterface setElVisible RebootWindow 1;
+}
+
+0texturesQcommand =
+{
+	updateSystem setSettings texturesQ 0;
+	updateInterface setElVisible SettingsList 0;
+	updateInterface clearElement SettingsList;
+	updateInterface setBMCommand StartSettings texturesQShowMenu unPick unPickTexturesQShowMenu;
+	updateInterface getSettings StartSettings graphicsText 5 texturesQ
+	 /data/interface/texts/XXX___text.txt; 
+	updateInterface setElVisible RebootWindow 1;
+}
+
+ENGlangcommand =
+{
+	updateSystem setSettings lang ENG;
+	updateInterface setElVisible SettingsList 0;
+	updateInterface clearElement SettingsList;
+	updateInterface setBMCommand StartSettings langShowMenu unPick unPickLangShowMenu;
+	updateInterface getSettings StartSettings gameText 1 lang
+	 /data/interface/texts/XXX___text.txt; 
+	updateInterface setElVisible RebootWindow 1;
+}
+RUSlangcommand =
+{
+	updateSystem setSettings lang RUS;
+	updateInterface setElVisible SettingsList 0;
+	updateInterface clearElement SettingsList;
+	updateInterface setBMCommand StartSettings langShowMenu unPick unPickLangShowMenu;
+	updateInterface getSettings StartSettings gameText 1 lang
+	 /data/interface/texts/XXX___text.txt; 
+	updateInterface setElVisible RebootWindow 1;
+}

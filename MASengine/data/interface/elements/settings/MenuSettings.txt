@@ -1,0 +1,238 @@
+ElementName = MenuSettings
+Bitmap_num = 8
+Text_num = 3
+Actions =  /data/interface/actions/MenuSettingsACTION.txt
+FontFileName =  /data/fonts/fonts.txt
+DescFileName =  /data/interface/texts/XXX___text.txt
+width = 330
+height = 384
+posX = middle
+posY = 180
+VertOrientation = up
+HorOrientation = left
+Bitmaps:
+{
+	Bitmap1:
+	{
+		name = menuBack
+		texture =  /data/interface/textures/MainMenuBack.dds
+		width = 330
+		height = 384
+		posX = 0
+		posY = 0
+		Selaction = selaction
+		Unselaction = unselaction
+		Pickaction = pickaction
+		Unpickaction = unpickaction
+		Description = None
+	}
+	Bitmap2:
+	{
+		name = backMenu
+		texture =  /data/interface/textures/background.dds
+		width = 320
+		height = 275
+		posX = 5
+		posY = 42
+		Selaction = selaction
+		Unselaction = unselaction
+		Pickaction = pickaction
+		Unpickaction = unpickaction
+		Description = None
+	}
+	Button1:
+	{
+		name = graphicsMenu
+		texture =  /data/interface/textures/button.dds
+		width = 150
+		height = 30
+		posX = 15
+		posY = 12
+		Selaction = selGraphicsMenu
+		Unselaction = unSelGraphicsMenu
+		Pickaction = pickGraphicsMenu
+		Unpickaction = unPickGraphicsMenu
+		Description = graphicsMenu_desc
+	}
+	Button2:
+	{
+		name = gameMenu
+		texture =  /data/interface/textures/button.dds
+		width = 150
+		height = 30
+		posX = 165
+		posY = 12
+		Selaction = selGameMenu
+		Unselaction = unSelGameMenu
+		Pickaction = pickGameMenu
+		Unpickaction = unPickGameMenu
+		Description = gameMenu_desc
+	}
+	Button3:
+	{
+		name = noVsync
+		texture =  /data/interface/textures/ofsquare.dds
+		width = 35
+		height = 35
+		posX = 260
+		posY = 260
+		Selaction = selNoVsync
+		Unselaction = unSelNoVsync
+		Pickaction = pickNoVsync
+		Unpickaction = unPickNoVsync
+		Description = noVsync_desc
+	}
+	Button4:
+	{
+		name = isVsync
+		texture =  /data/interface/textures/onsquare.dds
+		width = 35
+		height = 35
+		posX = 260
+		posY = 260
+		Selaction = selIsVsync
+		Unselaction = unSelIsVsync
+		Pickaction = pickIsVsync
+		Unpickaction = unPickIsVsync
+		Description = isVsync_desc
+	}
+	Button5:
+	{
+		name = back
+		texture =  /data/interface/textures/button.dds
+		width = 178
+		height = 64
+		posX = 76
+		posY = 318
+		Selaction = selBack
+		Unselaction = unSelBack
+		Pickaction = pickBack
+		Unpickaction = unPickBack
+		Description = backSettings_desc
+	}
+	Button6:
+	{
+		name = isDebug
+		texture =  /data/interface/textures/ofsquare.dds
+		width = 35
+		height = 35
+		posX = 260
+		posY = 220
+		Selaction = selIsDebug
+		Unselaction = unSelIsDebug
+		Pickaction = pickIsVsync
+		Unpickaction = unPickIsDebug
+		Description = isDebug_desc
+	}
+}
+Texts:
+{
+	Text:
+	{
+		name = mainText
+		font = f1
+		Textfile =  /data/interface/texts/XXX___text.txt
+		Max_Length = 200
+		Strings_num = 3
+		Orientation = MIDDLE
+		string1:
+		{
+			text = graphicsMenu
+			maxwidth = 150
+			size = 20
+			color = 1 1 1
+			posX = 15
+			posY = 15
+		}
+		string2:
+		{
+			text = gameMenu
+			maxwidth = 150
+			size = 20
+			color = 1 1 1
+			posX = 165
+			posY = 15
+		}
+		string3:
+		{
+			text = backToMenu
+			maxwidth = 178
+			size = 30
+			color = 1 1 1
+			posX = 76
+			posY = 336
+		}
+	}
+	Text:
+	{
+		name = graphicsText
+		font = f1
+		Textfile =  /data/interface/texts/XXX___text.txt
+		Max_Length = 200
+		Strings_num = 3
+		Orientation = LEFT
+		string1:
+		{
+			text = renderDist
+			maxwidth = 150
+			size = 20
+			color = 1 1 1
+			posX = 25
+			posY = 60
+		}
+		string2:
+		{
+			text = onDebug
+			maxwidth = 150
+			size = 20
+			color = 1 1 1
+			posX = 25
+			posY = 225
+		}
+		string3:
+		{
+			text = onVsync
+			maxwidth = 150
+			size = 20
+			color = 1 1 1
+			posX = 25
+			posY = 265
+		}
+	}
+	Text:
+	{
+		name = gameText
+		font = f1
+		Textfile =  /data/interface/texts/XXX___text.txt
+		Max_Length = 200
+		Strings_num = 3
+		Orientation = LEFT
+		string1:
+		{
+			text = changingColor
+			maxwidth = 150
+			size = 20
+			color = 1 1 1
+			posX = 25
+			posY = 60
+		}
+		string2:
+		{
+			text = mouseSensitivity
+			maxwidth = 150
+			size = 20
+			color = 1 1 1
+			posX = 25
+			posY = 140
+		}
+		string3:
+		{
+			text = moveSpeed
+			maxwidth = 178
+			size = 20
+			color = 1 1 1
+			posX = 25
+			posY = 220
+		}
+	}
+}

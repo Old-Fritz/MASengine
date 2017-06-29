@@ -1,0 +1,134 @@
+ElementName = StartMenuDown
+Bitmap_num = 5
+Text_num = 1
+Actions =  /data/interface/actions/startMenuElementACTION.txt
+FontFileName =  /data/fonts/fonts.txt
+DescFileName =  /data/interface/texts/XXX___text.txt
+width = 1024
+height = 170
+posX = middle
+posY = 170
+VertOrientation = bottom
+HorOrientation = left
+Bitmaps:
+{
+	Bitmap1:
+	{
+		name = menuDown
+		texture =  /data/interface/textures/startMenuDown.dds
+		width = 1024
+		height = 256
+		posX = 0
+		posY = 0
+		Selaction = selaction
+		Unselaction = unselaction
+		Pickaction = pickaction
+		Unpickaction = unpickaction
+		Description = None
+	}
+	Button1:
+	{
+		name = start
+		texture =  /data/interface/textures/button.dds
+		width = 178
+		height = 64
+		posX = 96
+		posY = -80
+		Selaction = selStart
+		Unselaction = unSelStart
+		Pickaction = pickStart
+		Unpickaction = unPickStart
+		Description = startBut_desc
+	}
+	Button2:
+	{
+		name = settings
+		texture =  /data/interface/textures/button.dds
+		width = 178
+		height = 64
+		posX = 314
+		posY = -80
+		Selaction = selSettings
+		Unselaction = unSelSettings
+		Pickaction = pickSettings
+		Unpickaction = unPickSettings
+		Description = settingsBut_desc
+	}
+	Button3:
+	{
+		name = autors
+		texture =  /data/interface/textures/button.dds
+		width = 178
+		height = 64
+		posX = 532
+		posY = -80
+		Selaction = selAutors
+		Unselaction = unSelAutors
+		Pickaction = pickAutors
+		Unpickaction = unPickAutors
+		Description = autorsBut_desc
+	}
+	Button4:
+	{
+		name = exit
+		texture =  /data/interface/textures/button.dds
+		width = 178
+		height = 64
+		posX = 750
+		posY = -80
+		Selaction = selExit
+		Unselaction = unSelExit
+		Pickaction = pickExit
+		Unpickaction = unPickExit
+		Description = exitBut_desc
+	}
+}
+Texts:
+{
+	Text:
+	{
+		name = buttonsText
+		font = f1
+		Textfile =  /data/interface/texts/XXX___text.txt
+		Max_Length = 200
+		Strings_num = 4
+		Orientation = MIDDLE
+		string1:
+		{
+			text = startBut
+			maxwidth = 178
+			size = 40
+			color = 1 1 1
+			posX = 96
+			posY = -93
+		}
+		string2:
+		{
+			text = settingsBut
+			maxwidth = 178
+			size = 40
+			color = 1 1 1
+			posX = 314
+			posY = -93
+		}
+		string3:
+		{
+			text = autorsBut
+			maxwidth = 178
+			size = 40
+			color = 1 1 1
+			posX = 532
+			posY = -93
+		}
+		string4:
+		{
+			text = exitBut
+			maxwidth = 178
+			size = 40
+			color = 1 1 1
+			posX = 750
+			posY = -93
+		}
+	}
+
+}
