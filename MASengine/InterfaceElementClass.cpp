@@ -92,7 +92,7 @@ bool InterfaceElementClass::Initialize(ID3D11Device* device, ID3D11DeviceContext
 		}
 	}
 
-
+	m_visible = 1;
 	return true;
 }
 
@@ -215,7 +215,6 @@ bool InterfaceElementClass::isVisible()
 //Updating element`s data
 void InterfaceElementClass::setVisible(bool visible)
 {
-	CommandClass* command = new CommandClass;
 	for (int i = 0; i < m_bitmapsNum; i++)
 	{
 		CommandManagerClass::getI().addCommand(m_bitmapsInfo[i].unSelAction, m_actionsFileName);

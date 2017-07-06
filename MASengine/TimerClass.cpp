@@ -25,7 +25,7 @@ bool TimerClass::Initialize()
 	if (m_frequency == 0)
 	{
 		LogManagerClass::getI().addLog("Error 2-1");
-		return false;
+		//return false;
 	}
 
 	// Find out how many times the frequency counter ticks every millisecond.

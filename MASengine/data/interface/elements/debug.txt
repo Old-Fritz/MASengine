@@ -26,7 +26,7 @@ Texts:
 			text = mouseX
 			maxwidth = 200
 			size = 20
-			color = 1 1 1
+			color = 1 1 1 1
 			posX = 20
 			posY = 20
 		}
@@ -35,7 +35,7 @@ Texts:
 			text = mouseY
 			maxwidth = 200
 			size = 20
-			color = 1 1 1
+			color = 1 1 1 1
 			posX = 20
 			posY = 40
 		}
@@ -44,7 +44,7 @@ Texts:
 			text = fps
 			maxwidth = 200
 			size = 20
-			color = 0 1 0
+			color = 0 1 0 1
 			posX = 20
 			posY = 60
 		}
@@ -53,7 +53,7 @@ Texts:
 			text = cpu
 			maxwidth = 200
 			size = 20
-			color = 0 1 0
+			color = 0 1 0 1
 			posX = 20
 			posY = 80
 		}
@@ -62,7 +62,7 @@ Texts:
 			text = keyboardtext
 			maxwidth = 200
 			size = 20
-			color = 1 0 0
+			color = 1 0 0 1
 			posX = 20
 			posY = 100
 		}
@@ -71,7 +71,7 @@ Texts:
 			text = keyboardstring
 			maxwidth = 200
 			size = 20
-			color = 1 0 0
+			color = 1 0 0 1
 			posX = 80
 			posY = 100
 		}
@@ -80,7 +80,7 @@ Texts:
 			text = cam_posX
 			maxwidth = 200
 			size = 20
-			color = 1 0 0
+			color = 1 0 0 1
 			posX = 20
 			posY = 140
 		}
@@ -89,7 +89,7 @@ Texts:
 			text = cam_posY
 			maxwidth = 200
 			size = 20
-			color = 1 0 0
+			color = 1 0 0 1
 			posX = 20
 			posY = 160
 		}
@@ -98,7 +98,7 @@ Texts:
 			text = cam_posZ
 			maxwidth = 200
 			size = 20
-			color = 1 0 0
+			color = 1 0 0 1
 			posX = 20
 			posY = 180
 		}
@@ -107,7 +107,7 @@ Texts:
 			text = cam_rotX
 			maxwidth = 200
 			size = 20
-			color = 1 0 0
+			color = 1 0 0 1
 			posX = 20
 			posY = 220
 		}
@@ -116,7 +116,7 @@ Texts:
 			text = cam_rotY
 			maxwidth = 200
 			size = 20
-			color = 1 0 0
+			color = 1 0 0 1
 			posX = 20
 			posY = 240
 		}
@@ -125,7 +125,7 @@ Texts:
 			text = cam_rotZ
 			maxwidth = 200
 			size = 20
-			color = 1 0 0
+			color = 1 0 0 1
 			posX = 20
 			posY = 260
 		}

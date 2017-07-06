@@ -31,15 +31,13 @@ selaction6 =
 selaction7 = 
 {
 	updateInterface BMselIntens Test test7 0.7f;
-	updateInterface TStext Test maga 1 0 5
-	 _RUSSI  /data/interface/texts/XXX___text.txt;
+	updateInterface TStext Test maga 1;
 	updateInterface setBMvisible Logo logo 0;
 }
 selaction8 = 
 {
 	updateInterface BMselIntens Test test8 0.8f;
-	updateInterface TStext Test maga 1 0 end
-	 america  /data/interface/texts/XXX___text.txt;
+	updateInterface TStext Test maga 1;
 	updateInterface setBMvisible Logo logo 1;
 }
 selactiont = 

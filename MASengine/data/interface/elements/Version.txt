@@ -26,7 +26,7 @@ Texts:
 			text = corversion
 			maxwidth = 100
 			size = 20
-			color = 1 1 1
+			color = 1 1 1 1
 			posX = 200
 			posY = 50
 		}

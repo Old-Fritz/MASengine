@@ -6,4 +6,6 @@ Sample {1}
 ScreenHeight {720}
 
 
+Language {ENG}
 ButCommandFilename {}
+ElementsFilename {data/interface/elements.txt}

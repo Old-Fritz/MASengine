@@ -137,7 +137,9 @@ bool InterfaceClass::Render(InterfaceShaderClass* interfaceShader, FontShaderCla
 
 	for (int i = 0; i < m_elementsNum; i++)
 	{
-		if (m_interfaceElements[i] && m_interfaceElements[i]->isVisible())
+
+		//if (m_interfaceElements[i] && m_interfaceElements[i]->isVisible())
+		if (m_interfaceElements[i])
 		{
 			result = m_interfaceElements[i]->Render(fontShader, interfaceShader, deviceContext, worldMatrix, orthoMatrix, viewMatrix);
 			if (!result)

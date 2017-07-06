@@ -67,7 +67,7 @@ bool GraphicsClass::Initialize(HWND hwnd)
 	result = m_interface->Initialize(m_D3D->GetDevice(),m_D3D->GetDeviceContext(), hwnd, SettingsClass::getI().getIntParameter("ScreenWidth"), SettingsClass::getI().getIntParameter("ScreenHeight"));
 	if (!result)
 	{
-		MessageBox(hwnd, L"Could not initialize test", L"Error", MB_OK);
+		MessageBox(hwnd, L"Could not initialize interface", L"Error", MB_OK);
 		return false;
 	}
 
@@ -138,8 +138,8 @@ bool GraphicsClass::Frame(D3DXVECTOR3 pos, D3DXVECTOR3 rot, int mouseX, int mous
 	}
 
 	//update camera
-	m_camera->SetPosition(pos);
-	m_camera->SetRotation(rot);
+	//m_camera->SetPosition(pos);
+	//m_camera->SetRotation(rot);
 
 	//updating denug info
 	m_interface->UpdateDebug(m_D3D->GetDeviceContext(), pos, rot, mouseX, mouseY);
@@ -151,194 +151,179 @@ bool GraphicsClass::updateInterface(CommandClass * command, int ind)
 {
 	if (command->getCommandsNum() < 1)
 		return false;
-	std::string updCommandType = command->getParam(0, 1); // type of update is second param
+	std::string updCommandType = command->getParam(ind, 1); // type of update is second param
 
 													 //Updating params of element
 	if (updCommandType == "setElVisible")
 	{
-		return m_Interface->setElVisible(command->getParam(0, 2), atoi(command->getParam(0, 3).c_str())); // all params in order
+		m_interface->setElVisible(command->getParam(ind, 2), stoi(command->getParam(ind, 3))); // all params in order
 	}
 	if (updCommandType == "startDrag")
 	{
-		m_Interface->startDrag(command->getParam(0, 2)); // all params in order
+		m_interface->startDrag(command->getParam(ind, 2)); // all params in order
 	}
 	if (updCommandType == "endDrag")
 	{
-		m_Interface->endDrag(command->getParam(0, 2)); // all params in order
+		m_interface->endDrag(command->getParam(ind, 2)); // all params in order
 	}
 	if (updCommandType == "elPos")
 	{
-		m_Interface->setPos(command->getParam(0, 2), stoi(command->getParam(0, 3)), stoi(command->getParam(0, 4))); // all params in order
+		m_interface->setPos(m_D3D->GetDeviceContext(),command->getParam(ind, 2), stoi(command->getParam(ind, 3)), stoi(command->getParam(ind, 4))); // all params in order
 	}
 
 
 	//Updating params of bitmaps
 	else if (updCommandType == "BMposX")
 	{
-		if (command->getParamsNum(0) >= 5) //if number of params smaller than normal, then this is incorrect
-			m_Interface->updateElBMposX(command->getParam(0, 2), command->getParam(0, 3), atoi(command->getParam(0, 4).c_str())); // all params in order
+		if (command->getParamsNum(ind) >= 5) //if number of params smaller than normal, then this is incorrect
+			m_interface->updateElBMposX(command->getParam(ind, 2), command->getParam(ind, 3), stoi(command->getParam(ind, 4))); // all params in order
 	}
 	else if (updCommandType == "BMposY")
 	{
-		if (command->getParamsNum(0) >= 5) //if number of params smaller than normal, then this is incorrect
-			m_Interface->updateElBMposY(command->getParam(0, 2), command->getParam(0, 3), atoi(command->getParam(0, 4).c_str())); // all params in order
+		if (command->getParamsNum(ind) >= 5) //if number of params smaller than normal, then this is incorrect
+			m_interface->updateElBMposY(command->getParam(ind, 2), command->getParam(ind, 3), stoi(command->getParam(ind, 4))); // all params in order
 	}
 	else if (updCommandType == "BMvertPercent")
 	{
-		if (command->getParamsNum(0) >= 5) //if number of params smaller than normal, then this is incorrect
-			m_Interface->updateElBMvertPercent(command->getParam(0, 2), command->getParam(0, 3), atof(command->getParam(0, 4).c_str())); // all params in order
+		if (command->getParamsNum(ind) >= 5) //if number of params smaller than normal, then this is incorrect
+			m_interface->updateElBMvertPercent(command->getParam(ind, 2), command->getParam(ind, 3), stof(command->getParam(ind, 4))); // all params in order
 	}
 	else if (updCommandType == "BMhorPercent")
 	{
-		if (command->getParamsNum(0) >= 5) //if number of params smaller than normal, then this is incorrect
-			m_Interface->updateElBMhorPercent(command->getParam(0, 2), command->getParam(0, 3), atof(command->getParam(0, 4).c_str())); // all params in order
+		if (command->getParamsNum(ind) >= 5) //if number of params smaller than normal, then this is incorrect
+			m_interface->updateElBMhorPercent(command->getParam(ind, 2), command->getParam(ind, 3), stof(command->getParam(ind, 4))); // all params in order
 	}
 	else if (updCommandType == "BMtranspar")
 	{
-		if (command->getParamsNum(0) >= 5) //if number of params smaller than normal, then this is incorrect
-			m_Interface->updateElBMtranspar(command->getParam(0, 2), command->getParam(0, 3), atof(command->getParam(0, 4).c_str())); // all params in order
+		if (command->getParamsNum(ind) >= 5) //if number of params smaller than normal, then this is incorrect
+			m_interface->updateElBMtranspar(command->getParam(ind, 2), command->getParam(ind, 3), stof(command->getParam(ind, 4))); // all params in order
 	}
 	else if (updCommandType == "BMselIntens")
 	{
-		if (command->getParamsNum(0) >= 5) //if number of params smaller than normal, then this is incorrect
-			m_Interface->updateElBMselIntens(command->getParam(0, 2), command->getParam(0, 3), atof(command->getParam(0, 4).c_str())); // all params in order
+		if (command->getParamsNum(ind) >= 5) //if number of params smaller than normal, then this is incorrect
+			m_interface->updateElBMselIntens(command->getParam(ind, 2), command->getParam(ind, 3), stof(command->getParam(ind, 4))); // all params in order
 	}
 	else if (updCommandType == "BMselCol")
 	{
-		if (command->getParamsNum(0) >= 8) //if number of params smaller than normal, then this is incorrect
+		if (command->getParamsNum(ind) >= 8) //if number of params smaller than normal, then this is incorrect
 		{
-			m_Interface->updateElBMselCol(command->getParam(0, 2), command->getParam(0, 3), D3DXVECTOR4(atof(command->getParam(0, 4).c_str()),
-				atoi(command->getParam(0, 5).c_str()), atof(command->getParam(0, 6).c_str()), atof(command->getParam(0, 7).c_str()))); // all params in order
+			m_interface->updateElBMselCol(command->getParam(ind, 2), command->getParam(ind, 3), D3DXVECTOR4(stof(command->getParam(ind, 4)),
+				stoi(command->getParam(ind, 5)), stof(command->getParam(ind, 6)), stof(command->getParam(ind, 7)))); // all params in order
 		}
 	}
 	else if (updCommandType == "setBMvisible")
 	{
-		if (command->getParamsNum(0) >= 5) //if number of params smaller than normal, then this is incorrect
-			return m_Interface->setElBMvisible(command->getParam(0, 2), command->getParam(0, 3), atoi(command->getParam(0, 4).c_str())); // all params in order
+		if (command->getParamsNum(ind) >= 5) //if number of params smaller than normal, then this is incorrect
+			m_interface->setElBMvisible(command->getParam(ind, 2), command->getParam(ind, 3), stoi(command->getParam(ind, 4))); // all params in order
 	}
 
 	//Updating params of strings
 	else if (updCommandType == "TSposX")
 	{
-		if (command->getParamsNum(0) >= 6) //if number of params smaller than normal, then this is incorrect
+		if (command->getParamsNum(ind) >= 6) //if number of params smaller than normal, then this is incorrect
 		{
-			m_Interface->updateElTSposX(command->getParam(0, 2), command->getParam(0, 3), atoi(command->getParam(0, 4).c_str()),
-				atoi(command->getParam(0, 5).c_str())); // all params in order
+			m_interface->updateElTSposX(m_D3D->GetDeviceContext(), command->getParam(ind, 2), command->getParam(ind, 3), stoi(command->getParam(ind, 4)),
+				stoi(command->getParam(ind, 5))); // all params in order
 		}
 	}
 	else if (updCommandType == "TSposY")
 	{
-		if (command->getParamsNum(0) >= 6) //if number of params smaller than normal, then this is incorrect
+		if (command->getParamsNum(ind) >= 6) //if number of params smaller than normal, then this is incorrect
 		{
-			m_Interface->updateElTSposY(command->getParam(0, 2), command->getParam(0, 3), atoi(command->getParam(0, 4).c_str()),
-				atoi(command->getParam(0, 5).c_str())); // all params in order
+			m_interface->updateElTSposY(m_D3D->GetDeviceContext(), command->getParam(ind, 2), command->getParam(ind, 3), stoi(command->getParam(ind, 4)),
+				stoi(command->getParam(ind, 5))); // all params in order
 		}
 	}
 	else if (updCommandType == "TStext")
 	{
-		if (command->getParamsNum(0) >= 9) //if number of params smaller than normal, then this is incorrect
+		if (command->getParamsNum(ind) >= 6) //if number of params smaller than normal, then this is incorrect
 		{
-			int last; // ind of last el
-			if (command->getParam(0, 6) == "end")
-				last = m_Interface->getElTSsize(command->getParam(0, 2), command->getParam(0, 3), atoi(command->getParam(0, 4).c_str())) - 1; // get size of text
-			else
-				last = atoi(command->getParam(0, 6).c_str()); //else do like normal
-
-			string text; // param of text
-			text = m_resources->getTexts()->getText(command->getParam(0, 7), command->getParam(0, 8)); // get text by IEC command
-			m_Interface->updateElTStext(command->getParam(0, 2), command->getParam(0, 3), atoi(command->getParam(0, 4).c_str()),
-				atoi(command->getParam(0, 5).c_str()), last, text); // all params in order
+			m_interface->updateElTStext(m_D3D->GetDeviceContext(), command->getParam(ind, 2), command->getParam(ind, 3), stoi(command->getParam(ind, 4)), command->getParam(ind, 5)); // all params in order
 		}
 	}
 	else if (updCommandType == "TScolor")
 	{
-		if (command->getParamsNum(0) >= 8) //if number of params smaller than normal, then this is incorrect
+		if (command->getParamsNum(ind) >= 8) //if number of params smaller than normal, then this is incorrect
 		{
-			m_Interface->updateElTScolor(command->getParam(0, 2), command->getParam(0, 3), atoi(command->getParam(0, 4).c_str()),
-				D3DXVECTOR3(atof(command->getParam(0, 5).c_str()), atof(command->getParam(0, 6).c_str()), atof(command->getParam(0, 7).c_str())));
+			m_interface->updateElTScolor(m_D3D->GetDeviceContext(), command->getParam(ind, 2), command->getParam(ind, 3), atoi(command->getParam(ind, 4).c_str()),
+				D3DXVECTOR4(stof(command->getParam(ind, 5)), stof(command->getParam(ind, 6)), stof(command->getParam(ind, 7)), stof(command->getParam(ind, 8))));
 		}
 	}
-	else if (updCommandType == "TSlastword")
+	else if (updCommandType == "TSadding")
 	{
-		if (command->getParamsNum(0) >= 7) //if number of params smaller than normal, then this is incorrect
+		if (command->getParamsNum(ind) >= 6) //if number of params smaller than normal, then this is incorrect
 		{
-			string text; // param of text
-			text = m_resources->getTexts()->getText(command->getParam(0, 5), command->getParam(0, 6)); // get text by IEC command
-			m_Interface->updateElTSlastword(command->getParam(0, 2), command->getParam(0, 3), atoi(command->getParam(0, 4).c_str()), text); // all params in order
+			m_interface->updateElTSadding(m_D3D->GetDeviceContext(), command->getParam(ind, 2), command->getParam(ind, 3), stoi(command->getParam(ind, 4)), command->getParam(ind, 5)); // all params in order
 		}
 	}
 	else if (updCommandType == "setTvisible")
 	{
-		if (command->getParamsNum(0) >= 5) //if number of params smaller than normal, then this is incorrect
+		if (command->getParamsNum(ind) >= 5) //if number of params smaller than normal, then this is incorrect
 		{
-			m_Interface->setElTvisible(command->getParam(0, 2), command->getParam(0, 3), atoi(command->getParam(0, 4).c_str())); // all params in order
+			m_interface->setElTvisible(command->getParam(ind, 2), command->getParam(ind, 3), stoi(command->getParam(ind, 4))); // all params in order
 		}
 	}
 
 	//Special slider commands
 	else if (updCommandType == "nextSector")
 	{
-		return m_Interface->nextSector(command->getParam(0, 2));
+		//return m_interface->nextSector(command->getParam(0, 2));
 	}
 	else if (updCommandType == "backSector")
 	{
-		return m_Interface->backSector(command->getParam(0, 2));
+		//return m_interface->backSector(command->getParam(0, 2));
 	}
 
 	//Special list commands
 	else if (updCommandType == "addElement")
 	{
-		return m_Interface->addElement(command->getParam(0, 2), m_D3D->GetDevice(), m_hwnd);
+		//return m_interface->addElement(command->getParam(0, 2), m_D3D->GetDevice(), m_hwnd);
 	}
 	else if (updCommandType == "deleteElement")
 	{
-		m_Interface->deleteElement(command->getParam(0, 2), stoi(command->getParam(0, 3)));
+		//m_interface->deleteElement(command->getParam(0, 2), stoi(command->getParam(0, 3)));
 	}
 	else if (updCommandType == "setLastElement")
 	{
-		m_Interface->setLastElement(command->getParam(0, 2), stoi(command->getParam(0, 3)));
+		//m_interface->setLastElement(command->getParam(0, 2), stoi(command->getParam(0, 3)));
 	}
 	else if (updCommandType == "clearElement")
 	{
-		m_Interface->clear(command->getParam(0, 2));
+		//m_interface->clear(command->getParam(0, 2));
 	}
 	//another commands
 	else if (updCommandType == "setBMCommand")
 	{
-		m_Interface->setBMCommand(command->getParam(0, 2), command->getParam(0, 3), command->getParam(0, 4), command->getParam(0, 5));
+		//m_interface->setBMCommand(command->getParam(0, 2), command->getParam(0, 3), command->getParam(0, 4), command->getParam(0, 5));
 	}
 	else if (updCommandType == "getSettings")
 	{
-		string filename = command->getParam(0, 6);
+		/*string filename = command->getParam(0, 6);
 		filename.replace(filename.find_first_of("XXX___"), 6, m_resources->getSettings()->getLang());
-		return m_Interface->getSettings(command->getParam(0, 2), command->getParam(0, 3), stoi(command->getParam(0, 4)), command->getParam(0, 5),
-			filename, m_D3D->GetDevice(), m_hwnd);
+		return m_interface->getSettings(command->getParam(0, 2), command->getParam(0, 3), stoi(command->getParam(0, 4)), command->getParam(0, 5),
+			filename, m_D3D->GetDevice(), m_hwnd);*/
 	}
-
-	command->Shutdown();
-	command->Initialize("Nothing;");
-	return command;
 }
 
 bool GraphicsClass::updateGraphics(CommandClass * command,int ind)
 {
 	if (command->getCommandsNum() < 1)
 		return false;
-	string updCommandType = command->getParam(0, 1); // type of update is second param
+	std::string updCommandType = command->getParam(ind, 1); // type of update is second param
 
 	if (updCommandType == "cameraPosition")
 	{
-		if (command->getParamsNum(0) < 5) //if number of params smaller than normal, then this is incorrect
+		if (command->getParamsNum(ind) < 5) //if number of params smaller than normal, then this is incorrect
 			return false;
-		m_Camera->SetPosition(D3DXVECTOR3(atof(command->getParam(0, 2).c_str()), atof(command->getParam(0, 3).c_str()), atof(command->getParam(0, 4).c_str())));
-		m_Camera->Render();
+		m_camera->SetPosition(D3DXVECTOR3(stof(command->getParam(ind, 2)), stof(command->getParam(ind, 3)), stof(command->getParam(ind, 4))));
+		m_camera->Render();
 	}
 	if (updCommandType == "cameraRotation")
 	{
-		if (command->getParamsNum(0) < 5) //if number of params smaller than normal, then this is incorrect
+		if (command->getParamsNum(ind) < 5) //if number of params smaller than normal, then this is incorrect
 			return false;
-		m_Camera->SetRotation(D3DXVECTOR3(atof(command->getParam(0, 2).c_str()), atof(command->getParam(0, 3).c_str()), atof(command->getParam(0, 4).c_str())));
-		m_Camera->Render();
+		m_camera->SetRotation(D3DXVECTOR3(stof(command->getParam(ind, 2)), stof(command->getParam(ind, 3)), stof(command->getParam(ind, 4))));
+		m_camera->Render();
 	}
 }
 
@@ -362,7 +347,8 @@ bool GraphicsClass::Render()
 	//render 2D
 	m_D3D->TurnZBufferOff();
 	
-	m_interface->Render(m_shaderManager->getInterfaceShader(), m_shaderManager->getFontShader(), m_D3D->GetDeviceContext(), worldMatrix,orthoMatrix, viewMatrix);
+	m_interface->Render(m_shaderManager->getInterfaceShader(), m_shaderManager->getFontShader(), m_D3D->GetDeviceContext(),
+		worldMatrix, viewMatrix, orthoMatrix);
 
 	m_D3D->TurnZBufferOn();
 

@@ -1,7 +1,10 @@
 ScreenWidth = {1280}
 ScreenHeight = {720}
 Fullscreen = {0}
+MouseSensitivity = {1}
 Sample = {1}
 Vsync = {0}
 
+
 Language = {ENG}
+ElementsFilename = {data/interface/elements.txt}

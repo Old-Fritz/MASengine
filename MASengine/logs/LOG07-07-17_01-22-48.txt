@@ -1,0 +1,16 @@
+07-07-17_01-22-48 LogManager Initialized
+07-07-17_01-22-48 MemoryManager Initialized
+07-07-17_01-22-48 ModManager Initialized
+07-07-17_01-22-48 Settings Initialized
+07-07-17_01-22-48 CommandManager Initialized
+07-07-17_01-22-48 ResourceManager Initialized
+07-07-17_01-22-51 Error 2-1
+07-07-17_01-22-51 SystemStateManager Initialized
+07-07-17_01-22-51 All global system Initialized
+07-07-17_01-22-51 Windows Initialization
+07-07-17_01-22-51 input Initialization
+07-07-17_01-22-51 Position Initialization
+07-07-17_01-22-55 Directx Initialization
+07-07-17_01-22-57 Interface Shader Initialization
+07-07-17_01-22-57 Font Shader Initialization
+07-07-17_01-22-58 Shaders Initialization

@@ -1,3 +1,6 @@
+Error 2-1 System does not supports high performance timers.
+Error 2-2 Problem with timer Initialization
+
 Error 3-1 Problem with opening Mod File
 
 Error 4-1 Problem with model loading
