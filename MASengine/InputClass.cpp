@@ -103,7 +103,7 @@ bool InputClass::Initialize(HINSTANCE hinstance, HWND hwnd)
 	}
 
 	//set base commands for all buttons
-	for (int i = 0; i < 256; i++)
+	for (int i = 0; i < 259; i++)
 	{
 		m_pickCommandsNames[i] = std::to_string(i) + "pickCommand";
 		m_unPickCommandsNames[i] = std::to_string(i) + "unPickCommand";
@@ -154,6 +154,8 @@ bool InputClass::Frame()
 		m_lastKeyboardState[i] = m_keyboardState[i];
 	}
 
+	m_lastMouseState = m_mouseState;
+
 	// Read the current state of the keyboard.
 	result = ReadKeyboard();
 	if (!result)
@@ -174,11 +176,12 @@ bool InputClass::Frame()
 	ProcessInput();
 
 	//check for press and add commands
+	//check keyboard
 	for (int i = 0; i < 256; i++)
 	{
 		if ((bool)m_keyboardState[i] != (bool)m_lastKeyboardState[i]) //check for changing
 		{
-			
+
 			if (m_keyboardState[i]) // was pick
 			{
 				CommandManagerClass::getI().addCommand(m_pickCommandsNames[i], m_commandsFileName);
@@ -187,6 +190,25 @@ bool InputClass::Frame()
 			{
 				CommandManagerClass::getI().addCommand(m_unPickCommandsNames[i], m_commandsFileName);
 			}
+		}
+	}
+	//check mouse buttons
+	for (int i = 0; i < 3; i++)
+	{
+		if ((bool)m_mouseState.rgbButtons[i] != (bool)m_lastMouseState.rgbButtons[i]) //check for changing
+		{
+
+			if (m_mouseState.rgbButtons[i]) // was pick
+			{
+				CommandManagerClass::getI().addCommand(m_pickCommandsNames[i+256], m_commandsFileName);	
+			}
+			else //was unPick
+			{
+				CommandManagerClass::getI().addCommand(m_unPickCommandsNames[i+256], m_commandsFileName);
+			}
+			CommandManagerClass::getI().addChange("mouseX", m_mouseX);
+			CommandManagerClass::getI().addChange("mouseY", m_mouseY);
+
 		}
 	}
 	if (m_mouseState.lZ >= 0)
@@ -320,13 +342,14 @@ bool InputClass::IsMiddleMouseButtonDown()
 
 void InputClass::setPickCommand(int butNum, const std::string& command)
 {
-	if (butNum < 256)
+	if (butNum < 259)
 		m_pickCommandsNames[butNum] = command;
+		
 }
 
 void InputClass::setUnPickCommand(int butNum, const std::string& command)
 {
-	if (butNum < 256)
+	if (butNum < 259)
 		m_unPickCommandsNames[butNum] = command;
 }
 

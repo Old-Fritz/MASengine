@@ -139,3 +139,11 @@ downWheelCommand =
 {
 	updateSystem setMoving 9 0;
 }
+256pickCommand = 
+{
+	updateGraphics pick mouseX mouseY;
+}
+256unPickCommand = 
+{
+	updateGraphics unPick mouseX mouseY;
+}

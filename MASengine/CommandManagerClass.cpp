@@ -102,6 +102,11 @@ bool CommandManagerClass::addCommand(const std::string & name, const std::string
 	//return getTextFromFile(commandName, commandFilename);
 }
 
+void CommandManagerClass::addChange(const std::string & key, float value)
+{
+	m_commandsQueue.back()->addChange(key, value);
+}
+
  std::string  CommandManagerClass::getTextFromFile(const std::string & name, const std::string & filename)
 {
 	std::ifstream file;

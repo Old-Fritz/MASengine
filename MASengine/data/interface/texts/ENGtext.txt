@@ -1,4 +1,4 @@
-corversion = {World At Fire v. 0.3.1.2}
+corversion = {Mas Engine v. 0.0.0.7}
 make = {MAKE}
 america = {AMERICA}
 great_again = {GREAT AGAIN}

@@ -158,7 +158,7 @@ bool SystemClass::Frame()
 	m_position->Move();
 
 	//process graphics
-	result = m_graphics->Frame(m_position->GetPosition(), m_position->GetRotation(), mouseX, mouseY,m_input->IsLeftMouseButtonDown()); 
+	result = m_graphics->Frame(m_position->GetPosition(), m_position->GetRotation(), mouseX, mouseY); 
 	if (!result)
 	{
 		LogManagerClass::getI().addLog("Error 8-2");
@@ -183,6 +183,8 @@ bool SystemClass::doCommands()
 			std::string commandType = command->getParam(i, 0);
 			if (commandType == "updateInterface")
 				m_graphics->updateInterface(command,i);
+			if (commandType == "updateGraphics")
+				m_graphics->updateGraphics(command, i);
 			//else if (commandType == "updateSystem")
 			//	updateSystem(command, i);
 			//else if (commandType == "updateTime")

@@ -62,11 +62,11 @@ public:
 
 	//Updating params of strings
 	void setElTvisible(const std::string& elname, const std::string& tname, bool visible);
-	void updateElTSposY(ID3D11DeviceContext* deviceContext, const std::string& elname, const std::string& tname, int ind, int posY);
-	void updateElTSposX(ID3D11DeviceContext* deviceContext, const std::string& elname, const std::string& tname, int ind, int posX);
-	void updateElTStext(ID3D11DeviceContext* deviceContext, const std::string& elname, const std::string& tname, int ind, const std::string& text);
-	void updateElTScolor(ID3D11DeviceContext* deviceContext, const std::string& elname, const std::string& tname, int ind, D3DXVECTOR4 color);
-	void updateElTSadding(ID3D11DeviceContext* deviceContext, const std::string& elname, const std::string& tname, int ind, const std::string& adding);
+	bool updateElTSposY(ID3D11DeviceContext* deviceContext, const std::string& elname, const std::string& tname, int ind, int posY);
+	bool updateElTSposX(ID3D11DeviceContext* deviceContext, const std::string& elname, const std::string& tname, int ind, int posX);
+	bool updateElTStext(ID3D11DeviceContext* deviceContext, const std::string& elname, const std::string& tname, int ind, const std::string& text);
+	bool updateElTScolor(ID3D11DeviceContext* deviceContext, const std::string& elname, const std::string& tname, int ind, D3DXVECTOR4 color);
+	bool updateElTSadding(ID3D11DeviceContext* deviceContext, const std::string& elname, const std::string& tname, int ind, const std::string& adding);
 
 	//Special Slider commands
 	//CommandClass* nextSector(string elname);

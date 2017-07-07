@@ -35,7 +35,11 @@ bool InterfaceClass::Initialize(ID3D11Device * device, ID3D11DeviceContext * dev
 	//Open file with elements
 	elementsFile.open(SettingsClass::getI().getStrParameter("ElementsFilename"));
 	if (elementsFile.fail())
+	{
+		LogManagerClass::getI().addLog("Error 14-1");
 		return false;
+	}
+
 	elementsFile >> m_elementsNum;
 	
 	std::string elementFilename;
@@ -66,8 +70,9 @@ bool InterfaceClass::Initialize(ID3D11Device * device, ID3D11DeviceContext * dev
 			m_interfaceElements[i] = new(1) InterfaceElementClass;
 		}
 		result = m_interfaceElements[i]->Initialize(device, deviceContext, hwnd, elementFilename, m_screenWidth, m_screenHeight);
-		if (!result)
+		if(!result)
 		{
+			LogManagerClass::getI().addLog("Error 14-2");
 			return false;
 		}
 	}
@@ -138,12 +143,13 @@ bool InterfaceClass::Render(InterfaceShaderClass* interfaceShader, FontShaderCla
 	for (int i = 0; i < m_elementsNum; i++)
 	{
 
-		//if (m_interfaceElements[i] && m_interfaceElements[i]->isVisible())
-		if (m_interfaceElements[i])
+		if (m_interfaceElements[i] && m_interfaceElements[i]->isVisible())
+		//if (m_interfaceElements[i])
 		{
 			result = m_interfaceElements[i]->Render(fontShader, interfaceShader, deviceContext, worldMatrix, orthoMatrix, viewMatrix);
 			if (!result)
 			{
+				LogManagerClass::getI().addLog("Error 14-3");
 				return false;
 			}
 		}
@@ -282,35 +288,35 @@ void InterfaceClass::setElTvisible(const std::string& elname, const std::string&
 	if (element)
 		element->setTvisible(tname, visible);
 }
-void InterfaceClass::updateElTSposY(ID3D11DeviceContext* deviceContext, const std::string& elname, const std::string& tname, int ind, int posY)
+bool InterfaceClass::updateElTSposY(ID3D11DeviceContext* deviceContext, const std::string& elname, const std::string& tname, int ind, int posY)
 {
 	InterfaceElementClass* element = findElbyName(elname);
 	if (element)
-		element->updateTSposY(deviceContext,tname, ind, posY);
+		return element->updateTSposY(deviceContext,tname, ind, posY);
 }
-void InterfaceClass::updateElTSposX(ID3D11DeviceContext* deviceContext, const std::string& elname, const std::string& tname, int ind, int posX)
+bool InterfaceClass::updateElTSposX(ID3D11DeviceContext* deviceContext, const std::string& elname, const std::string& tname, int ind, int posX)
 {
 	InterfaceElementClass* element = findElbyName(elname);
 	if (element)
-		element->updateTSposX(deviceContext,tname, ind, posX);
+		return element->updateTSposX(deviceContext,tname, ind, posX);
 }
-void InterfaceClass::updateElTStext(ID3D11DeviceContext* deviceContext, const std::string& elname, const std::string& tname, int ind, const std::string& text)
+bool InterfaceClass::updateElTStext(ID3D11DeviceContext* deviceContext, const std::string& elname, const std::string& tname, int ind, const std::string& text)
 {
 	InterfaceElementClass* element = findElbyName(elname);
 	if (element)
-		element->updateTStext(deviceContext,tname, ind,  text);
+		return element->updateTStext(deviceContext,tname, ind,  text);
 }
-void InterfaceClass::updateElTScolor(ID3D11DeviceContext* deviceContext, const std::string& elname, const std::string& tname, int ind, D3DXVECTOR4 color)
+bool InterfaceClass::updateElTScolor(ID3D11DeviceContext* deviceContext, const std::string& elname, const std::string& tname, int ind, D3DXVECTOR4 color)
 {
 	InterfaceElementClass* element = findElbyName(elname);
 	if (element)
-		element->updateTScolor(deviceContext,tname, ind, color);
+		return element->updateTScolor(deviceContext,tname, ind, color);
 }
-void InterfaceClass::updateElTSadding(ID3D11DeviceContext* deviceContext, const std::string& elname, const std::string& tname, int ind, const std::string& text)
+bool InterfaceClass::updateElTSadding(ID3D11DeviceContext* deviceContext, const std::string& elname, const std::string& tname, int ind, const std::string& text)
 {
 	InterfaceElementClass* element = findElbyName(elname);
 	if (element)
-		element->updateTSadding(deviceContext,tname, ind, text);
+		return element->updateTSadding(deviceContext,tname, ind, text);
 }
 
 
@@ -558,8 +564,8 @@ void InterfaceClass::pick(int ind, const std::string& name)
 {
 	// change state of LBM and give pick command
 	m_LBMDown = true;
-	m_interfaceElements[ind]->addPickCommand(name);
 	m_interfaceElements[m_lastInd]->addUnSelCommand(m_lastName);
+	m_interfaceElements[ind]->addPickCommand(name);
 
 	// save new params of last
 	m_lastInd = ind;

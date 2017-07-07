@@ -1,11 +1,11 @@
 Fullscreen {0}
 ScreenWidth {1280}
-MouseSensitivity {0}
+MouseSensitivity {30}
 Vsync {0}
 Sample {1}
 ScreenHeight {720}
 
 
 Language {ENG}
-ButCommandFilename {}
+ButCommandFilename {data/interface/actions/butACTION.txt}
 ElementsFilename {data/interface/elements.txt}

@@ -231,6 +231,8 @@ void MemoryManagerClass::Shutdown()
 
 void * operator new(size_t size, int type)
 {
+	
+
 	switch (type)
 	{
 	case(1):
@@ -249,6 +251,8 @@ void * operator new(size_t size, int type)
 
 void* operator new[](size_t size, int type)
 {
+	
+
 	switch (type)
 	{
 	case(1):
@@ -267,6 +271,7 @@ void* operator new[](size_t size, int type)
 
 void operator delete(void * mem, size_t size, int type)
 {
+	
 	switch (type)
 	{
 	case(1):
@@ -284,6 +289,8 @@ void operator delete(void * mem, size_t size, int type)
 
 void operator delete[](void * mem, size_t size, int type)
 {
+	
+
 	switch (type)
 	{
 	case(1):

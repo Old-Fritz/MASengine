@@ -1,0 +1,6 @@
+07-07-17_19-08-38 LogManager Initialized
+07-07-17_19-08-38 MemoryManager Initialized
+07-07-17_19-08-38 ModManager Initialized
+07-07-17_19-08-38 Settings Initialized
+07-07-17_19-08-38 CommandManager Initialized
+07-07-17_19-08-38 ResourceManager Initialized

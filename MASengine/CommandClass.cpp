@@ -79,7 +79,7 @@ int CommandClass::getParamsNum(int commandNumber)
 	if (commandNumber < m_commandsNum)
 	{
 		if (ParamNum < m_commands[commandNumber].size())
-			return m_commands[commandNumber][ParamNum];
+			return makeChanges(m_commands[commandNumber][ParamNum]);
 		else
 			return "";
 	}
@@ -91,41 +91,36 @@ int CommandClass::getParamsNum(int commandNumber)
 
 void CommandClass::addChange(const std::string& key, float value)
 {
-	m_changes.emplace_back(std::pair<std::string, float>(key, value));
+	auto change = m_changes.find(key);
+	if (change == m_changes.end())
+		m_changes.emplace(std::pair<std::string, float>(key, value));
+	else
+		change->second = value;
 }
 
-void CommandClass::makeChanges()
+std::string CommandClass::makeChanges(const std::string& param)
 {
+	std::string newParam = param;
+
 	//do for all changes
-	for (int i = 0; i < m_changes.size(); i++)
+	for (auto change = m_changes.begin();change!=m_changes.end(); change++)
 	{
-		const std::string& findstr = m_changes[i].first;
-		float value = m_changes[i].second;
+		//const std::string& findstr = m_changes[i].first;
+		//float value = m_changes[i].second;
 		int index;
-		//do for all commands
-		for (int j = 0; j < m_commandsNum; j++)
-		{
-			//do for all params
-			for (int k = 0; k < m_commands[j].size(); k++)
-			{
-				//replace all keys on param
-				while ((index = m_commands[j][k].find(findstr)) != std::string::npos)
-					m_commands[j][k].replace(index, findstr.size(), std::to_string(value));
-			}
-		}
+		
+		//replace all keys on param
+		while ((index = newParam.find(change->first)) != std::string::npos)
+			newParam.replace(index, change->first.size(), std::to_string(change->second));
+		
 	}
-	//check, if this is expression cod symbol and calculate
-	for (int j = 0; j < m_commandsNum; j++)
+	//check, if this is expression code symbol and calculate
+	if (newParam[newParam.size() - 1] == '_')
 	{
-		//do for all params
-		for (int k = 0; k < m_commands[j].size(); k++)
-		{
-			if (m_commands[j][k][m_commands[j][k].size() - 1] == '_')
-			{
-				m_commands[j][k].erase(m_commands[j][k].size() - 1);
-				double result = Calculator.calculate(m_commands[j][k]);
-				m_commands[j][k] = std::to_string(result);
-			}
-		}
+		newParam.erase(newParam.size() - 1);
+		double result = Calculator.calculate(newParam);
+		newParam = std::to_string(result);
 	}
+
+	return newParam;
 }

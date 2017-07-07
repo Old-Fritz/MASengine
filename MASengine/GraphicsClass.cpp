@@ -2,7 +2,6 @@
 
 GraphicsClass::GraphicsClass()
 {
-	m_LBMDown = false;
 
 	m_D3D = 0;
 	m_shaderManager = 0;
@@ -58,7 +57,9 @@ bool GraphicsClass::Initialize(HWND hwnd)
 		return false;
 
 	// Set the initial position of the camera.
-	m_camera->SetPosition(D3DXVECTOR3(0,0,-10));
+	m_camera->SetPosition(D3DXVECTOR3(0,0,-1));
+	m_camera->Render();
+	m_camera->GetViewMatrix(m_baseViewMatrix);
 
 	//Init Interface
 	m_interface = new(1) InterfaceClass;
@@ -104,7 +105,7 @@ void GraphicsClass::Shutdown()
 	}
 }
 
-bool GraphicsClass::Frame(D3DXVECTOR3 pos, D3DXVECTOR3 rot, int mouseX, int mouseY, bool isLBMDown)
+bool GraphicsClass::Frame(D3DXVECTOR3 pos, D3DXVECTOR3 rot, int mouseX, int mouseY)
 {
 	bool result;
 
@@ -122,25 +123,10 @@ bool GraphicsClass::Frame(D3DXVECTOR3 pos, D3DXVECTOR3 rot, int mouseX, int mous
 		return false;
 	}
 
-	//check actions with LBM
-	if (isLBMDown)
-	{
-		if (!m_LBMDown)
-		{
-			pick(mouseX, mouseY);
-			m_LBMDown = true;
-		}
-	}
-	else if (m_LBMDown)
-	{
-		m_LBMDown = false;
-		unPick(mouseX, mouseY);
-	}
-
 	//update camera
-	//m_camera->SetPosition(pos);
-	//m_camera->SetRotation(rot);
-
+	m_camera->SetPosition(pos);
+	m_camera->SetRotation(rot);
+	
 	//updating denug info
 	m_interface->UpdateDebug(m_D3D->GetDeviceContext(), pos, rot, mouseX, mouseY);
 
@@ -222,7 +208,7 @@ bool GraphicsClass::updateInterface(CommandClass * command, int ind)
 	{
 		if (command->getParamsNum(ind) >= 6) //if number of params smaller than normal, then this is incorrect
 		{
-			m_interface->updateElTSposX(m_D3D->GetDeviceContext(), command->getParam(ind, 2), command->getParam(ind, 3), stoi(command->getParam(ind, 4)),
+			return m_interface->updateElTSposX(m_D3D->GetDeviceContext(), command->getParam(ind, 2), command->getParam(ind, 3), stoi(command->getParam(ind, 4)),
 				stoi(command->getParam(ind, 5))); // all params in order
 		}
 	}
@@ -230,7 +216,7 @@ bool GraphicsClass::updateInterface(CommandClass * command, int ind)
 	{
 		if (command->getParamsNum(ind) >= 6) //if number of params smaller than normal, then this is incorrect
 		{
-			m_interface->updateElTSposY(m_D3D->GetDeviceContext(), command->getParam(ind, 2), command->getParam(ind, 3), stoi(command->getParam(ind, 4)),
+			return m_interface->updateElTSposY(m_D3D->GetDeviceContext(), command->getParam(ind, 2), command->getParam(ind, 3), stoi(command->getParam(ind, 4)),
 				stoi(command->getParam(ind, 5))); // all params in order
 		}
 	}
@@ -238,14 +224,14 @@ bool GraphicsClass::updateInterface(CommandClass * command, int ind)
 	{
 		if (command->getParamsNum(ind) >= 6) //if number of params smaller than normal, then this is incorrect
 		{
-			m_interface->updateElTStext(m_D3D->GetDeviceContext(), command->getParam(ind, 2), command->getParam(ind, 3), stoi(command->getParam(ind, 4)), command->getParam(ind, 5)); // all params in order
+			return m_interface->updateElTStext(m_D3D->GetDeviceContext(), command->getParam(ind, 2), command->getParam(ind, 3), stoi(command->getParam(ind, 4)), command->getParam(ind, 5)); // all params in order
 		}
 	}
 	else if (updCommandType == "TScolor")
 	{
 		if (command->getParamsNum(ind) >= 8) //if number of params smaller than normal, then this is incorrect
 		{
-			m_interface->updateElTScolor(m_D3D->GetDeviceContext(), command->getParam(ind, 2), command->getParam(ind, 3), atoi(command->getParam(ind, 4).c_str()),
+			return m_interface->updateElTScolor(m_D3D->GetDeviceContext(), command->getParam(ind, 2), command->getParam(ind, 3), atoi(command->getParam(ind, 4).c_str()),
 				D3DXVECTOR4(stof(command->getParam(ind, 5)), stof(command->getParam(ind, 6)), stof(command->getParam(ind, 7)), stof(command->getParam(ind, 8))));
 		}
 	}
@@ -253,7 +239,7 @@ bool GraphicsClass::updateInterface(CommandClass * command, int ind)
 	{
 		if (command->getParamsNum(ind) >= 6) //if number of params smaller than normal, then this is incorrect
 		{
-			m_interface->updateElTSadding(m_D3D->GetDeviceContext(), command->getParam(ind, 2), command->getParam(ind, 3), stoi(command->getParam(ind, 4)), command->getParam(ind, 5)); // all params in order
+			return  m_interface->updateElTSadding(m_D3D->GetDeviceContext(), command->getParam(ind, 2), command->getParam(ind, 3), stoi(command->getParam(ind, 4)), command->getParam(ind, 5)); // all params in order
 		}
 	}
 	else if (updCommandType == "setTvisible")
@@ -325,6 +311,14 @@ bool GraphicsClass::updateGraphics(CommandClass * command,int ind)
 		m_camera->SetRotation(D3DXVECTOR3(stof(command->getParam(ind, 2)), stof(command->getParam(ind, 3)), stof(command->getParam(ind, 4))));
 		m_camera->Render();
 	}
+	if (updCommandType == "pick")
+	{
+		pick(stoi(command->getParam(ind, 2)), stoi(command->getParam(ind, 3)));
+	}
+	if (updCommandType == "unPick")
+	{
+		unPick(stoi(command->getParam(ind, 2)), stoi(command->getParam(ind, 3)));
+	}
 }
 
 bool GraphicsClass::Render()
@@ -348,7 +342,7 @@ bool GraphicsClass::Render()
 	m_D3D->TurnZBufferOff();
 	
 	m_interface->Render(m_shaderManager->getInterfaceShader(), m_shaderManager->getFontShader(), m_D3D->GetDeviceContext(),
-		worldMatrix, viewMatrix, orthoMatrix);
+		worldMatrix, m_baseViewMatrix, orthoMatrix);
 
 	m_D3D->TurnZBufferOn();
 

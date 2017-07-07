@@ -92,6 +92,7 @@ bool InterfaceElementClass::Initialize(ID3D11Device* device, ID3D11DeviceContext
 		}
 	}
 
+	//rework
 	m_visible = 1;
 	return true;
 }

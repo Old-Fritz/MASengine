@@ -76,7 +76,7 @@ Error 12-7 Length of sentence more than max length
 Error 12-8 Problem with mapping vertex budder of sentence
 Error 12-9 Problem with sentence render
 
-Error 13-1 Problem with reading from file
+Error 13-1 Problem with reading interface element from file
 Error 13-2 Problem with interface element bitmap initialization
 Error 13-3 Problem with interface element text initialization
 Error 13-4 Problem with first sentence update in interface element
@@ -84,3 +84,7 @@ Error 13-5 Problem with updating sentence in interface element
 Error 13-6 Problem with open file of interface element
 Error 13-7 Problem with reading bitmap info from file
 Error 13-8 Problem with reading text info from file
+
+Error 14-1 Problem with opening file with elements
+Error 14-2 Problem with initializtion of element
+Error 14-3 Problem with render of element

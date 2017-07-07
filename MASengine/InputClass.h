@@ -64,10 +64,11 @@ private:
 
 	unsigned char m_keyboardState[256];
 	unsigned char m_lastKeyboardState[256];
+	DIMOUSESTATE m_lastMouseState;
 	DIMOUSESTATE m_mouseState;
 
-	std::string m_pickCommandsNames[256]; // Names of commands for every button
-	std::string m_unPickCommandsNames[256]; // Names of commands for every button
+	std::string m_pickCommandsNames[259]; // Names of commands for every button
+	std::string m_unPickCommandsNames[259]; // Names of commands for every button
 	std::string m_upWheelCommand;
 	std::string m_downWheelCommand;
 	std::string m_commandsFileName;   // File with actions

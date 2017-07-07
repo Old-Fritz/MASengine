@@ -32,7 +32,7 @@ public:
 
 	bool Initialize(HWND hwnd);
 	void Shutdown();
-	bool Frame(D3DXVECTOR3 pos, D3DXVECTOR3 rot, int mouseX, int mouseY, bool isLBMDown);
+	bool Frame(D3DXVECTOR3 pos, D3DXVECTOR3 rot, int mouseX, int mouseY);
 
 	bool updateInterface(CommandClass* command, int ind);
 	bool updateGraphics(CommandClass* command,int ind);
@@ -47,14 +47,15 @@ private:
 	bool interfacePick(int mouseX, int mouseY, int& ind, std::string& name);
 private:
 	//params
-	bool m_LBMDown;
-	
+	D3DXMATRIX m_baseViewMatrix;
 
 	//blocks
 	D3DClass* m_D3D;
 	ShaderManagerClass* m_shaderManager;
 	CameraClass * m_camera;
 	InterfaceClass* m_interface;
+
+	
 
 };
 

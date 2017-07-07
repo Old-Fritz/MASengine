@@ -30,6 +30,7 @@ public:
 	CommandClass* nextCommand();
 
 	bool addCommand(const std::string& name, const std::string& filename);
+	void addChange(const std::string& key, float value);
 private:
 	CommandManagerClass();
 	CommandManagerClass(const CommandManagerClass&);

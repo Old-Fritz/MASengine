@@ -11,6 +11,7 @@
 //////////////
 
 #include "CalculatorClass.h"
+#include<map>
 
 ////////////////////////////////////////////////////////////////////////////////
 // Class name: CommandClass
@@ -33,11 +34,11 @@ public:
 
 	//work with changes
 	void addChange(const std::string& key, float value);
-	void makeChanges();
+	std::string makeChanges(const std::string& param);
 private:
 	int m_commandsNum;
 	std::vector<std::vector<std::string>> m_commands;
-	std::vector<std::pair<std::string, float>> m_changes;
+	std::map<std::string, float> m_changes;
 };
 
 #endif

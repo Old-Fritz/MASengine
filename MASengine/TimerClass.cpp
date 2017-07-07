@@ -20,12 +20,14 @@ TimerClass::~TimerClass()
 
 bool TimerClass::Initialize()
 {
+	static int freq;
 	// Check to see if this system supports high performance timers.
-	QueryPerformanceFrequency((LARGE_INTEGER*)&m_frequency);
+	QueryPerformanceFrequency((LARGE_INTEGER*)&freq);
+	m_frequency = freq;
 	if (m_frequency == 0)
 	{
 		LogManagerClass::getI().addLog("Error 2-1");
-		//return false;
+		return false;
 	}
 
 	// Find out how many times the frequency counter ticks every millisecond.
