@@ -128,10 +128,12 @@
     <ClCompile Include="FpsClass.cpp" />
     <ClCompile Include="GlobalManagerClass.cpp" />
     <ClCompile Include="GraphicsClass.cpp" />
+    <ClCompile Include="GroupElementClass.cpp" />
     <ClCompile Include="InputClass.cpp" />
     <ClCompile Include="InterfaceClass.cpp" />
     <ClCompile Include="InterfaceElementClass.cpp" />
     <ClCompile Include="InterfaceShaderClass.cpp" />
+    <ClCompile Include="ListElementClass.cpp" />
     <ClCompile Include="LogManagerClass.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MemoryManagerClass.cpp" />
@@ -143,6 +145,7 @@
     <ClCompile Include="ResourceManagerClass.cpp" />
     <ClCompile Include="SettingsClass.cpp" />
     <ClCompile Include="ShaderManagerClass.cpp" />
+    <ClCompile Include="SliderElementClass.cpp" />
     <ClCompile Include="StackAllocatorClass.cpp" />
     <ClCompile Include="SystemClass.cpp" />
     <ClCompile Include="SystemStateManagerClass.cpp" />
@@ -166,6 +169,7 @@
     <ClInclude Include="FpsClass.h" />
     <ClInclude Include="GlobalManagerClass.h" />
     <ClInclude Include="GraphicsClass.h" />
+    <ClInclude Include="GroupElementClass.h" />
     <ClInclude Include="InputClass.h" />
     <ClInclude Include="InterfaceClass.h" />
     <ClInclude Include="InterfaceElementClass.h" />

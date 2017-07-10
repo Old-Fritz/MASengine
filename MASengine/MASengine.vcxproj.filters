@@ -198,6 +198,15 @@
     <ClCompile Include="InterfaceClass.cpp">
       <Filter>Файлы исходного кода\Graphics\Interface</Filter>
     </ClCompile>
+    <ClCompile Include="SliderElementClass.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="GroupElementClass.cpp">
+      <Filter>Файлы исходного кода\Graphics\Interface\InterfaceElements</Filter>
+    </ClCompile>
+    <ClCompile Include="ListElementClass.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SystemClass.h">
@@ -310,6 +319,9 @@
     </ClInclude>
     <ClInclude Include="FontManagerClass.h">
       <Filter>Заголовочные файлы\GlobalManager\ResourceManagment</Filter>
+    </ClInclude>
+    <ClInclude Include="GroupElementClass.h">
+      <Filter>Заголовочные файлы\Graphics\Interface\InterfaceElements</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

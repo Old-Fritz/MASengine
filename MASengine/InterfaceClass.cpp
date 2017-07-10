@@ -55,15 +55,15 @@ bool InterfaceClass::Initialize(ID3D11Device * device, ID3D11DeviceContext * dev
 		elementsFile >> elementType;
 		if (elementType == "slider")
 		{
-			m_interfaceElements[i] = new(1) InterfaceElementClass;
+			m_interfaceElements[i] = new(1) SliderElementClass;
 		}
 		else if (elementType == "list")
 		{
-			m_interfaceElements[i] = new(1) InterfaceElementClass;
+			m_interfaceElements[i] = new(1) ListElementClass;
 		}
 		else if (elementType == "group")
 		{
-			m_interfaceElements[i] = new(1) InterfaceElementClass;
+			m_interfaceElements[i] = new(1) GroupElementClass;
 		}
 		else
 		{

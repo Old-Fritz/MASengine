@@ -17,7 +17,7 @@
 // MY CLASS INCLUDES //
 ///////////////////////
 #include "InterfaceShaderClass.h"
-#include "InterfaceElementClass.h"
+#include "GroupElementClass.h"
 #include "FontShaderClass.h"
 
 ////////////////////////////////////////////////////////////////////////////////

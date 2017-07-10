@@ -23,6 +23,7 @@
 #include "GlobalManagerClass.h"
 
 
+
 ////////////////////////////////////////////////////////////////////////////////
 // Class name: InterfaceElementClass
 ////////////////////////////////////////////////////////////////////////////////
@@ -79,8 +80,9 @@ public:
 	InterfaceElementClass(const InterfaceElementClass&);
 	~InterfaceElementClass();
 
-	virtual bool Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, HWND hwnd, const std::string& filename, int screenWidth, int screenHeight);
-	void Shutdown();
+	virtual bool Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, HWND hwnd, const std::string& filename,
+		int screenWidth, int screenHeight);
+	virtual void Shutdown();
 	virtual bool Render(FontShaderClass* fontShader, InterfaceShaderClass* interfaceShader, ID3D11DeviceContext* deviceContext, D3DXMATRIX worldMatrix,
 		D3DXMATRIX orthoMatrix, D3DXMATRIX baseViewMatrix);
 
@@ -89,7 +91,7 @@ public:
 	bool isVisible();
 
 	//Updating element`s data
-	void setVisible(bool visible);
+	virtual void setVisible(bool visible);
 	virtual void updateDrag(ID3D11DeviceContext* deviceContext, int posX, int posY);
 	virtual void startDrag( int posX, int posY);
 	virtual void setPos(ID3D11DeviceContext* deviceContext, int posX, int posY);
