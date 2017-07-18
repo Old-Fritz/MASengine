@@ -97,6 +97,12 @@ public:
 	virtual void setPos(ID3D11DeviceContext* deviceContext, int posX, int posY);
 	virtual void endDrag();
 
+	virtual bool addElement(ID3D11Device* device, ID3D11DeviceContext* deviceContext, HWND hwnd);
+	virtual void deleteElement(ID3D11DeviceContext* deviceContext, int ind);
+	virtual void clear();
+
+	virtual InterfaceElementClass* getElement(int ind);
+
 	//Finding index of element by his name
 	int findBMbyName(const std::string& name);
 	int findTbyName(const std::string& name);

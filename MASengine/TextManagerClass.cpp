@@ -41,7 +41,12 @@ void TextManagerClass::addText(const std::string & name, const std::string & fil
 
 std::wstring TextManagerClass::getText(const std::string & name, const std::string & filename)
 {
-	return m_texts.find(ModManagerClass::getI().getHash(name))->second;
+	auto text = m_texts.find(ModManagerClass::getI().getHash(name));
+
+	if (text != m_texts.end())
+		return text->second;
+	else
+		return m_converter.from_bytes(name);
 }
 
 std::wstring TextManagerClass::getTextFromFile(const std::string & name, const std::string & filename)

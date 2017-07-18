@@ -1,0 +1,16 @@
+07-17-17_20-49-39 LogManager Initialized
+07-17-17_20-49-39 MemoryManager Initialized
+07-17-17_20-49-39 ModManager Initialized
+07-17-17_20-49-39 Settings Initialized
+07-17-17_20-49-39 CommandManager Initialized
+07-17-17_20-49-39 ResourceManager Initialized
+07-17-17_20-49-40 SystemStateManager Initialized
+07-17-17_20-49-40 All global system Initialized
+07-17-17_20-49-40 Windows Initialization
+07-17-17_20-49-40 input Initialization
+07-17-17_20-49-40 Position Initialization
+07-17-17_20-49-41 Directx Initialization
+07-17-17_20-49-41 Interface Shader Initialization
+07-17-17_20-49-41 Font Shader Initialization
+07-17-17_20-49-41 Shaders Initialization
+07-17-17_20-49-41 Graphics Initialization

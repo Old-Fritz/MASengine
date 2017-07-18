@@ -4,9 +4,7 @@ Text_num = 1
 sectorsNum = 400
 orientation = vertical
 sliderCommand = sliderCommand
-Actions =  /data/interface/actions/TestSliderElementACTION.txt
-FontFileName =  /data/fonts/fonts.txt
-DescFileName =  /data/interface/texts/XXX___text.txt
+Actions =  data/interface/actions/TestSliderElementACTION.txt
 width = 60
 height = 600
 posX = 500
@@ -18,7 +16,7 @@ Bitmaps:
 	Background
 	{
 		name = Background
-		texture =  /data/interface/textures/MainMenuBack.dds
+		texture =  data/interface/textures/MainMenuBack.dds
 		width = 60
 		height = 600
 		posX = 0
@@ -27,12 +25,11 @@ Bitmaps:
 		Unselaction = unSelBackground
 		Pickaction = pickBackground
 		Unpickaction = unPickBackground
-		Description = None
 	}
 	backLine
 	{
 		name = backLine
-		texture =  /data/interface/textures/loadLine.dds
+		texture =  data/interface/textures/loadLine.dds
 		width = 20
 		height = 560
 		posX = 20
@@ -41,12 +38,11 @@ Bitmaps:
 		Unselaction = unSelBackLine
 		Pickaction = pickBackLine
 		Unpickaction = unPickBackLine
-		Description = backLine
 	}
 	slider:
 	{
 		name = slider
-		texture =  /data/interface/textures/logo.dds
+		texture =  data/interface/textures/logo.dds
 		width = 30
 		height = 20
 		posX = 15
@@ -55,12 +51,11 @@ Bitmaps:
 		Unselaction = unSelSlider
 		Pickaction = pickSlider
 		Unpickaction = unPickSlider
-		Description = slider
 	}
 	button1:
 	{
 		name = backSector
-		texture =  /data/interface/textures/button.dds
+		texture =  data/interface/textures/button.dds
 		width = 40
 		height = 18
 		posX = 10
@@ -69,12 +64,11 @@ Bitmaps:
 		Unselaction = unSelBackSector
 		Pickaction = pickBackSector
 		Unpickaction = unPickBackSector
-		Description = backSector
 	{
 	button2:
 	{
 		name = nextSector
-		texture =  /data/interface/textures/button.dds
+		texture =  data/interface/textures/button.dds
 		width = 40
 		height = 18
 		posX = 10
@@ -83,7 +77,6 @@ Bitmaps:
 		Unselaction = unSelNextSector
 		Pickaction = pickNextSector
 		Unpickaction = unPickNextSector
-		Description = nextSector
 	{
 }
 Texts:
@@ -91,8 +84,8 @@ Texts:
 	Text:
 	{
 		name = condition
-		font = f1
-		Textfile =  /data/interface/texts/XXX___text.txt
+		font = data/fonts/font.txt
+		Textfile =  data/interface/texts/XXX___text.txt
 		Max_Length = 50
 		Strings_num = 1
 		Orientation = LEFT
@@ -101,7 +94,7 @@ Texts:
 			text = 0
 			maxwidth = 100
 			size = 60
-			color = 1 1 0
+			color = 1 1 0 1
 			posX = 100
 			posY = 50
 		}

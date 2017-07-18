@@ -21,6 +21,7 @@ bool GraphicsClass::Initialize(HWND hwnd)
 {
 	bool result;
 
+	m_hwnd = hwnd;
 
 	// Create the Direct3D object.
 	m_D3D = new(1) D3DClass;
@@ -253,34 +254,34 @@ bool GraphicsClass::updateInterface(CommandClass * command, int ind)
 	//Special slider commands
 	else if (updCommandType == "nextSector")
 	{
-		//return m_interface->nextSector(command->getParam(0, 2));
+		m_interface->nextSector(command->getParam(0, 2));
 	}
 	else if (updCommandType == "backSector")
 	{
-		//return m_interface->backSector(command->getParam(0, 2));
+		m_interface->backSector(command->getParam(0, 2));
 	}
 
 	//Special list commands
 	else if (updCommandType == "addElement")
 	{
-		//return m_interface->addElement(command->getParam(0, 2), m_D3D->GetDevice(), m_hwnd);
+		return m_interface->addElement(m_D3D->GetDevice(), m_D3D->GetDeviceContext(), m_hwnd, command->getParam(0, 2));
 	}
 	else if (updCommandType == "deleteElement")
 	{
-		//m_interface->deleteElement(command->getParam(0, 2), stoi(command->getParam(0, 3)));
+		m_interface->deleteElement(m_D3D->GetDeviceContext(), command->getParam(0, 2), stoi(command->getParam(0, 3)));
 	}
 	else if (updCommandType == "setLastElement")
 	{
-		//m_interface->setLastElement(command->getParam(0, 2), stoi(command->getParam(0, 3)));
+		m_interface->setLastElement(m_D3D->GetDeviceContext(), command->getParam(0, 2), stoi(command->getParam(0, 3)));
 	}
 	else if (updCommandType == "clearElement")
 	{
-		//m_interface->clear(command->getParam(0, 2));
+		m_interface->clear(command->getParam(0, 2));
 	}
 	//another commands
 	else if (updCommandType == "setBMCommand")
 	{
-		//m_interface->setBMCommand(command->getParam(0, 2), command->getParam(0, 3), command->getParam(0, 4), command->getParam(0, 5));
+		m_interface->setBMCommand(command->getParam(0, 2), command->getParam(0, 3), command->getParam(0, 4), command->getParam(0, 5));
 	}
 	else if (updCommandType == "getSettings")
 	{

@@ -126,7 +126,7 @@ std::vector<std::pair<std::wstring, int>> FontClass::separateStrings(const std::
 		
 		int tempsize = 0;
 		int i = deletedPart;
-		while (i<sentence.size()-1 && tempsize < width)
+		while (i<(int)sentence.size()-1 && tempsize < width)
 		{
 			tempsize += m_Font[(unsigned int)sentence[i]].size * size;
 			i++;

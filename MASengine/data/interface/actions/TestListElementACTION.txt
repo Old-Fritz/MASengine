@@ -13,8 +13,8 @@ pickAddElement =
 unPickAddElement =
 {
 	updateInterface addElement TestList;
-	updateInterface TSlastword _ELSLENGTHTestList+1_TestList condition 0
-	 ELSLENGTHTestList  /data/interface/texts/XXX___text.txt;
+	updateInterface TSadding _ELSLENGTHTestList+1_TestList condition 0
+	ELSLENGTHTestList+1;
 }
 
 selDeleteElement =

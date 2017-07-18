@@ -86,8 +86,10 @@ void ListElementClass::setVisible(bool visible)
 	CommandManagerClass::getI().addChange("LASTEL" + m_name, m_lastElement);
 }
 
-void ListElementClass::addElement(ID3D11Device* device, ID3D11DeviceContext* deviceContext, HWND hwnd)
+bool ListElementClass::addElement(ID3D11Device* device, ID3D11DeviceContext* deviceContext, HWND hwnd)
 {
+	bool result;
+
 	InterfaceElementClass* element;
 	if (m_elType == "slider")
 		element = new(4) SliderElementClass;
@@ -96,8 +98,15 @@ void ListElementClass::addElement(ID3D11Device* device, ID3D11DeviceContext* dev
 	else
 		element = new(4) InterfaceElementClass;
 
-	element->Initialize(device, deviceContext, hwnd, m_elementFilename, m_screenWidth, m_screenHeight);
 
+	if (!element)
+		return false;
+
+	result = element->Initialize(device, deviceContext, hwnd, m_elementFilename, m_screenWidth, m_screenHeight);
+	if (!result)
+	{
+		return false;
+	}
 
 	// place element to his place
 	if (m_orientation)
@@ -118,17 +127,16 @@ void ListElementClass::addElement(ID3D11Device* device, ID3D11DeviceContext* dev
 	{
 		m_lastElement++;
 		m_elements[m_lastElement]->setVisible(1); // set visible is in field of view
+		CommandManagerClass::getI().addChange("NUM" + m_name, m_length - 1);
+		CommandManagerClass::getI().addChange("ELSLENGTH" + m_name, m_length);
+		CommandManagerClass::getI().addChange("MAXSIZE" + m_name, m_maxSize);
+		CommandManagerClass::getI().addChange("LASTEL" + m_name, m_lastElement);
 
 	}
 
 	//set num of slider`s sectors to num of invisble elements + 1 (group of visible elements)
 	m_slider->updateSectors(m_length - m_maxSize + 1);
 	m_slider->updateSliderPos();
-
-	CommandManagerClass::getI().addChange("NUM" + m_name, m_length - 1);
-	CommandManagerClass::getI().addChange("ELSLENGTH" + m_name, m_length);
-	CommandManagerClass::getI().addChange("MAXSIZE" + m_name, m_maxSize);
-	CommandManagerClass::getI().addChange("LASTEL" + m_name, m_lastElement);
 
 }
 void ListElementClass::deleteElement(ID3D11DeviceContext* deviceContext, int ind)
@@ -257,7 +265,7 @@ std::string ListElementClass::pick(int posX, int posY)
 void ListElementClass::addSelCommand(const std::string& name)
 {
 	//if getting sub element 
-	if (name .size() > 0 && name[0] == '_')
+	if (name.size() > 0 && name[0] == '_')
 	{
 		std::string subName = name;
 		int num = getNumFromName(name);

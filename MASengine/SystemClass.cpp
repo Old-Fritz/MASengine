@@ -183,7 +183,7 @@ bool SystemClass::doCommands()
 			std::string commandType = command->getParam(i, 0);
 			if (commandType == "updateInterface")
 				m_graphics->updateInterface(command,i);
-			if (commandType == "updateGraphics")
+			else if (commandType == "updateGraphics")
 				m_graphics->updateGraphics(command, i);
 			//else if (commandType == "updateSystem")
 			//	updateSystem(command, i);

@@ -319,6 +319,66 @@ bool InterfaceClass::updateElTSadding(ID3D11DeviceContext* deviceContext, const 
 		return element->updateTSadding(deviceContext,tname, ind, text);
 }
 
+void InterfaceClass::nextSector(const std::string & elname)
+{
+	InterfaceElementClass* element = findElbyName(elname);
+
+	if (element)
+	{
+		((SliderElementClass*)element)->nextSector();
+	}
+
+}
+
+void InterfaceClass::backSector(const std::string & elname)
+{
+	InterfaceElementClass* element = findElbyName(elname);
+
+	if (element)
+	{
+		((SliderElementClass*)element)->backSector();
+	}
+}
+
+bool InterfaceClass::addElement(ID3D11Device * device, ID3D11DeviceContext * deviceContext, HWND hwnd, const std::string & elname)
+{
+	bool result;
+
+	InterfaceElementClass* element = findElbyName(elname);
+
+	if (element)
+	{
+		result = element->addElement(device,deviceContext,hwnd);
+		if (!result)
+		{
+			return false;
+		}
+	}
+
+	return true;
+}
+
+void InterfaceClass::deleteElement(ID3D11DeviceContext* deviceContext, const std::string & elname, int ind)
+{
+	InterfaceElementClass* element = findElbyName(elname);
+	if (element)
+		element->deleteElement(deviceContext, ind);
+}
+
+void InterfaceClass::setLastElement(ID3D11DeviceContext * deviceContext, const std::string & elname, int ind)
+{
+	InterfaceElementClass* element = findElbyName(elname);
+	if (element)
+		((ListElementClass*)element)->setLastElement(deviceContext,ind);
+}
+
+void InterfaceClass::clear(const std::string & elname)
+{
+	InterfaceElementClass* element = findElbyName(elname);
+	if (element)
+		element->clear();
+}
+
 
 ///Finding index of element by his name
 InterfaceElementClass* InterfaceClass::findElbyName(const std::string& name)
@@ -349,18 +409,19 @@ InterfaceElementClass* InterfaceClass::findElbyName(const std::string& name)
 	element = m_interfaceElements[ind];
 
 	//get subelements if it is in list
-	//while (name.size() > 0 && name[0] == '_')
-	//{
-	//	num = getNumFromName(name);
-	//	name.erase(0, 1);
-	//	name.erase(0, name.find_first_of("_") + 1);
+	subname = name;
+	while (subname.size() > 0 && subname[0] == '_')
+	{
+		num = getNumFromName(subname);
+		subname.erase(0, 1);
+		subname.erase(0, subname.find_first_of("_") + 1);
 
-	//	//if subelement of list
-	//	if (num >= 0)
-	//		element = ((ListElementClass*)element)->getElement(num);
-	//	else
-	//		return NULL;
-	//}
+	//if subelement of list
+	if (num >= 0)
+		element = element->getElement(num);
+	else
+		return NULL;
+	}
 
 	return element;
 }

@@ -34,8 +34,8 @@ unPickNextSector =
 
 sliderCommand = 
 {
-	updateInterface TStext TestSlider condition 0 0 end
-	 NUMTestSlider  /data/interface/texts/XXX___text.txt;
+	updateInterface TStext TestSlider condition 0
+	 NUMTestSlider  data/interface/texts/XXX___text.txt;
 }
 
 

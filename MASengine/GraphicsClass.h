@@ -48,6 +48,7 @@ private:
 private:
 	//params
 	D3DXMATRIX m_baseViewMatrix;
+	HWND m_hwnd;
 
 	//blocks
 	D3DClass* m_D3D;

@@ -69,14 +69,14 @@ public:
 	bool updateElTSadding(ID3D11DeviceContext* deviceContext, const std::string& elname, const std::string& tname, int ind, const std::string& adding);
 
 	//Special Slider commands
-	//CommandClass* nextSector(string elname);
-	//CommandClass* backSector(string elname);
+	void nextSector(const std::string& elname);
+	void backSector(const std::string& elname);
 
 	//Special List commands
-	//CommandClass* addElement(string elname, ID3D10Device* device, HWND hwnd);
-	//void deleteElement(string elname, int ind);
-	//void setLastElement(string elname, int ind);
-	//void clear(string elname);
+	bool addElement(ID3D11Device* device, ID3D11DeviceContext* deviceContext, HWND hwnd, const std::string& elname);
+	void deleteElement(ID3D11DeviceContext* deviceContext, const std::string& elname, int ind);
+	void setLastElement(ID3D11DeviceContext * deviceContext, const std::string& elname, int ind);
+	void clear(const std::string& elname);
 
 	//Special settings command
 	//CommandClass* getSettings(string elname, string tname, int ind, string settingsType, string filename, ID3D10Device* device, HWND hwnd);

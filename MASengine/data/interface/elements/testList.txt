@@ -7,13 +7,11 @@ orientation = vertical
 interval = 55
 elementPosX = 0
 elementPosY = 100
-slider =  /data/interface/elements/testListSlider.txt
-element =  /data/interface/elements/testListElement.txt
+slider =  data/interface/elements/testListSlider.txt
+element =  data/interface/elements/testListElement.txt
 elementType = element
 
-Actions =  /data/interface/actions/TestListElementACTION.txt
-FontFileName =  /data/fonts/fonts.txt
-DescFileName =  /data/interface/texts/XXX___text.txt
+Actions =  data/interface/actions/TestListElementACTION.txt
 width = 600
 height = 600
 posX = 200
@@ -25,7 +23,7 @@ Bitmaps:
 	Background
 	{
 		name = Background
-		texture =  /data/interface/textures/MainMenuBack.dds
+		texture =  data/interface/textures/MainMenuBack.dds
 		width = 600
 		height = 600
 		posX = 0
@@ -34,12 +32,11 @@ Bitmaps:
 		Unselaction = unSelBackground
 		Pickaction = pickBackground
 		Unpickaction = unPickBackground
-		Description = None
 	}
 	Button1
 	{
 		name = addElement
-		texture =  /data/interface/textures/button.dds
+		texture =  data/interface/textures/button.dds
 		width = 50
 		height = 50
 		posX = 20
@@ -48,12 +45,11 @@ Bitmaps:
 		Unselaction = unSelAddElement 
 		Pickaction = pickAddElement 
 		Unpickaction = unPickAddElement 
-		Description = addElement
 	}
 	Button2
 	{
 		name = deleteElement
-		texture =  /data/interface/textures/button.dds
+		texture =  data/interface/textures/button.dds
 		width = 50
 		height = 50
 		posX = 80
@@ -62,7 +58,6 @@ Bitmaps:
 		Unselaction = unSelDeleteElement 
 		Pickaction = pickDeleteElement 
 		Unpickaction = unPickDeleteElement 
-		Description = deleteElement
 	}
 }
 Texts:

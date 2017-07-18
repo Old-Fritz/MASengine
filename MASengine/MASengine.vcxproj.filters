@@ -198,14 +198,14 @@
     <ClCompile Include="InterfaceClass.cpp">
       <Filter>Файлы исходного кода\Graphics\Interface</Filter>
     </ClCompile>
-    <ClCompile Include="SliderElementClass.cpp">
-      <Filter>Файлы исходного кода</Filter>
-    </ClCompile>
     <ClCompile Include="GroupElementClass.cpp">
       <Filter>Файлы исходного кода\Graphics\Interface\InterfaceElements</Filter>
     </ClCompile>
     <ClCompile Include="ListElementClass.cpp">
-      <Filter>Файлы исходного кода</Filter>
+      <Filter>Файлы исходного кода\Graphics\Interface\InterfaceElements</Filter>
+    </ClCompile>
+    <ClCompile Include="SliderElementClass.cpp">
+      <Filter>Файлы исходного кода\Graphics\Interface\InterfaceElements</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

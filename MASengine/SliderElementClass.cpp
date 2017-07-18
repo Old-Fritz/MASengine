@@ -156,7 +156,7 @@ void SliderElementClass::addSelCommand(const std::string& name)
 {
 	int i = findBMbyName(name);
 
-	this->addSelCommand(name);
+	this->InterfaceElementClass::addSelCommand(name);
 
 	CommandManagerClass::getI().addChange("NUM" + m_name, m_currentSector);
 
@@ -165,7 +165,7 @@ void SliderElementClass::addUnSelCommand(const std::string& name)
 {
 	int i = findBMbyName(name);
 
-	this->addUnSelCommand(name);
+	this->InterfaceElementClass::addUnSelCommand(name);
 
 	CommandManagerClass::getI().addChange("NUM" + m_name, m_currentSector);
 }
@@ -179,7 +179,7 @@ void SliderElementClass::addPickCommand(const std::string& name)
 	else
 		m_dragType = 0;
 
-	this->addSelCommand(name);
+	this->InterfaceElementClass::addPickCommand(name);
 
 	CommandManagerClass::getI().addChange("NUM" + m_name, m_currentSector);
 
@@ -195,7 +195,7 @@ void SliderElementClass::addUnPickCommand(const std::string& name)
 		updateSector(m_lastX, m_lastY);
 	}
 
-	this->addUnPickCommand(name);
+	this->InterfaceElementClass::addUnPickCommand(name);
 
 	CommandManagerClass::getI().addChange("NUM" + m_name, m_currentSector);
 

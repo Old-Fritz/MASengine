@@ -35,7 +35,7 @@ public:
 	 void startDrag(int posX, int posY);
 	 void endDrag();
 
-	 void addElement(ID3D11Device* device, ID3D11DeviceContext* deviceContext, HWND hwnd);
+	 bool addElement(ID3D11Device* device, ID3D11DeviceContext* deviceContext, HWND hwnd);
 	 void deleteElement(ID3D11DeviceContext* deviceContext, int ind);
 	 void setLastElement(ID3D11DeviceContext* deviceContext, int ind);
 	void clear();

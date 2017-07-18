@@ -258,6 +258,20 @@ void InterfaceElementClass::endDrag()
 {
 
 }
+bool InterfaceElementClass::addElement(ID3D11Device * device, ID3D11DeviceContext * deviceContext, HWND hwnd)
+{
+	return true;
+}
+void InterfaceElementClass::deleteElement(ID3D11DeviceContext* deviceContext, int ind)
+{
+}
+void InterfaceElementClass::clear()
+{
+}
+InterfaceElementClass * InterfaceElementClass::getElement(int ind)
+{
+	return nullptr;
+}
 void InterfaceElementClass::startDrag(int posX, int posY)
 {
 	m_lastX = posX;
