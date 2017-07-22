@@ -351,6 +351,21 @@ void InterfaceElementClass::updateBMselCol(const std::string& name, D3DXVECTOR4 
 		m_bitmapsInfo[i].selCol = selCol;
 }
 
+bool InterfaceElementClass::setNewBM(ID3D11Device* device, const std::string & name, const std::string & filename)
+{
+	bool result;
+	int i = findBMbyName(name);
+	if (i < m_bitmapsNum)
+	{
+		m_bitmapsInfo[i].filename = filename;
+		result = m_bitmaps[i]->setNewTexture(device, filename);
+		if (!result)
+			return false;
+		else
+			return true;
+	}
+}
+
 //Updating params of strings
 void  InterfaceElementClass::setTvisible(const std::string& name, bool visible)
 {

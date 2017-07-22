@@ -39,24 +39,51 @@ bool TextureManagerClass::addTexture(ID3D11Device * device, const std::string & 
 {
 	bool result;
 
-	//create new texture
-	TextureClass* newTexture = new(4) TextureClass;
-	if (!newTexture)
-		return false;
-
-	result = newTexture->Initialize(device, m_converter.from_bytes(filename).c_str());
-	if (!result)
+	//check for existing
+	auto texture = m_textures.find(ModManagerClass::getI().getHash(filename));
+	if (texture == m_textures.end())
 	{
-		LogManagerClass::getI().addLog("Error 4-2");
-		return false;
+		//create new texture
+		TextureClass* newTexture = new(4) TextureClass;
+		if (!newTexture)
+			return false;
+
+		result = newTexture->Initialize(device, m_converter.from_bytes(filename).c_str());
+		if (!result)
+		{
+			LogManagerClass::getI().addLog("Error 4-2");
+			return false;
+		}
+
+		m_textures.emplace(std::pair<long long, TextureClass*>(ModManagerClass::getI().getHash(filename), newTexture));
 	}
 
-	m_textures.emplace(std::pair<long long, TextureClass*>(ModManagerClass::getI().getHash(filename), newTexture));
-
+	
 	return true;
+}
+
+void TextureManagerClass::deleteTexture(const std::string & filename)
+{
+	//delete if it exists
+	auto texture = m_textures.find(ModManagerClass::getI().getHash(filename));
+	if (texture != m_textures.end())
+	{
+		texture->second->Shutdown();
+		::operator delete(texture->second, sizeof(*(texture->second)), 2);
+		texture->second = 0;
+		m_textures.erase(texture);
+	}
+
 }
 
 ID3D11ShaderResourceView * TextureManagerClass::getTexture(const std::string & filename)
 {
-	return m_textures.find(ModManagerClass::getI().getHash(filename))->second->GetTexture();
+	auto texture = m_textures.find(ModManagerClass::getI().getHash(filename));
+	if (texture != m_textures.end())
+	{
+		return texture->second->GetTexture();
+	}
+	else
+		return NULL;
+	
 }

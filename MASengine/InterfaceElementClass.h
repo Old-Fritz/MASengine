@@ -116,6 +116,8 @@ public:
 	virtual void updateBMtranspar(const std::string& name, float transparency);
 	virtual void updateBMselIntens(const std::string& name, float selIntensivity);
 	virtual void updateBMselCol(const std::string& name, D3DXVECTOR4 selCol);
+	bool setNewBM(ID3D11Device* device, const std::string& name, const std::string& filename);
+
 
 	//Updating params of strings
 	virtual void setTvisible(const std::string& name, bool visible);

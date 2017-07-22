@@ -281,6 +281,19 @@ void InterfaceClass::setBMCommand(const std::string& elname, const std::string& 
 	}
 }
 
+bool InterfaceClass::setNewBM(ID3D11Device* device, const std::string & elname, const std::string & bmname, const std::string & filename)
+{
+	bool result;
+	InterfaceElementClass* element = findElbyName(elname);
+	if (element)
+	{
+		result = element->setNewBM(device, bmname, filename);
+		if (!result)
+			return false;
+	}
+	return true;
+}
+
 //Updating params of strings
 void InterfaceClass::setElTvisible(const std::string& elname, const std::string& tname, bool visible)
 {

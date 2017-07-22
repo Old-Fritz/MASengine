@@ -134,6 +134,7 @@
     <ClCompile Include="InterfaceElementClass.cpp" />
     <ClCompile Include="InterfaceShaderClass.cpp" />
     <ClCompile Include="ListElementClass.cpp" />
+    <ClCompile Include="LoadScreenManagerClass.cpp" />
     <ClCompile Include="LogManagerClass.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MemoryManagerClass.cpp" />
@@ -175,6 +176,7 @@
     <ClInclude Include="InterfaceElementClass.h" />
     <ClInclude Include="InterfaceShaderClass.h" />
     <ClInclude Include="ListElementClass.h" />
+    <ClInclude Include="LoadScreenManagerClass.h" />
     <ClInclude Include="LogManagerClass.h" />
     <ClInclude Include="MemoryManagerClass.h" />
     <ClInclude Include="MeshClass.h" />

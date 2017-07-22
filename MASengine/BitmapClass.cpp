@@ -77,6 +77,21 @@ bool BitmapClass::Render(ID3D11DeviceContext* deviceContext, int positionX, int 
 	return true;
 }
 
+bool BitmapClass::setNewTexture(ID3D11Device * device, const std::string & filename)
+{
+	bool result;
+
+	// Load textures
+	m_filename = filename;
+	result = TextureManagerClass::getI().addTexture(device, filename);
+	if (!result)
+	{
+		return false;
+	}
+
+	return true;
+}
+
 int BitmapClass::GetIndexCount()
 {
 	return m_indexCount;

@@ -59,6 +59,7 @@ public:
 	void updateElBMselIntens(const std::string& elname, const std::string& bmname, float selIntensivity);
 	void updateElBMselCol(const std::string& elname, const std::string& bmname, D3DXVECTOR4 selCol);
 	void setBMCommand(const std::string& elname, const std::string& bmname, const std::string& commandType, const std::string& command);
+	bool setNewBM(ID3D11Device* device, const std::string& elname, const std::string& bmname, const std::string& filename);
 
 	//Updating params of strings
 	void setElTvisible(const std::string& elname, const std::string& tname, bool visible);

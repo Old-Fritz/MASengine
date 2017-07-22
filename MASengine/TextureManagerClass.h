@@ -28,6 +28,7 @@ public:
 	static TextureManagerClass& getI();
 
 	bool addTexture(ID3D11Device* device, const std::string& filename);
+	void deleteTexture(const std::string& filename);
 	ID3D11ShaderResourceView* getTexture(const std::string& filename);
 
 private:

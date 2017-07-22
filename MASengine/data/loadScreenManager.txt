@@ -1,0 +1,42 @@
+loadImage = 
+{
+	imageElement = data/interface/elements/loadImage.txt
+	numOfImages = 10
+	images:
+	data/interface/textures/load/loadScreen1.dds
+	data/interface/textures/load/loadScreen2.dds
+	data/interface/textures/load/loadScreen3.dds
+	data/interface/textures/load/loadScreen4.dds
+	data/interface/textures/load/loadScreen5.dds
+	data/interface/textures/load/loadScreen6.dds
+	data/interface/textures/load/loadScreen7.dds
+	data/interface/textures/load/loadScreen8.dds
+	data/interface/textures/load/loadScreen9.dds
+	data/interface/textures/load/loadScreen10.dds
+	changeType = random
+	changeInterval = 30000
+}
+loadQuote = 
+{
+	qouteElement = data/interface/elements/loadQuote.txt
+	numOfQuotes = 5
+	quotes:
+	quote1
+	quote2
+	quote3
+	quote4
+	quote5
+	changeType = random
+	changeInterval = 50000
+}
+loadLine =
+{
+	lineElement = data/interface/elements/loadLine.txt
+}
+additionalElements = 
+{
+	numOfElements = 2
+	elements:
+	data/interface/elements/logo.txt
+	data/interface/elements/version.txt
+}

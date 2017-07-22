@@ -207,6 +207,9 @@
     <ClCompile Include="SliderElementClass.cpp">
       <Filter>Файлы исходного кода\Graphics\Interface\InterfaceElements</Filter>
     </ClCompile>
+    <ClCompile Include="LoadScreenManagerClass.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SystemClass.h">
@@ -322,6 +325,9 @@
     </ClInclude>
     <ClInclude Include="GroupElementClass.h">
       <Filter>Заголовочные файлы\Graphics\Interface\InterfaceElements</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadScreenManagerClass.h">
+      <Filter>Заголовочные файлы\Graphics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

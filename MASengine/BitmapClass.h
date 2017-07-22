@@ -35,6 +35,7 @@ public:
 	void Shutdown();
 	bool Render(ID3D11DeviceContext* deviceContext, int positionX, int positionY);
 
+	bool setNewTexture(ID3D11Device* device, const std::string& filename);
 	int GetIndexCount();
 	ID3D11ShaderResourceView* GetTexture();
 
