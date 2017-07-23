@@ -6,6 +6,7 @@ Sample {1}
 ScreenHeight {720}
 
 
+loadScreenManagerFilename {data/loadscreenManager.txt}
 Language {ENG}
 ButCommandFilename {data/interface/actions/butACTION.txt}
 ElementsFilename {data/interface/elements.txt}

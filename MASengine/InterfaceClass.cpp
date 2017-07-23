@@ -52,6 +52,8 @@ bool InterfaceClass::Initialize(ID3D11Device * device, ID3D11DeviceContext * dev
 	for (int i = 0; i < m_elementsNum; i++)
 	{
 		elementsFile >> elementFilename;
+
+		//create different types of elements
 		elementsFile >> elementType;
 		if (elementType == "slider")
 		{
@@ -75,6 +77,10 @@ bool InterfaceClass::Initialize(ID3D11Device * device, ID3D11DeviceContext * dev
 			LogManagerClass::getI().addLog("Error 14-2");
 			return false;
 		}
+
+		//set new params in loadscreen
+		LoadScreenManagerClass::getI().changeLine(m_interfaceElements[i]->getName()+"_init", 0.05f + 0.15f*(i/m_elementsNum));
+		
 	}
 
 	return true;

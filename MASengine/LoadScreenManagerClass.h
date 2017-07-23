@@ -27,6 +27,8 @@ public:
 	static LoadScreenManagerClass& getI();
 
 	void changeLine(const std::string& text, float perCent);
+	void showElements();
+	void hideElements();
 private:
 	LoadScreenManagerClass();
 	LoadScreenManagerClass(const LoadScreenManagerClass&);
@@ -35,6 +37,7 @@ private:
 	bool readFromFile(const std::string& filename);
 
 	bool updateElements();
+	
 
 	//line element
 	void changeLinePosition(float perCent);

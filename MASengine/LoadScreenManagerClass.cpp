@@ -5,8 +5,8 @@ LoadScreenManagerClass* LoadScreenManagerClass::m_instance = 0;
 bool LoadScreenManagerClass::Initialize(D3DClass* D3D, ShaderManagerClass* shaders, D3DXMATRIX baseViewMatrix, HWND hwnd, const std::string & filename)
 {
 	bool result;
-	int screenWidth = SettingsClass::getI().getIntParameter("screenWidth");
-	int screenHeight = SettingsClass::getI().getIntParameter("screenHeight");;
+	int screenWidth = SettingsClass::getI().getIntParameter("ScreenWidth");
+	int screenHeight = SettingsClass::getI().getIntParameter("ScreenHeight");
 
 	//save graphics object
 	m_D3D = D3D;
@@ -16,6 +16,7 @@ bool LoadScreenManagerClass::Initialize(D3DClass* D3D, ShaderManagerClass* shade
 	result = readFromFile(filename);
 	if (!result)
 	{
+		LogManagerClass::getI().addLog("Error 15-1");
 		return false;
 	}
 
@@ -27,6 +28,7 @@ bool LoadScreenManagerClass::Initialize(D3DClass* D3D, ShaderManagerClass* shade
 	result = m_loadImage->Initialize(m_D3D->GetDevice(), m_D3D->GetDeviceContext(), hwnd, m_imageElementName, screenWidth, screenHeight);
 	if (!result)
 	{
+		LogManagerClass::getI().addLog("Error 15-2");
 		return false;
 	}
 
@@ -37,6 +39,7 @@ bool LoadScreenManagerClass::Initialize(D3DClass* D3D, ShaderManagerClass* shade
 	result = m_loadLine->Initialize(m_D3D->GetDevice(), m_D3D->GetDeviceContext(), hwnd, m_lineElementName, screenWidth, screenHeight);
 	if (!result)
 	{
+		LogManagerClass::getI().addLog("Error 15-3");
 		return false;
 	}
 
@@ -47,6 +50,7 @@ bool LoadScreenManagerClass::Initialize(D3DClass* D3D, ShaderManagerClass* shade
 	result = m_loadQuote->Initialize(m_D3D->GetDevice(), m_D3D->GetDeviceContext(), hwnd, m_quoteElementName, screenWidth, screenHeight);
 	if (!result)
 	{
+		LogManagerClass::getI().addLog("Error 15-4");
 		return false;
 	}
 
@@ -59,9 +63,17 @@ bool LoadScreenManagerClass::Initialize(D3DClass* D3D, ShaderManagerClass* shade
 		result = element->Initialize(m_D3D->GetDevice(), m_D3D->GetDeviceContext(), hwnd, m_additionalElementNames[i], screenWidth, screenHeight);
 		if (!result)
 		{
+			LogManagerClass::getI().addLog("Error 15-5");
 			return false;
 		}
 		m_additionalElements.emplace_back(element);
+	}
+
+	//make first update
+	result = updateElements();
+	if (!result)
+	{
+		return false;
 	}
 
 	return true;
@@ -69,7 +81,7 @@ bool LoadScreenManagerClass::Initialize(D3DClass* D3D, ShaderManagerClass* shade
 
 void LoadScreenManagerClass::Shutdown()
 {
-	for (int i = 0;i < m_additionalElementNames.size();i++)
+	while(m_additionalElements.size())
 	{
 		auto element = m_additionalElements.begin();
 		if (*element)
@@ -100,6 +112,12 @@ void LoadScreenManagerClass::Shutdown()
 		m_loadImage = 0;
 	}
 
+
+	if (m_instance)
+	{
+		::operator delete(m_instance, sizeof(*m_instance), 1);
+		m_instance = 0;
+	}
 }
 
 bool LoadScreenManagerClass::Render()
@@ -124,16 +142,19 @@ bool LoadScreenManagerClass::Render()
 	result = m_loadImage->Render(m_shaders->getFontShader(),m_shaders->getInterfaceShader(),m_D3D->GetDeviceContext(),worldMatrix,orthoMatrix,m_baseViewMatrix);
 	if (!result)
 	{
+		LogManagerClass::getI().addLog("Error 15-6");
 		return false;
 	}
 	result = m_loadLine->Render(m_shaders->getFontShader(), m_shaders->getInterfaceShader(), m_D3D->GetDeviceContext(), worldMatrix, orthoMatrix, m_baseViewMatrix);
 	if (!result)
 	{
+		LogManagerClass::getI().addLog("Error 15-7");
 		return false;
 	}
 	result = m_loadQuote->Render(m_shaders->getFontShader(), m_shaders->getInterfaceShader(), m_D3D->GetDeviceContext(), worldMatrix, orthoMatrix, m_baseViewMatrix);
 	if (!result)
 	{
+		LogManagerClass::getI().addLog("Error 15-8");
 		return false;
 	}
 
@@ -142,6 +163,7 @@ bool LoadScreenManagerClass::Render()
 		result = (*element)->Render(m_shaders->getFontShader(), m_shaders->getInterfaceShader(), m_D3D->GetDeviceContext(), worldMatrix, orthoMatrix, m_baseViewMatrix);
 		if (!result)
 		{
+			LogManagerClass::getI().addLog("Error 15-9");
 			return false;
 		}
 	}
@@ -170,28 +192,31 @@ void LoadScreenManagerClass::changeLine(const std::string & text, float perCent)
 	result = changeLineText(text);
 	if (!result)
 	{
-
+		LogManagerClass::getI().addLog("Error 15-10");
 	}
 	result = Render();
 	if (!result)
 	{
-
+		LogManagerClass::getI().addLog("Error 15-11");
 	}
 	//changeTime
 	result = updateElements();
 	if (!result)
 	{
-
+		LogManagerClass::getI().addLog("Error 15-12");
 	}
 	m_lastTime = time(0);
 }
 
 LoadScreenManagerClass::LoadScreenManagerClass()
 {
-	m_currentQuote = 0;
-	m_currentImage = 0;
+	m_currentQuote = -1;
+	m_currentImage = -1;
 	m_imageCurrentInterval = 0;
 	m_quoteCurrentInterval = 0;
+	m_loadImage = 0;
+	m_loadLine = 0;
+	m_loadQuote = 0;
 }
 
 LoadScreenManagerClass::~LoadScreenManagerClass()
@@ -207,6 +232,7 @@ bool LoadScreenManagerClass::readFromFile(const std::string & filename)
 	file.open(filename);
 	if (file.fail())
 	{
+		LogManagerClass::getI().addLog("Error 15-13");
 		return false;
 	}
 
@@ -282,6 +308,7 @@ bool LoadScreenManagerClass::updateElements()
 		result = changeQuote();
 		if (!result)
 		{
+			LogManagerClass::getI().addLog("Error 15-14");
 			return false;
 		}
 	}
@@ -293,11 +320,30 @@ bool LoadScreenManagerClass::updateElements()
 		result = changeImage();
 		if (!result)
 		{
+			LogManagerClass::getI().addLog("Error 15-15");
 			return false;
 		}
 	}
 
 	return true;
+}
+
+void LoadScreenManagerClass::showElements()
+{
+	m_loadLine->setVisible(1);
+	m_loadImage->setVisible(1);
+	m_loadQuote->setVisible(1);
+	for(int i = 0;i<m_additionalElements.size();i++)
+		m_additionalElements[i]->setVisible(1);
+}
+
+void LoadScreenManagerClass::hideElements()
+{
+	m_loadLine->setVisible(0);
+	m_loadImage->setVisible(0);
+	m_loadQuote->setVisible(0);
+	for (int i = 0;i<m_additionalElements.size();i++)
+		m_additionalElements[i]->setVisible(0);
 }
 
 void LoadScreenManagerClass::changeLinePosition(float perCent)
@@ -321,7 +367,8 @@ bool LoadScreenManagerClass::changeImage()
 	int ind;
 
 	//delete old texture
-	TextureManagerClass::getI().deleteTexture(m_loadImageNames[m_currentImage]);
+	if(m_currentImage>=0 && m_currentImage <= m_loadImageNames.size())
+		TextureManagerClass::getI().deleteTexture(m_loadImageNames[m_currentImage]);
 
 	//find ind of new image
 	if (m_imageChangeRand)

@@ -46,7 +46,11 @@ std::wstring TextManagerClass::getText(const std::string & name, const std::stri
 	if (text != m_texts.end())
 		return text->second;
 	else
-		return m_converter.from_bytes(name);
+	{
+		addText(name, filename);
+		return m_texts[ModManagerClass::getI().getHash(name)];
+	}
+		
 }
 
 std::wstring TextManagerClass::getTextFromFile(const std::string & name, const std::string & filename)

@@ -53,6 +53,7 @@ Error 9-16 Problem with Create the state using the device.
 Error 9-17 Problem with Directx Initialization
 Error 9-18 Problem with creating alphaEnableBlendingState
 Error 9-19 Problem with creating alphaDisableBlendingState
+Error 9-20 Problem with init of loadScreenManager
 
 Error 10-1 Problem with Interface Shader Initialization
 Error 10-2 Problem with Interface Shader Render
@@ -88,3 +89,19 @@ Error 13-8 Problem with reading text info from file
 Error 14-1 Problem with opening file with elements
 Error 14-2 Problem with initializtion of element
 Error 14-3 Problem with render of element
+
+Error 15-1 Problem with reading from file LoadScreen Manager
+Error 15-2 Problem with init of loadImage
+Error 15-3 Problem with init of loadLine
+Error 15-4 Problem with init of loadQuote
+Error 15-5 Problem with init of additional load element
+Error 15-6 Problem with render of loadImage
+Error 15-7 Problem with render of loadLine
+Error 15-8 Problem with render of loadQuote
+Error 15-9 Problem with render of additional load element
+Error 15-10 Problem with changing loadline text
+Error 15-11 Problem with load screen render
+Error 15-12 Problem with updating main load elements
+Error 15-13 Problem with opening file for loadscreen manager
+Error 15-14 Problem with changing load quote
+Error 15-15 Problem with changing load image

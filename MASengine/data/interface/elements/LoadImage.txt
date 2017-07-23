@@ -1,0 +1,30 @@
+ElementName = LoadImage
+Bitmap_num = 1
+Text_num = 0
+Actions =  data/interface/LoadScreenElementACTION.txt
+width = screenWidth
+height = screenHeight
+posX = 0
+posY = 0
+VertOrientation = bottom
+HorOrientation = left
+Bitmaps:
+{
+	Bitmap5:
+	{
+		name = image
+		texture =  data/interface/textures/load/loadscreen1.dds
+		width = screenWidth
+		height = screenHeight
+		posX = 0
+		posY = screenHeight
+		Selaction = selaction
+		Unselaction = unselaction
+		Pickaction = pickaction
+		Unpickaction = unpickaction
+	}
+}
+Texts:
+{
+
+}

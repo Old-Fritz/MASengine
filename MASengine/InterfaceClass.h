@@ -19,6 +19,7 @@
 #include "InterfaceShaderClass.h"
 #include "GroupElementClass.h"
 #include "FontShaderClass.h"
+#include "LoadScreenManagerClass.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // Class name: InterfaceClass

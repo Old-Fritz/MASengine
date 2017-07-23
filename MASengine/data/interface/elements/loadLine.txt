@@ -1,0 +1,87 @@
+ElementName = LoadScreen
+Bitmap_num = 4
+Text_num = 1
+Actions =  data/interface/LoadScreenElementACTION.txt
+width = screenWidth
+height = screenHeight
+posX = 0
+posY = 0
+VertOrientation = bottom
+HorOrientation = left
+Bitmaps:
+{
+	Bitmap4:
+	{
+		name = loadBack
+		texture =  data/interface/textures/loadBack.dds
+		width = 512
+		height = 48
+		posX = middle
+		posY = 69
+		Selaction = selaction
+		Unselaction = unselaction
+		Pickaction = pickaction
+		Unpickaction = unpickaction
+	}
+	Bitmap1:
+	{
+		name = line
+		texture =  data/interface/textures/loadLine.dds
+		width = 512
+		height = 48
+		posX = middle
+		posY = 69
+		Selaction = selaction
+		Unselaction = unselaction
+		Pickaction = pickaction
+		Unpickaction = unpickaction
+	}
+	Bitmap2:
+	{
+		name = loadCross
+		texture =  data/interface/textures/loadCross.dds
+		width = 8
+		height = 48
+		posX = middle
+		posY = 0
+		Selaction = selactiont
+		Unselaction = unselaction
+		Pickaction = pickaction
+		Unpickaction = unpickaction
+	}
+	Bitmap3:
+	{
+		name = loadDown
+		texture =  data/interface/textures/loadDown.dds
+		width = 1024
+		height = 192
+		posX = middle
+		posY = 192
+		Selaction = selaction
+		Unselaction = unselaction
+		Pickaction = pickaction
+		Unpickaction = unpickaction
+	}
+}
+Texts:
+{
+	Text:
+	{
+		name = text
+		font = data/fonts/font.txt
+		Textfile =  data/interface/texts/XXX___loadText.txt
+		Max_Length = 200
+		Strings_num = 1
+		Orientation = MIDDLE
+		string2:
+		{
+			text = none
+			maxwidth = 350
+			size = 30
+			color = 1 1 1 1
+			posX = middle
+			posY = 60
+		}
+	}
+
+}

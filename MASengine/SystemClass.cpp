@@ -61,6 +61,11 @@ bool SystemClass::Initialize()
 	LogManagerClass::getI().addLog("Graphics Initialization");
 
 
+	for(int i = 0;i<1000;i++)
+		LoadScreenManagerClass::getI().changeLine(std::to_string(i), 0.2f + 0.8f * (i/1000.0f));
+	LoadScreenManagerClass::getI().hideElements();
+
+
 	return true;
 }
 void SystemClass::Shutdown()

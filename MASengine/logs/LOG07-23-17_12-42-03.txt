@@ -1,0 +1,16 @@
+07-23-17_12-42-03 LogManager Initialized
+07-23-17_12-42-03 MemoryManager Initialized
+07-23-17_12-42-03 ModManager Initialized
+07-23-17_12-42-03 Settings Initialized
+07-23-17_12-42-03 CommandManager Initialized
+07-23-17_12-42-03 ResourceManager Initialized
+07-23-17_12-42-04 SystemStateManager Initialized
+07-23-17_12-42-04 All global system Initialized
+07-23-17_12-42-04 Windows Initialization
+07-23-17_12-42-04 input Initialization
+07-23-17_12-42-04 Position Initialization
+07-23-17_12-42-04 Directx Initialization
+07-23-17_12-42-04 Interface Shader Initialization
+07-23-17_12-42-04 Font Shader Initialization
+07-23-17_12-42-04 Shaders Initialization
+07-23-17_12-42-06 Graphics Initialization
