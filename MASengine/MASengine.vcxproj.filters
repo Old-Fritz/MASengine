@@ -88,6 +88,18 @@
     <Filter Include="Файлы исходного кода\Graphics\Interface\InterfaceBocks">
       <UniqueIdentifier>{6ef9fa94-8b99-4404-9546-90a13470d2a8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Заголовочные файлы\GameMechaniks">
+      <UniqueIdentifier>{a63df0f2-73b9-4a98-9432-57c483c087b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\GameMechaniks\Provs">
+      <UniqueIdentifier>{61fafdfb-ca54-4ebe-b09c-64bdaba9775e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\GameMechanics">
+      <UniqueIdentifier>{49a3122b-4660-4d99-9c65-b8bdce9a2b00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\GameMechanics\Provs">
+      <UniqueIdentifier>{26e0fff4-fca2-44a4-aa9a-d28795dab81f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -208,7 +220,16 @@
       <Filter>Файлы исходного кода\Graphics\Interface\InterfaceElements</Filter>
     </ClCompile>
     <ClCompile Include="LoadScreenManagerClass.cpp">
-      <Filter>Файлы исходного кода</Filter>
+      <Filter>Файлы исходного кода\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="LayersClass.cpp">
+      <Filter>Файлы исходного кода\GameMechanics\Provs</Filter>
+    </ClCompile>
+    <ClCompile Include="ProvClass.cpp">
+      <Filter>Файлы исходного кода\GameMechanics\Provs</Filter>
+    </ClCompile>
+    <ClCompile Include="ProvManagerClass.cpp">
+      <Filter>Файлы исходного кода\GameMechanics\Provs</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -328,6 +349,15 @@
     </ClInclude>
     <ClInclude Include="LoadScreenManagerClass.h">
       <Filter>Заголовочные файлы\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="ProvClass.h">
+      <Filter>Заголовочные файлы\GameMechaniks\Provs</Filter>
+    </ClInclude>
+    <ClInclude Include="ProvManagerClass.h">
+      <Filter>Заголовочные файлы\GameMechaniks\Provs</Filter>
+    </ClInclude>
+    <ClInclude Include="LayersClass.h">
+      <Filter>Заголовочные файлы\GameMechaniks\Provs</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

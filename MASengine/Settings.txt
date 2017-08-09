@@ -7,6 +7,8 @@ ScreenHeight {720}
 
 
 loadScreenManagerFilename {data/loadscreenManager.txt}
+ProvFilename {data/provs.txt}
 Language {ENG}
 ButCommandFilename {data/interface/actions/butACTION.txt}
 ElementsFilename {data/interface/elements.txt}
+GeneralActionsFilename {data/interface/GeneralActions.txt}

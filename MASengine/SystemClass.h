@@ -25,6 +25,7 @@
 #include "InputClass.h"
 #include "PositionClass.h"
 #include "GraphicsClass.h"
+#include "ProvManagerClass.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // Class name: SystemClass
@@ -45,6 +46,7 @@ public:
 private:
 	bool Frame();
 	bool doCommands();
+	bool updateSystem(CommandClass* command,int ind);
 	void InitializeWindows(int screenWidth, int screenHeight);
 	void ShutdownWindows();
 private:

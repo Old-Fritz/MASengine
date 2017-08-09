@@ -1,0 +1,41 @@
+10
+0:
+{
+	coords = 1 2 3
+}
+1:
+{
+	coords = 1 2 3
+}
+2:
+{
+	coords = 1 2 3
+}
+3:
+{
+	coords = 1 2 3
+}
+4:
+{
+	coords = 1 2 3
+}
+5:
+{
+	coords = 1 2 3
+}
+6:
+{
+	coords = 1 2 3
+}
+7:
+{
+	coords = 1 2 3
+}
+8:
+{
+	coords = 1 2 3
+}
+9:
+{
+	coords = 1 2 3
+}

@@ -133,6 +133,7 @@
     <ClCompile Include="InterfaceClass.cpp" />
     <ClCompile Include="InterfaceElementClass.cpp" />
     <ClCompile Include="InterfaceShaderClass.cpp" />
+    <ClCompile Include="LayersClass.cpp" />
     <ClCompile Include="ListElementClass.cpp" />
     <ClCompile Include="LoadScreenManagerClass.cpp" />
     <ClCompile Include="LogManagerClass.cpp" />
@@ -143,6 +144,8 @@
     <ClCompile Include="ModManagerClass.cpp" />
     <ClCompile Include="PoolAllocatorClass.cpp" />
     <ClCompile Include="PositionClass.cpp" />
+    <ClCompile Include="ProvClass.cpp" />
+    <ClCompile Include="ProvManagerClass.cpp" />
     <ClCompile Include="ResourceManagerClass.cpp" />
     <ClCompile Include="SettingsClass.cpp" />
     <ClCompile Include="ShaderManagerClass.cpp" />
@@ -175,6 +178,7 @@
     <ClInclude Include="InterfaceClass.h" />
     <ClInclude Include="InterfaceElementClass.h" />
     <ClInclude Include="InterfaceShaderClass.h" />
+    <ClInclude Include="LayersClass.h" />
     <ClInclude Include="ListElementClass.h" />
     <ClInclude Include="LoadScreenManagerClass.h" />
     <ClInclude Include="LogManagerClass.h" />
@@ -184,6 +188,8 @@
     <ClInclude Include="ModManagerClass.h" />
     <ClInclude Include="PoolAllocatorClass.h" />
     <ClInclude Include="PositionClass.h" />
+    <ClInclude Include="ProvClass.h" />
+    <ClInclude Include="ProvManagerClass.h" />
     <ClInclude Include="ResourceManagerClass.h" />
     <ClInclude Include="SettingsClass.h" />
     <ClInclude Include="ShaderManagerClass.h" />

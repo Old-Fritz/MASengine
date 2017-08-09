@@ -1,6 +1,6 @@
 Settings.txt
 data/init/defSettings.txt
-10
+12
 0 ScreenWidth
 0 ScreenHeight
 0 Fullscreen
@@ -12,3 +12,5 @@ data/init/defSettings.txt
 2 Language
 2 ElementsFilename
 2 loadScreenManagerFilename
+2 ProvFilename
+2 GeneralActionsFilename

@@ -1,14 +1,10 @@
 startAction = 
 {
-	updateInterface setElVisible LoadScreen 0;
-	updateInterface setElVisible StartMenuDown 1;
-	updateInterface setElVisible StartMenuBack 1;
 	updateInterface setElVisible Cursor 1;
 	updateInterface setElVisible Version 1;
-	updateInterface setElVisible Descwindow 1;
-
-	updateSystem cameraPosition 0 -1000 0;
-	updateSystem cameraRotation 90 0 0;
+	updateInterface setElVisible Debug_info 1;
+	updateInterface setElVisible Test 1;
+	updateInterface setElVisible TestList 1;
 }
 terrainPickAction =
 {

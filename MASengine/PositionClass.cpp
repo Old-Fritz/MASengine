@@ -112,6 +112,8 @@ void PositionClass::setMove(int ind, bool type)
 
 void PositionClass::Move()
 {
+	
+
 	//update position animation
 	if (m_posTempSpeed < m_frameTime)
 	{

@@ -34,7 +34,7 @@ bool SystemClass::Initialize()
 	m_input = new(1) InputClass;
 	if (!m_input)
 		return false;
-	result = m_input->Initialize(m_hinstance,m_hwnd);
+	result = m_input->Initialize(m_hinstance, m_hwnd);
 	if (!result)
 	{
 		LogManagerClass::getI().addLog("Error 7-12");
@@ -60,11 +60,24 @@ bool SystemClass::Initialize()
 	}
 	LogManagerClass::getI().addLog("Graphics Initialization");
 
+	//Initialize prov manager
+	if (&(ProvManagerClass::getI()))
+	{
+		result = ProvManagerClass::getI().Initialize(SettingsClass::getI().getStrParameter("ProvFilename"));
+		if (!result)
+		{
+			return false;
+		}
+	}
+	LogManagerClass::getI().addLog("Provs Initialization");
 
-	for(int i = 0;i<1000;i++)
-		LoadScreenManagerClass::getI().changeLine(std::to_string(i), 0.2f + 0.8f * (i/1000.0f));
+
+	
 	LoadScreenManagerClass::getI().hideElements();
 
+	//make start command
+	CommandManagerClass::getI().addCommand("startAction", SettingsClass::getI().getStrParameter("GeneralActionsFilename"));
+	doCommands();
 
 	return true;
 }
@@ -72,6 +85,11 @@ void SystemClass::Shutdown()
 {
 	//save settings first
 	SettingsClass::getI().save();
+
+	if (&(ProvManagerClass::getI()))
+	{
+		ProvManagerClass::getI().Shutdown();
+	}
 
 	//Shutdown graphics
 	if (m_graphics)
@@ -160,6 +178,7 @@ bool SystemClass::Frame()
 	m_input->GetMouseLocation(mouseX, mouseY);
 
 	//process position
+	m_position->SetFrameTime(SystemStateManagerClass::getI().GetTime());
 	m_position->Move();
 
 	//process graphics
@@ -170,7 +189,9 @@ bool SystemClass::Frame()
 		return false;
 	}
 
-	doCommands();
+	result = doCommands();
+	if (!result)
+		return false;
 
 	return true;
 }
@@ -190,8 +211,8 @@ bool SystemClass::doCommands()
 				m_graphics->updateInterface(command,i);
 			else if (commandType == "updateGraphics")
 				m_graphics->updateGraphics(command, i);
-			//else if (commandType == "updateSystem")
-			//	updateSystem(command, i);
+			else if (commandType == "updateSystem")
+				updateSystem(command, i);
 			//else if (commandType == "updateTime")
 			//	updateTime(command, i);
 			//else if (commandType == "setParam")
@@ -207,6 +228,87 @@ bool SystemClass::doCommands()
 				return false;
 		}
 	}
+
+	return true;
+}
+
+bool SystemClass::updateSystem(CommandClass * command, int ind)
+{
+	int mouseX, mouseY;
+	m_input->GetMouseLocation(mouseX, mouseY);
+
+
+	if (command->getCommandsNum() < 1)
+		return false;
+	std::string updCommandType = command->getParam(0, 1); // type of update is second param
+
+	if (updCommandType == "cameraPosition")
+	{
+		if (command->getParamsNum(0) < 5) //if number of params smaller than normal, then this is incorrect
+			return false;
+		D3DXVECTOR3 pos;
+		D3DXVECTOR3 rot;
+		pos = m_position->GetRealPosition();
+		rot = m_position->GetRotation();
+		command->addChange("posX", pos.x);
+		command->addChange("posY", pos.y);
+		command->addChange("posZ", pos.z);
+		command->addChange("rotX", rot.x);
+		command->addChange("rotY", rot.y);
+		command->addChange("rotZ", rot.z);
+		command->addChange("screenWidth", SettingsClass::getI().getIntParameter("ScreenWidth"));
+		command->addChange("screenHeight", SettingsClass::getI().getIntParameter("ScreenHeight"));
+		command->addChange("mouseX", mouseX);
+		command->addChange("mouseY", mouseY);
+		m_position->SetPosition(D3DXVECTOR3(stof(command->getParam(0, 2)), stof(command->getParam(0, 3)), stof(command->getParam(0, 4))));
+	}
+	else if (updCommandType == "cameraRotation")
+	{
+		if (command->getParamsNum(0) < 5) //if number of params smaller than normal, then this is incorrect
+			return false;
+		D3DXVECTOR3 pos;
+		D3DXVECTOR3 rot;
+		pos = m_position->GetRealPosition();
+		rot = m_position->GetRotation();
+		command->addChange("posX", pos.x);
+		command->addChange("posY", pos.y);
+		command->addChange("posZ", pos.z);
+		command->addChange("rotX", rot.x);
+		command->addChange("rotY", rot.y);
+		command->addChange("rotZ", rot.z);
+		command->addChange("screenWidth", SettingsClass::getI().getIntParameter("ScreenWidth"));
+		command->addChange("screenHeight", SettingsClass::getI().getIntParameter("ScreenHeight"));
+		command->addChange("mouseX", mouseX);
+		command->addChange("mouseY", mouseY);
+		m_position->SetRotation(D3DXVECTOR3(stof(command->getParam(0, 2)), stof(command->getParam(0, 3)), stof(command->getParam(0, 4))));
+
+	}
+	else if (updCommandType == "setButCommand")
+	{
+		if (command->getParamsNum(0) < 5)
+			return false;
+		if (command->getParam(0, 3) == "pickCommand")
+			m_input->setPickCommand(stoi(command->getParam(0, 2)), command->getParam(0, 4));
+		else
+			m_input->setUnPickCommand(stoi(command->getParam(0, 2)), command->getParam(0, 4));
+	}
+	else if (updCommandType == "setWheelCommand")
+	{
+		if (command->getParamsNum(0) < 4)
+			return false;
+		if (command->getParam(0, 2) == "up")
+			m_input->setUpWheelCommand(command->getParam(0, 3));
+		else
+			m_input->setDownWheelCommand(command->getParam(0, 3));
+	}
+	else if (updCommandType == "setMoving")
+	{
+		if (command->getParamsNum(0) < 4)
+			return false;
+		m_position->setMove(stoi(command->getParam(0, 2)), stoi(command->getParam(0, 3)));
+	}
+	
+	return true;
 }
 
 void SystemClass::InitializeWindows(int screenWidth, int screenHeight)

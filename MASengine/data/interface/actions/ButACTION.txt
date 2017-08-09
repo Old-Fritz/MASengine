@@ -58,7 +58,10 @@ downWheelCommand =
 	updateSystem setButCommand 1 unPickCommand 1unPickCommandMainMenu;
 	
 }
-
+1unPickCommand = 
+{
+	stop;
+}
 16pickCommand = 
 {
 	updateSystem setMoving 6 1;
