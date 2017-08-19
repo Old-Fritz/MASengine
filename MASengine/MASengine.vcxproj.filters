@@ -103,6 +103,12 @@
     <Filter Include="Заголовочные файлы\Graphics\Blocks">
       <UniqueIdentifier>{31a045c9-ab00-4871-a9e4-db4c2a138341}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Заголовочные файлы\GameMechaniks\Provs\ProvRegions">
+      <UniqueIdentifier>{8205c59c-9ba9-4bde-a1c6-2ef062636b5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\GameMechanics\Provs\provRegions">
+      <UniqueIdentifier>{6e28f495-e5d6-4b8b-8c8b-326d4494274c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -234,6 +240,15 @@
     <ClCompile Include="ProvManagerClass.cpp">
       <Filter>Файлы исходного кода\GameMechanics\Provs</Filter>
     </ClCompile>
+    <ClCompile Include="ProvRegionManagerClass.cpp">
+      <Filter>Файлы исходного кода\GameMechanics\Provs\provRegions</Filter>
+    </ClCompile>
+    <ClCompile Include="ProvRegionClass.cpp">
+      <Filter>Файлы исходного кода\GameMechanics\Provs\provRegions</Filter>
+    </ClCompile>
+    <ClCompile Include="TerrainShaderClass.cpp">
+      <Filter>Файлы исходного кода\Graphics\ShaderManagment\Shaders</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SystemClass.h">
@@ -362,6 +377,21 @@
     <ClInclude Include="LayersClass.h">
       <Filter>Заголовочные файлы\GameMechaniks\Provs</Filter>
     </ClInclude>
+    <ClInclude Include="ProvRegionClass.h">
+      <Filter>Заголовочные файлы\GameMechaniks\Provs\ProvRegions</Filter>
+    </ClInclude>
+    <ClInclude Include="ProvRegionManagerClass.h">
+      <Filter>Заголовочные файлы\GameMechaniks\Provs\ProvRegions</Filter>
+    </ClInclude>
+    <ClInclude Include="TerrainClass.h">
+      <Filter>Заголовочные файлы\Graphics\Blocks</Filter>
+    </ClInclude>
+    <ClInclude Include="TerrainManagerClass.h">
+      <Filter>Заголовочные файлы\Graphics\Blocks</Filter>
+    </ClInclude>
+    <ClInclude Include="TerrainShaderClass.h">
+      <Filter>Заголовочные файлы\Graphics\ShaderManagment\Shaders</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="interfaceVS.fx">
@@ -371,6 +401,12 @@
       <Filter>Файлы ресурсов\Shaders</Filter>
     </None>
     <None Include="fontPS.fx">
+      <Filter>Файлы ресурсов\Shaders</Filter>
+    </None>
+    <None Include="terrainPS.fx">
+      <Filter>Файлы ресурсов\Shaders</Filter>
+    </None>
+    <None Include="terrainVS.fx">
       <Filter>Файлы ресурсов\Shaders</Filter>
     </None>
   </ItemGroup>

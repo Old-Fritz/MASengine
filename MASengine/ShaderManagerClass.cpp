@@ -4,6 +4,7 @@ ShaderManagerClass::ShaderManagerClass()
 {
 	m_interfaceShader = 0;
 	m_fontShader = 0;
+	m_terrainShader = 0;
 }
 ShaderManagerClass::ShaderManagerClass(const ShaderManagerClass &)
 {
@@ -40,11 +41,30 @@ bool ShaderManagerClass::Initialize(ID3D11Device * device, HWND hwnd)
 	}
 	LogManagerClass::getI().addLog("Font Shader Initialization");
 
+	//Initialize terrain Shader
+	m_terrainShader = new(1) TerrainShaderClass;
+	if (!m_terrainShader)
+		return false;
+	result = m_terrainShader->Initialize(device, hwnd);
+	if (!result)
+	{
+		LogManagerClass::getI().addLog("Error 10-x");
+		return false;
+	}
+	LogManagerClass::getI().addLog("Terrain Shader Initialization");
+
 	return true;
 }
 
 void ShaderManagerClass::Shutdown()
 {
+	if (m_terrainShader)
+	{
+		m_terrainShader->Shutdown();
+		::operator delete(m_terrainShader, sizeof(*m_terrainShader), 1);
+		m_terrainShader = 0;
+	}
+
 	if (m_fontShader)
 	{
 		m_fontShader->Shutdown();
@@ -70,4 +90,9 @@ InterfaceShaderClass * ShaderManagerClass::getInterfaceShader()
 FontShaderClass * ShaderManagerClass::getFontShader()
 {
 	return m_fontShader;
+}
+
+TerrainShaderClass * ShaderManagerClass::getTerrainShader()
+{
+	return m_terrainShader;
 }

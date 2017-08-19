@@ -11,6 +11,7 @@
 #include "GlobalManagerClass.h"
 #include "InterfaceShaderClass.h"
 #include "FontShaderClass.h"
+#include "TerrainShaderClass.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // Class name: ShaderManagerClass
@@ -28,10 +29,12 @@ public:
 	//getters
 	InterfaceShaderClass* getInterfaceShader();
 	FontShaderClass* getFontShader();
+	TerrainShaderClass* getTerrainShader();
 private:
 	//shaders
 	InterfaceShaderClass* m_interfaceShader;
 	FontShaderClass* m_fontShader;
+	TerrainShaderClass* m_terrainShader;
 };
 
 #endif

@@ -146,6 +146,8 @@
     <ClCompile Include="PositionClass.cpp" />
     <ClCompile Include="ProvClass.cpp" />
     <ClCompile Include="ProvManagerClass.cpp" />
+    <ClCompile Include="ProvRegionClass.cpp" />
+    <ClCompile Include="ProvRegionManagerClass.cpp" />
     <ClCompile Include="ResourceManagerClass.cpp" />
     <ClCompile Include="SettingsClass.cpp" />
     <ClCompile Include="ShaderManagerClass.cpp" />
@@ -153,6 +155,7 @@
     <ClCompile Include="StackAllocatorClass.cpp" />
     <ClCompile Include="SystemClass.cpp" />
     <ClCompile Include="SystemStateManagerClass.cpp" />
+    <ClCompile Include="TerrainShaderClass.cpp" />
     <ClCompile Include="TextClass.cpp" />
     <ClCompile Include="TextManagerClass.cpp" />
     <ClCompile Include="TextureClass.cpp" />
@@ -190,6 +193,8 @@
     <ClInclude Include="PositionClass.h" />
     <ClInclude Include="ProvClass.h" />
     <ClInclude Include="ProvManagerClass.h" />
+    <ClInclude Include="ProvRegionClass.h" />
+    <ClInclude Include="ProvRegionManagerClass.h" />
     <ClInclude Include="ResourceManagerClass.h" />
     <ClInclude Include="SettingsClass.h" />
     <ClInclude Include="ShaderManagerClass.h" />
@@ -197,6 +202,9 @@
     <ClInclude Include="StackAllocatorClass.h" />
     <ClInclude Include="SystemClass.h" />
     <ClInclude Include="SystemStateManagerClass.h" />
+    <ClInclude Include="TerrainClass.h" />
+    <ClInclude Include="TerrainManagerClass.h" />
+    <ClInclude Include="TerrainShaderClass.h" />
     <ClInclude Include="TextClass.h" />
     <ClInclude Include="TextManagerClass.h" />
     <ClInclude Include="TextureClass.h" />
@@ -219,6 +227,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="fontPS.fx">
+      <FileType>Document</FileType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="terrainPS.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="terrainVS.fx">
       <FileType>Document</FileType>
     </None>
   </ItemGroup>
