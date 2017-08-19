@@ -100,6 +100,9 @@
     <Filter Include="Файлы исходного кода\GameMechanics\Provs">
       <UniqueIdentifier>{26e0fff4-fca2-44a4-aa9a-d28795dab81f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Заголовочные файлы\Graphics\Blocks">
+      <UniqueIdentifier>{31a045c9-ab00-4871-a9e4-db4c2a138341}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

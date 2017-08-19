@@ -65,6 +65,12 @@ LayersClass * ProvClass::getLayers()
 	return m_layers;
 }
 
+void ProvClass::changeBlockRegion(ProvRegionClass * newRegion)
+{
+	newRegion->add(m_id);
+	m_blockRegion.emplace(newRegion);
+}
+
 bool ProvClass::readFromFile(std::ifstream * file)
 {
 	std::string temp;
