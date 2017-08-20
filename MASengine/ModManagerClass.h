@@ -37,6 +37,7 @@ public:
 
 	long long getHash(const std::string& str);
 	std::string getDirectory(long long hash);
+	std::string getDirectory(const std::string& string);
 
 private:
 	ModManagerClass();

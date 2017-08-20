@@ -49,9 +49,24 @@ bool MeshManagerClass::addModel(ID3D11Device * device, const std::string & filen
 	return true;
 }
 
+bool MeshManagerClass::addModel(ID3D11Device * device, const std::string & filename, int lvl)
+{
+	if(!lvl)
+		return addModel(device,filename);
+	else
+	{
+		return false;
+	}
+}
+
 MeshClass * MeshManagerClass::getModel(const std::string & filename)
 {
 	return m_models.find(ModManagerClass::getI().getHash(filename))->second;
+}
+
+MeshClass * MeshManagerClass::getModel(int hash)
+{
+	return m_models.find(hash)->second;
 }
 
 MeshManagerClass & MeshManagerClass::getI()

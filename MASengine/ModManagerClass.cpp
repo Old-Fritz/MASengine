@@ -94,6 +94,11 @@ long long ModManagerClass::getHash(const std::string & str)
 		return "";
 }
 
+ std::string ModManagerClass::getDirectory(const std::string & string)
+ {
+	 return getDirectory(getHash(string));
+ }
+
 void ModManagerClass::loadMod(const std::string & name, const std::string & modDirectory)
 {
 	//get all filepaths in directory

@@ -155,6 +155,7 @@
     <ClCompile Include="StackAllocatorClass.cpp" />
     <ClCompile Include="SystemClass.cpp" />
     <ClCompile Include="SystemStateManagerClass.cpp" />
+    <ClCompile Include="TerrainClass.cpp" />
     <ClCompile Include="TerrainShaderClass.cpp" />
     <ClCompile Include="TextClass.cpp" />
     <ClCompile Include="TextManagerClass.cpp" />

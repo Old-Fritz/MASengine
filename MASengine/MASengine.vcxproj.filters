@@ -249,6 +249,9 @@
     <ClCompile Include="TerrainShaderClass.cpp">
       <Filter>Файлы исходного кода\Graphics\ShaderManagment\Shaders</Filter>
     </ClCompile>
+    <ClCompile Include="TerrainClass.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SystemClass.h">
