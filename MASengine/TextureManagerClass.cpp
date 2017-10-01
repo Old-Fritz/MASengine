@@ -78,8 +78,13 @@ void TextureManagerClass::deleteTexture(const std::string & filename)
 
 ID3D11ShaderResourceView * TextureManagerClass::getTexture(const std::string & filename)
 {
-	return getTexture(ModManagerClass::getI().getHash(filename));
-	
+	auto texture = m_textures.find(ModManagerClass::getI().getHash(filename));
+	if (texture != m_textures.end())
+	{
+		return texture->second->GetTexture();
+	}
+	else
+		return NULL;
 }
 
 ID3D11ShaderResourceView * TextureManagerClass::getTexture(int hash)

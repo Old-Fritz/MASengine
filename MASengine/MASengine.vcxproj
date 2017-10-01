@@ -142,6 +142,7 @@
     <ClCompile Include="MeshClass.cpp" />
     <ClCompile Include="MeshManagerClass.cpp" />
     <ClCompile Include="ModManagerClass.cpp" />
+    <ClCompile Include="PathClass.cpp" />
     <ClCompile Include="PoolAllocatorClass.cpp" />
     <ClCompile Include="PositionClass.cpp" />
     <ClCompile Include="ProvClass.cpp" />
@@ -162,6 +163,7 @@
     <ClCompile Include="TextureClass.cpp" />
     <ClCompile Include="TextureManagerClass.cpp" />
     <ClCompile Include="TimerClass.cpp" />
+    <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BitmapClass.h" />
@@ -171,6 +173,7 @@
     <ClInclude Include="CommandManagerClass.h" />
     <ClInclude Include="CpuClass.h" />
     <ClInclude Include="D3DClass.h" />
+    <ClInclude Include="PathClass.h" />
     <ClInclude Include="FontClass.h" />
     <ClInclude Include="FontManagerClass.h" />
     <ClInclude Include="FontShaderClass.h" />
@@ -211,6 +214,7 @@
     <ClInclude Include="TextureClass.h" />
     <ClInclude Include="TextureManagerClass.h" />
     <ClInclude Include="TimerClass.h" />
+    <ClInclude Include="Utils.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="interfaceVS.fx">

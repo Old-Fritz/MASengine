@@ -44,6 +44,10 @@ bool TerrainClass::Initialize(ID3D11Device * device, ID3D11DeviceContext * devic
 	return true;
 }
 
+void TerrainClass::Shutdown()
+{
+}
+
 bool TerrainClass::Render(TerrainShaderClass * terrainShader, ID3D11DeviceContext * deviceContext, D3DXMATRIX worldMatrix,
 	D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, D3DXVECTOR3 lightDirection,
 	D3DXVECTOR4 ambientColor, D3DXVECTOR4 diffuseColor, D3DXVECTOR3 cameraPosition, D3DXVECTOR4 specularColor, float specularPower, float SCREEN_DEPTH, int lvl)
@@ -63,4 +67,24 @@ bool TerrainClass::Render(TerrainShaderClass * terrainShader, ID3D11DeviceContex
 	}
 	
 	return true;
+}
+
+D3DXVECTOR3 TerrainClass::pick(int x, int y)
+{
+	return D3DXVECTOR3();
+}
+
+D3DXVECTOR3 TerrainClass::GetPosition()
+{
+	return D3DXVECTOR3();
+}
+
+bool TerrainClass::readFromFile(std::string filename)
+{
+	return false;
+}
+
+D3DXVECTOR4 * TerrainClass::getProvColor()
+{
+	return nullptr;
 }

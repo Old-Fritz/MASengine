@@ -109,6 +109,12 @@
     <Filter Include="Файлы исходного кода\GameMechanics\Provs\provRegions">
       <UniqueIdentifier>{6e28f495-e5d6-4b8b-8c8b-326d4494274c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы исходного кода\Graphics\Blocks">
+      <UniqueIdentifier>{eed6b2c3-209d-4fa7-b620-54d6cdb343b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\Utilities">
+      <UniqueIdentifier>{1ee714aa-706f-4d10-8728-551ba51e6c14}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -250,6 +256,12 @@
       <Filter>Файлы исходного кода\Graphics\ShaderManagment\Shaders</Filter>
     </ClCompile>
     <ClCompile Include="TerrainClass.cpp">
+      <Filter>Файлы исходного кода\Graphics\Blocks</Filter>
+    </ClCompile>
+    <ClCompile Include="PathClass.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
   </ItemGroup>
@@ -394,6 +406,12 @@
     </ClInclude>
     <ClInclude Include="TerrainShaderClass.h">
       <Filter>Заголовочные файлы\Graphics\ShaderManagment\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="PathClass.h">
+      <Filter>Заголовочные файлы\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils.h">
+      <Filter>Заголовочные файлы\Utilities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

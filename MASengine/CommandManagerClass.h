@@ -29,14 +29,14 @@ public:
 	bool isFull();
 	CommandClass* nextCommand();
 
-	bool addCommand(const std::string& name, const std::string& filename);
+	bool addCommand(const std::string& name, PathClass* filename);
 	void addChange(const std::string& key, float value);
 private:
 	CommandManagerClass();
 	CommandManagerClass(const CommandManagerClass&);
 	~CommandManagerClass();
 
-	std::string getTextFromFile(const std::string& name, const std::string& filename);
+	std::string getTextFromFile(const std::string& name, PathClass* filename);
 private:
 	std::queue<CommandClass*> m_commandsQueue;
 	std::map<long long, std::map<long long, CommandClass*>> m_commands;

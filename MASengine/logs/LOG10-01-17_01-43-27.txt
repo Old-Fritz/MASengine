@@ -1,0 +1,34 @@
+10-01-17_01-43-27 LogManager Initialized
+10-01-17_01-43-27 MemoryManager Initialized
+10-01-17_01-43-27 ModManager Initialized
+10-01-17_01-43-27 Settings Initialized
+10-01-17_01-43-27 CommandManager Initialized
+10-01-17_01-43-27 ResourceManager Initialized
+10-01-17_01-43-29 SystemStateManager Initialized
+10-01-17_01-43-29 All global system Initialized
+10-01-17_01-43-29 Windows Initialization
+10-01-17_01-43-29 input Initialization
+10-01-17_01-43-29 Position Initialization
+10-01-17_01-43-29 Directx Initialization
+10-01-17_01-43-29 Interface Shader Initialization
+10-01-17_01-43-30 Font Shader Initialization
+10-01-17_01-43-30 Terrain Shader Initialization
+10-01-17_01-43-30 Shaders Initialization
+10-01-17_01-43-30 Error 15-10
+10-01-17_01-43-30 Error 15-10
+10-01-17_01-43-30 Error 15-10
+10-01-17_01-43-30 Error 15-10
+10-01-17_01-43-30 Error 15-10
+10-01-17_01-43-30 Error 15-10
+10-01-17_01-43-30 Graphics Initialization
+10-01-17_01-43-30 Error 15-10
+10-01-17_01-43-30 Error 15-10
+10-01-17_01-43-30 Error 15-10
+10-01-17_01-43-30 Error 15-10
+10-01-17_01-43-30 Error 15-10
+10-01-17_01-43-30 Error 15-10
+10-01-17_01-43-30 Error 15-10
+10-01-17_01-43-30 Error 15-10
+10-01-17_01-43-30 Error 15-10
+10-01-17_01-43-30 Error 15-10
+10-01-17_01-43-30 Provs Initialization

@@ -11,6 +11,7 @@
 
 #include "PoolAllocatorClass.h"
 #include "StackAllocatorClass.h"
+#include "Utils.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // Class name: MemoryManagerClass

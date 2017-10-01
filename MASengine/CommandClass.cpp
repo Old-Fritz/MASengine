@@ -29,7 +29,7 @@ void CommandClass::Initialize(const std::string& strCommand)
 				tempArr.emplace_back(tempStr);
 			tempStr.clear();
 		}
-		// if symbol is " " then this is the end of the command
+		// if symbol is ";" then this is the end of the command
 		else if (strCommand[i] == ';')
 		{
 			if (tempStr != "") // if string is clear then that means double " " or " " in start or so on and don`t need to adding

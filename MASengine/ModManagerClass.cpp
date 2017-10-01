@@ -69,23 +69,12 @@ ModManagerClass & ModManagerClass::getI()
 	return *m_instance;
 }
 
-long long ModManagerClass::getHash(const std::string & str)
+void ModManagerClass::regPath(PathClass * path)
 {
-	const int p = 101;
-
-	long long hash = 0;
-	long long p_pow = 1;
-	for (int i = 0; i < str.length();i++)
-	{
-		hash += static_cast<long long>(str[i] * p_pow);
-		p_pow *= p;
-	}
-
-	return hash;
-
+	path->changePrefix(getDirectory(path->getShortPath())); // change prefix
 }
 
- std::string  ModManagerClass::getDirectory(long long hash)
+ std::string  ModManagerClass::getDirectory(int hash)
 {
 	auto directory = m_modChanges.find(hash);
 	if (directory != m_modChanges.end())
@@ -96,7 +85,7 @@ long long ModManagerClass::getHash(const std::string & str)
 
  std::string ModManagerClass::getDirectory(const std::string & string)
  {
-	 return getDirectory(getHash(string));
+	 return getDirectory(Utils::getHash(string));
  }
 
 void ModManagerClass::loadMod(const std::string & name, const std::string & modDirectory)
@@ -121,6 +110,6 @@ void ModManagerClass::loadMod(const std::string & name, const std::string & modD
 		filenames[i].erase(0, (modDirectory + "/" + name).size());
 		transform(filenames[i].begin(), filenames[i].end(), filenames[i].begin(), tolower);
 		//add to map of directories
-		m_modChanges.insert(std::pair<long long, std::string >(getHash(filenames[i]), (modDirectory + "/" + name)));
+		m_modChanges.insert(std::pair<long long, std::string >(Utils::getHash(filenames[i]), (modDirectory + "/" + name)));
 	}
 }

@@ -14,12 +14,13 @@
 ///////////////////////
 // MY CLASS INCLUDES //
 ///////////////////////
-#include <string>
 #include <fstream>
 #include <map>
+#include <set>
 #include <iostream>
-#include <filesystem>
+#include "PathClass.h"
 #include "MemoryManagerClass.h"
+
 
 using namespace std::tr2::sys;
 
@@ -35,8 +36,9 @@ public:
 	
 	static ModManagerClass& getI();
 
-	long long getHash(const std::string& str);
-	std::string getDirectory(long long hash);
+	void regPath(PathClass* path);
+
+	std::string getDirectory(int hash);
 	std::string getDirectory(const std::string& string);
 
 private:

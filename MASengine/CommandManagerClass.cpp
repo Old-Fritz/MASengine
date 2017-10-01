@@ -58,48 +58,38 @@ CommandClass* CommandManagerClass::nextCommand()
 	return retValue;
 }
 
-bool CommandManagerClass::addCommand(const std::string & name, const std::string & filename)
+bool CommandManagerClass::addCommand(const std::string & name, PathClass* filename)
 {
 	bool result;
 
-	long long filenameHash = ModManagerClass::getI().getHash(filename);
-	long long nameHash = ModManagerClass::getI().getHash(name);
-	//pair<string, map<string, string>*> commandGroup;
+	long long filenameHash = Utils::getHash(filename->getShortPath());
+	long long nameHash = Utils::getHash(name);
+
 	auto commandGroup = m_commands.find(filenameHash);
-	if (commandGroup != m_commands.end()) //check for existing group
+	//add new group if not existing
+	if (commandGroup == m_commands.end()) //check for existing group
 	{
-		auto command = commandGroup->second.find(nameHash);
-		if (command != commandGroup->second.end()) //check for existing od command
-		{
-			m_commandsQueue.push(command->second);
-		}
-		else //add new command in group
-		{
-			CommandClass* newCommand = new(4) CommandClass;
-			if (!newCommand)
-				return false;
-			newCommand->Initialize(getTextFromFile(name, filename));
-			commandGroup->second.insert(std::pair<long long, CommandClass*>(nameHash, newCommand));
-			m_commandsQueue.push(newCommand);
-		}
+		std::map<long long, CommandClass*> newCommandGroup;
+		m_commands.insert(std::pair<long long, std::map<long long, CommandClass*>>(filenameHash, newCommandGroup));
+		commandGroup = m_commands.find(filenameHash); //find again
 	}
 
-	else //add new group
+	auto command = commandGroup->second.find(nameHash);
+	//add new command if not existing
+	if (command == commandGroup->second.end()) //check for existing od command
 	{
-		//create new command
 		CommandClass* newCommand = new(4) CommandClass;
 		if (!newCommand)
 			return false;
 		newCommand->Initialize(getTextFromFile(name, filename));
-		//insert it
-		std::map<long long, CommandClass*> newCommandGroup; 
-		newCommandGroup.insert(std::pair<long long, CommandClass*>(nameHash, newCommand));
-		m_commands.insert(std::pair<long long, std::map<long long, CommandClass*>>(filenameHash, newCommandGroup));
-		m_commandsQueue.push(newCommand);
+		commandGroup->second.insert(std::pair<long long, CommandClass*>(nameHash, newCommand));
+		command = commandGroup->second.find(nameHash); //find again
 	}
 
+	// add new command in queue
+	m_commandsQueue.push(command->second);
+
 	return true;
-	//return getTextFromFile(commandName, commandFilename);
 }
 
 void CommandManagerClass::addChange(const std::string & key, float value)
@@ -107,10 +97,10 @@ void CommandManagerClass::addChange(const std::string & key, float value)
 	m_commandsQueue.back()->addChange(key, value);
 }
 
- std::string  CommandManagerClass::getTextFromFile(const std::string & name, const std::string & filename)
+ std::string  CommandManagerClass::getTextFromFile(const std::string & name, PathClass* filename)
 {
 	std::ifstream file;
-	file.open(ModManagerClass::getI().getDirectory(ModManagerClass::getI().getHash(filename)) + filename);
+	file.open(filename->getPath());
 	std::string temp1 = "}";
 	std::string temp2;
 	while (file)
