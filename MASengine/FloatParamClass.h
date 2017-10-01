@@ -1,0 +1,32 @@
+////////////////////////////////////////////////////////////////////////////////
+// Filename: FloatParamClass.h
+////////////////////////////////////////////////////////////////////////////////
+
+#ifndef _FLOATPARAMCLASS_H_
+#define _FLOATPARAMCLASS_H_
+
+#include <string>
+#include "SetParamClass.h"
+
+////////////////////////////////////////////////////////////////////////////////
+// Class name: SetParamClass
+////////////////////////////////////////////////////////////////////////////////
+
+class FloatParamClass : public SetParamClass
+{
+public:
+	FloatParamClass();
+	FloatParamClass(const FloatParamClass&);
+	~FloatParamClass();
+
+	virtual std::string getStr();
+	void setStr(const std::string& str);
+
+	float getParam();
+	void setParam(float param);
+
+private:
+	float m_param;
+};
+
+#endif

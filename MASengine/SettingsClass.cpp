@@ -33,38 +33,19 @@ void SettingsClass::save()
 		return;
 
 	//write all params in file
-	for (auto param = m_intParameters.begin();param != m_intParameters.end();param++)
-		file << param->second->name << " {" << param->second->value << "}" << std::endl;
-	file << std::endl;
-	for (auto param = m_floatParameters.begin();param != m_floatParameters.end();param++)
-		file << param->second->name << " {" << param->second->value << "}" << std::endl;
-	file << std::endl;
-	for (auto param = m_strParameters.begin();param != m_strParameters.end();param++)
-		file << param->second->name << " {" << param->second->value << "}" << std::endl;
+	for (auto param = m_parameters.begin();param != m_parameters.end();param++)
+		file << param->second->getName() << " {" << param->second->getStr() << "}" << std::endl;
 
 	file.close();
 }
 void SettingsClass::Shutdown()
 {
 	//delete all params
-	while (!m_intParameters.empty())
+	while (!m_parameters.empty())
 	{
-		m_intParameters.begin()->second->name.clear();
-		::operator delete(m_intParameters.begin()->second,sizeof(IntParameter), 2);
-		m_intParameters.erase(m_intParameters.begin());
-	}
-	while (!m_floatParameters.empty())
-	{
-		m_floatParameters.begin()->second->name.clear();
-		::operator delete(m_floatParameters.begin()->second, sizeof(FloatParameter), 2);
-		m_floatParameters.erase(m_floatParameters.begin());
-	}
-	while (!m_strParameters.empty())
-	{
-		m_strParameters.begin()->second->name.clear();
-		m_strParameters.begin()->second->value.clear();
-		::operator delete(m_strParameters.begin()->second, sizeof(StrParameter), 2);
-		m_strParameters.erase(m_strParameters.begin());
+		m_parameters.begin()->second->Shutdown();
+		::operator delete(m_parameters.begin()->second,sizeof(m_parameters.begin()->second), 2);
+		m_parameters.erase(m_parameters.begin());
 	}
 
 	if (m_instance)
@@ -84,40 +65,62 @@ SettingsClass & SettingsClass::getI()
 
 int SettingsClass::getIntParameter(const std::string & name)
 {
-	if (m_intParameters.find(Utils::getHash(name)) != m_intParameters.end())
-		return m_intParameters.find(Utils::getHash(name))->second->value;
+	int hash = Utils::getHash(name);
+	if (m_parameters.find(hash) != m_parameters.end())
+		return ((IntParamClass*)(m_parameters.find(hash)->second))->getParam();
 	else
 		return 0;
 }
 float SettingsClass::getFloatParameter(const std::string & name)
 {
-	if (m_floatParameters.find(Utils::getHash(name)) != m_floatParameters.end())
-		return m_floatParameters.find(Utils::getHash(name))->second->value;
+	int hash = Utils::getHash(name);
+	if (m_parameters.find(hash) != m_parameters.end())
+		return ((FloatParamClass*)(m_parameters.find(hash)->second))->getParam();
 	else
 		return 0;
 }
 std::string SettingsClass::getStrParameter(const std::string & name)
 {
-	if (m_strParameters.find(Utils::getHash(name)) != m_strParameters.end())
-		return m_strParameters.find(Utils::getHash(name))->second->value;
+	int hash = Utils::getHash(name);
+	if (m_parameters.find(hash) != m_parameters.end())
+		return ((StrParamClass*)(m_parameters.find(hash)->second))->getParam();
 	else
 		return "";
 }
 
+PathClass * SettingsClass::getPathParameter(const std::string & name)
+{
+	int hash = Utils::getHash(name);
+	if (m_parameters.find(hash) != m_parameters.end())
+		return ((PathParamClass*)(m_parameters.find(hash)->second))->getParam();
+	else
+		return NULL;
+}
+
 void SettingsClass::setIntParameter(const std::string & name, int value)
 {
-	if (m_intParameters.find(Utils::getHash(name)) != m_intParameters.end())
-		m_intParameters.find(Utils::getHash(name))->second->value = value;
+	int hash = Utils::getHash(name);
+	if (m_parameters.find(hash) != m_parameters.end())
+		((IntParamClass*)(m_parameters.find(hash)->second))->setParam(value);
 }
 void SettingsClass::setFloatParameter(const std::string & name, float value)
 {
-	if (m_floatParameters.find(Utils::getHash(name)) != m_floatParameters.end())
-		m_floatParameters.find(Utils::getHash(name))->second->value = value;
+	int hash = Utils::getHash(name);
+	if (m_parameters.find(hash) != m_parameters.end())
+		((FloatParamClass*)(m_parameters.find(hash)->second))->setParam(value);
 }
 void SettingsClass::setStrParameter(const std::string & name, const std::string & value)
 {
-	if (m_strParameters.find(Utils::getHash(name)) != m_strParameters.end())
-		m_strParameters.find(Utils::getHash(name))->second->value = value;
+	int hash = Utils::getHash(name);
+	if (m_parameters.find(hash) != m_parameters.end())
+		((StrParamClass*)(m_parameters.find(hash)->second))->setParam(value);
+}
+
+void SettingsClass::setPathParameter(const std::string & name, PathClass * value)
+{
+	int hash = Utils::getHash(name);
+	if (m_parameters.find(hash) != m_parameters.end())
+		((PathParamClass*)(m_parameters.find(hash)->second))->setParam(value);
 }
 
 
@@ -142,69 +145,56 @@ bool SettingsClass::readFromFile(PathClass* filename)
 	//load all params
 	int paramsNum;
 	generalFile >> paramsNum;
-	std::string temp;
+	
 	for (int i = 0;i < paramsNum;i++)
 	{
+		SetParamClass* param;
+		std::string paramName;
+		std::string paramText;
 		//get type of param and name first
 		int valueType;
-		generalFile >> valueType;		
+		generalFile >> valueType;
+		generalFile >> paramName;
+		//first check for normal settings
+		paramText = Utils::getTextFromFile(paramName, m_filename->getPath());
+		if (paramText.size() <= 0)
+			//if no settings in normal file, take default
+			paramText = Utils::getTextFromFile(paramName, defSettingsFileName->getPath());
 		switch (valueType)
 		{
 		//0 is INT
 		case(0):
 		{
-			IntParameter* param = new(4) IntParameter;
-			generalFile >> param->name;
-			//first check for normal settings
-			temp = Utils::getTextFromFile(param->name, m_filename->getPath());
-			if (temp.size()<=0)
-				//if no settings in normal file? take default
-				temp = Utils::getTextFromFile(param->name, defSettingsFileName->getPath());
-			if (temp.size()>0)
-				param->value = stoi(temp);
-			else
-				param->value = 0;
-			//add parameter to map
-			m_intParameters.emplace(std::pair<int, IntParameter*>(Utils::getHash(param->name),param));
+			param = new(4) IntParamClass;
 			break;
 		}
 		//1 is FLOAT
 		case(1):
 		{
-			FloatParameter* param = new(4) FloatParameter;
-			generalFile >> param->name;
-			//first check for normal settings
-			temp = Utils::getTextFromFile(param->name, m_filename->getPath());
-			if (temp.size() <= 0)
-				//if no settings in normal file? take default
-				temp = Utils::getTextFromFile(param->name, defSettingsFileName->getPath());
-			if (temp.size()>0)
-				param->value = stof(temp);
-			else
-				param->value = 0;
-			//add parameter to map
-			m_floatParameters.emplace(std::pair<int, FloatParameter*>(Utils::getHash(param->name), param));
+			param = new(4) FloatParamClass;
 			break;
 		}
 		//2 is STRING
 		case(2):
 		{
-			StrParameter* param = new(4) StrParameter;
-			generalFile >> param->name;
-			//first check for normal settings
-			temp = Utils::getTextFromFile(param->name, m_filename->getPath());
-			if (temp.size() <= 0)
-				//if no settings in normal file? take default
-				temp = Utils::getTextFromFile(param->name, defSettingsFileName->getPath());
-			param->value = temp;
-			//add parameter to map
-			m_strParameters.emplace(std::pair<int, StrParameter*>(Utils::getHash(param->name), param));
+			param = new(4) StrParamClass;
+			break;
+		}
+		//3 is PATH
+		case(3):
+		{
+			param = new(4) PathParamClass;
 			break;
 		}
 		default:
+			param = new(4) SetParamClass;
 			break;
 		}
+		//fill param with data
+		param->setStr(paramText);
+		param->setName(paramName);
 		//add new param to map
+		m_parameters.emplace(std::pair<int, SetParamClass*>(Utils::getHash(paramName), param));
 	}
 
 	generalFile.close();

@@ -15,29 +15,16 @@
 #include <map>
 #include "MemoryManagerClass.h"
 #include "PathClass.h"
+#include "PathParamClass.h"
+#include "StrParamClass.h"
+#include "FloatParamClass.h"
+#include "IntParamClass.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // Class name: SettingsClass
 ////////////////////////////////////////////////////////////////////////////////
 class SettingsClass
 {
-
-private:
-	struct IntParameter
-	{
-		std::string name;
-		int value;
-	};
-	struct FloatParameter
-	{
-		std::string name;
-		float value;
-	};
-	struct StrParameter
-	{
-		std::string name;
-		std::string value;
-	};
 public:
 
 	bool Initialize(PathClass* filename);
@@ -49,11 +36,12 @@ public:
 	int getIntParameter(const std::string& name);
 	float getFloatParameter(const std::string& name);
 	std::string getStrParameter(const std::string& name);
+	PathClass* getPathParameter(const std::string& name);
 
 	void setIntParameter(const std::string& name, int value);
 	void setFloatParameter(const std::string& name, float value);
 	void setStrParameter(const std::string& name, const std::string& value);
-
+	void setPathParameter(const std::string& name, PathClass* value);
 
 private:
 	SettingsClass();
@@ -62,9 +50,7 @@ private:
 	bool readFromFile(PathClass* filename);
 private:
 	PathClass* m_filename;
-	std::map<int, IntParameter*> m_intParameters;
-	std::map<int, FloatParameter*> m_floatParameters;
-	std::map<int, StrParameter*> m_strParameters;
+	std::map<int, SetParamClass*> m_parameters;
 
 
 	static SettingsClass* m_instance;
