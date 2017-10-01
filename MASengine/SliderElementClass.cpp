@@ -19,7 +19,7 @@ SliderElementClass::~SliderElementClass()
 
 }
 
-bool SliderElementClass::Initialize(ID3D11Device * device, ID3D11DeviceContext * deviceContext, HWND hwnd, const std::string & filename, int screenWidth, int screenHeight)
+bool SliderElementClass::Initialize(ID3D11Device * device, ID3D11DeviceContext * deviceContext, HWND hwnd, PathClass* filename, int screenWidth, int screenHeight)
 {
 	bool result;
 	result = (this)->InterfaceElementClass::Initialize(device, deviceContext, hwnd, filename, screenWidth, screenHeight);
@@ -208,10 +208,10 @@ void SliderElementClass::addSliderCommand()
 }
 
 //work with files
-bool SliderElementClass::readFromFile(const std::string& filename)
+bool SliderElementClass::readFromFile(PathClass* filename)
 {
-	std::fstream file;
-	file.open(filename, std::ios::in);
+	std::ifstream file;
+	file.open(filename->getPath(), std::ios::in);
 	std::string temp; // "trash"
 	file >> temp >> temp >> m_name; // Getting name of element
 	file >> temp >> temp >> m_bitmapsNum; // Getting number of bitmaps
@@ -223,7 +223,8 @@ bool SliderElementClass::readFromFile(const std::string& filename)
 	else
 		m_orientation = 0;
 	file >> temp >> temp >> m_sliderCommand; // Getting command for slider
-	file >> temp >> temp >> m_actionsFileName; // Getting name of file with actions
+	file >> temp >> temp;
+	file >> m_actionsFileName; // Getting name of file with actions
 	
 	// get width and height
 	file >> temp >> temp >> temp;

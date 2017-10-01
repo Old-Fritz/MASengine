@@ -76,7 +76,7 @@ bool SystemClass::Initialize()
 	LoadScreenManagerClass::getI().hideElements();
 
 	//make start command
-	CommandManagerClass::getI().addCommand("startAction", SettingsClass::getI().getStrParameter("GeneralActionsFilename"));
+	CommandManagerClass::getI().addCommand("startAction", SettingsClass::getI().getPathParameter("GeneralActionsFilename"));
 	doCommands();
 
 	return true;

@@ -71,7 +71,7 @@ private:
 	std::string m_unPickCommandsNames[259]; // Names of commands for every button
 	std::string m_upWheelCommand;
 	std::string m_downWheelCommand;
-	std::string m_commandsFileName;   // File with actions
+	PathClass* m_commandsFileName;   // File with actions
 
 	int m_mouseX, m_mouseY;
 };

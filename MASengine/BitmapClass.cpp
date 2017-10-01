@@ -7,6 +7,7 @@ BitmapClass::BitmapClass()
 {
 	m_vertexBuffer = 0;
 	m_indexBuffer = 0;
+	m_filename = 0;
 }
 BitmapClass::BitmapClass(const BitmapClass& other)
 {
@@ -15,7 +16,7 @@ BitmapClass::~BitmapClass()
 {
 }
 
-bool BitmapClass::Initialize(ID3D11Device* device, int screenWidth, int screenHeight, const std::string& textureFilename,
+bool BitmapClass::Initialize(ID3D11Device* device, int screenWidth, int screenHeight, PathClass* textureFilename,
 	int bitmapWidth, int bitmapHeight)
 {
 	bool result;
@@ -52,9 +53,17 @@ bool BitmapClass::Initialize(ID3D11Device* device, int screenWidth, int screenHe
 
 void BitmapClass::Shutdown()
 {
+	
 
 	// release buffers
 	ShutdownBuffers();
+
+	if (m_filename)
+	{
+		m_filename->Shutdown();
+		::operator delete(m_filename, sizeof(*m_filename), 2);
+		m_filename = 0;
+	}
 
 	return;
 }
@@ -62,7 +71,6 @@ void BitmapClass::Shutdown()
 bool BitmapClass::Render(ID3D11DeviceContext* deviceContext, int positionX, int positionY)
 {
 	bool result;
-
 
 	// Recreatebuffers
 	result = UpdateBuffers(deviceContext, positionX, positionY);
@@ -77,7 +85,7 @@ bool BitmapClass::Render(ID3D11DeviceContext* deviceContext, int positionX, int 
 	return true;
 }
 
-bool BitmapClass::setNewTexture(ID3D11Device * device, const std::string & filename)
+bool BitmapClass::setNewTexture(ID3D11Device * device, PathClass* filename)
 {
 	bool result;
 

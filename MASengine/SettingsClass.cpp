@@ -4,6 +4,7 @@ SettingsClass* SettingsClass::m_instance = 0;
 
 SettingsClass::SettingsClass()
 {
+	m_filename = new(4) PathClass;
 }
 SettingsClass::SettingsClass(const SettingsClass &)
 {

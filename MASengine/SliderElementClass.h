@@ -23,7 +23,7 @@ public:
 	SliderElementClass(const SliderElementClass&);
 	~SliderElementClass();
 
-	bool Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, HWND hwnd, const std::string& filename,
+	bool Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, HWND hwnd, PathClass* filename,
 		int screenWidth, int screenHeight);
 
 
@@ -51,7 +51,7 @@ public:
 
 private:
 	//Work with files
-	bool readFromFile(const std::string& filename);
+	bool readFromFile(PathClass* filename);
 
 private:
 	int m_currentSector;

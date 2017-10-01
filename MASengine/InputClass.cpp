@@ -8,6 +8,7 @@ InputClass::InputClass()
 	m_directInput = 0;
 	m_keyboard = 0;
 	m_mouse = 0;
+	m_commandsFileName = 0;
 }
 
 InputClass::InputClass(const InputClass& other)
@@ -24,7 +25,7 @@ bool InputClass::Initialize(HINSTANCE hinstance, HWND hwnd)
 
 
 	// Store file with commands for input
-	m_commandsFileName = SettingsClass::getI().getStrParameter("ButCommandFilename");
+	m_commandsFileName = SettingsClass::getI().getPathParameter("ButCommandFilename");
 
 	// Initialize the location of the mouse on the screen.
 	m_mouseX = 0;

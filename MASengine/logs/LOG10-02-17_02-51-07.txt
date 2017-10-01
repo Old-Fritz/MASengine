@@ -1,0 +1,3 @@
+10-02-17_02-51-07 LogManager Initialized
+10-02-17_02-51-07 MemoryManager Initialized
+10-02-17_02-51-07 ModManager Initialized

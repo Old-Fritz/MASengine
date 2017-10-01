@@ -32,8 +32,13 @@ class InterfaceElementClass
 protected:
 	struct BitmapInfo
 	{
+		BitmapInfo()
+		{
+			filename = new(4) PathClass;
+		}
+
 		std::string name;
-		std::string filename;
+		PathClass* filename;
 		float width;
 		float height;
 		float posX;
@@ -65,9 +70,14 @@ protected:
 
 	struct TextInfo
 	{
+		TextInfo()
+		{
+			fontFilename = new(4) PathClass;
+			textFilename = new(4) PathClass;
+		}
 		std::string name;
-		std::string fontFilename;
-		std::string textFilename;
+		PathClass* fontFilename;
+		PathClass* textFilename;
 		float maxLength;
 		int stringsNum;
 		int orientation;
@@ -80,7 +90,7 @@ public:
 	InterfaceElementClass(const InterfaceElementClass&);
 	~InterfaceElementClass();
 
-	virtual bool Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, HWND hwnd, const std::string& filename,
+	virtual bool Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, HWND hwnd, PathClass* filename,
 		int screenWidth, int screenHeight);
 	virtual void Shutdown();
 	virtual bool Render(FontShaderClass* fontShader, InterfaceShaderClass* interfaceShader, ID3D11DeviceContext* deviceContext, D3DXMATRIX worldMatrix,
@@ -116,7 +126,7 @@ public:
 	virtual void updateBMtranspar(const std::string& name, float transparency);
 	virtual void updateBMselIntens(const std::string& name, float selIntensivity);
 	virtual void updateBMselCol(const std::string& name, D3DXVECTOR4 selCol);
-	bool setNewBM(ID3D11Device* device, const std::string& name, const std::string& filename);
+	bool setNewBM(ID3D11Device* device, const std::string& name, PathClass* filename);
 
 
 	//Updating params of strings
@@ -148,12 +158,11 @@ public:
 	//virtual std::string getTextFromFile(const std::string& name, const std::string& filename);
 protected:
 	//Work with files
-	virtual bool readFromFile(const std::string& filename);
-	bool readBitmapsInfoFromFile(std::fstream* file);
-	bool readTextsInfoFromFile(std::fstream* file);
+	virtual bool readFromFile(PathClass* filename);
+	bool readBitmapsInfoFromFile(std::ifstream* file);
+	bool readTextsInfoFromFile(std::ifstream* file);
 	bool updateSentence(ID3D11DeviceContext* deviceContext, int textInd, int sentenceInd);
 protected:
-	std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> m_converter;
 
 	int m_screenWidth, m_screenHeight;
 	std::string m_name;
@@ -161,8 +170,8 @@ protected:
 
 	int m_bitmapsNum;
 	int m_textsNum;
-	std::string m_actionsFileName;
-	std::string m_fontsFileName;
+	PathClass* m_actionsFileName;
+	PathClass* m_fontsFileName;
 
 	BitmapInfo* m_bitmapsInfo;
 	TextInfo* m_textsInfo;

@@ -122,6 +122,7 @@
     <ClCompile Include="CommandManagerClass.cpp" />
     <ClCompile Include="CpuClass.cpp" />
     <ClCompile Include="D3DClass.cpp" />
+    <ClCompile Include="FloatParamClass.cpp" />
     <ClCompile Include="FontClass.cpp" />
     <ClCompile Include="FontManagerClass.cpp" />
     <ClCompile Include="FontShaderClass.cpp" />
@@ -133,6 +134,7 @@
     <ClCompile Include="InterfaceClass.cpp" />
     <ClCompile Include="InterfaceElementClass.cpp" />
     <ClCompile Include="InterfaceShaderClass.cpp" />
+    <ClCompile Include="IntParamClass.cpp" />
     <ClCompile Include="LayersClass.cpp" />
     <ClCompile Include="ListElementClass.cpp" />
     <ClCompile Include="LoadScreenManagerClass.cpp" />
@@ -143,6 +145,7 @@
     <ClCompile Include="MeshManagerClass.cpp" />
     <ClCompile Include="ModManagerClass.cpp" />
     <ClCompile Include="PathClass.cpp" />
+    <ClCompile Include="PathParamClass.cpp" />
     <ClCompile Include="PoolAllocatorClass.cpp" />
     <ClCompile Include="PositionClass.cpp" />
     <ClCompile Include="ProvClass.cpp" />
@@ -150,13 +153,15 @@
     <ClCompile Include="ProvRegionClass.cpp" />
     <ClCompile Include="ProvRegionManagerClass.cpp" />
     <ClCompile Include="ResourceManagerClass.cpp" />
+    <ClCompile Include="SetParamClass.cpp" />
     <ClCompile Include="SettingsClass.cpp" />
     <ClCompile Include="ShaderManagerClass.cpp" />
     <ClCompile Include="SliderElementClass.cpp" />
     <ClCompile Include="StackAllocatorClass.cpp" />
+    <ClCompile Include="StrParamClass.cpp" />
     <ClCompile Include="SystemClass.cpp" />
     <ClCompile Include="SystemStateManagerClass.cpp" />
-    <ClCompile Include="TerrainClass.cpp" />
+    <None Include="TerrainClass.cpp" />
     <ClCompile Include="TerrainShaderClass.cpp" />
     <ClCompile Include="TextClass.cpp" />
     <ClCompile Include="TextManagerClass.cpp" />
@@ -173,6 +178,8 @@
     <ClInclude Include="CommandManagerClass.h" />
     <ClInclude Include="CpuClass.h" />
     <ClInclude Include="D3DClass.h" />
+    <ClInclude Include="FloatParamClass.h" />
+    <ClInclude Include="IntParamClass.h" />
     <ClInclude Include="PathClass.h" />
     <ClInclude Include="FontClass.h" />
     <ClInclude Include="FontManagerClass.h" />
@@ -193,6 +200,7 @@
     <ClInclude Include="MeshClass.h" />
     <ClInclude Include="MeshManagerClass.h" />
     <ClInclude Include="ModManagerClass.h" />
+    <ClInclude Include="PathParamClass.h" />
     <ClInclude Include="PoolAllocatorClass.h" />
     <ClInclude Include="PositionClass.h" />
     <ClInclude Include="ProvClass.h" />
@@ -200,10 +208,12 @@
     <ClInclude Include="ProvRegionClass.h" />
     <ClInclude Include="ProvRegionManagerClass.h" />
     <ClInclude Include="ResourceManagerClass.h" />
+    <ClInclude Include="SetParamClass.h" />
     <ClInclude Include="SettingsClass.h" />
     <ClInclude Include="ShaderManagerClass.h" />
     <ClInclude Include="SliderElementClass.h" />
     <ClInclude Include="StackAllocatorClass.h" />
+    <ClInclude Include="StrParamClass.h" />
     <ClInclude Include="SystemClass.h" />
     <ClInclude Include="SystemStateManagerClass.h" />
     <ClInclude Include="TerrainClass.h" />

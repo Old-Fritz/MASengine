@@ -121,6 +121,15 @@
     <Filter Include="Заголовочные файлы\GlobalManager\Settings">
       <UniqueIdentifier>{d97eead6-b50b-40e2-a963-2e4ee8c9e61b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Заголовочные файлы\GlobalManager\Settings\Params">
+      <UniqueIdentifier>{825c640a-c48a-44a9-9d24-a14b62ce0648}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\GlobalManager\Settings">
+      <UniqueIdentifier>{0bdd3e66-29c3-4752-a0f7-62b587bfe151}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\GlobalManager\Settings\Params">
+      <UniqueIdentifier>{d4905e44-c1c8-41d1-ac5b-a348367d8936}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -176,9 +185,6 @@
     </ClCompile>
     <ClCompile Include="TextManagerClass.cpp">
       <Filter>Файлы исходного кода\GlobalManager\ResourceManagment</Filter>
-    </ClCompile>
-    <ClCompile Include="SettingsClass.cpp">
-      <Filter>Файлы исходного кода\GlobalManager</Filter>
     </ClCompile>
     <ClCompile Include="ResourceManagerClass.cpp">
       <Filter>Файлы исходного кода\GlobalManager\ResourceManagment</Filter>
@@ -261,14 +267,29 @@
     <ClCompile Include="TerrainShaderClass.cpp">
       <Filter>Файлы исходного кода\Graphics\ShaderManagment\Shaders</Filter>
     </ClCompile>
-    <ClCompile Include="TerrainClass.cpp">
-      <Filter>Файлы исходного кода\Graphics\Blocks</Filter>
-    </ClCompile>
     <ClCompile Include="Utils.cpp">
       <Filter>Файлы исходного кода\Utils</Filter>
     </ClCompile>
     <ClCompile Include="PathClass.cpp">
       <Filter>Файлы исходного кода\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="StrParamClass.cpp">
+      <Filter>Файлы исходного кода\GlobalManager\Settings\Params</Filter>
+    </ClCompile>
+    <ClCompile Include="SetParamClass.cpp">
+      <Filter>Файлы исходного кода\GlobalManager\Settings\Params</Filter>
+    </ClCompile>
+    <ClCompile Include="PathParamClass.cpp">
+      <Filter>Файлы исходного кода\GlobalManager\Settings\Params</Filter>
+    </ClCompile>
+    <ClCompile Include="IntParamClass.cpp">
+      <Filter>Файлы исходного кода\GlobalManager\Settings\Params</Filter>
+    </ClCompile>
+    <ClCompile Include="FloatParamClass.cpp">
+      <Filter>Файлы исходного кода\GlobalManager\Settings\Params</Filter>
+    </ClCompile>
+    <ClCompile Include="SettingsClass.cpp">
+      <Filter>Файлы исходного кода\GlobalManager\Settings</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -325,9 +346,6 @@
     </ClInclude>
     <ClInclude Include="MeshClass.h">
       <Filter>Заголовочные файлы\Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="SettingsClass.h">
-      <Filter>Заголовочные файлы\GlobalManager</Filter>
     </ClInclude>
     <ClInclude Include="GlobalManagerClass.h">
       <Filter>Заголовочные файлы\GlobalManager</Filter>
@@ -419,6 +437,24 @@
     <ClInclude Include="Utils.h">
       <Filter>Заголовочные файлы\Utilities</Filter>
     </ClInclude>
+    <ClInclude Include="SettingsClass.h">
+      <Filter>Заголовочные файлы\GlobalManager\Settings</Filter>
+    </ClInclude>
+    <ClInclude Include="SetParamClass.h">
+      <Filter>Заголовочные файлы\GlobalManager\Settings\Params</Filter>
+    </ClInclude>
+    <ClInclude Include="IntParamClass.h">
+      <Filter>Заголовочные файлы\GlobalManager\Settings\Params</Filter>
+    </ClInclude>
+    <ClInclude Include="FloatParamClass.h">
+      <Filter>Заголовочные файлы\GlobalManager\Settings\Params</Filter>
+    </ClInclude>
+    <ClInclude Include="StrParamClass.h">
+      <Filter>Заголовочные файлы\GlobalManager\Settings\Params</Filter>
+    </ClInclude>
+    <ClInclude Include="PathParamClass.h">
+      <Filter>Заголовочные файлы\GlobalManager\Settings\Params</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="interfaceVS.fx">
@@ -435,6 +471,9 @@
     </None>
     <None Include="terrainVS.fx">
       <Filter>Файлы ресурсов\Shaders</Filter>
+    </None>
+    <None Include="TerrainClass.cpp">
+      <Filter>Файлы исходного кода\Graphics\Blocks</Filter>
     </None>
   </ItemGroup>
 </Project>

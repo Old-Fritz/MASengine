@@ -18,9 +18,13 @@ public:
 	SetParamClass(const SetParamClass&);
 	~SetParamClass();
 
+	virtual void Shutdown();
+
 	virtual std::string getStr();
+	virtual void setStr(const std::string& str);
+
 	std::string getName();
-	std::string setName();
+	void setName(const std::string& name);
 
 protected:
 	std::string m_name;

@@ -1,5 +1,8 @@
 #include "Utils.h"
 
+
+std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> Utils::m_converter;
+
 int Utils::getHash(const std::string & str)
 {
 	const int p = 101;

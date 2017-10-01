@@ -20,7 +20,7 @@ class LoadScreenManagerClass
 {
 
 public:
-	bool Initialize(D3DClass* D3D, ShaderManagerClass* shaders, D3DXMATRIX baseViewMatrix, HWND hwnd, const std::string& filename);
+	bool Initialize(D3DClass* D3D, ShaderManagerClass* shaders, D3DXMATRIX baseViewMatrix, HWND hwnd, PathClass*  filename);
 	void Shutdown();
 	bool Render();
 
@@ -34,7 +34,7 @@ private:
 	LoadScreenManagerClass(const LoadScreenManagerClass&);
 	~LoadScreenManagerClass();
 
-	bool readFromFile(const std::string& filename);
+	bool readFromFile(PathClass*  filename);
 
 	bool updateElements();
 	
@@ -64,15 +64,15 @@ private:
 	std::vector<InterfaceElementClass*> m_additionalElements;
 
 	//Image parts
-	std::string m_imageElementName;
-	std::vector<std::string> m_loadImageNames;
+	PathClass*  m_imageElementName;
+	std::vector<PathClass*> m_loadImageNames;
 	bool m_imageChangeRand;
 	int m_imageChangeInterval;
 	int m_imageCurrentInterval;
 	int m_currentImage;
 
 	//Quote parts
-	std::string m_quoteElementName;
+	PathClass*  m_quoteElementName;
 	std::vector<std::string> m_loadQuoteNames;
 	bool m_quoteChangeRand;
 	int m_quoteChangeInterval;
@@ -80,10 +80,10 @@ private:
 	int m_currentQuote;
 
 	//Line parts
-	std::string m_lineElementName;
+	PathClass*  m_lineElementName;
 
 	//Additional elements parts
-	std::vector<std::string> m_additionalElementNames;
+	std::vector<PathClass* > m_additionalElementNames;
 
 };
 

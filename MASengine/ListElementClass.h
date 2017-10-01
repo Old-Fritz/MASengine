@@ -23,7 +23,7 @@ public:
 	ListElementClass(const ListElementClass&);
 	~ListElementClass();
 
-	bool Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, HWND hwnd, const std::string& filename,
+	bool Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, HWND hwnd, PathClass* filename,
 		int screenWidth, int screenHeight);
 	void Shutdown();
 	 bool Render(FontShaderClass* fontShader, InterfaceShaderClass* interfaceShader, ID3D11DeviceContext* deviceContext, D3DXMATRIX worldMatrix,
@@ -55,7 +55,7 @@ public:
 
 protected:
 	//Work with files
-	bool readFromFile(const std::string& filename);
+	bool readFromFile(PathClass* filename);
 	int getNumFromName(const std::string& name);
 
 private:
@@ -65,13 +65,13 @@ private:
 	int m_orientation;  //direction of elements
 	int m_elementPosX; //position X of first element
 	int m_elementPosY; //position Y of first element
-	std::string m_sliderFilename;
+	PathClass* m_sliderFilename;
 
 	SliderElementClass* m_slider;
 
 	int m_length = 0; // num of elements
 	std::string m_elType;   //Type of element
-	std::string m_elementFilename;
+	PathClass* m_elementFilename;
 	std::vector<InterfaceElementClass*> m_elements;
 };
 

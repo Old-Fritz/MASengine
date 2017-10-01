@@ -42,7 +42,7 @@ bool InterfaceClass::Initialize(ID3D11Device * device, ID3D11DeviceContext * dev
 
 	elementsFile >> m_elementsNum;
 	
-	std::string elementFilename;
+	
 	std::string elementType;
 
 	//init all interface elements
@@ -51,6 +51,7 @@ bool InterfaceClass::Initialize(ID3D11Device * device, ID3D11DeviceContext * dev
 		return false;
 	for (int i = 0; i < m_elementsNum; i++)
 	{
+		PathClass* elementFilename = new(4) PathClass;
 		elementsFile >> elementFilename;
 
 		//create different types of elements
@@ -287,7 +288,7 @@ void InterfaceClass::setBMCommand(const std::string& elname, const std::string& 
 	}
 }
 
-bool InterfaceClass::setNewBM(ID3D11Device* device, const std::string & elname, const std::string & bmname, const std::string & filename)
+bool InterfaceClass::setNewBM(ID3D11Device* device, const std::string & elname, const std::string & bmname, PathClass* filename)
 {
 	bool result;
 	InterfaceElementClass* element = findElbyName(elname);

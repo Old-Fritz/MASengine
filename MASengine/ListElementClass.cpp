@@ -17,7 +17,7 @@ ListElementClass::~ListElementClass()
 
 }
 
-bool ListElementClass::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, HWND hwnd, const std::string& filename,
+bool ListElementClass::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, HWND hwnd, PathClass* filename,
 	int screenWidth, int screenHeight)
 {
 	bool result;
@@ -408,10 +408,10 @@ InterfaceElementClass * ListElementClass::getElement(int ind)
 }
 
 //work with files
-bool ListElementClass::readFromFile(const std::string& filename)
+bool ListElementClass::readFromFile(PathClass* filename)
 {
-	std::fstream file;
-	file.open(filename, std::ios::in);
+	std::ifstream file;
+	file.open(filename->getPath(), std::ios::in);
 	std::string temp; // "trash"
 	file >> temp >> temp >> m_name; // Getting name of element
 	file >> temp >> temp >> m_bitmapsNum; // Getting number of bitmaps
@@ -426,11 +426,14 @@ bool ListElementClass::readFromFile(const std::string& filename)
 	file >> temp >> temp >> m_interval; // Getting interval of next elements
 	file >> temp >> temp >> m_elementPosX; // Getting X position of first element
 	file >> temp >> temp >> m_elementPosY; // Getting Y position of first element
-	file >> temp >> temp >> m_sliderFilename; // Getting filename of slider
-	file >> temp >> temp >> m_elementFilename;  // Getting filename of element
+	file >> temp >> temp;
+	file >> m_sliderFilename; // Getting filename of slider
+	file >> temp >> temp;
+	file >> m_elementFilename;  // Getting filename of element
 	file >> temp >> temp >> m_elType; // Getting type of element
 
-	file >> temp >> temp >> m_actionsFileName; // Getting name of file with actions
+	file >> temp >> temp;
+	file >> m_actionsFileName; // Getting name of file with actions
 
 	// get width and height
 	file >> temp >> temp >> temp;

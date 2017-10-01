@@ -1,0 +1,16 @@
+10-02-17_02-53-59 LogManager Initialized
+10-02-17_02-53-59 MemoryManager Initialized
+10-02-17_02-53-59 ModManager Initialized
+10-02-17_02-53-59 Settings Initialized
+10-02-17_02-53-59 CommandManager Initialized
+10-02-17_02-53-59 ResourceManager Initialized
+10-02-17_02-54-00 SystemStateManager Initialized
+10-02-17_02-54-00 All global system Initialized
+10-02-17_02-54-00 Windows Initialization
+10-02-17_02-54-00 input Initialization
+10-02-17_02-54-00 Position Initialization
+10-02-17_02-54-00 Directx Initialization
+10-02-17_02-54-01 Interface Shader Initialization
+10-02-17_02-54-01 Font Shader Initialization
+10-02-17_02-54-01 Terrain Shader Initialization
+10-02-17_02-54-01 Shaders Initialization

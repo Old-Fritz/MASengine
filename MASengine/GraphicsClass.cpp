@@ -63,7 +63,7 @@ bool GraphicsClass::Initialize(HWND hwnd)
 	m_camera->GetViewMatrix(m_baseViewMatrix);
 
 	//Init loadscreen manager
-	result = LoadScreenManagerClass::getI().Initialize(m_D3D,m_shaderManager,m_baseViewMatrix,m_hwnd,SettingsClass::getI().getStrParameter("loadScreenManagerFilename"));
+	result = LoadScreenManagerClass::getI().Initialize(m_D3D,m_shaderManager,m_baseViewMatrix,m_hwnd,SettingsClass::getI().getPathParameter("loadScreenManagerFilename"));
 	if (!result)
 	{
 		LogManagerClass::getI().addLog("Error 9-20");

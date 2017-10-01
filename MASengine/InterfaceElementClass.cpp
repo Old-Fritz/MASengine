@@ -23,17 +23,17 @@ InterfaceElementClass::~InterfaceElementClass()
 }
 
 
-bool InterfaceElementClass::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, HWND hwnd, const std::string& filename, int screenWidth, int screenHeight)
+bool InterfaceElementClass::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, HWND hwnd, PathClass* filename,
+	int screenWidth, int screenHeight)
 {
 
 	bool result;
-	std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
 
 	// Store the screen width and height.
 	m_screenWidth = screenWidth;
 	m_screenHeight = screenHeight;
 
-	result = readFromFile(ModManagerClass::getI().getDirectory(ModManagerClass::getI().getHash(filename)) + filename); // Loading params from file
+	result = readFromFile(filename); // Loading params from file
 	if (!result)
 	{
 		LogManagerClass::getI().addLog("Error 13-1");
@@ -351,7 +351,7 @@ void InterfaceElementClass::updateBMselCol(const std::string& name, D3DXVECTOR4 
 		m_bitmapsInfo[i].selCol = selCol;
 }
 
-bool InterfaceElementClass::setNewBM(ID3D11Device* device, const std::string & name, const std::string & filename)
+bool InterfaceElementClass::setNewBM(ID3D11Device* device, const std::string & name, PathClass* filename)
 {
 	bool result;
 	int i = findBMbyName(name);
@@ -546,10 +546,10 @@ void InterfaceElementClass::setUnPickCommand(const std::string& name, const std:
 ///PRIVATE///
 
 //Work with files
-bool InterfaceElementClass::readFromFile(const std::string& filename)
+bool InterfaceElementClass::readFromFile(PathClass* filename)
 {
-	std::fstream file;
-	file.open(filename, std::ios::in);
+	std::ifstream file;
+	file.open(filename->getPath(), std::ios::in);
 	if (file.fail())
 	{
 		LogManagerClass::getI().addLog("Error 13-6");
@@ -558,10 +558,12 @@ bool InterfaceElementClass::readFromFile(const std::string& filename)
 
 
 	std::string temp; // "trash"
-	file >> temp >> temp >> m_name; // Getting name of element
+	file >> temp >> temp;
+	file >> m_name; // Getting name of element
 	file >> temp >> temp >> m_bitmapsNum; // Getting number of bitmaps
 	file >> temp >> temp >> m_textsNum; // Getting number of texts
-	file >> temp >> temp >> m_actionsFileName; // Getting name of file with actions
+	file >> temp >> temp;
+	file >> m_actionsFileName; // Getting name of file with actions
 
 	// get width and height
 	file >> temp >> temp >> temp;
@@ -621,7 +623,7 @@ bool InterfaceElementClass::readFromFile(const std::string& filename)
 	return true;
 }
 
-bool InterfaceElementClass::readBitmapsInfoFromFile(std::fstream* file)
+bool InterfaceElementClass::readBitmapsInfoFromFile(std::ifstream* file)
 {
 	std::string temp;
 
@@ -640,7 +642,8 @@ bool InterfaceElementClass::readBitmapsInfoFromFile(std::fstream* file)
 		*file >> temp >> temp >> m_bitmapsInfo[i].name;
 
 		//name of file
-		*file >> temp >> temp >> m_bitmapsInfo[i].filename;
+		*file >> temp >> temp;
+		*file >> m_bitmapsInfo[i].filename;
 
 		//width
 		*file >> temp >> temp >> temp;
@@ -691,7 +694,7 @@ bool InterfaceElementClass::readBitmapsInfoFromFile(std::fstream* file)
 	return true;
 }
 
-bool InterfaceElementClass::readTextsInfoFromFile(std::fstream* file)
+bool InterfaceElementClass::readTextsInfoFromFile(std::ifstream* file)
 {
 	std::string temp;
 
@@ -705,9 +708,11 @@ bool InterfaceElementClass::readTextsInfoFromFile(std::fstream* file)
 	{
 		*file >> temp >> temp; //   title and {
 		*file >> temp >> temp >> m_textsInfo[i].name;
-		*file >> temp >> temp >> m_textsInfo[i].fontFilename;
-		*file >> temp >> temp >> m_textsInfo[i].textFilename;
-		m_textsInfo[i].textFilename.replace(m_textsInfo[i].textFilename.find_first_of("XXX___"), 6, SettingsClass::getI().getStrParameter("Language")); ///rework
+		*file >> temp >> temp;
+		*file >> m_textsInfo[i].fontFilename;
+		*file >> temp >> temp >> temp;
+		temp.replace(temp.find_first_of("XXX___"), 6, SettingsClass::getI().getStrParameter("Language")); ///rework
+		m_textsInfo[i].textFilename->changePath(temp);
 		*file >> temp >> temp >> m_textsInfo[i].maxLength;
 		*file >> temp >> temp >> m_textsInfo[i].stringsNum;
 
@@ -774,7 +779,7 @@ bool InterfaceElementClass::updateSentence(ID3D11DeviceContext* deviceContext, i
 	bool result;
 
 	result = m_texts[textInd]->UpdateSentence(deviceContext, sentenceInd, 
-		TextManagerClass::getI().getText(m_textsInfo[textInd].strings[sentenceInd].text, m_textsInfo[textInd].textFilename) + m_converter.from_bytes(m_textsInfo[textInd].strings[sentenceInd].adding),
+		TextManagerClass::getI().getText(m_textsInfo[textInd].strings[sentenceInd].text, m_textsInfo[textInd].textFilename) + Utils::from_bytes(m_textsInfo[textInd].strings[sentenceInd].adding),
 		m_textsInfo[textInd].strings[sentenceInd].posX, m_textsInfo[textInd].strings[sentenceInd].posY, m_textsInfo[textInd].strings[sentenceInd].size,
 		m_textsInfo[textInd].strings[sentenceInd].maxWidth, m_textsInfo[textInd].strings[sentenceInd].color);
 	if (!result)

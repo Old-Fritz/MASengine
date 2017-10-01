@@ -21,7 +21,7 @@ public:
 	GroupElementClass(const GroupElementClass&);
 	~GroupElementClass();
 
-	bool Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, HWND hwnd, const std::string& filename,
+	bool Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, HWND hwnd, PathClass* filename,
 		int screenWidth, int screenHeight);
 	void Shutdown();
 	 bool Render(FontShaderClass* fontShader, InterfaceShaderClass* interfaceShader, ID3D11DeviceContext* deviceContext, D3DXMATRIX worldMatrix,
@@ -51,13 +51,13 @@ public:
 
 private:
 	//Work with files
-	bool readFromFile(const std::string& filename);
+	bool readFromFile(PathClass* filename);
 	int getNumFromName(const std::string& name);
 
 private:
 	int m_length = 0; // num of elements
 	std::string m_elType;   //Type of element
-	std::string m_elementFilename;
+	PathClass* m_elementFilename;
 	std::vector<InterfaceElementClass*> m_elements;
 };
 

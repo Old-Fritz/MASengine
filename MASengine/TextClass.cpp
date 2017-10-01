@@ -8,6 +8,7 @@ TextClass::TextClass()
 	m_sentencesNum = 0;
 	m_maxLength = 0;
 	m_sentences = 0;
+	m_fontFilename = 0;
 	//m_orientation = 1;
 }
 
@@ -21,7 +22,7 @@ TextClass::~TextClass()
 
 
 bool TextClass::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, HWND hwnd, int screenWidth, int screenHeight, int sentencesNum,
-	int maxLength, int orientation, const std::string& fontFilename)
+	int maxLength, int orientation, PathClass* fontFilename)
 {
 	bool result;
 
@@ -77,6 +78,13 @@ void TextClass::Shutdown()
 	for (int i = 0; i < m_sentencesNum; i++)
 	{
 		ReleaseSentence(&m_sentences[i]);
+	}
+
+	if (m_fontFilename)
+	{
+		m_fontFilename->Shutdown();
+		::operator delete(m_fontFilename, sizeof(*m_fontFilename), 2);
+		m_fontFilename = 0;
 	}
 
 	return;

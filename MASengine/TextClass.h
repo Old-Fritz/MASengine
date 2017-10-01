@@ -36,17 +36,19 @@ public:
 	~TextClass();
 
 	bool Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, HWND hwnd, int screenWidth, int screenHeight, int sentencesNum,
-		int maxLength, int orientation, const std::string& fontFilename);
+		int maxLength, int orientation, PathClass* fontFilename);
 	void Shutdown();
 	bool Render(FontShaderClass* FontShader, ID3D11DeviceContext* deviceContext, D3DXMATRIX worldMatrix, D3DXMATRIX orthoMatrix, D3DXMATRIX baseViewMatrix);
-	bool UpdateSentence(ID3D11DeviceContext* deviceContext, int sentenceNum, const std::wstring& text, int positionX, int positionY, float size, float width, D3DXVECTOR4 color);
+	bool UpdateSentence(ID3D11DeviceContext* deviceContext, int sentenceNum, const std::wstring& text, int positionX, int positionY,
+		float size, float width, D3DXVECTOR4 color);
 private:
 	bool InitializeSentence(ID3D11Device* device, SentenceType** sentence, int maxLength);
 	void ReleaseSentence(SentenceType** sentence);
-	bool RenderSentence(FontShaderClass* FontShader, ID3D11DeviceContext* deviceContext, SentenceType* sentence, D3DXMATRIX worldMatrix, D3DXMATRIX orthoMatrix, D3DXMATRIX baseViewMatrix);
+	bool RenderSentence(FontShaderClass* FontShader, ID3D11DeviceContext* deviceContext, SentenceType* sentence, D3DXMATRIX worldMatrix,
+		D3DXMATRIX orthoMatrix, D3DXMATRIX baseViewMatrix);
 
 private:
-	std::string m_fontFilename;
+	PathClass* m_fontFilename;
 	int m_screenWidth, m_screenHeight;
 	int m_sentencesNum;
 	int m_maxLength;

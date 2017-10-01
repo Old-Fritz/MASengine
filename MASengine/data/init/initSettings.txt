@@ -8,9 +8,9 @@ data/init/defSettings.txt
 0 Sample
 0 Vsync
 
-2 ButCommandFilename
+3 ButCommandFilename
 2 Language
-2 ElementsFilename
-2 loadScreenManagerFilename
-2 ProvFilename
-2 GeneralActionsFilename
+3 ElementsFilename
+3 loadScreenManagerFilename
+3 ProvFilename
+3 GeneralActionsFilename

@@ -23,6 +23,7 @@ bool GlobalManagerClass::Initialize(const std::string& filepath)
 
 	std::string logFilepath;
 	std::string modFilename;
+	std::string settingsFilenameStr;
 	PathClass* settingsFilename = new(4) PathClass;
 	int stackSize;
 	int tempSize;
@@ -30,7 +31,7 @@ bool GlobalManagerClass::Initialize(const std::string& filepath)
 	int poolSize;
 
 	file >> logFilepath >> modFilename;
-	file >> settingsFilename;
+	file >> settingsFilenameStr;
 	file >> stackSize >> tempSize >> oneFrameSize >> poolSize;
 
 	//Init LogManager
@@ -61,6 +62,7 @@ bool GlobalManagerClass::Initialize(const std::string& filepath)
 	LogManagerClass::getI().addLog("ModManager Initialized");
 
 	//Init Settings
+	settingsFilename->changePath(settingsFilenameStr);
 	result = SettingsClass::getI().Initialize(settingsFilename);
 	if (!result)
 	{

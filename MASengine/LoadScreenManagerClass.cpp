@@ -2,7 +2,7 @@
 
 LoadScreenManagerClass* LoadScreenManagerClass::m_instance = 0;
 
-bool LoadScreenManagerClass::Initialize(D3DClass* D3D, ShaderManagerClass* shaders, D3DXMATRIX baseViewMatrix, HWND hwnd, const std::string & filename)
+bool LoadScreenManagerClass::Initialize(D3DClass* D3D, ShaderManagerClass* shaders, D3DXMATRIX baseViewMatrix, HWND hwnd, PathClass* filename)
 {
 	bool result;
 	int screenWidth = SettingsClass::getI().getIntParameter("ScreenWidth");
@@ -217,19 +217,23 @@ LoadScreenManagerClass::LoadScreenManagerClass()
 	m_loadImage = 0;
 	m_loadLine = 0;
 	m_loadQuote = 0;
+
+	m_imageElementName = new(4) PathClass;
+	m_quoteElementName = new(4) PathClass;
+	m_lineElementName = new(4) PathClass;
 }
 
 LoadScreenManagerClass::~LoadScreenManagerClass()
 {
 }
 
-bool LoadScreenManagerClass::readFromFile(const std::string & filename)
+bool LoadScreenManagerClass::readFromFile(PathClass*  filename)
 {
 	std::string temp;
 	std::ifstream file;
 
 	//open file
-	file.open(filename);
+	file.open(filename->getPath());
 	if (file.fail())
 	{
 		LogManagerClass::getI().addLog("Error 15-13");
@@ -239,13 +243,15 @@ bool LoadScreenManagerClass::readFromFile(const std::string & filename)
 	//read image
 	int numOfImages;
 	file >> temp >> temp >> temp; // loadImage = {
-	file >> temp >> temp >> m_imageElementName; // imageElement = 
+	file >> temp >> temp;
+	file >> m_imageElementName; // imageElement = 
 	file >> temp >> temp >> numOfImages; //numOfImages =
 	file >> temp; // images:
 	for (int i = 0;i < numOfImages;i++)
 	{
-		file >> temp;
-		m_loadImageNames.emplace_back(temp);
+		PathClass* path = new(4) PathClass;
+		file >> path;
+		m_loadImageNames.emplace_back(path);
 	}
 	file >> temp >> temp >> temp; // changeType = XXX
 	if (temp == "random")
@@ -258,7 +264,8 @@ bool LoadScreenManagerClass::readFromFile(const std::string & filename)
 	//read quote
 	int numOfQuotes;
 	file >> temp >> temp >> temp; // loadQuote   = {
-	file >> temp >> temp >> m_quoteElementName; // qouteElement  = 
+	file >> temp >> temp;
+	file >> m_quoteElementName; // qouteElement  = 
 	file >> temp >> temp >> numOfQuotes; //numOfQuotes  =
 	file >> temp; // quotes:
 	for (int i = 0;i < numOfQuotes;i++)
@@ -276,7 +283,8 @@ bool LoadScreenManagerClass::readFromFile(const std::string & filename)
 
 	 //read line
 	file >> temp >> temp >> temp; // loadLine    = {
-	file >> temp >> temp >> m_lineElementName; // lineElement   = 
+	file >> temp >> temp;
+	file >> m_lineElementName; // lineElement   = 
 	file >> temp; // }
 
 	//read quote
@@ -286,8 +294,9 @@ bool LoadScreenManagerClass::readFromFile(const std::string & filename)
 	file >> temp; // elements:
 	for (int i = 0;i < numOfElements;i++)
 	{
-		file >> temp;
-		m_additionalElementNames.emplace_back(temp);
+		PathClass* path = new(4) PathClass;
+		file >> path;
+		m_additionalElementNames.emplace_back(path);
 	}
 	file >> temp; // }
 

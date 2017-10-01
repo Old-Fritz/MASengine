@@ -30,12 +30,12 @@ public:
 	BitmapClass(const BitmapClass&);
 	~BitmapClass();
 
-	bool Initialize(ID3D11Device* device, int screenWidth, int screenHeight, const std::string& textureFilename,
+	bool Initialize(ID3D11Device* device, int screenWidth, int screenHeight, PathClass* textureFilename,
 		int bitmapWidth, int bitmapHeight);
 	void Shutdown();
 	bool Render(ID3D11DeviceContext* deviceContext, int positionX, int positionY);
 
-	bool setNewTexture(ID3D11Device* device, const std::string& filename);
+	bool setNewTexture(ID3D11Device* device, PathClass* filename);
 	int GetIndexCount();
 	ID3D11ShaderResourceView* GetTexture();
 
@@ -48,7 +48,7 @@ private:
 	ID3D11Buffer *m_vertexBuffer, *m_indexBuffer;
 	int m_vertexCount, m_indexCount;
 	int m_screenWidth, m_screenHeight;
-	std::string m_filename;
+	PathClass* m_filename;
 
 	int m_bitmapWidth, m_bitmapHeight;
 	int m_previousPosX, m_previousPosY;
