@@ -12,7 +12,7 @@ SettingsClass::~SettingsClass()
 {
 }
 
-bool SettingsClass::Initialize(const std::string & filename)
+bool SettingsClass::Initialize(PathClass* filename)
 {
 	bool result;
 	result = readFromFile(filename);
@@ -27,7 +27,7 @@ bool SettingsClass::Initialize(const std::string & filename)
 void SettingsClass::save()
 {
 	std::ofstream file;
-	file.open(m_filename);
+	file.open(m_filename->getPath());
 
 	if (!file.is_open())
 		return;
@@ -84,51 +84,51 @@ SettingsClass & SettingsClass::getI()
 
 int SettingsClass::getIntParameter(const std::string & name)
 {
-	if (m_intParameters.find(ModManagerClass::getI().getHash(name)) != m_intParameters.end())
-		return m_intParameters.find(ModManagerClass::getI().getHash(name))->second->value;
+	if (m_intParameters.find(Utils::getHash(name)) != m_intParameters.end())
+		return m_intParameters.find(Utils::getHash(name))->second->value;
 	else
 		return 0;
 }
 float SettingsClass::getFloatParameter(const std::string & name)
 {
-	if (m_floatParameters.find(ModManagerClass::getI().getHash(name)) != m_floatParameters.end())
-		return m_floatParameters.find(ModManagerClass::getI().getHash(name))->second->value;
+	if (m_floatParameters.find(Utils::getHash(name)) != m_floatParameters.end())
+		return m_floatParameters.find(Utils::getHash(name))->second->value;
 	else
 		return 0;
 }
 std::string SettingsClass::getStrParameter(const std::string & name)
 {
-	if (m_strParameters.find(ModManagerClass::getI().getHash(name)) != m_strParameters.end())
-		return m_strParameters.find(ModManagerClass::getI().getHash(name))->second->value;
+	if (m_strParameters.find(Utils::getHash(name)) != m_strParameters.end())
+		return m_strParameters.find(Utils::getHash(name))->second->value;
 	else
 		return "";
 }
 
 void SettingsClass::setIntParameter(const std::string & name, int value)
 {
-	if (m_intParameters.find(ModManagerClass::getI().getHash(name)) != m_intParameters.end())
-		m_intParameters.find(ModManagerClass::getI().getHash(name))->second->value = value;
+	if (m_intParameters.find(Utils::getHash(name)) != m_intParameters.end())
+		m_intParameters.find(Utils::getHash(name))->second->value = value;
 }
 void SettingsClass::setFloatParameter(const std::string & name, float value)
 {
-	if (m_floatParameters.find(ModManagerClass::getI().getHash(name)) != m_floatParameters.end())
-		m_floatParameters.find(ModManagerClass::getI().getHash(name))->second->value = value;
+	if (m_floatParameters.find(Utils::getHash(name)) != m_floatParameters.end())
+		m_floatParameters.find(Utils::getHash(name))->second->value = value;
 }
 void SettingsClass::setStrParameter(const std::string & name, const std::string & value)
 {
-	if (m_strParameters.find(ModManagerClass::getI().getHash(name)) != m_strParameters.end())
-		m_strParameters.find(ModManagerClass::getI().getHash(name))->second->value = value;
+	if (m_strParameters.find(Utils::getHash(name)) != m_strParameters.end())
+		m_strParameters.find(Utils::getHash(name))->second->value = value;
 }
 
 
-bool SettingsClass::readFromFile(const std::string & filename)
+bool SettingsClass::readFromFile(PathClass* filename)
 {
 	bool result;
 
-	std::string defSettingsFileName;
+	PathClass* defSettingsFileName = new(4) PathClass;
 	//open general file with default settings
 	std::ifstream generalFile;
-	generalFile.open(filename);
+	generalFile.open(filename->getPath());
 	if (!generalFile.is_open())
 	{
 		LogManagerClass::getI().addLog("Error 5-2");
@@ -156,16 +156,16 @@ bool SettingsClass::readFromFile(const std::string & filename)
 			IntParameter* param = new(4) IntParameter;
 			generalFile >> param->name;
 			//first check for normal settings
-			temp = getTextFromFile(param->name, m_filename);
+			temp = Utils::getTextFromFile(param->name, m_filename->getPath());
 			if (temp.size()<=0)
 				//if no settings in normal file? take default
-				temp = getTextFromFile(param->name, defSettingsFileName);
+				temp = Utils::getTextFromFile(param->name, defSettingsFileName->getPath());
 			if (temp.size()>0)
 				param->value = stoi(temp);
 			else
 				param->value = 0;
 			//add parameter to map
-			m_intParameters.emplace(std::pair<long long, IntParameter*>(ModManagerClass::getI().getHash(param->name),param));
+			m_intParameters.emplace(std::pair<int, IntParameter*>(Utils::getHash(param->name),param));
 			break;
 		}
 		//1 is FLOAT
@@ -174,16 +174,16 @@ bool SettingsClass::readFromFile(const std::string & filename)
 			FloatParameter* param = new(4) FloatParameter;
 			generalFile >> param->name;
 			//first check for normal settings
-			temp = getTextFromFile(param->name, m_filename);
+			temp = Utils::getTextFromFile(param->name, m_filename->getPath());
 			if (temp.size() <= 0)
 				//if no settings in normal file? take default
-				temp = getTextFromFile(param->name, defSettingsFileName);
+				temp = Utils::getTextFromFile(param->name, defSettingsFileName->getPath());
 			if (temp.size()>0)
 				param->value = stof(temp);
 			else
 				param->value = 0;
 			//add parameter to map
-			m_floatParameters.emplace(std::pair<long long, FloatParameter*>(ModManagerClass::getI().getHash(param->name), param));
+			m_floatParameters.emplace(std::pair<int, FloatParameter*>(Utils::getHash(param->name), param));
 			break;
 		}
 		//2 is STRING
@@ -192,13 +192,13 @@ bool SettingsClass::readFromFile(const std::string & filename)
 			StrParameter* param = new(4) StrParameter;
 			generalFile >> param->name;
 			//first check for normal settings
-			temp = getTextFromFile(param->name, m_filename);
+			temp = Utils::getTextFromFile(param->name, m_filename->getPath());
 			if (temp.size() <= 0)
 				//if no settings in normal file? take default
-				temp = getTextFromFile(param->name, defSettingsFileName);
+				temp = Utils::getTextFromFile(param->name, defSettingsFileName->getPath());
 			param->value = temp;
 			//add parameter to map
-			m_strParameters.emplace(std::pair<long long, StrParameter*>(ModManagerClass::getI().getHash(param->name), param));
+			m_strParameters.emplace(std::pair<int, StrParameter*>(Utils::getHash(param->name), param));
 			break;
 		}
 		default:
@@ -209,48 +209,4 @@ bool SettingsClass::readFromFile(const std::string & filename)
 
 	generalFile.close();
 
-}
-std::string SettingsClass::getTextFromFile(const std::string & name, const std::string & filename)
-{
-	std::ifstream file;
-	file.open(filename);
-	std::string temp1 = "}";
-	std::string temp2;
-	while (file)
-	{
-		file >> temp2;
-		if (temp2 == name)
-		{
-			if (temp1[temp1.size() - 1] == '}')
-			{
-				break;
-			}
-		}
-		temp1 = temp2;
-	}
-	if (temp2 != name)
-	{
-		file.close();
-		return "";
-	}
-		
-	else
-	{
-		temp1 = "";
-		unsigned char a = ' ';
-		while (a != '{' && file)
-		{
-			a = file.get();
-		}
-		a = file.get();
-		while (a != '}' && file)
-		{
-			if (a < ' ')
-				a = ' ';
-			temp1 += a;
-			a = file.get();
-		}
-		file.close();
-		return temp1;
-	}
 }

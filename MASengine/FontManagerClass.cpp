@@ -35,12 +35,12 @@ FontManagerClass & FontManagerClass::getI()
 	return *m_instance;
 }
 
-bool FontManagerClass::addFont(ID3D11Device * device, const std::string & filename)
+bool FontManagerClass::addFont(ID3D11Device * device, PathClass* filename)
 {
 	bool result;
 
 	//check if font already exists
-	if (m_fonts.find(ModManagerClass::getI().getHash(filename)) != m_fonts.end())
+	if (m_fonts.find(filename->getHash()) != m_fonts.end())
 		return true;
 
 	//create new font
@@ -55,12 +55,18 @@ bool FontManagerClass::addFont(ID3D11Device * device, const std::string & filena
 		return false;
 	}
 
-	m_fonts.emplace(std::pair<long long, FontClass*>(ModManagerClass::getI().getHash(filename), newFont));
+	m_fonts.emplace(std::pair<int, FontClass*>(filename->getHash(), newFont));
 
 	return true;
 }
 
-FontClass * FontManagerClass::getFont(const std::string & filename)
+FontClass * FontManagerClass::getFont(PathClass* filename)
 {
-	return m_fonts.find(ModManagerClass::getI().getHash(filename))->second;
+	return getFont(filename->getHash());
+}
+
+FontClass * FontManagerClass::getFont(int hash)
+{
+	auto font = m_fonts.find(hash);
+	return font != m_fonts.end() ? font->second : NULL;
 }

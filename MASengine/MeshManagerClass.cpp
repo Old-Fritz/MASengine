@@ -28,7 +28,7 @@ void MeshManagerClass::Shutdown()
 	}
 }
 
-bool MeshManagerClass::addModel(ID3D11Device * device, const std::string & filename)
+bool MeshManagerClass::addModel(ID3D11Device * device, PathClass* filename)
 {
 	bool result;
 
@@ -44,12 +44,12 @@ bool MeshManagerClass::addModel(ID3D11Device * device, const std::string & filen
 		return false;
 	}
 
-	m_models.emplace(std::pair<long long, MeshClass*>(ModManagerClass::getI().getHash(filename),newModel));
+	m_models.emplace(std::pair<int, MeshClass*>(filename->getHash(),newModel));
 
 	return true;
 }
 
-bool MeshManagerClass::addModel(ID3D11Device * device, const std::string & filename, int lvl)
+bool MeshManagerClass::addModel(ID3D11Device * device, PathClass* filename, int lvl)
 {
 	if(!lvl)
 		return addModel(device,filename);
@@ -59,14 +59,18 @@ bool MeshManagerClass::addModel(ID3D11Device * device, const std::string & filen
 	}
 }
 
-MeshClass * MeshManagerClass::getModel(const std::string & filename)
+MeshClass * MeshManagerClass::getModel(PathClass* filename)
 {
-	return m_models.find(ModManagerClass::getI().getHash(filename))->second;
+	return getModel(filename->getHash());
+
+	
 }
 
 MeshClass * MeshManagerClass::getModel(int hash)
 {
-	return m_models.find(hash)->second;
+	auto model = m_models.find(hash);
+
+	return model != m_models.end() ? model->second : NULL;
 }
 
 MeshManagerClass & MeshManagerClass::getI()

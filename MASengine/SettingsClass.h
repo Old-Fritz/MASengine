@@ -14,7 +14,7 @@
 #include<fstream>
 #include <map>
 #include "MemoryManagerClass.h"
-#include "ModManagerClass.h"
+#include "PathClass.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // Class name: SettingsClass
@@ -40,7 +40,7 @@ private:
 	};
 public:
 
-	bool Initialize(const std::string& filename);
+	bool Initialize(PathClass* filename);
 	void save();
 	void Shutdown();
 
@@ -59,13 +59,12 @@ private:
 	SettingsClass();
 	SettingsClass(const SettingsClass&);
 	~SettingsClass();
-	bool readFromFile(const std::string&  filename);
-	std::string getTextFromFile(const std::string&  name, const std::string&  filename);
+	bool readFromFile(PathClass* filename);
 private:
-	std::string m_filename;
-	std::map<long long, IntParameter*> m_intParameters;
-	std::map<long long, FloatParameter*> m_floatParameters;
-	std::map<long long, StrParameter*> m_strParameters;
+	PathClass* m_filename;
+	std::map<int, IntParameter*> m_intParameters;
+	std::map<int, FloatParameter*> m_floatParameters;
+	std::map<int, StrParameter*> m_strParameters;
 
 
 	static SettingsClass* m_instance;

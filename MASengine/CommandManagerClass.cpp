@@ -45,10 +45,8 @@ CommandManagerClass & CommandManagerClass::getI()
 
 bool CommandManagerClass::isFull()
 {
-	if (m_commandsQueue.size() > 0)
-		return true;
-	else
-		return false;
+
+	return m_commandsQueue.size() > 0 ? true : false;
 }
 CommandClass* CommandManagerClass::nextCommand()
 {
@@ -62,15 +60,15 @@ bool CommandManagerClass::addCommand(const std::string & name, PathClass* filena
 {
 	bool result;
 
-	long long filenameHash = Utils::getHash(filename->getShortPath());
-	long long nameHash = Utils::getHash(name);
+	int filenameHash = filename->getHash();
+	int nameHash = Utils::getHash(name);
 
 	auto commandGroup = m_commands.find(filenameHash);
 	//add new group if not existing
 	if (commandGroup == m_commands.end()) //check for existing group
 	{
-		std::map<long long, CommandClass*> newCommandGroup;
-		m_commands.insert(std::pair<long long, std::map<long long, CommandClass*>>(filenameHash, newCommandGroup));
+		std::map<int, CommandClass*> newCommandGroup;
+		m_commands.insert(std::pair<int, std::map<int, CommandClass*>>(filenameHash, newCommandGroup));
 		commandGroup = m_commands.find(filenameHash); //find again
 	}
 
@@ -81,8 +79,8 @@ bool CommandManagerClass::addCommand(const std::string & name, PathClass* filena
 		CommandClass* newCommand = new(4) CommandClass;
 		if (!newCommand)
 			return false;
-		newCommand->Initialize(getTextFromFile(name, filename));
-		commandGroup->second.insert(std::pair<long long, CommandClass*>(nameHash, newCommand));
+		newCommand->Initialize(Utils::getTextFromFile(name, filename->getPath()));
+		commandGroup->second.insert(std::pair<int, CommandClass*>(nameHash, newCommand));
 		command = commandGroup->second.find(nameHash); //find again
 	}
 
@@ -95,49 +93,4 @@ bool CommandManagerClass::addCommand(const std::string & name, PathClass* filena
 void CommandManagerClass::addChange(const std::string & key, float value)
 {
 	m_commandsQueue.back()->addChange(key, value);
-}
-
- std::string  CommandManagerClass::getTextFromFile(const std::string & name, PathClass* filename)
-{
-	std::ifstream file;
-	file.open(filename->getPath());
-	std::string temp1 = "}";
-	std::string temp2;
-	while (file)
-	{
-		file >> temp2;
-		if (temp2 == name)
-		{
-			if (temp1[temp1.size() - 1] == '}')
-			{
-				break;
-			}
-		}
-		temp1 = temp2;
-	}
-	if (temp2 != name)
-	{
-		file.close();
-		return name;
-	}
-		
-	else
-	{
-		temp1 = "";
-		unsigned char a = ' ';
-		while (a != '{' && file)
-		{
-			a = file.get();
-		}
-		a = file.get();
-		while (a != '}' && file)
-		{
-			if (a < ' ')
-				a = ' ';
-			temp1 += a;
-			a = file.get();
-		}
-		file.close();
-		return temp1;
-	}
 }

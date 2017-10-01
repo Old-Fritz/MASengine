@@ -14,7 +14,7 @@
 // MY CLASS INCLUDES //
 ///////////////////////
 #include "TextureClass.h"
-#include "ModManagerClass.h"
+#include "PathClass.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // Class name: TextureManagerClass
@@ -27,17 +27,16 @@ public:
 
 	static TextureManagerClass& getI();
 
-	bool addTexture(ID3D11Device* device, const std::string& filename);
-	void deleteTexture(const std::string& filename);
-	ID3D11ShaderResourceView* getTexture(const std::string& filename);
+	bool addTexture(ID3D11Device* device, PathClass* filename);
+	void deleteTexture(PathClass* filename);
+	ID3D11ShaderResourceView* getTexture(PathClass* filename);
 	ID3D11ShaderResourceView* getTexture(int hash);
 private:
 	TextureManagerClass();
 	TextureManagerClass(const TextureManagerClass&);
 	~TextureManagerClass();
 private:
-	std::map<long long, TextureClass*> m_textures;
-	std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> m_converter;
+	std::map<int, TextureClass*> m_textures;
 
 	static TextureManagerClass* m_instance;
 	

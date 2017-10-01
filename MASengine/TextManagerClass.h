@@ -13,7 +13,7 @@
 ///////////////////////
 // MY CLASS INCLUDES //
 ///////////////////////
-#include "ModManagerClass.h"
+#include "PathClass.h"
 #include <corecrt_wstring.h>
 
 
@@ -28,19 +28,16 @@ public:
 
 	static TextManagerClass& getI();
 
-	void addText(const std::string& name, const std::string& filename);
-	std::wstring getText(const std::string& name, const std::string& filename);
+	void addText(const std::string& name, PathClass* filename);
+	std::wstring getText(const std::string& name, PathClass* filename);
 
 private:
 	TextManagerClass();
 	TextManagerClass(const TextManagerClass&);
 	~TextManagerClass();
 
-	std::wstring getTextFromFile(const std::string& name, const std::string& filename);
-
 private:
 	std::map<long long, std::wstring> m_texts;
-	std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> m_converter;
 
 	static TextManagerClass* m_instance;
 };

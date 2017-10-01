@@ -9,7 +9,7 @@
 // INCLUDES //
 //////////////
 #include "CommandClass.h"
-#include "ModManagerClass.h"
+#include "PathClass.h"
 #include <queue>
 #include <fstream>
 
@@ -35,11 +35,9 @@ private:
 	CommandManagerClass();
 	CommandManagerClass(const CommandManagerClass&);
 	~CommandManagerClass();
-
-	std::string getTextFromFile(const std::string& name, PathClass* filename);
 private:
 	std::queue<CommandClass*> m_commandsQueue;
-	std::map<long long, std::map<long long, CommandClass*>> m_commands;
+	std::map<int, std::map<int, CommandClass*>> m_commands;
 
 	static CommandManagerClass* m_instance;
 };

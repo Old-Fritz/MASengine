@@ -12,7 +12,7 @@ GlobalManagerClass::~GlobalManagerClass()
 {
 }
 
-bool GlobalManagerClass::Initialize(const std::string & filepath)
+bool GlobalManagerClass::Initialize(const std::string& filepath)
 {
 	bool result;
 
@@ -23,13 +23,14 @@ bool GlobalManagerClass::Initialize(const std::string & filepath)
 
 	std::string logFilepath;
 	std::string modFilename;
-	std::string settingsFilename;
+	PathClass* settingsFilename = new(4) PathClass;
 	int stackSize;
 	int tempSize;
 	int oneFrameSize;
 	int poolSize;
 
-	file >> logFilepath >> modFilename >> settingsFilename;
+	file >> logFilepath >> modFilename;
+	file >> settingsFilename;
 	file >> stackSize >> tempSize >> oneFrameSize >> poolSize;
 
 	//Init LogManager

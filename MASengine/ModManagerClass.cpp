@@ -69,10 +69,6 @@ ModManagerClass & ModManagerClass::getI()
 	return *m_instance;
 }
 
-void ModManagerClass::regPath(PathClass * path)
-{
-	path->changePrefix(getDirectory(path->getShortPath())); // change prefix
-}
 
  std::string  ModManagerClass::getDirectory(int hash)
 {

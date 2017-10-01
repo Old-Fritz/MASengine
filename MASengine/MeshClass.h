@@ -8,7 +8,7 @@
 //////////////
 // INCLUDES //
 //////////////
-#include <fstream>
+#include "PathClass.h"
 
 
 ///////////////////////
@@ -45,7 +45,7 @@ public:
 	MeshClass(const MeshClass&);
 	~MeshClass();
 
-	bool Initialize(ID3D11Device* device, const std::string& filename);
+	bool Initialize(ID3D11Device* device, PathClass* filename);
 	void Shutdown();
 	void Render(ID3D11DeviceContext* deviceContext);
 
@@ -56,7 +56,7 @@ private:
 	void ShutdownBuffers();
 	void RenderBuffers(ID3D11DeviceContext* deviceContext);
 
-	bool LoadModel(const std::string& filename);
+	bool LoadModel(PathClass* filename);
 	void ReleaseModel();
 
 private:

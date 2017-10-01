@@ -115,6 +115,12 @@
     <Filter Include="Заголовочные файлы\Utilities">
       <UniqueIdentifier>{1ee714aa-706f-4d10-8728-551ba51e6c14}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы исходного кода\Utils">
+      <UniqueIdentifier>{f424e772-5ccc-421e-bf23-11a1251eac1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\GlobalManager\Settings">
+      <UniqueIdentifier>{d97eead6-b50b-40e2-a963-2e4ee8c9e61b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -258,11 +264,11 @@
     <ClCompile Include="TerrainClass.cpp">
       <Filter>Файлы исходного кода\Graphics\Blocks</Filter>
     </ClCompile>
-    <ClCompile Include="PathClass.cpp">
-      <Filter>Файлы исходного кода</Filter>
-    </ClCompile>
     <ClCompile Include="Utils.cpp">
-      <Filter>Файлы исходного кода</Filter>
+      <Filter>Файлы исходного кода\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="PathClass.cpp">
+      <Filter>Файлы исходного кода\Utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

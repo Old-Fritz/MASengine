@@ -18,7 +18,8 @@
 #include <map>
 #include <set>
 #include <iostream>
-#include "PathClass.h"
+#include <filesystem>
+#include <string>
 #include "MemoryManagerClass.h"
 
 
@@ -35,8 +36,6 @@ public:
 	void Shutdown();
 	
 	static ModManagerClass& getI();
-
-	void regPath(PathClass* path);
 
 	std::string getDirectory(int hash);
 	std::string getDirectory(const std::string& string);

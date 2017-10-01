@@ -35,12 +35,12 @@ TextureManagerClass & TextureManagerClass::getI()
 	return *m_instance;
 }
 
-bool TextureManagerClass::addTexture(ID3D11Device * device, const std::string & filename)
+bool TextureManagerClass::addTexture(ID3D11Device * device, PathClass* filename)
 {
 	bool result;
 
 	//check for existing
-	auto texture = m_textures.find(ModManagerClass::getI().getHash(filename));
+	auto texture = m_textures.find(filename->getHash());
 	if (texture == m_textures.end())
 	{
 		//create new texture
@@ -48,24 +48,24 @@ bool TextureManagerClass::addTexture(ID3D11Device * device, const std::string & 
 		if (!newTexture)
 			return false;
 
-		result = newTexture->Initialize(device, m_converter.from_bytes(filename).c_str());
+		result = newTexture->Initialize(device, filename->getWPath().c_str());
 		if (!result)
 		{
 			LogManagerClass::getI().addLog("Error 4-2");
 			return false;
 		}
 
-		m_textures.emplace(std::pair<long long, TextureClass*>(ModManagerClass::getI().getHash(filename), newTexture));
+		m_textures.emplace(std::pair<int, TextureClass*>(filename->getHash(), newTexture));
 	}
 
 	
 	return true;
 }
 
-void TextureManagerClass::deleteTexture(const std::string & filename)
+void TextureManagerClass::deleteTexture(PathClass* filename)
 {
 	//delete if it exists
-	auto texture = m_textures.find(ModManagerClass::getI().getHash(filename));
+	auto texture = m_textures.find(filename->getHash());
 	if (texture != m_textures.end())
 	{
 		texture->second->Shutdown();
@@ -76,21 +76,13 @@ void TextureManagerClass::deleteTexture(const std::string & filename)
 
 }
 
-ID3D11ShaderResourceView * TextureManagerClass::getTexture(const std::string & filename)
+ID3D11ShaderResourceView * TextureManagerClass::getTexture(PathClass* filename)
 {
-	auto texture = m_textures.find(ModManagerClass::getI().getHash(filename));
-	if (texture != m_textures.end())
-	{
-		return texture->second->GetTexture();
-	}
-	else
-		return NULL;
+	return getTexture(filename->getHash());
 }
 
 ID3D11ShaderResourceView * TextureManagerClass::getTexture(int hash)
 {
-	
-
 	auto texture = m_textures.find(hash);
 	if (texture != m_textures.end())
 	{

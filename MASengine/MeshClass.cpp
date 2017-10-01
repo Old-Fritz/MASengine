@@ -13,7 +13,7 @@ MeshClass::~MeshClass()
 {
 }
 
-bool MeshClass::Initialize(ID3D11Device * device, const std::string& filename)
+bool MeshClass::Initialize(ID3D11Device * device, PathClass* filename)
 {
 	bool result;
 
@@ -179,7 +179,7 @@ void MeshClass::RenderBuffers(ID3D11DeviceContext* deviceContext)
 	return;
 }
 
-bool MeshClass::LoadModel(const std::string& filename)
+bool MeshClass::LoadModel(PathClass* filename)
 {
 	bool result;
 
@@ -190,7 +190,7 @@ bool MeshClass::LoadModel(const std::string& filename)
 
 
 	// Open the model file.  If it could not open the file then exit.
-	fin.open(filename);
+	fin.open(filename->getPath());
 	if (fin.fail())
 	{
 		return false;

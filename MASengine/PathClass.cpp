@@ -8,14 +8,12 @@ PathClass::PathClass()
 
 PathClass::PathClass(const std::string & filename)
 {
-	m_path = filename;
-	m_prefix = "";
+	changePath(filename);
 }
 
 PathClass::PathClass(const std::wstring & filename)
 {
-	m_path = m_converter.to_bytes(filename);
-	m_prefix = "";
+	PathClass(Utils::to_bytes(filename));
 }
 
 PathClass::PathClass(const PathClass &)
@@ -35,18 +33,13 @@ void PathClass::Shutdown()
 
 std::string PathClass::getPath()
 {
-	if (m_prefix.size() == 0) //give only path if there are no prefix
-		return m_path;
-	else
-		return m_prefix + m_path;
+	//give only path if there are no prefix
+	return m_prefix.size() == 0 ? m_path : m_prefix + m_path;
 }
 
 std::wstring PathClass::getWPath()
 {
-	if (m_prefix.size() == 0) //give only path if there are no prefix
-		return m_converter.from_bytes(m_path);
-	else
-		return m_converter.from_bytes(m_prefix + m_path);
+	return Utils::from_bytes(getPath());
 }
 
 std::string PathClass::getShortPath()
@@ -56,17 +49,19 @@ std::string PathClass::getShortPath()
 
 std::wstring PathClass::getShortWPath()
 {
-	return m_converter.from_bytes(m_path);
+	return Utils::from_bytes(getShortPath());
 }
 
 void PathClass::changePath(const std::string & filename)
 {
 	m_path = filename;
+
+	changePrefix(ModManagerClass::getI().getDirectory(m_path));
 }
 
 void PathClass::changePath(const std::wstring & filename)
 {
-	m_path = m_converter.to_bytes(filename);
+	changePath(Utils::to_bytes(filename));
 }
 
 void PathClass::changePrefix(const std::string & prefix)
@@ -76,5 +71,19 @@ void PathClass::changePrefix(const std::string & prefix)
 
 void PathClass::changePrefix(const std::wstring & prefix)
 {
-	m_prefix = m_converter.to_bytes(prefix);
+	changePrefix(Utils::to_bytes(prefix));
+}
+
+int PathClass::getHash()
+{
+	return Utils::getHash(m_path);
+}
+
+std::ifstream &operator >> (std::ifstream &in, PathClass* path) {
+	std::string str;
+	in >> str;
+
+	path->changePath(str);
+
+	return in;
 }

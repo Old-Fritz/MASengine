@@ -5,7 +5,8 @@
 #define _PATHCLASS_H_
 
 #include <string>
-#include <filesystem>
+#include "Utils.h"
+#include "ModManagerClass.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // Class name: PathClass
@@ -32,11 +33,13 @@ public:
 
 	void changePrefix(const std::string& prefix);
 	void changePrefix(const std::wstring& prefix);
-private:
-	std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> m_converter;
 
+	int getHash();
+private:
 	std::string m_path;
 	std::string m_prefix; // special adding that change filepath in case of mods
 };
+
+std::ifstream &operator >> (std::ifstream &in, PathClass* path);
 
 #endif

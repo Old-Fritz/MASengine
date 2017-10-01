@@ -66,12 +66,7 @@ int CommandClass::getCommandsNum()
 
 int CommandClass::getParamsNum(int commandNumber)
 {
-	if (commandNumber < m_commandsNum)
-	{
-		return m_commands[commandNumber].size();
-	}
-	else
-		return 0;
+	return commandNumber < m_commandsNum ? m_commands[commandNumber].size() : 0;
 }
  std::string CommandClass::getParam(int commandNumber, int ParamNum)
 {

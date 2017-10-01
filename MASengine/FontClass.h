@@ -16,7 +16,7 @@
 ///////////////////////
 // MY CLASS INCLUDES //
 ///////////////////////
-#include "ModManagerClass.h"
+#include "PathClass.h"
 #include"TextureManagerClass.h"
 #include <D3DX10math.h>
 
@@ -72,21 +72,21 @@ public:
 	FontClass(const FontClass&);
 	~FontClass();
 
-	bool Initialize(ID3D11Device* device, const std::string& filenane);
+	bool Initialize(ID3D11Device* device, PathClass* filename);
 	void Shutdown();
 
 	ID3D11ShaderResourceView* GetTexture();
 	void BuildVertexArray(void* vertices, const std::wstring& sentence, float drawX, float drawY, float size, float width, orient orientation);
 
 private:
-	bool LoadFontData(const std::string& filename);
+	bool LoadFontData(PathClass* filename);
 	void ReleaseFontData();
 	std::vector<std::pair<std::wstring, int>> separateStrings(const std::wstring& sentence, float size, float width);
 
 private:
 	int m_maxSize; // max width of one symbol
 	FontGroupType m_Font;
-	std::string m_filename;
+	PathClass* m_filename;
 
 	int m_SymbolsNum;
 	int m_SymbolsHeight;

@@ -8,6 +8,7 @@ FontClass::FontClass()
 	m_SymbolsNum = 0;
 	m_SymbolsHeight = 0;
 	m_maxSize = 0;
+	m_filename = 0;
 }
 FontClass::FontClass(const FontClass& other)
 {
@@ -16,15 +17,15 @@ FontClass::~FontClass()
 {
 }
 
-bool FontClass::Initialize(ID3D11Device* device, const std::string& filename)
+bool FontClass::Initialize(ID3D11Device* device, PathClass* filename)
 {
 	bool result;
-	std::string fontFilename;
-	std::string textureFilename;
+	PathClass* fontFilename = new(4) PathClass();
+	PathClass* textureFilename = new(4) PathClass();
 
 	//load filename from description
 	std::ifstream file;
-	file.open(ModManagerClass::getI().getDirectory(ModManagerClass::getI().getHash(filename))+filename);
+	file.open(filename->getPath());
 	if (!file.is_open())
 	{
 		LogManagerClass::getI().addLog("Error 11-3");
@@ -64,7 +65,7 @@ void FontClass::Shutdown()
 	return;
 }
 
-bool FontClass::LoadFontData(const std::string& filename)
+bool FontClass::LoadFontData(PathClass* filename)
 {
 	std::ifstream fin;
 	int i;
@@ -72,7 +73,7 @@ bool FontClass::LoadFontData(const std::string& filename)
 
 
 	// Read in the font size and spacing between chars.
-	fin.open(filename);
+	fin.open(filename->getPath());
 	if (fin.fail())
 	{
 		LogManagerClass::getI().addLog("Error 11-6");
