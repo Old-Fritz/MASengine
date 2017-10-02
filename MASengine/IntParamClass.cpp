@@ -2,6 +2,7 @@
 
 IntParamClass::IntParamClass()
 {
+	m_param = 0;
 }
 IntParamClass::IntParamClass(const IntParamClass &)
 {

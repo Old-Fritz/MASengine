@@ -2,12 +2,19 @@
 
 StrParamClass::StrParamClass()
 {
+	m_param = "";
 }
 StrParamClass::StrParamClass(const StrParamClass &)
 {
 }
 StrParamClass::~StrParamClass()
 {
+}
+
+void StrParamClass::Shutdown()
+{
+	SetParamClass::Shutdown();
+	m_param.clear();
 }
 
 std::string StrParamClass::getStr()

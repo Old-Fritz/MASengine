@@ -6,7 +6,9 @@
 
 ListElementClass::ListElementClass()
 {
-
+	InterfaceElementClass();
+	m_sliderFilename = 0;
+	m_elementFilename = 0;
 }
 ListElementClass::ListElementClass(const ListElementClass&)
 {
@@ -21,6 +23,9 @@ bool ListElementClass::Initialize(ID3D11Device* device, ID3D11DeviceContext* dev
 	int screenWidth, int screenHeight)
 {
 	bool result;
+
+	m_sliderFilename = PathManagerClass::getI().makePath();
+	m_elementFilename = PathManagerClass::getI().makePath();
 
 	result = (this)->InterfaceElementClass::Initialize(device, deviceContext, hwnd, filename, screenWidth, screenHeight);
 	if (!result)
@@ -433,7 +438,7 @@ bool ListElementClass::readFromFile(PathClass* filename)
 	file >> temp >> temp >> m_elType; // Getting type of element
 
 	file >> temp >> temp;
-	file >> m_actionsFileName; // Getting name of file with actions
+	file >> m_actionsFilename; // Getting name of file with actions
 
 	// get width and height
 	file >> temp >> temp >> temp;

@@ -14,7 +14,7 @@
 #include<fstream>
 #include <map>
 #include "MemoryManagerClass.h"
-#include "PathClass.h"
+#include "PathManagerClass.h"
 #include "PathParamClass.h"
 #include "StrParamClass.h"
 #include "FloatParamClass.h"

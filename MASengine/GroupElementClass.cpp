@@ -2,6 +2,8 @@
 
 GroupElementClass::GroupElementClass()
 {
+	InterfaceElementClass();
+	m_elementFilename = 0;
 }
 GroupElementClass::GroupElementClass(const GroupElementClass &)
 {
@@ -13,6 +15,8 @@ GroupElementClass::~GroupElementClass()
 bool GroupElementClass::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, HWND hwnd, PathClass* filename,
 	int screenWidth, int screenHeight)
 {
+	m_elementFilename = PathManagerClass::getI().makePath();
+	
 	return this->InterfaceElementClass::Initialize(device, deviceContext, hwnd, filename, screenWidth, screenHeight);
 }
 void GroupElementClass::Shutdown()
@@ -268,7 +272,7 @@ bool GroupElementClass::readFromFile(PathClass*  filename)
 	file >> temp >> temp >> m_elType; // Getting type of element
 
 	file >> temp >> temp;
-	file >> m_actionsFileName; // Getting name of file with actions
+	file >> m_actionsFilename; // Getting name of file with actions
 
 	// get width and height
 	file >> temp >> temp >> temp;

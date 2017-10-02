@@ -4,7 +4,7 @@ SettingsClass* SettingsClass::m_instance = 0;
 
 SettingsClass::SettingsClass()
 {
-	m_filename = new(4) PathClass;
+	m_filename = 0;
 }
 SettingsClass::SettingsClass(const SettingsClass &)
 {
@@ -16,6 +16,8 @@ SettingsClass::~SettingsClass()
 bool SettingsClass::Initialize(PathClass* filename)
 {
 	bool result;
+
+	m_filename = PathManagerClass::getI().makePath();
 	result = readFromFile(filename);
 	if (!result)
 	{
@@ -47,6 +49,13 @@ void SettingsClass::Shutdown()
 		m_parameters.begin()->second->Shutdown();
 		::operator delete(m_parameters.begin()->second,sizeof(m_parameters.begin()->second), 2);
 		m_parameters.erase(m_parameters.begin());
+	}
+
+	if (m_filename)
+	{
+		m_filename->Shutdown();
+		::operator delete(m_filename, sizeof(*m_filename), 2);
+		m_filename = 0;
 	}
 
 	if (m_instance)

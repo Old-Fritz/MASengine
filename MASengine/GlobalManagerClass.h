@@ -15,6 +15,7 @@
 #include "ResourceManagerClass.h"
 #include "SystemStateManagerClass.h"
 #include "SettingsClass.h"
+#include "PathManagerClass.h"
 
 
 ////////////////////////////////////////////////////////////////////////////////

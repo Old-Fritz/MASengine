@@ -2,6 +2,7 @@
 
 FloatParamClass::FloatParamClass()
 {
+	m_param = 0;
 }
 FloatParamClass::FloatParamClass(const FloatParamClass &)
 {

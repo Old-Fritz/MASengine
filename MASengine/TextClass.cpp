@@ -80,13 +80,6 @@ void TextClass::Shutdown()
 		ReleaseSentence(&m_sentences[i]);
 	}
 
-	if (m_fontFilename)
-	{
-		m_fontFilename->Shutdown();
-		::operator delete(m_fontFilename, sizeof(*m_fontFilename), 2);
-		m_fontFilename = 0;
-	}
-
 	return;
 }
 

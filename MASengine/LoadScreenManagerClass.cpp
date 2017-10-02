@@ -13,6 +13,10 @@ bool LoadScreenManagerClass::Initialize(D3DClass* D3D, ShaderManagerClass* shade
 	m_shaders = shaders;
 	m_baseViewMatrix = baseViewMatrix;
 
+	m_imageElementName = PathManagerClass::getI().makePath();
+	m_quoteElementName = PathManagerClass::getI().makePath();
+	m_lineElementName = PathManagerClass::getI().makePath();
+
 	result = readFromFile(filename);
 	if (!result)
 	{
@@ -218,9 +222,9 @@ LoadScreenManagerClass::LoadScreenManagerClass()
 	m_loadLine = 0;
 	m_loadQuote = 0;
 
-	m_imageElementName = new(4) PathClass;
-	m_quoteElementName = new(4) PathClass;
-	m_lineElementName = new(4) PathClass;
+	m_imageElementName = 0;
+	m_quoteElementName = 0;
+	m_lineElementName = 0;
 }
 
 LoadScreenManagerClass::~LoadScreenManagerClass()
@@ -249,7 +253,7 @@ bool LoadScreenManagerClass::readFromFile(PathClass*  filename)
 	file >> temp; // images:
 	for (int i = 0;i < numOfImages;i++)
 	{
-		PathClass* path = new(4) PathClass;
+		PathClass* path = PathManagerClass::getI().makePath();
 		file >> path;
 		m_loadImageNames.emplace_back(path);
 	}
@@ -294,7 +298,7 @@ bool LoadScreenManagerClass::readFromFile(PathClass*  filename)
 	file >> temp; // elements:
 	for (int i = 0;i < numOfElements;i++)
 	{
-		PathClass* path = new(4) PathClass;
+		PathClass* path = PathManagerClass::getI().makePath();
 		file >> path;
 		m_additionalElementNames.emplace_back(path);
 	}

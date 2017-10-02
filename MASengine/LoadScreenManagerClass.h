@@ -83,7 +83,7 @@ private:
 	PathClass*  m_lineElementName;
 
 	//Additional elements parts
-	std::vector<PathClass* > m_additionalElementNames;
+	std::vector<PathClass*> m_additionalElementNames;
 
 };
 

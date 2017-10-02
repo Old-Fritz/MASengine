@@ -112,12 +112,6 @@
     <Filter Include="Файлы исходного кода\Graphics\Blocks">
       <UniqueIdentifier>{eed6b2c3-209d-4fa7-b620-54d6cdb343b3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Заголовочные файлы\Utilities">
-      <UniqueIdentifier>{1ee714aa-706f-4d10-8728-551ba51e6c14}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Файлы исходного кода\Utils">
-      <UniqueIdentifier>{f424e772-5ccc-421e-bf23-11a1251eac1e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Заголовочные файлы\GlobalManager\Settings">
       <UniqueIdentifier>{d97eead6-b50b-40e2-a963-2e4ee8c9e61b}</UniqueIdentifier>
     </Filter>
@@ -129,6 +123,12 @@
     </Filter>
     <Filter Include="Файлы исходного кода\GlobalManager\Settings\Params">
       <UniqueIdentifier>{d4905e44-c1c8-41d1-ac5b-a348367d8936}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\GlobalManager\Utils">
+      <UniqueIdentifier>{f424e772-5ccc-421e-bf23-11a1251eac1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\GlobalManager\Utilities">
+      <UniqueIdentifier>{1ee714aa-706f-4d10-8728-551ba51e6c14}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -268,10 +268,10 @@
       <Filter>Файлы исходного кода\Graphics\ShaderManagment\Shaders</Filter>
     </ClCompile>
     <ClCompile Include="Utils.cpp">
-      <Filter>Файлы исходного кода\Utils</Filter>
+      <Filter>Файлы исходного кода\GlobalManager\Utils</Filter>
     </ClCompile>
     <ClCompile Include="PathClass.cpp">
-      <Filter>Файлы исходного кода\Utils</Filter>
+      <Filter>Файлы исходного кода\GlobalManager\Utils</Filter>
     </ClCompile>
     <ClCompile Include="StrParamClass.cpp">
       <Filter>Файлы исходного кода\GlobalManager\Settings\Params</Filter>
@@ -290,6 +290,9 @@
     </ClCompile>
     <ClCompile Include="SettingsClass.cpp">
       <Filter>Файлы исходного кода\GlobalManager\Settings</Filter>
+    </ClCompile>
+    <ClCompile Include="PathManagerClass.cpp">
+      <Filter>Файлы исходного кода\GlobalManager\Utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -432,10 +435,10 @@
       <Filter>Заголовочные файлы\Graphics\ShaderManagment\Shaders</Filter>
     </ClInclude>
     <ClInclude Include="PathClass.h">
-      <Filter>Заголовочные файлы\Utilities</Filter>
+      <Filter>Заголовочные файлы\GlobalManager\Utilities</Filter>
     </ClInclude>
     <ClInclude Include="Utils.h">
-      <Filter>Заголовочные файлы\Utilities</Filter>
+      <Filter>Заголовочные файлы\GlobalManager\Utilities</Filter>
     </ClInclude>
     <ClInclude Include="SettingsClass.h">
       <Filter>Заголовочные файлы\GlobalManager\Settings</Filter>
@@ -454,6 +457,9 @@
     </ClInclude>
     <ClInclude Include="PathParamClass.h">
       <Filter>Заголовочные файлы\GlobalManager\Settings\Params</Filter>
+    </ClInclude>
+    <ClInclude Include="PathManagerClass.h">
+      <Filter>Заголовочные файлы\GlobalManager\Utilities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

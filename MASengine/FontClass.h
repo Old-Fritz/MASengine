@@ -16,7 +16,7 @@
 ///////////////////////
 // MY CLASS INCLUDES //
 ///////////////////////
-#include "PathClass.h"
+#include "PathManagerClass.h"
 #include"TextureManagerClass.h"
 #include <D3DX10math.h>
 

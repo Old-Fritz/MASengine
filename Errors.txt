@@ -15,6 +15,7 @@ Error 6-3 Problem with CommandManager Initialization
 Error 6-4 Problem with ResourceManager Initialization
 Error 6-5 Problem with SystemStateManager Initialization
 Error 6-6 Problem with Settings Initialization
+Error 6-7 Problem with PathManager Initialization
 
 Error 7-1 Problem with DirectInput8 creating
 Error 7-2 Problem with creating interface for keyboard

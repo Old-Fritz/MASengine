@@ -7,7 +7,7 @@
 
 #include <string>
 #include "SetParamClass.h"
-#include "PathClass.h"
+#include "PathManagerClass.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // Class name: PathParamClass
@@ -19,6 +19,8 @@ public:
 	PathParamClass();
 	PathParamClass(const PathParamClass&);
 	~PathParamClass();
+
+	void Shutdown();
 
 	virtual std::string getStr();
 	void setStr(const std::string& str);

@@ -2,13 +2,13 @@
 
 ProvManagerClass* ProvManagerClass::m_instance = 0;
 
-bool ProvManagerClass::Initialize(const std::string & filename)
+bool ProvManagerClass::Initialize(PathClass* filename)
 {
 	bool result;
 
 	int numOfProvs;
 	std::ifstream file;
-	file.open(filename);
+	file.open(filename->getPath());
 
 	if (file.fail())
 		return false;

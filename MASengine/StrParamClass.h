@@ -19,6 +19,8 @@ public:
 	StrParamClass(const StrParamClass&);
 	~StrParamClass();
 
+	void Shutdown();
+
 	virtual std::string getStr();
 	void setStr(const std::string& str);
 

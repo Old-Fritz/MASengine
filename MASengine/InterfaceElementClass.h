@@ -34,7 +34,7 @@ protected:
 	{
 		BitmapInfo()
 		{
-			filename = new(4) PathClass;
+			filename = PathManagerClass::getI().makePath();
 		}
 
 		std::string name;
@@ -72,8 +72,8 @@ protected:
 	{
 		TextInfo()
 		{
-			fontFilename = new(4) PathClass;
-			textFilename = new(4) PathClass;
+			fontFilename = PathManagerClass::getI().makePath();
+			textFilename = PathManagerClass::getI().makePath();
 		}
 		std::string name;
 		PathClass* fontFilename;
@@ -170,8 +170,8 @@ protected:
 
 	int m_bitmapsNum;
 	int m_textsNum;
-	PathClass* m_actionsFileName;
-	PathClass* m_fontsFileName;
+	PathClass* m_actionsFilename;
+	PathClass* m_fontsFilename;
 
 	BitmapInfo* m_bitmapsInfo;
 	TextInfo* m_textsInfo;

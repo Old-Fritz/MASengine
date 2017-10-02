@@ -20,7 +20,7 @@ class ProvManagerClass
 public:
 	
 
-	bool Initialize(const std::string& filename);
+	bool Initialize(PathClass* filename);
 	void Shutdown();
 
 

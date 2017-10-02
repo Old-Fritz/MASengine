@@ -33,7 +33,7 @@ bool InterfaceClass::Initialize(ID3D11Device * device, ID3D11DeviceContext * dev
 		return false;
 
 	//Open file with elements
-	elementsFile.open(SettingsClass::getI().getStrParameter("ElementsFilename"));
+	elementsFile.open(SettingsClass::getI().getPathParameter("ElementsFilename")->getPath());
 	if (elementsFile.fail())
 	{
 		LogManagerClass::getI().addLog("Error 14-1");

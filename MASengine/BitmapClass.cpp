@@ -58,13 +58,6 @@ void BitmapClass::Shutdown()
 	// release buffers
 	ShutdownBuffers();
 
-	if (m_filename)
-	{
-		m_filename->Shutdown();
-		::operator delete(m_filename, sizeof(*m_filename), 2);
-		m_filename = 0;
-	}
-
 	return;
 }
 
@@ -89,8 +82,8 @@ bool BitmapClass::setNewTexture(ID3D11Device * device, PathClass* filename)
 {
 	bool result;
 
-	// Load textures
 	m_filename = filename;
+	// Load textures
 	result = TextureManagerClass::getI().addTexture(device, filename);
 	if (!result)
 	{

@@ -13,7 +13,7 @@
 ///////////////////////
 // MY CLASS INCLUDES //
 ///////////////////////
-#include "PathClass.h"
+#include "PathManagerClass.h"
 #include <corecrt_wstring.h>
 
 

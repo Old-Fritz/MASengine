@@ -61,6 +61,15 @@ bool GlobalManagerClass::Initialize(const std::string& filepath)
 	}
 	LogManagerClass::getI().addLog("ModManager Initialized");
 
+	//Init Path Manager
+	result = PathManagerClass::getI().Initialize();
+	if (!result)
+	{
+		LogManagerClass::getI().addLog("Error 6-7");
+		return false;
+	}
+	LogManagerClass::getI().addLog("PathManager Initialized");
+
 	//Init Settings
 	settingsFilename->changePath(settingsFilenameStr);
 	result = SettingsClass::getI().Initialize(settingsFilename);
@@ -110,9 +119,16 @@ void GlobalManagerClass::Shutdown()
 	ResourceManagerClass::getI().Shutdown();
 	CommandManagerClass::getI().Shutdown();
 	SettingsClass::getI().Shutdown();
+	PathManagerClass::getI().Shutdown();
 	ModManagerClass::getI().Shutdown();
 	MemoryManagerClass::getI().Shutdown();
 	LogManagerClass::getI().Shutdown();
+
+	if (m_instance)
+	{
+		::operator delete(m_instance, sizeof(*m_instance), 1);
+		m_instance = 0;
+	}
 }
 
 GlobalManagerClass & GlobalManagerClass::getI()

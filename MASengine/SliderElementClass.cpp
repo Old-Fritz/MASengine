@@ -8,7 +8,7 @@
 
 SliderElementClass::SliderElementClass()
 {
-
+	InterfaceElementClass();
 }
 SliderElementClass::SliderElementClass(const SliderElementClass&)
 {
@@ -202,7 +202,7 @@ void SliderElementClass::addUnPickCommand(const std::string& name)
 }
 void SliderElementClass::addSliderCommand()
 {
-	CommandManagerClass::getI().addCommand(m_sliderCommand, m_actionsFileName);
+	CommandManagerClass::getI().addCommand(m_sliderCommand, m_actionsFilename);
 
 	CommandManagerClass::getI().addChange("NUM" + m_name, m_currentSector);
 }
@@ -224,7 +224,7 @@ bool SliderElementClass::readFromFile(PathClass* filename)
 		m_orientation = 0;
 	file >> temp >> temp >> m_sliderCommand; // Getting command for slider
 	file >> temp >> temp;
-	file >> m_actionsFileName; // Getting name of file with actions
+	file >> m_actionsFilename; // Getting name of file with actions
 	
 	// get width and height
 	file >> temp >> temp >> temp;

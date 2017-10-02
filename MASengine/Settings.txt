@@ -1,14 +1,12 @@
-Fullscreen {0}
-ScreenWidth {1280}
-MouseSensitivity {30}
-Vsync {0}
-Sample {1}
-ScreenHeight {720}
-
-
-loadScreenManagerFilename {data/loadscreenManager.txt}
-ProvFilename {data/provs.txt}
-Language {ENG}
-ButCommandFilename {data/interface/actions/butACTION.txt}
 ElementsFilename {data/interface/elements.txt}
+ButCommandFilename {data/interface/actions/butACTION.txt}
+Sample {1}
+MouseSensitivity {30}
+loadScreenManagerFilename {data/loadscreenManager.txt}
 GeneralActionsFilename {data/interface/GeneralActions.txt}
+ProvFilename {data/provs.txt}
+ScreenWidth {1280}
+Fullscreen {0}
+Language {ENG}
+Vsync {0}
+ScreenHeight {720}

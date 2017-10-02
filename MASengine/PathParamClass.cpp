@@ -2,13 +2,18 @@
 
 PathParamClass::PathParamClass()
 {
-	m_param = new(4) PathClass;
+	m_param = PathManagerClass::getI().makePath();
 }
 PathParamClass::PathParamClass(const PathParamClass &)
 {
 }
 PathParamClass::~PathParamClass()
 {
+}
+
+void PathParamClass::Shutdown()
+{
+	SetParamClass::Shutdown();
 }
 
 std::string PathParamClass::getStr()

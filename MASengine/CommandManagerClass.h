@@ -9,7 +9,7 @@
 // INCLUDES //
 //////////////
 #include "CommandClass.h"
-#include "PathClass.h"
+#include "PathManagerClass.h"
 #include <queue>
 #include <fstream>
 

@@ -14,7 +14,7 @@
 // MY CLASS INCLUDES //
 ///////////////////////
 #include "TextureClass.h"
-#include "PathClass.h"
+#include "PathManagerClass.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // Class name: TextureManagerClass

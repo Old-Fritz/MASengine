@@ -145,6 +145,7 @@
     <ClCompile Include="MeshManagerClass.cpp" />
     <ClCompile Include="ModManagerClass.cpp" />
     <ClCompile Include="PathClass.cpp" />
+    <ClCompile Include="PathManagerClass.cpp" />
     <ClCompile Include="PathParamClass.cpp" />
     <ClCompile Include="PoolAllocatorClass.cpp" />
     <ClCompile Include="PositionClass.cpp" />
@@ -200,6 +201,7 @@
     <ClInclude Include="MeshClass.h" />
     <ClInclude Include="MeshManagerClass.h" />
     <ClInclude Include="ModManagerClass.h" />
+    <ClInclude Include="PathManagerClass.h" />
     <ClInclude Include="PathParamClass.h" />
     <ClInclude Include="PoolAllocatorClass.h" />
     <ClInclude Include="PositionClass.h" />

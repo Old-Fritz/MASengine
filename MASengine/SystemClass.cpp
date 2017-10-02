@@ -63,7 +63,7 @@ bool SystemClass::Initialize()
 	//Initialize prov manager
 	if (&(ProvManagerClass::getI()))
 	{
-		result = ProvManagerClass::getI().Initialize(SettingsClass::getI().getStrParameter("ProvFilename"));
+		result = ProvManagerClass::getI().Initialize(SettingsClass::getI().getPathParameter("ProvFilename"));
 		if (!result)
 		{
 			return false;
