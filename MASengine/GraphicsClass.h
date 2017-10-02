@@ -11,6 +11,7 @@
 #include "ShaderManagerClass.h"
 #include "CameraClass.h"
 #include "InterfaceClass.h"
+#include "TerrainClass.h"
 
 
 /////////////
@@ -50,6 +51,8 @@ private:
 	D3DXMATRIX m_baseViewMatrix;
 	HWND m_hwnd;
 
+
+	TerrainClass* m_test;
 	//blocks
 	D3DClass* m_D3D;
 	ShaderManagerClass* m_shaderManager;

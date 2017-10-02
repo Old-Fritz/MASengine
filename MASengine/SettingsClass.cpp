@@ -131,7 +131,7 @@ bool SettingsClass::readFromFile(PathClass* filename)
 {
 	bool result;
 
-	PathClass* defSettingsFileName = new(4) PathClass;
+	PathClass* defSettingsFileName = PathManagerClass::getI().makePath();
 	//open general file with default settings
 	std::ifstream generalFile;
 	generalFile.open(filename->getPath());

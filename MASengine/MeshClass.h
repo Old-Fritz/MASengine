@@ -8,16 +8,13 @@
 //////////////
 // INCLUDES //
 //////////////
-#include "PathManagerClass.h"
+#include "HeightMapLoaderClass.h"
 
 
 ///////////////////////
 // MY CLASS INCLUDES //
 ///////////////////////
-#include <d3d11.h>
-#include <d3dx11.h>
-#include <d3dx10math.h>
-#include "MemoryManagerClass.h"
+
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -46,6 +43,7 @@ public:
 	~MeshClass();
 
 	bool Initialize(ID3D11Device* device, PathClass* filename);
+	bool Initialize(ID3D11Device* device, PathClass* filename,int width, int height);
 	void Shutdown();
 	void Render(ID3D11DeviceContext* deviceContext);
 

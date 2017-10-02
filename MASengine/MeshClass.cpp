@@ -36,6 +36,32 @@ bool MeshClass::Initialize(ID3D11Device * device, PathClass* filename)
 	return true;
 }
 
+bool MeshClass::Initialize(ID3D11Device * device, PathClass * filename, int width, int height)
+{
+	bool result;
+
+	HeightMapLoaderClass* loader = new(3) HeightMapLoaderClass;
+
+	// Load in the model data.
+	result = loader->loadHeightMap(device,filename,width,height, (void**)&m_model,m_vertexCount,m_indexCount);
+	if (!result)
+	{
+		return false;
+	}
+	//clear temp memory
+	loader->Shutdown();
+	MemoryManagerClass::getI().cleanTemp();
+
+	// Initialize the vertex and index buffer that hold the geometry for the triangle.
+	result = InitializeBuffers(device);
+	if (!result)
+	{
+		return false;
+	}
+
+	return true;
+}
+
 void MeshClass::Shutdown()
 {
 

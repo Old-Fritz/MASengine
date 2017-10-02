@@ -130,6 +130,7 @@
     <ClCompile Include="GlobalManagerClass.cpp" />
     <ClCompile Include="GraphicsClass.cpp" />
     <ClCompile Include="GroupElementClass.cpp" />
+    <ClCompile Include="HeightMapLoaderClass.cpp" />
     <ClCompile Include="InputClass.cpp" />
     <ClCompile Include="InterfaceClass.cpp" />
     <ClCompile Include="InterfaceElementClass.cpp" />
@@ -162,7 +163,7 @@
     <ClCompile Include="StrParamClass.cpp" />
     <ClCompile Include="SystemClass.cpp" />
     <ClCompile Include="SystemStateManagerClass.cpp" />
-    <None Include="TerrainClass.cpp" />
+    <ClCompile Include="TerrainClass.cpp" />
     <ClCompile Include="TerrainShaderClass.cpp" />
     <ClCompile Include="TextClass.cpp" />
     <ClCompile Include="TextManagerClass.cpp" />
@@ -180,6 +181,7 @@
     <ClInclude Include="CpuClass.h" />
     <ClInclude Include="D3DClass.h" />
     <ClInclude Include="FloatParamClass.h" />
+    <ClInclude Include="HeightMapLoaderClass.h" />
     <ClInclude Include="IntParamClass.h" />
     <ClInclude Include="PathClass.h" />
     <ClInclude Include="FontClass.h" />

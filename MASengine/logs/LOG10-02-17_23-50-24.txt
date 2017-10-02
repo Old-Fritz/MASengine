@@ -1,0 +1,18 @@
+10-02-17_23-50-24 LogManager Initialized
+10-02-17_23-50-24 MemoryManager Initialized
+10-02-17_23-50-24 ModManager Initialized
+10-02-17_23-50-24 PathManager Initialized
+10-02-17_23-50-24 Settings Initialized
+10-02-17_23-50-24 CommandManager Initialized
+10-02-17_23-50-24 ResourceManager Initialized
+10-02-17_23-50-25 SystemStateManager Initialized
+10-02-17_23-50-25 All global system Initialized
+10-02-17_23-50-26 Windows Initialization
+10-02-17_23-50-26 input Initialization
+10-02-17_23-50-26 Position Initialization
+10-02-17_23-50-26 Directx Initialization
+10-02-17_23-50-26 Interface Shader Initialization
+10-02-17_23-50-26 Font Shader Initialization
+10-02-17_23-50-26 Terrain Shader Initialization
+10-02-17_23-50-26 Shaders Initialization
+10-02-17_23-50-32 Error 4-1

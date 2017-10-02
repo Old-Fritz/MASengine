@@ -28,7 +28,7 @@ public:
 	TerrainClass(const TerrainClass&);
 	~TerrainClass();
 
-	bool Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, std::string blockFilename);
+	bool Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, PathClass* blockFilename);
 	void Shutdown();
 	bool Render(TerrainShaderClass* terrainShader, ID3D11DeviceContext* deviceContext, D3DXMATRIX worldMatrix,
 		D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, D3DXVECTOR3 lightDirection, D3DXVECTOR4 ambientColor,
@@ -44,21 +44,22 @@ public:
 	
 private:
 	//block info
-	bool readFromFile(std::string filename);
+	bool readFromFile(PathClass* filename);
 	D3DXVECTOR4* getProvColor();
 
 private:
 	int m_terrainWidth, m_terrainHeight;
 	int m_meshHash[NUM_OF_LVLS];
 	int m_boxMeshHash;
-	std::string m_hmapfilename;
+	PathClass* m_hmapFilenames[NUM_OF_LVLS];
+	std::string m_hmapFilenameBase;
 
 	//textures
 	int m_provTextureHash;
-	std::string m_provFilename;
+	PathClass* m_provFilename;
 
 	//info from file
-	D3DXVECTOR2 m_position; //position on map
+	D3DXVECTOR3 m_position; //position on map
 
 	//provs
 	ProvRegionClass* m_provs;

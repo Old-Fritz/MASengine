@@ -27,7 +27,7 @@ public:
 	void Shutdown();
 
 	bool addModel(ID3D11Device* device, PathClass* filename);
-	bool addModel(ID3D11Device* device, PathClass* filename, int lvl);
+	bool addModel(ID3D11Device* device, PathClass* filename, int width, int height);
 	MeshClass* getModel(PathClass* filename);
 	MeshClass* getModel(int hash);
 

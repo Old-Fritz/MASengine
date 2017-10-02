@@ -43,9 +43,6 @@
     <Filter Include="Заголовочные файлы\Resources">
       <UniqueIdentifier>{ae9ae0ac-5a7b-404b-bedc-60c585aeb757}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Файлы исходного кода\GlobalManager\ResourceManagment">
-      <UniqueIdentifier>{1dd4f56d-4e6d-4883-b517-9e7bd85b638e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Файлы исходного кода\Resources">
       <UniqueIdentifier>{780c8322-112b-4443-b5d5-da16c7e35a17}</UniqueIdentifier>
     </Filter>
@@ -130,6 +127,15 @@
     <Filter Include="Заголовочные файлы\GlobalManager\Utilities">
       <UniqueIdentifier>{1ee714aa-706f-4d10-8728-551ba51e6c14}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Заголовочные файлы\GlobalManager\ResourceManagment\Meshes">
+      <UniqueIdentifier>{f6007c33-da33-4fdd-89d1-fc28654cd711}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\GlobalManager\ResourceManagment">
+      <UniqueIdentifier>{1dd4f56d-4e6d-4883-b517-9e7bd85b638e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\GlobalManager\ResourceManagment\Meshes">
+      <UniqueIdentifier>{165de99c-afe4-46d3-91b3-74f69f09188d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -170,9 +176,6 @@
     </ClCompile>
     <ClCompile Include="ModManagerClass.cpp">
       <Filter>Файлы исходного кода\GlobalManager</Filter>
-    </ClCompile>
-    <ClCompile Include="MeshManagerClass.cpp">
-      <Filter>Файлы исходного кода\GlobalManager\ResourceManagment</Filter>
     </ClCompile>
     <ClCompile Include="TextureManagerClass.cpp">
       <Filter>Файлы исходного кода\GlobalManager\ResourceManagment</Filter>
@@ -294,6 +297,15 @@
     <ClCompile Include="PathManagerClass.cpp">
       <Filter>Файлы исходного кода\GlobalManager\Utils</Filter>
     </ClCompile>
+    <ClCompile Include="MeshManagerClass.cpp">
+      <Filter>Файлы исходного кода\GlobalManager\ResourceManagment\Meshes</Filter>
+    </ClCompile>
+    <ClCompile Include="HeightMapLoaderClass.cpp">
+      <Filter>Файлы исходного кода\GlobalManager\ResourceManagment\Meshes</Filter>
+    </ClCompile>
+    <ClCompile Include="TerrainClass.cpp">
+      <Filter>Файлы исходного кода\Graphics\Blocks</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SystemClass.h">
@@ -343,9 +355,6 @@
     </ClInclude>
     <ClInclude Include="TextureClass.h">
       <Filter>Заголовочные файлы\Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="MeshManagerClass.h">
-      <Filter>Заголовочные файлы\GlobalManager\ResourceManagment</Filter>
     </ClInclude>
     <ClInclude Include="MeshClass.h">
       <Filter>Заголовочные файлы\Resources</Filter>
@@ -461,6 +470,12 @@
     <ClInclude Include="PathManagerClass.h">
       <Filter>Заголовочные файлы\GlobalManager\Utilities</Filter>
     </ClInclude>
+    <ClInclude Include="MeshManagerClass.h">
+      <Filter>Заголовочные файлы\GlobalManager\ResourceManagment\Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="HeightMapLoaderClass.h">
+      <Filter>Заголовочные файлы\GlobalManager\ResourceManagment\Meshes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="interfaceVS.fx">
@@ -477,9 +492,6 @@
     </None>
     <None Include="terrainVS.fx">
       <Filter>Файлы ресурсов\Shaders</Filter>
-    </None>
-    <None Include="TerrainClass.cpp">
-      <Filter>Файлы исходного кода\Graphics\Blocks</Filter>
     </None>
   </ItemGroup>
 </Project>
