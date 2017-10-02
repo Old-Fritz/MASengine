@@ -1,0 +1,4 @@
+10-02-17_18-26-40 LogManager Initialized
+10-02-17_18-26-40 MemoryManager Initialized
+10-02-17_18-26-40 ModManager Initialized
+10-02-17_18-26-40 PathManager Initialized

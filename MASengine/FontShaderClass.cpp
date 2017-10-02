@@ -16,13 +16,13 @@ FontShaderClass::~FontShaderClass()
 {
 }
 
-bool FontShaderClass::Initialize(ID3D11Device * device, HWND hwnd)
+bool FontShaderClass::Initialize(ID3D11Device * device, HWND hwnd, PathClass* filenameVS, PathClass* filenamePS)
 {
 	bool result;
 
 
 	// Initialize the vertex and pixel shaders.
-	result = InitializeShader(device, hwnd, L"interfaceVS.fx", L"fontPS.fx");
+	result = InitializeShader(device, hwnd, filenameVS->getWPath().c_str(), filenamePS->getWPath().c_str());
 	if (!result)
 	{
 		return false;
@@ -58,7 +58,7 @@ bool FontShaderClass::Render(ID3D11DeviceContext * deviceContext, int indexCount
 	return true;
 }
 
-bool FontShaderClass::InitializeShader(ID3D11Device * device, HWND hwnd, WCHAR * vsFilename, WCHAR * psFilename)
+bool FontShaderClass::InitializeShader(ID3D11Device * device, HWND hwnd, const WCHAR * vsFilename, const WCHAR * psFilename)
 {
 	HRESULT result;
 	ID3D10Blob* errorMessage;
@@ -268,7 +268,7 @@ void FontShaderClass::ShutdownShader()
 	return;
 }
 
-void FontShaderClass::OutputShaderErrorMessage(ID3D10Blob * errorMessage, HWND hwnd, WCHAR * shaderFilename)
+void FontShaderClass::OutputShaderErrorMessage(ID3D10Blob * errorMessage, HWND hwnd, const WCHAR * shaderFilename)
 {
 	char* compileErrors;
 	unsigned long bufferSize, i;

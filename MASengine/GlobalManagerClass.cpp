@@ -126,7 +126,7 @@ void GlobalManagerClass::Shutdown()
 
 	if (m_instance)
 	{
-		::operator delete(m_instance, sizeof(*m_instance), 1);
+		::operator delete(m_instance, sizeof(*m_instance), 3);
 		m_instance = 0;
 	}
 }

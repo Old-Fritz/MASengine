@@ -18,13 +18,13 @@ TerrainShaderClass::~TerrainShaderClass()
 {
 }
 
-bool TerrainShaderClass::Initialize(ID3D11Device * device, HWND hwnd)
+bool TerrainShaderClass::Initialize(ID3D11Device * device, HWND hwnd , PathClass* filenameVS, PathClass* filenamePS)
 {
 	bool result;
 
 
 	// Initialize the vertex and pixel shaders.
-	result = InitializeShader(device, hwnd, L"terrainVS.fx", L"terrainPS.fx");
+	result = InitializeShader(device, hwnd, filenameVS->getWPath().c_str(), filenamePS->getWPath().c_str());
 	if (!result)
 	{
 		return false;
@@ -63,7 +63,7 @@ bool TerrainShaderClass::Render(ID3D11DeviceContext * deviceContext, int indexCo
 	return true;
 }
 
-bool TerrainShaderClass::InitializeShader(ID3D11Device * device, HWND hwnd, WCHAR * vsFilename, WCHAR * psFilename)
+bool TerrainShaderClass::InitializeShader(ID3D11Device * device, HWND hwnd, const WCHAR * vsFilename, const  WCHAR * psFilename)
 {
 	HRESULT result;
 	ID3D10Blob* errorMessage;
@@ -308,7 +308,7 @@ void TerrainShaderClass::ShutdownShader()
 	return;
 }
 
-void TerrainShaderClass::OutputShaderErrorMessage(ID3D10Blob * errorMessage, HWND hwnd, WCHAR * shaderFilename)
+void TerrainShaderClass::OutputShaderErrorMessage(ID3D10Blob * errorMessage, HWND hwnd, const WCHAR * shaderFilename)
 {
 	char* compileErrors;
 	unsigned long bufferSize, i;

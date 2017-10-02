@@ -51,13 +51,6 @@ void SettingsClass::Shutdown()
 		m_parameters.erase(m_parameters.begin());
 	}
 
-	if (m_filename)
-	{
-		m_filename->Shutdown();
-		::operator delete(m_filename, sizeof(*m_filename), 2);
-		m_filename = 0;
-	}
-
 	if (m_instance)
 	{
 		::operator delete(m_instance, sizeof(*m_instance), 1);

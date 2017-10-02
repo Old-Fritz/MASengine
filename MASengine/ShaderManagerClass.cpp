@@ -21,7 +21,9 @@ bool ShaderManagerClass::Initialize(ID3D11Device * device, HWND hwnd)
 	m_interfaceShader = new(1) InterfaceShaderClass;
 	if (!m_interfaceShader)
 		return false;
-	result = m_interfaceShader->Initialize(device, hwnd);
+	PathClass* interfacePS = PathManagerClass::getI().makePath("interfacePS.fx");
+	PathClass* interfaceVS = PathManagerClass::getI().makePath("interfaceVS.fx");
+	result = m_interfaceShader->Initialize(device, hwnd, interfaceVS, interfacePS);
 	if (!result)
 	{
 		LogManagerClass::getI().addLog("Error 10-1");
@@ -33,7 +35,9 @@ bool ShaderManagerClass::Initialize(ID3D11Device * device, HWND hwnd)
 	m_fontShader = new(1) FontShaderClass;
 	if (!m_fontShader)
 		return false;
-	result = m_fontShader->Initialize(device, hwnd);
+	PathClass* fontPS = PathManagerClass::getI().makePath("fontPS.fx");
+	PathClass* fontVS = PathManagerClass::getI().makePath("interfaceVS.fx");
+	result = m_fontShader->Initialize(device, hwnd, fontVS, fontPS);
 	if (!result)
 	{
 		LogManagerClass::getI().addLog("Error 10-3");
@@ -45,7 +49,9 @@ bool ShaderManagerClass::Initialize(ID3D11Device * device, HWND hwnd)
 	m_terrainShader = new(1) TerrainShaderClass;
 	if (!m_terrainShader)
 		return false;
-	result = m_terrainShader->Initialize(device, hwnd);
+	PathClass* terrainPS = PathManagerClass::getI().makePath("terrainPS.fx");
+	PathClass* terrainVS = PathManagerClass::getI().makePath("terrainVS.fx");
+	result = m_terrainShader->Initialize(device, hwnd, terrainVS, terrainPS);
 	if (!result)
 	{
 		LogManagerClass::getI().addLog("Error 10-x");

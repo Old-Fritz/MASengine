@@ -20,8 +20,8 @@ FontClass::~FontClass()
 bool FontClass::Initialize(ID3D11Device* device, PathClass* filename)
 {
 	bool result;
-	PathClass* fontFilename = new(4) PathClass();
-	PathClass* textureFilename = new(4) PathClass();
+	PathClass* fontFilename = PathManagerClass::getI().makePath();
+	PathClass* textureFilename = PathManagerClass::getI().makePath();
 
 	//load filename from description
 	std::ifstream file;
