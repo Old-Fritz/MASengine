@@ -64,7 +64,8 @@ bool TerrainClass::Render(TerrainShaderClass * terrainShader, ID3D11DeviceContex
 	MeshClass* mesh = MeshManagerClass::getI().getModel(m_meshHash[lvl]);
 	
 	mesh->Render(deviceContext);
-	result = terrainShader->Render(deviceContext, mesh->GetIndexCount(), worldMatrix, viewMatrix, projectionMatrix, TextureManagerClass::getI().getTexture(m_provTextureHash), lightDirection, ambientColor,
+	result = terrainShader->Render(deviceContext, mesh->GetIndexCount(), worldMatrix, viewMatrix, projectionMatrix,
+		TextureManagerClass::getI().getTexture(m_provTextureHash), lightDirection, ambientColor,
 		diffuseColor, cameraPosition, specularColor, specularPower, getProvColor());
 	if (!result)
 	{

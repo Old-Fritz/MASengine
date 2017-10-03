@@ -19,7 +19,7 @@
 /////////////
 const float SCREEN_DEPTH = 1000.0f;
 const float SCREEN_NEAR = 0.1f;
-
+const int TEST_NUM = 1000;
 
 ////////////////////////////////////////////////////////////////////////////////
 // Class name: GraphicsClass
@@ -52,7 +52,7 @@ private:
 	HWND m_hwnd;
 
 
-	TerrainClass* m_test;
+	TerrainClass* m_test[TEST_NUM];
 	//blocks
 	D3DClass* m_D3D;
 	ShaderManagerClass* m_shaderManager;

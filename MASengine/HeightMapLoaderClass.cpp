@@ -262,25 +262,39 @@ bool HeightMapLoaderClass::loadModel(PathClass * filename)
 
 void HeightMapLoaderClass::normalizeHeightMap(float width, float height)
 {
-	float widthMultiplier = width / (float)m_terrainWidth;
-	float heightMultiplier = height / (float)m_terrainHeight;
+	float widthMultiplier = width / ((float)m_terrainWidth - 1);
+	float heightMultiplier = height / ((float)m_terrainHeight - 1);
 
-	for (int i = 1; i<m_terrainHeight - 1; i++)
+
+	//normilize middle blocks
+	for (int i = 1; i<m_terrainHeight; i++)
 	{
-		for (int j = 1; j<m_terrainWidth -1; j++)
+		for (int j = 1; j<m_terrainWidth; j++)
 		{
-			m_heightMap[(m_terrainWidth * i) + j].y /= -15.0f;
-			//m_heightMap[(m_terrainWidth * i) + j].x *= widthMultiplier;
-			//m_heightMap[(m_terrainWidth * i) + j].z *= heightMultiplier;
+			m_heightMap[(m_terrainWidth * i) + j].x *= widthMultiplier;
+			m_heightMap[(m_terrainWidth * i) + j].z *= heightMultiplier;
 		}
 	}
-	for(int i = 0;i<m_terrainWidth;i++)
+	//normilize left blocks
+	for(int i = 1;i<m_terrainHeight-1;i++)
+		m_heightMap[(m_terrainWidth * i)].z *= heightMultiplier;
+	//normilize bottom blocks
+	for (int i = 1;i<m_terrainWidth-1;i++)
+		m_heightMap[i].x *= widthMultiplier;
+	//normilize right blocks
+	for (int i = 0;i < m_terrainHeight;i++)
+		m_heightMap[(m_terrainWidth * i) + m_terrainWidth-1].x = m_heightMap[(m_terrainWidth * i)].x + width;
+	//normilize up blocks
+	for (int i = 0;i < m_terrainWidth;i++)
+		m_heightMap[(m_terrainWidth * (m_terrainHeight-1)) + i].z = m_heightMap[i].z + height;
+
+	//normilize height
+	for (int i = 0; i<m_terrainHeight; i++)
 	{
-		//m_heightMap[(m_terrainWidth * m_terrainHeight) + i].x = m_heightMap[i].x + width;
-	}
-	for (int i = 0;i<m_terrainHeight;i++)
-	{
-		//m_heightMap[(m_terrainWidth * i) + m_terrainWidth].z = m_heightMap[m_terrainWidth * i].z + height;
+		for (int j = 0; j<m_terrainWidth; j++)
+		{
+			m_heightMap[(m_terrainWidth * i) + j].y /= -15.0f;
+		}
 	}
 }
 

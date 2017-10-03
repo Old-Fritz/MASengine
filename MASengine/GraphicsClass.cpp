@@ -7,7 +7,8 @@ GraphicsClass::GraphicsClass()
 	m_shaderManager = 0;
 	m_camera = 0;
 	m_interface = 0;
-	m_test = 0;
+	for (int i = 0;i < TEST_NUM;i++)
+		m_test[i] = 0;
 }
 
 GraphicsClass::GraphicsClass(const GraphicsClass &)
@@ -83,27 +84,37 @@ bool GraphicsClass::Initialize(HWND hwnd)
 		return false;
 	}
 
-	m_test = new(1) TerrainClass;
-	if (!m_test)
-		return false;
-	result = m_test->Initialize(m_D3D->GetDevice(), m_D3D->GetDeviceContext(),PathManagerClass::getI().makePath("data/terrain/block1.txt"),0);
-	if (!result)
+
+	for (int i = 0;i < TEST_NUM;i++)
 	{
-		MessageBox(hwnd, L"Could not initialize test", L"Error", MB_OK);
-		return false;
+		m_test[i] = new(1) TerrainClass;
+		if (!m_test[i])
+			return false;
+		result = m_test[i]->Initialize(m_D3D->GetDevice(), m_D3D->GetDeviceContext(), PathManagerClass::getI().makePath("data/terrain/block1.txt"), 0);
+		if (!result)
+		{
+			MessageBox(hwnd, L"Could not initialize test", L"Error", MB_OK);
+			return false;
+		}
 	}
+
+	
 
 	return true;
 }
 
 void GraphicsClass::Shutdown()
 {
-	if (m_test)
+	for (int i = 0;i < TEST_NUM;i++)
 	{
-		m_test->Shutdown();
-		::operator delete(m_test, sizeof(*m_test), 1);
-		m_test = 0;
+		if (m_test[i])
+		{
+			m_test[i]->Shutdown();
+			::operator delete(m_test[i], sizeof(*m_test[i]), 1);
+			m_test[i] = 0;
+		}
 	}
+	
 
 	if (m_interface)
 	{
@@ -368,6 +379,15 @@ bool GraphicsClass::Render()
 	m_D3D->GetProjectionMatrix(projectionMatrix);
 	m_D3D->GetOrthoMatrix(orthoMatrix);
 
+	//render test terrain
+	for (int i = 0;i < TEST_NUM;i++)
+	{
+		m_test[i]->Render(m_shaderManager->getTerrainShader(), m_D3D->GetDeviceContext(), worldMatrix,
+			viewMatrix, projectionMatrix, D3DXVECTOR3(0.0f, -1.0f, 0.5f), D3DXVECTOR4(0.15f, 0.15f, 0.15f, 1.0f),
+			D3DXVECTOR4(1.0f, 1.0f, 1.0f, 1.0f), D3DXVECTOR3(0.0f, -1.0f, 0.5f), D3DXVECTOR4(1.0f, 1.0f, 1.0f, 1.0f), 400.0f,
+			SCREEN_DEPTH, 3);
+	}
+
 	//render 2D
 	m_D3D->TurnZBufferOff();
 	
@@ -376,10 +396,7 @@ bool GraphicsClass::Render()
 
 	m_D3D->TurnZBufferOn();
 
-	m_test->Render(m_shaderManager->getTerrainShader(), m_D3D->GetDeviceContext(), worldMatrix,
-		viewMatrix, projectionMatrix, D3DXVECTOR3(0.0f, -1.0f, 0.5f), D3DXVECTOR4(0.15f, 0.15f, 0.15f, 1.0f),
-		D3DXVECTOR4(1.0f, 1.0f, 1.0f, 1.0f), D3DXVECTOR3(0.0f, -1.0f, 0.5f), D3DXVECTOR4(1.0f, 1.0f, 1.0f, 1.0f), 400.0f,
-		SCREEN_DEPTH, 0);
+	
 	// Present the rendered scene to the screen.
 	m_D3D->EndScene();
 

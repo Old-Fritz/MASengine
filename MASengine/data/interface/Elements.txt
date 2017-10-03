@@ -1,7 +1,4 @@
-6
- data/interface/elements/test.txt element
-
-data/interface/elements/testlist.txt list
+4
  data/interface/elements/debug.txt element
  data/interface/elements/Logo.txt element
  data/interface/elements/Version.txt element
