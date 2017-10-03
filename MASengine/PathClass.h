@@ -35,6 +35,8 @@ public:
 	void changePrefix(const std::wstring& prefix);
 
 	int getHash();
+
+	std::string getExpansion();
 private:
 	std::string m_path;
 	std::string m_prefix; // special adding that change filepath in case of mods

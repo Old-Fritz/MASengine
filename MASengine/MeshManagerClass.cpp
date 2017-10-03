@@ -28,32 +28,7 @@ void MeshManagerClass::Shutdown()
 	}
 }
 
-bool MeshManagerClass::addModel(ID3D11Device * device, PathClass* filename)
-{
-	bool result;
-
-	//check for existing of model
-	if (m_models.find(filename->getHash()) != m_models.end())
-		return true;
-
-	//create new model
-	MeshClass* newModel = new MeshClass;
-	if (!newModel)
-		return false;
-
-	result = newModel->Initialize(device, filename);
-	if (!result)
-	{
-		LogManagerClass::getI().addLog("Error 4-1");
-		return false;
-	}
-
-	m_models.emplace(std::pair<int, MeshClass*>(filename->getHash(),newModel));
-
-	return true;
-}
-
-bool MeshManagerClass::addModel(ID3D11Device * device, PathClass* filename, int width, int height)
+bool MeshManagerClass::addModel(ID3D11Device * device, PathClass* filename, float sizeX, float sizeY, float sizeZ)
 {
 	bool result;
 
@@ -66,7 +41,7 @@ bool MeshManagerClass::addModel(ID3D11Device * device, PathClass* filename, int 
 	if (!newModel)
 		return false;
 
-	result = newModel->Initialize(device, filename, width, height);
+	result = newModel->Initialize(device, filename, sizeX, sizeY, sizeZ);
 	if (!result)
 	{
 		LogManagerClass::getI().addLog("Error 4-1");

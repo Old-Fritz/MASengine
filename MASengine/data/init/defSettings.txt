@@ -5,6 +5,8 @@ MouseSensitivity = {30}
 Sample = {1}
 Vsync = {0}
 
+HeightMapModifier = {-15.0f}
+
 ButCommandFilename = {data/interface/actions/butACTION.txt}
 Language = {ENG}
 ElementsFilename = {data/interface/elements.txt}

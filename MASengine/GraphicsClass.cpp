@@ -385,7 +385,7 @@ bool GraphicsClass::Render()
 		m_test[i]->Render(m_shaderManager->getTerrainShader(), m_D3D->GetDeviceContext(), worldMatrix,
 			viewMatrix, projectionMatrix, D3DXVECTOR3(0.0f, -1.0f, 0.5f), D3DXVECTOR4(0.15f, 0.15f, 0.15f, 1.0f),
 			D3DXVECTOR4(1.0f, 1.0f, 1.0f, 1.0f), D3DXVECTOR3(0.0f, -1.0f, 0.5f), D3DXVECTOR4(1.0f, 1.0f, 1.0f, 1.0f), 400.0f,
-			SCREEN_DEPTH, 3);
+			SCREEN_DEPTH, 0);
 	}
 
 	//render 2D

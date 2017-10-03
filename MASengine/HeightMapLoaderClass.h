@@ -13,49 +13,31 @@
 ///////////////////////
 // MY CLASS INCLUDES //
 ///////////////////////
-#include "PathManagerClass.h"
-#include <d3d11.h>
-#include <d3dx11.h>
-#include <d3dx10math.h>
-#include "MemoryManagerClass.h"
+#include "MeshLoaderClass.h"
 
 ////////////////////////////////////////////////////////////////////////////////
-// Class name: MeshManagerClass
+// Class name: HeightMapLoaderClass
 ////////////////////////////////////////////////////////////////////////////////
 
-class HeightMapLoaderClass
+class HeightMapLoaderClass : public MeshLoaderClass
 {
-private:
-	struct VertexType
-	{
-		D3DXVECTOR3 position;
-		D3DXVECTOR2 texture;
-		D3DXVECTOR3 normal;
-	};
-	struct ModelType
-	{
-		float x, y, z;
-		float tu, tv;
-		float nx, ny, nz;
-	};
 public:
 	HeightMapLoaderClass();
 	HeightMapLoaderClass(const HeightMapLoaderClass&);
 	~HeightMapLoaderClass();
 
-	bool loadHeightMap(ID3D11Device* device, PathClass* filename, float width, float height, void** model,
-		int& vertexCount, int& indexCount);
+	bool loadModel(PathClass* filename, float sizeX = 0, float sizeY = 0, float sizeZ = 0);
 	bool createVertsAndInds(void** vertices, unsigned long** indices);
+	 void calcVertAndIndCount(int& vertexCount, int& indexCount);
 
 	void Shutdown();
 private:
 	//Creating height map
-	bool loadModel(PathClass* filename);
-	void normalizeHeightMap(float width, float height);
+	bool loadHeightMap(PathClass* filename);
+	void normalizeHeightMap(float sizeX = 0, float sizeY = 0, float sizeZ = 0);
 	bool calculateNormals();
 	void calculateTextureCoordinates();
 private:
-	ModelType* m_heightMap;
 	int m_terrainWidth;
 	int m_terrainHeight;
 };

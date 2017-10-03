@@ -50,7 +50,7 @@ private:
 private:
 	int m_ID;
 
-	int m_terrainWidth, m_terrainHeight;
+	float m_terrainWidth, m_terrainHeight;
 	int m_meshHash[NUM_OF_LVLS];
 	int m_boxMeshHash;
 	PathClass* m_hmapFilenames[NUM_OF_LVLS];

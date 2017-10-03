@@ -26,8 +26,7 @@ class MeshManagerClass
 public:
 	void Shutdown();
 
-	bool addModel(ID3D11Device* device, PathClass* filename);
-	bool addModel(ID3D11Device* device, PathClass* filename, int width, int height);
+	bool addModel(ID3D11Device* device, PathClass* filename, float sizeX = 0, float sizeY = 0, float sizeZ = 0);
 	MeshClass* getModel(PathClass* filename);
 	MeshClass* getModel(int hash);
 

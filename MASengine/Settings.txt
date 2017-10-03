@@ -2,6 +2,7 @@ ElementsFilename {data/interface/elements.txt}
 ButCommandFilename {data/interface/actions/butACTION.txt}
 Sample {1}
 MouseSensitivity {30}
+HeightMapModifier {-15.000000}
 loadScreenManagerFilename {data/loadscreenManager.txt}
 GeneralActionsFilename {data/interface/GeneralActions.txt}
 ProvFilename {data/provs.txt}

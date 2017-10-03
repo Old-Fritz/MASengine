@@ -42,8 +42,7 @@ public:
 	MeshClass(const MeshClass&);
 	~MeshClass();
 
-	bool Initialize(ID3D11Device* device, PathClass* filename);
-	bool Initialize(ID3D11Device* device, PathClass* filename, int width, int height);
+	bool Initialize(ID3D11Device* device, PathClass* filename, int sizeX = 0, int sizeY = 0, int sizeZ = 0);
 	void Shutdown();
 	void Render(ID3D11DeviceContext* deviceContext);
 

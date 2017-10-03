@@ -19,7 +19,7 @@
 /////////////
 const float SCREEN_DEPTH = 1000.0f;
 const float SCREEN_NEAR = 0.1f;
-const int TEST_NUM = 1000;
+const int TEST_NUM = 1;
 
 ////////////////////////////////////////////////////////////////////////////////
 // Class name: GraphicsClass

@@ -10,20 +10,19 @@ HeightMapLoaderClass::~HeightMapLoaderClass()
 {
 }
 
-bool HeightMapLoaderClass::loadHeightMap(ID3D11Device * device, PathClass * filename, float width, float height, void** model,
-	int& vertexCount, int& indexCount)
+bool HeightMapLoaderClass::loadModel(PathClass * filename, float sizeX, float sizeY, float sizeZ)
 {
 	bool result;
 
 	// Load in the height map
-	result = loadModel(filename);
+	result = loadHeightMap(filename);
 	if (!result)
 	{
 		return false;
 	}
 	
 	// Normalize the height of the height map.
-	normalizeHeightMap(width,height);
+	normalizeHeightMap(sizeX,sizeY,sizeZ);
 
 	// Calculate the texture coordinates.
 	calculateTextureCoordinates();
@@ -35,9 +34,8 @@ bool HeightMapLoaderClass::loadHeightMap(ID3D11Device * device, PathClass * file
 		return false;
 	}
 
-	*model = m_heightMap;
-	vertexCount = (m_terrainWidth - 1) * (m_terrainHeight - 1) * 6;
-	indexCount = vertexCount;
+	
+
 	return true;
 }
 
@@ -82,39 +80,39 @@ bool HeightMapLoaderClass::createVertsAndInds(void ** vertices, unsigned long **
 			index4 = (m_terrainHeight * (j + 1)) + (i + 1);  // Upper right.
 
 															 // Upper left.
-			tv = m_heightMap[index3].tv;
+			tv = m_model[index3].tv;
 
 			// Modify the texture coordinates to cover the top edge.
 			//if (tv == 1.0f) { tv = 0.0f; }
 
-			(*(VertexType**)vertices)[index].position = D3DXVECTOR3(m_heightMap[index3].x, m_heightMap[index3].y, m_heightMap[index3].z);
-			(*(VertexType**)vertices)[index].texture = D3DXVECTOR2(m_heightMap[index3].tu, tv);
-			(*(VertexType**)vertices)[index].normal = D3DXVECTOR3(m_heightMap[index3].nx, m_heightMap[index3].ny, m_heightMap[index3].nz);
+			(*(VertexType**)vertices)[index].position = D3DXVECTOR3(m_model[index3].x, m_model[index3].y, m_model[index3].z);
+			(*(VertexType**)vertices)[index].texture = D3DXVECTOR2(m_model[index3].tu, tv);
+			(*(VertexType**)vertices)[index].normal = D3DXVECTOR3(m_model[index3].nx, m_model[index3].ny, m_model[index3].nz);
 			(*indices)[index] = index;
 			index++;
 
 			if (abs((*(VertexType**)vertices)[index - 1].position.y) < 13)
 				index = index;
 			// Upper right.
-			tu = m_heightMap[index4].tu;
-			tv = m_heightMap[index4].tv;
+			tu = m_model[index4].tu;
+			tv = m_model[index4].tv;
 
 			// Modify the texture coordinates to cover the top and right edge.
 			//if (tu == 0.0f) { tu = 1.0f; }
 			//if (tv == 1.0f) { tv = 0.0f; }
 
-			(*(VertexType**)vertices)[index].position = D3DXVECTOR3(m_heightMap[index4].x, m_heightMap[index4].y, m_heightMap[index4].z);
+			(*(VertexType**)vertices)[index].position = D3DXVECTOR3(m_model[index4].x, m_model[index4].y, m_model[index4].z);
 			(*(VertexType**)vertices)[index].texture = D3DXVECTOR2(tu, tv);
-			(*(VertexType**)vertices)[index].normal = D3DXVECTOR3(m_heightMap[index4].nx, m_heightMap[index4].ny, m_heightMap[index4].nz);
+			(*(VertexType**)vertices)[index].normal = D3DXVECTOR3(m_model[index4].nx, m_model[index4].ny, m_model[index4].nz);
 			(*indices)[index] = index;
 			index++;
 
 			if (abs((*(VertexType**)vertices)[index - 1].position.y) < 13)
 				index = index;
 			// Bottom left.
-			(*(VertexType**)vertices)[index].position = D3DXVECTOR3(m_heightMap[index1].x, m_heightMap[index1].y, m_heightMap[index1].z);
-			(*(VertexType**)vertices)[index].texture = D3DXVECTOR2(m_heightMap[index1].tu, m_heightMap[index1].tv);
-			(*(VertexType**)vertices)[index].normal = D3DXVECTOR3(m_heightMap[index1].nx, m_heightMap[index1].ny, m_heightMap[index1].nz);
+			(*(VertexType**)vertices)[index].position = D3DXVECTOR3(m_model[index1].x, m_model[index1].y, m_model[index1].z);
+			(*(VertexType**)vertices)[index].texture = D3DXVECTOR2(m_model[index1].tu, m_model[index1].tv);
+			(*(VertexType**)vertices)[index].normal = D3DXVECTOR3(m_model[index1].nx, m_model[index1].ny, m_model[index1].nz);
 			(*indices)[index] = index;
 			index++;
 
@@ -122,9 +120,9 @@ bool HeightMapLoaderClass::createVertsAndInds(void ** vertices, unsigned long **
 				index = index;
 
 			// Bottom left.
-			(*(VertexType**)vertices)[index].position = D3DXVECTOR3(m_heightMap[index1].x, m_heightMap[index1].y, m_heightMap[index1].z);
-			(*(VertexType**)vertices)[index].texture = D3DXVECTOR2(m_heightMap[index1].tu, m_heightMap[index1].tv);
-			(*(VertexType**)vertices)[index].normal = D3DXVECTOR3(m_heightMap[index1].nx, m_heightMap[index1].ny, m_heightMap[index1].nz);
+			(*(VertexType**)vertices)[index].position = D3DXVECTOR3(m_model[index1].x, m_model[index1].y, m_model[index1].z);
+			(*(VertexType**)vertices)[index].texture = D3DXVECTOR2(m_model[index1].tu, m_model[index1].tv);
+			(*(VertexType**)vertices)[index].normal = D3DXVECTOR3(m_model[index1].nx, m_model[index1].ny, m_model[index1].nz);
 			(*indices)[index] = index;
 			index++;
 
@@ -132,16 +130,16 @@ bool HeightMapLoaderClass::createVertsAndInds(void ** vertices, unsigned long **
 				index = index;
 
 			// Upper right.
-			tu = m_heightMap[index4].tu;
-			tv = m_heightMap[index4].tv;
+			tu = m_model[index4].tu;
+			tv = m_model[index4].tv;
 
 			// Modify the texture coordinates to cover the top and right edge.
 			//if (tu == 0.0f) { tu = 1.0f; }
 			//if (tv == 1.0f) { tv = 0.0f; }
 
-			(*(VertexType**)vertices)[index].position = D3DXVECTOR3(m_heightMap[index4].x, m_heightMap[index4].y, m_heightMap[index4].z);
+			(*(VertexType**)vertices)[index].position = D3DXVECTOR3(m_model[index4].x, m_model[index4].y, m_model[index4].z);
 			(*(VertexType**)vertices)[index].texture = D3DXVECTOR2(tu, tv);
-			(*(VertexType**)vertices)[index].normal = D3DXVECTOR3(m_heightMap[index4].nx, m_heightMap[index4].ny, m_heightMap[index4].nz);
+			(*(VertexType**)vertices)[index].normal = D3DXVECTOR3(m_model[index4].nx, m_model[index4].ny, m_model[index4].nz);
 			(*indices)[index] = index;
 			index++;
 
@@ -149,14 +147,14 @@ bool HeightMapLoaderClass::createVertsAndInds(void ** vertices, unsigned long **
 				index = index;
 
 			// Bottom right.
-			tu = m_heightMap[index2].tu;
+			tu = m_model[index2].tu;
 
 			// Modify the texture coordinates to cover the right edge.
 			//if (tu == 0.0f) { tu = 1.0f; }
 
-			(*(VertexType**)vertices)[index].position = D3DXVECTOR3(m_heightMap[index2].x, m_heightMap[index2].y, m_heightMap[index2].z);
-			(*(VertexType**)vertices)[index].texture = D3DXVECTOR2(tu, m_heightMap[index2].tv);
-			(*(VertexType**)vertices)[index].normal = D3DXVECTOR3(m_heightMap[index2].nx, m_heightMap[index2].ny, m_heightMap[index2].nz);
+			(*(VertexType**)vertices)[index].position = D3DXVECTOR3(m_model[index2].x, m_model[index2].y, m_model[index2].z);
+			(*(VertexType**)vertices)[index].texture = D3DXVECTOR2(tu, m_model[index2].tv);
+			(*(VertexType**)vertices)[index].normal = D3DXVECTOR3(m_model[index2].nx, m_model[index2].ny, m_model[index2].nz);
 			(*indices)[index] = index;
 			index++;
 			if (abs((*(VertexType**)vertices)[index - 1].position.y) < 13)
@@ -165,11 +163,20 @@ bool HeightMapLoaderClass::createVertsAndInds(void ** vertices, unsigned long **
 	}
 }
 
+void HeightMapLoaderClass::calcVertAndIndCount(int & vertexCount, int & indexCount)
+{
+	m_vertexCount = (m_terrainWidth - 1) * (m_terrainHeight - 1) * 6;
+	m_indexCount = m_vertexCount;
+
+	vertexCount = m_vertexCount;
+	indexCount = m_indexCount;
+}
+
 void HeightMapLoaderClass::Shutdown()
 {
 }
 
-bool HeightMapLoaderClass::loadModel(PathClass * filename)
+bool HeightMapLoaderClass::loadHeightMap(PathClass * filename)
 {
 	FILE* filePtr;
 	int error;
@@ -220,8 +227,8 @@ bool HeightMapLoaderClass::loadModel(PathClass * filename)
 
 
 	// Create the structure to hold the height map data.
-	m_heightMap = new(3) ModelType[m_terrainWidth * m_terrainHeight];
-	if (!m_heightMap)
+	m_model = new(3) ModelType[m_terrainWidth * m_terrainHeight];
+	if (!m_model)
 	{
 		return false;
 	}
@@ -238,9 +245,9 @@ bool HeightMapLoaderClass::loadModel(PathClass * filename)
 
 			index = (m_terrainWidth * j) + i;
 
-			m_heightMap[index].x = (float)i;
-			m_heightMap[index].y = (float)height;
-			m_heightMap[index].z = (float)j;
+			m_model[index].x = (float)i;
+			m_model[index].y = (float)height;
+			m_model[index].z = (float)j;
 
 			//d++;
 
@@ -260,10 +267,10 @@ bool HeightMapLoaderClass::loadModel(PathClass * filename)
 	return true;
 }
 
-void HeightMapLoaderClass::normalizeHeightMap(float width, float height)
+void HeightMapLoaderClass::normalizeHeightMap(float sizeX, float sizeY, float sizeZ)
 {
-	float widthMultiplier = width / ((float)m_terrainWidth - 1);
-	float heightMultiplier = height / ((float)m_terrainHeight - 1);
+	float widthMultiplier = sizeX / ((float)m_terrainWidth - 1);
+	float heightMultiplier = sizeZ / ((float)m_terrainHeight - 1);
 
 
 	//normilize middle blocks
@@ -271,29 +278,29 @@ void HeightMapLoaderClass::normalizeHeightMap(float width, float height)
 	{
 		for (int j = 1; j<m_terrainWidth; j++)
 		{
-			m_heightMap[(m_terrainWidth * i) + j].x *= widthMultiplier;
-			m_heightMap[(m_terrainWidth * i) + j].z *= heightMultiplier;
+			m_model[(m_terrainWidth * i) + j].x *= widthMultiplier;
+			m_model[(m_terrainWidth * i) + j].z *= heightMultiplier;
 		}
 	}
 	//normilize left blocks
 	for(int i = 1;i<m_terrainHeight-1;i++)
-		m_heightMap[(m_terrainWidth * i)].z *= heightMultiplier;
+		m_model[(m_terrainWidth * i)].z *= heightMultiplier;
 	//normilize bottom blocks
 	for (int i = 1;i<m_terrainWidth-1;i++)
-		m_heightMap[i].x *= widthMultiplier;
+		m_model[i].x *= widthMultiplier;
 	//normilize right blocks
 	for (int i = 0;i < m_terrainHeight;i++)
-		m_heightMap[(m_terrainWidth * i) + m_terrainWidth-1].x = m_heightMap[(m_terrainWidth * i)].x + width;
+		m_model[(m_terrainWidth * i) + m_terrainWidth-1].x = m_model[(m_terrainWidth * i)].x + sizeX;
 	//normilize up blocks
 	for (int i = 0;i < m_terrainWidth;i++)
-		m_heightMap[(m_terrainWidth * (m_terrainHeight-1)) + i].z = m_heightMap[i].z + height;
+		m_model[(m_terrainWidth * (m_terrainHeight-1)) + i].z = m_model[i].z + sizeZ;
 
 	//normilize height
 	for (int i = 0; i<m_terrainHeight; i++)
 	{
 		for (int j = 0; j<m_terrainWidth; j++)
 		{
-			m_heightMap[(m_terrainWidth * i) + j].y /= -15.0f;
+			m_model[(m_terrainWidth * i) + j].y /= sizeY;
 		}
 	}
 }
@@ -322,17 +329,17 @@ bool HeightMapLoaderClass::calculateNormals()
 			index3 = ((j + 1) * m_terrainHeight) + i;
 
 			// Get three vertices from the face.
-			vertex1[0] = m_heightMap[index1].x;
-			vertex1[1] = m_heightMap[index1].y;
-			vertex1[2] = m_heightMap[index1].z;
+			vertex1[0] = m_model[index1].x;
+			vertex1[1] = m_model[index1].y;
+			vertex1[2] = m_model[index1].z;
 
-			vertex2[0] = m_heightMap[index2].x;
-			vertex2[1] = m_heightMap[index2].y;
-			vertex2[2] = m_heightMap[index2].z;
+			vertex2[0] = m_model[index2].x;
+			vertex2[1] = m_model[index2].y;
+			vertex2[2] = m_model[index2].z;
 
-			vertex3[0] = m_heightMap[index3].x;
-			vertex3[1] = m_heightMap[index3].y;
-			vertex3[2] = m_heightMap[index3].z;
+			vertex3[0] = m_model[index3].x;
+			vertex3[1] = m_model[index3].y;
+			vertex3[2] = m_model[index3].z;
 
 			// Calculate the two vectors for this face.
 			vector1[0] = vertex1[0] - vertex3[0];
@@ -421,9 +428,9 @@ bool HeightMapLoaderClass::calculateNormals()
 			index = (j * m_terrainHeight) + i;
 
 			// Normalize the final shared normal for this vertex and store it in the height map array.
-			m_heightMap[index].nx = (sum[0] / length);
-			m_heightMap[index].ny = (sum[1] / length);
-			m_heightMap[index].nz = (sum[2] / length);
+			m_model[index].nx = (sum[0] / length);
+			m_model[index].ny = (sum[1] / length);
+			m_model[index].nz = (sum[2] / length);
 
 		}
 	}
@@ -482,8 +489,8 @@ void HeightMapLoaderClass::calculateTextureCoordinates()
 		{
 
 			// Store the texture coordinate in the height map.
-			m_heightMap[(m_terrainHeight * j) + i].tu = tuCoordinate;
-			m_heightMap[(m_terrainHeight * j) + i].tv = tvCoordinate;
+			m_model[(m_terrainHeight * j) + i].tu = tuCoordinate;
+			m_model[(m_terrainHeight * j) + i].tv = tvCoordinate;
 
 			// Increment the tu texture coordinate by the increment value and increment the index by one.
 			tuCoordinate += incrementValue;

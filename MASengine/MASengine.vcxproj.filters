@@ -136,6 +136,12 @@
     <Filter Include="Файлы исходного кода\GlobalManager\ResourceManagment\Meshes">
       <UniqueIdentifier>{165de99c-afe4-46d3-91b3-74f69f09188d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы исходного кода\GlobalManager\ResourceManagment\Meshes\Loaders">
+      <UniqueIdentifier>{3bcca09f-cdb8-42f8-9d12-f25a81272194}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\GlobalManager\ResourceManagment\Meshes\loaders">
+      <UniqueIdentifier>{9ced67b3-e138-42b3-9e7b-a6681113e3a2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -300,11 +306,14 @@
     <ClCompile Include="MeshManagerClass.cpp">
       <Filter>Файлы исходного кода\GlobalManager\ResourceManagment\Meshes</Filter>
     </ClCompile>
-    <ClCompile Include="HeightMapLoaderClass.cpp">
-      <Filter>Файлы исходного кода\GlobalManager\ResourceManagment\Meshes</Filter>
-    </ClCompile>
     <ClCompile Include="TerrainClass.cpp">
       <Filter>Файлы исходного кода\Graphics\Blocks</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshLoaderClass.cpp">
+      <Filter>Файлы исходного кода\GlobalManager\ResourceManagment\Meshes\Loaders</Filter>
+    </ClCompile>
+    <ClCompile Include="HeightMapLoaderClass.cpp">
+      <Filter>Файлы исходного кода\GlobalManager\ResourceManagment\Meshes\Loaders</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -473,8 +482,11 @@
     <ClInclude Include="MeshManagerClass.h">
       <Filter>Заголовочные файлы\GlobalManager\ResourceManagment\Meshes</Filter>
     </ClInclude>
+    <ClInclude Include="MeshLoaderClass.h">
+      <Filter>Заголовочные файлы\GlobalManager\ResourceManagment\Meshes\loaders</Filter>
+    </ClInclude>
     <ClInclude Include="HeightMapLoaderClass.h">
-      <Filter>Заголовочные файлы\GlobalManager\ResourceManagment\Meshes</Filter>
+      <Filter>Заголовочные файлы\GlobalManager\ResourceManagment\Meshes\loaders</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

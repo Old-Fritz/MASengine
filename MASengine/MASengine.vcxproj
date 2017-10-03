@@ -143,6 +143,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MemoryManagerClass.cpp" />
     <ClCompile Include="MeshClass.cpp" />
+    <ClCompile Include="MeshLoaderClass.cpp" />
     <ClCompile Include="MeshManagerClass.cpp" />
     <ClCompile Include="ModManagerClass.cpp" />
     <ClCompile Include="PathClass.cpp" />
@@ -183,6 +184,7 @@
     <ClInclude Include="FloatParamClass.h" />
     <ClInclude Include="HeightMapLoaderClass.h" />
     <ClInclude Include="IntParamClass.h" />
+    <ClInclude Include="MeshLoaderClass.h" />
     <ClInclude Include="PathClass.h" />
     <ClInclude Include="FontClass.h" />
     <ClInclude Include="FontManagerClass.h" />

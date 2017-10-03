@@ -79,6 +79,30 @@ int PathClass::getHash()
 	return Utils::getHash(m_path);
 }
 
+std::string PathClass::getExpansion()
+{
+	std::string exp;
+
+	//find strt of expansion in file
+	int i;
+	for (i = m_path.size() - 1;i >= 0;i--)
+	{
+		if (m_path[i] == '.')
+			break;
+	}
+	//check for existing of expansion
+	if (i == 0 || i == m_path.size() - 1)
+		return "";
+
+	//copy expansion to string
+	for (++i;i < m_path.size();i++)
+	{
+		exp += m_path[i];
+	}
+
+	return exp;
+}
+
 std::ifstream &operator >> (std::ifstream &in, PathClass* path) {
 	std::string str;
 	in >> str;

@@ -37,7 +37,7 @@ bool TerrainClass::Initialize(ID3D11Device * device, ID3D11DeviceContext * devic
 		//create hash
 		m_meshHash[i] = m_hmapFilenames[i]->getHash();
 		//load model
-		result = MeshManagerClass::getI().addModel(device, m_hmapFilenames[i], m_terrainWidth,m_terrainHeight); 
+		result = MeshManagerClass::getI().addModel(device, m_hmapFilenames[i], m_terrainWidth,SettingsClass::getI().getFloatParameter("HeightMapModifier"), m_terrainHeight); 
 		if (!result)
 		{
 			return false;

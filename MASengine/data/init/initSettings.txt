@@ -1,12 +1,14 @@
 Settings.txt
 data/init/defSettings.txt
-13
+14
 0 ScreenWidth
 0 ScreenHeight
 0 Fullscreen
 0 MouseSensitivity
 0 Sample
 0 Vsync
+
+1 HeightMapModifier
 
 3 ButCommandFilename
 2 Language

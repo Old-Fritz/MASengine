@@ -13,54 +13,30 @@ MeshClass::~MeshClass()
 {
 }
 
-bool MeshClass::Initialize(ID3D11Device * device, PathClass* filename)
+bool MeshClass::Initialize(ID3D11Device * device, PathClass* filename, int sizeX, int sizeY, int sizeZ)
 {
 	bool result;
 
 	VertexType* verticies;
 	unsigned long* indicies;
 
-	// Load in the model data.
-	result = LoadModel(filename);
-	if (!result)
-	{
-		return false;
-	}
-
-	result = createVertsAndInds(&verticies, &indicies);
-	if (!result)
-	{
-		return false;
-	}
-
-	// Initialize the vertex and index buffer that hold the geometry for the triangle.
-	result = InitializeBuffers(device, verticies, indicies);
-	if (!result)
-	{
-		return false;
-	}
-	
-	MemoryManagerClass::getI().cleanTemp();
-
-	return true;
-}
-
-bool MeshClass::Initialize(ID3D11Device * device, PathClass * filename, int width, int height)
-{
-	bool result;
-
-	VertexType* verticies;
-	unsigned long* indicies;
-
-	HeightMapLoaderClass* loader = new(3) HeightMapLoaderClass;
+	//create loader
+	MeshLoaderClass* loader;
+	if (Utils::getHash(filename->getExpansion()) == Utils::getHash("bmp"))
+		loader = new(3) HeightMapLoaderClass;
+	else
+		loader = new(3) MeshLoaderClass;
 
 	// Load in the model data.
-	result = loader->loadHeightMap(device,filename,width,height, (void**)&m_model,m_vertexCount,m_indexCount);
+	result = loader->loadModel(filename,sizeX,sizeY,sizeZ);
 	if (!result)
 	{
 		return false;
 	}
-	
+
+	//get vertex and index count
+	loader->calcVertAndIndCount(m_vertexCount, m_indexCount);
+
 	result = loader->createVertsAndInds((void**)&verticies, &indicies);
 	if (!result)
 	{
@@ -73,9 +49,7 @@ bool MeshClass::Initialize(ID3D11Device * device, PathClass * filename, int widt
 	{
 		return false;
 	}
-
-	//clear temp memory
-	loader->Shutdown();
+	
 	MemoryManagerClass::getI().cleanTemp();
 
 	return true;
