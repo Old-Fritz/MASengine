@@ -10,3 +10,4 @@ Fullscreen {0}
 Language {ENG}
 Vsync {0}
 ScreenHeight {720}
+ProvRegionFilename {data/provRegions.txt}

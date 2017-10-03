@@ -18,8 +18,6 @@ class ProvManagerClass
 {
 
 public:
-	
-
 	bool Initialize(PathClass* filename);
 	void Shutdown();
 

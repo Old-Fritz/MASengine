@@ -17,6 +17,8 @@ bool MeshClass::Initialize(ID3D11Device * device, PathClass* filename)
 {
 	bool result;
 
+	VertexType* verticies;
+	unsigned long* indicies;
 
 	// Load in the model data.
 	result = LoadModel(filename);
@@ -25,13 +27,20 @@ bool MeshClass::Initialize(ID3D11Device * device, PathClass* filename)
 		return false;
 	}
 
+	result = createVertsAndInds(&verticies, &indicies);
+	if (!result)
+	{
+		return false;
+	}
+
 	// Initialize the vertex and index buffer that hold the geometry for the triangle.
-	result = InitializeBuffers(device);
+	result = InitializeBuffers(device, verticies, indicies);
 	if (!result)
 	{
 		return false;
 	}
 	
+	MemoryManagerClass::getI().cleanTemp();
 
 	return true;
 }
@@ -39,6 +48,9 @@ bool MeshClass::Initialize(ID3D11Device * device, PathClass* filename)
 bool MeshClass::Initialize(ID3D11Device * device, PathClass * filename, int width, int height)
 {
 	bool result;
+
+	VertexType* verticies;
+	unsigned long* indicies;
 
 	HeightMapLoaderClass* loader = new(3) HeightMapLoaderClass;
 
@@ -48,16 +60,23 @@ bool MeshClass::Initialize(ID3D11Device * device, PathClass * filename, int widt
 	{
 		return false;
 	}
-	//clear temp memory
-	loader->Shutdown();
-	MemoryManagerClass::getI().cleanTemp();
-
-	// Initialize the vertex and index buffer that hold the geometry for the triangle.
-	result = InitializeBuffers(device);
+	
+	result = loader->createVertsAndInds((void**)&verticies, &indicies);
 	if (!result)
 	{
 		return false;
 	}
+
+	// Initialize the vertex and index buffer that hold the geometry for the triangle.
+	result = InitializeBuffers(device, verticies, indicies);
+	if (!result)
+	{
+		return false;
+	}
+
+	//clear temp memory
+	loader->Shutdown();
+	MemoryManagerClass::getI().cleanTemp();
 
 	return true;
 }
@@ -67,9 +86,6 @@ void MeshClass::Shutdown()
 
 	// Release the vertex and index buffers.
 	ShutdownBuffers();
-
-	// Release the model data.
-	ReleaseModel();
 }
 
 void MeshClass::Render(ID3D11DeviceContext* deviceContext)
@@ -90,39 +106,39 @@ void MeshClass::getBox(float & xSize, float & ySize, float & zSize)
 	xSize = ySize = zSize = 1;
 }
 
-bool MeshClass::InitializeBuffers(ID3D11Device * device)
+bool MeshClass::createVertsAndInds(VertexType ** vertices, unsigned long ** indices)
 {
-	VertexType* vertices;
-	unsigned long* indices;
-	D3D11_BUFFER_DESC vertexBufferDesc, indexBufferDesc;
-	D3D11_SUBRESOURCE_DATA vertexData, indexData;
-	HRESULT result;
-	int i;
-
-
 	// Create the vertex array.
-	vertices = new(3) VertexType[m_vertexCount];
+	*vertices = new(3) VertexType[m_vertexCount];
 	if (!vertices)
 	{
 		return false;
 	}
 
 	// Create the index array.
-	indices = new(3) unsigned long[m_vertexCount];
+	*indices = new(3) unsigned long[m_vertexCount];
 	if (!indices)
 	{
 		return false;
 	}
 
 	// Load the vertex array and index array with data.
-	for (i = 0; i<m_vertexCount; i++)
+	for (int i = 0; i<m_vertexCount; i++)
 	{
-		vertices[i].position = D3DXVECTOR3(m_model[i].x, m_model[i].y, m_model[i].z);
-		vertices[i].texture = D3DXVECTOR2(m_model[i].tu, m_model[i].tv);
-		vertices[i].normal = D3DXVECTOR3(m_model[i].nx, m_model[i].ny, m_model[i].nz);
+		(*vertices)[i].position = D3DXVECTOR3(m_model[i].x, m_model[i].y, m_model[i].z);
+		(*vertices)[i].texture = D3DXVECTOR2(m_model[i].tu, m_model[i].tv);
+		(*vertices)[i].normal = D3DXVECTOR3(m_model[i].nx, m_model[i].ny, m_model[i].nz);
 
-		indices[i] = i;
+		(*indices)[i] = i;
 	}
+}
+
+bool MeshClass::InitializeBuffers(ID3D11Device * device, VertexType* vertices, unsigned long * indices)
+{
+	D3D11_BUFFER_DESC vertexBufferDesc, indexBufferDesc;
+	D3D11_SUBRESOURCE_DATA vertexData, indexData;
+	HRESULT result;
+
 
 	// Set up the description of the vertex buffer.
 	vertexBufferDesc.Usage = D3D11_USAGE_DEFAULT;
@@ -157,9 +173,6 @@ bool MeshClass::InitializeBuffers(ID3D11Device * device)
 	{
 		return false;
 	}
-
-	// Release the arrays now that the vertex and index buffers have been created and loaded.
-	MemoryManagerClass::getI().cleanTemp();
 
 	return true;
 }
@@ -236,7 +249,7 @@ bool MeshClass::LoadModel(PathClass* filename)
 	m_indexCount = m_vertexCount;
 
 	// Create the model using the vertex count that was read in.
-	m_model = new ModelType[m_vertexCount];
+	m_model = new(3) ModelType[m_vertexCount];
 	if (!m_model)
 	{
 		return false;
@@ -263,15 +276,4 @@ bool MeshClass::LoadModel(PathClass* filename)
 	fin.close();
 
 	return true;
-}
-
-void MeshClass::ReleaseModel()
-{
-	if (m_model)
-	{
-		::operator delete(m_model, sizeof(ModelType)*m_vertexCount, 2);
-		m_model = 0;
-	}
-
-	return;
 }

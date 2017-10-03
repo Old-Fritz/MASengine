@@ -62,7 +62,7 @@ bool MeshManagerClass::addModel(ID3D11Device * device, PathClass* filename, int 
 		return true;
 
 	//create new model
-	MeshClass* newModel = new MeshClass;
+	MeshClass* newModel = new(4) MeshClass;
 	if (!newModel)
 		return false;
 

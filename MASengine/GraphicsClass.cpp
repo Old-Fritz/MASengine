@@ -86,7 +86,7 @@ bool GraphicsClass::Initialize(HWND hwnd)
 	m_test = new(1) TerrainClass;
 	if (!m_test)
 		return false;
-	result = m_test->Initialize(m_D3D->GetDevice(), m_D3D->GetDeviceContext(),PathManagerClass::getI().makePath("data/terrain/block1.txt"));
+	result = m_test->Initialize(m_D3D->GetDevice(), m_D3D->GetDeviceContext(),PathManagerClass::getI().makePath("data/terrain/block1.txt"),0);
 	if (!result)
 	{
 		MessageBox(hwnd, L"Could not initialize test", L"Error", MB_OK);
@@ -379,7 +379,7 @@ bool GraphicsClass::Render()
 	m_test->Render(m_shaderManager->getTerrainShader(), m_D3D->GetDeviceContext(), worldMatrix,
 		viewMatrix, projectionMatrix, D3DXVECTOR3(0.0f, -1.0f, 0.5f), D3DXVECTOR4(0.15f, 0.15f, 0.15f, 1.0f),
 		D3DXVECTOR4(1.0f, 1.0f, 1.0f, 1.0f), D3DXVECTOR3(0.0f, -1.0f, 0.5f), D3DXVECTOR4(1.0f, 1.0f, 1.0f, 1.0f), 400.0f,
-		SCREEN_DEPTH, 1);
+		SCREEN_DEPTH, 0);
 	// Present the rendered scene to the screen.
 	m_D3D->EndScene();
 

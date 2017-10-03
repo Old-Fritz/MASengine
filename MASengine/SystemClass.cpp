@@ -69,9 +69,22 @@ bool SystemClass::Initialize()
 			return false;
 		}
 	}
+	else
+		return false;
 	LogManagerClass::getI().addLog("Provs Initialization");
 
-
+	//Initialize prov region manager
+	if (&(ProvRegionManagerClass::getI()))
+	{
+		result = ProvRegionManagerClass::getI().Initialize(SettingsClass::getI().getPathParameter("ProvRegionFilename"));
+		if (!result)
+		{
+			return false;
+		}
+	}
+	else
+		return false;
+	LogManagerClass::getI().addLog("Provs Regions Initialization");
 	
 	LoadScreenManagerClass::getI().hideElements();
 
@@ -85,6 +98,11 @@ void SystemClass::Shutdown()
 {
 	//save settings first
 	SettingsClass::getI().save();
+
+	if (&(ProvRegionManagerClass::getI()))
+	{
+		ProvRegionManagerClass::getI().Shutdown();
+	}
 
 	if (&(ProvManagerClass::getI()))
 	{
@@ -192,6 +210,9 @@ bool SystemClass::Frame()
 	result = doCommands();
 	if (!result)
 		return false;
+	
+	//free frame memory
+	MemoryManagerClass::getI().cleanOneFrame();
 
 	return true;
 }

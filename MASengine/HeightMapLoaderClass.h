@@ -25,7 +25,13 @@
 
 class HeightMapLoaderClass
 {
-public:
+private:
+	struct VertexType
+	{
+		D3DXVECTOR3 position;
+		D3DXVECTOR2 texture;
+		D3DXVECTOR3 normal;
+	};
 	struct ModelType
 	{
 		float x, y, z;
@@ -39,6 +45,8 @@ public:
 
 	bool loadHeightMap(ID3D11Device* device, PathClass* filename, float width, float height, void** model,
 		int& vertexCount, int& indexCount);
+	bool createVertsAndInds(void** vertices, unsigned long** indices);
+
 	void Shutdown();
 private:
 	//Creating height map

@@ -23,6 +23,7 @@ bool ProvManagerClass::Initialize(PathClass* filename)
 			return false;
 		}
 		LoadScreenManagerClass::getI().changeLine("Init prov" + std::to_string(i), 0.2f + 0.2f * ((float)i / (float)numOfProvs));
+		m_provs.emplace_back(prov);
 	}
 
 	return true;

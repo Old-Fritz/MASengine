@@ -17,16 +17,22 @@ class ProvRegionManagerClass
 {
 
 public:
-	ProvRegionManagerClass();
-	ProvRegionManagerClass(const ProvRegionManagerClass&);
-	~ProvRegionManagerClass();
+	
 
-	bool Initialize(const std::string& filename);
+	bool Initialize(PathClass* filename);
 	void Shutdown();
 
 	//Getters
 	ProvRegionClass* getProvRegion(int provRegionID);
+
+	static ProvRegionManagerClass& getI();
 private:
+	ProvRegionManagerClass();
+	ProvRegionManagerClass(const ProvRegionManagerClass&);
+	~ProvRegionManagerClass();
+private:
+	static ProvRegionManagerClass* m_instance;
+
 	std::vector<ProvRegionClass*> m_provRegions;
 };
 

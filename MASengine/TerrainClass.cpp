@@ -2,7 +2,6 @@
 
 TerrainClass::TerrainClass()
 {
-	m_provs = 0;
 }
 TerrainClass::TerrainClass(const TerrainClass &)
 {
@@ -11,10 +10,11 @@ TerrainClass::~TerrainClass()
 {
 }
 
-bool TerrainClass::Initialize(ID3D11Device * device, ID3D11DeviceContext * deviceContext, PathClass* blockFilename)
+bool TerrainClass::Initialize(ID3D11Device * device, ID3D11DeviceContext * deviceContext, PathClass* blockFilename, int id)
 {
 	bool result;
 
+	m_ID = id;
 	//read info from file
 	result = readFromFile(blockFilename);
 	if (!result)
@@ -46,6 +46,7 @@ bool TerrainClass::Initialize(ID3D11Device * device, ID3D11DeviceContext * devic
 
 	return true;
 }
+
 
 void TerrainClass::Shutdown()
 {
@@ -115,13 +116,21 @@ bool TerrainClass::readFromFile(PathClass* filename)
 
 D3DXVECTOR4 * TerrainClass::getProvColor()
 {
-	auto provsIDs = m_provs->getProvIDs();
-	D3DXVECTOR4* provColors = new(2) D3DXVECTOR4[provsIDs->size()];
+	//get region
+	ProvRegionClass* provs = ProvRegionManagerClass::getI().getProvRegion(m_ID);
+
+	auto provsIDs = provs->getProvIDs();
+	D3DXVECTOR4* provColors = new(2) D3DXVECTOR4[256];
 	
 	int i = 0;
-	for (auto ID = provsIDs->begin();ID!=provsIDs->end();i++,ID++)
+	for (auto ID = provsIDs->begin();ID!=provsIDs->end() || i<256;i++,ID++)
 	{
 		provColors[i] = ProvManagerClass::getI().getProv(*ID)->getLayers()->getMainColor();
+	}
+	//fill last colors with white
+	while (i < 256)
+	{
+		provColors[i] = D3DXVECTOR4(1, 1, 1, 1);
 	}
 
 	return provColors;

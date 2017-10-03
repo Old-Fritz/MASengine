@@ -1,0 +1,35 @@
+10-03-17_03-56-03 LogManager Initialized
+10-03-17_03-56-03 MemoryManager Initialized
+10-03-17_03-56-03 ModManager Initialized
+10-03-17_03-56-03 PathManager Initialized
+10-03-17_03-56-03 Settings Initialized
+10-03-17_03-56-03 CommandManager Initialized
+10-03-17_03-56-03 ResourceManager Initialized
+10-03-17_03-56-04 SystemStateManager Initialized
+10-03-17_03-56-04 All global system Initialized
+10-03-17_03-56-04 Windows Initialization
+10-03-17_03-56-04 input Initialization
+10-03-17_03-56-04 Position Initialization
+10-03-17_03-56-05 Directx Initialization
+10-03-17_03-56-05 Interface Shader Initialization
+10-03-17_03-56-05 Font Shader Initialization
+10-03-17_03-56-05 Terrain Shader Initialization
+10-03-17_03-56-05 Shaders Initialization
+10-03-17_03-56-05 Error 15-10
+10-03-17_03-56-05 Error 15-10
+10-03-17_03-56-05 Error 15-10
+10-03-17_03-56-05 Error 15-10
+10-03-17_03-56-05 Error 15-10
+10-03-17_03-56-05 Error 15-10
+10-03-17_03-56-05 Graphics Initialization
+10-03-17_03-56-05 Error 15-10
+10-03-17_03-56-05 Error 15-10
+10-03-17_03-56-05 Error 15-10
+10-03-17_03-56-05 Error 15-10
+10-03-17_03-56-05 Error 15-10
+10-03-17_03-56-05 Error 15-10
+10-03-17_03-56-05 Error 15-10
+10-03-17_03-56-05 Error 15-10
+10-03-17_03-56-05 Error 15-10
+10-03-17_03-56-05 Error 15-10
+10-03-17_03-56-05 Provs Initialization

@@ -1,5 +1,7 @@
 #include "ProvRegionManagerClass.h"
 
+ProvRegionManagerClass* ProvRegionManagerClass::m_instance = 0;
+
 ProvRegionManagerClass::ProvRegionManagerClass()
 {
 }
@@ -10,13 +12,13 @@ ProvRegionManagerClass::~ProvRegionManagerClass()
 {
 }
 
-bool ProvRegionManagerClass::Initialize(const std::string & filename)
+bool ProvRegionManagerClass::Initialize(PathClass* filename)
 {
 	bool result;
 
 	int numOfProvs;
 	std::ifstream file;
-	file.open(filename);
+	file.open(filename->getPath());
 
 	if (file.fail())
 		return false;
@@ -24,12 +26,13 @@ bool ProvRegionManagerClass::Initialize(const std::string & filename)
 	file >> numOfProvs;
 	for (int i = 0;i < numOfProvs;i++)
 	{
-		ProvRegionClass* region = new(1) ProvRegionClass;
+		ProvRegionClass* region = new(4) ProvRegionClass;
 		result = region->Initialize(&file, i);
 		if (!result)
 		{
 			return false;
 		}
+		m_provRegions.emplace_back(region);
 	}
 
 	return true;
@@ -47,6 +50,12 @@ void ProvRegionManagerClass::Shutdown()
 		}
 	}
 	m_provRegions.clear();
+
+	if (m_instance)
+	{
+		::operator delete(m_instance, sizeof(*m_instance), 1);
+		m_instance = 0;
+	}
 }
 
 ProvRegionClass * ProvRegionManagerClass::getProvRegion(int provRegionID)
@@ -55,4 +64,12 @@ ProvRegionClass * ProvRegionManagerClass::getProvRegion(int provRegionID)
 		return m_provRegions[provRegionID];
 	else
 		return m_provRegions[0];
+}
+
+ProvRegionManagerClass & ProvRegionManagerClass::getI()
+{
+	if (!m_instance)
+		m_instance = new(1) ProvRegionManagerClass;
+	else
+		return *m_instance;
 }

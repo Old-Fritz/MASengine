@@ -43,19 +43,19 @@ public:
 	~MeshClass();
 
 	bool Initialize(ID3D11Device* device, PathClass* filename);
-	bool Initialize(ID3D11Device* device, PathClass* filename,int width, int height);
+	bool Initialize(ID3D11Device* device, PathClass* filename, int width, int height);
 	void Shutdown();
 	void Render(ID3D11DeviceContext* deviceContext);
 
 	int GetIndexCount();
 	void getBox(float& xSize, float& ySize, float& zSize);
 private:
-	bool InitializeBuffers(ID3D11Device* device);
+	bool createVertsAndInds(VertexType** vertices, unsigned long** indices);
+	bool InitializeBuffers(ID3D11Device* device, VertexType* vertices, unsigned long* indices);
 	void ShutdownBuffers();
 	void RenderBuffers(ID3D11DeviceContext* deviceContext);
 
 	bool LoadModel(PathClass* filename);
-	void ReleaseModel();
 
 private:
 	ID3D11Buffer *m_vertexBuffer, *m_indexBuffer;

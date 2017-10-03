@@ -97,8 +97,6 @@ float4 TerrainPixelShader(PixelInputType input) : SV_TARGET
 
 	///CALCULATE LIGHT///
 
-
-
 	// Set the default output color to the ambient light value for all pixels.
     color = ambientColor;
 

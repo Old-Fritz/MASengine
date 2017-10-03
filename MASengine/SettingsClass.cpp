@@ -160,7 +160,7 @@ bool SettingsClass::readFromFile(PathClass* filename)
 		generalFile >> paramName;
 		//first check for normal settings
 		paramText = Utils::getTextFromFile(paramName, m_filename->getPath());
-		if (paramText.size() <= 0)
+		if (Utils::getHash(paramText) == Utils::getHash(paramName))
 			//if no settings in normal file, take default
 			paramText = Utils::getTextFromFile(paramName, defSettingsFileName->getPath());
 		switch (valueType)

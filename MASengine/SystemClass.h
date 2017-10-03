@@ -25,7 +25,7 @@
 #include "InputClass.h"
 #include "PositionClass.h"
 #include "GraphicsClass.h"
-#include "ProvManagerClass.h"
+#include "ProvRegionManagerClass.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // Class name: SystemClass

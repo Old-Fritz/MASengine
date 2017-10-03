@@ -10,4 +10,5 @@ Language = {ENG}
 ElementsFilename = {data/interface/elements.txt}
 loadScreenManagerFilename = {data/loadscreenManager.txt}
 ProvFilename = {data/provs.txt}
+ProvRegionFilename = {data/provRegions.txt}
 GeneralActionsFilename = {data/interface/GeneralActions.txt}
