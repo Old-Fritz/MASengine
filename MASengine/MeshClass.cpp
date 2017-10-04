@@ -19,6 +19,7 @@ bool MeshClass::Initialize(ID3D11Device * device, PathClass* filename, int sizeX
 
 	VertexType* verticies;
 	unsigned long* indicies;
+	D3DXVECTOR3 minPoint, maxPoint;
 
 	//create loader
 	MeshLoaderClass* loader;
@@ -43,13 +44,22 @@ bool MeshClass::Initialize(ID3D11Device * device, PathClass* filename, int sizeX
 		return false;
 	}
 
+	// find points of extremum to create box mesh
+	findExtrPoints(verticies, minPoint, maxPoint);
+
+	//create box
+	result = buildBoxMesh(device, minPoint, maxPoint);
+	if (!result)
+		return false;
+
 	// Initialize the vertex and index buffer that hold the geometry for the triangle.
 	result = InitializeBuffers(device, verticies, indicies);
 	if (!result)
 	{
 		return false;
 	}
-	
+
+
 	MemoryManagerClass::getI().cleanTemp();
 
 	return true;
@@ -70,41 +80,24 @@ void MeshClass::Render(ID3D11DeviceContext* deviceContext)
 	return;
 }
 
+void MeshClass::RenderBoxMesh(ID3D11DeviceContext * deviceContext)
+{
+	m_boxMesh->Render(deviceContext);
+	m_isBoxMeshRendering = 1;
+}
+
 int MeshClass::GetIndexCount()
 {
-	return m_indexCount;
-}
-
-void MeshClass::getBox(float & xSize, float & ySize, float & zSize)
-{
-	xSize = ySize = zSize = 1;
-}
-
-bool MeshClass::createVertsAndInds(VertexType ** vertices, unsigned long ** indices)
-{
-	// Create the vertex array.
-	*vertices = new(3) VertexType[m_vertexCount];
-	if (!vertices)
+	if (!m_isBoxMeshRendering)
+		return m_indexCount;
+	//get info about box if it was rendered
+	else
 	{
-		return false;
+		return m_boxMesh->GetIndexCount();
+		//reverse to normal state
+		m_isBoxMeshRendering = 0;
 	}
-
-	// Create the index array.
-	*indices = new(3) unsigned long[m_vertexCount];
-	if (!indices)
-	{
-		return false;
-	}
-
-	// Load the vertex array and index array with data.
-	for (int i = 0; i<m_vertexCount; i++)
-	{
-		(*vertices)[i].position = D3DXVECTOR3(m_model[i].x, m_model[i].y, m_model[i].z);
-		(*vertices)[i].texture = D3DXVECTOR2(m_model[i].tu, m_model[i].tv);
-		(*vertices)[i].normal = D3DXVECTOR3(m_model[i].nx, m_model[i].ny, m_model[i].nz);
-
-		(*indices)[i] = i;
-	}
+	
 }
 
 bool MeshClass::InitializeBuffers(ID3D11Device * device, VertexType* vertices, unsigned long * indices)
@@ -187,7 +180,7 @@ void MeshClass::RenderBuffers(ID3D11DeviceContext* deviceContext)
 	deviceContext->IASetIndexBuffer(m_indexBuffer, DXGI_FORMAT_R32_UINT, 0);
 
 	// Set the type of primitive that should be rendered from this vertex buffer, in this case triangles.
-	deviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+	deviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_LINESTRIP);
 
 	return;
 }
@@ -250,4 +243,43 @@ bool MeshClass::LoadModel(PathClass* filename)
 	fin.close();
 
 	return true;
+}
+
+bool MeshClass::buildBoxMesh(ID3D11Device* device, D3DXVECTOR3 minPoint, D3DXVECTOR3 maxPoint)
+{
+	bool result;
+
+	m_boxMesh = new(4) BoxMeshClass;
+	if (!m_boxMesh)
+		return false;
+
+	result = m_boxMesh->Initialize(device, minPoint, maxPoint);
+	if (!result)
+		return false;
+
+	return true;
+}
+
+void MeshClass::findExtrPoints(VertexType* vertices, D3DXVECTOR3 & minPoint, D3DXVECTOR3 & maxPoint)
+{
+	//create default values
+	minPoint = maxPoint = vertices[0].position;
+	for (int i = 0;i < m_vertexCount;i++)
+	{
+		//find minimum
+		if (vertices[i].position.x < minPoint.x)
+			minPoint.x = vertices[i].position.x;
+		if (vertices[i].position.y < minPoint.y)
+			minPoint.y = vertices[i].position.y;
+		if (vertices[i].position.z < minPoint.z)
+			minPoint.z = vertices[i].position.z;
+
+		//find maximum
+		if (vertices[i].position.x > maxPoint.x)
+			maxPoint.x = vertices[i].position.x;
+		if (vertices[i].position.y > maxPoint.y)
+			maxPoint.y = vertices[i].position.y;
+		if (vertices[i].position.z > maxPoint.z)
+			maxPoint.z = vertices[i].position.z;
+	}
 }

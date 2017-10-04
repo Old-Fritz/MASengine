@@ -116,6 +116,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BitmapClass.cpp" />
+    <ClCompile Include="BoxMeshClass.cpp" />
     <ClCompile Include="CalculatorClass.cpp" />
     <ClCompile Include="CameraClass.cpp" />
     <ClCompile Include="CommandClass.cpp" />
@@ -182,6 +183,7 @@
     <ClInclude Include="CpuClass.h" />
     <ClInclude Include="D3DClass.h" />
     <ClInclude Include="FloatParamClass.h" />
+    <ClInclude Include="BoxMeshClass.h" />
     <ClInclude Include="HeightMapLoaderClass.h" />
     <ClInclude Include="IntParamClass.h" />
     <ClInclude Include="MeshLoaderClass.h" />

@@ -9,6 +9,7 @@
 // INCLUDES //
 //////////////
 #include "HeightMapLoaderClass.h"
+#include "BoxMeshClass.h"
 
 
 ///////////////////////
@@ -18,7 +19,7 @@
 
 
 ////////////////////////////////////////////////////////////////////////////////
-// Class name: ModelClass
+// Class name: MeshClass
 ////////////////////////////////////////////////////////////////////////////////
 class MeshClass
 {
@@ -45,21 +46,25 @@ public:
 	bool Initialize(ID3D11Device* device, PathClass* filename, int sizeX = 0, int sizeY = 0, int sizeZ = 0);
 	void Shutdown();
 	void Render(ID3D11DeviceContext* deviceContext);
+	void RenderBoxMesh(ID3D11DeviceContext* deviceContext);
 
 	int GetIndexCount();
-	void getBox(float& xSize, float& ySize, float& zSize);
 private:
-	bool createVertsAndInds(VertexType** vertices, unsigned long** indices);
 	bool InitializeBuffers(ID3D11Device* device, VertexType* vertices, unsigned long* indices);
 	void ShutdownBuffers();
 	void RenderBuffers(ID3D11DeviceContext* deviceContext);
 
 	bool LoadModel(PathClass* filename);
 
+	bool buildBoxMesh(ID3D11Device* device, D3DXVECTOR3 minPoint, D3DXVECTOR3 maxPoint);
+	void findExtrPoints(VertexType* vertices, D3DXVECTOR3& minPoint, D3DXVECTOR3& maxPoint);
 private:
 	ID3D11Buffer *m_vertexBuffer, *m_indexBuffer;
 	int m_vertexCount, m_indexCount;
 	ModelType* m_model;
+
+	BoxMeshClass* m_boxMesh;
+	bool m_isBoxMeshRendering = 0;
 };
 
 #endif

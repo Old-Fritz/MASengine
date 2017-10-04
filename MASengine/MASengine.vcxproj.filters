@@ -315,6 +315,9 @@
     <ClCompile Include="HeightMapLoaderClass.cpp">
       <Filter>Файлы исходного кода\GlobalManager\ResourceManagment\Meshes\Loaders</Filter>
     </ClCompile>
+    <ClCompile Include="BoxMeshClass.cpp">
+      <Filter>Файлы исходного кода\Resources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SystemClass.h">
@@ -487,6 +490,9 @@
     </ClInclude>
     <ClInclude Include="HeightMapLoaderClass.h">
       <Filter>Заголовочные файлы\GlobalManager\ResourceManagment\Meshes\loaders</Filter>
+    </ClInclude>
+    <ClInclude Include="BoxMeshClass.h">
+      <Filter>Заголовочные файлы\Resources</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
