@@ -128,6 +128,7 @@
     <ClCompile Include="FontManagerClass.cpp" />
     <ClCompile Include="FontShaderClass.cpp" />
     <ClCompile Include="FpsClass.cpp" />
+    <ClCompile Include="FrustumClass.cpp" />
     <ClCompile Include="GlobalManagerClass.cpp" />
     <ClCompile Include="GraphicsClass.cpp" />
     <ClCompile Include="GroupElementClass.cpp" />
@@ -184,6 +185,7 @@
     <ClInclude Include="D3DClass.h" />
     <ClInclude Include="FloatParamClass.h" />
     <ClInclude Include="BoxMeshClass.h" />
+    <ClInclude Include="FrustumClass.h" />
     <ClInclude Include="HeightMapLoaderClass.h" />
     <ClInclude Include="IntParamClass.h" />
     <ClInclude Include="MeshLoaderClass.h" />

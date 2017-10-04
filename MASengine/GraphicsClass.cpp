@@ -366,6 +366,7 @@ bool GraphicsClass::Render()
 {
 	D3DXMATRIX worldMatrix, viewMatrix, projectionMatrix, orthoMatrix;
 	bool result;
+	FrustumClass* frustum = new(2) FrustumClass;
 
 	// Clear the buffers to begin the scene.
 	m_D3D->BeginScene(D3DXVECTOR4(0.0f, 0.0f, 0.0f, 1.0f));
@@ -379,13 +380,16 @@ bool GraphicsClass::Render()
 	m_D3D->GetProjectionMatrix(projectionMatrix);
 	m_D3D->GetOrthoMatrix(orthoMatrix);
 
+	//construct frustum
+	frustum->ConstructFrustum(SCREEN_DEPTH, projectionMatrix, viewMatrix);
+
 	//render test terrain
 	for (int i = 0;i < TEST_NUM;i++)
 	{
 		m_test[i]->Render(m_shaderManager->getTerrainShader(), m_D3D->GetDeviceContext(), worldMatrix,
 			viewMatrix, projectionMatrix, D3DXVECTOR3(0.0f, -1.0f, 0.5f), D3DXVECTOR4(0.15f, 0.15f, 0.15f, 1.0f),
-			D3DXVECTOR4(1.0f, 1.0f, 1.0f, 1.0f), D3DXVECTOR3(0.0f, -1.0f, 0.5f), D3DXVECTOR4(1.0f, 1.0f, 1.0f, 1.0f), 400.0f,
-			SCREEN_DEPTH, 0);
+			D3DXVECTOR4(1.0f, 1.0f, 1.0f, 1.0f), m_camera->GetPosition(), D3DXVECTOR4(1.0f, 1.0f, 1.0f, 1.0f), 400.0f,
+			SCREEN_DEPTH, frustum);
 	}
 
 	//render 2D

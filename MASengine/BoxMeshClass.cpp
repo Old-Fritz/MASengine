@@ -43,27 +43,42 @@ void BoxMeshClass::Render(ID3D11DeviceContext * deviceContext)
 	return;
 }
 
+D3DXVECTOR3 BoxMeshClass::getCenter()
+{
+	return m_minPoint + getSize()/2.0f;
+}
+
+D3DXVECTOR3 BoxMeshClass::getSize()
+{
+	return m_maxPoint - m_minPoint;
+}
+
+bool BoxMeshClass::checkFrustum(FrustumClass * frustum)
+{
+	return frustum->CheckPoints(m_points, m_vertexCount);
+}
+
 int BoxMeshClass::GetIndexCount()
 {
 	return m_indexCount;
 }
 
-bool BoxMeshClass::createVertsAndInds(D3DXVECTOR3** vertices, unsigned long ** indices)
+bool BoxMeshClass::createVertsAndInds(unsigned long ** indices)
 {
 	m_vertexCount = 8;
 	m_indexCount = 36;
-	*vertices = new(4) D3DXVECTOR3[m_vertexCount];
+	m_points = new(4) D3DXVECTOR3[m_vertexCount];
 	*indices = new(4) unsigned long[m_indexCount];
 
 	//create vertices
-	(*vertices)[0] = m_minPoint;
-	(*vertices)[1] = D3DXVECTOR3(m_minPoint.x,m_maxPoint.y,m_minPoint.z);
-	(*vertices)[2]= D3DXVECTOR3(m_maxPoint.x, m_maxPoint.y, m_minPoint.z);
-	(*vertices)[3] = D3DXVECTOR3(m_maxPoint.x, m_minPoint.y, m_minPoint.z);
-	(*vertices)[4] = D3DXVECTOR3(m_minPoint.x, m_minPoint.y, m_maxPoint.z);
-	(*vertices)[5] = D3DXVECTOR3(m_minPoint.x, m_maxPoint.y, m_maxPoint.z);
-	(*vertices)[6] = m_maxPoint;
-	(*vertices)[7] = D3DXVECTOR3(m_maxPoint.x, m_minPoint.y, m_maxPoint.z);
+	m_points[0] = m_minPoint;
+	m_points[1] = D3DXVECTOR3(m_minPoint.x,m_maxPoint.y,m_minPoint.z);
+	m_points[2]= D3DXVECTOR3(m_maxPoint.x, m_maxPoint.y, m_minPoint.z);
+	m_points[3] = D3DXVECTOR3(m_maxPoint.x, m_minPoint.y, m_minPoint.z);
+	m_points[4] = D3DXVECTOR3(m_minPoint.x, m_minPoint.y, m_maxPoint.z);
+	m_points[5] = D3DXVECTOR3(m_minPoint.x, m_maxPoint.y, m_maxPoint.z);
+	m_points[6] = m_maxPoint;
+	m_points[7] = D3DXVECTOR3(m_maxPoint.x, m_minPoint.y, m_maxPoint.z);
 
 	//fill other types of vertex
 	/*for (int i = 0;i < m_vertexCount;i++)
@@ -85,11 +100,10 @@ bool BoxMeshClass::InitializeBuffers(ID3D11Device * device)
 	D3D11_BUFFER_DESC vertexBufferDesc, indexBufferDesc;
 	D3D11_SUBRESOURCE_DATA vertexData, indexData;
 	HRESULT result;
-	D3DXVECTOR3* vertices;
 	unsigned long* indices;
 
 	//create verticies and indices
-	result = createVertsAndInds(&vertices, &indices);
+	result = createVertsAndInds(&indices);
 	if (!result)
 	{
 		return false;
@@ -103,7 +117,7 @@ bool BoxMeshClass::InitializeBuffers(ID3D11Device * device)
 	vertexBufferDesc.MiscFlags = 0;
 
 	// Give the subresource structure a pointer to the vertex data.
-	vertexData.pSysMem = vertices;
+	vertexData.pSysMem = m_points;
 
 	// Now finally create the vertex buffer.
 	result = device->CreateBuffer(&vertexBufferDesc, &vertexData, &m_vertexBuffer);

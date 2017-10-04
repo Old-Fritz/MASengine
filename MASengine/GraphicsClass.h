@@ -17,9 +17,9 @@
 /////////////
 // GLOBALS //
 /////////////
-const float SCREEN_DEPTH = 1000.0f;
+const float SCREEN_DEPTH = 5000.0f;
 const float SCREEN_NEAR = 0.1f;
-const int TEST_NUM = 1;
+const int TEST_NUM = 1000;
 
 ////////////////////////////////////////////////////////////////////////////////
 // Class name: GraphicsClass

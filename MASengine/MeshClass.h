@@ -49,6 +49,8 @@ public:
 	void RenderBoxMesh(ID3D11DeviceContext* deviceContext);
 
 	int GetIndexCount();
+
+	bool checkFrustum(FrustumClass* frustum);
 private:
 	bool InitializeBuffers(ID3D11Device* device, VertexType* vertices, unsigned long* indices);
 	void ShutdownBuffers();
@@ -58,6 +60,8 @@ private:
 
 	bool buildBoxMesh(ID3D11Device* device, D3DXVECTOR3 minPoint, D3DXVECTOR3 maxPoint);
 	void findExtrPoints(VertexType* vertices, D3DXVECTOR3& minPoint, D3DXVECTOR3& maxPoint);
+
+	
 private:
 	ID3D11Buffer *m_vertexBuffer, *m_indexBuffer;
 	int m_vertexCount, m_indexCount;

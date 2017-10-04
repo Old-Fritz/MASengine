@@ -13,6 +13,7 @@
 #include <d3dx11.h>
 #include <d3dx10math.h>
 #include "MemoryManagerClass.h"
+#include "frustumClass.h"
 
 
 ///////////////////////
@@ -42,14 +43,20 @@ public:
 	void Shutdown();
 	void Render(ID3D11DeviceContext* deviceContext);
 
+	D3DXVECTOR3 getCenter();
+	D3DXVECTOR3 getSize();
+
+	bool checkFrustum(FrustumClass* frustum);
+
 	int GetIndexCount();
 private:
-	bool createVertsAndInds(D3DXVECTOR3** vertices, unsigned long** indices);
+	bool createVertsAndInds(unsigned long** indices);
 	bool InitializeBuffers(ID3D11Device* device);
 	void ShutdownBuffers();
 	void RenderBuffers(ID3D11DeviceContext* deviceContext);
 
 private:
+	D3DXVECTOR3* m_points;
 	ID3D11Buffer *m_vertexBuffer, *m_indexBuffer;
 	int m_vertexCount, m_indexCount;
 	D3DXVECTOR3 m_minPoint;

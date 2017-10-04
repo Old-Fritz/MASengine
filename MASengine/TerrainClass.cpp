@@ -55,16 +55,19 @@ void TerrainClass::Shutdown()
 bool TerrainClass::Render(TerrainShaderClass * terrainShader, ID3D11DeviceContext * deviceContext, D3DXMATRIX worldMatrix,
 	D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, D3DXVECTOR3 lightDirection,
 	D3DXVECTOR4 ambientColor, D3DXVECTOR4 diffuseColor, D3DXVECTOR3 cameraPosition, D3DXVECTOR4 specularColor, float specularPower,
-	float SCREEN_DEPTH, int lvl)
+	float SCREEN_DEPTH, FrustumClass* frustum)
 {
 	bool result;
 
-	if (lvl > NUM_OF_LVLS - 1 || lvl < 0)
-		lvl = 0;
+	int lvl = getLvlByDist(Utils::calcDist(m_position.x, m_position.y, m_position.z, cameraPosition.x, cameraPosition.y, cameraPosition.z));
 
 	MeshClass* mesh = MeshManagerClass::getI().getModel(m_meshHash[lvl]);
-	
-	mesh->RenderBoxMesh(deviceContext);
+
+	//check if current mesh in frustum
+	if (!mesh->checkFrustum(frustum))
+		return true;
+
+	mesh->Render(deviceContext);
 	result = terrainShader->Render(deviceContext, mesh->GetIndexCount(), worldMatrix, viewMatrix, projectionMatrix,
 		TextureManagerClass::getI().getTexture(m_provTextureHash), lightDirection, ambientColor,
 		diffuseColor, cameraPosition, specularColor, specularPower, getProvColor());
@@ -136,4 +139,20 @@ D3DXVECTOR4 * TerrainClass::getProvColor()
 	}
 
 	return provColors;
+}
+
+int TerrainClass::getLvlByDist(float dist)
+{
+	int lvl;
+	if (dist > 400)
+		lvl = 3;
+	else if (dist > 300)
+		lvl = 2;
+	else if (dist > 125)
+		lvl = 1;
+	else
+		lvl = 0;
+
+	return lvl;
+
 }

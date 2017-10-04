@@ -180,7 +180,7 @@ void MeshClass::RenderBuffers(ID3D11DeviceContext* deviceContext)
 	deviceContext->IASetIndexBuffer(m_indexBuffer, DXGI_FORMAT_R32_UINT, 0);
 
 	// Set the type of primitive that should be rendered from this vertex buffer, in this case triangles.
-	deviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_LINESTRIP);
+	deviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
 	return;
 }
@@ -282,4 +282,9 @@ void MeshClass::findExtrPoints(VertexType* vertices, D3DXVECTOR3 & minPoint, D3D
 		if (vertices[i].position.z > maxPoint.z)
 			maxPoint.z = vertices[i].position.z;
 	}
+}
+
+bool MeshClass::checkFrustum(FrustumClass * frustum)
+{
+	return m_boxMesh->checkFrustum(frustum);
 }

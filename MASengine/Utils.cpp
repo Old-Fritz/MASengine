@@ -131,3 +131,8 @@ std::string Utils::to_bytes(const std::wstring& str)
 {
 	return m_converter.to_bytes(str);
 }
+
+float Utils::calcDist(float p1X, float p1Y, float p1Z, float p2X, float p2Y, float p2Z)
+{
+	return sqrt((p1X-p2X)*(p1X - p2X)+ (p1Y - p2Y)*(p1Y - p2Y)+ (p1Z - p2Z)*(p1Z - p2Z));
+}

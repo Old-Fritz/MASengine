@@ -22,6 +22,8 @@ public:
 
 	static std::wstring from_bytes(const std::string& str);
 	static std::string to_bytes(const std::wstring& str);
+
+	static float calcDist(float p1X, float p1Y, float p1Z, float p2X, float p2Y, float p2Z);
 private:
 	Utils();
 
