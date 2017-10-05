@@ -43,14 +43,14 @@ public:
 	MeshLoaderClass(const MeshLoaderClass&);
 	~MeshLoaderClass();
 
-	virtual bool loadModel(PathClass* filename, float sizeX = 0, float sizeY = 0, float sizeZ = 0);
+	virtual bool loadModel(PathClass* filename, float sizeX = 1, float sizeY = 1, float sizeZ = 1);
 	virtual bool createVertsAndInds(void** vertices, unsigned long** indices);
 	virtual void calcVertAndIndCount(int& vertexCount, int& indexCount);
 
 	virtual void Shutdown();
 private:
 	bool loadMesh(PathClass* filename);
-	bool normalizeMesh(float sizeX, float sizeY, float sizeZ);
+	bool normalizeMesh(float scaleX, float scaleY, float scaleZ);
 protected:
 	ModelType* m_model;
 	int m_vertexCount;

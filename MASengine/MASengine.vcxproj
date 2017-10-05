@@ -139,6 +139,7 @@
     <ClCompile Include="InterfaceShaderClass.cpp" />
     <ClCompile Include="IntParamClass.cpp" />
     <ClCompile Include="LayersClass.cpp" />
+    <ClCompile Include="LightClass.cpp" />
     <ClCompile Include="ListElementClass.cpp" />
     <ClCompile Include="LoadScreenManagerClass.cpp" />
     <ClCompile Include="LogManagerClass.cpp" />
@@ -188,6 +189,7 @@
     <ClInclude Include="FrustumClass.h" />
     <ClInclude Include="HeightMapLoaderClass.h" />
     <ClInclude Include="IntParamClass.h" />
+    <ClInclude Include="LightClass.h" />
     <ClInclude Include="MeshLoaderClass.h" />
     <ClInclude Include="PathClass.h" />
     <ClInclude Include="FontClass.h" />

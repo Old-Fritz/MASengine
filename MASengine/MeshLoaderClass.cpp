@@ -128,7 +128,14 @@ bool MeshLoaderClass::loadMesh(PathClass* filename)
 	return true;
 }
 
-bool MeshLoaderClass::normalizeMesh(float sizeX, float sizeY, float sizeZ)
+bool MeshLoaderClass::normalizeMesh(float scaleX, float scaleY, float scaleZ)
 {
+	for (int i = 0;i < m_vertexCount;i++)
+	{
+		m_model[i].x *= scaleX;
+		m_model[i].y *= scaleY;
+		m_model[i].z *= scaleZ;
+	}
+
 	return true;
 }

@@ -11,13 +11,14 @@ SamplerState SampleType[2];
 
 cbuffer ParamsBuffer
 {
-    float3 lightDirection;
     float4 ambientColor;
     float4 diffuseColor;
-    float3 cameraPosition;
     float4 specularColor;
-    float specularPower;
-	float provsColor[256];
+	float4 provsColor[256];
+	float3 lightDirection;
+	float specularPower;
+	float3 cameraPosition;
+
 };
 
 
@@ -129,7 +130,7 @@ float4 TerrainPixelShader(PixelInputType input) : SV_TARGET
     if (provnum < 255)
     {
         provColor = provsColor[provnum];
-        provColor = lerp(provColor, yellow, provColor.w / 1.6f);
+        //provColor = lerp(provColor, yellow, provColor.w / 1.6f);
     }
     color = lerp(color, provColor, 0.55f);
     color.w = 1.0f;
@@ -137,5 +138,6 @@ float4 TerrainPixelShader(PixelInputType input) : SV_TARGET
     if (provnum == 400)
         color = float4(0.3f, 0.3f, 0.7f, 1.0f);
 
-    return color;
+    //return shaderTexture.Sample(SampleType[0], input.tex);
+	return color;
 }

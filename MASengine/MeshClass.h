@@ -56,8 +56,6 @@ private:
 	void ShutdownBuffers();
 	void RenderBuffers(ID3D11DeviceContext* deviceContext);
 
-	bool LoadModel(PathClass* filename);
-
 	bool buildBoxMesh(ID3D11Device* device, D3DXVECTOR3 minPoint, D3DXVECTOR3 maxPoint);
 	void findExtrPoints(VertexType* vertices, D3DXVECTOR3& minPoint, D3DXVECTOR3& maxPoint);
 
@@ -65,7 +63,6 @@ private:
 private:
 	ID3D11Buffer *m_vertexBuffer, *m_indexBuffer;
 	int m_vertexCount, m_indexCount;
-	ModelType* m_model;
 
 	BoxMeshClass* m_boxMesh;
 	bool m_isBoxMeshRendering = 0;

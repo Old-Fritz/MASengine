@@ -28,6 +28,7 @@ bool TerrainClass::Initialize(ID3D11Device * device, ID3D11DeviceContext * devic
 	{
 		return false;
 	}
+	m_provTextureHash = m_provFilename->getHash();
 
 	//add meshes
 	for (int i = NUM_OF_LVLS - 1; i >= 0; i--)
@@ -59,14 +60,15 @@ bool TerrainClass::Render(TerrainShaderClass * terrainShader, ID3D11DeviceContex
 {
 	bool result;
 
+	//find best mesh to render
 	int lvl = getLvlByDist(Utils::calcDist(m_position.x, m_position.y, m_position.z, cameraPosition.x, cameraPosition.y, cameraPosition.z));
-
 	MeshClass* mesh = MeshManagerClass::getI().getModel(m_meshHash[lvl]);
 
 	//check if current mesh in frustum
 	if (!mesh->checkFrustum(frustum))
 		return true;
 
+	// Render mesh
 	mesh->Render(deviceContext);
 	result = terrainShader->Render(deviceContext, mesh->GetIndexCount(), worldMatrix, viewMatrix, projectionMatrix,
 		TextureManagerClass::getI().getTexture(m_provTextureHash), lightDirection, ambientColor,
@@ -128,7 +130,7 @@ D3DXVECTOR4 * TerrainClass::getProvColor()
 	D3DXVECTOR4* provColors = new(2) D3DXVECTOR4[256];
 	
 	int i = 0;
-	for (auto ID = provsIDs->begin();ID!=provsIDs->end() || i<256;i++,ID++)
+	for (auto ID = provsIDs->begin();ID!=provsIDs->end() && i<256;i++,ID++)
 	{
 		provColors[i] = ProvManagerClass::getI().getProv(*ID)->getLayers()->getMainColor();
 	}
@@ -136,6 +138,7 @@ D3DXVECTOR4 * TerrainClass::getProvColor()
 	while (i < 256)
 	{
 		provColors[i] = D3DXVECTOR4(1, 1, 1, 1);
+		i++;
 	}
 
 	return provColors;
@@ -144,11 +147,11 @@ D3DXVECTOR4 * TerrainClass::getProvColor()
 int TerrainClass::getLvlByDist(float dist)
 {
 	int lvl;
-	if (dist > 400)
+	if (dist > 1600)
 		lvl = 3;
-	else if (dist > 300)
+	else if (dist > 1000)
 		lvl = 2;
-	else if (dist > 125)
+	else if (dist > 5000)
 		lvl = 1;
 	else
 		lvl = 0;

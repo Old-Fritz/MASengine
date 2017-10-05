@@ -142,6 +142,12 @@
     <Filter Include="Файлы исходного кода\Utils">
       <UniqueIdentifier>{f424e772-5ccc-421e-bf23-11a1251eac1e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы исходного кода\Graphics\Sysyems">
+      <UniqueIdentifier>{282498d8-1a0b-4168-9e17-ebe25abc0ef7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\Graphics\Systems">
+      <UniqueIdentifier>{f0441745-577b-4546-9c49-2bfd28fc8728}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -224,9 +230,6 @@
     </ClCompile>
     <ClCompile Include="BitmapClass.cpp">
       <Filter>Файлы исходного кода\Graphics\Interface\InterfaceBocks</Filter>
-    </ClCompile>
-    <ClCompile Include="CameraClass.cpp">
-      <Filter>Файлы исходного кода\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="FontShaderClass.cpp">
       <Filter>Файлы исходного кода\Graphics\ShaderManagment\Shaders</Filter>
@@ -320,6 +323,12 @@
     </ClCompile>
     <ClCompile Include="FrustumClass.cpp">
       <Filter>Файлы исходного кода\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="LightClass.cpp">
+      <Filter>Файлы исходного кода\Graphics\Sysyems</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraClass.cpp">
+      <Filter>Файлы исходного кода\Graphics\Sysyems</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -416,9 +425,6 @@
     <ClInclude Include="SliderElementClass.h">
       <Filter>Заголовочные файлы\Graphics\Interface\InterfaceElements</Filter>
     </ClInclude>
-    <ClInclude Include="CameraClass.h">
-      <Filter>Заголовочные файлы\Graphics</Filter>
-    </ClInclude>
     <ClInclude Include="FontShaderClass.h">
       <Filter>Заголовочные файлы\Graphics\ShaderManagment\Shaders</Filter>
     </ClInclude>
@@ -499,6 +505,12 @@
     </ClInclude>
     <ClInclude Include="FrustumClass.h">
       <Filter>Заголовочные файлы\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="LightClass.h">
+      <Filter>Заголовочные файлы\Graphics\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraClass.h">
+      <Filter>Заголовочные файлы\Graphics\Systems</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

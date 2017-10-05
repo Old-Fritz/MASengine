@@ -12,6 +12,7 @@
 #include "CameraClass.h"
 #include "InterfaceClass.h"
 #include "TerrainClass.h"
+#include "LightClass.h"
 
 
 /////////////
@@ -19,7 +20,7 @@
 /////////////
 const float SCREEN_DEPTH = 5000.0f;
 const float SCREEN_NEAR = 0.1f;
-const int TEST_NUM = 1000;
+const int TEST_NUM = 1;
 
 ////////////////////////////////////////////////////////////////////////////////
 // Class name: GraphicsClass
@@ -57,6 +58,7 @@ private:
 	D3DClass* m_D3D;
 	ShaderManagerClass* m_shaderManager;
 	CameraClass * m_camera;
+	LightClass * m_light;
 	InterfaceClass* m_interface;
 
 	

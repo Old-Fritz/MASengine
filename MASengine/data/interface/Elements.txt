@@ -1,6 +1,10 @@
 4
- data/interface/elements/debug.txt element
  data/interface/elements/Logo.txt element
  data/interface/elements/Version.txt element
 
+ data/interface/elements/debug.txt element
+
  data/interface/elements/Cursor.txt element
+
+ data/interface/elements/test.txt element
+ data/interface/elements/testlist.txt list

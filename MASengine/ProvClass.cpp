@@ -3,11 +3,9 @@
 ProvClass::ProvClass()
 {
 }
-
 ProvClass::ProvClass(const ProvClass &)
 {
 }
-
 ProvClass::~ProvClass()
 {
 }
@@ -24,6 +22,9 @@ bool ProvClass::Initialize(std::ifstream * file, int id)
 		return false;
 	}
 
+	m_layers->setBaseColor(D3DXVECTOR4(1, 0, 0, 1));
+	m_layers->setMainColor(D3DXVECTOR4(1, 0, 0, 1));
+
 	result = readFromFile(file);
 	if (!result)
 	{
@@ -31,8 +32,8 @@ bool ProvClass::Initialize(std::ifstream * file, int id)
 	}
 
 	//generate base provname
-	m_name = "ProvName"  + std::to_string(m_id) ;
-
+	m_name = "ProvName" + std::to_string(m_id) ;
+	
 	return true;
 }
 

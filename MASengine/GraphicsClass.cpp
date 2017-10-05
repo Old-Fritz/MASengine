@@ -7,6 +7,7 @@ GraphicsClass::GraphicsClass()
 	m_shaderManager = 0;
 	m_camera = 0;
 	m_interface = 0;
+	m_light = 0;
 	for (int i = 0;i < TEST_NUM;i++)
 		m_test[i] = 0;
 }
@@ -64,6 +65,16 @@ bool GraphicsClass::Initialize(HWND hwnd)
 	m_camera->Render();
 	m_camera->GetViewMatrix(m_baseViewMatrix);
 
+	//Initialize light
+	m_light = new(1) LightClass;
+	if (!m_light)
+		return false;
+
+	m_light->SetAmbientColor(D3DXVECTOR4(0.05f, 0.05f, 0.05f, 1.0f));
+	m_light->SetDiffuseColor(D3DXVECTOR4(1.0f, 1.0f, 1.0f, 1.0f));
+	m_light->SetDirection(D3DXVECTOR3(0.9f, 0.0f, 0.0f));
+	m_light->SetSpecularColor(D3DXVECTOR4(1.0f, 1.0f, 1.0f, 1.0f));
+	m_light->SetSpecularPower(400.0f);
 	//Init loadscreen manager
 	result = LoadScreenManagerClass::getI().Initialize(m_D3D,m_shaderManager,m_baseViewMatrix,m_hwnd,SettingsClass::getI().getPathParameter("loadScreenManagerFilename"));
 	if (!result)
@@ -387,9 +398,9 @@ bool GraphicsClass::Render()
 	for (int i = 0;i < TEST_NUM;i++)
 	{
 		m_test[i]->Render(m_shaderManager->getTerrainShader(), m_D3D->GetDeviceContext(), worldMatrix,
-			viewMatrix, projectionMatrix, D3DXVECTOR3(0.0f, -1.0f, 0.5f), D3DXVECTOR4(0.15f, 0.15f, 0.15f, 1.0f),
-			D3DXVECTOR4(1.0f, 1.0f, 1.0f, 1.0f), m_camera->GetPosition(), D3DXVECTOR4(1.0f, 1.0f, 1.0f, 1.0f), 400.0f,
-			SCREEN_DEPTH, frustum);
+			viewMatrix, projectionMatrix, m_light->GetDirection(), m_light->GetAmbientColor(),
+			m_light->GetDiffuseColor(), m_camera->GetPosition(), m_light->GetSpecularColor(),
+			m_light->GetSpecularPower(), SCREEN_DEPTH, frustum);
 	}
 
 	//render 2D

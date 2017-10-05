@@ -4,7 +4,6 @@ MeshClass::MeshClass()
 {
 	m_vertexBuffer = 0;
 	m_indexBuffer = 0;
-	m_model = 0;
 }
 MeshClass::MeshClass(const MeshClass &)
 {
@@ -185,65 +184,6 @@ void MeshClass::RenderBuffers(ID3D11DeviceContext* deviceContext)
 	return;
 }
 
-bool MeshClass::LoadModel(PathClass* filename)
-{
-	bool result;
-
-
-	std::ifstream fin;
-	char input;
-	int i;
-
-
-	// Open the model file.  If it could not open the file then exit.
-	fin.open(filename->getPath());
-	if (fin.fail())
-	{
-		return false;
-	}
-
-	// Read up to the value of vertex count.
-	fin.get(input);
-	while (input != ':')
-	{
-		fin.get(input);
-	}
-
-	// Read in the vertex count.
-	fin >> m_vertexCount;
-
-	// Set the number of indices to be the same as the vertex count.
-	m_indexCount = m_vertexCount;
-
-	// Create the model using the vertex count that was read in.
-	m_model = new(3) ModelType[m_vertexCount];
-	if (!m_model)
-	{
-		return false;
-	}
-
-	// Read up to the beginning of the data.
-	fin.get(input);
-	while (input != ':')
-	{
-		fin.get(input);
-	}
-	fin.get(input);
-	fin.get(input);
-
-	// Read in the vertex data.
-	for (i = 0; i<m_vertexCount; i++)
-	{
-		fin >> m_model[i].x >> m_model[i].y >> m_model[i].z;
-		fin >> m_model[i].tu >> m_model[i].tv;
-		fin >> m_model[i].nx >> m_model[i].ny >> m_model[i].nz;
-	}
-
-	// Close the model file.
-	fin.close();
-
-	return true;
-}
 
 bool MeshClass::buildBoxMesh(ID3D11Device* device, D3DXVECTOR3 minPoint, D3DXVECTOR3 maxPoint)
 {
