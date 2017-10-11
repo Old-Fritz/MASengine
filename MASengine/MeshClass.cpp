@@ -107,10 +107,11 @@ bool MeshClass::InitializeBuffers(ID3D11Device * device, VertexType* vertices, u
 
 
 	// Set up the description of the vertex buffer.
-	vertexBufferDesc.Usage = D3D11_USAGE_DEFAULT;
+	vertexBufferDesc.Usage = D3D11_USAGE_STAGING;
 	vertexBufferDesc.ByteWidth = sizeof(VertexType)* m_vertexCount;
-	vertexBufferDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
-	vertexBufferDesc.CPUAccessFlags = 0;
+	//vertexBufferDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
+	vertexBufferDesc.BindFlags = 0;
+	vertexBufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_READ | D3D11_CPU_ACCESS_WRITE;
 	vertexBufferDesc.MiscFlags = 0;
 
 	// Give the subresource structure a pointer to the vertex data.
@@ -124,10 +125,11 @@ bool MeshClass::InitializeBuffers(ID3D11Device * device, VertexType* vertices, u
 	}
 
 	// Set up the description of the index buffer.
-	indexBufferDesc.Usage = D3D11_USAGE_DEFAULT;
+	indexBufferDesc.Usage = D3D11_USAGE_STAGING;
 	indexBufferDesc.ByteWidth = sizeof(unsigned long)* m_indexCount;
-	indexBufferDesc.BindFlags = D3D11_BIND_INDEX_BUFFER;
-	indexBufferDesc.CPUAccessFlags = 0;
+	//indexBufferDesc.BindFlags = D3D11_BIND_INDEX_BUFFER;
+	indexBufferDesc.BindFlags = 0;
+	indexBufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_READ | D3D11_CPU_ACCESS_WRITE;
 	indexBufferDesc.MiscFlags = 0;
 
 	// Give the subresource structure a pointer to the index data.
@@ -224,11 +226,70 @@ void MeshClass::findExtrPoints(VertexType* vertices, D3DXVECTOR3 & minPoint, D3D
 	}
 }
 
-bool MeshClass::intersect(ID3D11DeviceContext * deviceContext, D3DXVECTOR3 rayOrigin, D3DXVECTOR3 rayDirection, int & hitCount, D3DXVECTOR3 & point)
+bool MeshClass::getVertsAndInds(ID3D11DeviceContext* deviceContext, VertexType** verticies, unsigned long** indices)
 {
-	hitCount = 0;
+	D3D11_MAPPED_SUBRESOURCE verticesPtr;
+	D3D11_MAPPED_SUBRESOURCE indicesPtr;
+	HRESULT result;
+
+	// Lock the vertex buffer.
+	result = deviceContext->Map(m_vertexBuffer, 0, D3D11_MAP_READ, 0, &verticesPtr);
+	if (FAILED(result))
+	{
+		return false;
+	}
+
+	*verticies = (VertexType*)verticesPtr.pData;
+
+	// Lock the index buffer.
+	result = deviceContext->Map(m_indexBuffer, 0, D3D11_MAP_READ, 0, &indicesPtr);
+	if (FAILED(result))
+	{
+		return false;
+	}
+
+	*indices = (unsigned long*)indicesPtr.pData;
+
+	//Unlock buffers
+	deviceContext->Unmap(m_vertexBuffer, 0);
+	deviceContext->Unmap(m_indexBuffer, 0);
+
+	return true;
+}
+
+bool MeshClass::intersect(ID3D11DeviceContext * deviceContext, D3DXVECTOR3 rayOrigin, D3DXVECTOR3 rayDirection, D3DXVECTOR3 & point)
+{
+	bool result;
+	VertexType* verticies;
+	unsigned long* indicies;
+	D3DXVECTOR3 res;
+
 	point = D3DXVECTOR3(0, 0, 0);
-	return m_boxMesh->intersect(deviceContext,rayOrigin,rayDirection);
+
+	//first check box mesh
+	result = m_boxMesh->intersect(rayOrigin,rayDirection);
+	if (!result)
+		return false;
+
+	//get verticies and indicies from buffers
+	result = getVertsAndInds(deviceContext, &verticies, &indicies);
+	if (!result)
+		return false;
+
+	//check all triangles
+	for (int i = 0; i < m_indexCount / 3;i++)
+	{
+		result = m_boxMesh->triangleHitTest(rayOrigin, rayDirection, verticies[indicies[i * 3]].position, verticies[indicies[i * 3 + 1]].position, verticies[indicies[i * 3 + 2]].position, res);
+		if (result)
+		{
+			//calculate point and return true
+			point = rayOrigin + rayDirection * res.x;
+			return true;
+		}
+	}
+
+	return false;
+
 }
 
 bool MeshClass::checkFrustum(FrustumClass * frustum)

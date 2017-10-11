@@ -28,6 +28,8 @@ bool GraphicsClass::Initialize(HWND hwnd)
 	bool result;
 
 	m_hwnd = hwnd;
+	m_screenHeight = SettingsClass::getI().getIntParameter("ScreenHeight");
+	m_screenWidth = SettingsClass::getI().getIntParameter("ScreenWidth");
 
 	// Create the Direct3D object.
 	m_D3D = new(1) D3DClass;
@@ -91,7 +93,7 @@ bool GraphicsClass::Initialize(HWND hwnd)
 	m_interface = new(1) InterfaceClass;
 	if (!m_interface)
 		return false;
-	result = m_interface->Initialize(m_D3D->GetDevice(),m_D3D->GetDeviceContext(), hwnd, SettingsClass::getI().getIntParameter("ScreenWidth"), SettingsClass::getI().getIntParameter("ScreenHeight"));
+	result = m_interface->Initialize(m_D3D->GetDevice(),m_D3D->GetDeviceContext(), hwnd, m_screenWidth, m_screenHeight);
 	if (!result)
 	{
 		MessageBox(hwnd, L"Could not initialize interface", L"Error", MB_OK);
@@ -432,13 +434,16 @@ void GraphicsClass::pick(int mouseX, int mouseY)
 	CommandClass* command;
 	std::string interfaceElName;
 	int interfaceElInd;
-
-	D3DXVECTOR3 k = m_test[0]->pick(m_D3D->GetDeviceContext(), mouseX, mouseY);
+	D3DXVECTOR3 color;
 
 	// First check for interface pick
 	if (interfacePick(mouseX, mouseY, interfaceElInd, interfaceElName))
 	{
 		m_interface->pick(interfaceElInd, interfaceElName);
+	}
+	else if (terrainPick(mouseX, mouseY, color))
+	{
+		return;
 	}
 }
 
@@ -455,10 +460,63 @@ void GraphicsClass::unPick(int mouseX, int mouseY)
 	{
 		m_interface->unPick(interfaceElInd, interfaceElName);
 	}
+	else if (terrainPick(mouseX, mouseY, color))
+	{
+		return;
+	}
 }
 
 bool GraphicsClass::interfacePick(int mouseX, int mouseY, int & ind, std::string & name)
 {
 	return m_interface->getEl(mouseX, mouseY, ind, name);
+}
+
+bool GraphicsClass::terrainPick(int mouseX, int mouseY, D3DXVECTOR3 & color)
+{
+	D3DXVECTOR3 rayOrigin, rayDirection;
+	bool result;
+
+	//create intersection ray
+	createRay(mouseX, mouseY, rayOrigin, rayDirection);
+
+	return m_test[0]->pick(m_D3D->GetDeviceContext(), rayOrigin, rayDirection, color);
+}
+
+void GraphicsClass::createRay(int mouseX, int mouseY, D3DXVECTOR3 & rayOrigin, D3DXVECTOR3 & rayDirection)
+{
+	D3DXMATRIX projectionMatrix, viewMatrix, inverseViewMatrix;
+	D3DXVECTOR3 vec;
+	bool intersect, result;
+	UINT hitcount, faceIndex;
+	float u, v, dist;
+	ID3D10Blob* allHits;
+
+	m_D3D->GetProjectionMatrix(projectionMatrix);
+
+	//create unusial vector from old algoritm without comments (((( (it has worked)
+	vec.x = (((2.0f * (float)mouseX) / (float)m_screenWidth - 1) / projectionMatrix._11);
+	vec.y = -(((2.0f * (float)mouseY) / (float)m_screenHeight - 1) / projectionMatrix._22);
+	vec.z = 1.0f;
+
+	// Get the inverse of the view matrix.
+	m_camera->GetViewMatrix(viewMatrix);
+	D3DXMatrixInverse(&inverseViewMatrix, NULL, &viewMatrix);
+
+	// Calculate the direction of the picking ray in view space.
+	rayDirection.x = vec.x*inverseViewMatrix._11 + vec.y*inverseViewMatrix._21 + vec.z*inverseViewMatrix._31;
+	rayDirection.y = vec.x*inverseViewMatrix._12 + vec.y*inverseViewMatrix._22 + vec.z*inverseViewMatrix._32;
+	rayDirection.z = vec.x*inverseViewMatrix._13 + vec.y*inverseViewMatrix._23 + vec.z*inverseViewMatrix._33;
+
+	// Normalize the ray direction.
+	D3DXVec3Normalize(&rayDirection, &rayDirection);
+
+	// Get the origin of the picking ray which is the position of the camera.
+	rayOrigin = m_camera->GetPosition();
+
+	rayOrigin.x = inverseViewMatrix._41;
+	rayOrigin.y = inverseViewMatrix._42;
+	rayOrigin.z = inverseViewMatrix._43;
+
+	return;
 }
 

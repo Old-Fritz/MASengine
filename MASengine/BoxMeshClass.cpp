@@ -1,6 +1,6 @@
 #include "BoxMeshClass.h"
 
-
+unsigned long BOX_MESH_INDICIES[36] = { 0,1,2,   2,3,0,   0,4,5,   5,1,0,   4,7,6,   6,5,4,   2,6,7,   7,3,2,   3,7,4,   4,0,3,   1,5,6,   6,2,1 };
 
 BoxMeshClass::BoxMeshClass()
 {
@@ -68,7 +68,7 @@ bool BoxMeshClass::createVertsAndInds(unsigned long ** indices)
 	m_vertexCount = 8;
 	m_indexCount = 36;
 	m_points = new(4) D3DXVECTOR3[m_vertexCount];
-	*indices = new(4) unsigned long[m_indexCount];
+	*indices = new(3) unsigned long[m_indexCount];
 
 	//create vertices
 	m_points[0] = m_minPoint;
@@ -87,10 +87,9 @@ bool BoxMeshClass::createVertsAndInds(unsigned long ** indices)
 		(*vertices)[i].texture = D3DXVECTOR2(0, 0);
 	}*/
 
-	unsigned long arr[36] = { 0,1,2,   2,3,0,   0,4,5,   5,1,0,   4,7,6,   6,5,4,   2,6,7,   7,3,2,   3,7,4,   4,0,3,   1,5,6,   6,2,1 };
 	//create indicies
 	for(int i = 0;i<m_indexCount;i++)
-		(*indices)[i] = arr[i];
+		(*indices)[i] = BOX_MESH_INDICIES[i];
 
 	return true;
 }
@@ -187,58 +186,22 @@ void BoxMeshClass::RenderBuffers(ID3D11DeviceContext * deviceContext)
 	return;
 }
 
-bool BoxMeshClass::getVertsAndInds(ID3D11DeviceContext* deviceContext, D3DXVECTOR3** verticies, unsigned long** indices)
+
+
+bool BoxMeshClass::intersect( D3DXVECTOR3 rayOrigin, D3DXVECTOR3 rayDirection)
 {
-	D3D11_MAPPED_SUBRESOURCE verticesPtr;
-	D3D11_MAPPED_SUBRESOURCE indicesPtr;
-	HRESULT result;
-
-	// Lock the vertex buffer.
-	result = deviceContext->Map(m_vertexBuffer, 0, D3D11_MAP_READ, 0, &verticesPtr);
-	if (FAILED(result))
-	{
-		return false;
-	}
-
-	*verticies = (D3DXVECTOR3*)verticesPtr.pData;
-
-	// Lock the index buffer.
-	result = deviceContext->Map(m_indexBuffer, 0, D3D11_MAP_READ, 0, &indicesPtr);
-	if (FAILED(result))
-	{
-		return false;
-	}
-
-	*indices = (unsigned long*)indicesPtr.pData;
-
-	//Unlock buffers
-	deviceContext->Unmap(m_vertexBuffer,0);
-	deviceContext->Unmap(m_indexBuffer, 0);
-
-	return true;
-}
-
-bool BoxMeshClass::intersect(ID3D11DeviceContext* deviceContext, D3DXVECTOR3 rayOrigin, D3DXVECTOR3 rayDirection)
-{
-	D3DXVECTOR3* verticies;
-	unsigned long* indicies;
 	bool result;
 	D3DXVECTOR3 res;
-
-	//get verticies and indexs from buffers
-	result = getVertsAndInds(deviceContext, &verticies, &indicies);
-	if (!result)
-		return false;
 
 	//check all triangles
 	for (int i = 0; i < m_indexCount/3;i++)
 	{
-		result = triangleHitTest(rayOrigin, rayDirection, verticies[indicies[i * 3]], verticies[indicies[i * 3 + 1]], verticies[indicies[i * 3 + 2]], res);
+		result = triangleHitTest(rayOrigin, rayDirection, m_points[BOX_MESH_INDICIES[i * 3]], m_points[BOX_MESH_INDICIES[i * 3 + 1]], m_points[BOX_MESH_INDICIES[i * 3 + 2]], res);
 		if (result)
 			return true;
 	}
 
-	return false;;
+	return false;
 }
 
 bool BoxMeshClass::triangleHitTest(D3DXVECTOR3 rayOrigin, D3DXVECTOR3 rayDirection, D3DXVECTOR3 v0, D3DXVECTOR3 v1, D3DXVECTOR3 v2, D3DXVECTOR3 & res)
@@ -250,15 +213,17 @@ bool BoxMeshClass::triangleHitTest(D3DXVECTOR3 rayOrigin, D3DXVECTOR3 rayDirecti
 	//calc some help vectors
 	D3DXVECTOR3 P, Q;
 	D3DXVec3Cross(&P, &rayDirection, &E2);
-	D3DXVec3Cross(&P, &T, &E1);
+	D3DXVec3Cross(&Q, &T, &E1);
 
 	//calc t u v by formul
-	res = 1.0f / D3DXVec3Dot(&P, &E1) * D3DXVECTOR3(D3DXVec3Dot(&Q, &E2), D3DXVec3Dot(&P, &T), D3DXVec3Dot(&Q, &rayDirection));
+	res = (1.0f / D3DXVec3Dot(&P, &E1)) * D3DXVECTOR3(D3DXVec3Dot(&Q, &E2), D3DXVec3Dot(&P, &T), D3DXVec3Dot(&Q, &rayDirection));
 
 	
 	//compare 2 formuls of point 
-	D3DXVECTOR3 delta = ((rayOrigin + res.x*rayDirection) - ((1.0f - res.y - res.z)*v1 + res.y * v2 + res.z*v0));
-	if (delta.x < 0.0001f && delta.y < 0.0001f && delta.z < 0.0001f)
+	//D3DXVECTOR3 delta = ((rayOrigin + res.x*rayDirection) - ((1.0f - res.y - res.z)*v0 + res.y * v1 + res.z*v2));
+
+	//check if u and v are correct
+	if (res.y>=0.0f && res.y<=1.0f && res.z>=0.0f && res.z<=1.0f && res.y+res.z <=1.0f)
 		return true;
 
 	return false;

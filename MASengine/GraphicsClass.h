@@ -47,11 +47,13 @@ private:
 	void pick(int mouseX, int mouseY);
 	void unPick(int mouseX, int mouseY);
 	bool interfacePick(int mouseX, int mouseY, int& ind, std::string& name);
+	bool terrainPick(int mouseX, int mouseY, D3DXVECTOR3& color);
+	void createRay(int mouseX, int mouseY, D3DXVECTOR3& rayOrigin, D3DXVECTOR3& rayDirection);
 private:
 	//params
 	D3DXMATRIX m_baseViewMatrix;
 	HWND m_hwnd;
-
+	int m_screenWidth, m_screenHeight;
 
 	TerrainClass* m_test[TEST_NUM];
 	//blocks

@@ -81,14 +81,16 @@ bool TerrainClass::Render(TerrainShaderClass * terrainShader, ID3D11DeviceContex
 	return true;
 }
 
-D3DXVECTOR3 TerrainClass::pick(ID3D11DeviceContext * deviceContext, int x, int y)
+bool  TerrainClass::pick(ID3D11DeviceContext * deviceContext, D3DXVECTOR3 rayOrigin, D3DXVECTOR3 rayDirection, D3DXVECTOR3& color)
 {
-	int hc;
-	D3DXVECTOR3 vec;
 	bool result;
-	result =  MeshManagerClass::getI().getModel(m_meshHash[0])->intersect(deviceContext,D3DXVECTOR3(0,0,0), D3DXVECTOR3(0, 0, 0),hc,vec);
 
-	return vec;
+	//normilize ray origin with position of block
+	rayOrigin -= m_position;
+
+	//check the best mesh
+	return MeshManagerClass::getI().getModel(m_meshHash[0])->intersect(deviceContext, rayOrigin, rayDirection, color);
+
 }
 
 D3DXVECTOR3 TerrainClass::GetPosition()

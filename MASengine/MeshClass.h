@@ -51,7 +51,7 @@ public:
 	int GetIndexCount();
 
 	bool checkFrustum(FrustumClass* frustum);
-	bool intersect(ID3D11DeviceContext* deviceContext, D3DXVECTOR3 rayOrigin, D3DXVECTOR3 rayDirection, int& hitCount, D3DXVECTOR3& point);
+	bool intersect(ID3D11DeviceContext* deviceContext, D3DXVECTOR3 rayOrigin, D3DXVECTOR3 rayDirection, D3DXVECTOR3& point);
 private:
 	bool InitializeBuffers(ID3D11Device* device, VertexType* vertices, unsigned long* indices);
 	void ShutdownBuffers();
@@ -60,7 +60,7 @@ private:
 	bool buildBoxMesh(ID3D11Device* device, D3DXVECTOR3 minPoint, D3DXVECTOR3 maxPoint);
 	void findExtrPoints(VertexType* vertices, D3DXVECTOR3& minPoint, D3DXVECTOR3& maxPoint);
 
-	
+	bool getVertsAndInds(ID3D11DeviceContext* deviceContext, VertexType** verticies, unsigned long** indices);
 private:
 	ID3D11Buffer *m_vertexBuffer, *m_indexBuffer;
 	int m_vertexCount, m_indexCount;

@@ -36,7 +36,7 @@ public:
 		float SCREEN_DEPTH, FrustumClass* frustum);
 
 	//pick actions
-	D3DXVECTOR3 pick(ID3D11DeviceContext * deviceContext, int x, int y);
+	bool pick(ID3D11DeviceContext * deviceContext, D3DXVECTOR3 rayOrigin,D3DXVECTOR3 rayDirection, D3DXVECTOR3& color);
 
 	//Getters
 	D3DXVECTOR3 GetPosition();
