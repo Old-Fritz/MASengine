@@ -81,9 +81,14 @@ bool TerrainClass::Render(TerrainShaderClass * terrainShader, ID3D11DeviceContex
 	return true;
 }
 
-D3DXVECTOR3 TerrainClass::pick(int x, int y)
+D3DXVECTOR3 TerrainClass::pick(ID3D11DeviceContext * deviceContext, int x, int y)
 {
-	return D3DXVECTOR3(1,1,1);
+	int hc;
+	D3DXVECTOR3 vec;
+	bool result;
+	result =  MeshManagerClass::getI().getModel(m_meshHash[0])->intersect(deviceContext,D3DXVECTOR3(0,0,0), D3DXVECTOR3(0, 0, 0),hc,vec);
+
+	return vec;
 }
 
 D3DXVECTOR3 TerrainClass::GetPosition()
@@ -151,7 +156,7 @@ int TerrainClass::getLvlByDist(float dist)
 		lvl = 3;
 	else if (dist > 1000)
 		lvl = 2;
-	else if (dist > 5000)
+	else if (dist > 500)
 		lvl = 1;
 	else
 		lvl = 0;

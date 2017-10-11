@@ -61,6 +61,8 @@ private:
 	LightClass * m_light;
 	InterfaceClass* m_interface;
 
+	float m_lightPos;
+
 	
 
 };

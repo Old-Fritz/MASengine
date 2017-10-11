@@ -110,10 +110,11 @@ bool BoxMeshClass::InitializeBuffers(ID3D11Device * device)
 	}
 
 	// Set up the description of the vertex buffer.
-	vertexBufferDesc.Usage = D3D11_USAGE_DEFAULT;
+	vertexBufferDesc.Usage = D3D11_USAGE_STAGING;
 	vertexBufferDesc.ByteWidth = sizeof(D3DXVECTOR3)* m_vertexCount;
-	vertexBufferDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
-	vertexBufferDesc.CPUAccessFlags = 0;
+	//vertexBufferDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
+	vertexBufferDesc.BindFlags = 0;
+	vertexBufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_READ | D3D11_CPU_ACCESS_WRITE;
 	vertexBufferDesc.MiscFlags = 0;
 
 	// Give the subresource structure a pointer to the vertex data.
@@ -127,10 +128,11 @@ bool BoxMeshClass::InitializeBuffers(ID3D11Device * device)
 	}
 
 	// Set up the description of the index buffer.
-	indexBufferDesc.Usage = D3D11_USAGE_DEFAULT;
+	indexBufferDesc.Usage = D3D11_USAGE_STAGING;
 	indexBufferDesc.ByteWidth = sizeof(unsigned long)* m_indexCount;
-	indexBufferDesc.BindFlags = D3D11_BIND_INDEX_BUFFER;
-	indexBufferDesc.CPUAccessFlags = 0;
+	//indexBufferDesc.BindFlags = D3D11_BIND_INDEX_BUFFER;
+	indexBufferDesc.BindFlags = 0;
+	indexBufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_READ | D3D11_CPU_ACCESS_WRITE;
 	indexBufferDesc.MiscFlags = 0;
 
 	// Give the subresource structure a pointer to the index data.
@@ -183,4 +185,81 @@ void BoxMeshClass::RenderBuffers(ID3D11DeviceContext * deviceContext)
 	deviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
 	return;
+}
+
+bool BoxMeshClass::getVertsAndInds(ID3D11DeviceContext* deviceContext, D3DXVECTOR3** verticies, unsigned long** indices)
+{
+	D3D11_MAPPED_SUBRESOURCE verticesPtr;
+	D3D11_MAPPED_SUBRESOURCE indicesPtr;
+	HRESULT result;
+
+	// Lock the vertex buffer.
+	result = deviceContext->Map(m_vertexBuffer, 0, D3D11_MAP_READ, 0, &verticesPtr);
+	if (FAILED(result))
+	{
+		return false;
+	}
+
+	*verticies = (D3DXVECTOR3*)verticesPtr.pData;
+
+	// Lock the index buffer.
+	result = deviceContext->Map(m_indexBuffer, 0, D3D11_MAP_READ, 0, &indicesPtr);
+	if (FAILED(result))
+	{
+		return false;
+	}
+
+	*indices = (unsigned long*)indicesPtr.pData;
+
+	//Unlock buffers
+	deviceContext->Unmap(m_vertexBuffer,0);
+	deviceContext->Unmap(m_indexBuffer, 0);
+
+	return true;
+}
+
+bool BoxMeshClass::intersect(ID3D11DeviceContext* deviceContext, D3DXVECTOR3 rayOrigin, D3DXVECTOR3 rayDirection)
+{
+	D3DXVECTOR3* verticies;
+	unsigned long* indicies;
+	bool result;
+	D3DXVECTOR3 res;
+
+	//get verticies and indexs from buffers
+	result = getVertsAndInds(deviceContext, &verticies, &indicies);
+	if (!result)
+		return false;
+
+	//check all triangles
+	for (int i = 0; i < m_indexCount/3;i++)
+	{
+		result = triangleHitTest(rayOrigin, rayDirection, verticies[indicies[i * 3]], verticies[indicies[i * 3 + 1]], verticies[indicies[i * 3 + 2]], res);
+		if (result)
+			return true;
+	}
+
+	return false;;
+}
+
+bool BoxMeshClass::triangleHitTest(D3DXVECTOR3 rayOrigin, D3DXVECTOR3 rayDirection, D3DXVECTOR3 v0, D3DXVECTOR3 v1, D3DXVECTOR3 v2, D3DXVECTOR3 & res)
+{
+	//transporant all points so v0 in (0,0,0)
+	D3DXVECTOR3 E1 = v1 - v0;
+	D3DXVECTOR3 E2 = v2 - v0;
+	D3DXVECTOR3 T = rayOrigin - v0;
+	//calc some help vectors
+	D3DXVECTOR3 P, Q;
+	D3DXVec3Cross(&P, &rayDirection, &E2);
+	D3DXVec3Cross(&P, &T, &E1);
+
+	//calc t u v by formul
+	res = 1.0f / D3DXVec3Dot(&P, &E1) * D3DXVECTOR3(D3DXVec3Dot(&Q, &E2), D3DXVec3Dot(&P, &T), D3DXVec3Dot(&Q, &rayDirection));
+
+	
+	//compare 2 formuls of point 
+	D3DXVECTOR3 delta = ((rayOrigin + res.x*rayDirection) - ((1.0f - res.y - res.z)*v1 + res.y * v2 + res.z*v0));
+	if (delta.x < 0.0001f && delta.y < 0.0001f && delta.z < 0.0001f)
+		return true;
+
+	return false;
 }

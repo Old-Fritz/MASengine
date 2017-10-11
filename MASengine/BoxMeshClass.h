@@ -49,12 +49,17 @@ public:
 	bool checkFrustum(FrustumClass* frustum);
 
 	int GetIndexCount();
+
+
+	bool intersect(ID3D11DeviceContext* deviceContext,D3DXVECTOR3 rayOrigin, D3DXVECTOR3 rayDirection);
+	bool triangleHitTest(D3DXVECTOR3 rayOrigin, D3DXVECTOR3 rayDirection, D3DXVECTOR3 v0, D3DXVECTOR3 v1, D3DXVECTOR3 v2, D3DXVECTOR3& res);
 private:
 	bool createVertsAndInds(unsigned long** indices);
 	bool InitializeBuffers(ID3D11Device* device);
 	void ShutdownBuffers();
 	void RenderBuffers(ID3D11DeviceContext* deviceContext);
 
+	bool getVertsAndInds(ID3D11DeviceContext* deviceContext, D3DXVECTOR3** verticies, unsigned long** indices);
 private:
 	D3DXVECTOR3* m_points;
 	ID3D11Buffer *m_vertexBuffer, *m_indexBuffer;

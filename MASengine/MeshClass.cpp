@@ -224,6 +224,13 @@ void MeshClass::findExtrPoints(VertexType* vertices, D3DXVECTOR3 & minPoint, D3D
 	}
 }
 
+bool MeshClass::intersect(ID3D11DeviceContext * deviceContext, D3DXVECTOR3 rayOrigin, D3DXVECTOR3 rayDirection, int & hitCount, D3DXVECTOR3 & point)
+{
+	hitCount = 0;
+	point = D3DXVECTOR3(0, 0, 0);
+	return m_boxMesh->intersect(deviceContext,rayOrigin,rayDirection);
+}
+
 bool MeshClass::checkFrustum(FrustumClass * frustum)
 {
 	return m_boxMesh->checkFrustum(frustum);

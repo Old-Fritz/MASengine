@@ -10,6 +10,9 @@ GraphicsClass::GraphicsClass()
 	m_light = 0;
 	for (int i = 0;i < TEST_NUM;i++)
 		m_test[i] = 0;
+
+
+	m_lightPos = 0;
 }
 
 GraphicsClass::GraphicsClass(const GraphicsClass &)
@@ -181,6 +184,12 @@ bool GraphicsClass::Frame(D3DXVECTOR3 pos, D3DXVECTOR3 rot, int mouseX, int mous
 	
 	//updating denug info
 	m_interface->UpdateDebug(m_D3D->GetDeviceContext(), pos, rot, mouseX, mouseY);
+
+	m_lightPos += 0.0001f * SystemStateManagerClass::getI().GetTime();
+	if (m_lightPos > 1.0f)
+		m_lightPos = -1.0f;
+
+	m_light->SetDirection(D3DXVECTOR3(m_lightPos,-0.5f,0));
 
 	return true;
 }
@@ -423,8 +432,8 @@ void GraphicsClass::pick(int mouseX, int mouseY)
 	CommandClass* command;
 	std::string interfaceElName;
 	int interfaceElInd;
-	float posX, posY, posZ;
-	D3DXVECTOR3 color;
+
+	D3DXVECTOR3 k = m_test[0]->pick(m_D3D->GetDeviceContext(), mouseX, mouseY);
 
 	// First check for interface pick
 	if (interfacePick(mouseX, mouseY, interfaceElInd, interfaceElName))
@@ -452,3 +461,4 @@ bool GraphicsClass::interfacePick(int mouseX, int mouseY, int & ind, std::string
 {
 	return m_interface->getEl(mouseX, mouseY, ind, name);
 }
+
