@@ -66,6 +66,11 @@ ProvRegionClass * ProvRegionManagerClass::getProvRegion(int provRegionID)
 		return m_provRegions[0];
 }
 
+ProvRegionClass * ProvRegionManagerClass::getSelectedRegion()
+{
+	return m_selectedRegion;
+}
+
 ProvRegionManagerClass & ProvRegionManagerClass::getI()
 {
 	if (!m_instance)

@@ -81,16 +81,93 @@ bool TerrainClass::Render(TerrainShaderClass * terrainShader, ID3D11DeviceContex
 	return true;
 }
 
-bool  TerrainClass::pick(ID3D11DeviceContext * deviceContext, D3DXVECTOR3 rayOrigin, D3DXVECTOR3 rayDirection, D3DXVECTOR3& color)
+bool  TerrainClass::pick(ID3D11DeviceContext * deviceContext, D3DXVECTOR3 rayOrigin, D3DXVECTOR3 rayDirection, int& provNum, D3DXVECTOR3& point)
 {
 	bool result;
 
 	//normilize ray origin with position of block
 	rayOrigin -= m_position;
+	D3DXVECTOR3 color = { 0, 0, 0 };
 
 	//check the best mesh
-	return MeshManagerClass::getI().getModel(m_meshHash[0])->intersect(deviceContext, rayOrigin, rayDirection, color);
+	result = MeshManagerClass::getI().getModel(m_meshHash[0])->intersect(deviceContext, rayOrigin, rayDirection, point);
+	if (!result)
+		return false;
+	
+	//get color of pixel in bmp
+	result = getColorFromBMP(point.x, point.z, color, PathManagerClass::getI().makePath(m_hmapFilenameBase + ".bmp"));
+	if (!result)
+		return false;
 
+	provNum = color.z;
+
+	return true;
+
+}
+
+bool TerrainClass::getColorFromBMP(float x, float y, D3DXVECTOR3 & color, PathClass* filename)
+{
+	FILE* filePtr;
+	int error;
+	unsigned int count;
+	BITMAPFILEHEADER bitmapFileHeader;
+	BITMAPINFOHEADER bitmapInfoHeader;
+	int terrainWidth, terrainHeight;
+
+	// Open the height map file in binary.
+	error = fopen_s(&filePtr, filename->getPath().c_str(), "rb");
+	if (error != 0)
+	{
+		return false;
+	}
+
+	// Read in the file header.
+	count = fread(&bitmapFileHeader, sizeof(BITMAPFILEHEADER), 1, filePtr);
+	if (count != 1)
+	{
+		return false;
+	}
+
+	// Read in the bitmap info header.
+	count = fread(&bitmapInfoHeader, sizeof(BITMAPINFOHEADER), 1, filePtr);
+	if (count != 1)
+	{
+		return false;
+	}
+
+	// Save the dimensions of the terrain.
+	terrainWidth = bitmapInfoHeader.biWidth;
+	terrainHeight = bitmapInfoHeader.biHeight;
+
+	//get coords in bmp
+	int bX, bY;
+	bX = (x / m_terrainWidth) * terrainWidth;
+	bY = (y / m_terrainHeight) * terrainHeight;
+	//bX = terrainWidth - bX;
+	//bY = terrainHeight - bY;
+	//y = (float)y / 128.0f * (float)terrainWidth - 1;
+	//x = (float)x / 128.0f * (float)terrainHeight - 1;
+	//if (x < 0)
+	//	x = 0;
+	//if (y < 0)
+	//	y = 0;
+
+	// Move to the beginning of the bitmap data of current pixel.
+	fseek(filePtr, bitmapFileHeader.bfOffBits + (terrainWidth * 3)*bY + bX * 3, SEEK_SET);
+
+	// Read data in color
+	color.z = abs(getc(filePtr));
+	color.y = abs(getc(filePtr));
+	color.x = abs(getc(filePtr));
+
+	// Close the file.
+	error = fclose(filePtr);
+	if (error != 0)
+	{
+		return false;
+	}
+
+	return true;
 }
 
 D3DXVECTOR3 TerrainClass::GetPosition()
@@ -147,6 +224,12 @@ D3DXVECTOR4 * TerrainClass::getProvColor()
 		provColors[i] = D3DXVECTOR4(1, 1, 1, 1);
 		i++;
 	}
+
+	//some fun tests
+	/*for (int i = 0;i < 256;i++)
+	{
+		provColors[i] = D3DXVECTOR4((float)rand()/ (float)RAND_MAX, (float)rand() / (float)RAND_MAX, (float)rand() / (float)RAND_MAX, (float)rand() / (float)RAND_MAX);
+	}*/
 
 	return provColors;
 }

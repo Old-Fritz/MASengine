@@ -434,15 +434,18 @@ void GraphicsClass::pick(int mouseX, int mouseY)
 	CommandClass* command;
 	std::string interfaceElName;
 	int interfaceElInd;
-	D3DXVECTOR3 color;
+
+	D3DXVECTOR3 point;
+	int provNum;
 
 	// First check for interface pick
 	if (interfacePick(mouseX, mouseY, interfaceElInd, interfaceElName))
 	{
 		m_interface->pick(interfaceElInd, interfaceElName);
 	}
-	else if (terrainPick(mouseX, mouseY, color))
+	else if (terrainPick(mouseX, mouseY, provNum, point))
 	{
+		
 		return;
 	}
 }
@@ -453,15 +456,18 @@ void GraphicsClass::unPick(int mouseX, int mouseY)
 	std::string interfaceElName;
 	int interfaceElInd;
 	float posX, posY, posZ;
-	D3DXVECTOR3 color;
+
+	D3DXVECTOR3 point;
+	int provNum;
 
 	// First check for interface pick
 	if (interfacePick(mouseX, mouseY, interfaceElInd, interfaceElName))
 	{
 		m_interface->unPick(interfaceElInd, interfaceElName);
 	}
-	else if (terrainPick(mouseX, mouseY, color))
+	else if (terrainPick(mouseX, mouseY, provNum, point))
 	{
+		ProvRegionManagerClass::getI().getProvRegion(0)->add(provNum);
 		return;
 	}
 }
@@ -471,7 +477,7 @@ bool GraphicsClass::interfacePick(int mouseX, int mouseY, int & ind, std::string
 	return m_interface->getEl(mouseX, mouseY, ind, name);
 }
 
-bool GraphicsClass::terrainPick(int mouseX, int mouseY, D3DXVECTOR3 & color)
+bool GraphicsClass::terrainPick(int mouseX, int mouseY, int& provNum, D3DXVECTOR3& point)
 {
 	D3DXVECTOR3 rayOrigin, rayDirection;
 	bool result;
@@ -479,7 +485,12 @@ bool GraphicsClass::terrainPick(int mouseX, int mouseY, D3DXVECTOR3 & color)
 	//create intersection ray
 	createRay(mouseX, mouseY, rayOrigin, rayDirection);
 
-	return m_test[0]->pick(m_D3D->GetDeviceContext(), rayOrigin, rayDirection, color);
+	for (int i = 0;i < TEST_NUM;i++)
+	{
+		m_test[i]->pick(m_D3D->GetDeviceContext(), rayOrigin, rayDirection, provNum, point);
+	}
+
+	return true;
 }
 
 void GraphicsClass::createRay(int mouseX, int mouseY, D3DXVECTOR3 & rayOrigin, D3DXVECTOR3 & rayDirection)

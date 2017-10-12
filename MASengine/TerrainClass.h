@@ -36,7 +36,9 @@ public:
 		float SCREEN_DEPTH, FrustumClass* frustum);
 
 	//pick actions
-	bool pick(ID3D11DeviceContext * deviceContext, D3DXVECTOR3 rayOrigin,D3DXVECTOR3 rayDirection, D3DXVECTOR3& color);
+	bool pick(ID3D11DeviceContext * deviceContext, D3DXVECTOR3 rayOrigin,D3DXVECTOR3 rayDirection, int& provNum, D3DXVECTOR3& point);
+
+	bool getColorFromBMP(float x, float y, D3DXVECTOR3& color, PathClass* filename);
 
 	//Getters
 	D3DXVECTOR3 GetPosition();

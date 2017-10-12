@@ -24,6 +24,7 @@ public:
 
 	//Getters
 	ProvRegionClass* getProvRegion(int provRegionID);
+	ProvRegionClass* getSelectedRegion();
 
 	static ProvRegionManagerClass& getI();
 private:
@@ -34,6 +35,7 @@ private:
 	static ProvRegionManagerClass* m_instance;
 
 	std::vector<ProvRegionClass*> m_provRegions;
+	ProvRegionClass* m_selectedRegion;
 };
 
 #endif

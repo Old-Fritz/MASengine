@@ -47,7 +47,7 @@ private:
 	void pick(int mouseX, int mouseY);
 	void unPick(int mouseX, int mouseY);
 	bool interfacePick(int mouseX, int mouseY, int& ind, std::string& name);
-	bool terrainPick(int mouseX, int mouseY, D3DXVECTOR3& color);
+	bool terrainPick(int mouseX, int mouseY, int& provNum, D3DXVECTOR3& point);
 	void createRay(int mouseX, int mouseY, D3DXVECTOR3& rayOrigin, D3DXVECTOR3& rayDirection);
 private:
 	//params
