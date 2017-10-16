@@ -57,6 +57,12 @@ ProvClass * ProvManagerClass::getProv(int provNum)
 		return m_provs[0];
 }
 
+void ProvManagerClass::setGlobalMainColor(GlobalManagerClass::regionType type)
+{
+	for (int i = 0;i < m_provs.size();i++)
+		m_provs[i]->getLayers()->setMainColor(type);
+}
+
 ProvManagerClass & ProvManagerClass::getI()
 {
 	if (!m_instance)

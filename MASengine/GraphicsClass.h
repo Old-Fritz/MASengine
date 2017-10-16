@@ -33,7 +33,9 @@ public:
 	~GraphicsClass();
 
 	bool Initialize(HWND hwnd);
+	bool InitializeResources();
 	void Shutdown();
+	void ShutdownResources();
 	bool Frame(D3DXVECTOR3 pos, D3DXVECTOR3 rot, int mouseX, int mouseY);
 
 	bool updateInterface(CommandClass* command, int ind);

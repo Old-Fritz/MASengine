@@ -12,32 +12,6 @@ ProvRegionManagerClass::~ProvRegionManagerClass()
 {
 }
 
-bool ProvRegionManagerClass::Initialize(PathClass* filename)
-{
-	bool result;
-
-	int numOfProvs;
-	std::ifstream file;
-	file.open(filename->getPath());
-
-	if (file.fail())
-		return false;
-
-	file >> numOfProvs;
-	for (int i = 0;i < numOfProvs;i++)
-	{
-		ProvRegionClass* region = new(4) ProvRegionClass;
-		result = region->Initialize(&file, i);
-		if (!result)
-		{
-			return false;
-		}
-		m_provRegions.emplace_back(region);
-	}
-
-	return true;
-}
-
 void ProvRegionManagerClass::Shutdown()
 {
 	for (int i = m_provRegions.size() - 1;i >= 0;i--)
@@ -45,11 +19,33 @@ void ProvRegionManagerClass::Shutdown()
 		if (m_provRegions[i])
 		{
 			m_provRegions[i]->Shutdown();
-			::operator delete(m_provRegions[i], sizeof(*m_provRegions[i]), 1);
+			::operator delete(m_provRegions[i], sizeof(*m_provRegions[i]), 2);
 			m_provRegions[i] = 0;
 		}
 	}
 	m_provRegions.clear();
+
+	for (int i = m_blockRegion.size() - 1;i >= 0;i--)
+	{
+		if (m_blockRegion[i])
+		{
+			m_blockRegion[i]->Shutdown();
+			::operator delete(m_blockRegion[i], sizeof(*m_blockRegion[i]), 2);
+			m_blockRegion[i] = 0;
+		}
+	}
+	m_blockRegion.clear();
+
+	for (int i = m_nationRegion.size() - 1;i >= 0;i--)
+	{
+		if (m_nationRegion[i])
+		{
+			m_nationRegion[i]->Shutdown();
+			::operator delete(m_nationRegion[i], sizeof(*m_nationRegion[i]), 2);
+			m_nationRegion[i] = 0;
+		}
+	}
+	m_nationRegion.clear();
 
 	if (m_instance)
 	{
@@ -58,17 +54,46 @@ void ProvRegionManagerClass::Shutdown()
 	}
 }
 
-ProvRegionClass * ProvRegionManagerClass::getProvRegion(int provRegionID)
+ProvRegionClass * ProvRegionManagerClass::getProvRegion(GlobalManagerClass::regionType type, int provRegionID)
 {
-	if (provRegionID < m_provRegions.size())
-		return m_provRegions[provRegionID];
-	else
-		return m_provRegions[0];
+	switch (type)
+	{
+	case GlobalManagerClass::BASE:
+		if (m_provRegions.size() > provRegionID)
+			return m_provRegions[provRegionID];
+		else
+			return 0;
+	case GlobalManagerClass::BLOCK:
+		if (m_blockRegion.size() > provRegionID)
+			return m_blockRegion[provRegionID];
+		else
+			return 0;
+	case GlobalManagerClass::NATION:
+		if (m_nationRegion.size() > provRegionID)
+			return m_nationRegion[provRegionID];
+		else
+			return 0;
+	default:
+		return 0;
+	}
 }
 
-ProvRegionClass * ProvRegionManagerClass::getSelectedRegion()
+void ProvRegionManagerClass::addProvRegion(GlobalManagerClass::regionType type, ProvRegionClass* region)
 {
-	return m_selectedRegion;
+	switch (type)
+	{
+	case GlobalManagerClass::BASE:
+		m_provRegions.emplace_back(region);
+		break;
+	case GlobalManagerClass::BLOCK:
+		m_blockRegion.emplace_back((BlockRegionClass*)region);
+		break;
+	case GlobalManagerClass::NATION:
+		m_nationRegion.emplace_back((NationRegionClass*)region);
+		break;
+	default:
+		break;
+	}
 }
 
 ProvRegionManagerClass & ProvRegionManagerClass::getI()

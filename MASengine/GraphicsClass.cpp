@@ -80,6 +80,7 @@ bool GraphicsClass::Initialize(HWND hwnd)
 	m_light->SetDirection(D3DXVECTOR3(0.9f, 0.0f, 0.0f));
 	m_light->SetSpecularColor(D3DXVECTOR4(1.0f, 1.0f, 1.0f, 1.0f));
 	m_light->SetSpecularPower(400.0f);
+
 	//Init loadscreen manager
 	result = LoadScreenManagerClass::getI().Initialize(m_D3D,m_shaderManager,m_baseViewMatrix,m_hwnd,SettingsClass::getI().getPathParameter("loadScreenManagerFilename"));
 	if (!result)
@@ -89,14 +90,25 @@ bool GraphicsClass::Initialize(HWND hwnd)
 	}
 	LoadScreenManagerClass::getI().showElements();
 
+	
+
+	
+
+	return true;
+}
+
+bool GraphicsClass::InitializeResources()
+{
+	bool result;
+
 	//Init Interface
 	m_interface = new(1) InterfaceClass;
 	if (!m_interface)
 		return false;
-	result = m_interface->Initialize(m_D3D->GetDevice(),m_D3D->GetDeviceContext(), hwnd, m_screenWidth, m_screenHeight);
+	result = m_interface->Initialize(m_D3D->GetDevice(), m_D3D->GetDeviceContext(), m_hwnd, m_screenWidth, m_screenHeight);
 	if (!result)
 	{
-		MessageBox(hwnd, L"Could not initialize interface", L"Error", MB_OK);
+		MessageBox(m_hwnd, L"Could not initialize interface", L"Error", MB_OK);
 		return false;
 	}
 
@@ -109,35 +121,17 @@ bool GraphicsClass::Initialize(HWND hwnd)
 		result = m_test[i]->Initialize(m_D3D->GetDevice(), m_D3D->GetDeviceContext(), PathManagerClass::getI().makePath("data/terrain/block1.txt"), 0);
 		if (!result)
 		{
-			MessageBox(hwnd, L"Could not initialize test", L"Error", MB_OK);
+			MessageBox(m_hwnd, L"Could not initialize test", L"Error", MB_OK);
 			return false;
 		}
 	}
-
-	
 
 	return true;
 }
 
 void GraphicsClass::Shutdown()
 {
-	for (int i = 0;i < TEST_NUM;i++)
-	{
-		if (m_test[i])
-		{
-			m_test[i]->Shutdown();
-			::operator delete(m_test[i], sizeof(*m_test[i]), 1);
-			m_test[i] = 0;
-		}
-	}
 	
-
-	if (m_interface)
-	{
-		m_interface->Shutdown();
-		::operator delete(m_interface, sizeof(InterfaceClass), 1);
-		m_interface = 0;
-	}
 
 	LoadScreenManagerClass::getI().Shutdown();
 
@@ -159,6 +153,27 @@ void GraphicsClass::Shutdown()
 		m_D3D->Shutdown();
 		::operator delete( m_D3D,sizeof(D3DClass),1);
 		m_D3D = 0;
+	}
+}
+
+void GraphicsClass::ShutdownResources()
+{
+	for (int i = 0;i < TEST_NUM;i++)
+	{
+		if (m_test[i])
+		{
+			m_test[i]->Shutdown();
+			::operator delete(m_test[i], sizeof(*m_test[i]), 1);
+			m_test[i] = 0;
+		}
+	}
+
+
+	if (m_interface)
+	{
+		m_interface->Shutdown();
+		::operator delete(m_interface, sizeof(InterfaceClass), 1);
+		m_interface = 0;
 	}
 }
 
@@ -467,7 +482,7 @@ void GraphicsClass::unPick(int mouseX, int mouseY)
 	}
 	else if (terrainPick(mouseX, mouseY, provNum, point))
 	{
-		ProvRegionManagerClass::getI().getProvRegion(0)->add(provNum);
+		ProvRegionManagerClass::getI().getProvRegion(GlobalManagerClass::NATION, 0)->add(provNum);
 		return;
 	}
 }

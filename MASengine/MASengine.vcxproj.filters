@@ -330,6 +330,12 @@
     <ClCompile Include="CameraClass.cpp">
       <Filter>Файлы исходного кода\Graphics\Sysyems</Filter>
     </ClCompile>
+    <ClCompile Include="BlockRegionClass.cpp">
+      <Filter>Файлы исходного кода\GameMechanics\Provs\provRegions</Filter>
+    </ClCompile>
+    <ClCompile Include="NationRegionClass.cpp">
+      <Filter>Файлы исходного кода\GameMechanics\Provs\provRegions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SystemClass.h">
@@ -511,6 +517,12 @@
     </ClInclude>
     <ClInclude Include="CameraClass.h">
       <Filter>Заголовочные файлы\Graphics\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="BlockRegionClass.h">
+      <Filter>Заголовочные файлы\GameMechaniks\Provs\ProvRegions</Filter>
+    </ClInclude>
+    <ClInclude Include="NationRegionClass.h">
+      <Filter>Заголовочные файлы\GameMechaniks\Provs\ProvRegions</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -72,19 +72,36 @@ bool SystemClass::Initialize()
 	else
 		return false;
 	LogManagerClass::getI().addLog("Provs Initialization");
+	ProvManagerClass::getI().setGlobalMainColor(GlobalManagerClass::NATION);
 
 	//Initialize prov region manager
-	if (&(ProvRegionManagerClass::getI()))
+	if (!&(ProvRegionManagerClass::getI()))
 	{
-		result = ProvRegionManagerClass::getI().Initialize(SettingsClass::getI().getPathParameter("ProvRegionFilename"));
-		if (!result)
-		{
+		//result = ProvRegionManagerClass::getI().Initialize(SettingsClass::getI().getPathParameter("ProvRegionFilename"));
+		//if (!result)
+		//{
 			return false;
-		}
+		//}
 	}
-	else
-		return false;
+	//else
+		//return false;
 	LogManagerClass::getI().addLog("Provs Regions Initialization");
+
+	//init test regions
+	std::ifstream file;
+	file.open(SettingsClass::getI().getPathParameter("ProvRegionFilename")->getPath());
+	NationRegionClass* reg1 = new(4) NationRegionClass;
+	reg1->Initialize(&file, 0);
+	NationRegionClass* reg2 = new(4) NationRegionClass;
+	reg2->Initialize(&file, 1);
+	ProvRegionManagerClass::getI().addProvRegion(GlobalManagerClass::NATION, reg1);
+	ProvRegionManagerClass::getI().addProvRegion(GlobalManagerClass::NATION, reg2);
+	
+	// initialize resources of graphics
+	result = m_graphics->InitializeResources();
+	if (!result)
+		return false;
+	LogManagerClass::getI().addLog("graphics resources Initialization");
 	
 	LoadScreenManagerClass::getI().hideElements();
 

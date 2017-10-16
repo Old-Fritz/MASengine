@@ -9,6 +9,7 @@
 ///////////////////////
 #include "GlobalManagerClass.h"
 #include <set>
+#include "ProvManagerClass.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // Class name: ProvClass
@@ -22,25 +23,25 @@ public:
 	ProvRegionClass(const ProvRegionClass&);
 	~ProvRegionClass();
 
-	bool Initialize(std::ifstream* file, int id);
-	void Shutdown();
+	virtual bool Initialize(std::ifstream* file, int id);
+	virtual void Shutdown();
 
-	void add(int provID);
-	void erase(int provID);
+	virtual void add(int provID);
+	virtual void erase(int provID);
 	
 
 	//Getters
-	int getID();
-	std::set<int>* getProvIDs();
-private:
+	virtual int getID();
+	virtual std::set<ProvClass*>* getProvs();
+protected:
 	//void readFromFile(string filename, FractionManagerClass* fractions);
 	bool readFromFile(std::ifstream* file);
-private:
+protected:
 	int m_id;
 	
 	D3DXVECTOR4 m_color = D3DXVECTOR4(0,0,0,1);
 
-	std::set<int> m_provIDs;
+	std::set<ProvClass*> m_provs;
 };
 
 #endif

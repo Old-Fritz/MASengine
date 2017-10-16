@@ -24,6 +24,7 @@ public:
 
 	//Getters
 	ProvClass* getProv(int provNum);
+	void setGlobalMainColor(GlobalManagerClass::regionType type);
 
 	static ProvManagerClass& getI();
 

@@ -202,21 +202,30 @@ bool TerrainClass::readFromFile(PathClass* filename)
 	m_provFilename = PathManagerClass::getI().makePath();
 	file >> m_provFilename;
 
+	//add new block region
+	BlockRegionClass* region = new(4) BlockRegionClass;
+	if (!region)
+		return false;
+	result = region->Initialize(&file, m_ID);
+	if (!result)
+		return false;
+	ProvRegionManagerClass::getI().addProvRegion(GlobalManagerClass::BLOCK, region);
+
 	return true;
 }
 
 D3DXVECTOR4 * TerrainClass::getProvColor()
 {
 	//get region
-	ProvRegionClass* provs = ProvRegionManagerClass::getI().getProvRegion(m_ID);
+	ProvRegionClass* region = ProvRegionManagerClass::getI().getProvRegion(GlobalManagerClass::BLOCK, m_ID);
 
-	auto provsIDs = provs->getProvIDs();
+	auto provs = region->getProvs();
 	D3DXVECTOR4* provColors = new(2) D3DXVECTOR4[256];
 	
 	int i = 0;
-	for (auto ID = provsIDs->begin();ID!=provsIDs->end() && i<256;i++,ID++)
+	for (auto prov = provs->begin();prov!= provs->end() && i<256;i++, prov++)
 	{
-		provColors[i] = ProvManagerClass::getI().getProv(*ID)->getLayers()->getMainColor();
+		provColors[i] = (*prov)->getLayers()->getMainColor();
 	}
 	//fill last colors with white
 	while (i < 256)

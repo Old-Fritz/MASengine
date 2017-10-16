@@ -22,9 +22,6 @@ bool ProvClass::Initialize(std::ifstream * file, int id)
 		return false;
 	}
 
-	m_layers->setBaseColor(D3DXVECTOR4(1, 0, 0, 1));
-	m_layers->setMainColor(D3DXVECTOR4(1, 0, 0, 1));
-
 	result = readFromFile(file);
 	if (!result)
 	{
@@ -66,11 +63,57 @@ LayersClass * ProvClass::getLayers()
 	return m_layers;
 }
 
-void ProvClass::changeBlockRegion(ProvRegionClass * newRegion)
+void ProvClass::addRegion(GlobalManagerClass::regionType type, int regionID)
 {
-	newRegion->add(m_id);
-	m_blockRegion.emplace(newRegion);
+	switch (type)
+	{
+	case GlobalManagerClass::BASE:
+		m_baseRegion.emplace(regionID);
+		break;
+	case GlobalManagerClass::BLOCK:
+		m_blockRegion.emplace(regionID);
+		break;
+	case GlobalManagerClass::NATION:
+		m_nationRegion.emplace(regionID);
+		break;
+	default:
+		break;
+	}
 }
+
+void ProvClass::deleteRegion(GlobalManagerClass::regionType type, int regionID)
+{
+	switch (type)
+	{
+	case GlobalManagerClass::BASE:
+		m_baseRegion.erase(regionID);
+		break;
+	case GlobalManagerClass::BLOCK:
+		m_blockRegion.erase(regionID);
+		break;
+	case GlobalManagerClass::NATION:
+		m_nationRegion.erase(regionID);
+		break;
+	default:
+		break;
+	}
+}
+
+std::set<int> ProvClass::getRegions(GlobalManagerClass::regionType type)
+{
+	switch (type)
+	{
+	case GlobalManagerClass::BASE:
+		return m_baseRegion;
+	case GlobalManagerClass::BLOCK:
+		return m_blockRegion;
+	case GlobalManagerClass::NATION:
+		return m_nationRegion;
+	default:
+		return m_baseRegion;
+	}
+}
+
 
 bool ProvClass::readFromFile(std::ifstream * file)
 {

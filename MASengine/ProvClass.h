@@ -9,7 +9,6 @@
 ///////////////////////
 #include"GlobalManagerClass.h"
 #include "LayersClass.h"
-#include "ProvRegionClass.h"
 #include <set>
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -36,7 +35,9 @@ public:
 	LayersClass* getLayers();
 
 	//Prov Regions
-	void changeBlockRegion(ProvRegionClass* newRegion);
+	void addRegion(GlobalManagerClass::regionType type, int regionID);
+	void deleteRegion(GlobalManagerClass::regionType type, int regionID);
+	std::set<int> getRegions(GlobalManagerClass::regionType type);
 private:
 	//void readFromFile(string filename, FractionManagerClass* fractions);
 	bool readFromFile(std::ifstream* file);
@@ -49,7 +50,9 @@ private:
 	D3DXVECTOR3 m_coords;
 
 	//Prov Regions
-	std::set<ProvRegionClass*> m_blockRegion;
+	std::set<int> m_baseRegion;
+	std::set<int> m_blockRegion;
+	std::set<int> m_nationRegion;
 };
 
 #endif

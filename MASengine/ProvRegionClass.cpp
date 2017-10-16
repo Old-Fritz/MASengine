@@ -27,17 +27,17 @@ bool ProvRegionClass::Initialize(std::ifstream * file, int id)
 
 void ProvRegionClass::Shutdown()
 {
-	m_provIDs.clear();
+	m_provs.clear();
 }
 
 void ProvRegionClass::add(int provID)
 {
-	m_provIDs.insert(provID);
+	m_provs.insert(ProvManagerClass::getI().getProv(provID));
 }
 
 void ProvRegionClass::erase(int provID)
 {
-	m_provIDs.erase(provID);
+	m_provs.erase(ProvManagerClass::getI().getProv(provID));
 }
 
 int ProvRegionClass::getID()
@@ -45,9 +45,9 @@ int ProvRegionClass::getID()
 	return m_id;
 }
 
-std::set<int>* ProvRegionClass::getProvIDs()
+std::set<ProvClass*>* ProvRegionClass::getProvs()
 {
-	return &m_provIDs;
+	return &m_provs;
 }
 
 bool ProvRegionClass::readFromFile(std::ifstream * file)
@@ -65,7 +65,7 @@ bool ProvRegionClass::readFromFile(std::ifstream * file)
 	for (int i = 0;i < numOfProvs;i++)
 	{
 		*file >> provID;
-		m_provIDs.insert(provID);
+		add(provID);
 	}
 	*file >> temp; //}
 

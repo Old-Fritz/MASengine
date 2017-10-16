@@ -7,7 +7,9 @@
 ///////////////////////
 // MY CLASS INCLUDES //
 ///////////////////////
-#include "provManagerClass.h"
+#include "provRegionClass.h"
+#include "NationRegionClass.h"
+#include "BlockRegionClass.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // Class name: ProvRegionManagerClass
@@ -19,12 +21,11 @@ class ProvRegionManagerClass
 public:
 	
 
-	bool Initialize(PathClass* filename);
 	void Shutdown();
 
 	//Getters
-	ProvRegionClass* getProvRegion(int provRegionID);
-	ProvRegionClass* getSelectedRegion();
+	ProvRegionClass* getProvRegion(GlobalManagerClass::regionType type, int provRegionID);
+	void addProvRegion(GlobalManagerClass::regionType type, ProvRegionClass* region);
 
 	static ProvRegionManagerClass& getI();
 private:
@@ -35,7 +36,8 @@ private:
 	static ProvRegionManagerClass* m_instance;
 
 	std::vector<ProvRegionClass*> m_provRegions;
-	ProvRegionClass* m_selectedRegion;
+	std::vector<BlockRegionClass*> m_blockRegion;
+	std::vector<NationRegionClass*> m_nationRegion;
 };
 
 #endif

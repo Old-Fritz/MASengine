@@ -24,6 +24,9 @@
 class GlobalManagerClass
 {
 public:
+	//global enums
+	enum regionType {RESERVE0, RESERVE1, RESERVE2, BASE, BLOCK, NATION};
+public:
 	
 
 	bool Initialize(const std::string& filepath);

@@ -116,6 +116,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BitmapClass.cpp" />
+    <ClCompile Include="BlockRegionClass.cpp" />
     <ClCompile Include="BoxMeshClass.cpp" />
     <ClCompile Include="CalculatorClass.cpp" />
     <ClCompile Include="CameraClass.cpp" />
@@ -149,6 +150,7 @@
     <ClCompile Include="MeshLoaderClass.cpp" />
     <ClCompile Include="MeshManagerClass.cpp" />
     <ClCompile Include="ModManagerClass.cpp" />
+    <ClCompile Include="NationRegionClass.cpp" />
     <ClCompile Include="PathClass.cpp" />
     <ClCompile Include="PathManagerClass.cpp" />
     <ClCompile Include="PathParamClass.cpp" />
@@ -178,6 +180,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BitmapClass.h" />
+    <ClInclude Include="BlockRegionClass.h" />
     <ClInclude Include="CalculatorClass.h" />
     <ClInclude Include="CameraClass.h" />
     <ClInclude Include="CommandClass.h" />
@@ -191,6 +194,7 @@
     <ClInclude Include="IntParamClass.h" />
     <ClInclude Include="LightClass.h" />
     <ClInclude Include="MeshLoaderClass.h" />
+    <ClInclude Include="NationRegionClass.h" />
     <ClInclude Include="PathClass.h" />
     <ClInclude Include="FontClass.h" />
     <ClInclude Include="FontManagerClass.h" />
