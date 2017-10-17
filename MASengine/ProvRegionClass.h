@@ -32,7 +32,7 @@ public:
 
 	//Getters
 	virtual int getID();
-	virtual std::set<ProvClass*>* getProvs();
+	virtual std::vector<ProvClass*>* getProvs();
 protected:
 	//void readFromFile(string filename, FractionManagerClass* fractions);
 	bool readFromFile(std::ifstream* file);
@@ -41,7 +41,7 @@ protected:
 	
 	D3DXVECTOR4 m_color = D3DXVECTOR4(0,0,0,1);
 
-	std::set<ProvClass*> m_provs;
+	std::vector<ProvClass*> m_provs;
 };
 
 #endif

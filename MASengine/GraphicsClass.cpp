@@ -482,7 +482,11 @@ void GraphicsClass::unPick(int mouseX, int mouseY)
 	}
 	else if (terrainPick(mouseX, mouseY, provNum, point))
 	{
-		ProvRegionManagerClass::getI().getProvRegion(GlobalManagerClass::NATION, 0)->add(provNum);
+		if(ProvManagerClass::getI().getProv(provNum)->getRegions(GlobalManagerClass::NATION).back())
+			ProvRegionManagerClass::getI().getProvRegion(GlobalManagerClass::NATION,0)->add(provNum);
+		else
+			ProvRegionManagerClass::getI().getProvRegion(GlobalManagerClass::NATION, 1)->add(provNum);
+
 		return;
 	}
 }
@@ -502,10 +506,12 @@ bool GraphicsClass::terrainPick(int mouseX, int mouseY, int& provNum, D3DXVECTOR
 
 	for (int i = 0;i < TEST_NUM;i++)
 	{
-		m_test[i]->pick(m_D3D->GetDeviceContext(), rayOrigin, rayDirection, provNum, point);
+		result = m_test[i]->pick(m_D3D->GetDeviceContext(), rayOrigin, rayDirection, provNum, point);
+		if (result)
+			return true;
 	}
 
-	return true;
+	return false;
 }
 
 void GraphicsClass::createRay(int mouseX, int mouseY, D3DXVECTOR3 & rayOrigin, D3DXVECTOR3 & rayDirection)

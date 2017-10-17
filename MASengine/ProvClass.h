@@ -37,10 +37,12 @@ public:
 	//Prov Regions
 	void addRegion(GlobalManagerClass::regionType type, int regionID);
 	void deleteRegion(GlobalManagerClass::regionType type, int regionID);
-	std::set<int> getRegions(GlobalManagerClass::regionType type);
+	std::vector<int> getRegions(GlobalManagerClass::regionType type);
 private:
 	//void readFromFile(string filename, FractionManagerClass* fractions);
 	bool readFromFile(std::ifstream* file);
+
+	void erase(std::vector<int> &vec, int value);
 private:
 	int m_id;
 	std::string m_name;
@@ -50,9 +52,9 @@ private:
 	D3DXVECTOR3 m_coords;
 
 	//Prov Regions
-	std::set<int> m_baseRegion;
-	std::set<int> m_blockRegion;
-	std::set<int> m_nationRegion;
+	std::vector<int> m_baseRegion;
+	std::vector<int> m_blockRegion;
+	std::vector<int> m_nationRegion;
 };
 
 #endif

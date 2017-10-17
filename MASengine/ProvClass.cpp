@@ -68,13 +68,13 @@ void ProvClass::addRegion(GlobalManagerClass::regionType type, int regionID)
 	switch (type)
 	{
 	case GlobalManagerClass::BASE:
-		m_baseRegion.emplace(regionID);
+		m_baseRegion.emplace_back(regionID);
 		break;
 	case GlobalManagerClass::BLOCK:
-		m_blockRegion.emplace(regionID);
+		m_blockRegion.emplace_back(regionID);
 		break;
 	case GlobalManagerClass::NATION:
-		m_nationRegion.emplace(regionID);
+		m_nationRegion.emplace_back(regionID);
 		break;
 	default:
 		break;
@@ -86,20 +86,20 @@ void ProvClass::deleteRegion(GlobalManagerClass::regionType type, int regionID)
 	switch (type)
 	{
 	case GlobalManagerClass::BASE:
-		m_baseRegion.erase(regionID);
+		erase(m_baseRegion, regionID);
 		break;
 	case GlobalManagerClass::BLOCK:
-		m_blockRegion.erase(regionID);
+		erase(m_blockRegion, regionID);
 		break;
 	case GlobalManagerClass::NATION:
-		m_nationRegion.erase(regionID);
+		erase(m_nationRegion, regionID);
 		break;
 	default:
 		break;
 	}
 }
 
-std::set<int> ProvClass::getRegions(GlobalManagerClass::regionType type)
+std::vector<int> ProvClass::getRegions(GlobalManagerClass::regionType type)
 {
 	switch (type)
 	{
@@ -125,4 +125,14 @@ bool ProvClass::readFromFile(std::ifstream * file)
 	*file >> temp; //}
 
 	return true;
+}
+
+void ProvClass::erase(std::vector<int> &vec, int value)
+{
+	for (auto i = vec.begin();i != vec.end();i++)
+		if (*i == value)
+		{
+			vec.erase(i);
+			return;
+		}
 }

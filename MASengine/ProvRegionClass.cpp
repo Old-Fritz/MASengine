@@ -32,12 +32,31 @@ void ProvRegionClass::Shutdown()
 
 void ProvRegionClass::add(int provID)
 {
-	m_provs.insert(ProvManagerClass::getI().getProv(provID));
+	//find index of prov
+	ProvClass* prov = ProvManagerClass::getI().getProv(provID);
+	for (auto pr = m_provs.begin();pr != m_provs.end();pr++)
+	{
+		//return if found prov
+		if (*pr == prov)
+			return;
+	}
+
+	m_provs.emplace_back(prov);
 }
 
 void ProvRegionClass::erase(int provID)
 {
-	m_provs.erase(ProvManagerClass::getI().getProv(provID));
+	//find index of prov
+	ProvClass* prov = ProvManagerClass::getI().getProv(provID);
+	for (auto pr = m_provs.begin();pr != m_provs.end();pr++)
+	{
+		//delete if found prov
+		if (*pr == prov)
+		{
+			m_provs.erase(pr);
+			return;
+		}
+	}
 }
 
 int ProvRegionClass::getID()
@@ -45,7 +64,7 @@ int ProvRegionClass::getID()
 	return m_id;
 }
 
-std::set<ProvClass*>* ProvRegionClass::getProvs()
+std::vector<ProvClass*>* ProvRegionClass::getProvs()
 {
 	return &m_provs;
 }

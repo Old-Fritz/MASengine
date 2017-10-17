@@ -99,7 +99,8 @@ bool  TerrainClass::pick(ID3D11DeviceContext * deviceContext, D3DXVECTOR3 rayOri
 	if (!result)
 		return false;
 
-	provNum = color.z;
+	//get provnum
+	provNum = getProvNum(color.z);
 
 	return true;
 
@@ -257,4 +258,18 @@ int TerrainClass::getLvlByDist(float dist)
 
 	return lvl;
 
+}
+
+int TerrainClass::getProvNum(int index)
+{
+	//get region
+	ProvRegionClass* region = ProvRegionManagerClass::getI().getProvRegion(GlobalManagerClass::BLOCK, m_ID);
+
+	auto provs = region->getProvs();
+
+	if (provs->size() > index)
+	{
+		//get prov by index
+		return (*provs)[index]->getID();
+	}
 }

@@ -49,6 +49,7 @@ private:
 	bool readFromFile(PathClass* filename);
 	D3DXVECTOR4* getProvColor();
 	int getLvlByDist(float dist);
+	int getProvNum(int index);
 private:
 	int m_ID;
 
