@@ -50,7 +50,7 @@ public:
 
 	int GetIndexCount();
 
-	bool checkFrustum(FrustumClass* frustum);
+	bool checkFrustum(FrustumClass* frustum, D3DXVECTOR3 position);
 	bool intersect(ID3D11DeviceContext* deviceContext, D3DXVECTOR3 rayOrigin, D3DXVECTOR3 rayDirection, D3DXVECTOR3& point);
 private:
 	bool InitializeBuffers(ID3D11Device* device, VertexType* vertices, unsigned long* indices);

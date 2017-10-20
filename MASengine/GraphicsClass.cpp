@@ -8,8 +8,7 @@ GraphicsClass::GraphicsClass()
 	m_camera = 0;
 	m_interface = 0;
 	m_light = 0;
-	for (int i = 0;i < TEST_NUM;i++)
-		m_test[i] = 0;
+	m_terrain = 0;
 
 
 	m_lightPos = 0;
@@ -113,17 +112,16 @@ bool GraphicsClass::InitializeResources()
 	}
 
 
-	for (int i = 0;i < TEST_NUM;i++)
+	m_terrain = new(1) TerrainManagerClass;
+	if (!m_terrain)
+		return false;
+
+	result = m_terrain->Initialize(m_D3D->GetDevice(), m_D3D->GetDeviceContext(),
+		SettingsClass::getI().getStrParameter("TerrainFilenameBase"), SettingsClass::getI().getIntParameter("NumOFBlocks"));
+	if (!result)
 	{
-		m_test[i] = new(1) TerrainClass;
-		if (!m_test[i])
-			return false;
-		result = m_test[i]->Initialize(m_D3D->GetDevice(), m_D3D->GetDeviceContext(), PathManagerClass::getI().makePath("data/terrain/block1.txt"), 0);
-		if (!result)
-		{
-			MessageBox(m_hwnd, L"Could not initialize test", L"Error", MB_OK);
-			return false;
-		}
+		MessageBox(m_hwnd, L"Could not initialize terrain", L"Error", MB_OK);
+		return false;
 	}
 
 	return true;
@@ -158,16 +156,13 @@ void GraphicsClass::Shutdown()
 
 void GraphicsClass::ShutdownResources()
 {
-	for (int i = 0;i < TEST_NUM;i++)
-	{
-		if (m_test[i])
-		{
-			m_test[i]->Shutdown();
-			::operator delete(m_test[i], sizeof(*m_test[i]), 1);
-			m_test[i] = 0;
-		}
-	}
 
+	if (m_terrain)
+	{
+		m_terrain->Shutdown();
+		::operator delete(m_terrain, sizeof(*m_terrain), 1);
+		m_terrain = 0;
+	}
 
 	if (m_interface)
 	{
@@ -421,13 +416,12 @@ bool GraphicsClass::Render()
 	frustum->ConstructFrustum(SCREEN_DEPTH, projectionMatrix, viewMatrix);
 
 	//render test terrain
-	for (int i = 0;i < TEST_NUM;i++)
-	{
-		m_test[i]->Render(m_shaderManager->getTerrainShader(), m_D3D->GetDeviceContext(), worldMatrix,
+
+	m_terrain->Render(m_shaderManager->getTerrainShader(), m_D3D->GetDeviceContext(), worldMatrix,
 			viewMatrix, projectionMatrix, m_light->GetDirection(), m_light->GetAmbientColor(),
 			m_light->GetDiffuseColor(), m_camera->GetPosition(), m_light->GetSpecularColor(),
 			m_light->GetSpecularPower(), SCREEN_DEPTH, frustum);
-	}
+	
 
 	//render 2D
 	m_D3D->TurnZBufferOff();
@@ -482,7 +476,8 @@ void GraphicsClass::unPick(int mouseX, int mouseY)
 	}
 	else if (terrainPick(mouseX, mouseY, provNum, point))
 	{
-		if(ProvManagerClass::getI().getProv(provNum)->getRegions(GlobalManagerClass::NATION).back())
+		if (!ProvManagerClass::getI().getProv(provNum)->getRegions(GlobalManagerClass::NATION).size()
+	|| ProvManagerClass::getI().getProv(provNum)->getRegions(GlobalManagerClass::NATION).back())
 			ProvRegionManagerClass::getI().getProvRegion(GlobalManagerClass::NATION,0)->add(provNum);
 		else
 			ProvRegionManagerClass::getI().getProvRegion(GlobalManagerClass::NATION, 1)->add(provNum);
@@ -506,7 +501,7 @@ bool GraphicsClass::terrainPick(int mouseX, int mouseY, int& provNum, D3DXVECTOR
 
 	for (int i = 0;i < TEST_NUM;i++)
 	{
-		result = m_test[i]->pick(m_D3D->GetDeviceContext(), rayOrigin, rayDirection, provNum, point);
+		result = m_terrain->pick(m_D3D->GetDeviceContext(), rayOrigin, rayDirection, provNum, point);
 		if (result)
 			return true;
 	}

@@ -1,17 +1,19 @@
 Settings.txt
 data/init/defSettings.txt
-14
+16
 0 ScreenWidth
 0 ScreenHeight
 0 Fullscreen
 0 MouseSensitivity
 0 Sample
 0 Vsync
+0 NumOFBlocks
 
 1 HeightMapModifier
 
 3 ButCommandFilename
 2 Language
+2 TerrainFilenameBase
 3 ElementsFilename
 3 loadScreenManagerFilename
 3 ProvFilename

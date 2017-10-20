@@ -53,9 +53,9 @@ D3DXVECTOR3 BoxMeshClass::getSize()
 	return m_maxPoint - m_minPoint;
 }
 
-bool BoxMeshClass::checkFrustum(FrustumClass * frustum)
+bool BoxMeshClass::checkFrustum(FrustumClass * frustum,D3DXVECTOR3 position)
 {
-	return frustum->CheckPoints(m_points, m_vertexCount);
+	return frustum->CheckPoints(m_points, m_vertexCount, position);
 }
 
 int BoxMeshClass::GetIndexCount()

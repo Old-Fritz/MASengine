@@ -41,7 +41,7 @@ public:
 	bool getColorFromBMP(float x, float y, D3DXVECTOR3& color, PathClass* filename);
 
 	//Getters
-	D3DXVECTOR3 GetPosition();
+	D3DXVECTOR3 getPosition();
 
 	
 private:

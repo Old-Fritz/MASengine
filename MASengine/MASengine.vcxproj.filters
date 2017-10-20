@@ -336,6 +336,9 @@
     <ClCompile Include="NationRegionClass.cpp">
       <Filter>Файлы исходного кода\GameMechanics\Provs\provRegions</Filter>
     </ClCompile>
+    <ClCompile Include="TerrainManagerClass.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SystemClass.h">

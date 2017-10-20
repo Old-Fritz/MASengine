@@ -65,7 +65,7 @@ bool TerrainClass::Render(TerrainShaderClass * terrainShader, ID3D11DeviceContex
 	MeshClass* mesh = MeshManagerClass::getI().getModel(m_meshHash[lvl]);
 
 	//check if current mesh in frustum
-	if (!mesh->checkFrustum(frustum))
+	if (!mesh->checkFrustum(frustum,m_position))
 		return true;
 
 	// Render mesh
@@ -171,7 +171,7 @@ bool TerrainClass::getColorFromBMP(float x, float y, D3DXVECTOR3 & color, PathCl
 	return true;
 }
 
-D3DXVECTOR3 TerrainClass::GetPosition()
+D3DXVECTOR3 TerrainClass::getPosition()
 {
 	return m_position;
 }
@@ -272,4 +272,6 @@ int TerrainClass::getProvNum(int index)
 		//get prov by index
 		return (*provs)[index]->getID();
 	}
+	else
+		return 0;
 }

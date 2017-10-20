@@ -11,7 +11,7 @@
 #include "ShaderManagerClass.h"
 #include "CameraClass.h"
 #include "InterfaceClass.h"
-#include "TerrainClass.h"
+#include "TerrainManagerClass.h"
 #include "LightClass.h"
 
 
@@ -57,13 +57,13 @@ private:
 	HWND m_hwnd;
 	int m_screenWidth, m_screenHeight;
 
-	TerrainClass* m_test[TEST_NUM];
 	//blocks
 	D3DClass* m_D3D;
 	ShaderManagerClass* m_shaderManager;
 	CameraClass * m_camera;
 	LightClass * m_light;
 	InterfaceClass* m_interface;
+	TerrainManagerClass* m_terrain;
 
 	float m_lightPos;
 

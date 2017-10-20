@@ -1,10 +1,10 @@
 posX = 0
 posY = 0
-posZ = 128
+posZ = 0
 terrainWidth = 128
 terrainHeight = 128
-heightMapFilenameBase =  data/terrain/heightmap1
-provFilename =  data/terrain/provsmap1.dds
+heightMapFilenameBase =  data/terrain/heightmap0
+provFilename =  data/terrain/provsmap0.dds
 
 0: {
 color = 1 0 0 1

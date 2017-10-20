@@ -1,4 +1,6 @@
+TerrainFilenameBase {data/terrain/block}
 ElementsFilename {data/interface/elements.txt}
+NumOFBlocks {2}
 ButCommandFilename {data/interface/actions/butACTION.txt}
 Sample {1}
 MouseSensitivity {30}

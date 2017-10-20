@@ -46,7 +46,7 @@ public:
 	D3DXVECTOR3 getCenter();
 	D3DXVECTOR3 getSize();
 
-	bool checkFrustum(FrustumClass* frustum);
+	bool checkFrustum(FrustumClass* frustum, D3DXVECTOR3 position);
 
 	int GetIndexCount();
 

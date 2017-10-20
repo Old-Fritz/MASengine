@@ -116,6 +116,8 @@ void SystemClass::Shutdown()
 	//save settings first
 	SettingsClass::getI().save();
 
+	m_graphics->ShutdownResources();
+
 	if (&(ProvRegionManagerClass::getI()))
 	{
 		ProvRegionManagerClass::getI().Shutdown();

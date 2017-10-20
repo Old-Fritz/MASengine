@@ -4,6 +4,7 @@ Fullscreen = {0}
 MouseSensitivity = {30}
 Sample = {1}
 Vsync = {0}
+NumOFBlocks = {2}
 
 HeightMapModifier = {-15.0f}
 
@@ -14,3 +15,4 @@ loadScreenManagerFilename = {data/loadscreenManager.txt}
 ProvFilename = {data/provs.txt}
 ProvRegionFilename = {data/provRegions.txt}
 GeneralActionsFilename = {data/interface/GeneralActions.txt}
+TerrainFilenameBase = {data/terrain/block}

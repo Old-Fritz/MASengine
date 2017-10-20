@@ -292,7 +292,7 @@ bool MeshClass::intersect(ID3D11DeviceContext * deviceContext, D3DXVECTOR3 rayOr
 
 }
 
-bool MeshClass::checkFrustum(FrustumClass * frustum)
+bool MeshClass::checkFrustum(FrustumClass * frustum, D3DXVECTOR3 position)
 {
-	return m_boxMesh->checkFrustum(frustum);
+	return m_boxMesh->checkFrustum(frustum,position);
 }

@@ -72,7 +72,7 @@ void FrustumClass::ConstructFrustum(float screenDepth, D3DXMATRIX projectionMatr
 	return;
 }
 
-bool FrustumClass::CheckPoints(D3DXVECTOR3 * points, int size)
+bool FrustumClass::CheckPoints(D3DXVECTOR3 * points, int size, D3DXVECTOR3 position)
 {
 	int b = 0;
 	// Check if any one point of the cube is in the view frustum.
@@ -80,7 +80,7 @@ bool FrustumClass::CheckPoints(D3DXVECTOR3 * points, int size)
 	{
 		for (int j = 0;j < size;j++)
 		{
-			if (D3DXPlaneDotCoord(&m_planes[i], &points[j]) >= 0.0f)
+			if (D3DXPlaneDotCoord(&m_planes[i], &(points[j]+ position)) >= 0.0f)
 			{
 				b = 1;
 				break;
@@ -94,59 +94,59 @@ bool FrustumClass::CheckPoints(D3DXVECTOR3 * points, int size)
 	return true;
 }
 
-bool FrustumClass::CheckPoint(D3DXVECTOR3 point)
+bool FrustumClass::CheckPoint(D3DXVECTOR3 point, D3DXVECTOR3 position)
 {
 	// Check if point is in the view frustum.
 	for (int i = 0; i<6; i++)
 	{
-		if (D3DXPlaneDotCoord(&m_planes[i], &point) < 0.0f)
+		if (D3DXPlaneDotCoord(&m_planes[i], &(point + position)) < 0.0f)
 			return false;
 	}
 
 	return true;
 }
 
-bool FrustumClass::CheckBox(D3DXVECTOR3 * points)
+bool FrustumClass::CheckBox(D3DXVECTOR3 * points, D3DXVECTOR3 position)
 {
 	// Check if any one point of the cube is in the view frustum.
 	for (int i = 0; i<6; i++)
 	{
-		if (D3DXPlaneDotCoord(&m_planes[i], &points[0]) >= 0.0f)
+		if (D3DXPlaneDotCoord(&m_planes[i], &(points[0] + position)) >= 0.0f)
 		{
 			continue;
 		}
 
-		if (D3DXPlaneDotCoord(&m_planes[i], &points[1]) >= 0.0f)
+		if (D3DXPlaneDotCoord(&m_planes[i], &(points[1] + position)) >= 0.0f)
 		{
 			continue;
 		}
 
-		if (D3DXPlaneDotCoord(&m_planes[i], &points[2]) >= 0.0f)
+		if (D3DXPlaneDotCoord(&m_planes[i], &(points[2] + position)) >= 0.0f)
 		{
 			continue;
 		}
 
-		if (D3DXPlaneDotCoord(&m_planes[i], &points[3]) >= 0.0f)
+		if (D3DXPlaneDotCoord(&m_planes[i], &(points[3] + position)) >= 0.0f)
 		{
 			continue;
 		}
 
-		if (D3DXPlaneDotCoord(&m_planes[i], &points[4]) >= 0.0f)
+		if (D3DXPlaneDotCoord(&m_planes[i], &(points[4] + position)) >= 0.0f)
 		{
 			continue;
 		}
 
-		if (D3DXPlaneDotCoord(&m_planes[i], &points[5]) >= 0.0f)
+		if (D3DXPlaneDotCoord(&m_planes[i], &(points[5] + position)) >= 0.0f)
 		{
 			continue;
 		}
 
-		if (D3DXPlaneDotCoord(&m_planes[i], &points[6]) >= 0.0f)
+		if (D3DXPlaneDotCoord(&m_planes[i], &(points[6] + position)) >= 0.0f)
 		{
 			continue;
 		}
 
-		if (D3DXPlaneDotCoord(&m_planes[i], &points[7]) >= 0.0f)
+		if (D3DXPlaneDotCoord(&m_planes[i], &(points[7] + position)) >= 0.0f)
 		{
 			continue;
 		}
