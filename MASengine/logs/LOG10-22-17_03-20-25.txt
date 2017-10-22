@@ -1,0 +1,21 @@
+10-22-17_03-20-25 LogManager Initialized
+10-22-17_03-20-25 MemoryManager Initialized
+10-22-17_03-20-25 ModManager Initialized
+10-22-17_03-20-25 PathManager Initialized
+10-22-17_03-20-25 Settings Initialized
+10-22-17_03-20-25 CommandManager Initialized
+10-22-17_03-20-25 ResourceManager Initialized
+10-22-17_03-20-27 SystemStateManager Initialized
+10-22-17_03-20-27 All global system Initialized
+10-22-17_03-20-27 Windows Initialization
+10-22-17_03-20-27 input Initialization
+10-22-17_03-20-27 Position Initialization
+10-22-17_03-20-28 Directx Initialization
+10-22-17_03-20-28 Interface Shader Initialization
+10-22-17_03-20-28 Font Shader Initialization
+10-22-17_03-20-28 Terrain Shader Initialization
+10-22-17_03-20-28 Shaders Initialization
+10-22-17_03-20-29 Graphics Initialization
+10-22-17_03-21-04 Provs Initialization
+10-22-17_03-21-04 Provs Regions Initialization
+10-22-17_03-21-05 graphics resources Initialization

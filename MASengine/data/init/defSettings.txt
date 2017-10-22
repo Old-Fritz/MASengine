@@ -15,4 +15,4 @@ loadScreenManagerFilename = {data/loadscreenManager.txt}
 ProvFilename = {data/provs.txt}
 ProvRegionFilename = {data/provRegions.txt}
 GeneralActionsFilename = {data/interface/GeneralActions.txt}
-TerrainFilenameBase = {data/terrain/block}
+TerrainFilenameBase = {data/terrain/desc/block}

@@ -1,0 +1,48 @@
+posX = 0
+posY = 0
+posZ = 128
+terrainWidth = 128
+terrainHeight = 128
+heightMapFilenameBase =  data/terrain/heightMaps/heightmap9
+provFilename =  data/terrain/provMaps/provsmap9.dds
+
+
+9: {
+color = 1 0 0 1
+numOfProvs = 34
+Provs:
+2140
+2141
+2142
+2128
+956 
+2139
+2137
+2138
+2129
+2117
+2118
+2130
+2132
+2133
+2136
+2135
+2134
+2112
+2116
+2131
+2115
+2114
+2113
+2103
+2099
+2102
+2101
+2100
+2090
+2091
+2089
+2089
+2088
+2087
+}

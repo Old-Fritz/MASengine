@@ -1,0 +1,13 @@
+posX = 0
+posY = 0
+posZ = 0
+terrainWidth = 128
+terrainHeight = 128
+heightMapFilenameBase =  data/terrain/heightMaps/heightmap13
+provFilename =  data/terrain/provMaps/provsmap13.dds
+
+13: {
+color = 1 0 0 1
+numOfProvs = 0
+Provs:
+}

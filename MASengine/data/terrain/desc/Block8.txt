@@ -1,0 +1,13 @@
+posX = 384
+posY = 0
+posZ = 256
+terrainWidth = 128
+terrainHeight = 128
+heightMapFilenameBase =  data/terrain/heightMaps/heightmap8
+provFilename = data/terrain/provMaps/provsmap8.dds
+
+8: {
+color = 1 0 0 1
+numOfProvs = 0
+Provs:
+}
