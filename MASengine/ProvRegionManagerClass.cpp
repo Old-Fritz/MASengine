@@ -12,6 +12,63 @@ ProvRegionManagerClass::~ProvRegionManagerClass()
 {
 }
 
+bool ProvRegionManagerClass::Initialize(PathClass* filename)
+{
+	bool result;
+	
+	//open file with base regions
+	std::ifstream file;
+	file.open(filename->getPath());
+	//stop if file doesn`t exist
+	if (!file.is_open())
+		return false;
+
+	//initialize base regions for all types
+	//init base region
+	ProvRegionClass* baseRegion = new(4) ProvRegionClass;
+	if (!baseRegion)
+		return false;
+	result = baseRegion->Initialize(&file,0);
+	if (!result)
+		return false;
+
+	//init block region
+	BlockRegionClass* blockRegion = new(4) BlockRegionClass;
+	if (!blockRegion)
+		return false;
+	result = blockRegion->Initialize(&file, 0);
+	if (!result)
+		return false;
+
+	file.close();
+
+	//init nation region
+	NationRegionClass* nationRegion = new(4) NationRegionClass;
+	if (!nationRegion)
+		return false;
+	result = nationRegion->Initialize(&file, 0);
+	if (!result)
+		return false;
+
+	//add all provs to base blocks
+	/*
+	for (int i = 0;i < ProvManagerClass::getI().getProvNum(); i++)
+	{
+		baseRegion->add(i);
+		nationRegion->add(i);
+		blockRegion->add(i);
+	}
+	*/
+	//add regions to vectots
+	m_provRegions.emplace_back(baseRegion);
+	m_blockRegion.emplace_back(blockRegion);
+	m_nationRegion.emplace_back(nationRegion);
+
+	
+	return true;
+
+}
+
 void ProvRegionManagerClass::Shutdown()
 {
 	for (int i = m_provRegions.size() - 1;i >= 0;i--)

@@ -14,8 +14,8 @@ bool TerrainManagerClass::Initialize(ID3D11Device * device, ID3D11DeviceContext 
 {
 	bool result;
 
-	//create and init all blocks
-	for (int i = 0;i < numOfBlocks;i++)
+	//create and init all blocks (+1 base(0))
+	for (int i = 0;i < numOfBlocks + 1;i++)
 	{
 		TerrainClass* terrain = new(1) TerrainClass;
 		if (!terrain)

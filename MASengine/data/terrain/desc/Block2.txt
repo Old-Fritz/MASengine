@@ -8,7 +8,7 @@ provFilename =  data/terrain/provmaps/provsmap2.dds
 
 
 2: {
-color = 1 0 0 1
+color = 1 1 0 1
 numOfProvs = 15
 Provs:
 2174

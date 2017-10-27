@@ -7,7 +7,7 @@ heightMapFilenameBase =  data/terrain/heightMaps/heightmap14
 provFilename =  data/terrain/provMaps/provsmap14.dds
 
 14: {
-color = 1 0 0 1
+color = 0.7 0.7 0.7 1
 numOfProvs = 16
 Provs:
 2395

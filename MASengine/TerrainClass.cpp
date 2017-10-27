@@ -14,7 +14,7 @@ bool TerrainClass::Initialize(ID3D11Device * device, ID3D11DeviceContext * devic
 {
 	bool result;
 
-	m_ID = id;
+	m_id = id;
 	//read info from file
 	result = readFromFile(blockFilename);
 	if (!result)
@@ -203,11 +203,15 @@ bool TerrainClass::readFromFile(PathClass* filename)
 	m_provFilename = PathManagerClass::getI().makePath();
 	file >> m_provFilename;
 
+	//don`t initialize region if this is base block (0)
+	if (!m_id)
+		return true;
+
 	//add new block region
 	BlockRegionClass* region = new(4) BlockRegionClass;
 	if (!region)
 		return false;
-	result = region->Initialize(&file, m_ID);
+	result = region->Initialize(&file, m_id);
 	if (!result)
 		return false;
 	ProvRegionManagerClass::getI().addProvRegion(GlobalManagerClass::BLOCK, region);
@@ -218,7 +222,7 @@ bool TerrainClass::readFromFile(PathClass* filename)
 D3DXVECTOR4 * TerrainClass::getProvColor()
 {
 	//get region
-	ProvRegionClass* region = ProvRegionManagerClass::getI().getProvRegion(GlobalManagerClass::BLOCK, m_ID);
+	ProvRegionClass* region = ProvRegionManagerClass::getI().getProvRegion(GlobalManagerClass::BLOCK, m_id);
 
 	auto provs = region->getProvs();
 	D3DXVECTOR4* provColors = new(2) D3DXVECTOR4[256];
@@ -263,7 +267,7 @@ int TerrainClass::getLvlByDist(float dist)
 int TerrainClass::getProvNum(int index)
 {
 	//get region
-	ProvRegionClass* region = ProvRegionManagerClass::getI().getProvRegion(GlobalManagerClass::BLOCK, m_ID);
+	ProvRegionClass* region = ProvRegionManagerClass::getI().getProvRegion(GlobalManagerClass::BLOCK, m_id);
 
 	auto provs = region->getProvs();
 

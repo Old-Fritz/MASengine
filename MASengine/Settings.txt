@@ -1,6 +1,6 @@
 TerrainFilenameBase {data/terrain/desc/block}
 ElementsFilename {data/interface/elements.txt}
-NumOFBlocks {17}
+NumOFBlocks {16}
 ButCommandFilename {data/interface/actions/butACTION.txt}
 Sample {1}
 MouseSensitivity {30}
@@ -13,4 +13,5 @@ Fullscreen {0}
 Language {ENG}
 Vsync {0}
 ScreenHeight {720}
+BaseRegionFilename {data/baseRegions.txt}
 ProvRegionFilename {data/provRegions.txt}

@@ -1,0 +1,15 @@
+baseRegion: {
+color = 1 1 0 1
+numOfProvs = 0
+Provs:
+}
+blockRegion: {
+color = 1 1 0 1
+numOfProvs = 0
+Provs:
+}
+nationRegion: {
+color = 1 1 0 1
+numOfProvs = 0
+Provs:
+}

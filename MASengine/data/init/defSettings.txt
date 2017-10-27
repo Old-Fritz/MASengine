@@ -4,7 +4,7 @@ Fullscreen = {0}
 MouseSensitivity = {30}
 Sample = {1}
 Vsync = {0}
-NumOFBlocks = {2}
+NumOFBlocks = {16}
 
 HeightMapModifier = {-15.0f}
 
@@ -16,3 +16,4 @@ ProvFilename = {data/provs.txt}
 ProvRegionFilename = {data/provRegions.txt}
 GeneralActionsFilename = {data/interface/GeneralActions.txt}
 TerrainFilenameBase = {data/terrain/desc/block}
+BaseRegionFilename = {data/baseRegions.txt}

@@ -21,10 +21,11 @@ public:
 	bool Initialize(PathClass* filename);
 	void Shutdown();
 
-
 	//Getters
 	ProvClass* getProv(int provNum);
 	void setGlobalMainColor(GlobalManagerClass::regionType type);
+
+	int getProvNum();
 
 	static ProvManagerClass& getI();
 

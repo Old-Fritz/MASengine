@@ -20,6 +20,7 @@ class ProvRegionManagerClass
 
 public:
 	
+	bool Initialize(PathClass* filename);
 
 	void Shutdown();
 

@@ -75,25 +75,25 @@ bool SystemClass::Initialize()
 	ProvManagerClass::getI().setGlobalMainColor(GlobalManagerClass::NATION);
 
 	//Initialize prov region manager
-	if (!&(ProvRegionManagerClass::getI()))
+	if (&(ProvRegionManagerClass::getI()))
 	{
-		//result = ProvRegionManagerClass::getI().Initialize(SettingsClass::getI().getPathParameter("ProvRegionFilename"));
-		//if (!result)
-		//{
+		result = ProvRegionManagerClass::getI().Initialize(SettingsClass::getI().getPathParameter("BaseRegionFilename"));
+		if (!result)
+		{
 			return false;
-		//}
+		}
 	}
-	//else
-		//return false;
+	else
+		return false;
 	LogManagerClass::getI().addLog("Provs Regions Initialization");
 
 	//init test regions
 	std::ifstream file;
 	file.open(SettingsClass::getI().getPathParameter("ProvRegionFilename")->getPath());
 	NationRegionClass* reg1 = new(4) NationRegionClass;
-	reg1->Initialize(&file, 0);
+	reg1->Initialize(&file, 1);
 	NationRegionClass* reg2 = new(4) NationRegionClass;
-	reg2->Initialize(&file, 1);
+	reg2->Initialize(&file, 2);
 	ProvRegionManagerClass::getI().addProvRegion(GlobalManagerClass::NATION, reg1);
 	ProvRegionManagerClass::getI().addProvRegion(GlobalManagerClass::NATION, reg2);
 	

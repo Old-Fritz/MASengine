@@ -22,7 +22,8 @@ bool ProvManagerClass::Initialize(PathClass* filename)
 		{
 			return false;
 		}
-		LoadScreenManagerClass::getI().changeLine("Init prov" + std::to_string(i), 0.2f + 0.2f * ((float)i / (float)numOfProvs));
+		if(i%100==0)
+			LoadScreenManagerClass::getI().changeLine("Init prov" + std::to_string(i), 0.2f + 0.2f * ((float)i / (float)numOfProvs));
 		m_provs.emplace_back(prov);
 	}
 
@@ -61,6 +62,11 @@ void ProvManagerClass::setGlobalMainColor(GlobalManagerClass::regionType type)
 {
 	for (int i = 0;i < m_provs.size();i++)
 		m_provs[i]->getLayers()->setMainColor(type);
+}
+
+int ProvManagerClass::getProvNum()
+{
+	return m_provs.size();
 }
 
 ProvManagerClass & ProvManagerClass::getI()

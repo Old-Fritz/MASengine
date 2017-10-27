@@ -337,7 +337,7 @@
       <Filter>Файлы исходного кода\GameMechanics\Provs\provRegions</Filter>
     </ClCompile>
     <ClCompile Include="TerrainManagerClass.cpp">
-      <Filter>Файлы исходного кода</Filter>
+      <Filter>Файлы исходного кода\Graphics\Blocks</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

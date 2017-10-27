@@ -476,11 +476,11 @@ void GraphicsClass::unPick(int mouseX, int mouseY)
 	}
 	else if (terrainPick(mouseX, mouseY, provNum, point))
 	{
-		if (!ProvManagerClass::getI().getProv(provNum)->getRegions(GlobalManagerClass::NATION).size()
-	|| ProvManagerClass::getI().getProv(provNum)->getRegions(GlobalManagerClass::NATION).back())
-			ProvRegionManagerClass::getI().getProvRegion(GlobalManagerClass::NATION,0)->add(provNum);
+		if (!ProvManagerClass::getI().getProv(provNum)->getRegions(GlobalManagerClass::NATION).back()
+	|| ProvManagerClass::getI().getProv(provNum)->getRegions(GlobalManagerClass::NATION).back()==2)
+			ProvRegionManagerClass::getI().getProvRegion(GlobalManagerClass::NATION,1)->add(provNum);
 		else
-			ProvRegionManagerClass::getI().getProvRegion(GlobalManagerClass::NATION, 1)->add(provNum);
+			ProvRegionManagerClass::getI().getProvRegion(GlobalManagerClass::NATION, 2)->add(provNum);
 
 		return;
 	}

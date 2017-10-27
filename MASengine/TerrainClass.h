@@ -51,7 +51,7 @@ private:
 	int getLvlByDist(float dist);
 	int getProvNum(int index);
 private:
-	int m_ID;
+	int m_id;
 
 	float m_terrainWidth, m_terrainHeight;
 	int m_meshHash[NUM_OF_LVLS];
