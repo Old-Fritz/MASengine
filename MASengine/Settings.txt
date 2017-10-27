@@ -1,6 +1,7 @@
 TerrainFilenameBase {data/terrain/desc/block}
 ElementsFilename {data/interface/elements.txt}
 NumOFBlocks {16}
+MapTextureFilenameBase {data/terrain/mapTextures/terrain}
 ButCommandFilename {data/interface/actions/butACTION.txt}
 Sample {1}
 MouseSensitivity {30}

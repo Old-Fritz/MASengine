@@ -30,6 +30,13 @@ bool TerrainClass::Initialize(ID3D11Device * device, ID3D11DeviceContext * devic
 	}
 	m_provTextureHash = m_provFilename->getHash();
 
+	result = TextureManagerClass::getI().addTexture(device, m_physFilename);
+	if (!result)
+	{
+		return false;
+	}
+	m_physTextureHash = m_physFilename->getHash();
+
 	//add meshes
 	for (int i = NUM_OF_LVLS - 1; i >= 0; i--)
 	{
@@ -54,7 +61,7 @@ void TerrainClass::Shutdown()
 }
 
 bool TerrainClass::Render(TerrainShaderClass * terrainShader, ID3D11DeviceContext * deviceContext, D3DXMATRIX worldMatrix,
-	D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, D3DXVECTOR3 lightDirection,
+	D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, ID3D11ShaderResourceView** mapTextures, D3DXVECTOR3 lightDirection,
 	D3DXVECTOR4 ambientColor, D3DXVECTOR4 diffuseColor, D3DXVECTOR3 cameraPosition, D3DXVECTOR4 specularColor, float specularPower,
 	float SCREEN_DEPTH, FrustumClass* frustum)
 {
@@ -71,8 +78,8 @@ bool TerrainClass::Render(TerrainShaderClass * terrainShader, ID3D11DeviceContex
 	// Render mesh
 	mesh->Render(deviceContext);
 	result = terrainShader->Render(deviceContext, mesh->GetIndexCount(), worldMatrix, viewMatrix, projectionMatrix,
-		TextureManagerClass::getI().getTexture(m_provTextureHash), lightDirection, ambientColor,
-		diffuseColor, cameraPosition, specularColor, specularPower, getProvColor());
+		TextureManagerClass::getI().getTexture(m_provTextureHash), TextureManagerClass::getI().getTexture(m_physTextureHash),
+		mapTextures, lightDirection, ambientColor, diffuseColor, cameraPosition, specularColor, specularPower, getProvColor());
 	if (!result)
 	{
 		return false;
@@ -202,6 +209,9 @@ bool TerrainClass::readFromFile(PathClass* filename)
 	file >> temp >> temp;
 	m_provFilename = PathManagerClass::getI().makePath();
 	file >> m_provFilename;
+	file >> temp >> temp;
+	m_physFilename = PathManagerClass::getI().makePath();
+	file >> m_physFilename;
 
 	//don`t initialize region if this is base block (0)
 	if (!m_id)

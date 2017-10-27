@@ -25,6 +25,10 @@ bool TerrainManagerClass::Initialize(ID3D11Device * device, ID3D11DeviceContext 
 		if (!result)
 			return false;
 
+		result = initializeMapTextures(device);
+		if (!result)
+			return false;
+
 		m_terrain.emplace_back(terrain);
 	}
 
@@ -48,6 +52,10 @@ bool TerrainManagerClass::Render(TerrainShaderClass * terrainShader, ID3D11Devic
 	float SCREEN_DEPTH, FrustumClass * frustum)
 {
 	bool result;
+	ID3D11ShaderResourceView** mapTextures;
+
+	//get map textures
+	mapTextures = TextureManagerClass::getI().getTexturesArray(m_mapTextureHashes, NUM_OF_MAP_TEXTURES);
 
 	//render all blocks
 	for (auto block = m_terrain.begin();block != m_terrain.end();block++)
@@ -56,7 +64,7 @@ bool TerrainManagerClass::Render(TerrainShaderClass * terrainShader, ID3D11Devic
 		translateMatrix(worldMatrix, (*block)->getPosition());
 
 		//render block
-		result = (*block)->Render(terrainShader, deviceContext, worldMatrix, viewMatrix, projectionMatrix, lightDirection,
+		result = (*block)->Render(terrainShader, deviceContext, worldMatrix, viewMatrix, projectionMatrix, mapTextures, lightDirection,
 			ambientColor, diffuseColor, cameraPosition, specularColor, specularPower, SCREEN_DEPTH, frustum);
 		if (!result)
 			return false;
@@ -91,4 +99,21 @@ void TerrainManagerClass::translateMatrix(D3DXMATRIX& matrix, D3DXVECTOR3 transV
 
 	D3DXMatrixTranslation(&translateMatrix, transVector.x, transVector.y, transVector.z);
 	D3DXMatrixMultiply(&matrix, &matrix, &translateMatrix);
+}
+
+bool TerrainManagerClass::initializeMapTextures(ID3D11Device * device)
+{
+	bool result;
+	//init all map textures
+	for (int i = 0;i < NUM_OF_MAP_TEXTURES;i++)
+	{
+		PathClass* path = PathManagerClass::getI().makePath(SettingsClass::getI().getStrParameter("MapTextureFilenameBase") + std::to_string(i) + ".dds");
+
+		result = TextureManagerClass::getI().addTexture(device,path);
+		if (!result)
+			return false;
+
+		m_mapTextureHashes[i] = path->getHash();
+	}
+	return true;
 }

@@ -41,7 +41,8 @@ void TerrainShaderClass::Shutdown()
 	return;
 }
 
-bool TerrainShaderClass::Render(ID3D11DeviceContext * deviceContext, int indexCount, D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, ID3D11ShaderResourceView * texture,
+bool TerrainShaderClass::Render(ID3D11DeviceContext * deviceContext, int indexCount, D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix,
+	ID3D11ShaderResourceView * texture, ID3D11ShaderResourceView* physTexture, ID3D11ShaderResourceView** mapTextures,
 	D3DXVECTOR3 lightDirection, D3DXVECTOR4 ambientColor, D3DXVECTOR4 diffuseColor,
 	D3DXVECTOR3 cameraPosition, D3DXVECTOR4 specularColor, float specularPower, D3DXVECTOR4* provsColor)
 {
@@ -49,7 +50,8 @@ bool TerrainShaderClass::Render(ID3D11DeviceContext * deviceContext, int indexCo
 
 
 	// Set the shader parameters that it will use for rendering.
-	result = SetShaderParameters(deviceContext, worldMatrix, viewMatrix, projectionMatrix, texture,  lightDirection,  ambientColor,  diffuseColor,
+	result = SetShaderParameters(deviceContext, worldMatrix, viewMatrix, projectionMatrix,
+		texture, physTexture, mapTextures, lightDirection,  ambientColor,  diffuseColor,
 		 cameraPosition,  specularColor,  specularPower,  provsColor);
 	if (!result)
 	{
@@ -343,7 +345,8 @@ void TerrainShaderClass::OutputShaderErrorMessage(ID3D10Blob * errorMessage, HWN
 	return;
 }
 
-bool TerrainShaderClass::SetShaderParameters(ID3D11DeviceContext* deviceContext, D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, ID3D11ShaderResourceView * texture, 
+bool TerrainShaderClass::SetShaderParameters(ID3D11DeviceContext* deviceContext, D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix,
+	ID3D11ShaderResourceView * texture, ID3D11ShaderResourceView* physTexture, ID3D11ShaderResourceView** mapTextures,
 	D3DXVECTOR3 lightDirection, D3DXVECTOR4 ambientColor, D3DXVECTOR4 diffuseColor,
 	D3DXVECTOR3 cameraPosition, D3DXVECTOR4 specularColor, float specularPower, D3DXVECTOR4* provsColor)
 {
@@ -387,6 +390,8 @@ bool TerrainShaderClass::SetShaderParameters(ID3D11DeviceContext* deviceContext,
 
 	// Set shader texture resource in the pixel shader.
 	deviceContext->PSSetShaderResources(0, 1, &texture);
+	deviceContext->PSSetShaderResources(1, 1, &physTexture);
+	deviceContext->PSSetShaderResources(2, NUM_OF_MAP_TEXTURES, mapTextures);
 
 	// Lock the light constant buffer so it can be written to.
 	result = deviceContext->Map(m_paramsBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource);

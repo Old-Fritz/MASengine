@@ -31,8 +31,8 @@ public:
 	bool Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, PathClass* blockFilename, int id);
 	void Shutdown();
 	bool Render(TerrainShaderClass* terrainShader, ID3D11DeviceContext* deviceContext, D3DXMATRIX worldMatrix,
-		D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, D3DXVECTOR3 lightDirection, D3DXVECTOR4 ambientColor,
-		D3DXVECTOR4 diffuseColor, D3DXVECTOR3 cameraPosition, D3DXVECTOR4 specularColor, float specularPower,
+		D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, ID3D11ShaderResourceView** mapTextures, D3DXVECTOR3 lightDirection,
+		D3DXVECTOR4 ambientColor, D3DXVECTOR4 diffuseColor, D3DXVECTOR3 cameraPosition, D3DXVECTOR4 specularColor, float specularPower,
 		float SCREEN_DEPTH, FrustumClass* frustum);
 
 	//pick actions
@@ -61,6 +61,9 @@ private:
 	//textures
 	int m_provTextureHash;
 	PathClass* m_provFilename;
+
+	int m_physTextureHash;
+	PathClass* m_physFilename;
 
 	//info from file
 	D3DXVECTOR3 m_position; //position on map

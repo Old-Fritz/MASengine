@@ -5,6 +5,7 @@ terrainWidth = 128
 terrainHeight = 128
 heightMapFilenameBase =  data/terrain/heightMaps/heightmap11
 provFilename =  data/terrain/provMaps/provsmap11.dds
+physFilename = data/terrain/physTextures/terrainMap11.dds
 
 
 11: {

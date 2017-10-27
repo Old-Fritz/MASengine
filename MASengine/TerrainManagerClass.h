@@ -33,8 +33,11 @@ public:
 private:
 	void translateMatrix(D3DXMATRIX& matrix, D3DXVECTOR3 transVector);
 
+	bool initializeMapTextures(ID3D11Device* device);
 private:
 	std::vector<TerrainClass*> m_terrain;
+
+	int m_mapTextureHashes[NUM_OF_MAP_TEXTURES];
 };
 
 #endif

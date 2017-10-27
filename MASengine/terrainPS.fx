@@ -6,7 +6,7 @@
 /////////////
 // GLOBALS //
 /////////////
-Texture2D shaderTexture;
+Texture2D textures[12];
 SamplerState SampleType[2];
 
 cbuffer ParamsBuffer
@@ -55,10 +55,10 @@ float4 TerrainPixelShader(PixelInputType input) : SV_TARGET
     float2 mapCoord;
 
 	///CALCULATE BORDERS///
-    provColor = shaderTexture.Sample(SampleType[0], input.tex);
+    provColor = textures[0].Sample(SampleType[0], input.tex);
 
 
-    provColor2 = shaderTexture.Sample(SampleType[1], input.tex);
+    provColor2 = textures[0].Sample(SampleType[1], input.tex);
 
 
     provnum2 = provColor2.z * 255.01f;
@@ -138,6 +138,6 @@ float4 TerrainPixelShader(PixelInputType input) : SV_TARGET
     if (provnum == 400)
         color = float4(0.3f, 0.3f, 0.7f, 1.0f);
 
-    //return shaderTexture.Sample(SampleType[0], input.tex);
+    //return textures[1].Sample(SampleType[1], input.tex);
 	return color;
 }

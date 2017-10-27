@@ -31,6 +31,7 @@ public:
 	void deleteTexture(PathClass* filename);
 	ID3D11ShaderResourceView* getTexture(PathClass* filename);
 	ID3D11ShaderResourceView* getTexture(int hash);
+	ID3D11ShaderResourceView** getTexturesArray(int* hashes, int num);
 private:
 	TextureManagerClass();
 	TextureManagerClass(const TextureManagerClass&);

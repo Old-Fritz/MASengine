@@ -5,6 +5,8 @@ terrainWidth = 128
 terrainHeight = 128
 heightMapFilenameBase =  data/terrain/heightMaps/heightmap14
 provFilename =  data/terrain/provMaps/provsmap14.dds
+physFilename = data/terrain/physTextures/terrainMap14.dds
+
 
 14: {
 color = 0.7 0.7 0.7 1

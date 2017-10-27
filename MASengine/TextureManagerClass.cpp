@@ -91,3 +91,14 @@ ID3D11ShaderResourceView * TextureManagerClass::getTexture(int hash)
 	else
 		return NULL;
 }
+
+ID3D11ShaderResourceView ** TextureManagerClass::getTexturesArray(int * hashes,int num)
+{
+	ID3D11ShaderResourceView** textures = new(2) ID3D11ShaderResourceView*[num];
+	for (int i = 0;i < num;i++)
+	{
+		textures[i] = getTexture(hashes[i]);
+	}
+
+	return textures;
+}

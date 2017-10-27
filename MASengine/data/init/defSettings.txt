@@ -17,3 +17,4 @@ ProvRegionFilename = {data/provRegions.txt}
 GeneralActionsFilename = {data/interface/GeneralActions.txt}
 TerrainFilenameBase = {data/terrain/desc/block}
 BaseRegionFilename = {data/baseRegions.txt}
+MapTextureFilenameBase = {data/terrain/mapTextures/terrain}
