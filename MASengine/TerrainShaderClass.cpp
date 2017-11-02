@@ -9,6 +9,7 @@ TerrainShaderClass::TerrainShaderClass()
 	m_paramsBuffer = 0;
 	m_sampleState[0] = 0;
 	m_sampleState[1] = 0;
+	m_sampleState[2] = 0;
 
 }
 TerrainShaderClass::TerrainShaderClass(const TerrainShaderClass &)
@@ -73,7 +74,7 @@ bool TerrainShaderClass::InitializeShader(ID3D11Device * device, HWND hwnd, cons
 	ID3D10Blob* pixelShaderBuffer;
 	D3D11_INPUT_ELEMENT_DESC polygonLayout[3];
 	unsigned int numElements;
-	D3D11_SAMPLER_DESC samplerDesc[2];
+	D3D11_SAMPLER_DESC samplerDesc[3];
 	D3D11_BUFFER_DESC matrixBufferDesc;
 	D3D11_BUFFER_DESC paramsBufferDesc;
 
@@ -218,6 +219,28 @@ bool TerrainShaderClass::InitializeShader(ID3D11Device * device, HWND hwnd, cons
 
 	// Create the texture sampler state.
 	result = device->CreateSamplerState(&samplerDesc[1], &m_sampleState[1]);
+	if (FAILED(result))
+	{
+		return false;
+	}
+
+	// Create a texture sampler state description.
+	samplerDesc[2].Filter = D3D11_FILTER_MIN_MAG_MIP_LINEAR;
+	samplerDesc[2].AddressU = D3D11_TEXTURE_ADDRESS_WRAP;
+	samplerDesc[2].AddressV = D3D11_TEXTURE_ADDRESS_WRAP;
+	samplerDesc[2].AddressW = D3D11_TEXTURE_ADDRESS_WRAP;
+	samplerDesc[2].MipLODBias = 0.0f;
+	samplerDesc[2].MaxAnisotropy = 1;
+	samplerDesc[2].ComparisonFunc = D3D11_COMPARISON_ALWAYS;
+	samplerDesc[2].BorderColor[0] = 0;
+	samplerDesc[2].BorderColor[1] = 0;
+	samplerDesc[2].BorderColor[2] = 0;
+	samplerDesc[2].BorderColor[3] = 0;
+	samplerDesc[2].MinLOD = 0;
+	samplerDesc[2].MaxLOD = D3D11_FLOAT32_MAX;
+
+	// Create the texture sampler state.
+	result = device->CreateSamplerState(&samplerDesc[2], &m_sampleState[2]);
 	if (FAILED(result))
 	{
 		return false;
@@ -435,7 +458,7 @@ void TerrainShaderClass::RenderShader(ID3D11DeviceContext * deviceContext, int i
 	deviceContext->PSSetShader(m_pixelShader, NULL, 0);
 
 	// Set the sampler state in the pixel shader.
-	deviceContext->PSSetSamplers(0, 2, m_sampleState);
+	deviceContext->PSSetSamplers(0, 3, m_sampleState);
 
 	// Render the triangle.
 	deviceContext->DrawIndexed(indexCount, 0, 0);

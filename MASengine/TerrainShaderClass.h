@@ -68,7 +68,7 @@ private:
 	ID3D11InputLayout* m_layout;
 	ID3D11Buffer* m_matrixBuffer;
 	ID3D11Buffer* m_paramsBuffer;
-	ID3D11SamplerState* m_sampleState[2];
+	ID3D11SamplerState* m_sampleState[3];
 };
 
 #endif

@@ -435,6 +435,28 @@ bool HeightMapLoaderClass::calculateNormals()
 		}
 	}
 
+	for (i = 0; i < m_terrainHeight; i++)
+	{
+		m_model[i].nx = 0;
+		m_model[i].ny = 1;
+		m_model[i].nz = 0;
+
+		m_model[(m_terrainWidth - 1)*m_terrainHeight+i].nx = 0;
+		m_model[(m_terrainWidth - 1)*m_terrainHeight + i].ny = 1;
+		m_model[(m_terrainWidth - 1)*m_terrainHeight + i].nz = 0;
+	}
+
+	for (i = 0; i < m_terrainWidth; i++)
+	{
+		m_model[i*m_terrainHeight].nx = 0;
+		m_model[i*m_terrainHeight].ny = 1;
+		m_model[i*m_terrainHeight].nz = 0;
+
+		m_model[i*m_terrainHeight + m_terrainWidth-1].nx = 0;
+		m_model[i*m_terrainHeight + m_terrainWidth-1].ny = 1;
+		m_model[i*m_terrainHeight + m_terrainWidth-1].nz = 0;
+	}
+
 	return true;
 }
 

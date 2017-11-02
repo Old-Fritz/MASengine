@@ -1,0 +1,21 @@
+11-02-17_14-20-24 LogManager Initialized
+11-02-17_14-20-24 MemoryManager Initialized
+11-02-17_14-20-24 ModManager Initialized
+11-02-17_14-20-24 PathManager Initialized
+11-02-17_14-20-24 Settings Initialized
+11-02-17_14-20-24 CommandManager Initialized
+11-02-17_14-20-24 ResourceManager Initialized
+11-02-17_14-20-25 SystemStateManager Initialized
+11-02-17_14-20-25 All global system Initialized
+11-02-17_14-20-25 Windows Initialization
+11-02-17_14-20-25 input Initialization
+11-02-17_14-20-25 Position Initialization
+11-02-17_14-20-26 Directx Initialization
+11-02-17_14-20-26 Interface Shader Initialization
+11-02-17_14-20-26 Font Shader Initialization
+11-02-17_14-20-27 Terrain Shader Initialization
+11-02-17_14-20-27 Shaders Initialization
+11-02-17_14-20-27 Graphics Initialization
+11-02-17_14-20-28 Provs Initialization
+11-02-17_14-20-28 Provs Regions Initialization
+11-02-17_14-20-29 graphics resources Initialization
