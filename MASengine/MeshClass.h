@@ -52,6 +52,10 @@ public:
 
 	bool checkFrustum(FrustumClass* frustum, D3DXVECTOR3 position);
 	bool intersect(ID3D11DeviceContext* deviceContext, D3DXVECTOR3 rayOrigin, D3DXVECTOR3 rayDirection, D3DXVECTOR3& point);
+
+	//static func
+	static void translateMatrix(D3DXMATRIX& matrix, D3DXVECTOR3 transVector);
+	static void rotateMatrix(D3DXMATRIX& matrix, D3DXVECTOR3 rotVector);
 private:
 	bool InitializeBuffers(ID3D11Device* device, VertexType* vertices, unsigned long* indices);
 	void ShutdownBuffers();
@@ -61,6 +65,8 @@ private:
 	void findExtrPoints(VertexType* vertices, D3DXVECTOR3& minPoint, D3DXVECTOR3& maxPoint);
 
 	bool getVertsAndInds(ID3D11DeviceContext* deviceContext, VertexType** verticies, unsigned long** indices);
+
+	
 private:
 	ID3D11Buffer *m_vertexBuffer, *m_indexBuffer;
 	int m_vertexCount, m_indexCount;

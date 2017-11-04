@@ -31,7 +31,6 @@ public:
 	bool pick(ID3D11DeviceContext * deviceContext, D3DXVECTOR3 rayOrigin, D3DXVECTOR3 rayDirection, int& provNum, D3DXVECTOR3& point);
 
 private:
-	void translateMatrix(D3DXMATRIX& matrix, D3DXVECTOR3 transVector);
 
 	bool initializeMapTextures(ID3D11Device* device);
 private:

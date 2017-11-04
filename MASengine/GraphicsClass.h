@@ -13,7 +13,7 @@
 #include "InterfaceClass.h"
 #include "TerrainManagerClass.h"
 #include "LightClass.h"
-
+#include "ModelManagerClass.h"
 
 /////////////
 // GLOBALS //
@@ -56,6 +56,8 @@ private:
 	D3DXMATRIX m_baseViewMatrix;
 	HWND m_hwnd;
 	int m_screenWidth, m_screenHeight;
+
+	ModelClass* m_test;
 
 	//blocks
 	D3DClass* m_D3D;

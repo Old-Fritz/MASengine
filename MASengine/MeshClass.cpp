@@ -257,6 +257,22 @@ bool MeshClass::getVertsAndInds(ID3D11DeviceContext* deviceContext, VertexType**
 	return true;
 }
 
+void MeshClass::translateMatrix(D3DXMATRIX & matrix, D3DXVECTOR3 transVector)
+{
+	D3DXMATRIX translateMatrix;
+
+	D3DXMatrixTranslation(&translateMatrix, transVector.x, transVector.y, transVector.z);
+	D3DXMatrixMultiply(&matrix, &matrix, &translateMatrix);
+}
+
+void MeshClass::rotateMatrix(D3DXMATRIX & matrix, D3DXVECTOR3 rotVector)
+{
+	D3DXMATRIX rotateMatrix;
+
+	D3DXMatrixRotationYawPitchRoll(&rotateMatrix, rotVector.x, rotVector.y, rotVector.z);
+	D3DXMatrixMultiply(&matrix, &matrix, &rotateMatrix);
+}
+
 bool MeshClass::intersect(ID3D11DeviceContext * deviceContext, D3DXVECTOR3 rayOrigin, D3DXVECTOR3 rayDirection, D3DXVECTOR3 & point)
 {
 	bool result;

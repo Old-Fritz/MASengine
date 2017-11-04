@@ -2,6 +2,7 @@
 
 GraphicsClass::GraphicsClass()
 {
+	m_test = 0;
 
 	m_D3D = 0;
 	m_shaderManager = 0;
@@ -78,7 +79,7 @@ bool GraphicsClass::Initialize(HWND hwnd)
 	m_light->SetDiffuseColor(D3DXVECTOR4(1.0f, 1.0f, 1.0f, 1.0f));
 	m_light->SetDirection(D3DXVECTOR3(0.9f, 0.0f, 0.0f));
 	m_light->SetSpecularColor(D3DXVECTOR4(1.0f, 1.0f, 1.0f, 1.0f));
-	m_light->SetSpecularPower(400.0f);
+	m_light->SetSpecularPower(4000.0f);
 
 	//Init loadscreen manager
 	result = LoadScreenManagerClass::getI().Initialize(m_D3D,m_shaderManager,m_baseViewMatrix,m_hwnd,SettingsClass::getI().getPathParameter("loadScreenManagerFilename"));
@@ -89,9 +90,40 @@ bool GraphicsClass::Initialize(HWND hwnd)
 	}
 	LoadScreenManagerClass::getI().showElements();
 
-	
+	//init test
+	m_test = new(4) ModelClass;
+	if (!m_test)
+		return false;
+	result = m_test->Initialize(m_D3D->GetDevice(), m_D3D->GetDeviceContext(), PathManagerClass::getI().makePath("data/meshes/testModel.txt"),
+		PathManagerClass::getI().makePath("data/textures/autorsBack.dds"));
+	if (!result)
+	{
+		MessageBox(hwnd, L"Could not initialize Test", L"Error", MB_OK);
+		return false;
+	}
+	m_test->setPosition(D3DXVECTOR3(150, -20, 200));
+	m_test->setRotation(D3DXVECTOR3(0.6f, 0.3f, 0.5f));
 
 	
+
+	//create model manager
+	if (!&(ModelManagerClass::getI()))
+	{
+		return false;
+	}
+
+	ModelManagerClass::getI().addModel(m_test);
+
+	for (int i = 0;i < 1000;i++)
+	{
+		ModelClass* model = new(4) ModelClass;
+		model->Initialize(m_D3D->GetDevice(), m_D3D->GetDeviceContext(), PathManagerClass::getI().makePath("data/meshes/testModel.txt"),
+			PathManagerClass::getI().makePath("data/textures/autorsBack.dds"));
+		model->setPosition(D3DXVECTOR3(rand() / 300, rand() / 300, rand() / 300) + D3DXVECTOR3(256,0,256));
+		//model->setRotation(D3DXVECTOR3(rand(), rand(), rand()));
+		//model->setRotation(D3DXVECTOR3(0.0f, 0.0f, 1.0f));
+		ModelManagerClass::getI().addModel(model);
+	}
 
 	return true;
 }
@@ -129,7 +161,7 @@ bool GraphicsClass::InitializeResources()
 
 void GraphicsClass::Shutdown()
 {
-	
+	ModelManagerClass::getI().Shutdown();
 
 	LoadScreenManagerClass::getI().Shutdown();
 
@@ -415,19 +447,31 @@ bool GraphicsClass::Render()
 	//construct frustum
 	frustum->ConstructFrustum(SCREEN_DEPTH, projectionMatrix, viewMatrix);
 
-	//render test terrain
+	//render terrain
 
-	m_terrain->Render(m_shaderManager->getTerrainShader(), m_D3D->GetDeviceContext(), worldMatrix,
+	result = m_terrain->Render(m_shaderManager->getTerrainShader(), m_D3D->GetDeviceContext(), worldMatrix,
 			viewMatrix, projectionMatrix, m_light->GetDirection(), m_light->GetAmbientColor(),
 			m_light->GetDiffuseColor(), m_camera->GetPosition(), m_light->GetSpecularColor(),
 			m_light->GetSpecularPower(), SCREEN_DEPTH, frustum);
+	if (!result)
+		return false;
+	
+	//render models
+	result = ModelManagerClass::getI().Render(m_shaderManager->getModelShader(), m_D3D->GetDeviceContext(), worldMatrix,
+		viewMatrix, projectionMatrix, m_light->GetDirection(), m_light->GetAmbientColor(),
+		m_light->GetDiffuseColor(), m_camera->GetPosition(), m_light->GetSpecularColor(),
+		m_light->GetSpecularPower(), SCREEN_DEPTH, frustum);
+	if (!result)
+		return false;
 	
 
 	//render 2D
 	m_D3D->TurnZBufferOff();
 	
-	m_interface->Render(m_shaderManager->getInterfaceShader(), m_shaderManager->getFontShader(), m_D3D->GetDeviceContext(),
+	result = m_interface->Render(m_shaderManager->getInterfaceShader(), m_shaderManager->getFontShader(), m_D3D->GetDeviceContext(),
 		worldMatrix, m_baseViewMatrix, orthoMatrix);
+	if (!result)
+		return false;
 
 	m_D3D->TurnZBufferOn();
 
@@ -476,8 +520,10 @@ void GraphicsClass::unPick(int mouseX, int mouseY)
 	}
 	else if (terrainPick(mouseX, mouseY, provNum, point))
 	{
-		if (!ProvManagerClass::getI().getProv(provNum)->getRegions(GlobalManagerClass::NATION).back()
-	|| ProvManagerClass::getI().getProv(provNum)->getRegions(GlobalManagerClass::NATION).back()==2)
+		if (provNum > 4000)
+			provNum = 0;
+		int region = ProvManagerClass::getI().getProv(provNum)->getRegions(GlobalManagerClass::NATION).back();
+		if (region == 0 || region ==2)
 			ProvRegionManagerClass::getI().getProvRegion(GlobalManagerClass::NATION,1)->add(provNum);
 		else
 			ProvRegionManagerClass::getI().getProvRegion(GlobalManagerClass::NATION, 2)->add(provNum);

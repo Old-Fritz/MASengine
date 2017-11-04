@@ -27,7 +27,7 @@ bool ModelClass::Initialize(ID3D11Device * device, ID3D11DeviceContext * deviceC
 	m_textureHash = textureFilename->getHash();
 
 	//add mesh
-	result = MeshManagerClass::getI().addModel(device, meshFilename);
+	result = MeshManagerClass::getI().addModel(device, meshFilename,100,100,100);
 	if (!result)
 	{
 		return false;

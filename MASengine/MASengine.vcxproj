@@ -150,6 +150,7 @@
     <ClCompile Include="MeshLoaderClass.cpp" />
     <ClCompile Include="MeshManagerClass.cpp" />
     <ClCompile Include="ModelClass.cpp" />
+    <ClCompile Include="ModelManagerClass.cpp" />
     <ClCompile Include="ModelShaderClass.cpp" />
     <ClCompile Include="ModManagerClass.cpp" />
     <ClCompile Include="NationRegionClass.cpp" />
@@ -198,6 +199,7 @@
     <ClInclude Include="LightClass.h" />
     <ClInclude Include="MeshLoaderClass.h" />
     <ClInclude Include="ModelClass.h" />
+    <ClInclude Include="ModelManagerClass.h" />
     <ClInclude Include="ModelShaderClass.h" />
     <ClInclude Include="NationRegionClass.h" />
     <ClInclude Include="PathClass.h" />

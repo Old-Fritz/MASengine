@@ -61,7 +61,7 @@ bool TerrainManagerClass::Render(TerrainShaderClass * terrainShader, ID3D11Devic
 	for (auto block = m_terrain.begin();block != m_terrain.end();block++)
 	{
 		//translate world Matrix first
-		translateMatrix(worldMatrix, (*block)->getPosition());
+		MeshClass::translateMatrix(worldMatrix, (*block)->getPosition());
 
 		//render block
 		result = (*block)->Render(terrainShader, deviceContext, worldMatrix, viewMatrix, projectionMatrix, mapTextures, lightDirection,
@@ -70,7 +70,7 @@ bool TerrainManagerClass::Render(TerrainShaderClass * terrainShader, ID3D11Devic
 			return false;
 
 		//translate world matrix back
-		translateMatrix(worldMatrix, -(*block)->getPosition());
+		MeshClass::translateMatrix(worldMatrix, -(*block)->getPosition());
 	}
 
 	return true;
@@ -93,13 +93,7 @@ bool TerrainManagerClass::pick(ID3D11DeviceContext * deviceContext, D3DXVECTOR3 
 	return false;
 }
 
-void TerrainManagerClass::translateMatrix(D3DXMATRIX& matrix, D3DXVECTOR3 transVector)
-{
-	D3DXMATRIX translateMatrix;
 
-	D3DXMatrixTranslation(&translateMatrix, transVector.x, transVector.y, transVector.z);
-	D3DXMatrixMultiply(&matrix, &matrix, &translateMatrix);
-}
 
 bool TerrainManagerClass::initializeMapTextures(ID3D11Device * device)
 {

@@ -51,14 +51,14 @@ bool ProvRegionManagerClass::Initialize(PathClass* filename)
 		return false;
 
 	//add all provs to base blocks
-	/*
-	for (int i = 0;i < ProvManagerClass::getI().getProvNum(); i++)
+	
+	for (int i = 0;i < 1; i++)
 	{
 		baseRegion->add(i);
 		nationRegion->add(i);
 		blockRegion->add(i);
 	}
-	*/
+	
 	//add regions to vectots
 	m_provRegions.emplace_back(baseRegion);
 	m_blockRegion.emplace_back(blockRegion);
