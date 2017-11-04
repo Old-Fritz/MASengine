@@ -12,6 +12,7 @@
 #include "InterfaceShaderClass.h"
 #include "FontShaderClass.h"
 #include "TerrainShaderClass.h"
+#include "ModelShaderClass.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // Class name: ShaderManagerClass
@@ -30,11 +31,13 @@ public:
 	InterfaceShaderClass* getInterfaceShader();
 	FontShaderClass* getFontShader();
 	TerrainShaderClass* getTerrainShader();
+	ModelShaderClass* getModelShader();
 private:
 	//shaders
 	InterfaceShaderClass* m_interfaceShader;
 	FontShaderClass* m_fontShader;
 	TerrainShaderClass* m_terrainShader;
+	ModelShaderClass* m_modelShader;
 };
 
 #endif

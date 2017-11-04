@@ -59,11 +59,33 @@ bool ShaderManagerClass::Initialize(ID3D11Device * device, HWND hwnd)
 	}
 	LogManagerClass::getI().addLog("Terrain Shader Initialization");
 
+	//Initialize model Shader
+	m_modelShader = new(1) ModelShaderClass;
+	if (!m_modelShader)
+		return false;
+	PathClass* modelPS = PathManagerClass::getI().makePath("modelPS.fx");
+	PathClass* modelVS = PathManagerClass::getI().makePath("terrainVS.fx");
+	result = m_modelShader->Initialize(device, hwnd, modelVS, modelPS);
+	if (!result)
+	{
+		LogManagerClass::getI().addLog("Error 10-x");
+		return false;
+	}
+	LogManagerClass::getI().addLog("Model Shader Initialization");
+
+
 	return true;
 }
 
 void ShaderManagerClass::Shutdown()
 {
+	if (m_modelShader)
+	{
+		m_modelShader->Shutdown();
+		::operator delete(m_modelShader, sizeof(*m_modelShader), 1);
+		m_modelShader = 0;
+	}
+
 	if (m_terrainShader)
 	{
 		m_terrainShader->Shutdown();
@@ -101,4 +123,9 @@ FontShaderClass * ShaderManagerClass::getFontShader()
 TerrainShaderClass * ShaderManagerClass::getTerrainShader()
 {
 	return m_terrainShader;
+}
+
+ModelShaderClass * ShaderManagerClass::getModelShader()
+{
+	return m_modelShader;
 }

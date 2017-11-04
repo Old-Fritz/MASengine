@@ -58,16 +58,8 @@ PixelInputType TerrainVertexShader(VertexInputType input)
 	//input.tex.y -= 0.0000097f;
     output.tex = input.tex;
 
-	output.normal = input.normal;
 	// Calculate the normal vector against the world matrix only.
-	if (input.tex.y > 0.5f)
-	{
-		output.normal = input.normal;
-	}	
-	else
-	{
-		output.normal = mul(input.normal, (float3x3) worldMatrix);
-	}
+	output.normal = mul(input.normal, (float3x3) worldMatrix);
 
 	// Normalize the normal vector.
     output.normal = normalize(output.normal);
@@ -82,4 +74,5 @@ PixelInputType TerrainVertexShader(VertexInputType input)
     output.viewDirection = normalize(output.viewDirection);
 
 
-    return output;}
+    return output;
+}

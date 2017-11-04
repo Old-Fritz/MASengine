@@ -149,6 +149,8 @@
     <ClCompile Include="MeshClass.cpp" />
     <ClCompile Include="MeshLoaderClass.cpp" />
     <ClCompile Include="MeshManagerClass.cpp" />
+    <ClCompile Include="ModelClass.cpp" />
+    <ClCompile Include="ModelShaderClass.cpp" />
     <ClCompile Include="ModManagerClass.cpp" />
     <ClCompile Include="NationRegionClass.cpp" />
     <ClCompile Include="PathClass.cpp" />
@@ -195,6 +197,8 @@
     <ClInclude Include="IntParamClass.h" />
     <ClInclude Include="LightClass.h" />
     <ClInclude Include="MeshLoaderClass.h" />
+    <ClInclude Include="ModelClass.h" />
+    <ClInclude Include="ModelShaderClass.h" />
     <ClInclude Include="NationRegionClass.h" />
     <ClInclude Include="PathClass.h" />
     <ClInclude Include="FontClass.h" />
@@ -267,6 +271,11 @@
       <FileType>Document</FileType>
     </None>
     <None Include="terrainVS.fx">
+      <FileType>Document</FileType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="modelPS.fx">
       <FileType>Document</FileType>
     </None>
   </ItemGroup>

@@ -1,0 +1,12 @@
+11-02-17_14-54-49 LogManager Initialized
+11-02-17_14-54-49 MemoryManager Initialized
+11-02-17_14-54-49 ModManager Initialized
+11-02-17_14-54-49 PathManager Initialized
+11-02-17_14-54-49 Settings Initialized
+11-02-17_14-54-49 CommandManager Initialized
+11-02-17_14-54-49 ResourceManager Initialized
+11-02-17_14-54-51 SystemStateManager Initialized
+11-02-17_14-54-51 All global system Initialized
+11-02-17_14-54-51 Windows Initialization
+11-02-17_14-54-51 Error 7-5
+11-02-17_14-54-51 Error 7-12

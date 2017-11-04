@@ -148,6 +148,9 @@
     <Filter Include="Заголовочные файлы\Graphics\Systems">
       <UniqueIdentifier>{f0441745-577b-4546-9c49-2bfd28fc8728}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Заголовочные файлы\Graphics\Models">
+      <UniqueIdentifier>{f3f15b48-9278-4631-8b2f-85ce37d95829}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -339,6 +342,12 @@
     <ClCompile Include="TerrainManagerClass.cpp">
       <Filter>Файлы исходного кода\Graphics\Blocks</Filter>
     </ClCompile>
+    <ClCompile Include="ModelShaderClass.cpp">
+      <Filter>Файлы исходного кода\Graphics\ShaderManagment\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelClass.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SystemClass.h">
@@ -527,6 +536,12 @@
     <ClInclude Include="NationRegionClass.h">
       <Filter>Заголовочные файлы\GameMechaniks\Provs\ProvRegions</Filter>
     </ClInclude>
+    <ClInclude Include="ModelClass.h">
+      <Filter>Заголовочные файлы\Graphics\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelShaderClass.h">
+      <Filter>Заголовочные файлы\Graphics\ShaderManagment\Shaders</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="interfaceVS.fx">
@@ -544,5 +559,10 @@
     <None Include="terrainVS.fx">
       <Filter>Файлы ресурсов\Shaders</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="modelPS.fx">
+      <Filter>Файлы ресурсов\Shaders</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

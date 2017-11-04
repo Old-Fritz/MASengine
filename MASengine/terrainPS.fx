@@ -9,7 +9,7 @@
 Texture2D textures[12];
 SamplerState SampleType[3];
 
-//float sizeOfShaderTexture = 128;
+//float g_sizeOfShaderTexture = 128;
 
 cbuffer ParamsBuffer
 {
@@ -110,7 +110,8 @@ float4 TerrainPixelShader(PixelInputType input) : SV_TARGET
         //provColor = lerp(provColor, yellow, provColor.w / 1.6f);
     }
 	color = lerp(terrainColor, provColor, 0.6f);
-    color = lerp(lightColor, color, 0.55f);
+    //color = lerp(lightColor, color, 0.35f);
+	color = color * lightColor;
     color.w = 1.0f;
 	
     if (provnum == 400)
@@ -157,7 +158,7 @@ float4 CalculatePhysicalMap(PixelInputType input)
 	float4 textureColor, textureColorLeft, textureColorRight, textureColorUp, textureColorDown;
 	float2 texCoordLeft, texCoordRight, texCoordUp, texCoordDown;
 	float2 squereCoord, mapCoord;
-	float sizeOfShaderTexture = 128.0f;
+	float sizeOfShaderTexture = 128;
 
 	// Sample the pixel color from the texture using the sampler at this texture coordinate location.
 	//textureColor = textures[1].Sample(SampleType[1], input.tex*(sizeOfShaderTexture / 129.0f));
