@@ -246,26 +246,34 @@ bool SystemClass::doCommands()
 
 		for (int i = 0; i < command->getCommandsNum(); i++)
 		{
-			std::string commandType = command->getParam(i, 0);
-			if (commandType == "updateInterface")
-				m_graphics->updateInterface(command,i);
-			else if (commandType == "updateGraphics")
-				m_graphics->updateGraphics(command, i);
-			else if (commandType == "updateSystem")
-				updateSystem(command, i);
+			auto commandEnum = CommandManagerClass::getI().getCommandEnum(Utils::getHash(command->getParam(i, 0)));
+			switch (commandEnum)
+			{
+				case CommandManagerClass::updateInterface:
+					m_graphics->updateInterface(command, i);
+					break;
+				case CommandManagerClass::updateGraphics:
+					m_graphics->updateGraphics(command, i);
+					break;
+				case CommandManagerClass::updateSystem:
+					updateSystem(command, i);
+					break;
+				case CommandManagerClass::reboot:
+					Shutdown();
+					Initialize();
+					break;
+				case CommandManagerClass::stop:
+					return false;
+					break;
+				default:
+					break;
+			}
 			//else if (commandType == "updateTime")
 			//	updateTime(command, i);
 			//else if (commandType == "setParam")
 			//	command->add(setParam(command->getSingleCommand(i)));
 			//else if (commandType == "playSound")
 			//	m_resources->getSound()->playSound(command->getParam(i, 1));
-			else if (commandType == "reboot")
-			{
-				Shutdown();
-				Initialize();
-			}
-			else if (commandType == "stop")
-				return false;
 		}
 	}
 
@@ -275,19 +283,22 @@ bool SystemClass::doCommands()
 bool SystemClass::updateSystem(CommandClass * command, int ind)
 {
 	int mouseX, mouseY;
+	D3DXVECTOR3 pos;
+	D3DXVECTOR3 rot;
 	m_input->GetMouseLocation(mouseX, mouseY);
 
 
 	if (command->getCommandsNum() < 1)
 		return false;
-	std::string updCommandType = command->getParam(0, 1); // type of update is second param
 
-	if (updCommandType == "cameraPosition")
+	// type of update is second param
+	auto commandEnum = CommandManagerClass::getI().getCommandEnum(Utils::getHash(command->getParam(ind, 1)));
+
+	switch (commandEnum)
 	{
-		if (command->getParamsNum(0) < 5) //if number of params smaller than normal, then this is incorrect
+	case CommandManagerClass::position:
+		if (command->getParamsNum(ind) < 5) //if number of params smaller than normal, then this is incorrect
 			return false;
-		D3DXVECTOR3 pos;
-		D3DXVECTOR3 rot;
 		pos = m_position->GetRealPosition();
 		rot = m_position->GetRotation();
 		command->addChange("posX", pos.x);
@@ -300,14 +311,12 @@ bool SystemClass::updateSystem(CommandClass * command, int ind)
 		command->addChange("screenHeight", SettingsClass::getI().getIntParameter("ScreenHeight"));
 		command->addChange("mouseX", mouseX);
 		command->addChange("mouseY", mouseY);
-		m_position->SetPosition(D3DXVECTOR3(stof(command->getParam(0, 2)), stof(command->getParam(0, 3)), stof(command->getParam(0, 4))));
-	}
-	else if (updCommandType == "cameraRotation")
-	{
-		if (command->getParamsNum(0) < 5) //if number of params smaller than normal, then this is incorrect
+		m_position->SetPosition(D3DXVECTOR3(stof(command->getParam(ind, 2)), stof(command->getParam(ind, 3)), stof(command->getParam(ind, 4))));
+		break;
+	case CommandManagerClass::rotation:
+		if (command->getParamsNum(ind) < 5) //if number of params smaller than normal, then this is incorrect
 			return false;
-		D3DXVECTOR3 pos;
-		D3DXVECTOR3 rot;
+		
 		pos = m_position->GetRealPosition();
 		rot = m_position->GetRotation();
 		command->addChange("posX", pos.x);
@@ -320,34 +329,33 @@ bool SystemClass::updateSystem(CommandClass * command, int ind)
 		command->addChange("screenHeight", SettingsClass::getI().getIntParameter("ScreenHeight"));
 		command->addChange("mouseX", mouseX);
 		command->addChange("mouseY", mouseY);
-		m_position->SetRotation(D3DXVECTOR3(stof(command->getParam(0, 2)), stof(command->getParam(0, 3)), stof(command->getParam(0, 4))));
+		m_position->SetRotation(D3DXVECTOR3(stof(command->getParam(ind, 2)), stof(command->getParam(ind, 3)), stof(command->getParam(ind, 4))));
+		break;
+	case CommandManagerClass::setButCommand:
+		if (command->getParamsNum(ind) < 5)
+			return false;
+		if (command->getParam(ind, 3) == "pickCommand")
+			m_input->setPickCommand(stoi(command->getParam(ind, 2)), command->getParam(ind, 4));
+		else
+			m_input->setUnPickCommand(stoi(command->getParam(ind, 2)), command->getParam(ind, 4));
+		break;
+	case CommandManagerClass::setWheelCommand:
+		if (command->getParamsNum(ind) < 4)
+			return false;
+		if (command->getParam(ind, 2) == "up")
+			m_input->setUpWheelCommand(command->getParam(ind, 3));
+		else
+			m_input->setDownWheelCommand(command->getParam(ind, 3));
+		break;
+	case CommandManagerClass::setMoving:
+		if (command->getParamsNum(ind) < 4)
+			return false;
+		m_position->setMove(stoi(command->getParam(ind, 2)), stoi(command->getParam(ind, 3)));
+		break;
+	default:
+		break;
+	}
 
-	}
-	else if (updCommandType == "setButCommand")
-	{
-		if (command->getParamsNum(0) < 5)
-			return false;
-		if (command->getParam(0, 3) == "pickCommand")
-			m_input->setPickCommand(stoi(command->getParam(0, 2)), command->getParam(0, 4));
-		else
-			m_input->setUnPickCommand(stoi(command->getParam(0, 2)), command->getParam(0, 4));
-	}
-	else if (updCommandType == "setWheelCommand")
-	{
-		if (command->getParamsNum(0) < 4)
-			return false;
-		if (command->getParam(0, 2) == "up")
-			m_input->setUpWheelCommand(command->getParam(0, 3));
-		else
-			m_input->setDownWheelCommand(command->getParam(0, 3));
-	}
-	else if (updCommandType == "setMoving")
-	{
-		if (command->getParamsNum(0) < 4)
-			return false;
-		m_position->setMove(stoi(command->getParam(0, 2)), stoi(command->getParam(0, 3)));
-	}
-	
 	return true;
 }
 

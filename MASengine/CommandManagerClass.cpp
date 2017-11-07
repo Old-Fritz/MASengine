@@ -4,6 +4,66 @@ CommandManagerClass* CommandManagerClass::m_instance = 0;
 
 CommandManagerClass::CommandManagerClass()
 {
+	///INIT COMMAND MAP
+	m_commandMap.emplace(std::pair<int,command>(Utils::getHash("updateInterface"), updateInterface));
+	//Updating params of element
+	m_commandMap.emplace(std::pair<int, command>(Utils::getHash("setElVisible"), setElVisible));
+	m_commandMap.emplace(std::pair<int, command>(Utils::getHash("startDrag"), startDrag));
+	m_commandMap.emplace(std::pair<int, command>(Utils::getHash("endDrag"), endDrag));
+	m_commandMap.emplace(std::pair<int, command>(Utils::getHash("elPos"), elPos));
+	// Updating params of bitmaps
+	m_commandMap.emplace(std::pair<int, command>(Utils::getHash("BMposX"), BMposX));
+	m_commandMap.emplace(std::pair<int, command>(Utils::getHash("BMposY"), BMposY));
+	m_commandMap.emplace(std::pair<int, command>(Utils::getHash("BMvertPercent"), BMvertPercent));
+	m_commandMap.emplace(std::pair<int, command>(Utils::getHash("BMhorPercent"), BMhorPercent));
+	m_commandMap.emplace(std::pair<int, command>(Utils::getHash("BMtranspar"), BMtranspar));
+	m_commandMap.emplace(std::pair<int, command>(Utils::getHash("BMselIntens"), BMselIntens));
+	m_commandMap.emplace(std::pair<int, command>(Utils::getHash("BMselCol"), BMselCol));
+	m_commandMap.emplace(std::pair<int, command>(Utils::getHash("setBMvisible"), setBMvisible));
+	//Updating params of strings
+	m_commandMap.emplace(std::pair<int, command>(Utils::getHash("TSposX"), TSposX));
+	m_commandMap.emplace(std::pair<int, command>(Utils::getHash("TSposY"), TSposY));
+	m_commandMap.emplace(std::pair<int, command>(Utils::getHash("TStext"), TStext));
+	m_commandMap.emplace(std::pair<int, command>(Utils::getHash("TScolor"), TScolor));
+	m_commandMap.emplace(std::pair<int, command>(Utils::getHash("TSadding"), TSadding));
+	m_commandMap.emplace(std::pair<int, command>(Utils::getHash("setTvisible"), setTvisible));
+	//Special slider commands
+	m_commandMap.emplace(std::pair<int, command>(Utils::getHash("nextSector"), nextSector));
+	m_commandMap.emplace(std::pair<int, command>(Utils::getHash("backSector"), backSector));
+	//Special list commands
+	m_commandMap.emplace(std::pair<int, command>(Utils::getHash("addElement"), addElement));
+	m_commandMap.emplace(std::pair<int, command>(Utils::getHash("deleteElement"), deleteElement));
+	m_commandMap.emplace(std::pair<int, command>(Utils::getHash("setLastElement"), setLastElement));
+	m_commandMap.emplace(std::pair<int, command>(Utils::getHash("clearElement"), clearElement));
+	//another commands
+	m_commandMap.emplace(std::pair<int, command>(Utils::getHash("setBMCommand"), setBMCommand));
+
+	///
+	m_commandMap.emplace(std::pair<int, command>(Utils::getHash("updateGraphics"), updateGraphics));
+	//
+	m_commandMap.emplace(std::pair<int, command>(Utils::getHash("cameraPosition"), cameraPosition));
+	m_commandMap.emplace(std::pair<int, command>(Utils::getHash("cameraRotation"), cameraRotation));
+	m_commandMap.emplace(std::pair<int, command>(Utils::getHash("pick"), pick));
+	m_commandMap.emplace(std::pair<int, command>(Utils::getHash("unPick"), unPick));
+
+	///
+	m_commandMap.emplace(std::pair<int, command>(Utils::getHash("updateSystem"), updateSystem));
+	//
+	m_commandMap.emplace(std::pair<int, command>(Utils::getHash("position"), position));
+	m_commandMap.emplace(std::pair<int, command>(Utils::getHash("rotation"), rotation));
+	m_commandMap.emplace(std::pair<int, command>(Utils::getHash("setButCommand"), setButCommand));
+	m_commandMap.emplace(std::pair<int, command>(Utils::getHash("setWheelCommand"), setWheelCommand));
+	m_commandMap.emplace(std::pair<int, command>(Utils::getHash("setMoving"), setMoving));
+
+	///
+	m_commandMap.emplace(std::pair<int, command>(Utils::getHash("reboot"), reboot));
+
+	///
+	m_commandMap.emplace(std::pair<int, command>(Utils::getHash("stop"), stop));
+
+	///
+	m_commandMap.emplace(std::pair<int, command>(Utils::getHash("nothing"), nothing));
+
 }
 CommandManagerClass::CommandManagerClass(const CommandManagerClass &)
 {
@@ -93,4 +153,13 @@ bool CommandManagerClass::addCommand(const std::string & name, PathClass* filena
 void CommandManagerClass::addChange(const std::string & key, float value)
 {
 	m_commandsQueue.back()->addChange(key, value);
+}
+
+CommandManagerClass::command CommandManagerClass::getCommandEnum(int hash)
+{
+	auto com = m_commandMap.find(hash);
+	if (com != m_commandMap.end())
+		return com->second;
+	else
+		return nothing;
 }

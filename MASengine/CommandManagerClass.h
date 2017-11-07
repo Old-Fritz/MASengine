@@ -12,12 +12,36 @@
 #include "PathManagerClass.h"
 #include <queue>
 #include <fstream>
+#include <unordered_map>
 
 ////////////////////////////////////////////////////////////////////////////////
 // Class name: CommandManagerClass
 ////////////////////////////////////////////////////////////////////////////////
 class CommandManagerClass
 {
+public:
+	enum command {
+		updateInterface,
+		setElVisible, startDrag, endDrag, elPos, //Updating params of element
+		BMposX, BMposY, BMvertPercent, BMhorPercent,  
+		BMtranspar, BMselIntens, BMselCol, setBMvisible, //Updating params of bitmaps
+		TSposX, TSposY, TStext, TScolor, TSadding, setTvisible,  //Updating params of strings
+		nextSector, backSector, //Special slider commands
+		addElement, deleteElement, setLastElement, clearElement,  //Special list commands
+		setBMCommand, //another commands
+
+		updateGraphics, 
+		cameraPosition, cameraRotation, pick, unPick,
+
+		updateSystem, 
+		position, rotation, setButCommand, setWheelCommand, setMoving,
+
+		reboot,
+
+		stop,
+
+		nothing
+	};
 public:
 	
 
@@ -31,6 +55,8 @@ public:
 
 	bool addCommand(const std::string& name, PathClass* filename);
 	void addChange(const std::string& key, float value);
+
+	command getCommandEnum(int hash);
 private:
 	CommandManagerClass();
 	CommandManagerClass(const CommandManagerClass&);
@@ -38,6 +64,7 @@ private:
 private:
 	std::queue<CommandClass*> m_commandsQueue;
 	std::map<int, std::map<int, CommandClass*>> m_commands;
+	std::unordered_map<int, command> m_commandMap;
 
 	static CommandManagerClass* m_instance;
 };

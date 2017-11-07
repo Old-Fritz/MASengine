@@ -1,12 +1,12 @@
 upWheelCommand = 
 {
-	updateSystem cameraPosition posX+(mouseX-screenWidth/2)*(posY/4000)_ posY/(5/4)_ posZ-(mouseY-screenHeight/2)*(posY/4000)_;
-	updateSystem cameraRotation 90-600/posY_ rotY rotZ;
+	updateSystem position posX+(mouseX-screenWidth/2)*(posY/4000)_ posY/(5/4)_ posZ-(mouseY-screenHeight/2)*(posY/4000)_;
+	updateSystem rotation 90-600/posY_ rotY rotZ;
 }
 downWheelCommand = 
 {
-	updateSystem cameraPosition posX+(mouseX-screenWidth/2)*(posY/4000)_ posY*(5/4)_ posZ-(mouseY-screenHeight/2)*(posY/4000)_;
-	updateSystem cameraRotation 90-600/posY_ rotY rotZ;
+	updateSystem position posX+(mouseX-screenWidth/2)*(posY/4000)_ posY*(5/4)_ posZ-(mouseY-screenHeight/2)*(posY/4000)_;
+	updateSystem rotation 90-600/posY_ rotY rotZ;
 }
 1unPickCommandAutorsMenu =
 {

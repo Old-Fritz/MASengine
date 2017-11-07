@@ -2,7 +2,6 @@
 
 GraphicsClass::GraphicsClass()
 {
-	m_test = 0;
 
 	m_D3D = 0;
 	m_shaderManager = 0;
@@ -90,40 +89,12 @@ bool GraphicsClass::Initialize(HWND hwnd)
 	}
 	LoadScreenManagerClass::getI().showElements();
 
-	//init test
-	m_test = new(4) ModelClass;
-	if (!m_test)
-		return false;
-	result = m_test->Initialize(m_D3D->GetDevice(), m_D3D->GetDeviceContext(), PathManagerClass::getI().makePath("data/meshes/testModel.txt"),
-		PathManagerClass::getI().makePath("data/textures/autorsBack.dds"));
-	if (!result)
-	{
-		MessageBox(hwnd, L"Could not initialize Test", L"Error", MB_OK);
-		return false;
-	}
-	m_test->setPosition(D3DXVECTOR3(150, -20, 200));
-	m_test->setRotation(D3DXVECTOR3(0.6f, 0.3f, 0.5f));
-
-	
-
 	//create model manager
 	if (!&(ModelManagerClass::getI()))
 	{
 		return false;
 	}
 
-	ModelManagerClass::getI().addModel(m_test);
-
-	for (int i = 0;i < 1000;i++)
-	{
-		ModelClass* model = new(4) ModelClass;
-		model->Initialize(m_D3D->GetDevice(), m_D3D->GetDeviceContext(), PathManagerClass::getI().makePath("data/meshes/testModel.txt"),
-			PathManagerClass::getI().makePath("data/textures/autorsBack.dds"));
-		model->setPosition(D3DXVECTOR3(rand() / 300, rand() / 300, rand() / 300) + D3DXVECTOR3(256,0,256));
-		//model->setRotation(D3DXVECTOR3(rand(), rand(), rand()));
-		//model->setRotation(D3DXVECTOR3(0.0f, 0.0f, 1.0f));
-		ModelManagerClass::getI().addModel(model);
-	}
 
 	return true;
 }
@@ -242,157 +213,138 @@ bool GraphicsClass::updateInterface(CommandClass * command, int ind)
 {
 	if (command->getCommandsNum() < 1)
 		return false;
-	std::string updCommandType = command->getParam(ind, 1); // type of update is second param
 
-													 //Updating params of element
-	if (updCommandType == "setElVisible")
+	// type of update is second param
+	auto commandEnum = CommandManagerClass::getI().getCommandEnum(Utils::getHash(command->getParam(ind, 1)));
+
+	switch (commandEnum)
 	{
+		//Updating params of element
+	case CommandManagerClass::setElVisible:
 		m_interface->setElVisible(command->getParam(ind, 2), stoi(command->getParam(ind, 3))); // all params in order
-	}
-	if (updCommandType == "startDrag")
-	{
+		break;
+	case CommandManagerClass::startDrag:
 		m_interface->startDrag(command->getParam(ind, 2)); // all params in order
-	}
-	if (updCommandType == "endDrag")
-	{
+		break;
+	case CommandManagerClass::endDrag:
 		m_interface->endDrag(command->getParam(ind, 2)); // all params in order
-	}
-	if (updCommandType == "elPos")
-	{
-		m_interface->setPos(m_D3D->GetDeviceContext(),command->getParam(ind, 2), stoi(command->getParam(ind, 3)), stoi(command->getParam(ind, 4))); // all params in order
-	}
+		break;
+	case CommandManagerClass::elPos:
+		m_interface->setPos(m_D3D->GetDeviceContext(), command->getParam(ind, 2), stoi(command->getParam(ind, 3)), stoi(command->getParam(ind, 4))); // all params in order
+		break;
 
 
-	//Updating params of bitmaps
-	else if (updCommandType == "BMposX")
-	{
+		//Updating params of bitmaps
+	case CommandManagerClass::BMposX:
 		if (command->getParamsNum(ind) >= 5) //if number of params smaller than normal, then this is incorrect
 			m_interface->updateElBMposX(command->getParam(ind, 2), command->getParam(ind, 3), stoi(command->getParam(ind, 4))); // all params in order
-	}
-	else if (updCommandType == "BMposY")
-	{
+		break;
+	case CommandManagerClass::BMposY:
 		if (command->getParamsNum(ind) >= 5) //if number of params smaller than normal, then this is incorrect
 			m_interface->updateElBMposY(command->getParam(ind, 2), command->getParam(ind, 3), stoi(command->getParam(ind, 4))); // all params in order
-	}
-	else if (updCommandType == "BMvertPercent")
-	{
+		break;
+	case CommandManagerClass::BMvertPercent:
 		if (command->getParamsNum(ind) >= 5) //if number of params smaller than normal, then this is incorrect
 			m_interface->updateElBMvertPercent(command->getParam(ind, 2), command->getParam(ind, 3), stof(command->getParam(ind, 4))); // all params in order
-	}
-	else if (updCommandType == "BMhorPercent")
-	{
+		break;
+	case CommandManagerClass::BMhorPercent:
 		if (command->getParamsNum(ind) >= 5) //if number of params smaller than normal, then this is incorrect
 			m_interface->updateElBMhorPercent(command->getParam(ind, 2), command->getParam(ind, 3), stof(command->getParam(ind, 4))); // all params in order
-	}
-	else if (updCommandType == "BMtranspar")
-	{
+		break;
+	case CommandManagerClass::BMtranspar:
 		if (command->getParamsNum(ind) >= 5) //if number of params smaller than normal, then this is incorrect
 			m_interface->updateElBMtranspar(command->getParam(ind, 2), command->getParam(ind, 3), stof(command->getParam(ind, 4))); // all params in order
-	}
-	else if (updCommandType == "BMselIntens")
-	{
+		break;
+	case CommandManagerClass::BMselIntens:
 		if (command->getParamsNum(ind) >= 5) //if number of params smaller than normal, then this is incorrect
 			m_interface->updateElBMselIntens(command->getParam(ind, 2), command->getParam(ind, 3), stof(command->getParam(ind, 4))); // all params in order
-	}
-	else if (updCommandType == "BMselCol")
-	{
+		break;
+	case CommandManagerClass::BMselCol:
 		if (command->getParamsNum(ind) >= 8) //if number of params smaller than normal, then this is incorrect
 		{
 			m_interface->updateElBMselCol(command->getParam(ind, 2), command->getParam(ind, 3), D3DXVECTOR4(stof(command->getParam(ind, 4)),
 				stoi(command->getParam(ind, 5)), stof(command->getParam(ind, 6)), stof(command->getParam(ind, 7)))); // all params in order
 		}
-	}
-	else if (updCommandType == "setBMvisible")
-	{
+		break;
+	case CommandManagerClass::setBMvisible:
 		if (command->getParamsNum(ind) >= 5) //if number of params smaller than normal, then this is incorrect
 			m_interface->setElBMvisible(command->getParam(ind, 2), command->getParam(ind, 3), stoi(command->getParam(ind, 4))); // all params in order
-	}
+		break;
 
-	//Updating params of strings
-	else if (updCommandType == "TSposX")
-	{
+		//Updating params of strings
+	case CommandManagerClass::TSposX:
 		if (command->getParamsNum(ind) >= 6) //if number of params smaller than normal, then this is incorrect
 		{
 			return m_interface->updateElTSposX(m_D3D->GetDeviceContext(), command->getParam(ind, 2), command->getParam(ind, 3), stoi(command->getParam(ind, 4)),
 				stoi(command->getParam(ind, 5))); // all params in order
 		}
-	}
-	else if (updCommandType == "TSposY")
-	{
+		break;
+	case CommandManagerClass::TSposY:
 		if (command->getParamsNum(ind) >= 6) //if number of params smaller than normal, then this is incorrect
 		{
 			return m_interface->updateElTSposY(m_D3D->GetDeviceContext(), command->getParam(ind, 2), command->getParam(ind, 3), stoi(command->getParam(ind, 4)),
 				stoi(command->getParam(ind, 5))); // all params in order
 		}
-	}
-	else if (updCommandType == "TStext")
-	{
+		break;
+	case CommandManagerClass::TStext:
 		if (command->getParamsNum(ind) >= 6) //if number of params smaller than normal, then this is incorrect
 		{
 			return m_interface->updateElTStext(m_D3D->GetDeviceContext(), command->getParam(ind, 2), command->getParam(ind, 3), stoi(command->getParam(ind, 4)), command->getParam(ind, 5)); // all params in order
 		}
-	}
-	else if (updCommandType == "TScolor")
-	{
+		break;
+	case CommandManagerClass::TScolor:
 		if (command->getParamsNum(ind) >= 8) //if number of params smaller than normal, then this is incorrect
 		{
 			return m_interface->updateElTScolor(m_D3D->GetDeviceContext(), command->getParam(ind, 2), command->getParam(ind, 3), atoi(command->getParam(ind, 4).c_str()),
 				D3DXVECTOR4(stof(command->getParam(ind, 5)), stof(command->getParam(ind, 6)), stof(command->getParam(ind, 7)), stof(command->getParam(ind, 8))));
 		}
-	}
-	else if (updCommandType == "TSadding")
-	{
+		break;
+	case CommandManagerClass::TSadding:
 		if (command->getParamsNum(ind) >= 6) //if number of params smaller than normal, then this is incorrect
 		{
 			return  m_interface->updateElTSadding(m_D3D->GetDeviceContext(), command->getParam(ind, 2), command->getParam(ind, 3), stoi(command->getParam(ind, 4)), command->getParam(ind, 5)); // all params in order
 		}
-	}
-	else if (updCommandType == "setTvisible")
-	{
+		break;
+	case CommandManagerClass::setTvisible:
 		if (command->getParamsNum(ind) >= 5) //if number of params smaller than normal, then this is incorrect
 		{
 			m_interface->setElTvisible(command->getParam(ind, 2), command->getParam(ind, 3), stoi(command->getParam(ind, 4))); // all params in order
 		}
-	}
+		break;
 
-	//Special slider commands
-	else if (updCommandType == "nextSector")
-	{
-		m_interface->nextSector(command->getParam(0, 2));
-	}
-	else if (updCommandType == "backSector")
-	{
-		m_interface->backSector(command->getParam(0, 2));
-	}
+		//Special slider commands
+	case CommandManagerClass::nextSector:
+		m_interface->nextSector(command->getParam(ind, 2));
+		break;
+	case CommandManagerClass::backSector:
+		m_interface->backSector(command->getParam(ind, 2));
+		break;
 
-	//Special list commands
-	else if (updCommandType == "addElement")
-	{
-		return m_interface->addElement(m_D3D->GetDevice(), m_D3D->GetDeviceContext(), m_hwnd, command->getParam(0, 2));
-	}
-	else if (updCommandType == "deleteElement")
-	{
-		m_interface->deleteElement(m_D3D->GetDeviceContext(), command->getParam(0, 2), stoi(command->getParam(0, 3)));
-	}
-	else if (updCommandType == "setLastElement")
-	{
-		m_interface->setLastElement(m_D3D->GetDeviceContext(), command->getParam(0, 2), stoi(command->getParam(0, 3)));
-	}
-	else if (updCommandType == "clearElement")
-	{
-		m_interface->clear(command->getParam(0, 2));
-	}
-	//another commands
-	else if (updCommandType == "setBMCommand")
-	{
-		m_interface->setBMCommand(command->getParam(0, 2), command->getParam(0, 3), command->getParam(0, 4), command->getParam(0, 5));
-	}
-	else if (updCommandType == "getSettings")
-	{
-		/*string filename = command->getParam(0, 6);
-		filename.replace(filename.find_first_of("XXX___"), 6, m_resources->getSettings()->getLang());
-		return m_interface->getSettings(command->getParam(0, 2), command->getParam(0, 3), stoi(command->getParam(0, 4)), command->getParam(0, 5),
-			filename, m_D3D->GetDevice(), m_hwnd);*/
+		//Special list commands
+	case CommandManagerClass::addElement:
+		return m_interface->addElement(m_D3D->GetDevice(), m_D3D->GetDeviceContext(), m_hwnd, command->getParam(ind, 2));
+		break;
+	case CommandManagerClass::deleteElement:
+		m_interface->deleteElement(m_D3D->GetDeviceContext(), command->getParam(ind, 2), stoi(command->getParam(ind, 3)));
+		break;
+	case CommandManagerClass::setLastElement:
+		m_interface->setLastElement(m_D3D->GetDeviceContext(), command->getParam(ind, 2), stoi(command->getParam(ind, 3)));
+		break;
+	case CommandManagerClass::clearElement:
+		m_interface->clear(command->getParam(ind, 2));
+		break;
+
+		//another commands
+	case CommandManagerClass::setBMCommand:
+		m_interface->setBMCommand(command->getParam(ind, 2), command->getParam(ind, 3), command->getParam(ind, 4), command->getParam(ind, 5));
+		break;
+		//else if (updCommandType == "getSettings"){
+			/*string filename = command->getParam(0, 6);
+			filename.replace(filename.find_first_of("XXX___"), 6, m_resources->getSettings()->getLang());
+			return m_interface->getSettings(command->getParam(0, 2), command->getParam(0, 3), stoi(command->getParam(0, 4)), command->getParam(0, 5),
+				filename, m_D3D->GetDevice(), m_hwnd);*/
+	default:
+		break;
 	}
 }
 
@@ -400,30 +352,34 @@ bool GraphicsClass::updateGraphics(CommandClass * command,int ind)
 {
 	if (command->getCommandsNum() < 1)
 		return false;
-	std::string updCommandType = command->getParam(ind, 1); // type of update is second param
+	// type of update is second param
+	auto commandEnum = CommandManagerClass::getI().getCommandEnum(Utils::getHash(command->getParam(ind, 1))); 
 
-	if (updCommandType == "cameraPosition")
+	switch (commandEnum)
 	{
+	case CommandManagerClass::cameraPosition:
 		if (command->getParamsNum(ind) < 5) //if number of params smaller than normal, then this is incorrect
 			return false;
 		m_camera->SetPosition(D3DXVECTOR3(stof(command->getParam(ind, 2)), stof(command->getParam(ind, 3)), stof(command->getParam(ind, 4))));
 		m_camera->Render();
-	}
-	if (updCommandType == "cameraRotation")
-	{
+		break;
+	case CommandManagerClass::cameraRotation:
 		if (command->getParamsNum(ind) < 5) //if number of params smaller than normal, then this is incorrect
 			return false;
 		m_camera->SetRotation(D3DXVECTOR3(stof(command->getParam(ind, 2)), stof(command->getParam(ind, 3)), stof(command->getParam(ind, 4))));
 		m_camera->Render();
-	}
-	if (updCommandType == "pick")
-	{
+		break;
+	case CommandManagerClass::pick:
 		pick(stoi(command->getParam(ind, 2)), stoi(command->getParam(ind, 3)));
-	}
-	if (updCommandType == "unPick")
-	{
+		break;
+	case CommandManagerClass::unPick:
 		unPick(stoi(command->getParam(ind, 2)), stoi(command->getParam(ind, 3)));
+		break;
+	default:
+		break;
 	}
+	
+	return true;
 }
 
 bool GraphicsClass::Render()
@@ -498,7 +454,6 @@ void GraphicsClass::pick(int mouseX, int mouseY)
 	}
 	else if (terrainPick(mouseX, mouseY, provNum, point))
 	{
-		
 		return;
 	}
 }
