@@ -122,6 +122,7 @@
     <ClCompile Include="CameraClass.cpp" />
     <ClCompile Include="CommandClass.cpp" />
     <ClCompile Include="CommandManagerClass.cpp" />
+    <ClCompile Include="ConditionCheckerClass.cpp" />
     <ClCompile Include="CpuClass.cpp" />
     <ClCompile Include="D3DClass.cpp" />
     <ClCompile Include="FloatParamClass.cpp" />
@@ -130,6 +131,7 @@
     <ClCompile Include="FontShaderClass.cpp" />
     <ClCompile Include="FpsClass.cpp" />
     <ClCompile Include="FrustumClass.cpp" />
+    <ClCompile Include="GameMechanicClass.cpp" />
     <ClCompile Include="GlobalManagerClass.cpp" />
     <ClCompile Include="GraphicsClass.cpp" />
     <ClCompile Include="GroupElementClass.cpp" />
@@ -189,11 +191,13 @@
     <ClInclude Include="CameraClass.h" />
     <ClInclude Include="CommandClass.h" />
     <ClInclude Include="CommandManagerClass.h" />
+    <ClInclude Include="ConditionCheckerClass.h" />
     <ClInclude Include="CpuClass.h" />
     <ClInclude Include="D3DClass.h" />
     <ClInclude Include="FloatParamClass.h" />
     <ClInclude Include="BoxMeshClass.h" />
     <ClInclude Include="FrustumClass.h" />
+    <ClInclude Include="GameMechanicClass.h" />
     <ClInclude Include="HeightMapLoaderClass.h" />
     <ClInclude Include="IntParamClass.h" />
     <ClInclude Include="LightClass.h" />

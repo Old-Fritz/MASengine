@@ -5,6 +5,7 @@ SystemClass::SystemClass()
 	m_input = 0;
 	m_position = 0;
 	m_graphics = 0;
+	m_gameMech = 0;
 }
 SystemClass::SystemClass(const SystemClass &)
 {
@@ -60,42 +61,15 @@ bool SystemClass::Initialize()
 	}
 	LogManagerClass::getI().addLog("Graphics Initialization");
 
-	//Initialize prov manager
-	if (&(ProvManagerClass::getI()))
-	{
-		result = ProvManagerClass::getI().Initialize(SettingsClass::getI().getPathParameter("ProvFilename"));
-		if (!result)
-		{
-			return false;
-		}
-	}
-	else
+	//Initialize game mechanics
+	m_gameMech = new(1) GameMechanicClass;
+	if (!m_gameMech)
 		return false;
-	LogManagerClass::getI().addLog("Provs Initialization");
-	ProvManagerClass::getI().setGlobalMainColor(GlobalManagerClass::NATION);
-
-	//Initialize prov region manager
-	if (&(ProvRegionManagerClass::getI()))
-	{
-		result = ProvRegionManagerClass::getI().Initialize(SettingsClass::getI().getPathParameter("BaseRegionFilename"));
-		if (!result)
-		{
-			return false;
-		}
-	}
-	else
+	result = m_gameMech->Initialize();
+	if (!result)
 		return false;
-	LogManagerClass::getI().addLog("Provs Regions Initialization");
 
-	//init test regions
-	std::ifstream file;
-	file.open(SettingsClass::getI().getPathParameter("ProvRegionFilename")->getPath());
-	NationRegionClass* reg1 = new(4) NationRegionClass;
-	reg1->Initialize(&file, 1);
-	NationRegionClass* reg2 = new(4) NationRegionClass;
-	reg2->Initialize(&file, 2);
-	ProvRegionManagerClass::getI().addProvRegion(GlobalManagerClass::NATION, reg1);
-	ProvRegionManagerClass::getI().addProvRegion(GlobalManagerClass::NATION, reg2);
+	
 	
 	// initialize resources of graphics
 	result = m_graphics->InitializeResources();
@@ -118,14 +92,12 @@ void SystemClass::Shutdown()
 
 	m_graphics->ShutdownResources();
 
-	if (&(ProvRegionManagerClass::getI()))
+	//Shutdown game mechanic
+	if (m_gameMech)
 	{
-		ProvRegionManagerClass::getI().Shutdown();
-	}
-
-	if (&(ProvManagerClass::getI()))
-	{
-		ProvManagerClass::getI().Shutdown();
+		m_gameMech->Shutdown();
+		::operator delete(m_gameMech, sizeof(*m_gameMech), 1);
+		m_gameMech = 0;
 	}
 
 	//Shutdown graphics
@@ -238,49 +210,65 @@ bool SystemClass::Frame()
 
 bool SystemClass::doCommands()
 {
-	CommandClass* command;
+	bool result;
 
 	while (CommandManagerClass::getI().isFull())
 	{
-		command = CommandManagerClass::getI().nextCommand();
-
-		for (int i = 0; i < command->getCommandsNum(); i++)
-		{
-			auto commandEnum = CommandManagerClass::getI().getCommandEnum(Utils::getHash(command->getParam(i, 0)));
-			switch (commandEnum)
-			{
-				case CommandManagerClass::updateInterface:
-					m_graphics->updateInterface(command, i);
-					break;
-				case CommandManagerClass::updateGraphics:
-					m_graphics->updateGraphics(command, i);
-					break;
-				case CommandManagerClass::updateSystem:
-					updateSystem(command, i);
-					break;
-				case CommandManagerClass::reboot:
-					Shutdown();
-					Initialize();
-					break;
-				case CommandManagerClass::stop:
-					return false;
-					break;
-				default:
-					break;
-			}
-			//else if (commandType == "updateTime")
-			//	updateTime(command, i);
-			//else if (commandType == "setParam")
-			//	command->add(setParam(command->getSingleCommand(i)));
-			//else if (commandType == "playSound")
-			//	m_resources->getSound()->playSound(command->getParam(i, 1));
-		}
+		result = doSingleCommand(CommandManagerClass::getI().nextCommand());
+		if (!result)
+			return false;
 	}
 
 	return true;
 }
 
-bool SystemClass::updateSystem(CommandClass * command, int ind)
+bool SystemClass::doSingleCommand(CommandClass * command)
+{
+	for (int i = 0; i < command->getCommandsNum(); i++)
+	{
+		auto commandEnum = CommandManagerClass::getI().getCommandEnum(Utils::getHash(command->getParam(i, 0)));
+		switch (commandEnum)
+		{
+		case CommandManagerClass::updateInterface:
+			m_graphics->updateInterface(command, i);
+			break;
+		case CommandManagerClass::updateGraphics:
+			m_graphics->updateGraphics(command, i);
+			break;
+		case CommandManagerClass::updateSystem:
+			updateSystem(command, i,1);
+			break;
+		case CommandManagerClass::operators:
+			procesOperators(command, i, 1);
+			break;
+		case CommandManagerClass::get:
+			get(command, i, 1);
+			break;
+		case CommandManagerClass::set:
+			set(command, i, 1);
+			break;
+		case CommandManagerClass::reboot:
+			Shutdown();
+			Initialize();
+			break;
+		case CommandManagerClass::stop:
+			return false;
+			break;
+		default:
+			break;
+		}
+		//else if (commandType == "updateTime")
+		//	updateTime(command, i);
+		//else if (commandType == "setParam")
+		//	command->add(setParam(command->getSingleCommand(i)));
+		//else if (commandType == "playSound")
+		//	m_resources->getSound()->playSound(command->getParam(i, 1));
+	}
+
+	return true;
+}
+
+bool SystemClass::updateSystem(CommandClass * command, int ind, int firstCommand)
 {
 	int mouseX, mouseY;
 	D3DXVECTOR3 pos;
@@ -292,12 +280,12 @@ bool SystemClass::updateSystem(CommandClass * command, int ind)
 		return false;
 
 	// type of update is second param
-	auto commandEnum = CommandManagerClass::getI().getCommandEnum(Utils::getHash(command->getParam(ind, 1)));
+	auto commandEnum = CommandManagerClass::getI().getCommandEnum(Utils::getHash(command->getParam(ind, firstCommand)));
 
 	switch (commandEnum)
 	{
 	case CommandManagerClass::position:
-		if (command->getParamsNum(ind) < 5) //if number of params smaller than normal, then this is incorrect
+		if (command->getParamsNum(ind) < 4 + firstCommand) //if number of params smaller than normal, then this is incorrect
 			return false;
 		pos = m_position->GetRealPosition();
 		rot = m_position->GetRotation();
@@ -311,10 +299,10 @@ bool SystemClass::updateSystem(CommandClass * command, int ind)
 		command->addChange("screenHeight", SettingsClass::getI().getIntParameter("ScreenHeight"));
 		command->addChange("mouseX", mouseX);
 		command->addChange("mouseY", mouseY);
-		m_position->SetPosition(D3DXVECTOR3(stof(command->getParam(ind, 2)), stof(command->getParam(ind, 3)), stof(command->getParam(ind, 4))));
+		m_position->SetPosition(D3DXVECTOR3(stof(command->getParam(ind, firstCommand+1)), stof(command->getParam(ind, firstCommand+2)), stof(command->getParam(ind, firstCommand+3))));
 		break;
 	case CommandManagerClass::rotation:
-		if (command->getParamsNum(ind) < 5) //if number of params smaller than normal, then this is incorrect
+		if (command->getParamsNum(ind) < 4 + firstCommand) //if number of params smaller than normal, then this is incorrect
 			return false;
 		
 		pos = m_position->GetRealPosition();
@@ -329,28 +317,105 @@ bool SystemClass::updateSystem(CommandClass * command, int ind)
 		command->addChange("screenHeight", SettingsClass::getI().getIntParameter("ScreenHeight"));
 		command->addChange("mouseX", mouseX);
 		command->addChange("mouseY", mouseY);
-		m_position->SetRotation(D3DXVECTOR3(stof(command->getParam(ind, 2)), stof(command->getParam(ind, 3)), stof(command->getParam(ind, 4))));
+		m_position->SetRotation(D3DXVECTOR3(stof(command->getParam(ind, firstCommand+1)), stof(command->getParam(ind, firstCommand+2)), stof(command->getParam(ind, firstCommand+3))));
 		break;
 	case CommandManagerClass::setButCommand:
-		if (command->getParamsNum(ind) < 5)
+		if (command->getParamsNum(ind) < firstCommand+4)
 			return false;
-		if (command->getParam(ind, 3) == "pickCommand")
-			m_input->setPickCommand(stoi(command->getParam(ind, 2)), command->getParam(ind, 4));
+		if (command->getParam(ind, firstCommand+2) == "pickCommand")
+			m_input->setPickCommand(stoi(command->getParam(ind, firstCommand+1)), command->getParam(ind, firstCommand+3));
 		else
-			m_input->setUnPickCommand(stoi(command->getParam(ind, 2)), command->getParam(ind, 4));
+			m_input->setUnPickCommand(stoi(command->getParam(ind, firstCommand+1)), command->getParam(ind, firstCommand+3));
 		break;
 	case CommandManagerClass::setWheelCommand:
-		if (command->getParamsNum(ind) < 4)
+		if (command->getParamsNum(ind) < firstCommand+3)
 			return false;
-		if (command->getParam(ind, 2) == "up")
-			m_input->setUpWheelCommand(command->getParam(ind, 3));
+		if (command->getParam(ind, firstCommand+1) == "up")
+			m_input->setUpWheelCommand(command->getParam(ind, firstCommand+2));
 		else
-			m_input->setDownWheelCommand(command->getParam(ind, 3));
+			m_input->setDownWheelCommand(command->getParam(ind, firstCommand+2));
 		break;
 	case CommandManagerClass::setMoving:
-		if (command->getParamsNum(ind) < 4)
+		if (command->getParamsNum(ind) < firstCommand+3)
 			return false;
-		m_position->setMove(stoi(command->getParam(ind, 2)), stoi(command->getParam(ind, 3)));
+		m_position->setMove(stoi(command->getParam(ind, firstCommand+1)), stoi(command->getParam(ind, firstCommand+2)));
+		break;
+	default:
+		break;
+	}
+
+	return true;
+}
+
+bool SystemClass::procesOperators(CommandClass * command, int ind, int firstCommand)
+{
+	// type of update is second param
+	auto commandEnum = CommandManagerClass::getI().getCommandEnum(Utils::getHash(command->getParam(ind, firstCommand)));
+
+	CommandClass* newCommand;
+
+	switch (commandEnum)
+	{
+	case CommandManagerClass::IF:
+		if (ConditionChecker.checkCondition(command->getParam(ind, firstCommand + 1)))
+		{
+			//do first command if condition is true
+			newCommand = CommandManagerClass::getI().makeSingleCommand(command->getParam(ind, firstCommand + 2),
+				PathManagerClass::getI().makePath(command->getParam(ind, firstCommand + 3)));
+		}
+		else
+		{
+			//do second command if condition is false
+			newCommand = CommandManagerClass::getI().makeSingleCommand(command->getParam(ind, firstCommand + 4),
+				PathManagerClass::getI().makePath(command->getParam(ind, firstCommand + 5)));
+		}
+		command->shareChanges(newCommand);
+		doSingleCommand(newCommand);
+		newCommand->shareChanges(command);
+		break;
+	default:
+		break;
+	}
+
+	return true;
+}
+
+bool SystemClass::get(CommandClass * command, int ind, int firstCommand)
+{
+	std::string getValue;
+
+	// type of update is second param
+	auto commandEnum = CommandManagerClass::getI().getCommandEnum(Utils::getHash(command->getParam(ind, firstCommand)));
+
+	switch (commandEnum)
+	{
+	case CommandManagerClass::getForward:
+		command->addChange(command->getInitParam(ind, firstCommand + 2), command->getParam(ind, firstCommand + 1));
+		break;
+	case CommandManagerClass::getProvRegionId:
+		getValue = std::to_string(m_gameMech->getProvRegionID(GlobalManagerClass::getI().getRegionTypeEnum(command->getParam(ind, firstCommand + 1)),
+			std::stoi(command->getParam(ind, firstCommand + 2))));
+		command->addChange(command->getInitParam(ind, firstCommand + 3), getValue);
+		break;
+	default:
+		break;
+	}
+
+
+	return true;
+}
+
+bool SystemClass::set(CommandClass * command, int ind, int firstCommand)
+{
+	// type of update is second param
+	auto commandEnum = CommandManagerClass::getI().getCommandEnum(Utils::getHash(command->getParam(ind, firstCommand)));
+
+	switch (commandEnum)
+	{
+	case CommandManagerClass::setProvRegion:
+		m_gameMech->setProvRegion(GlobalManagerClass::getI().getRegionTypeEnum(command->getParam(ind, firstCommand + 1)),
+			std::stoi(command->getParam(ind, firstCommand + 2)),
+			std::stoi(command->getParam(ind, firstCommand + 3)));
 		break;
 	default:
 		break;

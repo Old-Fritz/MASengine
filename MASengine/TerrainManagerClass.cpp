@@ -32,6 +32,10 @@ bool TerrainManagerClass::Initialize(ID3D11Device * device, ID3D11DeviceContext 
 		m_terrain.emplace_back(terrain);
 	}
 
+	//init base commands names
+	m_pickCommand = "terrainPick";
+	m_unPickCommand = "terrainUnPick";
+
 	return true;
 }
 
@@ -92,6 +96,17 @@ bool TerrainManagerClass::pick(ID3D11DeviceContext * deviceContext, D3DXVECTOR3 
 
 	return false;
 }
+
+std::string TerrainManagerClass::getPickCommandName()
+{
+	return m_pickCommand;
+}
+
+std::string TerrainManagerClass::getUnPickCommandName()
+{
+	return m_unPickCommand;
+}
+
 
 
 

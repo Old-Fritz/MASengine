@@ -25,6 +25,7 @@
 #include "InputClass.h"
 #include "PositionClass.h"
 #include "GraphicsClass.h"
+#include "GameMechanicClass.h"
 #include "ProvRegionManagerClass.h"
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -45,10 +46,16 @@ public:
 
 private:
 	bool Frame();
-	bool doCommands();
-	bool updateSystem(CommandClass* command,int ind);
 	void InitializeWindows(int screenWidth, int screenHeight);
 	void ShutdownWindows();
+
+	//commands
+	bool doCommands();
+	bool doSingleCommand(CommandClass* command);
+	bool updateSystem(CommandClass* command, int ind,int firstCommand);
+	bool procesOperators(CommandClass* command, int ind, int firstCommand);
+	bool get(CommandClass* command, int ind, int firstCommand);
+	bool set(CommandClass* command, int ind, int firstCommand);
 private:
 	LPCWSTR m_applicationName;
 	HINSTANCE m_hinstance;
@@ -58,6 +65,7 @@ private:
 	InputClass* m_input;
 	PositionClass* m_position;
 	GraphicsClass* m_graphics;
+	GameMechanicClass* m_gameMech;
 
 };
 

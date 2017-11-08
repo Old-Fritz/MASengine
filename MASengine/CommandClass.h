@@ -11,6 +11,7 @@
 //////////////
 
 #include "CalculatorClass.h"
+#include "ConditionCheckerClass.h"
 #include <map>
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -31,14 +32,19 @@ public:
 	int getParamsNum(int commandNumber);
 
 	std::string getParam(int commandNumber, int ParamNum);
+	std::string getInitParam(int commandNumber, int ParamNum);
 
 	//work with changes
+	void addChange(const std::string& key, const std::string& value);
 	void addChange(const std::string& key, float value);
+	void addChange(const std::string& key, int value);
 	std::string makeChanges(const std::string& param);
+
+	void shareChanges(CommandClass* command);
 private:
 	int m_commandsNum;
 	std::vector<std::vector<std::string>> m_commands;
-	std::map<std::string, float> m_changes;
+	std::map<std::string, std::string> m_changes;
 };
 
 #endif

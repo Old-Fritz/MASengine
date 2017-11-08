@@ -1,0 +1,14 @@
+terrainUnPick = {
+	get getProvRegionId NATION PROVNUM NATIONID;
+	operators IF NATIONID==2 command1 data/TerrainCommand.txt command3 data/TerrainCommand.txt;
+	set setProvRegion NATION  PROVNUM NATIONID;
+}
+command1 = {
+	get getForward 1 NATIONID;
+}
+command2 = {
+	get getForward 2 NATIONID;
+}
+command3 = {
+	operators IF NATIONID==1 command2 data/TerrainCommand.txt command1 data/TerrainCommand.txt;
+}

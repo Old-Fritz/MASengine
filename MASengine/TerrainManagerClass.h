@@ -30,6 +30,9 @@ public:
 	//pick actions
 	bool pick(ID3D11DeviceContext * deviceContext, D3DXVECTOR3 rayOrigin, D3DXVECTOR3 rayDirection, int& provNum, D3DXVECTOR3& point);
 
+	//gets
+	std::string getPickCommandName();
+	std::string getUnPickCommandName();
 private:
 
 	bool initializeMapTextures(ID3D11Device* device);
@@ -37,6 +40,9 @@ private:
 	std::vector<TerrainClass*> m_terrain;
 
 	int m_mapTextureHashes[NUM_OF_MAP_TEXTURES];
+
+	std::string m_pickCommand;
+	std::string m_unPickCommand;
 };
 
 #endif

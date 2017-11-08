@@ -40,7 +40,16 @@ public:
 
 		stop,
 
-		nothing
+		nothing,
+
+		operators,
+		IF,
+		
+		get,
+		getForward, getProvRegionId,
+		
+		set,
+		setProvRegion
 	};
 public:
 	
@@ -52,18 +61,27 @@ public:
 
 	bool isFull();
 	CommandClass* nextCommand();
+	CommandClass* makeSingleCommand(const std::string & name, PathClass* filename);
 
 	bool addCommand(const std::string& name, PathClass* filename);
 	void addChange(const std::string& key, float value);
 
 	command getCommandEnum(int hash);
+	command getCommandEnum(const std::string& key);
+
+	void addGlobalChange(const std::string& key, const std::string& value);
+	void addGlobalChange(const std::string& key, int value);
+	void addGlobalChange(const std::string& key, float value);
 private:
+	void shareGlobal(CommandClass* command);
+	CommandClass* loadCommand(const std::string& name, PathClass* filename);
 	CommandManagerClass();
 	CommandManagerClass(const CommandManagerClass&);
 	~CommandManagerClass();
 private:
 	std::queue<CommandClass*> m_commandsQueue;
 	std::map<int, std::map<int, CommandClass*>> m_commands;
+	std::map<std::string, std::string> m_globalChanges;
 	std::unordered_map<int, command> m_commandMap;
 
 	static CommandManagerClass* m_instance;

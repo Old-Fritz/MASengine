@@ -9,6 +9,7 @@ NumOFBlocks = {16}
 HeightMapModifier = {-15.0f}
 
 ButCommandFilename = {data/interface/actions/butACTION.txt}
+TerrainCommandFilename = {data/terrainCommand.txt}
 Language = {ENG}
 ElementsFilename = {data/interface/elements.txt}
 loadScreenManagerFilename = {data/loadscreenManager.txt}

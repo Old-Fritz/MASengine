@@ -454,7 +454,11 @@ void GraphicsClass::pick(int mouseX, int mouseY)
 	}
 	else if (terrainPick(mouseX, mouseY, provNum, point))
 	{
-		return;
+		if (provNum > 4000)
+			provNum = 0;
+		CommandManagerClass::getI().addGlobalChange("PROVNUM", provNum);
+		CommandManagerClass::getI().addCommand(m_terrain->getPickCommandName(),
+			SettingsClass::getI().getPathParameter("TerrainCommandFilename"));
 	}
 }
 
@@ -477,11 +481,16 @@ void GraphicsClass::unPick(int mouseX, int mouseY)
 	{
 		if (provNum > 4000)
 			provNum = 0;
-		int region = ProvManagerClass::getI().getProv(provNum)->getRegions(GlobalManagerClass::NATION).back();
+		CommandManagerClass::getI().addGlobalChange("PROVNUM", provNum);
+		CommandManagerClass::getI().addCommand(m_terrain->getUnPickCommandName(),
+			SettingsClass::getI().getPathParameter("TerrainCommandFilename"));
+
+
+		/*int region = ProvManagerClass::getI().getProv(provNum)->getRegions(GlobalManagerClass::NATION).back();
 		if (region == 0 || region ==2)
 			ProvRegionManagerClass::getI().getProvRegion(GlobalManagerClass::NATION,1)->add(provNum);
 		else
-			ProvRegionManagerClass::getI().getProvRegion(GlobalManagerClass::NATION, 2)->add(provNum);
+			ProvRegionManagerClass::getI().getProvRegion(GlobalManagerClass::NATION, 2)->add(provNum);*/
 
 		return;
 	}

@@ -4,6 +4,11 @@ GlobalManagerClass* GlobalManagerClass::m_instance = 0;
 
 GlobalManagerClass::GlobalManagerClass()
 {
+	///INIT REGION TYPE MAP
+	m_regionTypeMap.emplace(std::pair<int, regionType>(Utils::getHash("BASE"), BASE));
+	//Updating params of element
+	m_regionTypeMap.emplace(std::pair<int, regionType>(Utils::getHash("BLOCK"), BLOCK));
+	m_regionTypeMap.emplace(std::pair<int, regionType>(Utils::getHash("NATION"), NATION));
 }
 GlobalManagerClass::GlobalManagerClass(const GlobalManagerClass &)
 {
@@ -129,6 +134,20 @@ void GlobalManagerClass::Shutdown()
 		::operator delete(m_instance, sizeof(*m_instance), 3);
 		m_instance = 0;
 	}
+}
+
+GlobalManagerClass::regionType GlobalManagerClass::getRegionTypeEnum(int hash)
+{
+	auto reg = m_regionTypeMap.find(hash);
+	if (reg != m_regionTypeMap.end())
+		return reg->second;
+	else
+		return BASE;
+}
+
+GlobalManagerClass::regionType GlobalManagerClass::getRegionTypeEnum(const std::string & key)
+{
+	return getRegionTypeEnum(Utils::getHash(key));
 }
 
 GlobalManagerClass & GlobalManagerClass::getI()

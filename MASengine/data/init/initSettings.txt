@@ -1,6 +1,6 @@
 Settings.txt
 data/init/defSettings.txt
-18
+19
 0 ScreenWidth
 0 ScreenHeight
 0 Fullscreen
@@ -12,6 +12,7 @@ data/init/defSettings.txt
 1 HeightMapModifier
 
 3 ButCommandFilename
+3 TerrainCommandFilename
 2 Language
 2 TerrainFilenameBase
 2 MapTextureFilenameBase

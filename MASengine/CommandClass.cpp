@@ -83,31 +83,55 @@ int CommandClass::getParamsNum(int commandNumber)
 
 }
 
+ std::string CommandClass::getInitParam(int commandNumber, int ParamNum)
+ {
+	 if (commandNumber < m_commandsNum)
+	 {
+		 if (ParamNum < m_commands[commandNumber].size())
+			 return m_commands[commandNumber][ParamNum];
+		 else
+			 return "";
+	 }
+	 else
+		 return "";
+ }
 
-void CommandClass::addChange(const std::string& key, float value)
+
+void CommandClass::addChange(const std::string& key, const std::string& value)
 {
 	auto change = m_changes.find(key);
 	if (change == m_changes.end())
-		m_changes.emplace(std::pair<std::string, float>(key, value));
+		m_changes.emplace(std::pair<std::string, std::string>(key, value));
 	else
 		change->second = value;
 }
 
-std::string CommandClass::makeChanges(const std::string& param)
+void CommandClass::addChange(const std::string& key, float value)
+{
+	addChange(key, std::to_string(value));
+}
+
+void CommandClass::addChange(const std::string& key, int value)
+{
+	addChange(key, std::to_string(value));
+}
+
+
+std::string CommandClass::makeChanges(const std::string & param)
 {
 	std::string newParam = param;
 
 	//do for all changes
-	for (auto change = m_changes.begin();change!=m_changes.end(); change++)
+	for (auto change = m_changes.begin();change != m_changes.end(); change++)
 	{
 		//const std::string& findstr = m_changes[i].first;
 		//float value = m_changes[i].second;
 		int index;
-		
+
 		//replace all keys on param
 		while ((index = newParam.find(change->first)) != std::string::npos)
-			newParam.replace(index, change->first.size(), std::to_string(change->second));
-		
+			newParam.replace(index, change->first.size(), change->second);
+
 	}
 	//check, if this is expression code symbol and calculate
 	if (newParam[newParam.size() - 1] == '_')
@@ -119,3 +143,12 @@ std::string CommandClass::makeChanges(const std::string& param)
 
 	return newParam;
 }
+
+void CommandClass::shareChanges(CommandClass * command)
+{
+	for (auto change = m_changes.begin();change != m_changes.end(); change++)
+	{
+		command->addChange(change->first, change->second);
+	}
+}
+

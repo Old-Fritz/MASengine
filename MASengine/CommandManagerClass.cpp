@@ -2,6 +2,45 @@
 
 CommandManagerClass* CommandManagerClass::m_instance = 0;
 
+void CommandManagerClass::shareGlobal(CommandClass * command)
+{
+	for (auto change = m_globalChanges.begin();change != m_globalChanges.end(); change++)
+	{
+		command->addChange(change->first, change->second);
+	}
+}
+
+CommandClass* CommandManagerClass::loadCommand(const std::string & name, PathClass * filename)
+{
+	bool result;
+
+	int filenameHash = filename->getHash();
+	int nameHash = Utils::getHash(name);
+
+	auto commandGroup = m_commands.find(filenameHash);
+	//add new group if not existing
+	if (commandGroup == m_commands.end()) //check for existing group
+	{
+		std::map<int, CommandClass*> newCommandGroup;
+		m_commands.insert(std::pair<int, std::map<int, CommandClass*>>(filenameHash, newCommandGroup));
+		commandGroup = m_commands.find(filenameHash); //find again
+	}
+
+	auto command = commandGroup->second.find(nameHash);
+	//add new command if not existing
+	if (command == commandGroup->second.end()) //check for existing od command
+	{
+		CommandClass* newCommand = new(4) CommandClass;
+		if (!newCommand)
+			return false;
+		newCommand->Initialize(Utils::getTextFromFile(name, filename->getPath()));
+		commandGroup->second.insert(std::pair<int, CommandClass*>(nameHash, newCommand));
+		command = commandGroup->second.find(nameHash); //find again
+	}
+
+	return command->second;
+}
+
 CommandManagerClass::CommandManagerClass()
 {
 	///INIT COMMAND MAP
@@ -64,6 +103,19 @@ CommandManagerClass::CommandManagerClass()
 	///
 	m_commandMap.emplace(std::pair<int, command>(Utils::getHash("nothing"), nothing));
 
+	///
+	m_commandMap.emplace(std::pair<int, command>(Utils::getHash("operators"), operators));
+	m_commandMap.emplace(std::pair<int, command>(Utils::getHash("IF"), IF));
+
+	///
+	m_commandMap.emplace(std::pair<int, command>(Utils::getHash("get"), get));
+	m_commandMap.emplace(std::pair<int, command>(Utils::getHash("getForward"), getForward));
+	m_commandMap.emplace(std::pair<int, command>(Utils::getHash("getProvRegionId"), getProvRegionId));
+
+	///
+	m_commandMap.emplace(std::pair<int, command>(Utils::getHash("set"), set));
+	m_commandMap.emplace(std::pair<int, command>(Utils::getHash("setProvRegion"), setProvRegion));
+
 }
 CommandManagerClass::CommandManagerClass(const CommandManagerClass &)
 {
@@ -112,40 +164,26 @@ CommandClass* CommandManagerClass::nextCommand()
 {
 	//return next command and delete it from queue
 	CommandClass* retValue = m_commandsQueue.front();
+	shareGlobal(retValue);
 	m_commandsQueue.pop();
 	return retValue;
+}
+
+CommandClass * CommandManagerClass::makeSingleCommand(const std::string & name, PathClass* filename)
+{
+	CommandClass* command = loadCommand(name, filename);
+	shareGlobal(command);
+	return command;
 }
 
 bool CommandManagerClass::addCommand(const std::string & name, PathClass* filename)
 {
 	bool result;
 
-	int filenameHash = filename->getHash();
-	int nameHash = Utils::getHash(name);
-
-	auto commandGroup = m_commands.find(filenameHash);
-	//add new group if not existing
-	if (commandGroup == m_commands.end()) //check for existing group
-	{
-		std::map<int, CommandClass*> newCommandGroup;
-		m_commands.insert(std::pair<int, std::map<int, CommandClass*>>(filenameHash, newCommandGroup));
-		commandGroup = m_commands.find(filenameHash); //find again
-	}
-
-	auto command = commandGroup->second.find(nameHash);
-	//add new command if not existing
-	if (command == commandGroup->second.end()) //check for existing od command
-	{
-		CommandClass* newCommand = new(4) CommandClass;
-		if (!newCommand)
-			return false;
-		newCommand->Initialize(Utils::getTextFromFile(name, filename->getPath()));
-		commandGroup->second.insert(std::pair<int, CommandClass*>(nameHash, newCommand));
-		command = commandGroup->second.find(nameHash); //find again
-	}
+	CommandClass* command = loadCommand(name, filename);
 
 	// add new command in queue
-	m_commandsQueue.push(command->second);
+	m_commandsQueue.push(command);
 
 	return true;
 }
@@ -162,4 +200,28 @@ CommandManagerClass::command CommandManagerClass::getCommandEnum(int hash)
 		return com->second;
 	else
 		return nothing;
+}
+
+CommandManagerClass::command CommandManagerClass::getCommandEnum(const std::string & key)
+{
+	return getCommandEnum(Utils::getHash(key));
+}
+
+void CommandManagerClass::addGlobalChange(const std::string & key, const std::string & value)
+{
+	auto change = m_globalChanges.find(key);
+	if (change == m_globalChanges.end())
+		m_globalChanges.emplace(std::pair<std::string, std::string>(key, value));
+	else
+		change->second = value;
+}
+
+void CommandManagerClass::addGlobalChange(const std::string & key, int value)
+{
+	addGlobalChange(key, std::to_string(value));
+}
+
+void CommandManagerClass::addGlobalChange(const std::string & key, float value)
+{
+	addGlobalChange(key, std::to_string(value));
 }

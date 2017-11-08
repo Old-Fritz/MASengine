@@ -25,12 +25,15 @@ class GlobalManagerClass
 {
 public:
 	//global enums
-	enum regionType {RESERVE0, RESERVE1, RESERVE2, BASE, BLOCK, NATION};
+	enum regionType {BASE, BLOCK, NATION};
 public:
 	
 
 	bool Initialize(const std::string& filepath);
 	void Shutdown();
+
+	regionType getRegionTypeEnum(int hash);
+	regionType getRegionTypeEnum(const std::string& key);
 
 	static GlobalManagerClass& getI();
 
@@ -39,6 +42,8 @@ private:
 	GlobalManagerClass(const GlobalManagerClass&);
 	~GlobalManagerClass();
 private:
+	std::unordered_map<int, regionType> m_regionTypeMap;
+
 	static GlobalManagerClass* m_instance;
 };
 

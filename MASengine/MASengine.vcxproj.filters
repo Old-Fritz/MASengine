@@ -354,6 +354,12 @@
     <ClCompile Include="ModelManagerClass.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
+    <ClCompile Include="GameMechanicClass.cpp">
+      <Filter>Файлы исходного кода\GameMechanics</Filter>
+    </ClCompile>
+    <ClCompile Include="ConditionCheckerClass.cpp">
+      <Filter>Файлы исходного кода\GlobalManager\CommandManagment</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SystemClass.h">
@@ -550,6 +556,12 @@
     </ClInclude>
     <ClInclude Include="ModelManagerClass.h">
       <Filter>Заголовочные файлы\Graphics\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="ConditionCheckerClass.h">
+      <Filter>Заголовочные файлы\GlobalManager\CommandManagment</Filter>
+    </ClInclude>
+    <ClInclude Include="GameMechanicClass.h">
+      <Filter>Заголовочные файлы\GameMechaniks</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
