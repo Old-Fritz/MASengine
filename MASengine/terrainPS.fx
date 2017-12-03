@@ -64,7 +64,6 @@ float4 TerrainPixelShader(PixelInputType input) : SV_TARGET
     provnum2 = provColor2.z * 255.01f;
     provnum = provColor.z * 255.01f;
 
-	
     if (provColor.x > 0 || provColor.y > 0)
     {
         if (provColor.x >= 0.9f || provColor.y >= 0.9f)
@@ -118,7 +117,7 @@ float4 TerrainPixelShader(PixelInputType input) : SV_TARGET
         color = float4(0.3f, 0.3f, 0.7f, 1.0f);
 
     //return textures[1].Sample(SampleType[1], input.tex);
-	return color;
+	return  textures[0].Sample(SampleType[1], input.tex);
 }
 
 

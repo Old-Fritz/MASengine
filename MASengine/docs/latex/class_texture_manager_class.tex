@@ -1,0 +1,194 @@
+\hypertarget{class_texture_manager_class}{}\section{Texture\+Manager\+Class Class Reference}
+\label{class_texture_manager_class}\index{Texture\+Manager\+Class@{Texture\+Manager\+Class}}
+
+
+{\ttfamily \#include $<$Texture\+Manager\+Class.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_texture_manager_class_a149a4d05485cac1140ba30da5dc3efba}{Shutdown} ()
+\item 
+bool \hyperlink{class_texture_manager_class_a08a1f9a02ba20c2c688366b29a7fcaf9}{add\+Texture} (I\+D3\+D11\+Device $\ast$device, \hyperlink{class_path_class}{Path\+Class} $\ast$filename)
+\item 
+void \hyperlink{class_texture_manager_class_a8d923c6275b750bdad183521895b02a3}{delete\+Texture} (\hyperlink{class_path_class}{Path\+Class} $\ast$filename)
+\begin{DoxyCompactList}\small\item\em Удаление текстуры \end{DoxyCompactList}\item 
+I\+D3\+D11\+Shader\+Resource\+View $\ast$ \hyperlink{class_texture_manager_class_a902cc8c96b5fc09937854a36944b93f9}{get\+Texture} (\hyperlink{class_path_class}{Path\+Class} $\ast$filename)
+\begin{DoxyCompactList}\small\item\em Получение текстуры \end{DoxyCompactList}\item 
+I\+D3\+D11\+Shader\+Resource\+View $\ast$ \hyperlink{class_texture_manager_class_a6f9486a1e45246aef031533b2d4ea456}{get\+Texture} (int hash)
+\begin{DoxyCompactList}\small\item\em см. get\+Texture, но по хэшу пути \end{DoxyCompactList}\item 
+I\+D3\+D11\+Shader\+Resource\+View $\ast$$\ast$ \hyperlink{class_texture_manager_class_ab0d1f5332078c19ccb63bcd9360706d3}{get\+Textures\+Array} (int $\ast$hashes, int num)
+\begin{DoxyCompactList}\small\item\em Получение массива текстур \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_texture_manager_class}{Texture\+Manager\+Class} \& \hyperlink{class_texture_manager_class_ab038ef11eeac2070d9dad46d01764b00}{getI} ()
+\begin{DoxyCompactList}\small\item\em Получить экземпляр класса \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_texture_manager_class_a1eff93242d76f15bc485bcc4dfd0eec0}{Texture\+Manager\+Class} ()
+\item 
+\hyperlink{class_texture_manager_class_ae8efa5d97e1f1ebf88c79a5a5a857724}{Texture\+Manager\+Class} (const \hyperlink{class_texture_manager_class}{Texture\+Manager\+Class} \&)
+\item 
+\hyperlink{class_texture_manager_class_a3ef8b2a40fe0093b95ff7b25daf70c48}{$\sim$\+Texture\+Manager\+Class} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::map$<$ int, \hyperlink{class_texture_class}{Texture\+Class} $\ast$ $>$ \hyperlink{class_texture_manager_class_aaee9fefd9e5b63065b08a241dd929adb}{m\+\_\+textures}
+\begin{DoxyCompactList}\small\item\em Текстуры \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_texture_manager_class}{Texture\+Manager\+Class} $\ast$ \hyperlink{class_texture_manager_class_a3e321fcca989640ab4545d2f46cf8cde}{m\+\_\+instance} = 0
+\begin{DoxyCompactList}\small\item\em Единственный экземпляр класса \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Класс для управления текстурами, синглтон 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_texture_manager_class_a1eff93242d76f15bc485bcc4dfd0eec0}\label{class_texture_manager_class_a1eff93242d76f15bc485bcc4dfd0eec0}} 
+\index{Texture\+Manager\+Class@{Texture\+Manager\+Class}!Texture\+Manager\+Class@{Texture\+Manager\+Class}}
+\index{Texture\+Manager\+Class@{Texture\+Manager\+Class}!Texture\+Manager\+Class@{Texture\+Manager\+Class}}
+\subsubsection{\texorpdfstring{Texture\+Manager\+Class()}{TextureManagerClass()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Texture\+Manager\+Class\+::\+Texture\+Manager\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_texture_manager_class_ae8efa5d97e1f1ebf88c79a5a5a857724}\label{class_texture_manager_class_ae8efa5d97e1f1ebf88c79a5a5a857724}} 
+\index{Texture\+Manager\+Class@{Texture\+Manager\+Class}!Texture\+Manager\+Class@{Texture\+Manager\+Class}}
+\index{Texture\+Manager\+Class@{Texture\+Manager\+Class}!Texture\+Manager\+Class@{Texture\+Manager\+Class}}
+\subsubsection{\texorpdfstring{Texture\+Manager\+Class()}{TextureManagerClass()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Texture\+Manager\+Class\+::\+Texture\+Manager\+Class (\begin{DoxyParamCaption}\item[{const \hyperlink{class_texture_manager_class}{Texture\+Manager\+Class} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_texture_manager_class_a3ef8b2a40fe0093b95ff7b25daf70c48}\label{class_texture_manager_class_a3ef8b2a40fe0093b95ff7b25daf70c48}} 
+\index{Texture\+Manager\+Class@{Texture\+Manager\+Class}!````~Texture\+Manager\+Class@{$\sim$\+Texture\+Manager\+Class}}
+\index{````~Texture\+Manager\+Class@{$\sim$\+Texture\+Manager\+Class}!Texture\+Manager\+Class@{Texture\+Manager\+Class}}
+\subsubsection{\texorpdfstring{$\sim$\+Texture\+Manager\+Class()}{~TextureManagerClass()}}
+{\footnotesize\ttfamily Texture\+Manager\+Class\+::$\sim$\+Texture\+Manager\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_texture_manager_class_a08a1f9a02ba20c2c688366b29a7fcaf9}\label{class_texture_manager_class_a08a1f9a02ba20c2c688366b29a7fcaf9}} 
+\index{Texture\+Manager\+Class@{Texture\+Manager\+Class}!add\+Texture@{add\+Texture}}
+\index{add\+Texture@{add\+Texture}!Texture\+Manager\+Class@{Texture\+Manager\+Class}}
+\subsubsection{\texorpdfstring{add\+Texture()}{addTexture()}}
+{\footnotesize\ttfamily bool Texture\+Manager\+Class\+::add\+Texture (\begin{DoxyParamCaption}\item[{I\+D3\+D11\+Device $\ast$}]{device,  }\item[{\hyperlink{class_path_class}{Path\+Class} $\ast$}]{filename }\end{DoxyParamCaption})}
+
+Добавление текстуры 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em device} & -\/ графическое устройство \\
+\hline
+\mbox{\tt in}  & {\em filename} & -\/ путь до текстуры \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_texture_manager_class_a8d923c6275b750bdad183521895b02a3}\label{class_texture_manager_class_a8d923c6275b750bdad183521895b02a3}} 
+\index{Texture\+Manager\+Class@{Texture\+Manager\+Class}!delete\+Texture@{delete\+Texture}}
+\index{delete\+Texture@{delete\+Texture}!Texture\+Manager\+Class@{Texture\+Manager\+Class}}
+\subsubsection{\texorpdfstring{delete\+Texture()}{deleteTexture()}}
+{\footnotesize\ttfamily void Texture\+Manager\+Class\+::delete\+Texture (\begin{DoxyParamCaption}\item[{\hyperlink{class_path_class}{Path\+Class} $\ast$}]{filename }\end{DoxyParamCaption})}
+
+
+
+Удаление текстуры 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em filename} & -\/ путь до текстуры \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_texture_manager_class_ab038ef11eeac2070d9dad46d01764b00}\label{class_texture_manager_class_ab038ef11eeac2070d9dad46d01764b00}} 
+\index{Texture\+Manager\+Class@{Texture\+Manager\+Class}!getI@{getI}}
+\index{getI@{getI}!Texture\+Manager\+Class@{Texture\+Manager\+Class}}
+\subsubsection{\texorpdfstring{get\+I()}{getI()}}
+{\footnotesize\ttfamily \hyperlink{class_texture_manager_class}{Texture\+Manager\+Class} \& Texture\+Manager\+Class\+::getI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Получить экземпляр класса 
+
+\mbox{\Hypertarget{class_texture_manager_class_a902cc8c96b5fc09937854a36944b93f9}\label{class_texture_manager_class_a902cc8c96b5fc09937854a36944b93f9}} 
+\index{Texture\+Manager\+Class@{Texture\+Manager\+Class}!get\+Texture@{get\+Texture}}
+\index{get\+Texture@{get\+Texture}!Texture\+Manager\+Class@{Texture\+Manager\+Class}}
+\subsubsection{\texorpdfstring{get\+Texture()}{getTexture()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily I\+D3\+D11\+Shader\+Resource\+View $\ast$ Texture\+Manager\+Class\+::get\+Texture (\begin{DoxyParamCaption}\item[{\hyperlink{class_path_class}{Path\+Class} $\ast$}]{filename }\end{DoxyParamCaption})}
+
+
+
+Получение текстуры 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em filename} & -\/ путь до текстуры \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+графический ресурс, текстура 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_texture_manager_class_a6f9486a1e45246aef031533b2d4ea456}\label{class_texture_manager_class_a6f9486a1e45246aef031533b2d4ea456}} 
+\index{Texture\+Manager\+Class@{Texture\+Manager\+Class}!get\+Texture@{get\+Texture}}
+\index{get\+Texture@{get\+Texture}!Texture\+Manager\+Class@{Texture\+Manager\+Class}}
+\subsubsection{\texorpdfstring{get\+Texture()}{getTexture()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily I\+D3\+D11\+Shader\+Resource\+View $\ast$ Texture\+Manager\+Class\+::get\+Texture (\begin{DoxyParamCaption}\item[{int}]{hash }\end{DoxyParamCaption})}
+
+
+
+см. get\+Texture, но по хэшу пути 
+
+\mbox{\Hypertarget{class_texture_manager_class_ab0d1f5332078c19ccb63bcd9360706d3}\label{class_texture_manager_class_ab0d1f5332078c19ccb63bcd9360706d3}} 
+\index{Texture\+Manager\+Class@{Texture\+Manager\+Class}!get\+Textures\+Array@{get\+Textures\+Array}}
+\index{get\+Textures\+Array@{get\+Textures\+Array}!Texture\+Manager\+Class@{Texture\+Manager\+Class}}
+\subsubsection{\texorpdfstring{get\+Textures\+Array()}{getTexturesArray()}}
+{\footnotesize\ttfamily I\+D3\+D11\+Shader\+Resource\+View $\ast$$\ast$ Texture\+Manager\+Class\+::get\+Textures\+Array (\begin{DoxyParamCaption}\item[{int $\ast$}]{hashes,  }\item[{int}]{num }\end{DoxyParamCaption})}
+
+
+
+Получение массива текстур 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em hashes} & -\/ массив хэшей путей до файлов \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+массив графических ресурсов, текстур 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_texture_manager_class_a149a4d05485cac1140ba30da5dc3efba}\label{class_texture_manager_class_a149a4d05485cac1140ba30da5dc3efba}} 
+\index{Texture\+Manager\+Class@{Texture\+Manager\+Class}!Shutdown@{Shutdown}}
+\index{Shutdown@{Shutdown}!Texture\+Manager\+Class@{Texture\+Manager\+Class}}
+\subsubsection{\texorpdfstring{Shutdown()}{Shutdown()}}
+{\footnotesize\ttfamily void Texture\+Manager\+Class\+::\+Shutdown (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_texture_manager_class_a3e321fcca989640ab4545d2f46cf8cde}\label{class_texture_manager_class_a3e321fcca989640ab4545d2f46cf8cde}} 
+\index{Texture\+Manager\+Class@{Texture\+Manager\+Class}!m\+\_\+instance@{m\+\_\+instance}}
+\index{m\+\_\+instance@{m\+\_\+instance}!Texture\+Manager\+Class@{Texture\+Manager\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+instance}{m\_instance}}
+{\footnotesize\ttfamily \hyperlink{class_texture_manager_class}{Texture\+Manager\+Class} $\ast$ Texture\+Manager\+Class\+::m\+\_\+instance = 0\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Единственный экземпляр класса 
+
+\mbox{\Hypertarget{class_texture_manager_class_aaee9fefd9e5b63065b08a241dd929adb}\label{class_texture_manager_class_aaee9fefd9e5b63065b08a241dd929adb}} 
+\index{Texture\+Manager\+Class@{Texture\+Manager\+Class}!m\+\_\+textures@{m\+\_\+textures}}
+\index{m\+\_\+textures@{m\+\_\+textures}!Texture\+Manager\+Class@{Texture\+Manager\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+textures}{m\_textures}}
+{\footnotesize\ttfamily std\+::map$<$int, \hyperlink{class_texture_class}{Texture\+Class}$\ast$$>$ Texture\+Manager\+Class\+::m\+\_\+textures\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Текстуры 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_texture_manager_class_8h}{Texture\+Manager\+Class.\+h}\item 
+\hyperlink{_texture_manager_class_8cpp}{Texture\+Manager\+Class.\+cpp}\end{DoxyCompactItemize}

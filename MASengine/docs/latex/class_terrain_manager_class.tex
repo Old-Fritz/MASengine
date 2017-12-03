@@ -1,0 +1,240 @@
+\hypertarget{class_terrain_manager_class}{}\section{Terrain\+Manager\+Class Class Reference}
+\label{class_terrain_manager_class}\index{Terrain\+Manager\+Class@{Terrain\+Manager\+Class}}
+
+
+{\ttfamily \#include $<$Terrain\+Manager\+Class.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_terrain_manager_class_a0bfd7d768187733c4f91caa9244b5d4a}{Terrain\+Manager\+Class} ()
+\item 
+\hyperlink{class_terrain_manager_class_a562c48bbfba28b4e4143460a97ee7bf6}{Terrain\+Manager\+Class} (const \hyperlink{class_terrain_manager_class}{Terrain\+Manager\+Class} \&)
+\item 
+\hyperlink{class_terrain_manager_class_a7bfae7726a9430a1f85c07fa0172a360}{$\sim$\+Terrain\+Manager\+Class} ()
+\item 
+bool \hyperlink{class_terrain_manager_class_a99bad53700f5665b05cf7fa09765c6c6}{Initialize} (I\+D3\+D11\+Device $\ast$device, I\+D3\+D11\+Device\+Context $\ast$device\+Context, std\+::string terrain\+Filename\+Base, int num\+Of\+Blocks)
+\item 
+void \hyperlink{class_terrain_manager_class_a86c703e8fa08914ed006578e4bb7a205}{Shutdown} ()
+\item 
+bool \hyperlink{class_terrain_manager_class_acad3658d8883cc3da2515de3ea03e1fe}{Render} (\hyperlink{class_terrain_shader_class}{Terrain\+Shader\+Class} $\ast$terrain\+Shader, \hyperlink{class_water_shader_class}{Water\+Shader\+Class} $\ast$water\+Shader, I\+D3\+D11\+Device\+Context $\ast$device\+Context, D3\+D\+X\+M\+A\+T\+R\+IX world\+Matrix, D3\+D\+X\+M\+A\+T\+R\+IX view\+Matrix, D3\+D\+X\+M\+A\+T\+R\+IX projection\+Matrix, D3\+D\+X\+V\+E\+C\+T\+O\+R3 light\+Direction, D3\+D\+X\+V\+E\+C\+T\+O\+R4 ambient\+Color, D3\+D\+X\+V\+E\+C\+T\+O\+R4 diffuse\+Color, D3\+D\+X\+V\+E\+C\+T\+O\+R3 camera\+Position, D3\+D\+X\+V\+E\+C\+T\+O\+R4 specular\+Color, float specular\+Power, float \hyperlink{_graphics_class_8h_ae4d41ac39678c64d2ef730cecc77cc64}{S\+C\+R\+E\+E\+N\+\_\+\+D\+E\+P\+TH}, \hyperlink{class_frustum_class}{Frustum\+Class} $\ast$frustum)
+\item 
+bool \hyperlink{class_terrain_manager_class_ab31277349a6ec0c679f7f8a78dc5f887}{pick} (I\+D3\+D11\+Device\+Context $\ast$device\+Context, D3\+D\+X\+V\+E\+C\+T\+O\+R3 ray\+Origin, D3\+D\+X\+V\+E\+C\+T\+O\+R3 ray\+Direction, int \&prov\+Num, D3\+D\+X\+V\+E\+C\+T\+O\+R3 \&point)
+\item 
+std\+::string \hyperlink{class_terrain_manager_class_ac9869f8c707175c0e176f4587154b58d}{get\+Pick\+Command\+Name} ()
+\begin{DoxyCompactList}\small\item\em Получение имени команды, выпоняемой при клике \end{DoxyCompactList}\item 
+std\+::string \hyperlink{class_terrain_manager_class_a050bcf5aeb0a9cf73434144894867abc}{get\+Un\+Pick\+Command\+Name} ()
+\begin{DoxyCompactList}\small\item\em Получение имени команды, выпоняемой отжатии клиика \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_terrain_manager_class_a923a343b6c7e8fe6fd318933642e4bcb}{initialize\+Map\+Textures} (I\+D3\+D11\+Device $\ast$device)
+\begin{DoxyCompactList}\small\item\em Загрузка текстур для физических карт \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \hyperlink{class_terrain_class}{Terrain\+Class} $\ast$ $>$ \hyperlink{class_terrain_manager_class_acd6b26be63b408bda9bdb89ee6fa55e7}{m\+\_\+terrain}
+\begin{DoxyCompactList}\small\item\em Блоки \end{DoxyCompactList}\item 
+int \hyperlink{class_terrain_manager_class_a0d44a18c1703cc7be820bb07fdaf12c0}{m\+\_\+map\+Texture\+Hashes} \mbox{[}\hyperlink{_terrain_shader_class_8h_a466908f00ce155fb671c61b15bdb1c6b}{N\+U\+M\+\_\+\+O\+F\+\_\+\+M\+A\+P\+\_\+\+T\+E\+X\+T\+U\+R\+ES}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Хэши текстур для физических карт \end{DoxyCompactList}\item 
+std\+::string \hyperlink{class_terrain_manager_class_a971d659e8eb59f222f8d5ab6069f123c}{m\+\_\+pick\+Command}
+\begin{DoxyCompactList}\small\item\em Имя команды, выпоняемой при клике \end{DoxyCompactList}\item 
+std\+::string \hyperlink{class_terrain_manager_class_a2f66a9efc8a7c64362196272941fb078}{m\+\_\+un\+Pick\+Command}
+\begin{DoxyCompactList}\small\item\em Имя команды, выпоняемой отжатии клиика \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Менеджер блоков, составляющий общую карту 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_terrain_manager_class_a0bfd7d768187733c4f91caa9244b5d4a}\label{class_terrain_manager_class_a0bfd7d768187733c4f91caa9244b5d4a}} 
+\index{Terrain\+Manager\+Class@{Terrain\+Manager\+Class}!Terrain\+Manager\+Class@{Terrain\+Manager\+Class}}
+\index{Terrain\+Manager\+Class@{Terrain\+Manager\+Class}!Terrain\+Manager\+Class@{Terrain\+Manager\+Class}}
+\subsubsection{\texorpdfstring{Terrain\+Manager\+Class()}{TerrainManagerClass()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Terrain\+Manager\+Class\+::\+Terrain\+Manager\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_terrain_manager_class_a562c48bbfba28b4e4143460a97ee7bf6}\label{class_terrain_manager_class_a562c48bbfba28b4e4143460a97ee7bf6}} 
+\index{Terrain\+Manager\+Class@{Terrain\+Manager\+Class}!Terrain\+Manager\+Class@{Terrain\+Manager\+Class}}
+\index{Terrain\+Manager\+Class@{Terrain\+Manager\+Class}!Terrain\+Manager\+Class@{Terrain\+Manager\+Class}}
+\subsubsection{\texorpdfstring{Terrain\+Manager\+Class()}{TerrainManagerClass()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Terrain\+Manager\+Class\+::\+Terrain\+Manager\+Class (\begin{DoxyParamCaption}\item[{const \hyperlink{class_terrain_manager_class}{Terrain\+Manager\+Class} \&}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_terrain_manager_class_a7bfae7726a9430a1f85c07fa0172a360}\label{class_terrain_manager_class_a7bfae7726a9430a1f85c07fa0172a360}} 
+\index{Terrain\+Manager\+Class@{Terrain\+Manager\+Class}!````~Terrain\+Manager\+Class@{$\sim$\+Terrain\+Manager\+Class}}
+\index{````~Terrain\+Manager\+Class@{$\sim$\+Terrain\+Manager\+Class}!Terrain\+Manager\+Class@{Terrain\+Manager\+Class}}
+\subsubsection{\texorpdfstring{$\sim$\+Terrain\+Manager\+Class()}{~TerrainManagerClass()}}
+{\footnotesize\ttfamily Terrain\+Manager\+Class\+::$\sim$\+Terrain\+Manager\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_terrain_manager_class_ac9869f8c707175c0e176f4587154b58d}\label{class_terrain_manager_class_ac9869f8c707175c0e176f4587154b58d}} 
+\index{Terrain\+Manager\+Class@{Terrain\+Manager\+Class}!get\+Pick\+Command\+Name@{get\+Pick\+Command\+Name}}
+\index{get\+Pick\+Command\+Name@{get\+Pick\+Command\+Name}!Terrain\+Manager\+Class@{Terrain\+Manager\+Class}}
+\subsubsection{\texorpdfstring{get\+Pick\+Command\+Name()}{getPickCommandName()}}
+{\footnotesize\ttfamily std\+::string Terrain\+Manager\+Class\+::get\+Pick\+Command\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Получение имени команды, выпоняемой при клике 
+
+\begin{DoxyReturn}{Returns}
+имя команды 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_terrain_manager_class_a050bcf5aeb0a9cf73434144894867abc}\label{class_terrain_manager_class_a050bcf5aeb0a9cf73434144894867abc}} 
+\index{Terrain\+Manager\+Class@{Terrain\+Manager\+Class}!get\+Un\+Pick\+Command\+Name@{get\+Un\+Pick\+Command\+Name}}
+\index{get\+Un\+Pick\+Command\+Name@{get\+Un\+Pick\+Command\+Name}!Terrain\+Manager\+Class@{Terrain\+Manager\+Class}}
+\subsubsection{\texorpdfstring{get\+Un\+Pick\+Command\+Name()}{getUnPickCommandName()}}
+{\footnotesize\ttfamily std\+::string Terrain\+Manager\+Class\+::get\+Un\+Pick\+Command\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Получение имени команды, выпоняемой отжатии клиика 
+
+\begin{DoxyReturn}{Returns}
+имя команды 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_terrain_manager_class_a99bad53700f5665b05cf7fa09765c6c6}\label{class_terrain_manager_class_a99bad53700f5665b05cf7fa09765c6c6}} 
+\index{Terrain\+Manager\+Class@{Terrain\+Manager\+Class}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!Terrain\+Manager\+Class@{Terrain\+Manager\+Class}}
+\subsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily bool Terrain\+Manager\+Class\+::\+Initialize (\begin{DoxyParamCaption}\item[{I\+D3\+D11\+Device $\ast$}]{device,  }\item[{I\+D3\+D11\+Device\+Context $\ast$}]{device\+Context,  }\item[{std\+::string}]{terrain\+Filename\+Base,  }\item[{int}]{num\+Of\+Blocks }\end{DoxyParamCaption})}
+
+Загрузка блоков 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em device,device\+Context} & -\/ графическое устройство \\
+\hline
+\mbox{\tt in}  & {\em terrain\+Filename\+Base} & -\/ основа для путей до файлов блоков \\
+\hline
+\mbox{\tt in}  & {\em num\+Of\+Blocks} & -\/ Количество блоков \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_terrain_manager_class_a923a343b6c7e8fe6fd318933642e4bcb}\label{class_terrain_manager_class_a923a343b6c7e8fe6fd318933642e4bcb}} 
+\index{Terrain\+Manager\+Class@{Terrain\+Manager\+Class}!initialize\+Map\+Textures@{initialize\+Map\+Textures}}
+\index{initialize\+Map\+Textures@{initialize\+Map\+Textures}!Terrain\+Manager\+Class@{Terrain\+Manager\+Class}}
+\subsubsection{\texorpdfstring{initialize\+Map\+Textures()}{initializeMapTextures()}}
+{\footnotesize\ttfamily bool Terrain\+Manager\+Class\+::initialize\+Map\+Textures (\begin{DoxyParamCaption}\item[{I\+D3\+D11\+Device $\ast$}]{device }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Загрузка текстур для физических карт 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em device} & -\/ графическое устройство \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_terrain_manager_class_ab31277349a6ec0c679f7f8a78dc5f887}\label{class_terrain_manager_class_ab31277349a6ec0c679f7f8a78dc5f887}} 
+\index{Terrain\+Manager\+Class@{Terrain\+Manager\+Class}!pick@{pick}}
+\index{pick@{pick}!Terrain\+Manager\+Class@{Terrain\+Manager\+Class}}
+\subsubsection{\texorpdfstring{pick()}{pick()}}
+{\footnotesize\ttfamily bool Terrain\+Manager\+Class\+::pick (\begin{DoxyParamCaption}\item[{I\+D3\+D11\+Device\+Context $\ast$}]{device\+Context,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R3}]{ray\+Origin,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R3}]{ray\+Direction,  }\item[{int \&}]{prov\+Num,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R3 \&}]{point }\end{DoxyParamCaption})}
+
+Получение провинции, выбранной при клике 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em device\+Context} & -\/ графическое устройство \\
+\hline
+\mbox{\tt in}  & {\em mouseX,mouseY} & -\/ позиция курсора \\
+\hline
+\mbox{\tt out}  & {\em prov\+Num} & -\/ индекс выбранной провинции \\
+\hline
+\mbox{\tt out}  & {\em point} & -\/ точка пересечения \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если не был выбран ни один элемент, true, если был 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_terrain_manager_class_acad3658d8883cc3da2515de3ea03e1fe}\label{class_terrain_manager_class_acad3658d8883cc3da2515de3ea03e1fe}} 
+\index{Terrain\+Manager\+Class@{Terrain\+Manager\+Class}!Render@{Render}}
+\index{Render@{Render}!Terrain\+Manager\+Class@{Terrain\+Manager\+Class}}
+\subsubsection{\texorpdfstring{Render()}{Render()}}
+{\footnotesize\ttfamily bool Terrain\+Manager\+Class\+::\+Render (\begin{DoxyParamCaption}\item[{\hyperlink{class_terrain_shader_class}{Terrain\+Shader\+Class} $\ast$}]{terrain\+Shader,  }\item[{\hyperlink{class_water_shader_class}{Water\+Shader\+Class} $\ast$}]{water\+Shader,  }\item[{I\+D3\+D11\+Device\+Context $\ast$}]{device\+Context,  }\item[{D3\+D\+X\+M\+A\+T\+R\+IX}]{world\+Matrix,  }\item[{D3\+D\+X\+M\+A\+T\+R\+IX}]{view\+Matrix,  }\item[{D3\+D\+X\+M\+A\+T\+R\+IX}]{projection\+Matrix,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R3}]{light\+Direction,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R4}]{ambient\+Color,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R4}]{diffuse\+Color,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R3}]{camera\+Position,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R4}]{specular\+Color,  }\item[{float}]{specular\+Power,  }\item[{float}]{S\+C\+R\+E\+E\+N\+\_\+\+D\+E\+P\+TH,  }\item[{\hyperlink{class_frustum_class}{Frustum\+Class} $\ast$}]{frustum }\end{DoxyParamCaption})}
+
+Прорисовка блоков 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em terrain\+Shader} & -\/ шейдер блоков \\
+\hline
+\mbox{\tt in}  & {\em water\+Shader} & -\/ шейдер воды \\
+\hline
+\mbox{\tt in}  & {\em device\+Context} & -\/ графическое устройство \\
+\hline
+\mbox{\tt in}  & {\em world\+Matrix,view\+Matrix,projection\+Matrix} & -\/ матрицы с параметрами \\
+\hline
+\mbox{\tt in}  & {\em light\+Direction} & -\/ направление света \\
+\hline
+\mbox{\tt in}  & {\em ambient\+Color} & -\/ цвет обтеквющего света \\
+\hline
+\mbox{\tt in}  & {\em diffuse\+Color} & -\/ цвет диффузного света \\
+\hline
+\mbox{\tt in}  & {\em camera\+Position} & -\/ позиция камеры \\
+\hline
+\mbox{\tt in}  & {\em specular\+Color} & -\/ цвет зеркального света \\
+\hline
+\mbox{\tt in}  & {\em specular\+Power} & -\/ мощность зеркального света \\
+\hline
+\mbox{\tt in}  & {\em S\+C\+R\+E\+E\+N\+\_\+\+D\+E\+P\+TH} & -\/ глубина экрана \\
+\hline
+\mbox{\tt in}  & {\em frustum} & -\/ конус усечения \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_terrain_manager_class_a86c703e8fa08914ed006578e4bb7a205}\label{class_terrain_manager_class_a86c703e8fa08914ed006578e4bb7a205}} 
+\index{Terrain\+Manager\+Class@{Terrain\+Manager\+Class}!Shutdown@{Shutdown}}
+\index{Shutdown@{Shutdown}!Terrain\+Manager\+Class@{Terrain\+Manager\+Class}}
+\subsubsection{\texorpdfstring{Shutdown()}{Shutdown()}}
+{\footnotesize\ttfamily void Terrain\+Manager\+Class\+::\+Shutdown (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_terrain_manager_class_a0d44a18c1703cc7be820bb07fdaf12c0}\label{class_terrain_manager_class_a0d44a18c1703cc7be820bb07fdaf12c0}} 
+\index{Terrain\+Manager\+Class@{Terrain\+Manager\+Class}!m\+\_\+map\+Texture\+Hashes@{m\+\_\+map\+Texture\+Hashes}}
+\index{m\+\_\+map\+Texture\+Hashes@{m\+\_\+map\+Texture\+Hashes}!Terrain\+Manager\+Class@{Terrain\+Manager\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+map\+Texture\+Hashes}{m\_mapTextureHashes}}
+{\footnotesize\ttfamily int Terrain\+Manager\+Class\+::m\+\_\+map\+Texture\+Hashes\mbox{[}\hyperlink{_terrain_shader_class_8h_a466908f00ce155fb671c61b15bdb1c6b}{N\+U\+M\+\_\+\+O\+F\+\_\+\+M\+A\+P\+\_\+\+T\+E\+X\+T\+U\+R\+ES}\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Хэши текстур для физических карт 
+
+\mbox{\Hypertarget{class_terrain_manager_class_a971d659e8eb59f222f8d5ab6069f123c}\label{class_terrain_manager_class_a971d659e8eb59f222f8d5ab6069f123c}} 
+\index{Terrain\+Manager\+Class@{Terrain\+Manager\+Class}!m\+\_\+pick\+Command@{m\+\_\+pick\+Command}}
+\index{m\+\_\+pick\+Command@{m\+\_\+pick\+Command}!Terrain\+Manager\+Class@{Terrain\+Manager\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+pick\+Command}{m\_pickCommand}}
+{\footnotesize\ttfamily std\+::string Terrain\+Manager\+Class\+::m\+\_\+pick\+Command\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Имя команды, выпоняемой при клике 
+
+\mbox{\Hypertarget{class_terrain_manager_class_acd6b26be63b408bda9bdb89ee6fa55e7}\label{class_terrain_manager_class_acd6b26be63b408bda9bdb89ee6fa55e7}} 
+\index{Terrain\+Manager\+Class@{Terrain\+Manager\+Class}!m\+\_\+terrain@{m\+\_\+terrain}}
+\index{m\+\_\+terrain@{m\+\_\+terrain}!Terrain\+Manager\+Class@{Terrain\+Manager\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+terrain}{m\_terrain}}
+{\footnotesize\ttfamily std\+::vector$<$\hyperlink{class_terrain_class}{Terrain\+Class}$\ast$$>$ Terrain\+Manager\+Class\+::m\+\_\+terrain\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Блоки 
+
+\mbox{\Hypertarget{class_terrain_manager_class_a2f66a9efc8a7c64362196272941fb078}\label{class_terrain_manager_class_a2f66a9efc8a7c64362196272941fb078}} 
+\index{Terrain\+Manager\+Class@{Terrain\+Manager\+Class}!m\+\_\+un\+Pick\+Command@{m\+\_\+un\+Pick\+Command}}
+\index{m\+\_\+un\+Pick\+Command@{m\+\_\+un\+Pick\+Command}!Terrain\+Manager\+Class@{Terrain\+Manager\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+un\+Pick\+Command}{m\_unPickCommand}}
+{\footnotesize\ttfamily std\+::string Terrain\+Manager\+Class\+::m\+\_\+un\+Pick\+Command\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Имя команды, выпоняемой отжатии клиика 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_terrain_manager_class_8h}{Terrain\+Manager\+Class.\+h}\item 
+\hyperlink{_terrain_manager_class_8cpp}{Terrain\+Manager\+Class.\+cpp}\end{DoxyCompactItemize}

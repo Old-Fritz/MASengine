@@ -9,6 +9,8 @@ HeightMapModifier {-15.000000}
 loadScreenManagerFilename {data/loadscreenManager.txt}
 GeneralActionsFilename {data/interface/GeneralActions.txt}
 ProvFilename {data/provs.txt}
+WaterHeight {-9.500000}
+TerrainCommandFilename {data/terrainCommand.txt}
 ScreenWidth {1280}
 Fullscreen {0}
 Language {ENG}

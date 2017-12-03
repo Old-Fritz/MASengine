@@ -1,4 +1,4 @@
-////////////////////////////////////////////////////////////////////////////////
+﻿////////////////////////////////////////////////////////////////////////////////
 // Filename: MeshLoaderClass.h
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -22,39 +22,53 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Class name: MeshLoaderClass
 ////////////////////////////////////////////////////////////////////////////////
-
+/*!
+\defgroup Loaders Загрузчики мешей
+\ingroup Meshes
+@{
+*/
+/*!
+Базовый загрузчик 
+*/
 class MeshLoaderClass
 {
 protected:
+	//! Вершина меша
 	struct VertexType
 	{
-		D3DXVECTOR3 position;
-		D3DXVECTOR2 texture;
-		D3DXVECTOR3 normal;
+		D3DXVECTOR3 position; //!<Позиция вершины в пространстве
+		D3DXVECTOR2 texture; //!<Текстурные координаты в вершине
+		D3DXVECTOR3 normal; //!<Нормальный вектор
 	};
+	//! Помежуточный тип данных для обозначения вершины
 	struct ModelType
 	{
-		float x, y, z;
-		float tu, tv;
-		float nx, ny, nz;
+		float x, y, z;  //!<Позиция вершины в пространстве
+		float tu, tv; //!<Текстурные координаты в вершине
+		float nx, ny, nz; //!<Нормальный вектор
 	};
 public:
 	MeshLoaderClass();
 	MeshLoaderClass(const MeshLoaderClass&);
 	~MeshLoaderClass();
 
+	//! Загрузка меша из файла и прменение масштаба \param[in] filename - путь до файла меша \param[in] sizeX, sizeY, sizeZ - масштаб меша \return false, если были ошибки
 	virtual bool loadModel(PathClass* filename, float sizeX = 1, float sizeY = 1, float sizeZ = 1);
+	//! Создание массивов вершин и индексов \param[in] deviceContext - графическое устройство \param[out] vertices - массив вершин
+	//! \param[out] indices массив индексов вершин \return false, если были ошибки
 	virtual bool createVertsAndInds(void** vertices, unsigned long** indices);
+	//! Подсчет кол-ва вершин и индексов \param[out] vertexCount - кол-во вершин \param[out] indexCount - кол-во индексов
 	virtual void calcVertAndIndCount(int& vertexCount, int& indexCount);
 
 	virtual void Shutdown();
 private:
+	//! Загрузка меша из файла \param[in] filename - путь до файла меша \return false, если были ошибки
 	bool loadMesh(PathClass* filename);
-	bool normalizeMesh(float scaleX, float scaleY, float scaleZ);
+	//! Масштабировать меш \param[in] sizeX, sizeY, sizeZ - масштаб меша
+	void normalizeMesh(float scaleX, float scaleY, float scaleZ);
 protected:
-	ModelType* m_model;
-	int m_vertexCount;
-	int m_indexCount;
+	ModelType* m_model; //!<Временные данные о загружаемом меше
+	int m_vertexCount, m_indexCount; //!<Количество вершин и индексов
 };
-
+/*! @} */
 #endif

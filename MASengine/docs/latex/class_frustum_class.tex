@@ -1,0 +1,144 @@
+\hypertarget{class_frustum_class}{}\section{Frustum\+Class Class Reference}
+\label{class_frustum_class}\index{Frustum\+Class@{Frustum\+Class}}
+
+
+{\ttfamily \#include $<$Frustum\+Class.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_frustum_class_a62130bf46eceff05f1fd7362d826a518}{Frustum\+Class} ()
+\item 
+\hyperlink{class_frustum_class_a3e4fb03cda7e5382639522186908d673}{Frustum\+Class} (const \hyperlink{class_frustum_class}{Frustum\+Class} \&)
+\item 
+\hyperlink{class_frustum_class_ad109f05c5a62469d444de601de6caa72}{$\sim$\+Frustum\+Class} ()
+\item 
+void \hyperlink{class_frustum_class_a2b4644f9251b253b588c7500d1a61987}{Construct\+Frustum} (float screen\+Depth, D3\+D\+X\+M\+A\+T\+R\+IX projection\+Matrix, D3\+D\+X\+M\+A\+T\+R\+IX view\+Matrix)
+\begin{DoxyCompactList}\small\item\em Создание конуса усучения \end{DoxyCompactList}\item 
+bool \hyperlink{class_frustum_class_ab02265dfa7f8cfdd45432c4d426c627e}{Check\+Points} (D3\+D\+X\+V\+E\+C\+T\+O\+R3 $\ast$points, int size, D3\+D\+X\+V\+E\+C\+T\+O\+R3 position)
+\begin{DoxyCompactList}\small\item\em Проверка точек \end{DoxyCompactList}\item 
+bool \hyperlink{class_frustum_class_adfb3c7eddbec59e38f88577b877248d7}{Check\+Point} (D3\+D\+X\+V\+E\+C\+T\+O\+R3 point, D3\+D\+X\+V\+E\+C\+T\+O\+R3 position)
+\begin{DoxyCompactList}\small\item\em Проверка точки \end{DoxyCompactList}\item 
+bool \hyperlink{class_frustum_class_ad49aa8ba27e6dc6ccb7beef4c53fd856}{Check\+Box} (D3\+D\+X\+V\+E\+C\+T\+O\+R3 $\ast$points, D3\+D\+X\+V\+E\+C\+T\+O\+R3 position)
+\begin{DoxyCompactList}\small\item\em Проверка box. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+D3\+D\+X\+P\+L\+A\+NE \hyperlink{class_frustum_class_a82cb6e582ad45edfef5b28ebd7e1661e}{m\+\_\+planes} \mbox{[}6\mbox{]}
+\begin{DoxyCompactList}\small\item\em Плоскости, формирующие конус усечения \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Конус усечения для опредления элементов, входящих в область видимости 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_frustum_class_a62130bf46eceff05f1fd7362d826a518}\label{class_frustum_class_a62130bf46eceff05f1fd7362d826a518}} 
+\index{Frustum\+Class@{Frustum\+Class}!Frustum\+Class@{Frustum\+Class}}
+\index{Frustum\+Class@{Frustum\+Class}!Frustum\+Class@{Frustum\+Class}}
+\subsubsection{\texorpdfstring{Frustum\+Class()}{FrustumClass()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Frustum\+Class\+::\+Frustum\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_frustum_class_a3e4fb03cda7e5382639522186908d673}\label{class_frustum_class_a3e4fb03cda7e5382639522186908d673}} 
+\index{Frustum\+Class@{Frustum\+Class}!Frustum\+Class@{Frustum\+Class}}
+\index{Frustum\+Class@{Frustum\+Class}!Frustum\+Class@{Frustum\+Class}}
+\subsubsection{\texorpdfstring{Frustum\+Class()}{FrustumClass()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Frustum\+Class\+::\+Frustum\+Class (\begin{DoxyParamCaption}\item[{const \hyperlink{class_frustum_class}{Frustum\+Class} \&}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_frustum_class_ad109f05c5a62469d444de601de6caa72}\label{class_frustum_class_ad109f05c5a62469d444de601de6caa72}} 
+\index{Frustum\+Class@{Frustum\+Class}!````~Frustum\+Class@{$\sim$\+Frustum\+Class}}
+\index{````~Frustum\+Class@{$\sim$\+Frustum\+Class}!Frustum\+Class@{Frustum\+Class}}
+\subsubsection{\texorpdfstring{$\sim$\+Frustum\+Class()}{~FrustumClass()}}
+{\footnotesize\ttfamily Frustum\+Class\+::$\sim$\+Frustum\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_frustum_class_ad49aa8ba27e6dc6ccb7beef4c53fd856}\label{class_frustum_class_ad49aa8ba27e6dc6ccb7beef4c53fd856}} 
+\index{Frustum\+Class@{Frustum\+Class}!Check\+Box@{Check\+Box}}
+\index{Check\+Box@{Check\+Box}!Frustum\+Class@{Frustum\+Class}}
+\subsubsection{\texorpdfstring{Check\+Box()}{CheckBox()}}
+{\footnotesize\ttfamily bool Frustum\+Class\+::\+Check\+Box (\begin{DoxyParamCaption}\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R3 $\ast$}]{points,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R3}]{position }\end{DoxyParamCaption})}
+
+
+
+Проверка box. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em points} & -\/ масств точек box \\
+\hline
+\mbox{\tt in}  & {\em position} & -\/ смещение box \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_frustum_class_adfb3c7eddbec59e38f88577b877248d7}\label{class_frustum_class_adfb3c7eddbec59e38f88577b877248d7}} 
+\index{Frustum\+Class@{Frustum\+Class}!Check\+Point@{Check\+Point}}
+\index{Check\+Point@{Check\+Point}!Frustum\+Class@{Frustum\+Class}}
+\subsubsection{\texorpdfstring{Check\+Point()}{CheckPoint()}}
+{\footnotesize\ttfamily bool Frustum\+Class\+::\+Check\+Point (\begin{DoxyParamCaption}\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R3}]{point,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R3}]{position }\end{DoxyParamCaption})}
+
+
+
+Проверка точки 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em point} & -\/ точка на проверку \\
+\hline
+\mbox{\tt in}  & {\em position} & -\/ смещение точки \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_frustum_class_ab02265dfa7f8cfdd45432c4d426c627e}\label{class_frustum_class_ab02265dfa7f8cfdd45432c4d426c627e}} 
+\index{Frustum\+Class@{Frustum\+Class}!Check\+Points@{Check\+Points}}
+\index{Check\+Points@{Check\+Points}!Frustum\+Class@{Frustum\+Class}}
+\subsubsection{\texorpdfstring{Check\+Points()}{CheckPoints()}}
+{\footnotesize\ttfamily bool Frustum\+Class\+::\+Check\+Points (\begin{DoxyParamCaption}\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R3 $\ast$}]{points,  }\item[{int}]{size,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R3}]{position }\end{DoxyParamCaption})}
+
+
+
+Проверка точек 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em points} & -\/ масств точек на проверку \\
+\hline
+\mbox{\tt in}  & {\em size} & -\/ размер массива точек \\
+\hline
+\mbox{\tt in}  & {\em position} & -\/ смещение точек \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_frustum_class_a2b4644f9251b253b588c7500d1a61987}\label{class_frustum_class_a2b4644f9251b253b588c7500d1a61987}} 
+\index{Frustum\+Class@{Frustum\+Class}!Construct\+Frustum@{Construct\+Frustum}}
+\index{Construct\+Frustum@{Construct\+Frustum}!Frustum\+Class@{Frustum\+Class}}
+\subsubsection{\texorpdfstring{Construct\+Frustum()}{ConstructFrustum()}}
+{\footnotesize\ttfamily void Frustum\+Class\+::\+Construct\+Frustum (\begin{DoxyParamCaption}\item[{float}]{screen\+Depth,  }\item[{D3\+D\+X\+M\+A\+T\+R\+IX}]{projection\+Matrix,  }\item[{D3\+D\+X\+M\+A\+T\+R\+IX}]{view\+Matrix }\end{DoxyParamCaption})}
+
+
+
+Создание конуса усучения 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em screen\+Depth} & -\/ глубина экрана, задняя граница конуса \\
+\hline
+\mbox{\tt in}  & {\em projection\+Matrix,view\+Matrix} & -\/ матрицы с параметрами \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_frustum_class_a82cb6e582ad45edfef5b28ebd7e1661e}\label{class_frustum_class_a82cb6e582ad45edfef5b28ebd7e1661e}} 
+\index{Frustum\+Class@{Frustum\+Class}!m\+\_\+planes@{m\+\_\+planes}}
+\index{m\+\_\+planes@{m\+\_\+planes}!Frustum\+Class@{Frustum\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+planes}{m\_planes}}
+{\footnotesize\ttfamily D3\+D\+X\+P\+L\+A\+NE Frustum\+Class\+::m\+\_\+planes\mbox{[}6\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Плоскости, формирующие конус усечения 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_frustum_class_8h}{Frustum\+Class.\+h}\item 
+\hyperlink{_frustum_class_8cpp}{Frustum\+Class.\+cpp}\end{DoxyCompactItemize}

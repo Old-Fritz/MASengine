@@ -183,6 +183,7 @@
     <ClCompile Include="TextureManagerClass.cpp" />
     <ClCompile Include="TimerClass.cpp" />
     <ClCompile Include="Utils.cpp" />
+    <ClCompile Include="WaterShaderClass.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BitmapClass.h" />
@@ -252,6 +253,7 @@
     <ClInclude Include="TextureManagerClass.h" />
     <ClInclude Include="TimerClass.h" />
     <ClInclude Include="Utils.h" />
+    <ClInclude Include="WaterShaderClass.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="interfaceVS.fx">
@@ -282,6 +284,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="modelPS.fx">
+      <FileType>Document</FileType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="waterPS.fx">
       <FileType>Document</FileType>
     </None>
   </ItemGroup>

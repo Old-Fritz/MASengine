@@ -7,11 +7,15 @@ bool ProvManagerClass::Initialize(PathClass* filename)
 	bool result;
 
 	int numOfProvs;
+
+	//open file
 	std::ifstream file;
 	file.open(filename->getPath());
 
-	if (file.fail())
+	// error if file does not exit
+	if (!file.is_open())
 		return false;
+
 
 	file >> numOfProvs;
 	for (int i = 0;i < numOfProvs;i++)
@@ -22,9 +26,11 @@ bool ProvManagerClass::Initialize(PathClass* filename)
 		{
 			return false;
 		}
-		if(i%100==0)
-			LoadScreenManagerClass::getI().changeLine("Init prov" + std::to_string(i), 0.2f + 0.2f * ((float)i / (float)numOfProvs));
 		m_provs.emplace_back(prov);
+
+		// update load screen every 100 provs
+		if (i % 100 == 0)
+			LoadScreenManagerClass::getI().changeLine("Init prov" + std::to_string(i), 0.2f + 0.2f * ((float)i / (float)numOfProvs));
 	}
 
 	return true;
@@ -50,16 +56,18 @@ void ProvManagerClass::Shutdown()
 	}
 }
 
-ProvClass * ProvManagerClass::getProv(int provNum)
+ProvClass * ProvManagerClass::getProv(int provID)
 {
-	if (provNum < m_provs.size())
-		return m_provs[provNum];
+	// check ID for correct 
+	if (provID < m_provs.size() || provID<0)
+		return m_provs[provID];
 	else
 		return m_provs[0];
 }
 
 void ProvManagerClass::setGlobalMainColor(GlobalManagerClass::regionType type)
 {
+	// change main color for all provs
 	for (int i = 0;i < m_provs.size();i++)
 		m_provs[i]->getLayers()->setMainColor(type);
 }

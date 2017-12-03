@@ -71,10 +71,12 @@ void GameMechanicClass::Shutdown()
 
 int GameMechanicClass::getProvRegionID(GlobalManagerClass::regionType region, int provID)
 {
+	//get prov and get last region of type
 	return ProvManagerClass::getI().getProv(provID)->getRegions(region).back();
 }
 
 void GameMechanicClass::setProvRegion(GlobalManagerClass::regionType region, int provID, int regionID)
 {
+	// get region and add prov to it
 	ProvRegionManagerClass::getI().getProvRegion(region, regionID)->add(provID);
 }

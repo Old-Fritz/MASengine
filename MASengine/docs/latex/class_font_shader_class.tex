@@ -1,0 +1,282 @@
+\hypertarget{class_font_shader_class}{}\section{Font\+Shader\+Class Class Reference}
+\label{class_font_shader_class}\index{Font\+Shader\+Class@{Font\+Shader\+Class}}
+
+
+{\ttfamily \#include $<$Font\+Shader\+Class.\+h$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_font_shader_class_1_1_matrix_buffer_type}{Matrix\+Buffer\+Type}
+\begin{DoxyCompactList}\small\item\em Тип матричного буфера \end{DoxyCompactList}\item 
+struct \hyperlink{struct_font_shader_class_1_1_params_buffer_type}{Params\+Buffer\+Type}
+\begin{DoxyCompactList}\small\item\em Тип параметрического буфера \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_font_shader_class_ad841a744054bd93f00fda46ddb7c668f}{Font\+Shader\+Class} ()
+\item 
+\hyperlink{class_font_shader_class_ac17e72941e311073f1ae73649e8ab34e}{Font\+Shader\+Class} (const \hyperlink{class_font_shader_class}{Font\+Shader\+Class} \&)
+\item 
+\hyperlink{class_font_shader_class_a5626568770e126c26772e8730ed958dc}{$\sim$\+Font\+Shader\+Class} ()
+\item 
+bool \hyperlink{class_font_shader_class_a8f6e5298f9847f62bcbe2283e157fd04}{Initialize} (I\+D3\+D11\+Device $\ast$device, H\+W\+ND hwnd, \hyperlink{class_path_class}{Path\+Class} $\ast$filename\+VS, \hyperlink{class_path_class}{Path\+Class} $\ast$filename\+PS)
+\item 
+void \hyperlink{class_font_shader_class_a2836953d2b421d2db28031dff12653e7}{Shutdown} ()
+\item 
+bool \hyperlink{class_font_shader_class_ac3e174bc1f7d38a6de26ee2b7b5beed2}{Render} (I\+D3\+D11\+Device\+Context $\ast$device\+Context, int index\+Count, D3\+D\+X\+M\+A\+T\+R\+IX world\+Matrix, D3\+D\+X\+M\+A\+T\+R\+IX view\+Matrix, D3\+D\+X\+M\+A\+T\+R\+IX projection\+Matrix, I\+D3\+D11\+Shader\+Resource\+View $\ast$texture, D3\+D\+X\+V\+E\+C\+T\+O\+R4 text\+Color)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_font_shader_class_ac600699ff19189fc5443fa21ad52186d}{Initialize\+Shader} (I\+D3\+D11\+Device $\ast$device, H\+W\+ND hwnd, const W\+C\+H\+AR $\ast$vs\+Filename, const W\+C\+H\+AR $\ast$ps\+Filename)
+\item 
+void \hyperlink{class_font_shader_class_a87650321de006619d5b2a71603a72d06}{Shutdown\+Shader} ()
+\item 
+void \hyperlink{class_font_shader_class_a706aa79ac8b8f98beeb3dc59f1047e79}{Output\+Shader\+Error\+Message} (I\+D3\+D10\+Blob $\ast$error\+Message, H\+W\+ND hwnd, const W\+C\+H\+AR $\ast$shader\+Filename)
+\begin{DoxyCompactList}\small\item\em Вывести сообщение об ошибке \end{DoxyCompactList}\item 
+bool \hyperlink{class_font_shader_class_a43ee01d2ff4eba5aec14cc777ff5bd1e}{Set\+Shader\+Parameters} (I\+D3\+D11\+Device\+Context $\ast$device\+Context, D3\+D\+X\+M\+A\+T\+R\+IX world\+Matrix, D3\+D\+X\+M\+A\+T\+R\+IX view\+Matrix, D3\+D\+X\+M\+A\+T\+R\+IX projection\+Matrix, I\+D3\+D11\+Shader\+Resource\+View $\ast$texture, D3\+D\+X\+V\+E\+C\+T\+O\+R4 text\+Color)
+\item 
+void \hyperlink{class_font_shader_class_aa4e12dada70dd5e925a17aaa6a55576f}{Render\+Shader} (I\+D3\+D11\+Device\+Context $\ast$device\+Context, int index\+Count)
+\begin{DoxyCompactList}\small\item\em Выполнение шейдера \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+I\+D3\+D11\+Vertex\+Shader $\ast$ \hyperlink{class_font_shader_class_ac751ad1109a8cf0db40ebacd7ae93dbf}{m\+\_\+vertex\+Shader}
+\begin{DoxyCompactList}\small\item\em Вершинный шейдер \end{DoxyCompactList}\item 
+I\+D3\+D11\+Pixel\+Shader $\ast$ \hyperlink{class_font_shader_class_a7fd5426bc5bc2d3986258a3b7b9f3a44}{m\+\_\+pixel\+Shader}
+\begin{DoxyCompactList}\small\item\em Пиксельный шейдер \end{DoxyCompactList}\item 
+I\+D3\+D11\+Input\+Layout $\ast$ \hyperlink{class_font_shader_class_a40e8b4da493597bed19d2865ebee757b}{m\+\_\+layout}
+\begin{DoxyCompactList}\small\item\em Макет \end{DoxyCompactList}\item 
+I\+D3\+D11\+Buffer $\ast$ \hyperlink{class_font_shader_class_a60f6476e19bd489e7eab99aafbc9310c}{m\+\_\+matrix\+Buffer}
+\begin{DoxyCompactList}\small\item\em Матричный буфер \end{DoxyCompactList}\item 
+I\+D3\+D11\+Buffer $\ast$ \hyperlink{class_font_shader_class_a832f2ec6468aa373482dcca2c7360430}{m\+\_\+params\+Buffer}
+\begin{DoxyCompactList}\small\item\em Параментрический буфер \end{DoxyCompactList}\item 
+I\+D3\+D11\+Sampler\+State $\ast$ \hyperlink{class_font_shader_class_af9fcbffdb92fe0d3be93ef9b767c5994}{m\+\_\+sample\+State}
+\begin{DoxyCompactList}\small\item\em Образцовая форма \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Шейдер шрифтов 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_font_shader_class_ad841a744054bd93f00fda46ddb7c668f}\label{class_font_shader_class_ad841a744054bd93f00fda46ddb7c668f}} 
+\index{Font\+Shader\+Class@{Font\+Shader\+Class}!Font\+Shader\+Class@{Font\+Shader\+Class}}
+\index{Font\+Shader\+Class@{Font\+Shader\+Class}!Font\+Shader\+Class@{Font\+Shader\+Class}}
+\subsubsection{\texorpdfstring{Font\+Shader\+Class()}{FontShaderClass()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Font\+Shader\+Class\+::\+Font\+Shader\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_font_shader_class_ac17e72941e311073f1ae73649e8ab34e}\label{class_font_shader_class_ac17e72941e311073f1ae73649e8ab34e}} 
+\index{Font\+Shader\+Class@{Font\+Shader\+Class}!Font\+Shader\+Class@{Font\+Shader\+Class}}
+\index{Font\+Shader\+Class@{Font\+Shader\+Class}!Font\+Shader\+Class@{Font\+Shader\+Class}}
+\subsubsection{\texorpdfstring{Font\+Shader\+Class()}{FontShaderClass()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Font\+Shader\+Class\+::\+Font\+Shader\+Class (\begin{DoxyParamCaption}\item[{const \hyperlink{class_font_shader_class}{Font\+Shader\+Class} \&}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_font_shader_class_a5626568770e126c26772e8730ed958dc}\label{class_font_shader_class_a5626568770e126c26772e8730ed958dc}} 
+\index{Font\+Shader\+Class@{Font\+Shader\+Class}!````~Font\+Shader\+Class@{$\sim$\+Font\+Shader\+Class}}
+\index{````~Font\+Shader\+Class@{$\sim$\+Font\+Shader\+Class}!Font\+Shader\+Class@{Font\+Shader\+Class}}
+\subsubsection{\texorpdfstring{$\sim$\+Font\+Shader\+Class()}{~FontShaderClass()}}
+{\footnotesize\ttfamily Font\+Shader\+Class\+::$\sim$\+Font\+Shader\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_font_shader_class_a8f6e5298f9847f62bcbe2283e157fd04}\label{class_font_shader_class_a8f6e5298f9847f62bcbe2283e157fd04}} 
+\index{Font\+Shader\+Class@{Font\+Shader\+Class}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!Font\+Shader\+Class@{Font\+Shader\+Class}}
+\subsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily bool Font\+Shader\+Class\+::\+Initialize (\begin{DoxyParamCaption}\item[{I\+D3\+D11\+Device $\ast$}]{device,  }\item[{H\+W\+ND}]{hwnd,  }\item[{\hyperlink{class_path_class}{Path\+Class} $\ast$}]{filename\+VS,  }\item[{\hyperlink{class_path_class}{Path\+Class} $\ast$}]{filename\+PS }\end{DoxyParamCaption})}
+
+Загрузка шейдера 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em device} & -\/ графическое устрйоство \\
+\hline
+\mbox{\tt in}  & {\em hwnd} & -\/ ID окна \\
+\hline
+\mbox{\tt in}  & {\em filename\+VS} & -\/ Расположение вершинного шейдера \\
+\hline
+\mbox{\tt in}  & {\em filename\+PS} & -\/ Расположение пиксельного шейдера \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_font_shader_class_ac600699ff19189fc5443fa21ad52186d}\label{class_font_shader_class_ac600699ff19189fc5443fa21ad52186d}} 
+\index{Font\+Shader\+Class@{Font\+Shader\+Class}!Initialize\+Shader@{Initialize\+Shader}}
+\index{Initialize\+Shader@{Initialize\+Shader}!Font\+Shader\+Class@{Font\+Shader\+Class}}
+\subsubsection{\texorpdfstring{Initialize\+Shader()}{InitializeShader()}}
+{\footnotesize\ttfamily bool Font\+Shader\+Class\+::\+Initialize\+Shader (\begin{DoxyParamCaption}\item[{I\+D3\+D11\+Device $\ast$}]{device,  }\item[{H\+W\+ND}]{hwnd,  }\item[{const W\+C\+H\+AR $\ast$}]{vs\+Filename,  }\item[{const W\+C\+H\+AR $\ast$}]{ps\+Filename }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Загрузка шейдера 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em device} & -\/ графическое устрйоство \\
+\hline
+\mbox{\tt in}  & {\em hwnd} & -\/ ID окна \\
+\hline
+\mbox{\tt in}  & {\em vs\+Filename} & -\/ Расположение вершинного шейдера \\
+\hline
+\mbox{\tt in}  & {\em ps\+Filename} & -\/ Расположение пиксельного шейдера \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_font_shader_class_a706aa79ac8b8f98beeb3dc59f1047e79}\label{class_font_shader_class_a706aa79ac8b8f98beeb3dc59f1047e79}} 
+\index{Font\+Shader\+Class@{Font\+Shader\+Class}!Output\+Shader\+Error\+Message@{Output\+Shader\+Error\+Message}}
+\index{Output\+Shader\+Error\+Message@{Output\+Shader\+Error\+Message}!Font\+Shader\+Class@{Font\+Shader\+Class}}
+\subsubsection{\texorpdfstring{Output\+Shader\+Error\+Message()}{OutputShaderErrorMessage()}}
+{\footnotesize\ttfamily void Font\+Shader\+Class\+::\+Output\+Shader\+Error\+Message (\begin{DoxyParamCaption}\item[{I\+D3\+D10\+Blob $\ast$}]{error\+Message,  }\item[{H\+W\+ND}]{hwnd,  }\item[{const W\+C\+H\+AR $\ast$}]{shader\+Filename }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Вывести сообщение об ошибке 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em error\+Message} & -\/ сообщение об ошибке \\
+\hline
+\mbox{\tt in}  & {\em hwnd} & -\/ ID окна \\
+\hline
+\mbox{\tt in}  & {\em shader\+Filename} & -\/ имя файла шейдера \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_font_shader_class_ac3e174bc1f7d38a6de26ee2b7b5beed2}\label{class_font_shader_class_ac3e174bc1f7d38a6de26ee2b7b5beed2}} 
+\index{Font\+Shader\+Class@{Font\+Shader\+Class}!Render@{Render}}
+\index{Render@{Render}!Font\+Shader\+Class@{Font\+Shader\+Class}}
+\subsubsection{\texorpdfstring{Render()}{Render()}}
+{\footnotesize\ttfamily bool Font\+Shader\+Class\+::\+Render (\begin{DoxyParamCaption}\item[{I\+D3\+D11\+Device\+Context $\ast$}]{device\+Context,  }\item[{int}]{index\+Count,  }\item[{D3\+D\+X\+M\+A\+T\+R\+IX}]{world\+Matrix,  }\item[{D3\+D\+X\+M\+A\+T\+R\+IX}]{view\+Matrix,  }\item[{D3\+D\+X\+M\+A\+T\+R\+IX}]{projection\+Matrix,  }\item[{I\+D3\+D11\+Shader\+Resource\+View $\ast$}]{texture,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R4}]{text\+Color }\end{DoxyParamCaption})}
+
+Прорисовка модели 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em device\+Context} & -\/ графическое устройство \\
+\hline
+\mbox{\tt in}  & {\em index\+Count} & -\/ количество прорисовываемых вершин \\
+\hline
+\mbox{\tt in}  & {\em world\+Matrix,view\+Matrix,projection\+Matrix} & -\/ матрицы с параметрами \\
+\hline
+\mbox{\tt in}  & {\em texture} & -\/ текстура шрифта \\
+\hline
+\mbox{\tt in}  & {\em text\+Color} & -\/ цвет текста \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_font_shader_class_aa4e12dada70dd5e925a17aaa6a55576f}\label{class_font_shader_class_aa4e12dada70dd5e925a17aaa6a55576f}} 
+\index{Font\+Shader\+Class@{Font\+Shader\+Class}!Render\+Shader@{Render\+Shader}}
+\index{Render\+Shader@{Render\+Shader}!Font\+Shader\+Class@{Font\+Shader\+Class}}
+\subsubsection{\texorpdfstring{Render\+Shader()}{RenderShader()}}
+{\footnotesize\ttfamily void Font\+Shader\+Class\+::\+Render\+Shader (\begin{DoxyParamCaption}\item[{I\+D3\+D11\+Device\+Context $\ast$}]{device\+Context,  }\item[{int}]{index\+Count }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Выполнение шейдера 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em device\+Context} & -\/ графическое устройство \\
+\hline
+\mbox{\tt in}  & {\em index\+Count} & -\/ количество прорисовываемых вершин \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_font_shader_class_a43ee01d2ff4eba5aec14cc777ff5bd1e}\label{class_font_shader_class_a43ee01d2ff4eba5aec14cc777ff5bd1e}} 
+\index{Font\+Shader\+Class@{Font\+Shader\+Class}!Set\+Shader\+Parameters@{Set\+Shader\+Parameters}}
+\index{Set\+Shader\+Parameters@{Set\+Shader\+Parameters}!Font\+Shader\+Class@{Font\+Shader\+Class}}
+\subsubsection{\texorpdfstring{Set\+Shader\+Parameters()}{SetShaderParameters()}}
+{\footnotesize\ttfamily bool Font\+Shader\+Class\+::\+Set\+Shader\+Parameters (\begin{DoxyParamCaption}\item[{I\+D3\+D11\+Device\+Context $\ast$}]{device\+Context,  }\item[{D3\+D\+X\+M\+A\+T\+R\+IX}]{world\+Matrix,  }\item[{D3\+D\+X\+M\+A\+T\+R\+IX}]{view\+Matrix,  }\item[{D3\+D\+X\+M\+A\+T\+R\+IX}]{projection\+Matrix,  }\item[{I\+D3\+D11\+Shader\+Resource\+View $\ast$}]{texture,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R4}]{text\+Color }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Установка параметров шейдера 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em device\+Context} & -\/ графическое устройство \\
+\hline
+\mbox{\tt in}  & {\em world\+Matrix,view\+Matrix,projection\+Matrix} & -\/ матрицы с параметрами \\
+\hline
+\mbox{\tt in}  & {\em texture} & -\/ текстура шрифта \\
+\hline
+\mbox{\tt in}  & {\em text\+Color} & -\/ цвет текста \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_font_shader_class_a2836953d2b421d2db28031dff12653e7}\label{class_font_shader_class_a2836953d2b421d2db28031dff12653e7}} 
+\index{Font\+Shader\+Class@{Font\+Shader\+Class}!Shutdown@{Shutdown}}
+\index{Shutdown@{Shutdown}!Font\+Shader\+Class@{Font\+Shader\+Class}}
+\subsubsection{\texorpdfstring{Shutdown()}{Shutdown()}}
+{\footnotesize\ttfamily void Font\+Shader\+Class\+::\+Shutdown (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_font_shader_class_a87650321de006619d5b2a71603a72d06}\label{class_font_shader_class_a87650321de006619d5b2a71603a72d06}} 
+\index{Font\+Shader\+Class@{Font\+Shader\+Class}!Shutdown\+Shader@{Shutdown\+Shader}}
+\index{Shutdown\+Shader@{Shutdown\+Shader}!Font\+Shader\+Class@{Font\+Shader\+Class}}
+\subsubsection{\texorpdfstring{Shutdown\+Shader()}{ShutdownShader()}}
+{\footnotesize\ttfamily void Font\+Shader\+Class\+::\+Shutdown\+Shader (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_font_shader_class_a40e8b4da493597bed19d2865ebee757b}\label{class_font_shader_class_a40e8b4da493597bed19d2865ebee757b}} 
+\index{Font\+Shader\+Class@{Font\+Shader\+Class}!m\+\_\+layout@{m\+\_\+layout}}
+\index{m\+\_\+layout@{m\+\_\+layout}!Font\+Shader\+Class@{Font\+Shader\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+layout}{m\_layout}}
+{\footnotesize\ttfamily I\+D3\+D11\+Input\+Layout$\ast$ Font\+Shader\+Class\+::m\+\_\+layout\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Макет 
+
+\mbox{\Hypertarget{class_font_shader_class_a60f6476e19bd489e7eab99aafbc9310c}\label{class_font_shader_class_a60f6476e19bd489e7eab99aafbc9310c}} 
+\index{Font\+Shader\+Class@{Font\+Shader\+Class}!m\+\_\+matrix\+Buffer@{m\+\_\+matrix\+Buffer}}
+\index{m\+\_\+matrix\+Buffer@{m\+\_\+matrix\+Buffer}!Font\+Shader\+Class@{Font\+Shader\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+matrix\+Buffer}{m\_matrixBuffer}}
+{\footnotesize\ttfamily I\+D3\+D11\+Buffer$\ast$ Font\+Shader\+Class\+::m\+\_\+matrix\+Buffer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Матричный буфер 
+
+\mbox{\Hypertarget{class_font_shader_class_a832f2ec6468aa373482dcca2c7360430}\label{class_font_shader_class_a832f2ec6468aa373482dcca2c7360430}} 
+\index{Font\+Shader\+Class@{Font\+Shader\+Class}!m\+\_\+params\+Buffer@{m\+\_\+params\+Buffer}}
+\index{m\+\_\+params\+Buffer@{m\+\_\+params\+Buffer}!Font\+Shader\+Class@{Font\+Shader\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+params\+Buffer}{m\_paramsBuffer}}
+{\footnotesize\ttfamily I\+D3\+D11\+Buffer$\ast$ Font\+Shader\+Class\+::m\+\_\+params\+Buffer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Параментрический буфер 
+
+\mbox{\Hypertarget{class_font_shader_class_a7fd5426bc5bc2d3986258a3b7b9f3a44}\label{class_font_shader_class_a7fd5426bc5bc2d3986258a3b7b9f3a44}} 
+\index{Font\+Shader\+Class@{Font\+Shader\+Class}!m\+\_\+pixel\+Shader@{m\+\_\+pixel\+Shader}}
+\index{m\+\_\+pixel\+Shader@{m\+\_\+pixel\+Shader}!Font\+Shader\+Class@{Font\+Shader\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+pixel\+Shader}{m\_pixelShader}}
+{\footnotesize\ttfamily I\+D3\+D11\+Pixel\+Shader$\ast$ Font\+Shader\+Class\+::m\+\_\+pixel\+Shader\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Пиксельный шейдер 
+
+\mbox{\Hypertarget{class_font_shader_class_af9fcbffdb92fe0d3be93ef9b767c5994}\label{class_font_shader_class_af9fcbffdb92fe0d3be93ef9b767c5994}} 
+\index{Font\+Shader\+Class@{Font\+Shader\+Class}!m\+\_\+sample\+State@{m\+\_\+sample\+State}}
+\index{m\+\_\+sample\+State@{m\+\_\+sample\+State}!Font\+Shader\+Class@{Font\+Shader\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+sample\+State}{m\_sampleState}}
+{\footnotesize\ttfamily I\+D3\+D11\+Sampler\+State$\ast$ Font\+Shader\+Class\+::m\+\_\+sample\+State\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Образцовая форма 
+
+\mbox{\Hypertarget{class_font_shader_class_ac751ad1109a8cf0db40ebacd7ae93dbf}\label{class_font_shader_class_ac751ad1109a8cf0db40ebacd7ae93dbf}} 
+\index{Font\+Shader\+Class@{Font\+Shader\+Class}!m\+\_\+vertex\+Shader@{m\+\_\+vertex\+Shader}}
+\index{m\+\_\+vertex\+Shader@{m\+\_\+vertex\+Shader}!Font\+Shader\+Class@{Font\+Shader\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+vertex\+Shader}{m\_vertexShader}}
+{\footnotesize\ttfamily I\+D3\+D11\+Vertex\+Shader$\ast$ Font\+Shader\+Class\+::m\+\_\+vertex\+Shader\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Вершинный шейдер 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_font_shader_class_8h}{Font\+Shader\+Class.\+h}\item 
+\hyperlink{_font_shader_class_8cpp}{Font\+Shader\+Class.\+cpp}\end{DoxyCompactItemize}

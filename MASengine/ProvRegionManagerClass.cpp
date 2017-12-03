@@ -119,19 +119,19 @@ ProvRegionClass * ProvRegionManagerClass::getProvRegion(GlobalManagerClass::regi
 		if (m_provRegions.size() > provRegionID)
 			return m_provRegions[provRegionID];
 		else
-			return 0;
+			return m_provRegions[0];
 	case GlobalManagerClass::BLOCK:
 		if (m_blockRegion.size() > provRegionID)
 			return m_blockRegion[provRegionID];
 		else
-			return 0;
+			return m_blockRegion[0];
 	case GlobalManagerClass::NATION:
 		if (m_nationRegion.size() > provRegionID)
 			return m_nationRegion[provRegionID];
 		else
-			return 0;
+			return m_nationRegion[0];
 	default:
-		return 0;
+		return m_provRegions[0];
 	}
 }
 

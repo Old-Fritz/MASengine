@@ -67,16 +67,24 @@ bool SystemClass::Initialize()
 		return false;
 	result = m_gameMech->Initialize();
 	if (!result)
+	{
+		LogManagerClass::getI().addLog("Error 16-1");
 		return false;
+	}
+	LogManagerClass::getI().addLog("Game Mechanics Initialization");
 
 	
 	
 	// initialize resources of graphics
 	result = m_graphics->InitializeResources();
 	if (!result)
+	{
+		LogManagerClass::getI().addLog("Error 16-1");
 		return false;
-	LogManagerClass::getI().addLog("graphics resources Initialization");
+	}
+	LogManagerClass::getI().addLog("Graphics resources Initialization");
 	
+	//end load and hide load screen
 	LoadScreenManagerClass::getI().hideElements();
 
 	//make start command
@@ -104,20 +112,20 @@ void SystemClass::Shutdown()
 	if (m_graphics)
 	{
 		m_graphics->Shutdown();
-		::operator delete(m_graphics, sizeof(GraphicsClass), 1);
+		::operator delete(m_graphics, sizeof(*m_graphics), 1);
 		m_graphics = 0;
 	}
 	//Shutdown position
 	if (m_position)
 	{
-		::operator delete(m_position, sizeof(PositionClass), 1);
+		::operator delete(m_position, sizeof(*m_position), 1);
 		m_position = 0;
 	}
 	//Shutdown Input
 	if (m_input)
 	{
 		m_input->Shutdown();
-		::operator delete(m_input, sizeof(InputClass), 1);
+		::operator delete(m_input, sizeof(*m_input), 1);
 		m_input = 0;
 	}
 
@@ -184,6 +192,7 @@ bool SystemClass::Frame()
 		return false;
 	}
 
+	//get mouse state
 	m_input->GetMouseLocation(mouseX, mouseY);
 
 	//process position
@@ -198,8 +207,10 @@ bool SystemClass::Frame()
 		return false;
 	}
 
+	//process all commands in queue
 	result = doCommands();
 	if (!result)
+		//return false to exit game
 		return false;
 	
 	//free frame memory
@@ -212,10 +223,12 @@ bool SystemClass::doCommands()
 {
 	bool result;
 
+	//process all commands while they are in queue
 	while (CommandManagerClass::getI().isFull())
 	{
 		result = doSingleCommand(CommandManagerClass::getI().nextCommand());
 		if (!result)
+			//return false to exit game
 			return false;
 	}
 
@@ -226,6 +239,7 @@ bool SystemClass::doSingleCommand(CommandClass * command)
 {
 	for (int i = 0; i < command->getCommandsNum(); i++)
 	{
+		//choose type of command by first param (next command start from next param`s index)
 		auto commandEnum = CommandManagerClass::getI().getCommandEnum(Utils::getHash(command->getParam(i, 0)));
 		switch (commandEnum)
 		{
@@ -248,10 +262,12 @@ bool SystemClass::doSingleCommand(CommandClass * command)
 			set(command, i, 1);
 			break;
 		case CommandManagerClass::reboot:
+			LogManagerClass::getI().addLog("REBOOT");
 			Shutdown();
 			Initialize();
 			break;
 		case CommandManagerClass::stop:
+			LogManagerClass::getI().addLog("EXIT");
 			return false;
 			break;
 		default:
@@ -279,7 +295,7 @@ bool SystemClass::updateSystem(CommandClass * command, int ind, int firstCommand
 	if (command->getCommandsNum() < 1)
 		return false;
 
-	// type of update is second param
+	//choose type of command by her first param (next command start from next param`s index)
 	auto commandEnum = CommandManagerClass::getI().getCommandEnum(Utils::getHash(command->getParam(ind, firstCommand)));
 
 	switch (commandEnum)
@@ -287,8 +303,10 @@ bool SystemClass::updateSystem(CommandClass * command, int ind, int firstCommand
 	case CommandManagerClass::position:
 		if (command->getParamsNum(ind) < 4 + firstCommand) //if number of params smaller than normal, then this is incorrect
 			return false;
+		//get current position
 		pos = m_position->GetRealPosition();
 		rot = m_position->GetRotation();
+		//make all changes to command
 		command->addChange("posX", pos.x);
 		command->addChange("posY", pos.y);
 		command->addChange("posZ", pos.z);
@@ -299,14 +317,16 @@ bool SystemClass::updateSystem(CommandClass * command, int ind, int firstCommand
 		command->addChange("screenHeight", SettingsClass::getI().getIntParameter("ScreenHeight"));
 		command->addChange("mouseX", mouseX);
 		command->addChange("mouseY", mouseY);
+		//set new position
 		m_position->SetPosition(D3DXVECTOR3(stof(command->getParam(ind, firstCommand+1)), stof(command->getParam(ind, firstCommand+2)), stof(command->getParam(ind, firstCommand+3))));
 		break;
 	case CommandManagerClass::rotation:
 		if (command->getParamsNum(ind) < 4 + firstCommand) //if number of params smaller than normal, then this is incorrect
 			return false;
-		
+		//get current rotation
 		pos = m_position->GetRealPosition();
 		rot = m_position->GetRotation();
+		//make all changes to command
 		command->addChange("posX", pos.x);
 		command->addChange("posY", pos.y);
 		command->addChange("posZ", pos.z);
@@ -317,27 +337,31 @@ bool SystemClass::updateSystem(CommandClass * command, int ind, int firstCommand
 		command->addChange("screenHeight", SettingsClass::getI().getIntParameter("ScreenHeight"));
 		command->addChange("mouseX", mouseX);
 		command->addChange("mouseY", mouseY);
+		//set new rotation
 		m_position->SetRotation(D3DXVECTOR3(stof(command->getParam(ind, firstCommand+1)), stof(command->getParam(ind, firstCommand+2)), stof(command->getParam(ind, firstCommand+3))));
 		break;
 	case CommandManagerClass::setButCommand:
-		if (command->getParamsNum(ind) < firstCommand+4)
+		if (command->getParamsNum(ind) < firstCommand+4)  //if number of params smaller than normal, then this is incorrect
 			return false;
+		//set new command by her type
 		if (command->getParam(ind, firstCommand+2) == "pickCommand")
 			m_input->setPickCommand(stoi(command->getParam(ind, firstCommand+1)), command->getParam(ind, firstCommand+3));
 		else
 			m_input->setUnPickCommand(stoi(command->getParam(ind, firstCommand+1)), command->getParam(ind, firstCommand+3));
 		break;
 	case CommandManagerClass::setWheelCommand:
-		if (command->getParamsNum(ind) < firstCommand+3)
+		if (command->getParamsNum(ind) < firstCommand+3)  //if number of params smaller than normal, then this is incorrect
 			return false;
+		//set new command by her type
 		if (command->getParam(ind, firstCommand+1) == "up")
 			m_input->setUpWheelCommand(command->getParam(ind, firstCommand+2));
 		else
 			m_input->setDownWheelCommand(command->getParam(ind, firstCommand+2));
 		break;
 	case CommandManagerClass::setMoving:
-		if (command->getParamsNum(ind) < firstCommand+3)
+		if (command->getParamsNum(ind) < firstCommand+3)  //if number of params smaller than normal, then this is incorrect
 			return false;
+		//set new move`s side
 		m_position->setMove(stoi(command->getParam(ind, firstCommand+1)), stoi(command->getParam(ind, firstCommand+2)));
 		break;
 	default:
@@ -349,7 +373,7 @@ bool SystemClass::updateSystem(CommandClass * command, int ind, int firstCommand
 
 bool SystemClass::procesOperators(CommandClass * command, int ind, int firstCommand)
 {
-	// type of update is second param
+	//choose type of command by her first param (next command start from next param`s index)
 	auto commandEnum = CommandManagerClass::getI().getCommandEnum(Utils::getHash(command->getParam(ind, firstCommand)));
 
 	CommandClass* newCommand;
@@ -369,6 +393,7 @@ bool SystemClass::procesOperators(CommandClass * command, int ind, int firstComm
 			newCommand = CommandManagerClass::getI().makeSingleCommand(command->getParam(ind, firstCommand + 4),
 				PathManagerClass::getI().makePath(command->getParam(ind, firstCommand + 5)));
 		}
+		//process command in condition
 		command->shareChanges(newCommand);
 		doSingleCommand(newCommand);
 		newCommand->shareChanges(command);
@@ -384,7 +409,7 @@ bool SystemClass::get(CommandClass * command, int ind, int firstCommand)
 {
 	std::string getValue;
 
-	// type of update is second param
+	//choose type of command by her first param (next command start from next param`s index)
 	auto commandEnum = CommandManagerClass::getI().getCommandEnum(Utils::getHash(command->getParam(ind, firstCommand)));
 
 	switch (commandEnum)
@@ -393,6 +418,7 @@ bool SystemClass::get(CommandClass * command, int ind, int firstCommand)
 		command->addChange(command->getInitParam(ind, firstCommand + 2), command->getParam(ind, firstCommand + 1));
 		break;
 	case CommandManagerClass::getProvRegionId:
+		//get data from game mechanic
 		getValue = std::to_string(m_gameMech->getProvRegionID(GlobalManagerClass::getI().getRegionTypeEnum(command->getParam(ind, firstCommand + 1)),
 			std::stoi(command->getParam(ind, firstCommand + 2))));
 		command->addChange(command->getInitParam(ind, firstCommand + 3), getValue);
@@ -407,12 +433,13 @@ bool SystemClass::get(CommandClass * command, int ind, int firstCommand)
 
 bool SystemClass::set(CommandClass * command, int ind, int firstCommand)
 {
-	// type of update is second param
+	//choose type of command by her first param (next command start from next param`s index)
 	auto commandEnum = CommandManagerClass::getI().getCommandEnum(Utils::getHash(command->getParam(ind, firstCommand)));
 
 	switch (commandEnum)
 	{
 	case CommandManagerClass::setProvRegion:
+		//make changes in game mechanic
 		m_gameMech->setProvRegion(GlobalManagerClass::getI().getRegionTypeEnum(command->getParam(ind, firstCommand + 1)),
 			std::stoi(command->getParam(ind, firstCommand + 2)),
 			std::stoi(command->getParam(ind, firstCommand + 3)));

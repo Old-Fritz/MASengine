@@ -41,6 +41,11 @@ void ProvClass::Shutdown()
 		::operator delete(m_layers, sizeof(*m_layers), 1);
 		m_layers = 0;
 	}
+
+	//clear all regions
+	m_baseRegion.clear();
+	m_blockRegion.clear();
+	m_nationRegion.clear();
 }
 
 int ProvClass::getID()
@@ -65,6 +70,7 @@ LayersClass * ProvClass::getLayers()
 
 void ProvClass::addRegion(GlobalManagerClass::regionType type, int regionID)
 {
+	// add different types of vector in case of type
 	switch (type)
 	{
 	case GlobalManagerClass::BASE:
@@ -83,6 +89,7 @@ void ProvClass::addRegion(GlobalManagerClass::regionType type, int regionID)
 
 void ProvClass::deleteRegion(GlobalManagerClass::regionType type, int regionID)
 {
+	// erase in different types of vector in case of type
 	switch (type)
 	{
 	case GlobalManagerClass::BASE:
@@ -101,6 +108,7 @@ void ProvClass::deleteRegion(GlobalManagerClass::regionType type, int regionID)
 
 std::vector<int> ProvClass::getRegions(GlobalManagerClass::regionType type)
 {
+	// return different types of vector in case of type
 	switch (type)
 	{
 	case GlobalManagerClass::BASE:
@@ -129,6 +137,7 @@ bool ProvClass::readFromFile(std::ifstream * file)
 
 void ProvClass::erase(std::vector<int> &vec, int value)
 {
+	//find and delete value from vector
 	for (auto i = vec.begin();i != vec.end();i++)
 		if (*i == value)
 		{

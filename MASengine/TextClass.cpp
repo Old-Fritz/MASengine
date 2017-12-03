@@ -112,7 +112,7 @@ bool TextClass::InitializeSentence(ID3D11Device* device, SentenceType** sentence
 
 
 	// Create a new sentence object.
-	*sentence = new SentenceType;
+	*sentence = new(4) SentenceType;
 	if (!*sentence)
 	{
 		return false;
@@ -298,7 +298,7 @@ void TextClass::ReleaseSentence(SentenceType** sentence)
 		}
 
 		// Release the sentence.
-		delete *sentence;
+		::operator delete(*sentence, sizeof(**sentence), 2);
 		*sentence = 0;
 	}
 

@@ -1,0 +1,128 @@
+\hypertarget{class_timer_class}{}\section{Timer\+Class Class Reference}
+\label{class_timer_class}\index{Timer\+Class@{Timer\+Class}}
+
+
+{\ttfamily \#include $<$Timer\+Class.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_timer_class_a9ac295c3e61635d34c86abbb4c94869c}{Timer\+Class} ()
+\item 
+\hyperlink{class_timer_class_af0436af5e1123f941c833616003e8ec9}{Timer\+Class} (const \hyperlink{class_timer_class}{Timer\+Class} \&)
+\item 
+\hyperlink{class_timer_class_a408dda5491a2bec9385db139e90c4d2d}{$\sim$\+Timer\+Class} ()
+\item 
+bool \hyperlink{class_timer_class_ad19e65fd9cc771671a3fbdf75510bd49}{Initialize} ()
+\begin{DoxyCompactList}\small\item\em Инициализировать класс \end{DoxyCompactList}\item 
+void \hyperlink{class_timer_class_a38f90c92c63e720ecd129c1e9153a58d}{Frame} ()
+\begin{DoxyCompactList}\small\item\em Обновить данные, выполняется на каждом кадре \end{DoxyCompactList}\item 
+float \hyperlink{class_timer_class_a454dfe3e22e422bd1d2fe91eee1c1cb4}{Get\+Time} ()
+\begin{DoxyCompactList}\small\item\em Получить точное время между кадрами \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+I\+N\+T64 \hyperlink{class_timer_class_a2b0287a45b8bcc5d5f9455afe8b8752a}{m\+\_\+frequency}
+\item 
+float \hyperlink{class_timer_class_a6f456840eeafb0f8254b59f32179f565}{m\+\_\+ticks\+Per\+Ms}
+\item 
+I\+N\+T64 \hyperlink{class_timer_class_a69f2c0f9ca8be59d142abd9c7582923a}{m\+\_\+start\+Time}
+\item 
+float \hyperlink{class_timer_class_accda427afa86647ede2278646a71e674}{m\+\_\+frame\+Time}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Класс для получения сведений о точном межкадровом времени 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_timer_class_a9ac295c3e61635d34c86abbb4c94869c}\label{class_timer_class_a9ac295c3e61635d34c86abbb4c94869c}} 
+\index{Timer\+Class@{Timer\+Class}!Timer\+Class@{Timer\+Class}}
+\index{Timer\+Class@{Timer\+Class}!Timer\+Class@{Timer\+Class}}
+\subsubsection{\texorpdfstring{Timer\+Class()}{TimerClass()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Timer\+Class\+::\+Timer\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_timer_class_af0436af5e1123f941c833616003e8ec9}\label{class_timer_class_af0436af5e1123f941c833616003e8ec9}} 
+\index{Timer\+Class@{Timer\+Class}!Timer\+Class@{Timer\+Class}}
+\index{Timer\+Class@{Timer\+Class}!Timer\+Class@{Timer\+Class}}
+\subsubsection{\texorpdfstring{Timer\+Class()}{TimerClass()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Timer\+Class\+::\+Timer\+Class (\begin{DoxyParamCaption}\item[{const \hyperlink{class_timer_class}{Timer\+Class} \&}]{other }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_timer_class_a408dda5491a2bec9385db139e90c4d2d}\label{class_timer_class_a408dda5491a2bec9385db139e90c4d2d}} 
+\index{Timer\+Class@{Timer\+Class}!````~Timer\+Class@{$\sim$\+Timer\+Class}}
+\index{````~Timer\+Class@{$\sim$\+Timer\+Class}!Timer\+Class@{Timer\+Class}}
+\subsubsection{\texorpdfstring{$\sim$\+Timer\+Class()}{~TimerClass()}}
+{\footnotesize\ttfamily Timer\+Class\+::$\sim$\+Timer\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_timer_class_a38f90c92c63e720ecd129c1e9153a58d}\label{class_timer_class_a38f90c92c63e720ecd129c1e9153a58d}} 
+\index{Timer\+Class@{Timer\+Class}!Frame@{Frame}}
+\index{Frame@{Frame}!Timer\+Class@{Timer\+Class}}
+\subsubsection{\texorpdfstring{Frame()}{Frame()}}
+{\footnotesize\ttfamily void Timer\+Class\+::\+Frame (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Обновить данные, выполняется на каждом кадре 
+
+\mbox{\Hypertarget{class_timer_class_a454dfe3e22e422bd1d2fe91eee1c1cb4}\label{class_timer_class_a454dfe3e22e422bd1d2fe91eee1c1cb4}} 
+\index{Timer\+Class@{Timer\+Class}!Get\+Time@{Get\+Time}}
+\index{Get\+Time@{Get\+Time}!Timer\+Class@{Timer\+Class}}
+\subsubsection{\texorpdfstring{Get\+Time()}{GetTime()}}
+{\footnotesize\ttfamily float Timer\+Class\+::\+Get\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Получить точное время между кадрами 
+
+\begin{DoxyReturn}{Returns}
+время между кадрами в мс 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_timer_class_ad19e65fd9cc771671a3fbdf75510bd49}\label{class_timer_class_ad19e65fd9cc771671a3fbdf75510bd49}} 
+\index{Timer\+Class@{Timer\+Class}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!Timer\+Class@{Timer\+Class}}
+\subsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily bool Timer\+Class\+::\+Initialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Инициализировать класс 
+
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_timer_class_accda427afa86647ede2278646a71e674}\label{class_timer_class_accda427afa86647ede2278646a71e674}} 
+\index{Timer\+Class@{Timer\+Class}!m\+\_\+frame\+Time@{m\+\_\+frame\+Time}}
+\index{m\+\_\+frame\+Time@{m\+\_\+frame\+Time}!Timer\+Class@{Timer\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+frame\+Time}{m\_frameTime}}
+{\footnotesize\ttfamily float Timer\+Class\+::m\+\_\+frame\+Time\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_timer_class_a2b0287a45b8bcc5d5f9455afe8b8752a}\label{class_timer_class_a2b0287a45b8bcc5d5f9455afe8b8752a}} 
+\index{Timer\+Class@{Timer\+Class}!m\+\_\+frequency@{m\+\_\+frequency}}
+\index{m\+\_\+frequency@{m\+\_\+frequency}!Timer\+Class@{Timer\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+frequency}{m\_frequency}}
+{\footnotesize\ttfamily I\+N\+T64 Timer\+Class\+::m\+\_\+frequency\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_timer_class_a69f2c0f9ca8be59d142abd9c7582923a}\label{class_timer_class_a69f2c0f9ca8be59d142abd9c7582923a}} 
+\index{Timer\+Class@{Timer\+Class}!m\+\_\+start\+Time@{m\+\_\+start\+Time}}
+\index{m\+\_\+start\+Time@{m\+\_\+start\+Time}!Timer\+Class@{Timer\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+start\+Time}{m\_startTime}}
+{\footnotesize\ttfamily I\+N\+T64 Timer\+Class\+::m\+\_\+start\+Time\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_timer_class_a6f456840eeafb0f8254b59f32179f565}\label{class_timer_class_a6f456840eeafb0f8254b59f32179f565}} 
+\index{Timer\+Class@{Timer\+Class}!m\+\_\+ticks\+Per\+Ms@{m\+\_\+ticks\+Per\+Ms}}
+\index{m\+\_\+ticks\+Per\+Ms@{m\+\_\+ticks\+Per\+Ms}!Timer\+Class@{Timer\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+ticks\+Per\+Ms}{m\_ticksPerMs}}
+{\footnotesize\ttfamily float Timer\+Class\+::m\+\_\+ticks\+Per\+Ms\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_timer_class_8h}{Timer\+Class.\+h}\item 
+\hyperlink{_timer_class_8cpp}{Timer\+Class.\+cpp}\end{DoxyCompactItemize}

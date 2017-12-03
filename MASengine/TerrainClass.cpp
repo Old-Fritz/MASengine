@@ -37,6 +37,20 @@ bool TerrainClass::Initialize(ID3D11Device * device, ID3D11DeviceContext * devic
 	}
 	m_physTextureHash = m_physFilename->getHash();
 
+	result = TextureManagerClass::getI().addTexture(device, m_waterFilename);
+	if (!result)
+	{
+		return false;
+	}
+	m_waterTextureHash = m_waterFilename->getHash();
+
+	result = TextureManagerClass::getI().addTexture(device, m_waterNormalFilename);
+	if (!result)
+	{
+		return false;
+	}
+	m_waterNormalTexureHash = m_waterNormalFilename->getHash();
+
 	//add meshes
 	for (int i = NUM_OF_LVLS - 1; i >= 0; i--)
 	{
@@ -52,6 +66,13 @@ bool TerrainClass::Initialize(ID3D11Device * device, ID3D11DeviceContext * devic
 		}
 	}
 
+	result = MeshManagerClass::getI().addModel(device, m_waterMeshFilename,1,1,1);
+	if (!result)
+	{
+		return false;
+	}
+	m_waterHash = m_waterMeshFilename->getHash();
+
 	return true;
 }
 
@@ -60,7 +81,7 @@ void TerrainClass::Shutdown()
 {
 }
 
-bool TerrainClass::Render(TerrainShaderClass * terrainShader, ID3D11DeviceContext * deviceContext, D3DXMATRIX worldMatrix,
+bool TerrainClass::Render(TerrainShaderClass * terrainShader, WaterShaderClass* waterShader, ID3D11DeviceContext * deviceContext, D3DXMATRIX worldMatrix,
 	D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, ID3D11ShaderResourceView** mapTextures, D3DXVECTOR3 lightDirection,
 	D3DXVECTOR4 ambientColor, D3DXVECTOR4 diffuseColor, D3DXVECTOR3 cameraPosition, D3DXVECTOR4 specularColor, float specularPower,
 	float SCREEN_DEPTH, FrustumClass* frustum)
@@ -84,7 +105,37 @@ bool TerrainClass::Render(TerrainShaderClass * terrainShader, ID3D11DeviceContex
 	{
 		return false;
 	}
+
+	result = renderWater(waterShader,deviceContext,  worldMatrix, viewMatrix, projectionMatrix,
+		 lightDirection, ambientColor, diffuseColor, cameraPosition, specularColor, specularPower, SCREEN_DEPTH, frustum);
+	if (!result)
+	{
+		return false;
+	}
 	
+	return true;
+}
+
+bool TerrainClass::renderWater(WaterShaderClass * waterShader, ID3D11DeviceContext * deviceContext, D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix,
+	D3DXMATRIX projectionMatrix, D3DXVECTOR3 lightDirection, D3DXVECTOR4 ambientColor, D3DXVECTOR4 diffuseColor,
+	D3DXVECTOR3 cameraPosition, D3DXVECTOR4 specularColor, float specularPower, float SCREEN_DEPTH, FrustumClass * frustum)
+{
+	bool result;
+
+	MeshClass* mesh = MeshManagerClass::getI().getModel(m_waterHash);
+
+	MeshClass::translateMatrix(worldMatrix,D3DXVECTOR3(0, SettingsClass::getI().getFloatParameter("WaterHeight"),0));
+
+	mesh->Render(deviceContext);
+	result = waterShader->Render(deviceContext, mesh->GetIndexCount(), worldMatrix, viewMatrix, projectionMatrix,
+		TextureManagerClass::getI().getTexture(m_waterNormalTexureHash), TextureManagerClass::getI().getTexture(m_waterTextureHash),
+		TextureManagerClass::getI().getTexture(m_provTextureHash), lightDirection, ambientColor, diffuseColor, cameraPosition, specularColor,
+		specularPower, 0);
+	if (!result)
+	{
+		return false;
+	}
+
 	return true;
 }
 
@@ -212,6 +263,17 @@ bool TerrainClass::readFromFile(PathClass* filename)
 	file >> temp >> temp;
 	m_physFilename = PathManagerClass::getI().makePath();
 	file >> m_physFilename;
+	//water
+	file >> temp >> temp;
+	m_waterMeshFilename = PathManagerClass::getI().makePath();
+	file >> m_waterMeshFilename;
+	file >> temp >> temp;
+	m_waterFilename = PathManagerClass::getI().makePath();
+	file >> m_waterFilename;
+	file >> temp >> temp;
+	m_waterNormalFilename = PathManagerClass::getI().makePath();
+	file >> m_waterNormalFilename;
+
 
 	//don`t initialize region if this is base block (0)
 	if (!m_id)

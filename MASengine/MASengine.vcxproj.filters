@@ -100,12 +100,6 @@
     <Filter Include="Заголовочные файлы\Graphics\Blocks">
       <UniqueIdentifier>{31a045c9-ab00-4871-a9e4-db4c2a138341}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Заголовочные файлы\GameMechaniks\Provs\ProvRegions">
-      <UniqueIdentifier>{8205c59c-9ba9-4bde-a1c6-2ef062636b5e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Файлы исходного кода\GameMechanics\Provs\provRegions">
-      <UniqueIdentifier>{6e28f495-e5d6-4b8b-8c8b-326d4494274c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Файлы исходного кода\Graphics\Blocks">
       <UniqueIdentifier>{eed6b2c3-209d-4fa7-b620-54d6cdb343b3}</UniqueIdentifier>
     </Filter>
@@ -121,20 +115,8 @@
     <Filter Include="Файлы исходного кода\GlobalManager\Settings\Params">
       <UniqueIdentifier>{d4905e44-c1c8-41d1-ac5b-a348367d8936}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Заголовочные файлы\GlobalManager\ResourceManagment\Meshes">
-      <UniqueIdentifier>{f6007c33-da33-4fdd-89d1-fc28654cd711}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Файлы исходного кода\GlobalManager\ResourceManagment">
       <UniqueIdentifier>{1dd4f56d-4e6d-4883-b517-9e7bd85b638e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Файлы исходного кода\GlobalManager\ResourceManagment\Meshes">
-      <UniqueIdentifier>{165de99c-afe4-46d3-91b3-74f69f09188d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Файлы исходного кода\GlobalManager\ResourceManagment\Meshes\Loaders">
-      <UniqueIdentifier>{3bcca09f-cdb8-42f8-9d12-f25a81272194}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Заголовочные файлы\GlobalManager\ResourceManagment\Meshes\loaders">
-      <UniqueIdentifier>{9ced67b3-e138-42b3-9e7b-a6681113e3a2}</UniqueIdentifier>
     </Filter>
     <Filter Include="Заголовочные файлы\Utilities">
       <UniqueIdentifier>{1ee714aa-706f-4d10-8728-551ba51e6c14}</UniqueIdentifier>
@@ -153,6 +135,24 @@
     </Filter>
     <Filter Include="Файлы исходного кода\Graphics\Models">
       <UniqueIdentifier>{502428e6-e528-47e4-b538-f20b59b5ecc6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\Resources\Meshes">
+      <UniqueIdentifier>{81a9f855-e5c4-4035-85c8-7279ed7dd80d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\Resources\Meshes\loaders">
+      <UniqueIdentifier>{9ced67b3-e138-42b3-9e7b-a6681113e3a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\Resources\Meshes">
+      <UniqueIdentifier>{7374422f-95ae-4e51-b67d-0f62d571830c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\Resources\Meshes\Loaders">
+      <UniqueIdentifier>{3bcca09f-cdb8-42f8-9d12-f25a81272194}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\GameMechaniks\ProvRegions">
+      <UniqueIdentifier>{8205c59c-9ba9-4bde-a1c6-2ef062636b5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\GameMechanics\provRegions">
+      <UniqueIdentifier>{6e28f495-e5d6-4b8b-8c8b-326d4494274c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -199,9 +199,6 @@
       <Filter>Файлы исходного кода\GlobalManager\ResourceManagment</Filter>
     </ClCompile>
     <ClCompile Include="TextureClass.cpp">
-      <Filter>Файлы исходного кода\Resources</Filter>
-    </ClCompile>
-    <ClCompile Include="MeshClass.cpp">
       <Filter>Файлы исходного кода\Resources</Filter>
     </ClCompile>
     <ClCompile Include="TextManagerClass.cpp">
@@ -277,10 +274,10 @@
       <Filter>Файлы исходного кода\GameMechanics\Provs</Filter>
     </ClCompile>
     <ClCompile Include="ProvRegionManagerClass.cpp">
-      <Filter>Файлы исходного кода\GameMechanics\Provs\provRegions</Filter>
+      <Filter>Файлы исходного кода\GameMechanics\provRegions</Filter>
     </ClCompile>
     <ClCompile Include="ProvRegionClass.cpp">
-      <Filter>Файлы исходного кода\GameMechanics\Provs\provRegions</Filter>
+      <Filter>Файлы исходного кода\GameMechanics\provRegions</Filter>
     </ClCompile>
     <ClCompile Include="TerrainShaderClass.cpp">
       <Filter>Файлы исходного кода\Graphics\ShaderManagment\Shaders</Filter>
@@ -312,20 +309,14 @@
     <ClCompile Include="PathManagerClass.cpp">
       <Filter>Файлы исходного кода\Utils</Filter>
     </ClCompile>
-    <ClCompile Include="MeshManagerClass.cpp">
-      <Filter>Файлы исходного кода\GlobalManager\ResourceManagment\Meshes</Filter>
-    </ClCompile>
     <ClCompile Include="TerrainClass.cpp">
       <Filter>Файлы исходного кода\Graphics\Blocks</Filter>
     </ClCompile>
     <ClCompile Include="MeshLoaderClass.cpp">
-      <Filter>Файлы исходного кода\GlobalManager\ResourceManagment\Meshes\Loaders</Filter>
+      <Filter>Файлы исходного кода\Resources\Meshes\Loaders</Filter>
     </ClCompile>
     <ClCompile Include="HeightMapLoaderClass.cpp">
-      <Filter>Файлы исходного кода\GlobalManager\ResourceManagment\Meshes\Loaders</Filter>
-    </ClCompile>
-    <ClCompile Include="BoxMeshClass.cpp">
-      <Filter>Файлы исходного кода\Resources</Filter>
+      <Filter>Файлы исходного кода\Resources\Meshes\Loaders</Filter>
     </ClCompile>
     <ClCompile Include="FrustumClass.cpp">
       <Filter>Файлы исходного кода\Utils</Filter>
@@ -337,10 +328,10 @@
       <Filter>Файлы исходного кода\Graphics\Sysyems</Filter>
     </ClCompile>
     <ClCompile Include="BlockRegionClass.cpp">
-      <Filter>Файлы исходного кода\GameMechanics\Provs\provRegions</Filter>
+      <Filter>Файлы исходного кода\GameMechanics\provRegions</Filter>
     </ClCompile>
     <ClCompile Include="NationRegionClass.cpp">
-      <Filter>Файлы исходного кода\GameMechanics\Provs\provRegions</Filter>
+      <Filter>Файлы исходного кода\GameMechanics\provRegions</Filter>
     </ClCompile>
     <ClCompile Include="TerrainManagerClass.cpp">
       <Filter>Файлы исходного кода\Graphics\Blocks</Filter>
@@ -351,14 +342,26 @@
     <ClCompile Include="ModelClass.cpp">
       <Filter>Файлы исходного кода\Graphics\Models</Filter>
     </ClCompile>
-    <ClCompile Include="ModelManagerClass.cpp">
-      <Filter>Файлы исходного кода</Filter>
-    </ClCompile>
     <ClCompile Include="GameMechanicClass.cpp">
       <Filter>Файлы исходного кода\GameMechanics</Filter>
     </ClCompile>
     <ClCompile Include="ConditionCheckerClass.cpp">
       <Filter>Файлы исходного кода\GlobalManager\CommandManagment</Filter>
+    </ClCompile>
+    <ClCompile Include="WaterShaderClass.cpp">
+      <Filter>Файлы исходного кода\Graphics\ShaderManagment\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshManagerClass.cpp">
+      <Filter>Файлы исходного кода\GlobalManager\ResourceManagment</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshClass.cpp">
+      <Filter>Файлы исходного кода\Resources\Meshes</Filter>
+    </ClCompile>
+    <ClCompile Include="BoxMeshClass.cpp">
+      <Filter>Файлы исходного кода\Resources\Meshes</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelManagerClass.cpp">
+      <Filter>Файлы исходного кода\Graphics\Models</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -408,9 +411,6 @@
       <Filter>Заголовочные файлы\GlobalManager\ResourceManagment</Filter>
     </ClInclude>
     <ClInclude Include="TextureClass.h">
-      <Filter>Заголовочные файлы\Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="MeshClass.h">
       <Filter>Заголовочные файлы\Resources</Filter>
     </ClInclude>
     <ClInclude Include="GlobalManagerClass.h">
@@ -480,10 +480,10 @@
       <Filter>Заголовочные файлы\GameMechaniks\Provs</Filter>
     </ClInclude>
     <ClInclude Include="ProvRegionClass.h">
-      <Filter>Заголовочные файлы\GameMechaniks\Provs\ProvRegions</Filter>
+      <Filter>Заголовочные файлы\GameMechaniks\ProvRegions</Filter>
     </ClInclude>
     <ClInclude Include="ProvRegionManagerClass.h">
-      <Filter>Заголовочные файлы\GameMechaniks\Provs\ProvRegions</Filter>
+      <Filter>Заголовочные файлы\GameMechaniks\ProvRegions</Filter>
     </ClInclude>
     <ClInclude Include="TerrainClass.h">
       <Filter>Заголовочные файлы\Graphics\Blocks</Filter>
@@ -521,17 +521,11 @@
     <ClInclude Include="PathManagerClass.h">
       <Filter>Заголовочные файлы\Utilities</Filter>
     </ClInclude>
-    <ClInclude Include="MeshManagerClass.h">
-      <Filter>Заголовочные файлы\GlobalManager\ResourceManagment\Meshes</Filter>
-    </ClInclude>
     <ClInclude Include="MeshLoaderClass.h">
-      <Filter>Заголовочные файлы\GlobalManager\ResourceManagment\Meshes\loaders</Filter>
+      <Filter>Заголовочные файлы\Resources\Meshes\loaders</Filter>
     </ClInclude>
     <ClInclude Include="HeightMapLoaderClass.h">
-      <Filter>Заголовочные файлы\GlobalManager\ResourceManagment\Meshes\loaders</Filter>
-    </ClInclude>
-    <ClInclude Include="BoxMeshClass.h">
-      <Filter>Заголовочные файлы\Resources</Filter>
+      <Filter>Заголовочные файлы\Resources\Meshes\loaders</Filter>
     </ClInclude>
     <ClInclude Include="FrustumClass.h">
       <Filter>Заголовочные файлы\Utilities</Filter>
@@ -543,10 +537,10 @@
       <Filter>Заголовочные файлы\Graphics\Systems</Filter>
     </ClInclude>
     <ClInclude Include="BlockRegionClass.h">
-      <Filter>Заголовочные файлы\GameMechaniks\Provs\ProvRegions</Filter>
+      <Filter>Заголовочные файлы\GameMechaniks\ProvRegions</Filter>
     </ClInclude>
     <ClInclude Include="NationRegionClass.h">
-      <Filter>Заголовочные файлы\GameMechaniks\Provs\ProvRegions</Filter>
+      <Filter>Заголовочные файлы\GameMechaniks\ProvRegions</Filter>
     </ClInclude>
     <ClInclude Include="ModelClass.h">
       <Filter>Заголовочные файлы\Graphics\Models</Filter>
@@ -562,6 +556,18 @@
     </ClInclude>
     <ClInclude Include="GameMechanicClass.h">
       <Filter>Заголовочные файлы\GameMechaniks</Filter>
+    </ClInclude>
+    <ClInclude Include="WaterShaderClass.h">
+      <Filter>Заголовочные файлы\Graphics\ShaderManagment\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshManagerClass.h">
+      <Filter>Заголовочные файлы\GlobalManager\ResourceManagment</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshClass.h">
+      <Filter>Заголовочные файлы\Resources\Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="BoxMeshClass.h">
+      <Filter>Заголовочные файлы\Resources\Meshes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -581,6 +587,9 @@
       <Filter>Файлы ресурсов\Shaders</Filter>
     </None>
     <None Include="modelPS.fx">
+      <Filter>Файлы ресурсов\Shaders</Filter>
+    </None>
+    <None Include="waterPS.fx">
       <Filter>Файлы ресурсов\Shaders</Filter>
     </None>
   </ItemGroup>

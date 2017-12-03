@@ -1,0 +1,452 @@
+\hypertarget{class_d3_d_class}{}\section{D3\+D\+Class Class Reference}
+\label{class_d3_d_class}\index{D3\+D\+Class@{D3\+D\+Class}}
+
+
+{\ttfamily \#include $<$D3\+D\+Class.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_d3_d_class_a889771d09ad54486caf56bc64e156aa6}{D3\+D\+Class} ()
+\item 
+\hyperlink{class_d3_d_class_a83a37634c4176706232667b44e62d89a}{D3\+D\+Class} (const \hyperlink{class_d3_d_class}{D3\+D\+Class} \&)
+\item 
+\hyperlink{class_d3_d_class_ab9bcaec0019ff9319e3aec1df3180032}{$\sim$\+D3\+D\+Class} ()
+\item 
+bool \hyperlink{class_d3_d_class_a0c37e1e0345ddea3020dfd4bf55e1ded}{Initialize} (H\+W\+ND hwnd, float screen\+Depth, float screen\+Near)
+\begin{DoxyCompactList}\small\item\em Инициализация A\+PI DirectX 11. \end{DoxyCompactList}\item 
+void \hyperlink{class_d3_d_class_a0765f6da66273e11c005d571d8dfbcb6}{Shutdown} ()
+\item 
+void \hyperlink{class_d3_d_class_ae045b2d0d3fee31671a643ce0e0bb307}{Begin\+Scene} (D3\+D\+X\+V\+E\+C\+T\+O\+R4 color)
+\begin{DoxyCompactList}\small\item\em Организация новой сцены, выполняется каждый кадр \end{DoxyCompactList}\item 
+void \hyperlink{class_d3_d_class_a53240832687367286a27b31c5f47e63d}{End\+Scene} ()
+\begin{DoxyCompactList}\small\item\em Окончание организации новой сцены и рендернинг результата \end{DoxyCompactList}\item 
+I\+D3\+D11\+Device $\ast$ \hyperlink{class_d3_d_class_a20963c561731ea05018ec626d1fba80c}{Get\+Device} ()
+\begin{DoxyCompactList}\small\item\em Получение графического устройства \end{DoxyCompactList}\item 
+I\+D3\+D11\+Device\+Context $\ast$ \hyperlink{class_d3_d_class_a1d0ac6cc358094b68afa7637c95ec47e}{Get\+Device\+Context} ()
+\begin{DoxyCompactList}\small\item\em Тоже получение графического устройства, но для других целей \end{DoxyCompactList}\item 
+I\+D3\+D11\+Depth\+Stencil\+View $\ast$ \hyperlink{class_d3_d_class_a4ed06b1e5f3e83fc73fccbd7a37ccded}{Get\+Depth\+Stencil\+View} ()
+\begin{DoxyCompactList}\small\item\em Получение Depth Stencil View. \end{DoxyCompactList}\item 
+void \hyperlink{class_d3_d_class_aba9f3e5ea8fd688c1c07b74fd389b002}{Get\+Projection\+Matrix} (D3\+D\+X\+M\+A\+T\+R\+IX \&projection\+Matrix)
+\begin{DoxyCompactList}\small\item\em Получение проекционной матрицы \end{DoxyCompactList}\item 
+void \hyperlink{class_d3_d_class_a9e03cd266851c9e45e989577341a8f2b}{Get\+World\+Matrix} (D3\+D\+X\+M\+A\+T\+R\+IX \&world\+Matrix)
+\begin{DoxyCompactList}\small\item\em Получение матрицы мира \end{DoxyCompactList}\item 
+void \hyperlink{class_d3_d_class_a7227e509b814c581f9e9360c408f64d3}{Get\+Ortho\+Matrix} (D3\+D\+X\+M\+A\+T\+R\+IX \&ortho\+Matrix)
+\begin{DoxyCompactList}\small\item\em Получение ортоматрицы \end{DoxyCompactList}\item 
+void \hyperlink{class_d3_d_class_a5ff051847f9653231d9d0a001e7c67c6}{Get\+Video\+Card\+Info} (char $\ast$card\+Name, int \&memory)
+\begin{DoxyCompactList}\small\item\em Получение данных о видеокарте \end{DoxyCompactList}\item 
+void \hyperlink{class_d3_d_class_acbe3fe3e9680dff2a67e1c3fb82efddf}{Turn\+Z\+Buffer\+On} ()
+\begin{DoxyCompactList}\small\item\em Включение Z-\/буффера \end{DoxyCompactList}\item 
+void \hyperlink{class_d3_d_class_a0ce8c7cdc83be369a23bebcb4c7f4ee7}{Turn\+Z\+Buffer\+Off} ()
+\begin{DoxyCompactList}\small\item\em Отключение Z-\/буффера \end{DoxyCompactList}\item 
+void \hyperlink{class_d3_d_class_ae3bd683d33b266b756bf49233742cf3c}{Set\+Back\+Buffer\+Render\+Target} ()
+\begin{DoxyCompactList}\small\item\em Возвращение к оригинальной цели для рендринга \end{DoxyCompactList}\item 
+void \hyperlink{class_d3_d_class_acafeb301530c5dfe03f14e630f0a56db}{Turn\+On\+Alpha\+Blending} ()
+\begin{DoxyCompactList}\small\item\em Включение Alpha\+Blending. \end{DoxyCompactList}\item 
+void \hyperlink{class_d3_d_class_ad5cd8ffba823780cbd4fe53adae4f6e8}{Turn\+Off\+Alpha\+Blending} ()
+\begin{DoxyCompactList}\small\item\em Отключение Alpha\+Blending. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{class_d3_d_class_a6ece2de112350f95d607eff76fb1a79b}{m\+\_\+video\+Card\+Memory}
+\begin{DoxyCompactList}\small\item\em Видеопамять \end{DoxyCompactList}\item 
+char \hyperlink{class_d3_d_class_abfcb7ad8b62f0c141b6732c0361ebcbc}{m\+\_\+video\+Card\+Description} \mbox{[}128\mbox{]}
+\begin{DoxyCompactList}\small\item\em Название видеокарты \end{DoxyCompactList}\item 
+I\+D\+X\+G\+I\+Swap\+Chain $\ast$ \hyperlink{class_d3_d_class_af966a38e40cffc457c7303ae3108c296}{m\+\_\+swap\+Chain}
+\begin{DoxyCompactList}\small\item\em Цепочка кадров \end{DoxyCompactList}\item 
+I\+D3\+D11\+Device $\ast$ \hyperlink{class_d3_d_class_ad5051876b1b5befee32f1e1d511c040f}{m\+\_\+device}
+\begin{DoxyCompactList}\small\item\em Графическое устрйоство \end{DoxyCompactList}\item 
+I\+D3\+D11\+Device\+Context $\ast$ \hyperlink{class_d3_d_class_a46ae99eb05944cd1a838be2c1d054cb6}{m\+\_\+device\+Context}
+\begin{DoxyCompactList}\small\item\em Графическое устройство 2. \end{DoxyCompactList}\item 
+I\+D3\+D11\+Render\+Target\+View $\ast$ \hyperlink{class_d3_d_class_a59a5c37b00d653eeba493bb0752f266d}{m\+\_\+render\+Target\+View}
+\begin{DoxyCompactList}\small\item\em Базовая цель для рендринга \end{DoxyCompactList}\item 
+I\+D3\+D11\+Texture2D $\ast$ \hyperlink{class_d3_d_class_a610a04035fe760a5f232ecfa44f943ff}{m\+\_\+depth\+Stencil\+Buffer}
+\item 
+I\+D3\+D11\+Depth\+Stencil\+State $\ast$ \hyperlink{class_d3_d_class_a0d38fcb1b82ee65c23f35f783906168d}{m\+\_\+depth\+Stencil\+State}
+\item 
+I\+D3\+D11\+Depth\+Stencil\+View $\ast$ \hyperlink{class_d3_d_class_a347ce3973479a5ab5d7a7c36ba59553d}{m\+\_\+depth\+Stencil\+View}
+\item 
+I\+D3\+D11\+Rasterizer\+State $\ast$ \hyperlink{class_d3_d_class_a1d21be73b82c0e8c3a512c1cbfeba030}{m\+\_\+raster\+State}
+\item 
+D3\+D\+X\+M\+A\+T\+R\+IX \hyperlink{class_d3_d_class_a2020c9798506498bd7411104903615e4}{m\+\_\+projection\+Matrix}
+\begin{DoxyCompactList}\small\item\em Проекционная матрица \end{DoxyCompactList}\item 
+D3\+D\+X\+M\+A\+T\+R\+IX \hyperlink{class_d3_d_class_a3b96f1d257d67248da848290bba52db7}{m\+\_\+world\+Matrix}
+\begin{DoxyCompactList}\small\item\em Матрица мира \end{DoxyCompactList}\item 
+D3\+D\+X\+M\+A\+T\+R\+IX \hyperlink{class_d3_d_class_a68d1081e456d0b9d53de866153d68db1}{m\+\_\+ortho\+Matrix}
+\begin{DoxyCompactList}\small\item\em Ортоматрица \end{DoxyCompactList}\item 
+I\+D3\+D11\+Depth\+Stencil\+State $\ast$ \hyperlink{class_d3_d_class_a294df487d444d4b79cc82d7286e9b36e}{m\+\_\+depth\+Disabled\+Stencil\+State}
+\item 
+I\+D3\+D11\+Blend\+State $\ast$ \hyperlink{class_d3_d_class_a8123b5c065750fe887757e6e170d5c82}{m\+\_\+alpha\+Enable\+Blending\+State}
+\item 
+I\+D3\+D11\+Blend\+State $\ast$ \hyperlink{class_d3_d_class_a445590e41f287cc7ec799f2b80f701c4}{m\+\_\+alpha\+Disable\+Blending\+State}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Управление A\+PI DirectX 11 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_d3_d_class_a889771d09ad54486caf56bc64e156aa6}\label{class_d3_d_class_a889771d09ad54486caf56bc64e156aa6}} 
+\index{D3\+D\+Class@{D3\+D\+Class}!D3\+D\+Class@{D3\+D\+Class}}
+\index{D3\+D\+Class@{D3\+D\+Class}!D3\+D\+Class@{D3\+D\+Class}}
+\subsubsection{\texorpdfstring{D3\+D\+Class()}{D3DClass()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily D3\+D\+Class\+::\+D3\+D\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_d3_d_class_a83a37634c4176706232667b44e62d89a}\label{class_d3_d_class_a83a37634c4176706232667b44e62d89a}} 
+\index{D3\+D\+Class@{D3\+D\+Class}!D3\+D\+Class@{D3\+D\+Class}}
+\index{D3\+D\+Class@{D3\+D\+Class}!D3\+D\+Class@{D3\+D\+Class}}
+\subsubsection{\texorpdfstring{D3\+D\+Class()}{D3DClass()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily D3\+D\+Class\+::\+D3\+D\+Class (\begin{DoxyParamCaption}\item[{const \hyperlink{class_d3_d_class}{D3\+D\+Class} \&}]{other }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_d3_d_class_ab9bcaec0019ff9319e3aec1df3180032}\label{class_d3_d_class_ab9bcaec0019ff9319e3aec1df3180032}} 
+\index{D3\+D\+Class@{D3\+D\+Class}!````~D3\+D\+Class@{$\sim$\+D3\+D\+Class}}
+\index{````~D3\+D\+Class@{$\sim$\+D3\+D\+Class}!D3\+D\+Class@{D3\+D\+Class}}
+\subsubsection{\texorpdfstring{$\sim$\+D3\+D\+Class()}{~D3DClass()}}
+{\footnotesize\ttfamily D3\+D\+Class\+::$\sim$\+D3\+D\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_d3_d_class_ae045b2d0d3fee31671a643ce0e0bb307}\label{class_d3_d_class_ae045b2d0d3fee31671a643ce0e0bb307}} 
+\index{D3\+D\+Class@{D3\+D\+Class}!Begin\+Scene@{Begin\+Scene}}
+\index{Begin\+Scene@{Begin\+Scene}!D3\+D\+Class@{D3\+D\+Class}}
+\subsubsection{\texorpdfstring{Begin\+Scene()}{BeginScene()}}
+{\footnotesize\ttfamily void D3\+D\+Class\+::\+Begin\+Scene (\begin{DoxyParamCaption}\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R4}]{color }\end{DoxyParamCaption})}
+
+
+
+Организация новой сцены, выполняется каждый кадр 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em color} & -\/ цвет заднего фона \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_d3_d_class_a53240832687367286a27b31c5f47e63d}\label{class_d3_d_class_a53240832687367286a27b31c5f47e63d}} 
+\index{D3\+D\+Class@{D3\+D\+Class}!End\+Scene@{End\+Scene}}
+\index{End\+Scene@{End\+Scene}!D3\+D\+Class@{D3\+D\+Class}}
+\subsubsection{\texorpdfstring{End\+Scene()}{EndScene()}}
+{\footnotesize\ttfamily void D3\+D\+Class\+::\+End\+Scene (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Окончание организации новой сцены и рендернинг результата 
+
+\mbox{\Hypertarget{class_d3_d_class_a4ed06b1e5f3e83fc73fccbd7a37ccded}\label{class_d3_d_class_a4ed06b1e5f3e83fc73fccbd7a37ccded}} 
+\index{D3\+D\+Class@{D3\+D\+Class}!Get\+Depth\+Stencil\+View@{Get\+Depth\+Stencil\+View}}
+\index{Get\+Depth\+Stencil\+View@{Get\+Depth\+Stencil\+View}!D3\+D\+Class@{D3\+D\+Class}}
+\subsubsection{\texorpdfstring{Get\+Depth\+Stencil\+View()}{GetDepthStencilView()}}
+{\footnotesize\ttfamily I\+D3\+D11\+Depth\+Stencil\+View $\ast$ D3\+D\+Class\+::\+Get\+Depth\+Stencil\+View (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Получение Depth Stencil View. 
+
+\begin{DoxyReturn}{Returns}
+основной Depth Stencil View 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_d3_d_class_a20963c561731ea05018ec626d1fba80c}\label{class_d3_d_class_a20963c561731ea05018ec626d1fba80c}} 
+\index{D3\+D\+Class@{D3\+D\+Class}!Get\+Device@{Get\+Device}}
+\index{Get\+Device@{Get\+Device}!D3\+D\+Class@{D3\+D\+Class}}
+\subsubsection{\texorpdfstring{Get\+Device()}{GetDevice()}}
+{\footnotesize\ttfamily I\+D3\+D11\+Device $\ast$ D3\+D\+Class\+::\+Get\+Device (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Получение графического устройства 
+
+\begin{DoxyReturn}{Returns}
+графическое устройство 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_d3_d_class_a1d0ac6cc358094b68afa7637c95ec47e}\label{class_d3_d_class_a1d0ac6cc358094b68afa7637c95ec47e}} 
+\index{D3\+D\+Class@{D3\+D\+Class}!Get\+Device\+Context@{Get\+Device\+Context}}
+\index{Get\+Device\+Context@{Get\+Device\+Context}!D3\+D\+Class@{D3\+D\+Class}}
+\subsubsection{\texorpdfstring{Get\+Device\+Context()}{GetDeviceContext()}}
+{\footnotesize\ttfamily I\+D3\+D11\+Device\+Context $\ast$ D3\+D\+Class\+::\+Get\+Device\+Context (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Тоже получение графического устройства, но для других целей 
+
+\begin{DoxyReturn}{Returns}
+графическое устройство 2 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_d3_d_class_a7227e509b814c581f9e9360c408f64d3}\label{class_d3_d_class_a7227e509b814c581f9e9360c408f64d3}} 
+\index{D3\+D\+Class@{D3\+D\+Class}!Get\+Ortho\+Matrix@{Get\+Ortho\+Matrix}}
+\index{Get\+Ortho\+Matrix@{Get\+Ortho\+Matrix}!D3\+D\+Class@{D3\+D\+Class}}
+\subsubsection{\texorpdfstring{Get\+Ortho\+Matrix()}{GetOrthoMatrix()}}
+{\footnotesize\ttfamily void D3\+D\+Class\+::\+Get\+Ortho\+Matrix (\begin{DoxyParamCaption}\item[{D3\+D\+X\+M\+A\+T\+R\+IX \&}]{ortho\+Matrix }\end{DoxyParamCaption})}
+
+
+
+Получение ортоматрицы 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em ortho\+Matrix} & ортоматрица \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_d3_d_class_aba9f3e5ea8fd688c1c07b74fd389b002}\label{class_d3_d_class_aba9f3e5ea8fd688c1c07b74fd389b002}} 
+\index{D3\+D\+Class@{D3\+D\+Class}!Get\+Projection\+Matrix@{Get\+Projection\+Matrix}}
+\index{Get\+Projection\+Matrix@{Get\+Projection\+Matrix}!D3\+D\+Class@{D3\+D\+Class}}
+\subsubsection{\texorpdfstring{Get\+Projection\+Matrix()}{GetProjectionMatrix()}}
+{\footnotesize\ttfamily void D3\+D\+Class\+::\+Get\+Projection\+Matrix (\begin{DoxyParamCaption}\item[{D3\+D\+X\+M\+A\+T\+R\+IX \&}]{projection\+Matrix }\end{DoxyParamCaption})}
+
+
+
+Получение проекционной матрицы 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em projection\+Matrix} & проекционная матрица \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_d3_d_class_a5ff051847f9653231d9d0a001e7c67c6}\label{class_d3_d_class_a5ff051847f9653231d9d0a001e7c67c6}} 
+\index{D3\+D\+Class@{D3\+D\+Class}!Get\+Video\+Card\+Info@{Get\+Video\+Card\+Info}}
+\index{Get\+Video\+Card\+Info@{Get\+Video\+Card\+Info}!D3\+D\+Class@{D3\+D\+Class}}
+\subsubsection{\texorpdfstring{Get\+Video\+Card\+Info()}{GetVideoCardInfo()}}
+{\footnotesize\ttfamily void D3\+D\+Class\+::\+Get\+Video\+Card\+Info (\begin{DoxyParamCaption}\item[{char $\ast$}]{card\+Name,  }\item[{int \&}]{memory }\end{DoxyParamCaption})}
+
+
+
+Получение данных о видеокарте 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em card\+Name} & -\/ название видеокарты \\
+\hline
+\mbox{\tt out}  & {\em memory} & -\/ видеопамять \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_d3_d_class_a9e03cd266851c9e45e989577341a8f2b}\label{class_d3_d_class_a9e03cd266851c9e45e989577341a8f2b}} 
+\index{D3\+D\+Class@{D3\+D\+Class}!Get\+World\+Matrix@{Get\+World\+Matrix}}
+\index{Get\+World\+Matrix@{Get\+World\+Matrix}!D3\+D\+Class@{D3\+D\+Class}}
+\subsubsection{\texorpdfstring{Get\+World\+Matrix()}{GetWorldMatrix()}}
+{\footnotesize\ttfamily void D3\+D\+Class\+::\+Get\+World\+Matrix (\begin{DoxyParamCaption}\item[{D3\+D\+X\+M\+A\+T\+R\+IX \&}]{world\+Matrix }\end{DoxyParamCaption})}
+
+
+
+Получение матрицы мира 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em world\+Matrix} & матрица мира \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_d3_d_class_a0c37e1e0345ddea3020dfd4bf55e1ded}\label{class_d3_d_class_a0c37e1e0345ddea3020dfd4bf55e1ded}} 
+\index{D3\+D\+Class@{D3\+D\+Class}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!D3\+D\+Class@{D3\+D\+Class}}
+\subsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily bool D3\+D\+Class\+::\+Initialize (\begin{DoxyParamCaption}\item[{H\+W\+ND}]{hwnd,  }\item[{float}]{screen\+Depth,  }\item[{float}]{screen\+Near }\end{DoxyParamCaption})}
+
+
+
+Инициализация A\+PI DirectX 11. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em hwnd} & -\/ идентификатор окна \\
+\hline
+\mbox{\tt in}  & {\em screen\+Depth,screen\+Near} & -\/ границы видимости \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_d3_d_class_ae3bd683d33b266b756bf49233742cf3c}\label{class_d3_d_class_ae3bd683d33b266b756bf49233742cf3c}} 
+\index{D3\+D\+Class@{D3\+D\+Class}!Set\+Back\+Buffer\+Render\+Target@{Set\+Back\+Buffer\+Render\+Target}}
+\index{Set\+Back\+Buffer\+Render\+Target@{Set\+Back\+Buffer\+Render\+Target}!D3\+D\+Class@{D3\+D\+Class}}
+\subsubsection{\texorpdfstring{Set\+Back\+Buffer\+Render\+Target()}{SetBackBufferRenderTarget()}}
+{\footnotesize\ttfamily void D3\+D\+Class\+::\+Set\+Back\+Buffer\+Render\+Target (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Возвращение к оригинальной цели для рендринга 
+
+\mbox{\Hypertarget{class_d3_d_class_a0765f6da66273e11c005d571d8dfbcb6}\label{class_d3_d_class_a0765f6da66273e11c005d571d8dfbcb6}} 
+\index{D3\+D\+Class@{D3\+D\+Class}!Shutdown@{Shutdown}}
+\index{Shutdown@{Shutdown}!D3\+D\+Class@{D3\+D\+Class}}
+\subsubsection{\texorpdfstring{Shutdown()}{Shutdown()}}
+{\footnotesize\ttfamily void D3\+D\+Class\+::\+Shutdown (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_d3_d_class_ad5cd8ffba823780cbd4fe53adae4f6e8}\label{class_d3_d_class_ad5cd8ffba823780cbd4fe53adae4f6e8}} 
+\index{D3\+D\+Class@{D3\+D\+Class}!Turn\+Off\+Alpha\+Blending@{Turn\+Off\+Alpha\+Blending}}
+\index{Turn\+Off\+Alpha\+Blending@{Turn\+Off\+Alpha\+Blending}!D3\+D\+Class@{D3\+D\+Class}}
+\subsubsection{\texorpdfstring{Turn\+Off\+Alpha\+Blending()}{TurnOffAlphaBlending()}}
+{\footnotesize\ttfamily void D3\+D\+Class\+::\+Turn\+Off\+Alpha\+Blending (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Отключение Alpha\+Blending. 
+
+\mbox{\Hypertarget{class_d3_d_class_acafeb301530c5dfe03f14e630f0a56db}\label{class_d3_d_class_acafeb301530c5dfe03f14e630f0a56db}} 
+\index{D3\+D\+Class@{D3\+D\+Class}!Turn\+On\+Alpha\+Blending@{Turn\+On\+Alpha\+Blending}}
+\index{Turn\+On\+Alpha\+Blending@{Turn\+On\+Alpha\+Blending}!D3\+D\+Class@{D3\+D\+Class}}
+\subsubsection{\texorpdfstring{Turn\+On\+Alpha\+Blending()}{TurnOnAlphaBlending()}}
+{\footnotesize\ttfamily void D3\+D\+Class\+::\+Turn\+On\+Alpha\+Blending (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Включение Alpha\+Blending. 
+
+\mbox{\Hypertarget{class_d3_d_class_a0ce8c7cdc83be369a23bebcb4c7f4ee7}\label{class_d3_d_class_a0ce8c7cdc83be369a23bebcb4c7f4ee7}} 
+\index{D3\+D\+Class@{D3\+D\+Class}!Turn\+Z\+Buffer\+Off@{Turn\+Z\+Buffer\+Off}}
+\index{Turn\+Z\+Buffer\+Off@{Turn\+Z\+Buffer\+Off}!D3\+D\+Class@{D3\+D\+Class}}
+\subsubsection{\texorpdfstring{Turn\+Z\+Buffer\+Off()}{TurnZBufferOff()}}
+{\footnotesize\ttfamily void D3\+D\+Class\+::\+Turn\+Z\+Buffer\+Off (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Отключение Z-\/буффера 
+
+\mbox{\Hypertarget{class_d3_d_class_acbe3fe3e9680dff2a67e1c3fb82efddf}\label{class_d3_d_class_acbe3fe3e9680dff2a67e1c3fb82efddf}} 
+\index{D3\+D\+Class@{D3\+D\+Class}!Turn\+Z\+Buffer\+On@{Turn\+Z\+Buffer\+On}}
+\index{Turn\+Z\+Buffer\+On@{Turn\+Z\+Buffer\+On}!D3\+D\+Class@{D3\+D\+Class}}
+\subsubsection{\texorpdfstring{Turn\+Z\+Buffer\+On()}{TurnZBufferOn()}}
+{\footnotesize\ttfamily void D3\+D\+Class\+::\+Turn\+Z\+Buffer\+On (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Включение Z-\/буффера 
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_d3_d_class_a445590e41f287cc7ec799f2b80f701c4}\label{class_d3_d_class_a445590e41f287cc7ec799f2b80f701c4}} 
+\index{D3\+D\+Class@{D3\+D\+Class}!m\+\_\+alpha\+Disable\+Blending\+State@{m\+\_\+alpha\+Disable\+Blending\+State}}
+\index{m\+\_\+alpha\+Disable\+Blending\+State@{m\+\_\+alpha\+Disable\+Blending\+State}!D3\+D\+Class@{D3\+D\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+alpha\+Disable\+Blending\+State}{m\_alphaDisableBlendingState}}
+{\footnotesize\ttfamily I\+D3\+D11\+Blend\+State$\ast$ D3\+D\+Class\+::m\+\_\+alpha\+Disable\+Blending\+State\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_d3_d_class_a8123b5c065750fe887757e6e170d5c82}\label{class_d3_d_class_a8123b5c065750fe887757e6e170d5c82}} 
+\index{D3\+D\+Class@{D3\+D\+Class}!m\+\_\+alpha\+Enable\+Blending\+State@{m\+\_\+alpha\+Enable\+Blending\+State}}
+\index{m\+\_\+alpha\+Enable\+Blending\+State@{m\+\_\+alpha\+Enable\+Blending\+State}!D3\+D\+Class@{D3\+D\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+alpha\+Enable\+Blending\+State}{m\_alphaEnableBlendingState}}
+{\footnotesize\ttfamily I\+D3\+D11\+Blend\+State$\ast$ D3\+D\+Class\+::m\+\_\+alpha\+Enable\+Blending\+State\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_d3_d_class_a294df487d444d4b79cc82d7286e9b36e}\label{class_d3_d_class_a294df487d444d4b79cc82d7286e9b36e}} 
+\index{D3\+D\+Class@{D3\+D\+Class}!m\+\_\+depth\+Disabled\+Stencil\+State@{m\+\_\+depth\+Disabled\+Stencil\+State}}
+\index{m\+\_\+depth\+Disabled\+Stencil\+State@{m\+\_\+depth\+Disabled\+Stencil\+State}!D3\+D\+Class@{D3\+D\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+depth\+Disabled\+Stencil\+State}{m\_depthDisabledStencilState}}
+{\footnotesize\ttfamily I\+D3\+D11\+Depth\+Stencil\+State$\ast$ D3\+D\+Class\+::m\+\_\+depth\+Disabled\+Stencil\+State\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_d3_d_class_a610a04035fe760a5f232ecfa44f943ff}\label{class_d3_d_class_a610a04035fe760a5f232ecfa44f943ff}} 
+\index{D3\+D\+Class@{D3\+D\+Class}!m\+\_\+depth\+Stencil\+Buffer@{m\+\_\+depth\+Stencil\+Buffer}}
+\index{m\+\_\+depth\+Stencil\+Buffer@{m\+\_\+depth\+Stencil\+Buffer}!D3\+D\+Class@{D3\+D\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+depth\+Stencil\+Buffer}{m\_depthStencilBuffer}}
+{\footnotesize\ttfamily I\+D3\+D11\+Texture2D$\ast$ D3\+D\+Class\+::m\+\_\+depth\+Stencil\+Buffer\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_d3_d_class_a0d38fcb1b82ee65c23f35f783906168d}\label{class_d3_d_class_a0d38fcb1b82ee65c23f35f783906168d}} 
+\index{D3\+D\+Class@{D3\+D\+Class}!m\+\_\+depth\+Stencil\+State@{m\+\_\+depth\+Stencil\+State}}
+\index{m\+\_\+depth\+Stencil\+State@{m\+\_\+depth\+Stencil\+State}!D3\+D\+Class@{D3\+D\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+depth\+Stencil\+State}{m\_depthStencilState}}
+{\footnotesize\ttfamily I\+D3\+D11\+Depth\+Stencil\+State$\ast$ D3\+D\+Class\+::m\+\_\+depth\+Stencil\+State\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_d3_d_class_a347ce3973479a5ab5d7a7c36ba59553d}\label{class_d3_d_class_a347ce3973479a5ab5d7a7c36ba59553d}} 
+\index{D3\+D\+Class@{D3\+D\+Class}!m\+\_\+depth\+Stencil\+View@{m\+\_\+depth\+Stencil\+View}}
+\index{m\+\_\+depth\+Stencil\+View@{m\+\_\+depth\+Stencil\+View}!D3\+D\+Class@{D3\+D\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+depth\+Stencil\+View}{m\_depthStencilView}}
+{\footnotesize\ttfamily I\+D3\+D11\+Depth\+Stencil\+View$\ast$ D3\+D\+Class\+::m\+\_\+depth\+Stencil\+View\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_d3_d_class_ad5051876b1b5befee32f1e1d511c040f}\label{class_d3_d_class_ad5051876b1b5befee32f1e1d511c040f}} 
+\index{D3\+D\+Class@{D3\+D\+Class}!m\+\_\+device@{m\+\_\+device}}
+\index{m\+\_\+device@{m\+\_\+device}!D3\+D\+Class@{D3\+D\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+device}{m\_device}}
+{\footnotesize\ttfamily I\+D3\+D11\+Device$\ast$ D3\+D\+Class\+::m\+\_\+device\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Графическое устрйоство 
+
+\mbox{\Hypertarget{class_d3_d_class_a46ae99eb05944cd1a838be2c1d054cb6}\label{class_d3_d_class_a46ae99eb05944cd1a838be2c1d054cb6}} 
+\index{D3\+D\+Class@{D3\+D\+Class}!m\+\_\+device\+Context@{m\+\_\+device\+Context}}
+\index{m\+\_\+device\+Context@{m\+\_\+device\+Context}!D3\+D\+Class@{D3\+D\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+device\+Context}{m\_deviceContext}}
+{\footnotesize\ttfamily I\+D3\+D11\+Device\+Context$\ast$ D3\+D\+Class\+::m\+\_\+device\+Context\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Графическое устройство 2. 
+
+\mbox{\Hypertarget{class_d3_d_class_a68d1081e456d0b9d53de866153d68db1}\label{class_d3_d_class_a68d1081e456d0b9d53de866153d68db1}} 
+\index{D3\+D\+Class@{D3\+D\+Class}!m\+\_\+ortho\+Matrix@{m\+\_\+ortho\+Matrix}}
+\index{m\+\_\+ortho\+Matrix@{m\+\_\+ortho\+Matrix}!D3\+D\+Class@{D3\+D\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+ortho\+Matrix}{m\_orthoMatrix}}
+{\footnotesize\ttfamily D3\+D\+X\+M\+A\+T\+R\+IX D3\+D\+Class\+::m\+\_\+ortho\+Matrix\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ортоматрица 
+
+\mbox{\Hypertarget{class_d3_d_class_a2020c9798506498bd7411104903615e4}\label{class_d3_d_class_a2020c9798506498bd7411104903615e4}} 
+\index{D3\+D\+Class@{D3\+D\+Class}!m\+\_\+projection\+Matrix@{m\+\_\+projection\+Matrix}}
+\index{m\+\_\+projection\+Matrix@{m\+\_\+projection\+Matrix}!D3\+D\+Class@{D3\+D\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+projection\+Matrix}{m\_projectionMatrix}}
+{\footnotesize\ttfamily D3\+D\+X\+M\+A\+T\+R\+IX D3\+D\+Class\+::m\+\_\+projection\+Matrix\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Проекционная матрица 
+
+\mbox{\Hypertarget{class_d3_d_class_a1d21be73b82c0e8c3a512c1cbfeba030}\label{class_d3_d_class_a1d21be73b82c0e8c3a512c1cbfeba030}} 
+\index{D3\+D\+Class@{D3\+D\+Class}!m\+\_\+raster\+State@{m\+\_\+raster\+State}}
+\index{m\+\_\+raster\+State@{m\+\_\+raster\+State}!D3\+D\+Class@{D3\+D\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+raster\+State}{m\_rasterState}}
+{\footnotesize\ttfamily I\+D3\+D11\+Rasterizer\+State$\ast$ D3\+D\+Class\+::m\+\_\+raster\+State\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_d3_d_class_a59a5c37b00d653eeba493bb0752f266d}\label{class_d3_d_class_a59a5c37b00d653eeba493bb0752f266d}} 
+\index{D3\+D\+Class@{D3\+D\+Class}!m\+\_\+render\+Target\+View@{m\+\_\+render\+Target\+View}}
+\index{m\+\_\+render\+Target\+View@{m\+\_\+render\+Target\+View}!D3\+D\+Class@{D3\+D\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+render\+Target\+View}{m\_renderTargetView}}
+{\footnotesize\ttfamily I\+D3\+D11\+Render\+Target\+View$\ast$ D3\+D\+Class\+::m\+\_\+render\+Target\+View\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Базовая цель для рендринга 
+
+\mbox{\Hypertarget{class_d3_d_class_af966a38e40cffc457c7303ae3108c296}\label{class_d3_d_class_af966a38e40cffc457c7303ae3108c296}} 
+\index{D3\+D\+Class@{D3\+D\+Class}!m\+\_\+swap\+Chain@{m\+\_\+swap\+Chain}}
+\index{m\+\_\+swap\+Chain@{m\+\_\+swap\+Chain}!D3\+D\+Class@{D3\+D\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+swap\+Chain}{m\_swapChain}}
+{\footnotesize\ttfamily I\+D\+X\+G\+I\+Swap\+Chain$\ast$ D3\+D\+Class\+::m\+\_\+swap\+Chain\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Цепочка кадров 
+
+\mbox{\Hypertarget{class_d3_d_class_abfcb7ad8b62f0c141b6732c0361ebcbc}\label{class_d3_d_class_abfcb7ad8b62f0c141b6732c0361ebcbc}} 
+\index{D3\+D\+Class@{D3\+D\+Class}!m\+\_\+video\+Card\+Description@{m\+\_\+video\+Card\+Description}}
+\index{m\+\_\+video\+Card\+Description@{m\+\_\+video\+Card\+Description}!D3\+D\+Class@{D3\+D\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+video\+Card\+Description}{m\_videoCardDescription}}
+{\footnotesize\ttfamily char D3\+D\+Class\+::m\+\_\+video\+Card\+Description\mbox{[}128\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Название видеокарты 
+
+\mbox{\Hypertarget{class_d3_d_class_a6ece2de112350f95d607eff76fb1a79b}\label{class_d3_d_class_a6ece2de112350f95d607eff76fb1a79b}} 
+\index{D3\+D\+Class@{D3\+D\+Class}!m\+\_\+video\+Card\+Memory@{m\+\_\+video\+Card\+Memory}}
+\index{m\+\_\+video\+Card\+Memory@{m\+\_\+video\+Card\+Memory}!D3\+D\+Class@{D3\+D\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+video\+Card\+Memory}{m\_videoCardMemory}}
+{\footnotesize\ttfamily int D3\+D\+Class\+::m\+\_\+video\+Card\+Memory\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Видеопамять 
+
+\mbox{\Hypertarget{class_d3_d_class_a3b96f1d257d67248da848290bba52db7}\label{class_d3_d_class_a3b96f1d257d67248da848290bba52db7}} 
+\index{D3\+D\+Class@{D3\+D\+Class}!m\+\_\+world\+Matrix@{m\+\_\+world\+Matrix}}
+\index{m\+\_\+world\+Matrix@{m\+\_\+world\+Matrix}!D3\+D\+Class@{D3\+D\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+world\+Matrix}{m\_worldMatrix}}
+{\footnotesize\ttfamily D3\+D\+X\+M\+A\+T\+R\+IX D3\+D\+Class\+::m\+\_\+world\+Matrix\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Матрица мира 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_d3_d_class_8h}{D3\+D\+Class.\+h}\item 
+\hyperlink{_d3_d_class_8cpp}{D3\+D\+Class.\+cpp}\end{DoxyCompactItemize}

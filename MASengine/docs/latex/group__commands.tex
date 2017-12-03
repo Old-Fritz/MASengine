@@ -1,0 +1,380 @@
+\hypertarget{group__commands}{}\section{handle commands}
+\label{group__commands}\index{handle commands@{handle commands}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{group__commands_ga8007871209331455c3f7aa5b2991b061}{System\+Class\+::do\+Commands} ()
+\begin{DoxyCompactList}\small\item\em execute all commands in queue \end{DoxyCompactList}\item 
+bool \hyperlink{group__commands_gaafe0a61b5a2144016008ca529067862a}{System\+Class\+::do\+Single\+Command} (\hyperlink{class_command_class}{Command\+Class} $\ast$command)
+\begin{DoxyCompactList}\small\item\em execute only one current command \end{DoxyCompactList}\item 
+bool \hyperlink{group__commands_ga19c15f7c6bc2743a04fcac998ab17677}{System\+Class\+::update\+System} (\hyperlink{class_command_class}{Command\+Class} $\ast$command, int ind, int first\+Command)
+\begin{DoxyCompactList}\small\item\em execute updating system command \end{DoxyCompactList}\item 
+bool \hyperlink{group__commands_gadc6bf9bc3ae14f2ee2f661818a500220}{System\+Class\+::proces\+Operators} (\hyperlink{class_command_class}{Command\+Class} $\ast$command, int ind, int first\+Command)
+\begin{DoxyCompactList}\small\item\em execute procesing operators command \end{DoxyCompactList}\item 
+bool \hyperlink{group__commands_ga5ff4f256861285812190f780dcddff01}{System\+Class\+::get} (\hyperlink{class_command_class}{Command\+Class} $\ast$command, int ind, int first\+Command)
+\begin{DoxyCompactList}\small\item\em execute getting data command \end{DoxyCompactList}\item 
+bool \hyperlink{group__commands_ga2c069c91c63a13da2944a468837d2aa8}{System\+Class\+::set} (\hyperlink{class_command_class}{Command\+Class} $\ast$command, int ind, int first\+Command)
+\begin{DoxyCompactList}\small\item\em execute setting data command \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+some methods to work with commands 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{group__commands_ga8007871209331455c3f7aa5b2991b061}\label{group__commands_ga8007871209331455c3f7aa5b2991b061}} 
+\index{handle commands@{handle commands}!do\+Commands@{do\+Commands}}
+\index{do\+Commands@{do\+Commands}!handle commands@{handle commands}}
+\subsubsection{\texorpdfstring{do\+Commands()}{doCommands()}}
+{\footnotesize\ttfamily bool System\+Class\+::do\+Commands (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+execute all commands in queue 
+
+\begin{DoxyReturn}{Returns}
+false if exit was initialized in this frame 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+212 \{
+213     \textcolor{keywordtype}{bool} result;
+214 
+215     \textcolor{keywordflow}{while} (\hyperlink{class_command_manager_class_a5086ba410f5bb7af25db58e9c5b16d27}{CommandManagerClass::getI}().isFull())
+216     \{
+217         result = \hyperlink{group__commands_gaafe0a61b5a2144016008ca529067862a}{doSingleCommand}(\hyperlink{class_command_manager_class_a5086ba410f5bb7af25db58e9c5b16d27}{CommandManagerClass::getI}().
+      nextCommand());
+218         \textcolor{keywordflow}{if} (!result)
+219             \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+220     \}
+221 
+222     \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+223 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{group__commands_gaafe0a61b5a2144016008ca529067862a}\label{group__commands_gaafe0a61b5a2144016008ca529067862a}} 
+\index{handle commands@{handle commands}!do\+Single\+Command@{do\+Single\+Command}}
+\index{do\+Single\+Command@{do\+Single\+Command}!handle commands@{handle commands}}
+\subsubsection{\texorpdfstring{do\+Single\+Command()}{doSingleCommand()}}
+{\footnotesize\ttfamily bool System\+Class\+::do\+Single\+Command (\begin{DoxyParamCaption}\item[{\hyperlink{class_command_class}{Command\+Class} $\ast$}]{command }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+execute only one current command 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em command} & executing command \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+226 \{
+227     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < command->\hyperlink{class_command_class_aa29401d3b814e59491020b97ce040ef0}{getCommandsNum}(); i++)
+228     \{
+229         \textcolor{keyword}{auto} commandEnum = \hyperlink{class_command_manager_class_a5086ba410f5bb7af25db58e9c5b16d27}{CommandManagerClass::getI}().
+      \hyperlink{class_command_manager_class_a18080e9ab4d0890282cde8dd668dc87e}{getCommandEnum}(\hyperlink{class_utils_aad2252ad39d512678c7a50ff2afc8023}{Utils::getHash}(command->\hyperlink{class_command_class_ac5cd41b5644c2a0b076b3e7f18b79b1a}{getParam}(i, 0)));
+230         \textcolor{keywordflow}{switch} (commandEnum)
+231         \{
+232         \textcolor{keywordflow}{case} \hyperlink{class_command_manager_class_aff5b4b6301c24b585b22c6abaf4f3131a019a9a504305af95297c38cd882a6476}{CommandManagerClass::updateInterface}:
+233             \hyperlink{class_system_class_a595d53c1d2fa2dad35016fe9b3aa3f01}{m\_graphics}->\hyperlink{class_graphics_class_a62eda5fcca2084d6e7fb05fa1ace5b10}{updateInterface}(command, i);
+234             \textcolor{keywordflow}{break};
+235         \textcolor{keywordflow}{case} \hyperlink{class_command_manager_class_aff5b4b6301c24b585b22c6abaf4f3131a82bc8339786dc239fd5e528aa57dbdc2}{CommandManagerClass::updateGraphics}:
+236             \hyperlink{class_system_class_a595d53c1d2fa2dad35016fe9b3aa3f01}{m\_graphics}->\hyperlink{class_graphics_class_a7f3d89fdef4c128a163cae8602da8112}{updateGraphics}(command, i);
+237             \textcolor{keywordflow}{break};
+238         \textcolor{keywordflow}{case} \hyperlink{class_command_manager_class_aff5b4b6301c24b585b22c6abaf4f3131ade6b9d735ad2516833e1fecbef3ba284}{CommandManagerClass::updateSystem}:
+239             \hyperlink{group__commands_ga19c15f7c6bc2743a04fcac998ab17677}{updateSystem}(command, i,1);
+240             \textcolor{keywordflow}{break};
+241         \textcolor{keywordflow}{case} \hyperlink{class_command_manager_class_aff5b4b6301c24b585b22c6abaf4f3131ab4fe303e599112578762471c79f56aa1}{CommandManagerClass::operators}:
+242             \hyperlink{group__commands_gadc6bf9bc3ae14f2ee2f661818a500220}{procesOperators}(command, i, 1);
+243             \textcolor{keywordflow}{break};
+244         \textcolor{keywordflow}{case} \hyperlink{class_command_manager_class_aff5b4b6301c24b585b22c6abaf4f3131a3765862cce0baf0ffc5e8fbdcf578b45}{CommandManagerClass::get}:
+245             \textcolor{keyword}{get}(command, i, 1);
+246             \textcolor{keywordflow}{break};
+247         \textcolor{keywordflow}{case} \hyperlink{class_command_manager_class_aff5b4b6301c24b585b22c6abaf4f3131a05606aac381920c968814a4ad411a13b}{CommandManagerClass::set}:
+248             \textcolor{keyword}{set}(command, i, 1);
+249             \textcolor{keywordflow}{break};
+250         \textcolor{keywordflow}{case} \hyperlink{class_command_manager_class_aff5b4b6301c24b585b22c6abaf4f3131a8799516de427c79cd43d60af44d2e7e7}{CommandManagerClass::reboot}:
+251             \hyperlink{class_system_class_a86b7353d60fb279bd1a65c970a216bec}{Shutdown}();
+252             \hyperlink{class_system_class_a21f9acab8652feb8cbb8858afc91815a}{Initialize}();
+253             \textcolor{keywordflow}{break};
+254         \textcolor{keywordflow}{case} \hyperlink{class_command_manager_class_aff5b4b6301c24b585b22c6abaf4f3131a1e4f57112617fb1bf352796462ffeeca}{CommandManagerClass::stop}:
+255             \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+256             \textcolor{keywordflow}{break};
+257         \textcolor{keywordflow}{default}:
+258             \textcolor{keywordflow}{break};
+259         \}
+260         \textcolor{comment}{//else if (commandType == "updateTime")}
+261         \textcolor{comment}{//  updateTime(command, i);}
+262         \textcolor{comment}{//else if (commandType == "setParam")}
+263         \textcolor{comment}{//  command->add(setParam(command->getSingleCommand(i)));}
+264         \textcolor{comment}{//else if (commandType == "playSound")}
+265         \textcolor{comment}{//  m\_resources->getSound()->playSound(command->getParam(i, 1));}
+266     \}
+267 
+268     \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+269 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{group__commands_ga5ff4f256861285812190f780dcddff01}\label{group__commands_ga5ff4f256861285812190f780dcddff01}} 
+\index{handle commands@{handle commands}!get@{get}}
+\index{get@{get}!handle commands@{handle commands}}
+\subsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily bool System\+Class\+::get (\begin{DoxyParamCaption}\item[{\hyperlink{class_command_class}{Command\+Class} $\ast$}]{command,  }\item[{int}]{ind,  }\item[{int}]{first\+Command }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+execute getting data command 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em command} & executing command \\
+\hline
+\mbox{\tt in}  & {\em ind} & number of command \\
+\hline
+\mbox{\tt in}  & {\em first\+Command} & number of first param \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+384 \{
+385     std::string getValue;
+386 
+387     \textcolor{comment}{// type of update is second param}
+388     \textcolor{keyword}{auto} commandEnum = \hyperlink{class_command_manager_class_a5086ba410f5bb7af25db58e9c5b16d27}{CommandManagerClass::getI}().
+      \hyperlink{class_command_manager_class_a18080e9ab4d0890282cde8dd668dc87e}{getCommandEnum}(\hyperlink{class_utils_aad2252ad39d512678c7a50ff2afc8023}{Utils::getHash}(command->\hyperlink{class_command_class_ac5cd41b5644c2a0b076b3e7f18b79b1a}{getParam}(ind, firstCommand)));
+389 
+390     \textcolor{keywordflow}{switch} (commandEnum)
+391     \{
+392     \textcolor{keywordflow}{case} \hyperlink{class_command_manager_class_aff5b4b6301c24b585b22c6abaf4f3131ab02166c357850b9ca6caee617c8038ca}{CommandManagerClass::getForward}:
+393         command->\hyperlink{class_command_class_a30ed51838ac94117d32d4906f492af85}{addChange}(command->\hyperlink{class_command_class_a43dde13edd9aab7d6102f074ea1967cb}{getInitParam}(ind, firstCommand + 2), command->
+      \hyperlink{class_command_class_ac5cd41b5644c2a0b076b3e7f18b79b1a}{getParam}(ind, firstCommand + 1));
+394         \textcolor{keywordflow}{break};
+395     \textcolor{keywordflow}{case} \hyperlink{class_command_manager_class_aff5b4b6301c24b585b22c6abaf4f3131aa826ccd017d735913e81c60941158b50}{CommandManagerClass::getProvRegionId}:
+396         getValue = std::to\_string(\hyperlink{class_system_class_a536ff2a3fa38a758f694c2dc01219daf}{m\_gameMech}->\hyperlink{class_game_mechanic_class_a853cd7d06f50d4cfd38d4c1d3214011b}{getProvRegionID}(
+      \hyperlink{class_global_manager_class_ac6cf763853c150bb15e0a5bda7f5f66c}{GlobalManagerClass::getI}().\hyperlink{class_global_manager_class_a4bf547b9b24567fbc3452a9ab4a86f11}{getRegionTypeEnum}(command->
+      \hyperlink{class_command_class_ac5cd41b5644c2a0b076b3e7f18b79b1a}{getParam}(ind, firstCommand + 1)),
+397             std::stoi(command->\hyperlink{class_command_class_ac5cd41b5644c2a0b076b3e7f18b79b1a}{getParam}(ind, firstCommand + 2))));
+398         command->\hyperlink{class_command_class_a30ed51838ac94117d32d4906f492af85}{addChange}(command->\hyperlink{class_command_class_a43dde13edd9aab7d6102f074ea1967cb}{getInitParam}(ind, firstCommand + 3), getValue);
+399         \textcolor{keywordflow}{break};
+400     \textcolor{keywordflow}{default}:
+401         \textcolor{keywordflow}{break};
+402     \}
+403 
+404 
+405     \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+406 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{group__commands_gadc6bf9bc3ae14f2ee2f661818a500220}\label{group__commands_gadc6bf9bc3ae14f2ee2f661818a500220}} 
+\index{handle commands@{handle commands}!proces\+Operators@{proces\+Operators}}
+\index{proces\+Operators@{proces\+Operators}!handle commands@{handle commands}}
+\subsubsection{\texorpdfstring{proces\+Operators()}{procesOperators()}}
+{\footnotesize\ttfamily bool System\+Class\+::proces\+Operators (\begin{DoxyParamCaption}\item[{\hyperlink{class_command_class}{Command\+Class} $\ast$}]{command,  }\item[{int}]{ind,  }\item[{int}]{first\+Command }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+execute procesing operators command 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em command} & executing command \\
+\hline
+\mbox{\tt in}  & {\em ind} & number of command \\
+\hline
+\mbox{\tt in}  & {\em first\+Command} & number of first param \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+351 \{
+352     \textcolor{comment}{// type of update is second param}
+353     \textcolor{keyword}{auto} commandEnum = \hyperlink{class_command_manager_class_a5086ba410f5bb7af25db58e9c5b16d27}{CommandManagerClass::getI}().
+      \hyperlink{class_command_manager_class_a18080e9ab4d0890282cde8dd668dc87e}{getCommandEnum}(\hyperlink{class_utils_aad2252ad39d512678c7a50ff2afc8023}{Utils::getHash}(command->\hyperlink{class_command_class_ac5cd41b5644c2a0b076b3e7f18b79b1a}{getParam}(ind, firstCommand)));
+354 
+355     \hyperlink{class_command_class}{CommandClass}* newCommand;
+356 
+357     \textcolor{keywordflow}{switch} (commandEnum)
+358     \{
+359     \textcolor{keywordflow}{case} \hyperlink{class_command_manager_class_aff5b4b6301c24b585b22c6abaf4f3131a254965d784afe34d54824470cb456346}{CommandManagerClass::IF}:
+360         \textcolor{keywordflow}{if} (\hyperlink{_condition_checker_class_8h_ab07d033ff3c0d63236ae5041cd9df725}{ConditionChecker}.\hyperlink{class_condition_checker_class_aaaf7a5ad55254c2669e4f38b447129b9}{checkCondition}(command->
+      \hyperlink{class_command_class_ac5cd41b5644c2a0b076b3e7f18b79b1a}{getParam}(ind, firstCommand + 1)))
+361         \{
+362             \textcolor{comment}{//do first command if condition is true}
+363             newCommand = \hyperlink{class_command_manager_class_a5086ba410f5bb7af25db58e9c5b16d27}{CommandManagerClass::getI}().
+      \hyperlink{class_command_manager_class_ad6ae476b111ffdb1a55aee67d3ff0b1f}{makeSingleCommand}(command->\hyperlink{class_command_class_ac5cd41b5644c2a0b076b3e7f18b79b1a}{getParam}(ind, firstCommand + 2),
+364                 \hyperlink{class_path_manager_class_ad1fe028daefa3cc848eb2409dded6e51}{PathManagerClass::getI}().\hyperlink{class_path_manager_class_a58cc1d2ec7956f2bb24d5383e969eaab}{makePath}(command->
+      \hyperlink{class_command_class_ac5cd41b5644c2a0b076b3e7f18b79b1a}{getParam}(ind, firstCommand + 3)));
+365         \}
+366         \textcolor{keywordflow}{else}
+367         \{
+368             \textcolor{comment}{//do second command if condition is false}
+369             newCommand = \hyperlink{class_command_manager_class_a5086ba410f5bb7af25db58e9c5b16d27}{CommandManagerClass::getI}().
+      \hyperlink{class_command_manager_class_ad6ae476b111ffdb1a55aee67d3ff0b1f}{makeSingleCommand}(command->\hyperlink{class_command_class_ac5cd41b5644c2a0b076b3e7f18b79b1a}{getParam}(ind, firstCommand + 4),
+370                 \hyperlink{class_path_manager_class_ad1fe028daefa3cc848eb2409dded6e51}{PathManagerClass::getI}().\hyperlink{class_path_manager_class_a58cc1d2ec7956f2bb24d5383e969eaab}{makePath}(command->
+      \hyperlink{class_command_class_ac5cd41b5644c2a0b076b3e7f18b79b1a}{getParam}(ind, firstCommand + 5)));
+371         \}
+372         command->\hyperlink{class_command_class_ab345ed83c10eeb74a976061566b62793}{shareChanges}(newCommand);
+373         \hyperlink{group__commands_gaafe0a61b5a2144016008ca529067862a}{doSingleCommand}(newCommand);
+374         newCommand->\hyperlink{class_command_class_ab345ed83c10eeb74a976061566b62793}{shareChanges}(command);
+375         \textcolor{keywordflow}{break};
+376     \textcolor{keywordflow}{default}:
+377         \textcolor{keywordflow}{break};
+378     \}
+379 
+380     \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+381 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{group__commands_ga2c069c91c63a13da2944a468837d2aa8}\label{group__commands_ga2c069c91c63a13da2944a468837d2aa8}} 
+\index{handle commands@{handle commands}!set@{set}}
+\index{set@{set}!handle commands@{handle commands}}
+\subsubsection{\texorpdfstring{set()}{set()}}
+{\footnotesize\ttfamily bool System\+Class\+::set (\begin{DoxyParamCaption}\item[{\hyperlink{class_command_class}{Command\+Class} $\ast$}]{command,  }\item[{int}]{ind,  }\item[{int}]{first\+Command }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+execute setting data command 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em command} & executing command \\
+\hline
+\mbox{\tt in}  & {\em ind} & number of command \\
+\hline
+\mbox{\tt in}  & {\em first\+Command} & number of first param \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+409 \{
+410     \textcolor{comment}{// type of update is second param}
+411     \textcolor{keyword}{auto} commandEnum = \hyperlink{class_command_manager_class_a5086ba410f5bb7af25db58e9c5b16d27}{CommandManagerClass::getI}().
+      \hyperlink{class_command_manager_class_a18080e9ab4d0890282cde8dd668dc87e}{getCommandEnum}(\hyperlink{class_utils_aad2252ad39d512678c7a50ff2afc8023}{Utils::getHash}(command->\hyperlink{class_command_class_ac5cd41b5644c2a0b076b3e7f18b79b1a}{getParam}(ind, firstCommand)));
+412 
+413     \textcolor{keywordflow}{switch} (commandEnum)
+414     \{
+415     \textcolor{keywordflow}{case} \hyperlink{class_command_manager_class_aff5b4b6301c24b585b22c6abaf4f3131a51c2ef9e825eefd2796a6153d96f9fdb}{CommandManagerClass::setProvRegion}:
+416         \hyperlink{class_system_class_a536ff2a3fa38a758f694c2dc01219daf}{m\_gameMech}->\hyperlink{class_game_mechanic_class_a1bb457c34d4cb7ca53589f99c8a2a540}{setProvRegion}(
+      \hyperlink{class_global_manager_class_ac6cf763853c150bb15e0a5bda7f5f66c}{GlobalManagerClass::getI}().getRegionTypeEnum(command->
+      \hyperlink{class_command_class_ac5cd41b5644c2a0b076b3e7f18b79b1a}{getParam}(ind, firstCommand + 1)),
+417             std::stoi(command->\hyperlink{class_command_class_ac5cd41b5644c2a0b076b3e7f18b79b1a}{getParam}(ind, firstCommand + 2)),
+418             std::stoi(command->\hyperlink{class_command_class_ac5cd41b5644c2a0b076b3e7f18b79b1a}{getParam}(ind, firstCommand + 3)));
+419         \textcolor{keywordflow}{break};
+420     \textcolor{keywordflow}{default}:
+421         \textcolor{keywordflow}{break};
+422     \}
+423 
+424     \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+425 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{group__commands_ga19c15f7c6bc2743a04fcac998ab17677}\label{group__commands_ga19c15f7c6bc2743a04fcac998ab17677}} 
+\index{handle commands@{handle commands}!update\+System@{update\+System}}
+\index{update\+System@{update\+System}!handle commands@{handle commands}}
+\subsubsection{\texorpdfstring{update\+System()}{updateSystem()}}
+{\footnotesize\ttfamily bool System\+Class\+::update\+System (\begin{DoxyParamCaption}\item[{\hyperlink{class_command_class}{Command\+Class} $\ast$}]{command,  }\item[{int}]{ind,  }\item[{int}]{first\+Command }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+execute updating system command 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em command} & executing command \\
+\hline
+\mbox{\tt in}  & {\em ind} & number of command \\
+\hline
+\mbox{\tt in}  & {\em first\+Command} & number of first param \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+272 \{
+273     \textcolor{keywordtype}{int} mouseX, mouseY;
+274     D3DXVECTOR3 pos;
+275     D3DXVECTOR3 rot;
+276     \hyperlink{class_system_class_a59754aa6c2f1183a069961b2999da210}{m\_input}->\hyperlink{class_input_class_a447bd4da31fb87f8ce2dc964449a3566}{GetMouseLocation}(mouseX, mouseY);
+277 
+278 
+279     \textcolor{keywordflow}{if} (command->\hyperlink{class_command_class_aa29401d3b814e59491020b97ce040ef0}{getCommandsNum}() < 1)
+280         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+281 
+282     \textcolor{comment}{// type of update is second param}
+283     \textcolor{keyword}{auto} commandEnum = \hyperlink{class_command_manager_class_a5086ba410f5bb7af25db58e9c5b16d27}{CommandManagerClass::getI}().
+      \hyperlink{class_command_manager_class_a18080e9ab4d0890282cde8dd668dc87e}{getCommandEnum}(\hyperlink{class_utils_aad2252ad39d512678c7a50ff2afc8023}{Utils::getHash}(command->\hyperlink{class_command_class_ac5cd41b5644c2a0b076b3e7f18b79b1a}{getParam}(ind, firstCommand)));
+284 
+285     \textcolor{keywordflow}{switch} (commandEnum)
+286     \{
+287     \textcolor{keywordflow}{case} \hyperlink{class_command_manager_class_aff5b4b6301c24b585b22c6abaf4f3131a85716f730be1da406ee3e669961756b5}{CommandManagerClass::position}:
+288         \textcolor{keywordflow}{if} (command->\hyperlink{class_command_class_ab987d47061d86a89765dbf8a2eda146f}{getParamsNum}(ind) < 4 + firstCommand) \textcolor{comment}{//if number of params smaller than
+       normal, then this is incorrect}
+289             \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+290         pos = \hyperlink{class_system_class_a50f3aa02021aa6813bc2e30dfcb8d8ae}{m\_position}->\hyperlink{class_position_class_acbd3167d621af1d35496b7be3347165a}{GetRealPosition}();
+291         rot = \hyperlink{class_system_class_a50f3aa02021aa6813bc2e30dfcb8d8ae}{m\_position}->\hyperlink{class_position_class_a69c69980d0ca1dbfab93ea46f6019e99}{GetRotation}();
+292         command->\hyperlink{class_command_class_a30ed51838ac94117d32d4906f492af85}{addChange}(\textcolor{stringliteral}{"posX"}, pos.x);
+293         command->\hyperlink{class_command_class_a30ed51838ac94117d32d4906f492af85}{addChange}(\textcolor{stringliteral}{"posY"}, pos.y);
+294         command->\hyperlink{class_command_class_a30ed51838ac94117d32d4906f492af85}{addChange}(\textcolor{stringliteral}{"posZ"}, pos.z);
+295         command->\hyperlink{class_command_class_a30ed51838ac94117d32d4906f492af85}{addChange}(\textcolor{stringliteral}{"rotX"}, rot.x);
+296         command->\hyperlink{class_command_class_a30ed51838ac94117d32d4906f492af85}{addChange}(\textcolor{stringliteral}{"rotY"}, rot.y);
+297         command->\hyperlink{class_command_class_a30ed51838ac94117d32d4906f492af85}{addChange}(\textcolor{stringliteral}{"rotZ"}, rot.z);
+298         command->\hyperlink{class_command_class_a30ed51838ac94117d32d4906f492af85}{addChange}(\textcolor{stringliteral}{"screenWidth"}, \hyperlink{class_settings_class_a24473783853e6fb498055a1bd44b162d}{SettingsClass::getI}().getIntParameter
+      (\textcolor{stringliteral}{"ScreenWidth"}));
+299         command->\hyperlink{class_command_class_a30ed51838ac94117d32d4906f492af85}{addChange}(\textcolor{stringliteral}{"screenHeight"}, \hyperlink{class_settings_class_a24473783853e6fb498055a1bd44b162d}{SettingsClass::getI}().
+      getIntParameter(\textcolor{stringliteral}{"ScreenHeight"}));
+300         command->\hyperlink{class_command_class_a30ed51838ac94117d32d4906f492af85}{addChange}(\textcolor{stringliteral}{"mouseX"}, mouseX);
+301         command->\hyperlink{class_command_class_a30ed51838ac94117d32d4906f492af85}{addChange}(\textcolor{stringliteral}{"mouseY"}, mouseY);
+302         \hyperlink{class_system_class_a50f3aa02021aa6813bc2e30dfcb8d8ae}{m\_position}->\hyperlink{class_position_class_a58b43a83d2cae0db050dda8fcd2dd5c7}{SetPosition}(D3DXVECTOR3(stof(command->
+      \hyperlink{class_command_class_ac5cd41b5644c2a0b076b3e7f18b79b1a}{getParam}(ind, firstCommand+1)), stof(command->\hyperlink{class_command_class_ac5cd41b5644c2a0b076b3e7f18b79b1a}{getParam}(ind, firstCommand+2)), stof(command
+      ->\hyperlink{class_command_class_ac5cd41b5644c2a0b076b3e7f18b79b1a}{getParam}(ind, firstCommand+3))));
+303         \textcolor{keywordflow}{break};
+304     \textcolor{keywordflow}{case} \hyperlink{class_command_manager_class_aff5b4b6301c24b585b22c6abaf4f3131a211fdf60bb798124087db47369f7c69d}{CommandManagerClass::rotation}:
+305         \textcolor{keywordflow}{if} (command->\hyperlink{class_command_class_ab987d47061d86a89765dbf8a2eda146f}{getParamsNum}(ind) < 4 + firstCommand) \textcolor{comment}{//if number of params smaller than
+       normal, then this is incorrect}
+306             \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+307         
+308         pos = \hyperlink{class_system_class_a50f3aa02021aa6813bc2e30dfcb8d8ae}{m\_position}->\hyperlink{class_position_class_acbd3167d621af1d35496b7be3347165a}{GetRealPosition}();
+309         rot = \hyperlink{class_system_class_a50f3aa02021aa6813bc2e30dfcb8d8ae}{m\_position}->\hyperlink{class_position_class_a69c69980d0ca1dbfab93ea46f6019e99}{GetRotation}();
+310         command->\hyperlink{class_command_class_a30ed51838ac94117d32d4906f492af85}{addChange}(\textcolor{stringliteral}{"posX"}, pos.x);
+311         command->\hyperlink{class_command_class_a30ed51838ac94117d32d4906f492af85}{addChange}(\textcolor{stringliteral}{"posY"}, pos.y);
+312         command->\hyperlink{class_command_class_a30ed51838ac94117d32d4906f492af85}{addChange}(\textcolor{stringliteral}{"posZ"}, pos.z);
+313         command->\hyperlink{class_command_class_a30ed51838ac94117d32d4906f492af85}{addChange}(\textcolor{stringliteral}{"rotX"}, rot.x);
+314         command->\hyperlink{class_command_class_a30ed51838ac94117d32d4906f492af85}{addChange}(\textcolor{stringliteral}{"rotY"}, rot.y);
+315         command->\hyperlink{class_command_class_a30ed51838ac94117d32d4906f492af85}{addChange}(\textcolor{stringliteral}{"rotZ"}, rot.z);
+316         command->\hyperlink{class_command_class_a30ed51838ac94117d32d4906f492af85}{addChange}(\textcolor{stringliteral}{"screenWidth"}, \hyperlink{class_settings_class_a24473783853e6fb498055a1bd44b162d}{SettingsClass::getI}().getIntParameter
+      (\textcolor{stringliteral}{"ScreenWidth"}));
+317         command->\hyperlink{class_command_class_a30ed51838ac94117d32d4906f492af85}{addChange}(\textcolor{stringliteral}{"screenHeight"}, \hyperlink{class_settings_class_a24473783853e6fb498055a1bd44b162d}{SettingsClass::getI}().
+      getIntParameter(\textcolor{stringliteral}{"ScreenHeight"}));
+318         command->\hyperlink{class_command_class_a30ed51838ac94117d32d4906f492af85}{addChange}(\textcolor{stringliteral}{"mouseX"}, mouseX);
+319         command->\hyperlink{class_command_class_a30ed51838ac94117d32d4906f492af85}{addChange}(\textcolor{stringliteral}{"mouseY"}, mouseY);
+320         \hyperlink{class_system_class_a50f3aa02021aa6813bc2e30dfcb8d8ae}{m\_position}->\hyperlink{class_position_class_ab4924d608eb5db276a3320019b695343}{SetRotation}(D3DXVECTOR3(stof(command->
+      \hyperlink{class_command_class_ac5cd41b5644c2a0b076b3e7f18b79b1a}{getParam}(ind, firstCommand+1)), stof(command->\hyperlink{class_command_class_ac5cd41b5644c2a0b076b3e7f18b79b1a}{getParam}(ind, firstCommand+2)), stof(command
+      ->\hyperlink{class_command_class_ac5cd41b5644c2a0b076b3e7f18b79b1a}{getParam}(ind, firstCommand+3))));
+321         \textcolor{keywordflow}{break};
+322     \textcolor{keywordflow}{case} \hyperlink{class_command_manager_class_aff5b4b6301c24b585b22c6abaf4f3131ac2de0b9949d3ac715a800ae63f187a45}{CommandManagerClass::setButCommand}:
+323         \textcolor{keywordflow}{if} (command->\hyperlink{class_command_class_ab987d47061d86a89765dbf8a2eda146f}{getParamsNum}(ind) < firstCommand+4)
+324             \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+325         \textcolor{keywordflow}{if} (command->\hyperlink{class_command_class_ac5cd41b5644c2a0b076b3e7f18b79b1a}{getParam}(ind, firstCommand+2) == \textcolor{stringliteral}{"pickCommand"})
+326             \hyperlink{class_system_class_a59754aa6c2f1183a069961b2999da210}{m\_input}->\hyperlink{class_input_class_a43d122fa4e954bd81ff46d5d7961da32}{setPickCommand}(stoi(command->\hyperlink{class_command_class_ac5cd41b5644c2a0b076b3e7f18b79b1a}{getParam}(ind, firstCommand+1
+      )), command->\hyperlink{class_command_class_ac5cd41b5644c2a0b076b3e7f18b79b1a}{getParam}(ind, firstCommand+3));
+327         \textcolor{keywordflow}{else}
+328             \hyperlink{class_system_class_a59754aa6c2f1183a069961b2999da210}{m\_input}->\hyperlink{class_input_class_afbfa97735bac9adac4f70f9ddf02eed5}{setUnPickCommand}(stoi(command->
+      \hyperlink{class_command_class_ac5cd41b5644c2a0b076b3e7f18b79b1a}{getParam}(ind, firstCommand+1)), command->\hyperlink{class_command_class_ac5cd41b5644c2a0b076b3e7f18b79b1a}{getParam}(ind, firstCommand+3));
+329         \textcolor{keywordflow}{break};
+330     \textcolor{keywordflow}{case} \hyperlink{class_command_manager_class_aff5b4b6301c24b585b22c6abaf4f3131a71061d99648d85a8235fcc59b40167f4}{CommandManagerClass::setWheelCommand}:
+331         \textcolor{keywordflow}{if} (command->\hyperlink{class_command_class_ab987d47061d86a89765dbf8a2eda146f}{getParamsNum}(ind) < firstCommand+3)
+332             \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+333         \textcolor{keywordflow}{if} (command->\hyperlink{class_command_class_ac5cd41b5644c2a0b076b3e7f18b79b1a}{getParam}(ind, firstCommand+1) == \textcolor{stringliteral}{"up"})
+334             \hyperlink{class_system_class_a59754aa6c2f1183a069961b2999da210}{m\_input}->\hyperlink{class_input_class_ac1731c7de884d6fd26b2a56f1117ba7a}{setUpWheelCommand}(command->\hyperlink{class_command_class_ac5cd41b5644c2a0b076b3e7f18b79b1a}{getParam}(ind, firstCommand+
+      2));
+335         \textcolor{keywordflow}{else}
+336             \hyperlink{class_system_class_a59754aa6c2f1183a069961b2999da210}{m\_input}->\hyperlink{class_input_class_a1abf408475290b47e68b438d2fc3f840}{setDownWheelCommand}(command->
+      \hyperlink{class_command_class_ac5cd41b5644c2a0b076b3e7f18b79b1a}{getParam}(ind, firstCommand+2));
+337         \textcolor{keywordflow}{break};
+338     \textcolor{keywordflow}{case} \hyperlink{class_command_manager_class_aff5b4b6301c24b585b22c6abaf4f3131a9d650977fcb53bad856cc8d8d43b6e67}{CommandManagerClass::setMoving}:
+339         \textcolor{keywordflow}{if} (command->\hyperlink{class_command_class_ab987d47061d86a89765dbf8a2eda146f}{getParamsNum}(ind) < firstCommand+3)
+340             \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+341         \hyperlink{class_system_class_a50f3aa02021aa6813bc2e30dfcb8d8ae}{m\_position}->\hyperlink{class_position_class_ab710ce7a18e9102c8e9d83ad46d876c4}{setMove}(stoi(command->\hyperlink{class_command_class_ac5cd41b5644c2a0b076b3e7f18b79b1a}{getParam}(ind, firstCommand+1)), stoi(
+      command->\hyperlink{class_command_class_ac5cd41b5644c2a0b076b3e7f18b79b1a}{getParam}(ind, firstCommand+2)));
+342         \textcolor{keywordflow}{break};
+343     \textcolor{keywordflow}{default}:
+344         \textcolor{keywordflow}{break};
+345     \}
+346 
+347     \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+348 \}
+\end{DoxyCode}

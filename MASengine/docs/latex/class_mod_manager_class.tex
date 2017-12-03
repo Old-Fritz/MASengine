@@ -1,0 +1,192 @@
+\hypertarget{class_mod_manager_class}{}\section{Mod\+Manager\+Class Class Reference}
+\label{class_mod_manager_class}\index{Mod\+Manager\+Class@{Mod\+Manager\+Class}}
+
+
+{\ttfamily \#include $<$Mod\+Manager\+Class.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_mod_manager_class_a46a072f485ab9383d3cfa7a718cc5797}{Initialize} (const std\+::string \&mod\+Directory)
+\begin{DoxyCompactList}\small\item\em Инициализировать менеджер модов \end{DoxyCompactList}\item 
+void \hyperlink{class_mod_manager_class_a88d010eb65a2c69f2aff8d8b4a8ebbc0}{Shutdown} ()
+\item 
+std\+::string \hyperlink{class_mod_manager_class_a3a1876a333b15822a5c25ec85a9cfab5}{get\+Directory} (const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em Проверить, входит ли файл в загруженные моды \end{DoxyCompactList}\item 
+std\+::string \hyperlink{class_mod_manager_class_a38478a4eb5ddd9746806649b24edbd5f}{get\+Directory} (int hash)
+\begin{DoxyCompactList}\small\item\em см. get\+Directory, но по хэшу от имени файла \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_mod_manager_class}{Mod\+Manager\+Class} \& \hyperlink{class_mod_manager_class_adeaeac4e6df4e887b5d6871347348267}{getI} ()
+\begin{DoxyCompactList}\small\item\em Получить экземпляр класса \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_mod_manager_class_a7f7c1ed45ae5447d499c844c5b289d84}{Mod\+Manager\+Class} ()
+\item 
+\hyperlink{class_mod_manager_class_ade3aab3de02372cac9b3c2a646cd2a95}{Mod\+Manager\+Class} (const \hyperlink{class_mod_manager_class}{Mod\+Manager\+Class} \&)
+\item 
+\hyperlink{class_mod_manager_class_a17847f68d95206b377d62f4908a6a2c0}{$\sim$\+Mod\+Manager\+Class} ()
+\item 
+void \hyperlink{class_mod_manager_class_a70d35681d5471c6157c079cb45689688}{load\+Mod} (const std\+::string \&name, const std\+::string \&mod\+Directory)
+\begin{DoxyCompactList}\small\item\em загрузить мод \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::map$<$ long long, std\+::string $>$ \hyperlink{class_mod_manager_class_aaa66c302164a817e73152e0f12c9a8bc}{m\+\_\+mod\+Changes}
+\begin{DoxyCompactList}\small\item\em Словарь с хэшами имен файлов и модифицированных директорий к ним \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \hyperlink{class_mod_manager_class_a7ddb5edbeb6a3b3caec4300e80c84d12}{m\+\_\+mod\+Names}
+\begin{DoxyCompactList}\small\item\em Имена загруженных модов \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_mod_manager_class}{Mod\+Manager\+Class} $\ast$ \hyperlink{class_mod_manager_class_a49d91418de2d61924f97b33c3199eaaa}{m\+\_\+instance} = 0
+\begin{DoxyCompactList}\small\item\em Единственный экземпляр класса \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Класс для загрузки модов, синглтон 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_mod_manager_class_a7f7c1ed45ae5447d499c844c5b289d84}\label{class_mod_manager_class_a7f7c1ed45ae5447d499c844c5b289d84}} 
+\index{Mod\+Manager\+Class@{Mod\+Manager\+Class}!Mod\+Manager\+Class@{Mod\+Manager\+Class}}
+\index{Mod\+Manager\+Class@{Mod\+Manager\+Class}!Mod\+Manager\+Class@{Mod\+Manager\+Class}}
+\subsubsection{\texorpdfstring{Mod\+Manager\+Class()}{ModManagerClass()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Mod\+Manager\+Class\+::\+Mod\+Manager\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_mod_manager_class_ade3aab3de02372cac9b3c2a646cd2a95}\label{class_mod_manager_class_ade3aab3de02372cac9b3c2a646cd2a95}} 
+\index{Mod\+Manager\+Class@{Mod\+Manager\+Class}!Mod\+Manager\+Class@{Mod\+Manager\+Class}}
+\index{Mod\+Manager\+Class@{Mod\+Manager\+Class}!Mod\+Manager\+Class@{Mod\+Manager\+Class}}
+\subsubsection{\texorpdfstring{Mod\+Manager\+Class()}{ModManagerClass()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Mod\+Manager\+Class\+::\+Mod\+Manager\+Class (\begin{DoxyParamCaption}\item[{const \hyperlink{class_mod_manager_class}{Mod\+Manager\+Class} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_mod_manager_class_a17847f68d95206b377d62f4908a6a2c0}\label{class_mod_manager_class_a17847f68d95206b377d62f4908a6a2c0}} 
+\index{Mod\+Manager\+Class@{Mod\+Manager\+Class}!````~Mod\+Manager\+Class@{$\sim$\+Mod\+Manager\+Class}}
+\index{````~Mod\+Manager\+Class@{$\sim$\+Mod\+Manager\+Class}!Mod\+Manager\+Class@{Mod\+Manager\+Class}}
+\subsubsection{\texorpdfstring{$\sim$\+Mod\+Manager\+Class()}{~ModManagerClass()}}
+{\footnotesize\ttfamily Mod\+Manager\+Class\+::$\sim$\+Mod\+Manager\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_mod_manager_class_a3a1876a333b15822a5c25ec85a9cfab5}\label{class_mod_manager_class_a3a1876a333b15822a5c25ec85a9cfab5}} 
+\index{Mod\+Manager\+Class@{Mod\+Manager\+Class}!get\+Directory@{get\+Directory}}
+\index{get\+Directory@{get\+Directory}!Mod\+Manager\+Class@{Mod\+Manager\+Class}}
+\subsubsection{\texorpdfstring{get\+Directory()}{getDirectory()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::string Mod\+Manager\+Class\+::get\+Directory (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+Проверить, входит ли файл в загруженные моды 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em filename} & -\/ полное имя файла /return директорию файла с учетом модов или \char`\"{}\char`\"{} если файл не модифицировался \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_mod_manager_class_a38478a4eb5ddd9746806649b24edbd5f}\label{class_mod_manager_class_a38478a4eb5ddd9746806649b24edbd5f}} 
+\index{Mod\+Manager\+Class@{Mod\+Manager\+Class}!get\+Directory@{get\+Directory}}
+\index{get\+Directory@{get\+Directory}!Mod\+Manager\+Class@{Mod\+Manager\+Class}}
+\subsubsection{\texorpdfstring{get\+Directory()}{getDirectory()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::string Mod\+Manager\+Class\+::get\+Directory (\begin{DoxyParamCaption}\item[{int}]{hash }\end{DoxyParamCaption})}
+
+
+
+см. get\+Directory, но по хэшу от имени файла 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em hash} & -\/ хэш от полного имени файла \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_mod_manager_class_adeaeac4e6df4e887b5d6871347348267}\label{class_mod_manager_class_adeaeac4e6df4e887b5d6871347348267}} 
+\index{Mod\+Manager\+Class@{Mod\+Manager\+Class}!getI@{getI}}
+\index{getI@{getI}!Mod\+Manager\+Class@{Mod\+Manager\+Class}}
+\subsubsection{\texorpdfstring{get\+I()}{getI()}}
+{\footnotesize\ttfamily \hyperlink{class_mod_manager_class}{Mod\+Manager\+Class} \& Mod\+Manager\+Class\+::getI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Получить экземпляр класса 
+
+\mbox{\Hypertarget{class_mod_manager_class_a46a072f485ab9383d3cfa7a718cc5797}\label{class_mod_manager_class_a46a072f485ab9383d3cfa7a718cc5797}} 
+\index{Mod\+Manager\+Class@{Mod\+Manager\+Class}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!Mod\+Manager\+Class@{Mod\+Manager\+Class}}
+\subsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily bool Mod\+Manager\+Class\+::\+Initialize (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{mod\+Directory }\end{DoxyParamCaption})}
+
+
+
+Инициализировать менеджер модов 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em filepath} & -\/ путь расположения модов \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_mod_manager_class_a70d35681d5471c6157c079cb45689688}\label{class_mod_manager_class_a70d35681d5471c6157c079cb45689688}} 
+\index{Mod\+Manager\+Class@{Mod\+Manager\+Class}!load\+Mod@{load\+Mod}}
+\index{load\+Mod@{load\+Mod}!Mod\+Manager\+Class@{Mod\+Manager\+Class}}
+\subsubsection{\texorpdfstring{load\+Mod()}{loadMod()}}
+{\footnotesize\ttfamily void Mod\+Manager\+Class\+::load\+Mod (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const std\+::string \&}]{mod\+Directory }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+загрузить мод 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em name} & -\/ название мода \\
+\hline
+\mbox{\tt in}  & {\em mod\+Directory} & -\/ путь расположения мода\\
+\hline
+\end{DoxyParams}
+Мод должен распологаться в папке с названием, аналогичным его имени. В папке иеархия изменяемых файлов должна соответствовать исходной. \mbox{\Hypertarget{class_mod_manager_class_a88d010eb65a2c69f2aff8d8b4a8ebbc0}\label{class_mod_manager_class_a88d010eb65a2c69f2aff8d8b4a8ebbc0}} 
+\index{Mod\+Manager\+Class@{Mod\+Manager\+Class}!Shutdown@{Shutdown}}
+\index{Shutdown@{Shutdown}!Mod\+Manager\+Class@{Mod\+Manager\+Class}}
+\subsubsection{\texorpdfstring{Shutdown()}{Shutdown()}}
+{\footnotesize\ttfamily void Mod\+Manager\+Class\+::\+Shutdown (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_mod_manager_class_a49d91418de2d61924f97b33c3199eaaa}\label{class_mod_manager_class_a49d91418de2d61924f97b33c3199eaaa}} 
+\index{Mod\+Manager\+Class@{Mod\+Manager\+Class}!m\+\_\+instance@{m\+\_\+instance}}
+\index{m\+\_\+instance@{m\+\_\+instance}!Mod\+Manager\+Class@{Mod\+Manager\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+instance}{m\_instance}}
+{\footnotesize\ttfamily \hyperlink{class_mod_manager_class}{Mod\+Manager\+Class} $\ast$ Mod\+Manager\+Class\+::m\+\_\+instance = 0\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Единственный экземпляр класса 
+
+\mbox{\Hypertarget{class_mod_manager_class_aaa66c302164a817e73152e0f12c9a8bc}\label{class_mod_manager_class_aaa66c302164a817e73152e0f12c9a8bc}} 
+\index{Mod\+Manager\+Class@{Mod\+Manager\+Class}!m\+\_\+mod\+Changes@{m\+\_\+mod\+Changes}}
+\index{m\+\_\+mod\+Changes@{m\+\_\+mod\+Changes}!Mod\+Manager\+Class@{Mod\+Manager\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+mod\+Changes}{m\_modChanges}}
+{\footnotesize\ttfamily std\+::map$<$long long, std\+::string$>$ Mod\+Manager\+Class\+::m\+\_\+mod\+Changes\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Словарь с хэшами имен файлов и модифицированных директорий к ним 
+
+\mbox{\Hypertarget{class_mod_manager_class_a7ddb5edbeb6a3b3caec4300e80c84d12}\label{class_mod_manager_class_a7ddb5edbeb6a3b3caec4300e80c84d12}} 
+\index{Mod\+Manager\+Class@{Mod\+Manager\+Class}!m\+\_\+mod\+Names@{m\+\_\+mod\+Names}}
+\index{m\+\_\+mod\+Names@{m\+\_\+mod\+Names}!Mod\+Manager\+Class@{Mod\+Manager\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+mod\+Names}{m\_modNames}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::string$>$ Mod\+Manager\+Class\+::m\+\_\+mod\+Names\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Имена загруженных модов 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_mod_manager_class_8h}{Mod\+Manager\+Class.\+h}\item 
+\hyperlink{_mod_manager_class_8cpp}{Mod\+Manager\+Class.\+cpp}\end{DoxyCompactItemize}

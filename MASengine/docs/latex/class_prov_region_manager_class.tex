@@ -1,0 +1,189 @@
+\hypertarget{class_prov_region_manager_class}{}\section{Prov\+Region\+Manager\+Class Class Reference}
+\label{class_prov_region_manager_class}\index{Prov\+Region\+Manager\+Class@{Prov\+Region\+Manager\+Class}}
+
+
+{\ttfamily \#include $<$Prov\+Region\+Manager\+Class.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_prov_region_manager_class_ab19852a66d53076486ff94ff4afd1d2b}{Initialize} (\hyperlink{class_path_class}{Path\+Class} $\ast$filename)
+\begin{DoxyCompactList}\small\item\em Инициализация класса и загрузка регионов \end{DoxyCompactList}\item 
+void \hyperlink{class_prov_region_manager_class_a524eb11df226ed26ff043fb241707892}{Shutdown} ()
+\item 
+\hyperlink{class_prov_region_class}{Prov\+Region\+Class} $\ast$ \hyperlink{class_prov_region_manager_class_acb065f994fb4de59e44b3dde97c6dcff}{get\+Prov\+Region} (\hyperlink{class_global_manager_class_a794b4a5298c61f8d25d9da44b7826857}{Global\+Manager\+Class\+::region\+Type} type, int prov\+Region\+ID)
+\begin{DoxyCompactList}\small\item\em Получение провинции по ID. \end{DoxyCompactList}\item 
+void \hyperlink{class_prov_region_manager_class_ae711031e9a2573adff5211aa1f0c4373}{add\+Prov\+Region} (\hyperlink{class_global_manager_class_a794b4a5298c61f8d25d9da44b7826857}{Global\+Manager\+Class\+::region\+Type} type, \hyperlink{class_prov_region_class}{Prov\+Region\+Class} $\ast$region)
+\begin{DoxyCompactList}\small\item\em Добавление нового региона \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_prov_region_manager_class}{Prov\+Region\+Manager\+Class} \& \hyperlink{class_prov_region_manager_class_ac9254dfc6ffc772b7cb723d31915fb73}{getI} ()
+\begin{DoxyCompactList}\small\item\em Получить экземпляр класса \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_prov_region_manager_class_acef307d34b132e2ff3248ad975765ea2}{Prov\+Region\+Manager\+Class} ()
+\item 
+\hyperlink{class_prov_region_manager_class_a9b71d36360644aa148a4aa95e8bfe646}{Prov\+Region\+Manager\+Class} (const \hyperlink{class_prov_region_manager_class}{Prov\+Region\+Manager\+Class} \&)
+\item 
+\hyperlink{class_prov_region_manager_class_afe065bddd41ec18411aa5461e80a57ee}{$\sim$\+Prov\+Region\+Manager\+Class} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \hyperlink{class_prov_region_class}{Prov\+Region\+Class} $\ast$ $>$ \hyperlink{class_prov_region_manager_class_ab27c4d369607557a4e5c2662c060eea6}{m\+\_\+prov\+Regions}
+\begin{DoxyCompactList}\small\item\em Базовые регионы \end{DoxyCompactList}\item 
+std\+::vector$<$ \hyperlink{class_block_region_class}{Block\+Region\+Class} $\ast$ $>$ \hyperlink{class_prov_region_manager_class_a9efe4cf012f00b316ce05fe588454fcc}{m\+\_\+block\+Region}
+\begin{DoxyCompactList}\small\item\em Блоковые регионы \end{DoxyCompactList}\item 
+std\+::vector$<$ \hyperlink{class_nation_region_class}{Nation\+Region\+Class} $\ast$ $>$ \hyperlink{class_prov_region_manager_class_adb7dfea3fe97c915d3f3e0f33bcc5935}{m\+\_\+nation\+Region}
+\begin{DoxyCompactList}\small\item\em Регионы пров \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_prov_region_manager_class}{Prov\+Region\+Manager\+Class} $\ast$ \hyperlink{class_prov_region_manager_class_ab7b0088ad2564be883213fefdf7fabc5}{m\+\_\+instance} = 0
+\begin{DoxyCompactList}\small\item\em Единственный экземпляр класса \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_prov_region_manager_class_acef307d34b132e2ff3248ad975765ea2}\label{class_prov_region_manager_class_acef307d34b132e2ff3248ad975765ea2}} 
+\index{Prov\+Region\+Manager\+Class@{Prov\+Region\+Manager\+Class}!Prov\+Region\+Manager\+Class@{Prov\+Region\+Manager\+Class}}
+\index{Prov\+Region\+Manager\+Class@{Prov\+Region\+Manager\+Class}!Prov\+Region\+Manager\+Class@{Prov\+Region\+Manager\+Class}}
+\subsubsection{\texorpdfstring{Prov\+Region\+Manager\+Class()}{ProvRegionManagerClass()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Prov\+Region\+Manager\+Class\+::\+Prov\+Region\+Manager\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_prov_region_manager_class_a9b71d36360644aa148a4aa95e8bfe646}\label{class_prov_region_manager_class_a9b71d36360644aa148a4aa95e8bfe646}} 
+\index{Prov\+Region\+Manager\+Class@{Prov\+Region\+Manager\+Class}!Prov\+Region\+Manager\+Class@{Prov\+Region\+Manager\+Class}}
+\index{Prov\+Region\+Manager\+Class@{Prov\+Region\+Manager\+Class}!Prov\+Region\+Manager\+Class@{Prov\+Region\+Manager\+Class}}
+\subsubsection{\texorpdfstring{Prov\+Region\+Manager\+Class()}{ProvRegionManagerClass()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Prov\+Region\+Manager\+Class\+::\+Prov\+Region\+Manager\+Class (\begin{DoxyParamCaption}\item[{const \hyperlink{class_prov_region_manager_class}{Prov\+Region\+Manager\+Class} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_prov_region_manager_class_afe065bddd41ec18411aa5461e80a57ee}\label{class_prov_region_manager_class_afe065bddd41ec18411aa5461e80a57ee}} 
+\index{Prov\+Region\+Manager\+Class@{Prov\+Region\+Manager\+Class}!````~Prov\+Region\+Manager\+Class@{$\sim$\+Prov\+Region\+Manager\+Class}}
+\index{````~Prov\+Region\+Manager\+Class@{$\sim$\+Prov\+Region\+Manager\+Class}!Prov\+Region\+Manager\+Class@{Prov\+Region\+Manager\+Class}}
+\subsubsection{\texorpdfstring{$\sim$\+Prov\+Region\+Manager\+Class()}{~ProvRegionManagerClass()}}
+{\footnotesize\ttfamily Prov\+Region\+Manager\+Class\+::$\sim$\+Prov\+Region\+Manager\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_prov_region_manager_class_ae711031e9a2573adff5211aa1f0c4373}\label{class_prov_region_manager_class_ae711031e9a2573adff5211aa1f0c4373}} 
+\index{Prov\+Region\+Manager\+Class@{Prov\+Region\+Manager\+Class}!add\+Prov\+Region@{add\+Prov\+Region}}
+\index{add\+Prov\+Region@{add\+Prov\+Region}!Prov\+Region\+Manager\+Class@{Prov\+Region\+Manager\+Class}}
+\subsubsection{\texorpdfstring{add\+Prov\+Region()}{addProvRegion()}}
+{\footnotesize\ttfamily void Prov\+Region\+Manager\+Class\+::add\+Prov\+Region (\begin{DoxyParamCaption}\item[{\hyperlink{class_global_manager_class_a794b4a5298c61f8d25d9da44b7826857}{Global\+Manager\+Class\+::region\+Type}}]{type,  }\item[{\hyperlink{class_prov_region_class}{Prov\+Region\+Class} $\ast$}]{region }\end{DoxyParamCaption})}
+
+
+
+Добавление нового региона 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em type} & -\/ тип региона \\
+\hline
+\mbox{\tt in}  & {\em region} & -\/ ссылка на созданный регион \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_prov_region_manager_class_ac9254dfc6ffc772b7cb723d31915fb73}\label{class_prov_region_manager_class_ac9254dfc6ffc772b7cb723d31915fb73}} 
+\index{Prov\+Region\+Manager\+Class@{Prov\+Region\+Manager\+Class}!getI@{getI}}
+\index{getI@{getI}!Prov\+Region\+Manager\+Class@{Prov\+Region\+Manager\+Class}}
+\subsubsection{\texorpdfstring{get\+I()}{getI()}}
+{\footnotesize\ttfamily \hyperlink{class_prov_region_manager_class}{Prov\+Region\+Manager\+Class} \& Prov\+Region\+Manager\+Class\+::getI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Получить экземпляр класса 
+
+\mbox{\Hypertarget{class_prov_region_manager_class_acb065f994fb4de59e44b3dde97c6dcff}\label{class_prov_region_manager_class_acb065f994fb4de59e44b3dde97c6dcff}} 
+\index{Prov\+Region\+Manager\+Class@{Prov\+Region\+Manager\+Class}!get\+Prov\+Region@{get\+Prov\+Region}}
+\index{get\+Prov\+Region@{get\+Prov\+Region}!Prov\+Region\+Manager\+Class@{Prov\+Region\+Manager\+Class}}
+\subsubsection{\texorpdfstring{get\+Prov\+Region()}{getProvRegion()}}
+{\footnotesize\ttfamily \hyperlink{class_prov_region_class}{Prov\+Region\+Class} $\ast$ Prov\+Region\+Manager\+Class\+::get\+Prov\+Region (\begin{DoxyParamCaption}\item[{\hyperlink{class_global_manager_class_a794b4a5298c61f8d25d9da44b7826857}{Global\+Manager\+Class\+::region\+Type}}]{type,  }\item[{int}]{prov\+Region\+ID }\end{DoxyParamCaption})}
+
+
+
+Получение провинции по ID. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em type} & -\/ тип региона \\
+\hline
+\mbox{\tt in}  & {\em prov\+Region\+ID} & -\/ ID региона \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+регион по указанному ID
+\end{DoxyReturn}
+Если ID некорректен, то возвращается регион с ID = 0 \mbox{\Hypertarget{class_prov_region_manager_class_ab19852a66d53076486ff94ff4afd1d2b}\label{class_prov_region_manager_class_ab19852a66d53076486ff94ff4afd1d2b}} 
+\index{Prov\+Region\+Manager\+Class@{Prov\+Region\+Manager\+Class}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!Prov\+Region\+Manager\+Class@{Prov\+Region\+Manager\+Class}}
+\subsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily bool Prov\+Region\+Manager\+Class\+::\+Initialize (\begin{DoxyParamCaption}\item[{\hyperlink{class_path_class}{Path\+Class} $\ast$}]{filename }\end{DoxyParamCaption})}
+
+
+
+Инициализация класса и загрузка регионов 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em filename} & -\/ файл с данными о базовых регионах \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_prov_region_manager_class_a524eb11df226ed26ff043fb241707892}\label{class_prov_region_manager_class_a524eb11df226ed26ff043fb241707892}} 
+\index{Prov\+Region\+Manager\+Class@{Prov\+Region\+Manager\+Class}!Shutdown@{Shutdown}}
+\index{Shutdown@{Shutdown}!Prov\+Region\+Manager\+Class@{Prov\+Region\+Manager\+Class}}
+\subsubsection{\texorpdfstring{Shutdown()}{Shutdown()}}
+{\footnotesize\ttfamily void Prov\+Region\+Manager\+Class\+::\+Shutdown (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_prov_region_manager_class_a9efe4cf012f00b316ce05fe588454fcc}\label{class_prov_region_manager_class_a9efe4cf012f00b316ce05fe588454fcc}} 
+\index{Prov\+Region\+Manager\+Class@{Prov\+Region\+Manager\+Class}!m\+\_\+block\+Region@{m\+\_\+block\+Region}}
+\index{m\+\_\+block\+Region@{m\+\_\+block\+Region}!Prov\+Region\+Manager\+Class@{Prov\+Region\+Manager\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+block\+Region}{m\_blockRegion}}
+{\footnotesize\ttfamily std\+::vector$<$\hyperlink{class_block_region_class}{Block\+Region\+Class}$\ast$$>$ Prov\+Region\+Manager\+Class\+::m\+\_\+block\+Region\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Блоковые регионы 
+
+\mbox{\Hypertarget{class_prov_region_manager_class_ab7b0088ad2564be883213fefdf7fabc5}\label{class_prov_region_manager_class_ab7b0088ad2564be883213fefdf7fabc5}} 
+\index{Prov\+Region\+Manager\+Class@{Prov\+Region\+Manager\+Class}!m\+\_\+instance@{m\+\_\+instance}}
+\index{m\+\_\+instance@{m\+\_\+instance}!Prov\+Region\+Manager\+Class@{Prov\+Region\+Manager\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+instance}{m\_instance}}
+{\footnotesize\ttfamily \hyperlink{class_prov_region_manager_class}{Prov\+Region\+Manager\+Class} $\ast$ Prov\+Region\+Manager\+Class\+::m\+\_\+instance = 0\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Единственный экземпляр класса 
+
+\mbox{\Hypertarget{class_prov_region_manager_class_adb7dfea3fe97c915d3f3e0f33bcc5935}\label{class_prov_region_manager_class_adb7dfea3fe97c915d3f3e0f33bcc5935}} 
+\index{Prov\+Region\+Manager\+Class@{Prov\+Region\+Manager\+Class}!m\+\_\+nation\+Region@{m\+\_\+nation\+Region}}
+\index{m\+\_\+nation\+Region@{m\+\_\+nation\+Region}!Prov\+Region\+Manager\+Class@{Prov\+Region\+Manager\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+nation\+Region}{m\_nationRegion}}
+{\footnotesize\ttfamily std\+::vector$<$\hyperlink{class_nation_region_class}{Nation\+Region\+Class}$\ast$$>$ Prov\+Region\+Manager\+Class\+::m\+\_\+nation\+Region\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Регионы пров 
+
+\mbox{\Hypertarget{class_prov_region_manager_class_ab27c4d369607557a4e5c2662c060eea6}\label{class_prov_region_manager_class_ab27c4d369607557a4e5c2662c060eea6}} 
+\index{Prov\+Region\+Manager\+Class@{Prov\+Region\+Manager\+Class}!m\+\_\+prov\+Regions@{m\+\_\+prov\+Regions}}
+\index{m\+\_\+prov\+Regions@{m\+\_\+prov\+Regions}!Prov\+Region\+Manager\+Class@{Prov\+Region\+Manager\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+prov\+Regions}{m\_provRegions}}
+{\footnotesize\ttfamily std\+::vector$<$\hyperlink{class_prov_region_class}{Prov\+Region\+Class}$\ast$$>$ Prov\+Region\+Manager\+Class\+::m\+\_\+prov\+Regions\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Базовые регионы 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_prov_region_manager_class_8h}{Prov\+Region\+Manager\+Class.\+h}\item 
+\hyperlink{_prov_region_manager_class_8cpp}{Prov\+Region\+Manager\+Class.\+cpp}\end{DoxyCompactItemize}

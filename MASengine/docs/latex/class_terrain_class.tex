@@ -1,0 +1,490 @@
+\hypertarget{class_terrain_class}{}\section{Terrain\+Class Class Reference}
+\label{class_terrain_class}\index{Terrain\+Class@{Terrain\+Class}}
+
+
+{\ttfamily \#include $<$Terrain\+Class.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_terrain_class_aae5b1ce1998dfb5242937d51dfca2809}{Terrain\+Class} ()
+\item 
+\hyperlink{class_terrain_class_ac1fd7430fe016f3d678dd69b11102245}{Terrain\+Class} (const \hyperlink{class_terrain_class}{Terrain\+Class} \&)
+\item 
+\hyperlink{class_terrain_class_a6b287f4d422d8f6b9e3206ef1ea2ee27}{$\sim$\+Terrain\+Class} ()
+\item 
+bool \hyperlink{class_terrain_class_a09e3bc6e0936bd3179cca06ea8338558}{Initialize} (I\+D3\+D11\+Device $\ast$device, I\+D3\+D11\+Device\+Context $\ast$device\+Context, \hyperlink{class_path_class}{Path\+Class} $\ast$block\+Filename, int id)
+\item 
+void \hyperlink{class_terrain_class_a65329416121922ecd03d3d7b8ebb5f87}{Shutdown} ()
+\item 
+bool \hyperlink{class_terrain_class_a705e01fe8d579d548ed934ca6059e0c6}{Render} (\hyperlink{class_terrain_shader_class}{Terrain\+Shader\+Class} $\ast$terrain\+Shader, \hyperlink{class_water_shader_class}{Water\+Shader\+Class} $\ast$water\+Shader, I\+D3\+D11\+Device\+Context $\ast$device\+Context, D3\+D\+X\+M\+A\+T\+R\+IX world\+Matrix, D3\+D\+X\+M\+A\+T\+R\+IX view\+Matrix, D3\+D\+X\+M\+A\+T\+R\+IX projection\+Matrix, I\+D3\+D11\+Shader\+Resource\+View $\ast$$\ast$map\+Textures, D3\+D\+X\+V\+E\+C\+T\+O\+R3 light\+Direction, D3\+D\+X\+V\+E\+C\+T\+O\+R4 ambient\+Color, D3\+D\+X\+V\+E\+C\+T\+O\+R4 diffuse\+Color, D3\+D\+X\+V\+E\+C\+T\+O\+R3 camera\+Position, D3\+D\+X\+V\+E\+C\+T\+O\+R4 specular\+Color, float specular\+Power, float \hyperlink{_graphics_class_8h_ae4d41ac39678c64d2ef730cecc77cc64}{S\+C\+R\+E\+E\+N\+\_\+\+D\+E\+P\+TH}, \hyperlink{class_frustum_class}{Frustum\+Class} $\ast$frustum)
+\item 
+bool \hyperlink{class_terrain_class_a59561b131a44578d5e9658cc3b9f94b1}{pick} (I\+D3\+D11\+Device\+Context $\ast$device\+Context, D3\+D\+X\+V\+E\+C\+T\+O\+R3 ray\+Origin, D3\+D\+X\+V\+E\+C\+T\+O\+R3 ray\+Direction, int \&prov\+Num, D3\+D\+X\+V\+E\+C\+T\+O\+R3 \&point)
+\item 
+bool \hyperlink{class_terrain_class_a87c388bacd31188df5c9a0cbde20975a}{get\+Color\+From\+B\+MP} (float x, float y, D3\+D\+X\+V\+E\+C\+T\+O\+R3 \&color, \hyperlink{class_path_class}{Path\+Class} $\ast$filename)
+\item 
+D3\+D\+X\+V\+E\+C\+T\+O\+R3 \hyperlink{class_terrain_class_a7f6007a16304d7cd0efbde1ca320bdc3}{get\+Position} ()
+\begin{DoxyCompactList}\small\item\em Получение позиции блока \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_terrain_class_a85fec8feb15a73d4b856e763c8625105}{render\+Water} (\hyperlink{class_water_shader_class}{Water\+Shader\+Class} $\ast$water\+Shader, I\+D3\+D11\+Device\+Context $\ast$device\+Context, D3\+D\+X\+M\+A\+T\+R\+IX world\+Matrix, D3\+D\+X\+M\+A\+T\+R\+IX view\+Matrix, D3\+D\+X\+M\+A\+T\+R\+IX projection\+Matrix, D3\+D\+X\+V\+E\+C\+T\+O\+R3 light\+Direction, D3\+D\+X\+V\+E\+C\+T\+O\+R4 ambient\+Color, D3\+D\+X\+V\+E\+C\+T\+O\+R4 diffuse\+Color, D3\+D\+X\+V\+E\+C\+T\+O\+R3 camera\+Position, D3\+D\+X\+V\+E\+C\+T\+O\+R4 specular\+Color, float specular\+Power, float \hyperlink{_graphics_class_8h_ae4d41ac39678c64d2ef730cecc77cc64}{S\+C\+R\+E\+E\+N\+\_\+\+D\+E\+P\+TH}, \hyperlink{class_frustum_class}{Frustum\+Class} $\ast$frustum)
+\item 
+bool \hyperlink{class_terrain_class_af04116d1575a5e51b4edd4943368ec1b}{read\+From\+File} (\hyperlink{class_path_class}{Path\+Class} $\ast$filename)
+\begin{DoxyCompactList}\small\item\em Получение данных из файла \end{DoxyCompactList}\item 
+D3\+D\+X\+V\+E\+C\+T\+O\+R4 $\ast$ \hyperlink{class_terrain_class_afe6b61761f91099e2d69e1681712eded}{get\+Prov\+Color} ()
+\begin{DoxyCompactList}\small\item\em Получение массива цветов пров в блоке \end{DoxyCompactList}\item 
+int \hyperlink{class_terrain_class_ad8928dc84aac8d73f7b51e7b23b3c00c}{get\+Lvl\+By\+Dist} (float dist)
+\begin{DoxyCompactList}\small\item\em Расчет уровня прорисовка в зависимости от дистанции \end{DoxyCompactList}\item 
+int \hyperlink{class_terrain_class_a47058be498196233e4ff49addad81c24}{get\+Prov\+Num} (int index)
+\begin{DoxyCompactList}\small\item\em Получение номера провинции по её индексу в регионе \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{class_terrain_class_aeeb736e6b77359830b252b74b1054945}{m\+\_\+id}
+\begin{DoxyCompactList}\small\item\em ID блока \end{DoxyCompactList}\item 
+float \hyperlink{class_terrain_class_a71a0f6882c7b84d5042ecfbe8ed30e7b}{m\+\_\+terrain\+Width}
+\item 
+float \hyperlink{class_terrain_class_aca2ee8ff8446e3730000ae32fdf46bd3}{m\+\_\+terrain\+Height}
+\begin{DoxyCompactList}\small\item\em Ширина и высота блока \end{DoxyCompactList}\item 
+int \hyperlink{class_terrain_class_a75f39c64ceade112a11343a6ff506693}{m\+\_\+mesh\+Hash} \mbox{[}\hyperlink{_terrain_class_8h_a5d0929f3af9dd1d7a4a73c1204046b3d}{N\+U\+M\+\_\+\+O\+F\+\_\+\+L\+V\+LS}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Хэши мешей всех уровней \end{DoxyCompactList}\item 
+int \hyperlink{class_terrain_class_aafdee0e62a07b1eeb4d0d9dd47afb96f}{m\+\_\+water\+Hash}
+\begin{DoxyCompactList}\small\item\em Хэш водяного меша \end{DoxyCompactList}\item 
+\hyperlink{class_path_class}{Path\+Class} $\ast$ \hyperlink{class_terrain_class_aaf0664db56c7d377055a97a5558413f6}{m\+\_\+hmap\+Filenames} \mbox{[}\hyperlink{_terrain_class_8h_a5d0929f3af9dd1d7a4a73c1204046b3d}{N\+U\+M\+\_\+\+O\+F\+\_\+\+L\+V\+LS}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Пути файлов с картами высот \end{DoxyCompactList}\item 
+\hyperlink{class_path_class}{Path\+Class} $\ast$ \hyperlink{class_terrain_class_a5f0e41791338175ddc7da7acc0c0d5b0}{m\+\_\+water\+Mesh\+Filename}
+\begin{DoxyCompactList}\small\item\em Путь до файла водяного меша \end{DoxyCompactList}\item 
+std\+::string \hyperlink{class_terrain_class_a925d3a6e9863a2783c059feebfa20e5f}{m\+\_\+hmap\+Filename\+Base}
+\begin{DoxyCompactList}\small\item\em Базовое имя, к которому прибаляются индексы для расчета путей \end{DoxyCompactList}\item 
+int \hyperlink{class_terrain_class_a6c809d52743848453d22c46bb5313db9}{m\+\_\+prov\+Texture\+Hash}
+\begin{DoxyCompactList}\small\item\em Хэш текстуры провами \end{DoxyCompactList}\item 
+\hyperlink{class_path_class}{Path\+Class} $\ast$ \hyperlink{class_terrain_class_ab13946b0cba4699b6e3ab1b77bae7df8}{m\+\_\+prov\+Filename}
+\begin{DoxyCompactList}\small\item\em Путь до текстуры с провами \end{DoxyCompactList}\item 
+int \hyperlink{class_terrain_class_a7e4266d10a62f0ce48ec5559378568c9}{m\+\_\+phys\+Texture\+Hash}
+\begin{DoxyCompactList}\small\item\em Хэш физической текстуры \end{DoxyCompactList}\item 
+\hyperlink{class_path_class}{Path\+Class} $\ast$ \hyperlink{class_terrain_class_ab6c54c84319e70daa0a11d17197aa4b2}{m\+\_\+phys\+Filename}
+\begin{DoxyCompactList}\small\item\em ПУть до физической текстуры \end{DoxyCompactList}\item 
+int \hyperlink{class_terrain_class_af3a4066db7e24daa1edcab59118e1eb0}{m\+\_\+water\+Texture\+Hash}
+\begin{DoxyCompactList}\small\item\em Хэш водной текстуры \end{DoxyCompactList}\item 
+\hyperlink{class_path_class}{Path\+Class} $\ast$ \hyperlink{class_terrain_class_ab8c638c5d5188c83fb23ecc31a838a79}{m\+\_\+water\+Filename}
+\begin{DoxyCompactList}\small\item\em Путь до водной текстуры \end{DoxyCompactList}\item 
+int \hyperlink{class_terrain_class_a87931e597bff1aecb6571ad2f963af6e}{m\+\_\+water\+Normal\+Texure\+Hash}
+\begin{DoxyCompactList}\small\item\em Хэш нормальной водной текстуры \end{DoxyCompactList}\item 
+\hyperlink{class_path_class}{Path\+Class} $\ast$ \hyperlink{class_terrain_class_a66e673097e6804021e1c8bed1acbe9f4}{m\+\_\+water\+Normal\+Filename}
+\begin{DoxyCompactList}\small\item\em Путь до нормальной водной текстуры \end{DoxyCompactList}\item 
+D3\+D\+X\+V\+E\+C\+T\+O\+R3 \hyperlink{class_terrain_class_aaefbd0a09326be78e0f0819c1fa09ce3}{m\+\_\+position}
+\begin{DoxyCompactList}\small\item\em Позиция блока на карте \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Блок с ландшафтом, оснвгая структурная единица 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_terrain_class_aae5b1ce1998dfb5242937d51dfca2809}\label{class_terrain_class_aae5b1ce1998dfb5242937d51dfca2809}} 
+\index{Terrain\+Class@{Terrain\+Class}!Terrain\+Class@{Terrain\+Class}}
+\index{Terrain\+Class@{Terrain\+Class}!Terrain\+Class@{Terrain\+Class}}
+\subsubsection{\texorpdfstring{Terrain\+Class()}{TerrainClass()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Terrain\+Class\+::\+Terrain\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_terrain_class_ac1fd7430fe016f3d678dd69b11102245}\label{class_terrain_class_ac1fd7430fe016f3d678dd69b11102245}} 
+\index{Terrain\+Class@{Terrain\+Class}!Terrain\+Class@{Terrain\+Class}}
+\index{Terrain\+Class@{Terrain\+Class}!Terrain\+Class@{Terrain\+Class}}
+\subsubsection{\texorpdfstring{Terrain\+Class()}{TerrainClass()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Terrain\+Class\+::\+Terrain\+Class (\begin{DoxyParamCaption}\item[{const \hyperlink{class_terrain_class}{Terrain\+Class} \&}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_terrain_class_a6b287f4d422d8f6b9e3206ef1ea2ee27}\label{class_terrain_class_a6b287f4d422d8f6b9e3206ef1ea2ee27}} 
+\index{Terrain\+Class@{Terrain\+Class}!````~Terrain\+Class@{$\sim$\+Terrain\+Class}}
+\index{````~Terrain\+Class@{$\sim$\+Terrain\+Class}!Terrain\+Class@{Terrain\+Class}}
+\subsubsection{\texorpdfstring{$\sim$\+Terrain\+Class()}{~TerrainClass()}}
+{\footnotesize\ttfamily Terrain\+Class\+::$\sim$\+Terrain\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_terrain_class_a87c388bacd31188df5c9a0cbde20975a}\label{class_terrain_class_a87c388bacd31188df5c9a0cbde20975a}} 
+\index{Terrain\+Class@{Terrain\+Class}!get\+Color\+From\+B\+MP@{get\+Color\+From\+B\+MP}}
+\index{get\+Color\+From\+B\+MP@{get\+Color\+From\+B\+MP}!Terrain\+Class@{Terrain\+Class}}
+\subsubsection{\texorpdfstring{get\+Color\+From\+B\+M\+P()}{getColorFromBMP()}}
+{\footnotesize\ttfamily bool Terrain\+Class\+::get\+Color\+From\+B\+MP (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R3 \&}]{color,  }\item[{\hyperlink{class_path_class}{Path\+Class} $\ast$}]{filename }\end{DoxyParamCaption})}
+
+Получение цвета пикселя из изображения 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em x,y} & -\/ координаты пикселя \\
+\hline
+\mbox{\tt out}  & {\em color} & -\/ цвет пикселя \\
+\hline
+\mbox{\tt in}  & {\em -\/} & путь до изображения \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_terrain_class_ad8928dc84aac8d73f7b51e7b23b3c00c}\label{class_terrain_class_ad8928dc84aac8d73f7b51e7b23b3c00c}} 
+\index{Terrain\+Class@{Terrain\+Class}!get\+Lvl\+By\+Dist@{get\+Lvl\+By\+Dist}}
+\index{get\+Lvl\+By\+Dist@{get\+Lvl\+By\+Dist}!Terrain\+Class@{Terrain\+Class}}
+\subsubsection{\texorpdfstring{get\+Lvl\+By\+Dist()}{getLvlByDist()}}
+{\footnotesize\ttfamily int Terrain\+Class\+::get\+Lvl\+By\+Dist (\begin{DoxyParamCaption}\item[{float}]{dist }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Расчет уровня прорисовка в зависимости от дистанции 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em dist} & -\/ расстояние от блока до камеры \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+уровень прорисовки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_terrain_class_a7f6007a16304d7cd0efbde1ca320bdc3}\label{class_terrain_class_a7f6007a16304d7cd0efbde1ca320bdc3}} 
+\index{Terrain\+Class@{Terrain\+Class}!get\+Position@{get\+Position}}
+\index{get\+Position@{get\+Position}!Terrain\+Class@{Terrain\+Class}}
+\subsubsection{\texorpdfstring{get\+Position()}{getPosition()}}
+{\footnotesize\ttfamily D3\+D\+X\+V\+E\+C\+T\+O\+R3 Terrain\+Class\+::get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Получение позиции блока 
+
+\begin{DoxyReturn}{Returns}
+позиция блока 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_terrain_class_afe6b61761f91099e2d69e1681712eded}\label{class_terrain_class_afe6b61761f91099e2d69e1681712eded}} 
+\index{Terrain\+Class@{Terrain\+Class}!get\+Prov\+Color@{get\+Prov\+Color}}
+\index{get\+Prov\+Color@{get\+Prov\+Color}!Terrain\+Class@{Terrain\+Class}}
+\subsubsection{\texorpdfstring{get\+Prov\+Color()}{getProvColor()}}
+{\footnotesize\ttfamily D3\+D\+X\+V\+E\+C\+T\+O\+R4 $\ast$ Terrain\+Class\+::get\+Prov\+Color (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Получение массива цветов пров в блоке 
+
+\begin{DoxyReturn}{Returns}
+массив цветов в прове 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_terrain_class_a47058be498196233e4ff49addad81c24}\label{class_terrain_class_a47058be498196233e4ff49addad81c24}} 
+\index{Terrain\+Class@{Terrain\+Class}!get\+Prov\+Num@{get\+Prov\+Num}}
+\index{get\+Prov\+Num@{get\+Prov\+Num}!Terrain\+Class@{Terrain\+Class}}
+\subsubsection{\texorpdfstring{get\+Prov\+Num()}{getProvNum()}}
+{\footnotesize\ttfamily int Terrain\+Class\+::get\+Prov\+Num (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Получение номера провинции по её индексу в регионе 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em -\/} & индекс провы в регионе \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_terrain_class_a09e3bc6e0936bd3179cca06ea8338558}\label{class_terrain_class_a09e3bc6e0936bd3179cca06ea8338558}} 
+\index{Terrain\+Class@{Terrain\+Class}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!Terrain\+Class@{Terrain\+Class}}
+\subsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily bool Terrain\+Class\+::\+Initialize (\begin{DoxyParamCaption}\item[{I\+D3\+D11\+Device $\ast$}]{device,  }\item[{I\+D3\+D11\+Device\+Context $\ast$}]{device\+Context,  }\item[{\hyperlink{class_path_class}{Path\+Class} $\ast$}]{block\+Filename,  }\item[{int}]{id }\end{DoxyParamCaption})}
+
+Загрузка блока 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em device,device\+Context} & -\/ графическое устройство \\
+\hline
+\mbox{\tt in}  & {\em block\+Filename} & -\/ путь до файла блока \\
+\hline
+\mbox{\tt in}  & {\em id} & -\/ ID блока \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_terrain_class_a59561b131a44578d5e9658cc3b9f94b1}\label{class_terrain_class_a59561b131a44578d5e9658cc3b9f94b1}} 
+\index{Terrain\+Class@{Terrain\+Class}!pick@{pick}}
+\index{pick@{pick}!Terrain\+Class@{Terrain\+Class}}
+\subsubsection{\texorpdfstring{pick()}{pick()}}
+{\footnotesize\ttfamily bool Terrain\+Class\+::pick (\begin{DoxyParamCaption}\item[{I\+D3\+D11\+Device\+Context $\ast$}]{device\+Context,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R3}]{ray\+Origin,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R3}]{ray\+Direction,  }\item[{int \&}]{prov\+Num,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R3 \&}]{point }\end{DoxyParamCaption})}
+
+Получение провинции, выбранной при клике 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em device\+Context} & -\/ графическое устройство \\
+\hline
+\mbox{\tt in}  & {\em mouseX,mouseY} & -\/ позиция курсора \\
+\hline
+\mbox{\tt out}  & {\em prov\+Num} & -\/ индекс выбранной провинции \\
+\hline
+\mbox{\tt out}  & {\em point} & -\/ точка пересечения \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если не был выбран ни один элемент, true, если был 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_terrain_class_af04116d1575a5e51b4edd4943368ec1b}\label{class_terrain_class_af04116d1575a5e51b4edd4943368ec1b}} 
+\index{Terrain\+Class@{Terrain\+Class}!read\+From\+File@{read\+From\+File}}
+\index{read\+From\+File@{read\+From\+File}!Terrain\+Class@{Terrain\+Class}}
+\subsubsection{\texorpdfstring{read\+From\+File()}{readFromFile()}}
+{\footnotesize\ttfamily bool Terrain\+Class\+::read\+From\+File (\begin{DoxyParamCaption}\item[{\hyperlink{class_path_class}{Path\+Class} $\ast$}]{filename }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Получение данных из файла 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em block\+Filename} & -\/ путь до файла блока \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_terrain_class_a705e01fe8d579d548ed934ca6059e0c6}\label{class_terrain_class_a705e01fe8d579d548ed934ca6059e0c6}} 
+\index{Terrain\+Class@{Terrain\+Class}!Render@{Render}}
+\index{Render@{Render}!Terrain\+Class@{Terrain\+Class}}
+\subsubsection{\texorpdfstring{Render()}{Render()}}
+{\footnotesize\ttfamily bool Terrain\+Class\+::\+Render (\begin{DoxyParamCaption}\item[{\hyperlink{class_terrain_shader_class}{Terrain\+Shader\+Class} $\ast$}]{terrain\+Shader,  }\item[{\hyperlink{class_water_shader_class}{Water\+Shader\+Class} $\ast$}]{water\+Shader,  }\item[{I\+D3\+D11\+Device\+Context $\ast$}]{device\+Context,  }\item[{D3\+D\+X\+M\+A\+T\+R\+IX}]{world\+Matrix,  }\item[{D3\+D\+X\+M\+A\+T\+R\+IX}]{view\+Matrix,  }\item[{D3\+D\+X\+M\+A\+T\+R\+IX}]{projection\+Matrix,  }\item[{I\+D3\+D11\+Shader\+Resource\+View $\ast$$\ast$}]{map\+Textures,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R3}]{light\+Direction,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R4}]{ambient\+Color,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R4}]{diffuse\+Color,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R3}]{camera\+Position,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R4}]{specular\+Color,  }\item[{float}]{specular\+Power,  }\item[{float}]{S\+C\+R\+E\+E\+N\+\_\+\+D\+E\+P\+TH,  }\item[{\hyperlink{class_frustum_class}{Frustum\+Class} $\ast$}]{frustum }\end{DoxyParamCaption})}
+
+Прорисовка блока 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em terrain\+Shader} & -\/ шейдер блоков \\
+\hline
+\mbox{\tt in}  & {\em water\+Shader} & -\/ шейдер воды \\
+\hline
+\mbox{\tt in}  & {\em device\+Context} & -\/ графическое устройство \\
+\hline
+\mbox{\tt in}  & {\em world\+Matrix,view\+Matrix,projection\+Matrix} & -\/ матрицы с параметрами \\
+\hline
+\mbox{\tt in}  & {\em map\+Textures} & -\/ текстуры физ. карты \\
+\hline
+\mbox{\tt in}  & {\em light\+Direction} & -\/ направление света \\
+\hline
+\mbox{\tt in}  & {\em ambient\+Color} & -\/ цвет обтеквющего света \\
+\hline
+\mbox{\tt in}  & {\em diffuse\+Color} & -\/ цвет диффузного света \\
+\hline
+\mbox{\tt in}  & {\em camera\+Position} & -\/ позиция камеры \\
+\hline
+\mbox{\tt in}  & {\em specular\+Color} & -\/ цвет зеркального света \\
+\hline
+\mbox{\tt in}  & {\em specular\+Power} & -\/ мощность зеркального света \\
+\hline
+\mbox{\tt in}  & {\em S\+C\+R\+E\+E\+N\+\_\+\+D\+E\+P\+TH} & -\/ глубина экрана \\
+\hline
+\mbox{\tt in}  & {\em frustum} & -\/ конус усечения \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_terrain_class_a85fec8feb15a73d4b856e763c8625105}\label{class_terrain_class_a85fec8feb15a73d4b856e763c8625105}} 
+\index{Terrain\+Class@{Terrain\+Class}!render\+Water@{render\+Water}}
+\index{render\+Water@{render\+Water}!Terrain\+Class@{Terrain\+Class}}
+\subsubsection{\texorpdfstring{render\+Water()}{renderWater()}}
+{\footnotesize\ttfamily bool Terrain\+Class\+::render\+Water (\begin{DoxyParamCaption}\item[{\hyperlink{class_water_shader_class}{Water\+Shader\+Class} $\ast$}]{water\+Shader,  }\item[{I\+D3\+D11\+Device\+Context $\ast$}]{device\+Context,  }\item[{D3\+D\+X\+M\+A\+T\+R\+IX}]{world\+Matrix,  }\item[{D3\+D\+X\+M\+A\+T\+R\+IX}]{view\+Matrix,  }\item[{D3\+D\+X\+M\+A\+T\+R\+IX}]{projection\+Matrix,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R3}]{light\+Direction,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R4}]{ambient\+Color,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R4}]{diffuse\+Color,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R3}]{camera\+Position,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R4}]{specular\+Color,  }\item[{float}]{specular\+Power,  }\item[{float}]{S\+C\+R\+E\+E\+N\+\_\+\+D\+E\+P\+TH,  }\item[{\hyperlink{class_frustum_class}{Frustum\+Class} $\ast$}]{frustum }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Прорисовка воды 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em water\+Shader} & -\/ шейдер воды \\
+\hline
+\mbox{\tt in}  & {\em device\+Context} & -\/ графическое устройство \\
+\hline
+\mbox{\tt in}  & {\em world\+Matrix,view\+Matrix,projection\+Matrix} & -\/ матрицы с параметрами \\
+\hline
+\mbox{\tt in}  & {\em light\+Direction} & -\/ направление света \\
+\hline
+\mbox{\tt in}  & {\em ambient\+Color} & -\/ цвет обтекающего света \\
+\hline
+\mbox{\tt in}  & {\em diffuse\+Color} & -\/ цвет диффузного света \\
+\hline
+\mbox{\tt in}  & {\em camera\+Position} & -\/ позиция камеры \\
+\hline
+\mbox{\tt in}  & {\em specular\+Color} & -\/ цвет зеркального света \\
+\hline
+\mbox{\tt in}  & {\em specular\+Power} & -\/ мощность зеркального света \\
+\hline
+\mbox{\tt in}  & {\em S\+C\+R\+E\+E\+N\+\_\+\+D\+E\+P\+TH} & -\/ глубина экрана \\
+\hline
+\mbox{\tt in}  & {\em frustum} & -\/ конус усечения \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_terrain_class_a65329416121922ecd03d3d7b8ebb5f87}\label{class_terrain_class_a65329416121922ecd03d3d7b8ebb5f87}} 
+\index{Terrain\+Class@{Terrain\+Class}!Shutdown@{Shutdown}}
+\index{Shutdown@{Shutdown}!Terrain\+Class@{Terrain\+Class}}
+\subsubsection{\texorpdfstring{Shutdown()}{Shutdown()}}
+{\footnotesize\ttfamily void Terrain\+Class\+::\+Shutdown (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_terrain_class_a925d3a6e9863a2783c059feebfa20e5f}\label{class_terrain_class_a925d3a6e9863a2783c059feebfa20e5f}} 
+\index{Terrain\+Class@{Terrain\+Class}!m\+\_\+hmap\+Filename\+Base@{m\+\_\+hmap\+Filename\+Base}}
+\index{m\+\_\+hmap\+Filename\+Base@{m\+\_\+hmap\+Filename\+Base}!Terrain\+Class@{Terrain\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+hmap\+Filename\+Base}{m\_hmapFilenameBase}}
+{\footnotesize\ttfamily std\+::string Terrain\+Class\+::m\+\_\+hmap\+Filename\+Base\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Базовое имя, к которому прибаляются индексы для расчета путей 
+
+\mbox{\Hypertarget{class_terrain_class_aaf0664db56c7d377055a97a5558413f6}\label{class_terrain_class_aaf0664db56c7d377055a97a5558413f6}} 
+\index{Terrain\+Class@{Terrain\+Class}!m\+\_\+hmap\+Filenames@{m\+\_\+hmap\+Filenames}}
+\index{m\+\_\+hmap\+Filenames@{m\+\_\+hmap\+Filenames}!Terrain\+Class@{Terrain\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+hmap\+Filenames}{m\_hmapFilenames}}
+{\footnotesize\ttfamily \hyperlink{class_path_class}{Path\+Class}$\ast$ Terrain\+Class\+::m\+\_\+hmap\+Filenames\mbox{[}\hyperlink{_terrain_class_8h_a5d0929f3af9dd1d7a4a73c1204046b3d}{N\+U\+M\+\_\+\+O\+F\+\_\+\+L\+V\+LS}\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Пути файлов с картами высот 
+
+\mbox{\Hypertarget{class_terrain_class_aeeb736e6b77359830b252b74b1054945}\label{class_terrain_class_aeeb736e6b77359830b252b74b1054945}} 
+\index{Terrain\+Class@{Terrain\+Class}!m\+\_\+id@{m\+\_\+id}}
+\index{m\+\_\+id@{m\+\_\+id}!Terrain\+Class@{Terrain\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+id}{m\_id}}
+{\footnotesize\ttfamily int Terrain\+Class\+::m\+\_\+id\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ID блока 
+
+\mbox{\Hypertarget{class_terrain_class_a75f39c64ceade112a11343a6ff506693}\label{class_terrain_class_a75f39c64ceade112a11343a6ff506693}} 
+\index{Terrain\+Class@{Terrain\+Class}!m\+\_\+mesh\+Hash@{m\+\_\+mesh\+Hash}}
+\index{m\+\_\+mesh\+Hash@{m\+\_\+mesh\+Hash}!Terrain\+Class@{Terrain\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+mesh\+Hash}{m\_meshHash}}
+{\footnotesize\ttfamily int Terrain\+Class\+::m\+\_\+mesh\+Hash\mbox{[}\hyperlink{_terrain_class_8h_a5d0929f3af9dd1d7a4a73c1204046b3d}{N\+U\+M\+\_\+\+O\+F\+\_\+\+L\+V\+LS}\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Хэши мешей всех уровней 
+
+\mbox{\Hypertarget{class_terrain_class_ab6c54c84319e70daa0a11d17197aa4b2}\label{class_terrain_class_ab6c54c84319e70daa0a11d17197aa4b2}} 
+\index{Terrain\+Class@{Terrain\+Class}!m\+\_\+phys\+Filename@{m\+\_\+phys\+Filename}}
+\index{m\+\_\+phys\+Filename@{m\+\_\+phys\+Filename}!Terrain\+Class@{Terrain\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+phys\+Filename}{m\_physFilename}}
+{\footnotesize\ttfamily \hyperlink{class_path_class}{Path\+Class}$\ast$ Terrain\+Class\+::m\+\_\+phys\+Filename\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ПУть до физической текстуры 
+
+\mbox{\Hypertarget{class_terrain_class_a7e4266d10a62f0ce48ec5559378568c9}\label{class_terrain_class_a7e4266d10a62f0ce48ec5559378568c9}} 
+\index{Terrain\+Class@{Terrain\+Class}!m\+\_\+phys\+Texture\+Hash@{m\+\_\+phys\+Texture\+Hash}}
+\index{m\+\_\+phys\+Texture\+Hash@{m\+\_\+phys\+Texture\+Hash}!Terrain\+Class@{Terrain\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+phys\+Texture\+Hash}{m\_physTextureHash}}
+{\footnotesize\ttfamily int Terrain\+Class\+::m\+\_\+phys\+Texture\+Hash\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Хэш физической текстуры 
+
+\mbox{\Hypertarget{class_terrain_class_aaefbd0a09326be78e0f0819c1fa09ce3}\label{class_terrain_class_aaefbd0a09326be78e0f0819c1fa09ce3}} 
+\index{Terrain\+Class@{Terrain\+Class}!m\+\_\+position@{m\+\_\+position}}
+\index{m\+\_\+position@{m\+\_\+position}!Terrain\+Class@{Terrain\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+position}{m\_position}}
+{\footnotesize\ttfamily D3\+D\+X\+V\+E\+C\+T\+O\+R3 Terrain\+Class\+::m\+\_\+position\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Позиция блока на карте 
+
+\mbox{\Hypertarget{class_terrain_class_ab13946b0cba4699b6e3ab1b77bae7df8}\label{class_terrain_class_ab13946b0cba4699b6e3ab1b77bae7df8}} 
+\index{Terrain\+Class@{Terrain\+Class}!m\+\_\+prov\+Filename@{m\+\_\+prov\+Filename}}
+\index{m\+\_\+prov\+Filename@{m\+\_\+prov\+Filename}!Terrain\+Class@{Terrain\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+prov\+Filename}{m\_provFilename}}
+{\footnotesize\ttfamily \hyperlink{class_path_class}{Path\+Class}$\ast$ Terrain\+Class\+::m\+\_\+prov\+Filename\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Путь до текстуры с провами 
+
+\mbox{\Hypertarget{class_terrain_class_a6c809d52743848453d22c46bb5313db9}\label{class_terrain_class_a6c809d52743848453d22c46bb5313db9}} 
+\index{Terrain\+Class@{Terrain\+Class}!m\+\_\+prov\+Texture\+Hash@{m\+\_\+prov\+Texture\+Hash}}
+\index{m\+\_\+prov\+Texture\+Hash@{m\+\_\+prov\+Texture\+Hash}!Terrain\+Class@{Terrain\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+prov\+Texture\+Hash}{m\_provTextureHash}}
+{\footnotesize\ttfamily int Terrain\+Class\+::m\+\_\+prov\+Texture\+Hash\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Хэш текстуры провами 
+
+\mbox{\Hypertarget{class_terrain_class_aca2ee8ff8446e3730000ae32fdf46bd3}\label{class_terrain_class_aca2ee8ff8446e3730000ae32fdf46bd3}} 
+\index{Terrain\+Class@{Terrain\+Class}!m\+\_\+terrain\+Height@{m\+\_\+terrain\+Height}}
+\index{m\+\_\+terrain\+Height@{m\+\_\+terrain\+Height}!Terrain\+Class@{Terrain\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+terrain\+Height}{m\_terrainHeight}}
+{\footnotesize\ttfamily float Terrain\+Class\+::m\+\_\+terrain\+Height\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ширина и высота блока 
+
+\mbox{\Hypertarget{class_terrain_class_a71a0f6882c7b84d5042ecfbe8ed30e7b}\label{class_terrain_class_a71a0f6882c7b84d5042ecfbe8ed30e7b}} 
+\index{Terrain\+Class@{Terrain\+Class}!m\+\_\+terrain\+Width@{m\+\_\+terrain\+Width}}
+\index{m\+\_\+terrain\+Width@{m\+\_\+terrain\+Width}!Terrain\+Class@{Terrain\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+terrain\+Width}{m\_terrainWidth}}
+{\footnotesize\ttfamily float Terrain\+Class\+::m\+\_\+terrain\+Width\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_terrain_class_ab8c638c5d5188c83fb23ecc31a838a79}\label{class_terrain_class_ab8c638c5d5188c83fb23ecc31a838a79}} 
+\index{Terrain\+Class@{Terrain\+Class}!m\+\_\+water\+Filename@{m\+\_\+water\+Filename}}
+\index{m\+\_\+water\+Filename@{m\+\_\+water\+Filename}!Terrain\+Class@{Terrain\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+water\+Filename}{m\_waterFilename}}
+{\footnotesize\ttfamily \hyperlink{class_path_class}{Path\+Class}$\ast$ Terrain\+Class\+::m\+\_\+water\+Filename\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Путь до водной текстуры 
+
+\mbox{\Hypertarget{class_terrain_class_aafdee0e62a07b1eeb4d0d9dd47afb96f}\label{class_terrain_class_aafdee0e62a07b1eeb4d0d9dd47afb96f}} 
+\index{Terrain\+Class@{Terrain\+Class}!m\+\_\+water\+Hash@{m\+\_\+water\+Hash}}
+\index{m\+\_\+water\+Hash@{m\+\_\+water\+Hash}!Terrain\+Class@{Terrain\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+water\+Hash}{m\_waterHash}}
+{\footnotesize\ttfamily int Terrain\+Class\+::m\+\_\+water\+Hash\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Хэш водяного меша 
+
+\mbox{\Hypertarget{class_terrain_class_a5f0e41791338175ddc7da7acc0c0d5b0}\label{class_terrain_class_a5f0e41791338175ddc7da7acc0c0d5b0}} 
+\index{Terrain\+Class@{Terrain\+Class}!m\+\_\+water\+Mesh\+Filename@{m\+\_\+water\+Mesh\+Filename}}
+\index{m\+\_\+water\+Mesh\+Filename@{m\+\_\+water\+Mesh\+Filename}!Terrain\+Class@{Terrain\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+water\+Mesh\+Filename}{m\_waterMeshFilename}}
+{\footnotesize\ttfamily \hyperlink{class_path_class}{Path\+Class}$\ast$ Terrain\+Class\+::m\+\_\+water\+Mesh\+Filename\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Путь до файла водяного меша 
+
+\mbox{\Hypertarget{class_terrain_class_a66e673097e6804021e1c8bed1acbe9f4}\label{class_terrain_class_a66e673097e6804021e1c8bed1acbe9f4}} 
+\index{Terrain\+Class@{Terrain\+Class}!m\+\_\+water\+Normal\+Filename@{m\+\_\+water\+Normal\+Filename}}
+\index{m\+\_\+water\+Normal\+Filename@{m\+\_\+water\+Normal\+Filename}!Terrain\+Class@{Terrain\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+water\+Normal\+Filename}{m\_waterNormalFilename}}
+{\footnotesize\ttfamily \hyperlink{class_path_class}{Path\+Class}$\ast$ Terrain\+Class\+::m\+\_\+water\+Normal\+Filename\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Путь до нормальной водной текстуры 
+
+\mbox{\Hypertarget{class_terrain_class_a87931e597bff1aecb6571ad2f963af6e}\label{class_terrain_class_a87931e597bff1aecb6571ad2f963af6e}} 
+\index{Terrain\+Class@{Terrain\+Class}!m\+\_\+water\+Normal\+Texure\+Hash@{m\+\_\+water\+Normal\+Texure\+Hash}}
+\index{m\+\_\+water\+Normal\+Texure\+Hash@{m\+\_\+water\+Normal\+Texure\+Hash}!Terrain\+Class@{Terrain\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+water\+Normal\+Texure\+Hash}{m\_waterNormalTexureHash}}
+{\footnotesize\ttfamily int Terrain\+Class\+::m\+\_\+water\+Normal\+Texure\+Hash\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Хэш нормальной водной текстуры 
+
+\mbox{\Hypertarget{class_terrain_class_af3a4066db7e24daa1edcab59118e1eb0}\label{class_terrain_class_af3a4066db7e24daa1edcab59118e1eb0}} 
+\index{Terrain\+Class@{Terrain\+Class}!m\+\_\+water\+Texture\+Hash@{m\+\_\+water\+Texture\+Hash}}
+\index{m\+\_\+water\+Texture\+Hash@{m\+\_\+water\+Texture\+Hash}!Terrain\+Class@{Terrain\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+water\+Texture\+Hash}{m\_waterTextureHash}}
+{\footnotesize\ttfamily int Terrain\+Class\+::m\+\_\+water\+Texture\+Hash\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Хэш водной текстуры 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_terrain_class_8h}{Terrain\+Class.\+h}\item 
+\hyperlink{_terrain_class_8cpp}{Terrain\+Class.\+cpp}\end{DoxyCompactItemize}

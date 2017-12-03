@@ -1,0 +1,74 @@
+\hypertarget{struct_font_class_1_1_font_group_type}{}\section{Font\+Class\+:\+:Font\+Group\+Type Struct Reference}
+\label{struct_font_class_1_1_font_group_type}\index{Font\+Class\+::\+Font\+Group\+Type@{Font\+Class\+::\+Font\+Group\+Type}}
+
+
+Совокупность данных об шрифте  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_font_class_1_1_font_type}{Font\+Type} \& \hyperlink{struct_font_class_1_1_font_group_type_a8af93598b45bd03b0e64516433a0f0ed}{operator\mbox{[}$\,$\mbox{]}} (int ind)
+\item 
+void \hyperlink{struct_font_class_1_1_font_group_type_a1f650413397fead664d492ef9edea16c}{emplace} (int ind, \hyperlink{struct_font_class_1_1_font_type}{Font\+Type} $\ast$font)
+\begin{DoxyCompactList}\small\item\em Добавление нового символа в шрифт \end{DoxyCompactList}\item 
+void \hyperlink{struct_font_class_1_1_font_group_type_afed1809b716cfa6dd6c5d33bf643639d}{Shutdown} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::map$<$ int, \hyperlink{struct_font_class_1_1_font_type}{Font\+Type} $\ast$ $>$ \hyperlink{struct_font_class_1_1_font_group_type_a3f9205834f177eedffec9ea36ce6c9b3}{fonts}
+\begin{DoxyCompactList}\small\item\em Данные о шрифте, включающие числовой код для каждого символа \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Совокупность данных об шрифте 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{struct_font_class_1_1_font_group_type_a1f650413397fead664d492ef9edea16c}\label{struct_font_class_1_1_font_group_type_a1f650413397fead664d492ef9edea16c}} 
+\index{Font\+Class\+::\+Font\+Group\+Type@{Font\+Class\+::\+Font\+Group\+Type}!emplace@{emplace}}
+\index{emplace@{emplace}!Font\+Class\+::\+Font\+Group\+Type@{Font\+Class\+::\+Font\+Group\+Type}}
+\subsubsection{\texorpdfstring{emplace()}{emplace()}}
+{\footnotesize\ttfamily void Font\+Class\+::\+Font\+Group\+Type\+::emplace (\begin{DoxyParamCaption}\item[{int}]{ind,  }\item[{\hyperlink{struct_font_class_1_1_font_type}{Font\+Type} $\ast$}]{font }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Добавление нового символа в шрифт 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em ind} & -\/ код символа \\
+\hline
+\mbox{\tt in}  & {\em font} & -\/ данные о символе \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{struct_font_class_1_1_font_group_type_a8af93598b45bd03b0e64516433a0f0ed}\label{struct_font_class_1_1_font_group_type_a8af93598b45bd03b0e64516433a0f0ed}} 
+\index{Font\+Class\+::\+Font\+Group\+Type@{Font\+Class\+::\+Font\+Group\+Type}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!Font\+Class\+::\+Font\+Group\+Type@{Font\+Class\+::\+Font\+Group\+Type}}
+\subsubsection{\texorpdfstring{operator[]()}{operator[]()}}
+{\footnotesize\ttfamily \hyperlink{struct_font_class_1_1_font_type}{Font\+Type}\& Font\+Class\+::\+Font\+Group\+Type\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{int}]{ind }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{struct_font_class_1_1_font_group_type_afed1809b716cfa6dd6c5d33bf643639d}\label{struct_font_class_1_1_font_group_type_afed1809b716cfa6dd6c5d33bf643639d}} 
+\index{Font\+Class\+::\+Font\+Group\+Type@{Font\+Class\+::\+Font\+Group\+Type}!Shutdown@{Shutdown}}
+\index{Shutdown@{Shutdown}!Font\+Class\+::\+Font\+Group\+Type@{Font\+Class\+::\+Font\+Group\+Type}}
+\subsubsection{\texorpdfstring{Shutdown()}{Shutdown()}}
+{\footnotesize\ttfamily void Font\+Class\+::\+Font\+Group\+Type\+::\+Shutdown (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{struct_font_class_1_1_font_group_type_a3f9205834f177eedffec9ea36ce6c9b3}\label{struct_font_class_1_1_font_group_type_a3f9205834f177eedffec9ea36ce6c9b3}} 
+\index{Font\+Class\+::\+Font\+Group\+Type@{Font\+Class\+::\+Font\+Group\+Type}!fonts@{fonts}}
+\index{fonts@{fonts}!Font\+Class\+::\+Font\+Group\+Type@{Font\+Class\+::\+Font\+Group\+Type}}
+\subsubsection{\texorpdfstring{fonts}{fonts}}
+{\footnotesize\ttfamily std\+::map$<$int, \hyperlink{struct_font_class_1_1_font_type}{Font\+Type}$\ast$$>$ Font\+Class\+::\+Font\+Group\+Type\+::fonts}
+
+
+
+Данные о шрифте, включающие числовой код для каждого символа 
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_font_class_8h}{Font\+Class.\+h}\end{DoxyCompactItemize}

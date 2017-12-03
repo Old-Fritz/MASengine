@@ -1,4 +1,4 @@
-////////////////////////////////////////////////////////////////////////////////
+﻿////////////////////////////////////////////////////////////////////////////////
 // Filename: ConditionCheckerClass.h
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -22,26 +22,29 @@
 // Class name: ConditionCheckerClass
 ////////////////////////////////////////////////////////////////////////////////
 
-
+/*!
+\addtogroup CommandManagment
+@{
+*/
+/*!
+Обработка логических выражений
+*/
 class ConditionCheckerClass
 {
 public:
 	ConditionCheckerClass();
 
+	//! \brief Вычисление выражения \param[in] expression - логическое выражение \return Результат выражения
+	//! \details Пока работает только для выражений типа XXXzzYYY, где XXX - левый параметр, YYY - правый параметр, а zz - некий оператор
 	bool checkCondition(const std::string& expression);
 private:
+	//! Вычисление условия на ==  \param[in] expression - логическое выражение \return Результат выражения
 	bool inCaseEquel(const std::string& expression);
-
-private:
-	std::string m_expression;
-	int m_position = 0;
-	int m_group;
-	double m_groupval;
 };
 
 /////////////
 // GLOBALS //
 /////////////
 static ConditionCheckerClass ConditionChecker;
-
+/*! @} */
 #endif

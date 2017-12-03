@@ -1,4 +1,4 @@
-////////////////////////////////////////////////////////////////////////////////
+﻿////////////////////////////////////////////////////////////////////////////////
 // Filename: CalculatorClass.h
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -22,27 +22,35 @@
 // Class name: CalculatorClass
 ////////////////////////////////////////////////////////////////////////////////
 
-
+/*!
+\addtogroup CommandManagment 
+@{
+*/
+/*!
+Переводит строковое выражение в число (не шарю особо, как робит)
+*/
 class CalculatorClass
 {
 public:
 	CalculatorClass();
 
-
+	//! Расчитать выражение \param[in] expression - строковое выражение \return результат выражения
 	double calculate(const std::string& expression);
 private:
-	//the main function, checks EOF, ' ', floats and incorrect input.
-	//Deals with +-*=()/ and manipulate other functions.
+	/*! \brief Главная функция
+	\details проверяет EOF, ' ', floats и некорректный ввод.
+	Работает с +-*=()/ и управляет другими функциями.
+	*/
 	int next();
-	//skiping symbols like ( and ) after
+	//!skiping symbols like ( and ) after
 	void skip(int t);
-	// Dealing with ( and ) and continuing to calculate
+	//! Dealing with ( and ) and continuing to calculate
 	double numpar();
-	// Dealing with pow.
+	//! Dealing with pow.
 	double factor();
-	// Dealing with * and /
+	//! Dealing with * and /
 	double term();
-	//Dealing with + and -
+	//! Dealing with + and -
 	double expr();
 
 private:
@@ -56,5 +64,5 @@ private:
 // GLOBALS //
 /////////////
 static CalculatorClass Calculator;
-
+/*! @} */
 #endif

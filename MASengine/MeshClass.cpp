@@ -4,6 +4,7 @@ MeshClass::MeshClass()
 {
 	m_vertexBuffer = 0;
 	m_indexBuffer = 0;
+	m_isBoxMeshRendering = 0;
 }
 MeshClass::MeshClass(const MeshClass &)
 {

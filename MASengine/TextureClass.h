@@ -1,4 +1,4 @@
-////////////////////////////////////////////////////////////////////////////////
+﻿////////////////////////////////////////////////////////////////////////////////
 // Filename: textureclass.h
 ////////////////////////////////////////////////////////////////////////////////
 #ifndef _TEXTURECLASS_H_
@@ -15,6 +15,14 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Class name: TextureClass
 ////////////////////////////////////////////////////////////////////////////////
+
+/*!
+\defgroup Resources Различные ресурсы
+@{
+*/
+/*!
+Текстура
+*/
 class TextureClass
 {
 public:
@@ -22,13 +30,14 @@ public:
 	TextureClass(const TextureClass&);
 	~TextureClass();
 
-	
+	//! Создание текстуры \param[in] device - графическое устройство \param[in] filename - путь до файла текстуры \return false, если были ошибки
 	bool Initialize(ID3D11Device* device, const WCHAR* filename);
 	void Shutdown();
+	//! Получение текстуры \return текстуру в виде ресурса directx
 	ID3D11ShaderResourceView* GetTexture();
 
 private:
-	ID3D11ShaderResourceView* m_texture;
+	ID3D11ShaderResourceView* m_texture; //! текстура в виде ресурса directx
 };
-
+/*! @} */
 #endif

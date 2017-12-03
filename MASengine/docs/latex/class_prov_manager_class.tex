@@ -1,0 +1,176 @@
+\hypertarget{class_prov_manager_class}{}\section{Prov\+Manager\+Class Class Reference}
+\label{class_prov_manager_class}\index{Prov\+Manager\+Class@{Prov\+Manager\+Class}}
+
+
+{\ttfamily \#include $<$Prov\+Manager\+Class.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_prov_manager_class_a261874a451d1fa7b358d45f8c3a9dde1}{Initialize} (\hyperlink{class_path_class}{Path\+Class} $\ast$filename)
+\begin{DoxyCompactList}\small\item\em Инициализация класса и загрузка пров \end{DoxyCompactList}\item 
+void \hyperlink{class_prov_manager_class_a0a5545af9d67178670644dd3323d1d99}{Shutdown} ()
+\item 
+\hyperlink{class_prov_class}{Prov\+Class} $\ast$ \hyperlink{class_prov_manager_class_a182acf33b469309e4f2695eaf3d9a8fe}{get\+Prov} (int prov\+ID)
+\begin{DoxyCompactList}\small\item\em Получение провинции по ID. \end{DoxyCompactList}\item 
+void \hyperlink{class_prov_manager_class_ade2e5dfca7ae27617b8538876fce23f4}{set\+Global\+Main\+Color} (\hyperlink{class_global_manager_class_a794b4a5298c61f8d25d9da44b7826857}{Global\+Manager\+Class\+::region\+Type} type)
+\begin{DoxyCompactList}\small\item\em Установить новый основной цвет для всех пров \end{DoxyCompactList}\item 
+int \hyperlink{class_prov_manager_class_ad67b95a1e965203058f235af9ce593dc}{get\+Prov\+Num} ()
+\begin{DoxyCompactList}\small\item\em Получение количества пров \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_prov_manager_class}{Prov\+Manager\+Class} \& \hyperlink{class_prov_manager_class_a9692476132879204adcacf5bc44eca8d}{getI} ()
+\begin{DoxyCompactList}\small\item\em Получить экземпляр класса \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_prov_manager_class_a974d1f4e6ad4e826cd493423fb9496a3}{Prov\+Manager\+Class} ()
+\item 
+\hyperlink{class_prov_manager_class_ace57181bd64e4fdcb4a196f62e35ecd5}{Prov\+Manager\+Class} (const \hyperlink{class_prov_manager_class}{Prov\+Manager\+Class} \&)
+\item 
+\hyperlink{class_prov_manager_class_afdd9bfc8239e4e14f5a9862ee712d44d}{$\sim$\+Prov\+Manager\+Class} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \hyperlink{class_prov_class}{Prov\+Class} $\ast$ $>$ \hyperlink{class_prov_manager_class_a112642cf6b7476f89373c6ac796e3375}{m\+\_\+provs}
+\begin{DoxyCompactList}\small\item\em Все провинции \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_prov_manager_class}{Prov\+Manager\+Class} $\ast$ \hyperlink{class_prov_manager_class_a825e74c565a9c73901d75eb9e0cf5975}{m\+\_\+instance} = 0
+\begin{DoxyCompactList}\small\item\em Единственный экземпляр класса \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_prov_manager_class_a974d1f4e6ad4e826cd493423fb9496a3}\label{class_prov_manager_class_a974d1f4e6ad4e826cd493423fb9496a3}} 
+\index{Prov\+Manager\+Class@{Prov\+Manager\+Class}!Prov\+Manager\+Class@{Prov\+Manager\+Class}}
+\index{Prov\+Manager\+Class@{Prov\+Manager\+Class}!Prov\+Manager\+Class@{Prov\+Manager\+Class}}
+\subsubsection{\texorpdfstring{Prov\+Manager\+Class()}{ProvManagerClass()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Prov\+Manager\+Class\+::\+Prov\+Manager\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_prov_manager_class_ace57181bd64e4fdcb4a196f62e35ecd5}\label{class_prov_manager_class_ace57181bd64e4fdcb4a196f62e35ecd5}} 
+\index{Prov\+Manager\+Class@{Prov\+Manager\+Class}!Prov\+Manager\+Class@{Prov\+Manager\+Class}}
+\index{Prov\+Manager\+Class@{Prov\+Manager\+Class}!Prov\+Manager\+Class@{Prov\+Manager\+Class}}
+\subsubsection{\texorpdfstring{Prov\+Manager\+Class()}{ProvManagerClass()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Prov\+Manager\+Class\+::\+Prov\+Manager\+Class (\begin{DoxyParamCaption}\item[{const \hyperlink{class_prov_manager_class}{Prov\+Manager\+Class} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_prov_manager_class_afdd9bfc8239e4e14f5a9862ee712d44d}\label{class_prov_manager_class_afdd9bfc8239e4e14f5a9862ee712d44d}} 
+\index{Prov\+Manager\+Class@{Prov\+Manager\+Class}!````~Prov\+Manager\+Class@{$\sim$\+Prov\+Manager\+Class}}
+\index{````~Prov\+Manager\+Class@{$\sim$\+Prov\+Manager\+Class}!Prov\+Manager\+Class@{Prov\+Manager\+Class}}
+\subsubsection{\texorpdfstring{$\sim$\+Prov\+Manager\+Class()}{~ProvManagerClass()}}
+{\footnotesize\ttfamily Prov\+Manager\+Class\+::$\sim$\+Prov\+Manager\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_prov_manager_class_a9692476132879204adcacf5bc44eca8d}\label{class_prov_manager_class_a9692476132879204adcacf5bc44eca8d}} 
+\index{Prov\+Manager\+Class@{Prov\+Manager\+Class}!getI@{getI}}
+\index{getI@{getI}!Prov\+Manager\+Class@{Prov\+Manager\+Class}}
+\subsubsection{\texorpdfstring{get\+I()}{getI()}}
+{\footnotesize\ttfamily \hyperlink{class_prov_manager_class}{Prov\+Manager\+Class} \& Prov\+Manager\+Class\+::getI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Получить экземпляр класса 
+
+\mbox{\Hypertarget{class_prov_manager_class_a182acf33b469309e4f2695eaf3d9a8fe}\label{class_prov_manager_class_a182acf33b469309e4f2695eaf3d9a8fe}} 
+\index{Prov\+Manager\+Class@{Prov\+Manager\+Class}!get\+Prov@{get\+Prov}}
+\index{get\+Prov@{get\+Prov}!Prov\+Manager\+Class@{Prov\+Manager\+Class}}
+\subsubsection{\texorpdfstring{get\+Prov()}{getProv()}}
+{\footnotesize\ttfamily \hyperlink{class_prov_class}{Prov\+Class} $\ast$ Prov\+Manager\+Class\+::get\+Prov (\begin{DoxyParamCaption}\item[{int}]{prov\+ID }\end{DoxyParamCaption})}
+
+
+
+Получение провинции по ID. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em prov\+ID} & -\/ ID провинции \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+провинция по указанному ID
+\end{DoxyReturn}
+Если ID некорректен, то возвращается провинция с ID = 0 \mbox{\Hypertarget{class_prov_manager_class_ad67b95a1e965203058f235af9ce593dc}\label{class_prov_manager_class_ad67b95a1e965203058f235af9ce593dc}} 
+\index{Prov\+Manager\+Class@{Prov\+Manager\+Class}!get\+Prov\+Num@{get\+Prov\+Num}}
+\index{get\+Prov\+Num@{get\+Prov\+Num}!Prov\+Manager\+Class@{Prov\+Manager\+Class}}
+\subsubsection{\texorpdfstring{get\+Prov\+Num()}{getProvNum()}}
+{\footnotesize\ttfamily int Prov\+Manager\+Class\+::get\+Prov\+Num (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Получение количества пров 
+
+\begin{DoxyReturn}{Returns}
+количество инициализированных провинций 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_prov_manager_class_a261874a451d1fa7b358d45f8c3a9dde1}\label{class_prov_manager_class_a261874a451d1fa7b358d45f8c3a9dde1}} 
+\index{Prov\+Manager\+Class@{Prov\+Manager\+Class}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!Prov\+Manager\+Class@{Prov\+Manager\+Class}}
+\subsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily bool Prov\+Manager\+Class\+::\+Initialize (\begin{DoxyParamCaption}\item[{\hyperlink{class_path_class}{Path\+Class} $\ast$}]{filename }\end{DoxyParamCaption})}
+
+
+
+Инициализация класса и загрузка пров 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em filename} & -\/ файл с данными о провинциях \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_prov_manager_class_ade2e5dfca7ae27617b8538876fce23f4}\label{class_prov_manager_class_ade2e5dfca7ae27617b8538876fce23f4}} 
+\index{Prov\+Manager\+Class@{Prov\+Manager\+Class}!set\+Global\+Main\+Color@{set\+Global\+Main\+Color}}
+\index{set\+Global\+Main\+Color@{set\+Global\+Main\+Color}!Prov\+Manager\+Class@{Prov\+Manager\+Class}}
+\subsubsection{\texorpdfstring{set\+Global\+Main\+Color()}{setGlobalMainColor()}}
+{\footnotesize\ttfamily void Prov\+Manager\+Class\+::set\+Global\+Main\+Color (\begin{DoxyParamCaption}\item[{\hyperlink{class_global_manager_class_a794b4a5298c61f8d25d9da44b7826857}{Global\+Manager\+Class\+::region\+Type}}]{type }\end{DoxyParamCaption})}
+
+
+
+Установить новый основной цвет для всех пров 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em type} & -\/ тип региона, цвет которого будет выбран основным \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_prov_manager_class_a0a5545af9d67178670644dd3323d1d99}\label{class_prov_manager_class_a0a5545af9d67178670644dd3323d1d99}} 
+\index{Prov\+Manager\+Class@{Prov\+Manager\+Class}!Shutdown@{Shutdown}}
+\index{Shutdown@{Shutdown}!Prov\+Manager\+Class@{Prov\+Manager\+Class}}
+\subsubsection{\texorpdfstring{Shutdown()}{Shutdown()}}
+{\footnotesize\ttfamily void Prov\+Manager\+Class\+::\+Shutdown (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_prov_manager_class_a825e74c565a9c73901d75eb9e0cf5975}\label{class_prov_manager_class_a825e74c565a9c73901d75eb9e0cf5975}} 
+\index{Prov\+Manager\+Class@{Prov\+Manager\+Class}!m\+\_\+instance@{m\+\_\+instance}}
+\index{m\+\_\+instance@{m\+\_\+instance}!Prov\+Manager\+Class@{Prov\+Manager\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+instance}{m\_instance}}
+{\footnotesize\ttfamily \hyperlink{class_prov_manager_class}{Prov\+Manager\+Class} $\ast$ Prov\+Manager\+Class\+::m\+\_\+instance = 0\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Единственный экземпляр класса 
+
+\mbox{\Hypertarget{class_prov_manager_class_a112642cf6b7476f89373c6ac796e3375}\label{class_prov_manager_class_a112642cf6b7476f89373c6ac796e3375}} 
+\index{Prov\+Manager\+Class@{Prov\+Manager\+Class}!m\+\_\+provs@{m\+\_\+provs}}
+\index{m\+\_\+provs@{m\+\_\+provs}!Prov\+Manager\+Class@{Prov\+Manager\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+provs}{m\_provs}}
+{\footnotesize\ttfamily std\+::vector$<$\hyperlink{class_prov_class}{Prov\+Class}$\ast$$>$ Prov\+Manager\+Class\+::m\+\_\+provs\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Все провинции 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_prov_manager_class_8h}{Prov\+Manager\+Class.\+h}\item 
+\hyperlink{_prov_manager_class_8cpp}{Prov\+Manager\+Class.\+cpp}\end{DoxyCompactItemize}

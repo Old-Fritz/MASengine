@@ -1,0 +1,62 @@
+\hypertarget{_memory_manager_class_8h}{}\section{Memory\+Manager\+Class.\+h File Reference}
+\label{_memory_manager_class_8h}\index{Memory\+Manager\+Class.\+h@{Memory\+Manager\+Class.\+h}}
+{\ttfamily \#include \char`\"{}Pool\+Allocator\+Class.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Stack\+Allocator\+Class.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Utils.\+h\char`\"{}}\newline
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_memory_manager_class}{Memory\+Manager\+Class}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_memory_manager_class_8h_af05e2a8f8b45d4a9c5a49e4407adb5b9}{\+\_\+\+M\+E\+M\+O\+R\+Y\+M\+A\+N\+A\+G\+E\+R\+C\+L\+A\+S\+S\+\_\+\+H\+\_\+}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void $\ast$ \hyperlink{_memory_manager_class_8h_ad9d92cb782d114d2d2428bef3e4b0995}{operator new} (size\+\_\+t size, int type)
+\item 
+void $\ast$ \hyperlink{_memory_manager_class_8h_a2722d64a790bf39531e6cf7ae8a2004d}{operator new\mbox{[}$\,$\mbox{]}} (size\+\_\+t size, int type)
+\item 
+void \hyperlink{_memory_manager_class_8h_aa582f549272e8aad4167a14b0db79871}{operator delete} (void $\ast$mem, size\+\_\+t size, int type)
+\item 
+void \hyperlink{_memory_manager_class_8h_a1277a0a7f6cb436c2b523c365a4d4818}{operator delete\mbox{[}$\,$\mbox{]}} (void $\ast$mem, size\+\_\+t size, int type)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_memory_manager_class_8h_af05e2a8f8b45d4a9c5a49e4407adb5b9}\label{_memory_manager_class_8h_af05e2a8f8b45d4a9c5a49e4407adb5b9}} 
+\index{Memory\+Manager\+Class.\+h@{Memory\+Manager\+Class.\+h}!\+\_\+\+M\+E\+M\+O\+R\+Y\+M\+A\+N\+A\+G\+E\+R\+C\+L\+A\+S\+S\+\_\+\+H\+\_\+@{\+\_\+\+M\+E\+M\+O\+R\+Y\+M\+A\+N\+A\+G\+E\+R\+C\+L\+A\+S\+S\+\_\+\+H\+\_\+}}
+\index{\+\_\+\+M\+E\+M\+O\+R\+Y\+M\+A\+N\+A\+G\+E\+R\+C\+L\+A\+S\+S\+\_\+\+H\+\_\+@{\+\_\+\+M\+E\+M\+O\+R\+Y\+M\+A\+N\+A\+G\+E\+R\+C\+L\+A\+S\+S\+\_\+\+H\+\_\+}!Memory\+Manager\+Class.\+h@{Memory\+Manager\+Class.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+M\+E\+M\+O\+R\+Y\+M\+A\+N\+A\+G\+E\+R\+C\+L\+A\+S\+S\+\_\+\+H\+\_\+}{\_MEMORYMANAGERCLASS\_H\_}}
+{\footnotesize\ttfamily \#define \+\_\+\+M\+E\+M\+O\+R\+Y\+M\+A\+N\+A\+G\+E\+R\+C\+L\+A\+S\+S\+\_\+\+H\+\_\+}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_memory_manager_class_8h_aa582f549272e8aad4167a14b0db79871}\label{_memory_manager_class_8h_aa582f549272e8aad4167a14b0db79871}} 
+\index{Memory\+Manager\+Class.\+h@{Memory\+Manager\+Class.\+h}!operator delete@{operator delete}}
+\index{operator delete@{operator delete}!Memory\+Manager\+Class.\+h@{Memory\+Manager\+Class.\+h}}
+\subsubsection{\texorpdfstring{operator delete()}{operator delete()}}
+{\footnotesize\ttfamily void operator delete (\begin{DoxyParamCaption}\item[{void $\ast$}]{mem,  }\item[{size\+\_\+t}]{size,  }\item[{int}]{type }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_memory_manager_class_8h_a1277a0a7f6cb436c2b523c365a4d4818}\label{_memory_manager_class_8h_a1277a0a7f6cb436c2b523c365a4d4818}} 
+\index{Memory\+Manager\+Class.\+h@{Memory\+Manager\+Class.\+h}!operator delete\mbox{[}\mbox{]}@{operator delete[]}}
+\index{operator delete\mbox{[}\mbox{]}@{operator delete[]}!Memory\+Manager\+Class.\+h@{Memory\+Manager\+Class.\+h}}
+\subsubsection{\texorpdfstring{operator delete[]()}{operator delete[]()}}
+{\footnotesize\ttfamily void operator delete\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{void $\ast$}]{mem,  }\item[{size\+\_\+t}]{size,  }\item[{int}]{type }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_memory_manager_class_8h_ad9d92cb782d114d2d2428bef3e4b0995}\label{_memory_manager_class_8h_ad9d92cb782d114d2d2428bef3e4b0995}} 
+\index{Memory\+Manager\+Class.\+h@{Memory\+Manager\+Class.\+h}!operator new@{operator new}}
+\index{operator new@{operator new}!Memory\+Manager\+Class.\+h@{Memory\+Manager\+Class.\+h}}
+\subsubsection{\texorpdfstring{operator new()}{operator new()}}
+{\footnotesize\ttfamily void$\ast$ operator new (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{size,  }\item[{int}]{type }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_memory_manager_class_8h_a2722d64a790bf39531e6cf7ae8a2004d}\label{_memory_manager_class_8h_a2722d64a790bf39531e6cf7ae8a2004d}} 
+\index{Memory\+Manager\+Class.\+h@{Memory\+Manager\+Class.\+h}!operator new\mbox{[}\mbox{]}@{operator new[]}}
+\index{operator new\mbox{[}\mbox{]}@{operator new[]}!Memory\+Manager\+Class.\+h@{Memory\+Manager\+Class.\+h}}
+\subsubsection{\texorpdfstring{operator new[]()}{operator new[]()}}
+{\footnotesize\ttfamily void$\ast$ operator new\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{size,  }\item[{int}]{type }\end{DoxyParamCaption})}
+

@@ -1,0 +1,75 @@
+\hypertarget{class_box_mesh_class}{}\section{Box\+Mesh\+Class Class Reference}
+\label{class_box_mesh_class}\index{Box\+Mesh\+Class@{Box\+Mesh\+Class}}
+
+
+{\ttfamily \#include $<$Box\+Mesh\+Class.\+h$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_box_mesh_class_1_1_vertex_type}{Vertex\+Type}
+\begin{DoxyCompactList}\small\item\em Вершина меша \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{group___meshes_gabc9d6020c66652ae6e3242ec85ae4663}{Box\+Mesh\+Class} ()
+\item 
+\hyperlink{group___meshes_ga92cfbdfdf9c487040a8dab0f9a2974a1}{Box\+Mesh\+Class} (const \hyperlink{class_box_mesh_class}{Box\+Mesh\+Class} \&)
+\item 
+\hyperlink{group___meshes_ga610c8c0a85ea53728654d748336404e5}{$\sim$\+Box\+Mesh\+Class} ()
+\item 
+bool \hyperlink{group___meshes_gafb74aab48557e9c4e0ecc532b87b9a5c}{Initialize} (I\+D3\+D11\+Device $\ast$device, D3\+D\+X\+V\+E\+C\+T\+O\+R3 min\+Point, D3\+D\+X\+V\+E\+C\+T\+O\+R3 max\+Point)
+\begin{DoxyCompactList}\small\item\em Создание меша \end{DoxyCompactList}\item 
+void \hyperlink{group___meshes_ga93bf13a26ba0fce8444d818e89c04508}{Shutdown} ()
+\item 
+void \hyperlink{group___meshes_ga166a0bcded8a30e29d84b924bb94512f}{Render} (I\+D3\+D11\+Device\+Context $\ast$device\+Context)
+\begin{DoxyCompactList}\small\item\em Установка меша в цепь рендринга \end{DoxyCompactList}\item 
+D3\+D\+X\+V\+E\+C\+T\+O\+R3 \hyperlink{group___meshes_ga178f792d827e1853667fdf7936329eaf}{get\+Center} ()
+\begin{DoxyCompactList}\small\item\em Получение центра меша \end{DoxyCompactList}\item 
+D3\+D\+X\+V\+E\+C\+T\+O\+R3 \hyperlink{group___meshes_ga50bc67b50cc0a3c7a38d2893c5fae07e}{get\+Size} ()
+\begin{DoxyCompactList}\small\item\em Получение размера меша \end{DoxyCompactList}\item 
+bool \hyperlink{group___meshes_gac780e22baf0b7e6683121ded18a40b76}{check\+Frustum} (\hyperlink{class_frustum_class}{Frustum\+Class} $\ast$frustum, D3\+D\+X\+V\+E\+C\+T\+O\+R3 position)
+\begin{DoxyCompactList}\small\item\em Проверка меша на соответствие области видимости \end{DoxyCompactList}\item 
+int \hyperlink{group___meshes_gac93e95f835fa462244dd9cd1af22de52}{Get\+Index\+Count} ()
+\begin{DoxyCompactList}\small\item\em Получение количества индексов вершин \end{DoxyCompactList}\item 
+bool \hyperlink{group___meshes_gae7ba5327d6a50c4e52bda354b77c1172}{intersect} (D3\+D\+X\+V\+E\+C\+T\+O\+R3 ray\+Origin, D3\+D\+X\+V\+E\+C\+T\+O\+R3 ray\+Direction)
+\item 
+bool \hyperlink{group___meshes_gaa5a24747a666b2c1b670bce1caa25941}{triangle\+Hit\+Test} (D3\+D\+X\+V\+E\+C\+T\+O\+R3 ray\+Origin, D3\+D\+X\+V\+E\+C\+T\+O\+R3 ray\+Direction, D3\+D\+X\+V\+E\+C\+T\+O\+R3 v0, D3\+D\+X\+V\+E\+C\+T\+O\+R3 v1, D3\+D\+X\+V\+E\+C\+T\+O\+R3 v2, D3\+D\+X\+V\+E\+C\+T\+O\+R3 \&res)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{group___meshes_ga62e6e1fe0ba4861809bda70f16928c87}{create\+Verts\+And\+Inds} (unsigned long $\ast$$\ast$indices)
+\begin{DoxyCompactList}\small\item\em Создание массивов вершин и индексов \end{DoxyCompactList}\item 
+bool \hyperlink{group___meshes_gab1b81243c18f1df89eacef16b0c552a0}{Initialize\+Buffers} (I\+D3\+D11\+Device $\ast$device)
+\begin{DoxyCompactList}\small\item\em Инициализация буферов \end{DoxyCompactList}\item 
+void \hyperlink{group___meshes_gafb9e4d45043b88c956141fc2e1257dd5}{Shutdown\+Buffers} ()
+\item 
+void \hyperlink{group___meshes_gac70d8b4689d1666f547585fc60c8a21c}{Render\+Buffers} (I\+D3\+D11\+Device\+Context $\ast$device\+Context)
+\begin{DoxyCompactList}\small\item\em Установка буферов в цепь рендринга \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+D3\+D\+X\+V\+E\+C\+T\+O\+R3 $\ast$ \hyperlink{group___meshes_ga04b0eafbdb4f2d3c1120b4c85c47dff7}{m\+\_\+points}
+\begin{DoxyCompactList}\small\item\em Вершины меша \end{DoxyCompactList}\item 
+I\+D3\+D11\+Buffer $\ast$ \hyperlink{group___meshes_gad50671a0a83027a1d379e67a051236b7}{m\+\_\+vertex\+Buffer}
+\item 
+I\+D3\+D11\+Buffer $\ast$ \hyperlink{group___meshes_ga181b814ab05f1f13665a1130ff321db5}{m\+\_\+index\+Buffer}
+\begin{DoxyCompactList}\small\item\em Вершинный и индексный буферы \end{DoxyCompactList}\item 
+int \hyperlink{group___meshes_ga60b85c9577c5a4a1eb77f358175234d7}{m\+\_\+vertex\+Count}
+\item 
+int \hyperlink{group___meshes_gad0398a4877027fd866fa758fb39a7f69}{m\+\_\+index\+Count}
+\begin{DoxyCompactList}\small\item\em Количество вершин и индексов \end{DoxyCompactList}\item 
+D3\+D\+X\+V\+E\+C\+T\+O\+R3 \hyperlink{group___meshes_ga01a788e0dd748680e15b4b23fee416f7}{m\+\_\+min\+Point}
+\item 
+D3\+D\+X\+V\+E\+C\+T\+O\+R3 \hyperlink{group___meshes_ga30b105502d84acfeb2e709ef801726b5}{m\+\_\+max\+Point}
+\begin{DoxyCompactList}\small\item\em Крайние точки \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Меш box 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_box_mesh_class_8h}{Box\+Mesh\+Class.\+h}\item 
+\hyperlink{_box_mesh_class_8cpp}{Box\+Mesh\+Class.\+cpp}\end{DoxyCompactItemize}

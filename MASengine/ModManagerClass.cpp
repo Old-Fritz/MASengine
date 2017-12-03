@@ -79,9 +79,9 @@ ModManagerClass & ModManagerClass::getI()
 		return "";
 }
 
- std::string ModManagerClass::getDirectory(const std::string & string)
+ std::string ModManagerClass::getDirectory(const std::string & filename)
  {
-	 return getDirectory(Utils::getHash(string));
+	 return getDirectory(Utils::getHash(filename));
  }
 
 void ModManagerClass::loadMod(const std::string & name, const std::string & modDirectory)

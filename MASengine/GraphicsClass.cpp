@@ -405,7 +405,7 @@ bool GraphicsClass::Render()
 
 	//render terrain
 
-	result = m_terrain->Render(m_shaderManager->getTerrainShader(), m_D3D->GetDeviceContext(), worldMatrix,
+	result = m_terrain->Render(m_shaderManager->getTerrainShader(), m_shaderManager->getWaterShader(), m_D3D->GetDeviceContext(), worldMatrix,
 			viewMatrix, projectionMatrix, m_light->GetDirection(), m_light->GetAmbientColor(),
 			m_light->GetDiffuseColor(), m_camera->GetPosition(), m_light->GetSpecularColor(),
 			m_light->GetSpecularPower(), SCREEN_DEPTH, frustum);

@@ -1,0 +1,230 @@
+\hypertarget{class_model_class}{}\section{Model\+Class Class Reference}
+\label{class_model_class}\index{Model\+Class@{Model\+Class}}
+
+
+{\ttfamily \#include $<$Model\+Class.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_model_class_aeb071c40b6fc3b5fb187f25708a1fd3e}{Model\+Class} ()
+\item 
+\hyperlink{class_model_class_aeb339837cd8817e230079a1c8eb333a5}{Model\+Class} (const \hyperlink{class_model_class}{Model\+Class} \&)
+\item 
+\hyperlink{class_model_class_a8e1437289527dedb467aaa04cdbf90b9}{$\sim$\+Model\+Class} ()
+\item 
+bool \hyperlink{class_model_class_a0a79383e0c8b045480f776ad05cb059a}{Initialize} (I\+D3\+D11\+Device $\ast$device, I\+D3\+D11\+Device\+Context $\ast$device\+Context, \hyperlink{class_path_class}{Path\+Class} $\ast$mesh\+Filename, \hyperlink{class_path_class}{Path\+Class} $\ast$texture\+Filename)
+\item 
+void \hyperlink{class_model_class_a958ab747453c56b221525330e0cc7f18}{Shutdown} ()
+\item 
+bool \hyperlink{class_model_class_a5c20eb8481d13510ec8f411ef9f75316}{Render} (\hyperlink{class_model_shader_class}{Model\+Shader\+Class} $\ast$model\+Shader, I\+D3\+D11\+Device\+Context $\ast$device\+Context, D3\+D\+X\+M\+A\+T\+R\+IX world\+Matrix, D3\+D\+X\+M\+A\+T\+R\+IX view\+Matrix, D3\+D\+X\+M\+A\+T\+R\+IX projection\+Matrix, D3\+D\+X\+V\+E\+C\+T\+O\+R3 light\+Direction, D3\+D\+X\+V\+E\+C\+T\+O\+R4 ambient\+Color, D3\+D\+X\+V\+E\+C\+T\+O\+R4 diffuse\+Color, D3\+D\+X\+V\+E\+C\+T\+O\+R3 camera\+Position, D3\+D\+X\+V\+E\+C\+T\+O\+R4 specular\+Color, float specular\+Power, float \hyperlink{_graphics_class_8h_ae4d41ac39678c64d2ef730cecc77cc64}{S\+C\+R\+E\+E\+N\+\_\+\+D\+E\+P\+TH}, \hyperlink{class_frustum_class}{Frustum\+Class} $\ast$frustum)
+\item 
+D3\+D\+X\+V\+E\+C\+T\+O\+R3 \hyperlink{class_model_class_a21e42c01df8e01b99bcdd5225f52e4ef}{get\+Position} ()
+\begin{DoxyCompactList}\small\item\em Получение позиция модели \end{DoxyCompactList}\item 
+D3\+D\+X\+V\+E\+C\+T\+O\+R3 \hyperlink{class_model_class_a4c89a288f58e5193179d455c0e24318b}{get\+Rotation} ()
+\begin{DoxyCompactList}\small\item\em Получение поворота модели \end{DoxyCompactList}\item 
+void \hyperlink{class_model_class_a603505b7b8b00248d6fea39a2c133f0e}{set\+Position} (D3\+D\+X\+V\+E\+C\+T\+O\+R3 position)
+\begin{DoxyCompactList}\small\item\em Установка позиция модели \end{DoxyCompactList}\item 
+void \hyperlink{class_model_class_a80ee72427b5d897e422ac0a62a722fc4}{set\+Rotation} (D3\+D\+X\+V\+E\+C\+T\+O\+R3 rotation)
+\begin{DoxyCompactList}\small\item\em Установка поворота модели \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{class_model_class_ad93a0cca424771ab37024e5d2ec7268f}{m\+\_\+mesh\+Hash}
+\begin{DoxyCompactList}\small\item\em Хэш меша \end{DoxyCompactList}\item 
+int \hyperlink{class_model_class_a7ac5fd4bd5dde084256bcccf1d0a2827}{m\+\_\+texture\+Hash}
+\begin{DoxyCompactList}\small\item\em Хэш текстуры \end{DoxyCompactList}\item 
+D3\+D\+X\+V\+E\+C\+T\+O\+R3 \hyperlink{class_model_class_a38909735986bc1efe5a64bf921b759f7}{m\+\_\+position}
+\begin{DoxyCompactList}\small\item\em Позиция в мире \end{DoxyCompactList}\item 
+D3\+D\+X\+V\+E\+C\+T\+O\+R3 \hyperlink{class_model_class_adbeac264bd99cedbe00f3ca03f546209}{m\+\_\+rotation}
+\begin{DoxyCompactList}\small\item\em Поворот в мире \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Статическая модель 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_model_class_aeb071c40b6fc3b5fb187f25708a1fd3e}\label{class_model_class_aeb071c40b6fc3b5fb187f25708a1fd3e}} 
+\index{Model\+Class@{Model\+Class}!Model\+Class@{Model\+Class}}
+\index{Model\+Class@{Model\+Class}!Model\+Class@{Model\+Class}}
+\subsubsection{\texorpdfstring{Model\+Class()}{ModelClass()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Model\+Class\+::\+Model\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_model_class_aeb339837cd8817e230079a1c8eb333a5}\label{class_model_class_aeb339837cd8817e230079a1c8eb333a5}} 
+\index{Model\+Class@{Model\+Class}!Model\+Class@{Model\+Class}}
+\index{Model\+Class@{Model\+Class}!Model\+Class@{Model\+Class}}
+\subsubsection{\texorpdfstring{Model\+Class()}{ModelClass()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Model\+Class\+::\+Model\+Class (\begin{DoxyParamCaption}\item[{const \hyperlink{class_model_class}{Model\+Class} \&}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_model_class_a8e1437289527dedb467aaa04cdbf90b9}\label{class_model_class_a8e1437289527dedb467aaa04cdbf90b9}} 
+\index{Model\+Class@{Model\+Class}!````~Model\+Class@{$\sim$\+Model\+Class}}
+\index{````~Model\+Class@{$\sim$\+Model\+Class}!Model\+Class@{Model\+Class}}
+\subsubsection{\texorpdfstring{$\sim$\+Model\+Class()}{~ModelClass()}}
+{\footnotesize\ttfamily Model\+Class\+::$\sim$\+Model\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_model_class_a21e42c01df8e01b99bcdd5225f52e4ef}\label{class_model_class_a21e42c01df8e01b99bcdd5225f52e4ef}} 
+\index{Model\+Class@{Model\+Class}!get\+Position@{get\+Position}}
+\index{get\+Position@{get\+Position}!Model\+Class@{Model\+Class}}
+\subsubsection{\texorpdfstring{get\+Position()}{getPosition()}}
+{\footnotesize\ttfamily D3\+D\+X\+V\+E\+C\+T\+O\+R3 Model\+Class\+::get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Получение позиция модели 
+
+\begin{DoxyReturn}{Returns}
+координаты модели 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_model_class_a4c89a288f58e5193179d455c0e24318b}\label{class_model_class_a4c89a288f58e5193179d455c0e24318b}} 
+\index{Model\+Class@{Model\+Class}!get\+Rotation@{get\+Rotation}}
+\index{get\+Rotation@{get\+Rotation}!Model\+Class@{Model\+Class}}
+\subsubsection{\texorpdfstring{get\+Rotation()}{getRotation()}}
+{\footnotesize\ttfamily D3\+D\+X\+V\+E\+C\+T\+O\+R3 Model\+Class\+::get\+Rotation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Получение поворота модели 
+
+\begin{DoxyReturn}{Returns}
+координаты поворота модели (ypr) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_model_class_a0a79383e0c8b045480f776ad05cb059a}\label{class_model_class_a0a79383e0c8b045480f776ad05cb059a}} 
+\index{Model\+Class@{Model\+Class}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!Model\+Class@{Model\+Class}}
+\subsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily bool Model\+Class\+::\+Initialize (\begin{DoxyParamCaption}\item[{I\+D3\+D11\+Device $\ast$}]{device,  }\item[{I\+D3\+D11\+Device\+Context $\ast$}]{device\+Context,  }\item[{\hyperlink{class_path_class}{Path\+Class} $\ast$}]{mesh\+Filename,  }\item[{\hyperlink{class_path_class}{Path\+Class} $\ast$}]{texture\+Filename }\end{DoxyParamCaption})}
+
+Загрузка блока 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em device,device\+Context} & -\/ графическое устройство \\
+\hline
+\mbox{\tt in}  & {\em mesh\+Filename} & -\/ путь до файла меша \\
+\hline
+\mbox{\tt in}  & {\em texture\+Filename} & -\/ путь до файла текстуры \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_model_class_a5c20eb8481d13510ec8f411ef9f75316}\label{class_model_class_a5c20eb8481d13510ec8f411ef9f75316}} 
+\index{Model\+Class@{Model\+Class}!Render@{Render}}
+\index{Render@{Render}!Model\+Class@{Model\+Class}}
+\subsubsection{\texorpdfstring{Render()}{Render()}}
+{\footnotesize\ttfamily bool Model\+Class\+::\+Render (\begin{DoxyParamCaption}\item[{\hyperlink{class_model_shader_class}{Model\+Shader\+Class} $\ast$}]{model\+Shader,  }\item[{I\+D3\+D11\+Device\+Context $\ast$}]{device\+Context,  }\item[{D3\+D\+X\+M\+A\+T\+R\+IX}]{world\+Matrix,  }\item[{D3\+D\+X\+M\+A\+T\+R\+IX}]{view\+Matrix,  }\item[{D3\+D\+X\+M\+A\+T\+R\+IX}]{projection\+Matrix,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R3}]{light\+Direction,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R4}]{ambient\+Color,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R4}]{diffuse\+Color,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R3}]{camera\+Position,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R4}]{specular\+Color,  }\item[{float}]{specular\+Power,  }\item[{float}]{S\+C\+R\+E\+E\+N\+\_\+\+D\+E\+P\+TH,  }\item[{\hyperlink{class_frustum_class}{Frustum\+Class} $\ast$}]{frustum }\end{DoxyParamCaption})}
+
+Прорисовка блока 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em model\+Shader} & -\/ шейдер моделелей \\
+\hline
+\mbox{\tt in}  & {\em device\+Context} & -\/ графическое устройство \\
+\hline
+\mbox{\tt in}  & {\em world\+Matrix,view\+Matrix,projection\+Matrix} & -\/ матрицы с параметрами \\
+\hline
+\mbox{\tt in}  & {\em light\+Direction} & -\/ направление света \\
+\hline
+\mbox{\tt in}  & {\em ambient\+Color} & -\/ цвет обтекающего света \\
+\hline
+\mbox{\tt in}  & {\em diffuse\+Color} & -\/ цвет диффузного света \\
+\hline
+\mbox{\tt in}  & {\em camera\+Position} & -\/ позиция камеры \\
+\hline
+\mbox{\tt in}  & {\em specular\+Color} & -\/ цвет зеркального света \\
+\hline
+\mbox{\tt in}  & {\em specular\+Power} & -\/ мощность зеркального света \\
+\hline
+\mbox{\tt in}  & {\em S\+C\+R\+E\+E\+N\+\_\+\+D\+E\+P\+TH} & -\/ глубина экрана \\
+\hline
+\mbox{\tt in}  & {\em frustum} & -\/ конус усечения \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_model_class_a603505b7b8b00248d6fea39a2c133f0e}\label{class_model_class_a603505b7b8b00248d6fea39a2c133f0e}} 
+\index{Model\+Class@{Model\+Class}!set\+Position@{set\+Position}}
+\index{set\+Position@{set\+Position}!Model\+Class@{Model\+Class}}
+\subsubsection{\texorpdfstring{set\+Position()}{setPosition()}}
+{\footnotesize\ttfamily void Model\+Class\+::set\+Position (\begin{DoxyParamCaption}\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R3}]{position }\end{DoxyParamCaption})}
+
+
+
+Установка позиция модели 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em position} & -\/ координаты модели \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_model_class_a80ee72427b5d897e422ac0a62a722fc4}\label{class_model_class_a80ee72427b5d897e422ac0a62a722fc4}} 
+\index{Model\+Class@{Model\+Class}!set\+Rotation@{set\+Rotation}}
+\index{set\+Rotation@{set\+Rotation}!Model\+Class@{Model\+Class}}
+\subsubsection{\texorpdfstring{set\+Rotation()}{setRotation()}}
+{\footnotesize\ttfamily void Model\+Class\+::set\+Rotation (\begin{DoxyParamCaption}\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R3}]{rotation }\end{DoxyParamCaption})}
+
+
+
+Установка поворота модели 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em rotation} & -\/ координаты поворота модели (ypr) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_model_class_a958ab747453c56b221525330e0cc7f18}\label{class_model_class_a958ab747453c56b221525330e0cc7f18}} 
+\index{Model\+Class@{Model\+Class}!Shutdown@{Shutdown}}
+\index{Shutdown@{Shutdown}!Model\+Class@{Model\+Class}}
+\subsubsection{\texorpdfstring{Shutdown()}{Shutdown()}}
+{\footnotesize\ttfamily void Model\+Class\+::\+Shutdown (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_model_class_ad93a0cca424771ab37024e5d2ec7268f}\label{class_model_class_ad93a0cca424771ab37024e5d2ec7268f}} 
+\index{Model\+Class@{Model\+Class}!m\+\_\+mesh\+Hash@{m\+\_\+mesh\+Hash}}
+\index{m\+\_\+mesh\+Hash@{m\+\_\+mesh\+Hash}!Model\+Class@{Model\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+mesh\+Hash}{m\_meshHash}}
+{\footnotesize\ttfamily int Model\+Class\+::m\+\_\+mesh\+Hash\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Хэш меша 
+
+\mbox{\Hypertarget{class_model_class_a38909735986bc1efe5a64bf921b759f7}\label{class_model_class_a38909735986bc1efe5a64bf921b759f7}} 
+\index{Model\+Class@{Model\+Class}!m\+\_\+position@{m\+\_\+position}}
+\index{m\+\_\+position@{m\+\_\+position}!Model\+Class@{Model\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+position}{m\_position}}
+{\footnotesize\ttfamily D3\+D\+X\+V\+E\+C\+T\+O\+R3 Model\+Class\+::m\+\_\+position\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Позиция в мире 
+
+\mbox{\Hypertarget{class_model_class_adbeac264bd99cedbe00f3ca03f546209}\label{class_model_class_adbeac264bd99cedbe00f3ca03f546209}} 
+\index{Model\+Class@{Model\+Class}!m\+\_\+rotation@{m\+\_\+rotation}}
+\index{m\+\_\+rotation@{m\+\_\+rotation}!Model\+Class@{Model\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+rotation}{m\_rotation}}
+{\footnotesize\ttfamily D3\+D\+X\+V\+E\+C\+T\+O\+R3 Model\+Class\+::m\+\_\+rotation\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Поворот в мире 
+
+\mbox{\Hypertarget{class_model_class_a7ac5fd4bd5dde084256bcccf1d0a2827}\label{class_model_class_a7ac5fd4bd5dde084256bcccf1d0a2827}} 
+\index{Model\+Class@{Model\+Class}!m\+\_\+texture\+Hash@{m\+\_\+texture\+Hash}}
+\index{m\+\_\+texture\+Hash@{m\+\_\+texture\+Hash}!Model\+Class@{Model\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+texture\+Hash}{m\_textureHash}}
+{\footnotesize\ttfamily int Model\+Class\+::m\+\_\+texture\+Hash\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Хэш текстуры 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_model_class_8h}{Model\+Class.\+h}\item 
+\hyperlink{_model_class_8cpp}{Model\+Class.\+cpp}\end{DoxyCompactItemize}

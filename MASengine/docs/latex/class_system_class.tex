@@ -1,0 +1,373 @@
+\hypertarget{class_system_class}{}\section{System\+Class Class Reference}
+\label{class_system_class}\index{System\+Class@{System\+Class}}
+
+
+{\ttfamily \#include $<$System\+Class.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_system_class_ac8a9c3545ea8749f149a49219d5f7c20}{System\+Class} ()
+\begin{DoxyCompactList}\small\item\em Простой конструктор \end{DoxyCompactList}\item 
+\hyperlink{class_system_class_a3b14141f929e92fb9cf9a73bb88ce443}{System\+Class} (const \hyperlink{class_system_class}{System\+Class} \&)
+\item 
+\hyperlink{class_system_class_aa0c6aed1875b97d8260ad264a9d95e60}{$\sim$\+System\+Class} ()
+\item 
+bool \hyperlink{class_system_class_a21f9acab8652feb8cbb8858afc91815a}{Initialize} ()
+\begin{DoxyCompactList}\small\item\em Инициализировать игру \end{DoxyCompactList}\item 
+void \hyperlink{class_system_class_a86b7353d60fb279bd1a65c970a216bec}{Shutdown} ()
+\begin{DoxyCompactList}\small\item\em Вызвать shutdown. \end{DoxyCompactList}\item 
+void \hyperlink{class_system_class_ae3ba97d5f471516481350266cb6c3cab}{Run} ()
+\begin{DoxyCompactList}\small\item\em Просчитать очередной кадр (выполянется до тех пор, пока не будет инициализирован выход из игры) \end{DoxyCompactList}\item 
+L\+R\+E\+S\+U\+LT C\+A\+L\+L\+B\+A\+CK \hyperlink{class_system_class_aeb0f9940a9a82a36f13e267e3989a98b}{Message\+Handler} (H\+W\+ND hwnd, U\+I\+NT umsg, W\+P\+A\+R\+AM wparam, L\+P\+A\+R\+AM lparam)
+\begin{DoxyCompactList}\small\item\em базовая callback функция для обработки сообщений (Не знаю, как это работает) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_system_class_a19c44b1a6374453ad8735c5f880181f4}{Frame} ()
+\begin{DoxyCompactList}\small\item\em Просчитать кадр \end{DoxyCompactList}\item 
+void \hyperlink{class_system_class_a929af051441de7bd414863aabe05fdb1}{Initialize\+Windows} (int screen\+Width, int screen\+Height)
+\begin{DoxyCompactList}\small\item\em Создать окно игры \end{DoxyCompactList}\item 
+void \hyperlink{class_system_class_a29bcaaac8ad0d695d4e3d09de4a93d19}{Shutdown\+Windows} ()
+\begin{DoxyCompactList}\small\item\em Закрыть окно \end{DoxyCompactList}\item 
+bool \hyperlink{class_system_class_a8007871209331455c3f7aa5b2991b061}{do\+Commands} ()
+\begin{DoxyCompactList}\small\item\em Выполнить все команды в очереди \end{DoxyCompactList}\item 
+bool \hyperlink{class_system_class_aafe0a61b5a2144016008ca529067862a}{do\+Single\+Command} (\hyperlink{class_command_class}{Command\+Class} $\ast$command)
+\begin{DoxyCompactList}\small\item\em Выполнить только текущую команду \end{DoxyCompactList}\item 
+bool \hyperlink{class_system_class_a19c15f7c6bc2743a04fcac998ab17677}{update\+System} (\hyperlink{class_command_class}{Command\+Class} $\ast$command, int ind, int first\+Command)
+\begin{DoxyCompactList}\small\item\em Выполнить команду, связанную с обновлением состояния системы \end{DoxyCompactList}\item 
+bool \hyperlink{class_system_class_adc6bf9bc3ae14f2ee2f661818a500220}{proces\+Operators} (\hyperlink{class_command_class}{Command\+Class} $\ast$command, int ind, int first\+Command)
+\begin{DoxyCompactList}\small\item\em Выполнить команду, связанную с выполнением скриптовых операторов command. \end{DoxyCompactList}\item 
+bool \hyperlink{class_system_class_a5ff4f256861285812190f780dcddff01}{get} (\hyperlink{class_command_class}{Command\+Class} $\ast$command, int ind, int first\+Command)
+\begin{DoxyCompactList}\small\item\em Выполнить команду, дающую некое значение \end{DoxyCompactList}\item 
+bool \hyperlink{class_system_class_a2c069c91c63a13da2944a468837d2aa8}{set} (\hyperlink{class_command_class}{Command\+Class} $\ast$command, int ind, int first\+Command)
+\begin{DoxyCompactList}\small\item\em Выполнить команду, устанавливающую некое значение \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+L\+P\+C\+W\+S\+TR \hyperlink{class_system_class_a05efe93f7f39e313723db3cba3dd6ab4}{m\+\_\+application\+Name}
+\begin{DoxyCompactList}\small\item\em Название процесса \end{DoxyCompactList}\item 
+H\+I\+N\+S\+T\+A\+N\+CE \hyperlink{class_system_class_a5571d11de0c4e97af68029eeee9296d3}{m\+\_\+hinstance}
+\begin{DoxyCompactList}\small\item\em hz \end{DoxyCompactList}\item 
+H\+W\+ND \hyperlink{class_system_class_a74e2eec24e772ae09e42a11a1e83236a}{m\+\_\+hwnd}
+\begin{DoxyCompactList}\small\item\em hz \end{DoxyCompactList}\item 
+\hyperlink{class_input_class}{Input\+Class} $\ast$ \hyperlink{class_system_class_a59754aa6c2f1183a069961b2999da210}{m\+\_\+input}
+\begin{DoxyCompactList}\small\item\em блок для управления input. \end{DoxyCompactList}\item 
+\hyperlink{class_position_class}{Position\+Class} $\ast$ \hyperlink{class_system_class_a50f3aa02021aa6813bc2e30dfcb8d8ae}{m\+\_\+position}
+\begin{DoxyCompactList}\small\item\em блок для управления позицией игрока \end{DoxyCompactList}\item 
+\hyperlink{class_graphics_class}{Graphics\+Class} $\ast$ \hyperlink{class_system_class_a595d53c1d2fa2dad35016fe9b3aa3f01}{m\+\_\+graphics}
+\begin{DoxyCompactList}\small\item\em блок для управления графикой \end{DoxyCompactList}\item 
+\hyperlink{class_game_mechanic_class}{Game\+Mechanic\+Class} $\ast$ \hyperlink{class_system_class_a536ff2a3fa38a758f694c2dc01219daf}{m\+\_\+game\+Mech}
+\begin{DoxyCompactList}\small\item\em блок для управления игровыми механиками \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Один класс, чтобы управлять ими всеми 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_system_class_ac8a9c3545ea8749f149a49219d5f7c20}\label{class_system_class_ac8a9c3545ea8749f149a49219d5f7c20}} 
+\index{System\+Class@{System\+Class}!System\+Class@{System\+Class}}
+\index{System\+Class@{System\+Class}!System\+Class@{System\+Class}}
+\subsubsection{\texorpdfstring{System\+Class()}{SystemClass()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily System\+Class\+::\+System\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Простой конструктор 
+
+\mbox{\Hypertarget{class_system_class_a3b14141f929e92fb9cf9a73bb88ce443}\label{class_system_class_a3b14141f929e92fb9cf9a73bb88ce443}} 
+\index{System\+Class@{System\+Class}!System\+Class@{System\+Class}}
+\index{System\+Class@{System\+Class}!System\+Class@{System\+Class}}
+\subsubsection{\texorpdfstring{System\+Class()}{SystemClass()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily System\+Class\+::\+System\+Class (\begin{DoxyParamCaption}\item[{const \hyperlink{class_system_class}{System\+Class} \&}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_system_class_aa0c6aed1875b97d8260ad264a9d95e60}\label{class_system_class_aa0c6aed1875b97d8260ad264a9d95e60}} 
+\index{System\+Class@{System\+Class}!````~System\+Class@{$\sim$\+System\+Class}}
+\index{````~System\+Class@{$\sim$\+System\+Class}!System\+Class@{System\+Class}}
+\subsubsection{\texorpdfstring{$\sim$\+System\+Class()}{~SystemClass()}}
+{\footnotesize\ttfamily System\+Class\+::$\sim$\+System\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_system_class_a8007871209331455c3f7aa5b2991b061}\label{class_system_class_a8007871209331455c3f7aa5b2991b061}} 
+\index{System\+Class@{System\+Class}!do\+Commands@{do\+Commands}}
+\index{do\+Commands@{do\+Commands}!System\+Class@{System\+Class}}
+\subsubsection{\texorpdfstring{do\+Commands()}{doCommands()}}
+{\footnotesize\ttfamily bool System\+Class\+::do\+Commands (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Выполнить все команды в очереди 
+
+\begin{DoxyReturn}{Returns}
+false, если во время выполнения был инициализирован выход 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_system_class_aafe0a61b5a2144016008ca529067862a}\label{class_system_class_aafe0a61b5a2144016008ca529067862a}} 
+\index{System\+Class@{System\+Class}!do\+Single\+Command@{do\+Single\+Command}}
+\index{do\+Single\+Command@{do\+Single\+Command}!System\+Class@{System\+Class}}
+\subsubsection{\texorpdfstring{do\+Single\+Command()}{doSingleCommand()}}
+{\footnotesize\ttfamily bool System\+Class\+::do\+Single\+Command (\begin{DoxyParamCaption}\item[{\hyperlink{class_command_class}{Command\+Class} $\ast$}]{command }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Выполнить только текущую команду 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em command} & исполнемая команда \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если во время выполнения был инициализирован выход 
+
+false, если во время выполнения был инициализирован выход 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_system_class_a19c44b1a6374453ad8735c5f880181f4}\label{class_system_class_a19c44b1a6374453ad8735c5f880181f4}} 
+\index{System\+Class@{System\+Class}!Frame@{Frame}}
+\index{Frame@{Frame}!System\+Class@{System\+Class}}
+\subsubsection{\texorpdfstring{Frame()}{Frame()}}
+{\footnotesize\ttfamily bool System\+Class\+::\+Frame (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Просчитать кадр 
+
+\begin{DoxyReturn}{Returns}
+false, если во время кадра был инициализирован выход 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_system_class_a5ff4f256861285812190f780dcddff01}\label{class_system_class_a5ff4f256861285812190f780dcddff01}} 
+\index{System\+Class@{System\+Class}!get@{get}}
+\index{get@{get}!System\+Class@{System\+Class}}
+\subsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily bool System\+Class\+::get (\begin{DoxyParamCaption}\item[{\hyperlink{class_command_class}{Command\+Class} $\ast$}]{command,  }\item[{int}]{ind,  }\item[{int}]{first\+Command }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Выполнить команду, дающую некое значение 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em command} & исполнемая команда \\
+\hline
+\mbox{\tt in}  & {\em ind} & индекс команды \\
+\hline
+\mbox{\tt in}  & {\em first\+Command} & индекс первого параметра \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если во время выполнения был инициализирован выход 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_system_class_a21f9acab8652feb8cbb8858afc91815a}\label{class_system_class_a21f9acab8652feb8cbb8858afc91815a}} 
+\index{System\+Class@{System\+Class}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!System\+Class@{System\+Class}}
+\subsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily bool System\+Class\+::\+Initialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Инициализировать игру 
+
+\begin{DoxyReturn}{Returns}
+false, если были ошибки при инициализации, true при успешной инициализации 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_system_class_a929af051441de7bd414863aabe05fdb1}\label{class_system_class_a929af051441de7bd414863aabe05fdb1}} 
+\index{System\+Class@{System\+Class}!Initialize\+Windows@{Initialize\+Windows}}
+\index{Initialize\+Windows@{Initialize\+Windows}!System\+Class@{System\+Class}}
+\subsubsection{\texorpdfstring{Initialize\+Windows()}{InitializeWindows()}}
+{\footnotesize\ttfamily void System\+Class\+::\+Initialize\+Windows (\begin{DoxyParamCaption}\item[{int}]{screen\+Width,  }\item[{int}]{screen\+Height }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Создать окно игры 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em screen\+Width,screen\+Height} & размеры окна \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_system_class_aeb0f9940a9a82a36f13e267e3989a98b}\label{class_system_class_aeb0f9940a9a82a36f13e267e3989a98b}} 
+\index{System\+Class@{System\+Class}!Message\+Handler@{Message\+Handler}}
+\index{Message\+Handler@{Message\+Handler}!System\+Class@{System\+Class}}
+\subsubsection{\texorpdfstring{Message\+Handler()}{MessageHandler()}}
+{\footnotesize\ttfamily L\+R\+E\+S\+U\+LT System\+Class\+::\+Message\+Handler (\begin{DoxyParamCaption}\item[{H\+W\+ND}]{hwnd,  }\item[{U\+I\+NT}]{umsg,  }\item[{W\+P\+A\+R\+AM}]{wparam,  }\item[{L\+P\+A\+R\+AM}]{lparam }\end{DoxyParamCaption})}
+
+
+
+базовая callback функция для обработки сообщений (Не знаю, как это работает) 
+
+\mbox{\Hypertarget{class_system_class_adc6bf9bc3ae14f2ee2f661818a500220}\label{class_system_class_adc6bf9bc3ae14f2ee2f661818a500220}} 
+\index{System\+Class@{System\+Class}!proces\+Operators@{proces\+Operators}}
+\index{proces\+Operators@{proces\+Operators}!System\+Class@{System\+Class}}
+\subsubsection{\texorpdfstring{proces\+Operators()}{procesOperators()}}
+{\footnotesize\ttfamily bool System\+Class\+::proces\+Operators (\begin{DoxyParamCaption}\item[{\hyperlink{class_command_class}{Command\+Class} $\ast$}]{command,  }\item[{int}]{ind,  }\item[{int}]{first\+Command }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Выполнить команду, связанную с выполнением скриптовых операторов command. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em command} & исполнемая команда \\
+\hline
+\mbox{\tt in}  & {\em ind} & индекс команды \\
+\hline
+\mbox{\tt in}  & {\em first\+Command} & индекс первого параметра \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если во время выполнения был инициализирован выход 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_system_class_ae3ba97d5f471516481350266cb6c3cab}\label{class_system_class_ae3ba97d5f471516481350266cb6c3cab}} 
+\index{System\+Class@{System\+Class}!Run@{Run}}
+\index{Run@{Run}!System\+Class@{System\+Class}}
+\subsubsection{\texorpdfstring{Run()}{Run()}}
+{\footnotesize\ttfamily void System\+Class\+::\+Run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Просчитать очередной кадр (выполянется до тех пор, пока не будет инициализирован выход из игры) 
+
+\mbox{\Hypertarget{class_system_class_a2c069c91c63a13da2944a468837d2aa8}\label{class_system_class_a2c069c91c63a13da2944a468837d2aa8}} 
+\index{System\+Class@{System\+Class}!set@{set}}
+\index{set@{set}!System\+Class@{System\+Class}}
+\subsubsection{\texorpdfstring{set()}{set()}}
+{\footnotesize\ttfamily bool System\+Class\+::set (\begin{DoxyParamCaption}\item[{\hyperlink{class_command_class}{Command\+Class} $\ast$}]{command,  }\item[{int}]{ind,  }\item[{int}]{first\+Command }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Выполнить команду, устанавливающую некое значение 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em command} & исполнемая команда \\
+\hline
+\mbox{\tt in}  & {\em ind} & индекс команды \\
+\hline
+\mbox{\tt in}  & {\em first\+Command} & индекс первого параметра \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если во время выполнения был инициализирован выход 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_system_class_a86b7353d60fb279bd1a65c970a216bec}\label{class_system_class_a86b7353d60fb279bd1a65c970a216bec}} 
+\index{System\+Class@{System\+Class}!Shutdown@{Shutdown}}
+\index{Shutdown@{Shutdown}!System\+Class@{System\+Class}}
+\subsubsection{\texorpdfstring{Shutdown()}{Shutdown()}}
+{\footnotesize\ttfamily void System\+Class\+::\+Shutdown (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Вызвать shutdown. 
+
+\mbox{\Hypertarget{class_system_class_a29bcaaac8ad0d695d4e3d09de4a93d19}\label{class_system_class_a29bcaaac8ad0d695d4e3d09de4a93d19}} 
+\index{System\+Class@{System\+Class}!Shutdown\+Windows@{Shutdown\+Windows}}
+\index{Shutdown\+Windows@{Shutdown\+Windows}!System\+Class@{System\+Class}}
+\subsubsection{\texorpdfstring{Shutdown\+Windows()}{ShutdownWindows()}}
+{\footnotesize\ttfamily void System\+Class\+::\+Shutdown\+Windows (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Закрыть окно 
+
+\mbox{\Hypertarget{class_system_class_a19c15f7c6bc2743a04fcac998ab17677}\label{class_system_class_a19c15f7c6bc2743a04fcac998ab17677}} 
+\index{System\+Class@{System\+Class}!update\+System@{update\+System}}
+\index{update\+System@{update\+System}!System\+Class@{System\+Class}}
+\subsubsection{\texorpdfstring{update\+System()}{updateSystem()}}
+{\footnotesize\ttfamily bool System\+Class\+::update\+System (\begin{DoxyParamCaption}\item[{\hyperlink{class_command_class}{Command\+Class} $\ast$}]{command,  }\item[{int}]{ind,  }\item[{int}]{first\+Command }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Выполнить команду, связанную с обновлением состояния системы 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em command} & исполнемая команда \\
+\hline
+\mbox{\tt in}  & {\em ind} & индекс команды \\
+\hline
+\mbox{\tt in}  & {\em first\+Command} & индекс первого параметра \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если во время выполнения был инициализирован выход 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_system_class_a05efe93f7f39e313723db3cba3dd6ab4}\label{class_system_class_a05efe93f7f39e313723db3cba3dd6ab4}} 
+\index{System\+Class@{System\+Class}!m\+\_\+application\+Name@{m\+\_\+application\+Name}}
+\index{m\+\_\+application\+Name@{m\+\_\+application\+Name}!System\+Class@{System\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+application\+Name}{m\_applicationName}}
+{\footnotesize\ttfamily L\+P\+C\+W\+S\+TR System\+Class\+::m\+\_\+application\+Name\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Название процесса 
+
+\mbox{\Hypertarget{class_system_class_a536ff2a3fa38a758f694c2dc01219daf}\label{class_system_class_a536ff2a3fa38a758f694c2dc01219daf}} 
+\index{System\+Class@{System\+Class}!m\+\_\+game\+Mech@{m\+\_\+game\+Mech}}
+\index{m\+\_\+game\+Mech@{m\+\_\+game\+Mech}!System\+Class@{System\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+game\+Mech}{m\_gameMech}}
+{\footnotesize\ttfamily \hyperlink{class_game_mechanic_class}{Game\+Mechanic\+Class}$\ast$ System\+Class\+::m\+\_\+game\+Mech\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+блок для управления игровыми механиками 
+
+\mbox{\Hypertarget{class_system_class_a595d53c1d2fa2dad35016fe9b3aa3f01}\label{class_system_class_a595d53c1d2fa2dad35016fe9b3aa3f01}} 
+\index{System\+Class@{System\+Class}!m\+\_\+graphics@{m\+\_\+graphics}}
+\index{m\+\_\+graphics@{m\+\_\+graphics}!System\+Class@{System\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+graphics}{m\_graphics}}
+{\footnotesize\ttfamily \hyperlink{class_graphics_class}{Graphics\+Class}$\ast$ System\+Class\+::m\+\_\+graphics\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+блок для управления графикой 
+
+\mbox{\Hypertarget{class_system_class_a5571d11de0c4e97af68029eeee9296d3}\label{class_system_class_a5571d11de0c4e97af68029eeee9296d3}} 
+\index{System\+Class@{System\+Class}!m\+\_\+hinstance@{m\+\_\+hinstance}}
+\index{m\+\_\+hinstance@{m\+\_\+hinstance}!System\+Class@{System\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+hinstance}{m\_hinstance}}
+{\footnotesize\ttfamily H\+I\+N\+S\+T\+A\+N\+CE System\+Class\+::m\+\_\+hinstance\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+hz 
+
+\mbox{\Hypertarget{class_system_class_a74e2eec24e772ae09e42a11a1e83236a}\label{class_system_class_a74e2eec24e772ae09e42a11a1e83236a}} 
+\index{System\+Class@{System\+Class}!m\+\_\+hwnd@{m\+\_\+hwnd}}
+\index{m\+\_\+hwnd@{m\+\_\+hwnd}!System\+Class@{System\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+hwnd}{m\_hwnd}}
+{\footnotesize\ttfamily H\+W\+ND System\+Class\+::m\+\_\+hwnd\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+hz 
+
+\mbox{\Hypertarget{class_system_class_a59754aa6c2f1183a069961b2999da210}\label{class_system_class_a59754aa6c2f1183a069961b2999da210}} 
+\index{System\+Class@{System\+Class}!m\+\_\+input@{m\+\_\+input}}
+\index{m\+\_\+input@{m\+\_\+input}!System\+Class@{System\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+input}{m\_input}}
+{\footnotesize\ttfamily \hyperlink{class_input_class}{Input\+Class}$\ast$ System\+Class\+::m\+\_\+input\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+блок для управления input. 
+
+\mbox{\Hypertarget{class_system_class_a50f3aa02021aa6813bc2e30dfcb8d8ae}\label{class_system_class_a50f3aa02021aa6813bc2e30dfcb8d8ae}} 
+\index{System\+Class@{System\+Class}!m\+\_\+position@{m\+\_\+position}}
+\index{m\+\_\+position@{m\+\_\+position}!System\+Class@{System\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+position}{m\_position}}
+{\footnotesize\ttfamily \hyperlink{class_position_class}{Position\+Class}$\ast$ System\+Class\+::m\+\_\+position\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+блок для управления позицией игрока 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_system_class_8h}{System\+Class.\+h}\item 
+\hyperlink{_system_class_8cpp}{System\+Class.\+cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,534 @@
+\hypertarget{class_load_screen_manager_class}{}\section{Load\+Screen\+Manager\+Class Class Reference}
+\label{class_load_screen_manager_class}\index{Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}}
+
+
+{\ttfamily \#include $<$Load\+Screen\+Manager\+Class.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_load_screen_manager_class_ac7453e8b4e715100841d49400a418440}{Initialize} (\hyperlink{class_d3_d_class}{D3\+D\+Class} $\ast$D3D, \hyperlink{class_shader_manager_class}{Shader\+Manager\+Class} $\ast$shaders, D3\+D\+X\+M\+A\+T\+R\+IX base\+View\+Matrix, H\+W\+ND hwnd, \hyperlink{class_path_class}{Path\+Class} $\ast$filename)
+\item 
+void \hyperlink{class_load_screen_manager_class_adde192a99094683d3193c37935d3ddd0}{Shutdown} ()
+\item 
+bool \hyperlink{class_load_screen_manager_class_ac173d29a91243ee9ef7bd4342cdcd4f8}{Render} ()
+\begin{DoxyCompactList}\small\item\em Отрисовка кадра \end{DoxyCompactList}\item 
+void \hyperlink{class_load_screen_manager_class_a6d35c4ec1b681e2d8fb19411d922cd2f}{change\+Line} (const std\+::string \&text, float per\+Cent)
+\begin{DoxyCompactList}\small\item\em Изменение загрузочной линии \end{DoxyCompactList}\item 
+void \hyperlink{class_load_screen_manager_class_afe8b77ac62afe178004df020bee92385}{show\+Elements} ()
+\begin{DoxyCompactList}\small\item\em Показать загрузочный экран \end{DoxyCompactList}\item 
+void \hyperlink{class_load_screen_manager_class_af2a306e3f2b0028e838ed76a032e6b75}{hide\+Elements} ()
+\begin{DoxyCompactList}\small\item\em Скрыть загрузочный экран \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_load_screen_manager_class}{Load\+Screen\+Manager\+Class} \& \hyperlink{class_load_screen_manager_class_afd2c1e2905d518a3b1f307de9d598911}{getI} ()
+\begin{DoxyCompactList}\small\item\em Получить экземпляр класса \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_load_screen_manager_class_a2e7a755a0176b52eaab4bb531747e788}{Load\+Screen\+Manager\+Class} ()
+\item 
+\hyperlink{class_load_screen_manager_class_a0cd35e842dc744fe8786118da22decf5}{Load\+Screen\+Manager\+Class} (const \hyperlink{class_load_screen_manager_class}{Load\+Screen\+Manager\+Class} \&)
+\item 
+\hyperlink{class_load_screen_manager_class_a836486d1d96adde3b0e0ab387399d326}{$\sim$\+Load\+Screen\+Manager\+Class} ()
+\item 
+bool \hyperlink{class_load_screen_manager_class_a72fd6441d9f47485b5b4baab389b56fa}{read\+From\+File} (\hyperlink{class_path_class}{Path\+Class} $\ast$filename)
+\begin{DoxyCompactList}\small\item\em Прочитать данные из файла \end{DoxyCompactList}\item 
+bool \hyperlink{class_load_screen_manager_class_a244ce822d442e75c3a98e19460fce0a4}{update\+Elements} ()
+\begin{DoxyCompactList}\small\item\em Проверить необходимость смены картинки и цитаты \end{DoxyCompactList}\item 
+void \hyperlink{class_load_screen_manager_class_a74f3949d537878e1b1c67beb4304caf3}{change\+Line\+Position} (float per\+Cent)
+\begin{DoxyCompactList}\small\item\em Изменить уровень заполненности линии \end{DoxyCompactList}\item 
+bool \hyperlink{class_load_screen_manager_class_a48c99f2053eb880ee9550bda62cc01ad}{change\+Line\+Text} (const std\+::string \&text)
+\begin{DoxyCompactList}\small\item\em Изменить текст линии \end{DoxyCompactList}\item 
+bool \hyperlink{class_load_screen_manager_class_a351cd38c2b2263e27f56c668027e3c8b}{change\+Image} ()
+\begin{DoxyCompactList}\small\item\em Изменить картинку (рандом или по порядку) \end{DoxyCompactList}\item 
+bool \hyperlink{class_load_screen_manager_class_a83f095d4673cc347f0a03f1608a88f88}{change\+Quote} ()
+\begin{DoxyCompactList}\small\item\em Изменить цитату (рандом или по порядку) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+long long int \hyperlink{class_load_screen_manager_class_a2df19deed774621d349d648df2afb82b}{m\+\_\+last\+Time}
+\item 
+D3\+D\+X\+M\+A\+T\+R\+IX \hyperlink{class_load_screen_manager_class_a1f055aef818211fb408d923764fc3ce8}{m\+\_\+base\+View\+Matrix}
+\begin{DoxyCompactList}\small\item\em Время последнего изменения линии \end{DoxyCompactList}\item 
+\hyperlink{class_shader_manager_class}{Shader\+Manager\+Class} $\ast$ \hyperlink{class_load_screen_manager_class_ad305583a33b79d2f1ad7e9551f8197c7}{m\+\_\+shaders}
+\begin{DoxyCompactList}\small\item\em Шейдеры \end{DoxyCompactList}\item 
+\hyperlink{class_d3_d_class}{D3\+D\+Class} $\ast$ \hyperlink{class_load_screen_manager_class_ab463e14a842826919d9d3a7ac40aff77}{m\+\_\+\+D3D}
+\begin{DoxyCompactList}\small\item\em Графическое A\+PI. \end{DoxyCompactList}\item 
+\hyperlink{class_interface_element_class}{Interface\+Element\+Class} $\ast$ \hyperlink{class_load_screen_manager_class_aa63f566996b69c84a6f3bbd58805d30b}{m\+\_\+load\+Image}
+\begin{DoxyCompactList}\small\item\em Загрузочная каритнка \end{DoxyCompactList}\item 
+\hyperlink{class_interface_element_class}{Interface\+Element\+Class} $\ast$ \hyperlink{class_load_screen_manager_class_addaf961c8dd9e240d029c1a5c5eb5e00}{m\+\_\+load\+Line}
+\begin{DoxyCompactList}\small\item\em Загрузочная линия \end{DoxyCompactList}\item 
+\hyperlink{class_interface_element_class}{Interface\+Element\+Class} $\ast$ \hyperlink{class_load_screen_manager_class_a073d951330dbf9a103f5d88536100948}{m\+\_\+load\+Quote}
+\begin{DoxyCompactList}\small\item\em Загрузочная цитата \end{DoxyCompactList}\item 
+std\+::vector$<$ \hyperlink{class_interface_element_class}{Interface\+Element\+Class} $\ast$ $>$ \hyperlink{class_load_screen_manager_class_a8d3d70fa04038c320615042aef8bb5fd}{m\+\_\+additional\+Elements}
+\begin{DoxyCompactList}\small\item\em Дополнительные элементы \end{DoxyCompactList}\item 
+\hyperlink{class_path_class}{Path\+Class} $\ast$ \hyperlink{class_load_screen_manager_class_ae39db8c9812b3cf7dbedf51388c36cc7}{m\+\_\+image\+Element\+Name}
+\begin{DoxyCompactList}\small\item\em Путь до элемента загрузочной картинки \end{DoxyCompactList}\item 
+std\+::vector$<$ \hyperlink{class_path_class}{Path\+Class} $\ast$ $>$ \hyperlink{class_load_screen_manager_class_ae2b9b23dd1ec54e9eca1585d107fdf05}{m\+\_\+load\+Image\+Names}
+\begin{DoxyCompactList}\small\item\em Пути до текстур для загрузочной картинки \end{DoxyCompactList}\item 
+bool \hyperlink{class_load_screen_manager_class_ab6623e571e9e0fe7bd316d219ce2cc5f}{m\+\_\+image\+Change\+Rand}
+\begin{DoxyCompactList}\small\item\em Тип смены картинки (1 -\/ рандом, 0 -\/ порядок) \end{DoxyCompactList}\item 
+int \hyperlink{class_load_screen_manager_class_a7e617d505fb56b152e9645c79f412672}{m\+\_\+image\+Change\+Interval}
+\begin{DoxyCompactList}\small\item\em Интервал смены картинки \end{DoxyCompactList}\item 
+int \hyperlink{class_load_screen_manager_class_a09b449e1b6aeb563f7f4075d97388109}{m\+\_\+image\+Current\+Interval}
+\begin{DoxyCompactList}\small\item\em Время с последнего изменения картинки \end{DoxyCompactList}\item 
+int \hyperlink{class_load_screen_manager_class_a488c0f089f3236ae2f499dc87c78d005}{m\+\_\+current\+Image}
+\begin{DoxyCompactList}\small\item\em Индекс текущей картинки \end{DoxyCompactList}\item 
+\hyperlink{class_path_class}{Path\+Class} $\ast$ \hyperlink{class_load_screen_manager_class_ac034597d07c48042e9dde3e4e1bd489e}{m\+\_\+quote\+Element\+Name}
+\begin{DoxyCompactList}\small\item\em Путь до элемента загрузочной цитаты \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \hyperlink{class_load_screen_manager_class_accc397cb95d4435f9c0cd21914dae1a1}{m\+\_\+load\+Quote\+Names}
+\begin{DoxyCompactList}\small\item\em Имена текстов для загрузочной цитаты \end{DoxyCompactList}\item 
+bool \hyperlink{class_load_screen_manager_class_acb4939c8fd42e0ab79e4426151a57f58}{m\+\_\+quote\+Change\+Rand}
+\begin{DoxyCompactList}\small\item\em Тип смены цитаты (1 -\/ рандом, 0 -\/ порядок) \end{DoxyCompactList}\item 
+int \hyperlink{class_load_screen_manager_class_a78865abb74cee7409a95fe6378fdd80a}{m\+\_\+quote\+Change\+Interval}
+\begin{DoxyCompactList}\small\item\em Интервал смены цитаты \end{DoxyCompactList}\item 
+int \hyperlink{class_load_screen_manager_class_a4e31f6e1bbc0435e6017f69909c53b9b}{m\+\_\+quote\+Current\+Interval}
+\begin{DoxyCompactList}\small\item\em Время с последнего изменения цитаты \end{DoxyCompactList}\item 
+int \hyperlink{class_load_screen_manager_class_a76398d3071bdae770a53e4170f799c08}{m\+\_\+current\+Quote}
+\begin{DoxyCompactList}\small\item\em Индекс текущей цитаты \end{DoxyCompactList}\item 
+\hyperlink{class_path_class}{Path\+Class} $\ast$ \hyperlink{class_load_screen_manager_class_a191caf47ba041e0eaf1b7f29d765ab39}{m\+\_\+line\+Element\+Name}
+\begin{DoxyCompactList}\small\item\em Путь до элемента линии \end{DoxyCompactList}\item 
+std\+::vector$<$ \hyperlink{class_path_class}{Path\+Class} $\ast$ $>$ \hyperlink{class_load_screen_manager_class_a007ed034708915f51438d7e11b66a43a}{m\+\_\+additional\+Element\+Names}
+\begin{DoxyCompactList}\small\item\em Пути до дополнительных элементов \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_load_screen_manager_class}{Load\+Screen\+Manager\+Class} $\ast$ \hyperlink{class_load_screen_manager_class_a47f425e60a0606327ebc08ad90ccf7d6}{m\+\_\+instance} = 0
+\begin{DoxyCompactList}\small\item\em Единственный экземпляр класса \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Управление загрузочным экраном, синглтон 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_load_screen_manager_class_a2e7a755a0176b52eaab4bb531747e788}\label{class_load_screen_manager_class_a2e7a755a0176b52eaab4bb531747e788}} 
+\index{Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}!Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}}
+\index{Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}!Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}}
+\subsubsection{\texorpdfstring{Load\+Screen\+Manager\+Class()}{LoadScreenManagerClass()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Load\+Screen\+Manager\+Class\+::\+Load\+Screen\+Manager\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_load_screen_manager_class_a0cd35e842dc744fe8786118da22decf5}\label{class_load_screen_manager_class_a0cd35e842dc744fe8786118da22decf5}} 
+\index{Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}!Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}}
+\index{Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}!Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}}
+\subsubsection{\texorpdfstring{Load\+Screen\+Manager\+Class()}{LoadScreenManagerClass()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Load\+Screen\+Manager\+Class\+::\+Load\+Screen\+Manager\+Class (\begin{DoxyParamCaption}\item[{const \hyperlink{class_load_screen_manager_class}{Load\+Screen\+Manager\+Class} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_load_screen_manager_class_a836486d1d96adde3b0e0ab387399d326}\label{class_load_screen_manager_class_a836486d1d96adde3b0e0ab387399d326}} 
+\index{Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}!````~Load\+Screen\+Manager\+Class@{$\sim$\+Load\+Screen\+Manager\+Class}}
+\index{````~Load\+Screen\+Manager\+Class@{$\sim$\+Load\+Screen\+Manager\+Class}!Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}}
+\subsubsection{\texorpdfstring{$\sim$\+Load\+Screen\+Manager\+Class()}{~LoadScreenManagerClass()}}
+{\footnotesize\ttfamily Load\+Screen\+Manager\+Class\+::$\sim$\+Load\+Screen\+Manager\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_load_screen_manager_class_a351cd38c2b2263e27f56c668027e3c8b}\label{class_load_screen_manager_class_a351cd38c2b2263e27f56c668027e3c8b}} 
+\index{Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}!change\+Image@{change\+Image}}
+\index{change\+Image@{change\+Image}!Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}}
+\subsubsection{\texorpdfstring{change\+Image()}{changeImage()}}
+{\footnotesize\ttfamily bool Load\+Screen\+Manager\+Class\+::change\+Image (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Изменить картинку (рандом или по порядку) 
+
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_load_screen_manager_class_a6d35c4ec1b681e2d8fb19411d922cd2f}\label{class_load_screen_manager_class_a6d35c4ec1b681e2d8fb19411d922cd2f}} 
+\index{Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}!change\+Line@{change\+Line}}
+\index{change\+Line@{change\+Line}!Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}}
+\subsubsection{\texorpdfstring{change\+Line()}{changeLine()}}
+{\footnotesize\ttfamily void Load\+Screen\+Manager\+Class\+::change\+Line (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{text,  }\item[{float}]{per\+Cent }\end{DoxyParamCaption})}
+
+
+
+Изменение загрузочной линии 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em text} & -\/ новый текст для линии \\
+\hline
+\mbox{\tt in}  & {\em per\+Cent} & -\/ процент заполнения линии \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_load_screen_manager_class_a74f3949d537878e1b1c67beb4304caf3}\label{class_load_screen_manager_class_a74f3949d537878e1b1c67beb4304caf3}} 
+\index{Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}!change\+Line\+Position@{change\+Line\+Position}}
+\index{change\+Line\+Position@{change\+Line\+Position}!Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}}
+\subsubsection{\texorpdfstring{change\+Line\+Position()}{changeLinePosition()}}
+{\footnotesize\ttfamily void Load\+Screen\+Manager\+Class\+::change\+Line\+Position (\begin{DoxyParamCaption}\item[{float}]{per\+Cent }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Изменить уровень заполненности линии 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em per\+Cent} & -\/ процент заполнения линии \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_load_screen_manager_class_a48c99f2053eb880ee9550bda62cc01ad}\label{class_load_screen_manager_class_a48c99f2053eb880ee9550bda62cc01ad}} 
+\index{Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}!change\+Line\+Text@{change\+Line\+Text}}
+\index{change\+Line\+Text@{change\+Line\+Text}!Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}}
+\subsubsection{\texorpdfstring{change\+Line\+Text()}{changeLineText()}}
+{\footnotesize\ttfamily bool Load\+Screen\+Manager\+Class\+::change\+Line\+Text (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{text }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Изменить текст линии 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em text} & -\/ новый текст для линии \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_load_screen_manager_class_a83f095d4673cc347f0a03f1608a88f88}\label{class_load_screen_manager_class_a83f095d4673cc347f0a03f1608a88f88}} 
+\index{Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}!change\+Quote@{change\+Quote}}
+\index{change\+Quote@{change\+Quote}!Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}}
+\subsubsection{\texorpdfstring{change\+Quote()}{changeQuote()}}
+{\footnotesize\ttfamily bool Load\+Screen\+Manager\+Class\+::change\+Quote (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Изменить цитату (рандом или по порядку) 
+
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_load_screen_manager_class_afd2c1e2905d518a3b1f307de9d598911}\label{class_load_screen_manager_class_afd2c1e2905d518a3b1f307de9d598911}} 
+\index{Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}!getI@{getI}}
+\index{getI@{getI}!Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}}
+\subsubsection{\texorpdfstring{get\+I()}{getI()}}
+{\footnotesize\ttfamily \hyperlink{class_load_screen_manager_class}{Load\+Screen\+Manager\+Class} \& Load\+Screen\+Manager\+Class\+::getI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Получить экземпляр класса 
+
+\mbox{\Hypertarget{class_load_screen_manager_class_af2a306e3f2b0028e838ed76a032e6b75}\label{class_load_screen_manager_class_af2a306e3f2b0028e838ed76a032e6b75}} 
+\index{Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}!hide\+Elements@{hide\+Elements}}
+\index{hide\+Elements@{hide\+Elements}!Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}}
+\subsubsection{\texorpdfstring{hide\+Elements()}{hideElements()}}
+{\footnotesize\ttfamily void Load\+Screen\+Manager\+Class\+::hide\+Elements (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Скрыть загрузочный экран 
+
+\mbox{\Hypertarget{class_load_screen_manager_class_ac7453e8b4e715100841d49400a418440}\label{class_load_screen_manager_class_ac7453e8b4e715100841d49400a418440}} 
+\index{Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}}
+\subsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily bool Load\+Screen\+Manager\+Class\+::\+Initialize (\begin{DoxyParamCaption}\item[{\hyperlink{class_d3_d_class}{D3\+D\+Class} $\ast$}]{D3D,  }\item[{\hyperlink{class_shader_manager_class}{Shader\+Manager\+Class} $\ast$}]{shaders,  }\item[{D3\+D\+X\+M\+A\+T\+R\+IX}]{base\+View\+Matrix,  }\item[{H\+W\+ND}]{hwnd,  }\item[{\hyperlink{class_path_class}{Path\+Class} $\ast$}]{filename }\end{DoxyParamCaption})}
+
+Инициализация класса 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em D3D} & -\/ графическое A\+PI \\
+\hline
+\mbox{\tt in}  & {\em shaders} & -\/ шейдеры \\
+\hline
+\mbox{\tt in}  & {\em hwnd} & -\/ идентификатр окна \\
+\hline
+\mbox{\tt in}  & {\em filename} & -\/ путь до файла с данными о загрузке \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_load_screen_manager_class_a72fd6441d9f47485b5b4baab389b56fa}\label{class_load_screen_manager_class_a72fd6441d9f47485b5b4baab389b56fa}} 
+\index{Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}!read\+From\+File@{read\+From\+File}}
+\index{read\+From\+File@{read\+From\+File}!Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}}
+\subsubsection{\texorpdfstring{read\+From\+File()}{readFromFile()}}
+{\footnotesize\ttfamily bool Load\+Screen\+Manager\+Class\+::read\+From\+File (\begin{DoxyParamCaption}\item[{\hyperlink{class_path_class}{Path\+Class} $\ast$}]{filename }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Прочитать данные из файла 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em filename} & -\/ путь до файла с данными о загрузке \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_load_screen_manager_class_ac173d29a91243ee9ef7bd4342cdcd4f8}\label{class_load_screen_manager_class_ac173d29a91243ee9ef7bd4342cdcd4f8}} 
+\index{Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}!Render@{Render}}
+\index{Render@{Render}!Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}}
+\subsubsection{\texorpdfstring{Render()}{Render()}}
+{\footnotesize\ttfamily bool Load\+Screen\+Manager\+Class\+::\+Render (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Отрисовка кадра 
+
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_load_screen_manager_class_afe8b77ac62afe178004df020bee92385}\label{class_load_screen_manager_class_afe8b77ac62afe178004df020bee92385}} 
+\index{Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}!show\+Elements@{show\+Elements}}
+\index{show\+Elements@{show\+Elements}!Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}}
+\subsubsection{\texorpdfstring{show\+Elements()}{showElements()}}
+{\footnotesize\ttfamily void Load\+Screen\+Manager\+Class\+::show\+Elements (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Показать загрузочный экран 
+
+\mbox{\Hypertarget{class_load_screen_manager_class_adde192a99094683d3193c37935d3ddd0}\label{class_load_screen_manager_class_adde192a99094683d3193c37935d3ddd0}} 
+\index{Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}!Shutdown@{Shutdown}}
+\index{Shutdown@{Shutdown}!Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}}
+\subsubsection{\texorpdfstring{Shutdown()}{Shutdown()}}
+{\footnotesize\ttfamily void Load\+Screen\+Manager\+Class\+::\+Shutdown (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_load_screen_manager_class_a244ce822d442e75c3a98e19460fce0a4}\label{class_load_screen_manager_class_a244ce822d442e75c3a98e19460fce0a4}} 
+\index{Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}!update\+Elements@{update\+Elements}}
+\index{update\+Elements@{update\+Elements}!Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}}
+\subsubsection{\texorpdfstring{update\+Elements()}{updateElements()}}
+{\footnotesize\ttfamily bool Load\+Screen\+Manager\+Class\+::update\+Elements (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Проверить необходимость смены картинки и цитаты 
+
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_load_screen_manager_class_a007ed034708915f51438d7e11b66a43a}\label{class_load_screen_manager_class_a007ed034708915f51438d7e11b66a43a}} 
+\index{Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}!m\+\_\+additional\+Element\+Names@{m\+\_\+additional\+Element\+Names}}
+\index{m\+\_\+additional\+Element\+Names@{m\+\_\+additional\+Element\+Names}!Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+additional\+Element\+Names}{m\_additionalElementNames}}
+{\footnotesize\ttfamily std\+::vector$<$\hyperlink{class_path_class}{Path\+Class}$\ast$$>$ Load\+Screen\+Manager\+Class\+::m\+\_\+additional\+Element\+Names\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Пути до дополнительных элементов 
+
+\mbox{\Hypertarget{class_load_screen_manager_class_a8d3d70fa04038c320615042aef8bb5fd}\label{class_load_screen_manager_class_a8d3d70fa04038c320615042aef8bb5fd}} 
+\index{Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}!m\+\_\+additional\+Elements@{m\+\_\+additional\+Elements}}
+\index{m\+\_\+additional\+Elements@{m\+\_\+additional\+Elements}!Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+additional\+Elements}{m\_additionalElements}}
+{\footnotesize\ttfamily std\+::vector$<$\hyperlink{class_interface_element_class}{Interface\+Element\+Class}$\ast$$>$ Load\+Screen\+Manager\+Class\+::m\+\_\+additional\+Elements\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Дополнительные элементы 
+
+\mbox{\Hypertarget{class_load_screen_manager_class_a1f055aef818211fb408d923764fc3ce8}\label{class_load_screen_manager_class_a1f055aef818211fb408d923764fc3ce8}} 
+\index{Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}!m\+\_\+base\+View\+Matrix@{m\+\_\+base\+View\+Matrix}}
+\index{m\+\_\+base\+View\+Matrix@{m\+\_\+base\+View\+Matrix}!Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+base\+View\+Matrix}{m\_baseViewMatrix}}
+{\footnotesize\ttfamily D3\+D\+X\+M\+A\+T\+R\+IX Load\+Screen\+Manager\+Class\+::m\+\_\+base\+View\+Matrix\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Время последнего изменения линии 
+
+Базовая видовая матрица \mbox{\Hypertarget{class_load_screen_manager_class_a488c0f089f3236ae2f499dc87c78d005}\label{class_load_screen_manager_class_a488c0f089f3236ae2f499dc87c78d005}} 
+\index{Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}!m\+\_\+current\+Image@{m\+\_\+current\+Image}}
+\index{m\+\_\+current\+Image@{m\+\_\+current\+Image}!Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+current\+Image}{m\_currentImage}}
+{\footnotesize\ttfamily int Load\+Screen\+Manager\+Class\+::m\+\_\+current\+Image\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Индекс текущей картинки 
+
+\mbox{\Hypertarget{class_load_screen_manager_class_a76398d3071bdae770a53e4170f799c08}\label{class_load_screen_manager_class_a76398d3071bdae770a53e4170f799c08}} 
+\index{Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}!m\+\_\+current\+Quote@{m\+\_\+current\+Quote}}
+\index{m\+\_\+current\+Quote@{m\+\_\+current\+Quote}!Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+current\+Quote}{m\_currentQuote}}
+{\footnotesize\ttfamily int Load\+Screen\+Manager\+Class\+::m\+\_\+current\+Quote\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Индекс текущей цитаты 
+
+\mbox{\Hypertarget{class_load_screen_manager_class_ab463e14a842826919d9d3a7ac40aff77}\label{class_load_screen_manager_class_ab463e14a842826919d9d3a7ac40aff77}} 
+\index{Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}!m\+\_\+\+D3D@{m\+\_\+\+D3D}}
+\index{m\+\_\+\+D3D@{m\+\_\+\+D3D}!Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+\+D3D}{m\_D3D}}
+{\footnotesize\ttfamily \hyperlink{class_d3_d_class}{D3\+D\+Class}$\ast$ Load\+Screen\+Manager\+Class\+::m\+\_\+\+D3D\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Графическое A\+PI. 
+
+\mbox{\Hypertarget{class_load_screen_manager_class_a7e617d505fb56b152e9645c79f412672}\label{class_load_screen_manager_class_a7e617d505fb56b152e9645c79f412672}} 
+\index{Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}!m\+\_\+image\+Change\+Interval@{m\+\_\+image\+Change\+Interval}}
+\index{m\+\_\+image\+Change\+Interval@{m\+\_\+image\+Change\+Interval}!Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+image\+Change\+Interval}{m\_imageChangeInterval}}
+{\footnotesize\ttfamily int Load\+Screen\+Manager\+Class\+::m\+\_\+image\+Change\+Interval\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Интервал смены картинки 
+
+\mbox{\Hypertarget{class_load_screen_manager_class_ab6623e571e9e0fe7bd316d219ce2cc5f}\label{class_load_screen_manager_class_ab6623e571e9e0fe7bd316d219ce2cc5f}} 
+\index{Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}!m\+\_\+image\+Change\+Rand@{m\+\_\+image\+Change\+Rand}}
+\index{m\+\_\+image\+Change\+Rand@{m\+\_\+image\+Change\+Rand}!Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+image\+Change\+Rand}{m\_imageChangeRand}}
+{\footnotesize\ttfamily bool Load\+Screen\+Manager\+Class\+::m\+\_\+image\+Change\+Rand\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Тип смены картинки (1 -\/ рандом, 0 -\/ порядок) 
+
+\mbox{\Hypertarget{class_load_screen_manager_class_a09b449e1b6aeb563f7f4075d97388109}\label{class_load_screen_manager_class_a09b449e1b6aeb563f7f4075d97388109}} 
+\index{Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}!m\+\_\+image\+Current\+Interval@{m\+\_\+image\+Current\+Interval}}
+\index{m\+\_\+image\+Current\+Interval@{m\+\_\+image\+Current\+Interval}!Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+image\+Current\+Interval}{m\_imageCurrentInterval}}
+{\footnotesize\ttfamily int Load\+Screen\+Manager\+Class\+::m\+\_\+image\+Current\+Interval\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Время с последнего изменения картинки 
+
+\mbox{\Hypertarget{class_load_screen_manager_class_ae39db8c9812b3cf7dbedf51388c36cc7}\label{class_load_screen_manager_class_ae39db8c9812b3cf7dbedf51388c36cc7}} 
+\index{Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}!m\+\_\+image\+Element\+Name@{m\+\_\+image\+Element\+Name}}
+\index{m\+\_\+image\+Element\+Name@{m\+\_\+image\+Element\+Name}!Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+image\+Element\+Name}{m\_imageElementName}}
+{\footnotesize\ttfamily \hyperlink{class_path_class}{Path\+Class}$\ast$ Load\+Screen\+Manager\+Class\+::m\+\_\+image\+Element\+Name\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Путь до элемента загрузочной картинки 
+
+\mbox{\Hypertarget{class_load_screen_manager_class_a47f425e60a0606327ebc08ad90ccf7d6}\label{class_load_screen_manager_class_a47f425e60a0606327ebc08ad90ccf7d6}} 
+\index{Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}!m\+\_\+instance@{m\+\_\+instance}}
+\index{m\+\_\+instance@{m\+\_\+instance}!Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+instance}{m\_instance}}
+{\footnotesize\ttfamily \hyperlink{class_load_screen_manager_class}{Load\+Screen\+Manager\+Class} $\ast$ Load\+Screen\+Manager\+Class\+::m\+\_\+instance = 0\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Единственный экземпляр класса 
+
+\mbox{\Hypertarget{class_load_screen_manager_class_a2df19deed774621d349d648df2afb82b}\label{class_load_screen_manager_class_a2df19deed774621d349d648df2afb82b}} 
+\index{Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}!m\+\_\+last\+Time@{m\+\_\+last\+Time}}
+\index{m\+\_\+last\+Time@{m\+\_\+last\+Time}!Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+last\+Time}{m\_lastTime}}
+{\footnotesize\ttfamily long long int Load\+Screen\+Manager\+Class\+::m\+\_\+last\+Time\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_load_screen_manager_class_a191caf47ba041e0eaf1b7f29d765ab39}\label{class_load_screen_manager_class_a191caf47ba041e0eaf1b7f29d765ab39}} 
+\index{Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}!m\+\_\+line\+Element\+Name@{m\+\_\+line\+Element\+Name}}
+\index{m\+\_\+line\+Element\+Name@{m\+\_\+line\+Element\+Name}!Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+line\+Element\+Name}{m\_lineElementName}}
+{\footnotesize\ttfamily \hyperlink{class_path_class}{Path\+Class}$\ast$ Load\+Screen\+Manager\+Class\+::m\+\_\+line\+Element\+Name\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Путь до элемента линии 
+
+\mbox{\Hypertarget{class_load_screen_manager_class_aa63f566996b69c84a6f3bbd58805d30b}\label{class_load_screen_manager_class_aa63f566996b69c84a6f3bbd58805d30b}} 
+\index{Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}!m\+\_\+load\+Image@{m\+\_\+load\+Image}}
+\index{m\+\_\+load\+Image@{m\+\_\+load\+Image}!Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+load\+Image}{m\_loadImage}}
+{\footnotesize\ttfamily \hyperlink{class_interface_element_class}{Interface\+Element\+Class}$\ast$ Load\+Screen\+Manager\+Class\+::m\+\_\+load\+Image\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Загрузочная каритнка 
+
+\mbox{\Hypertarget{class_load_screen_manager_class_ae2b9b23dd1ec54e9eca1585d107fdf05}\label{class_load_screen_manager_class_ae2b9b23dd1ec54e9eca1585d107fdf05}} 
+\index{Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}!m\+\_\+load\+Image\+Names@{m\+\_\+load\+Image\+Names}}
+\index{m\+\_\+load\+Image\+Names@{m\+\_\+load\+Image\+Names}!Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+load\+Image\+Names}{m\_loadImageNames}}
+{\footnotesize\ttfamily std\+::vector$<$\hyperlink{class_path_class}{Path\+Class}$\ast$$>$ Load\+Screen\+Manager\+Class\+::m\+\_\+load\+Image\+Names\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Пути до текстур для загрузочной картинки 
+
+\mbox{\Hypertarget{class_load_screen_manager_class_addaf961c8dd9e240d029c1a5c5eb5e00}\label{class_load_screen_manager_class_addaf961c8dd9e240d029c1a5c5eb5e00}} 
+\index{Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}!m\+\_\+load\+Line@{m\+\_\+load\+Line}}
+\index{m\+\_\+load\+Line@{m\+\_\+load\+Line}!Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+load\+Line}{m\_loadLine}}
+{\footnotesize\ttfamily \hyperlink{class_interface_element_class}{Interface\+Element\+Class}$\ast$ Load\+Screen\+Manager\+Class\+::m\+\_\+load\+Line\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Загрузочная линия 
+
+\mbox{\Hypertarget{class_load_screen_manager_class_a073d951330dbf9a103f5d88536100948}\label{class_load_screen_manager_class_a073d951330dbf9a103f5d88536100948}} 
+\index{Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}!m\+\_\+load\+Quote@{m\+\_\+load\+Quote}}
+\index{m\+\_\+load\+Quote@{m\+\_\+load\+Quote}!Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+load\+Quote}{m\_loadQuote}}
+{\footnotesize\ttfamily \hyperlink{class_interface_element_class}{Interface\+Element\+Class}$\ast$ Load\+Screen\+Manager\+Class\+::m\+\_\+load\+Quote\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Загрузочная цитата 
+
+\mbox{\Hypertarget{class_load_screen_manager_class_accc397cb95d4435f9c0cd21914dae1a1}\label{class_load_screen_manager_class_accc397cb95d4435f9c0cd21914dae1a1}} 
+\index{Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}!m\+\_\+load\+Quote\+Names@{m\+\_\+load\+Quote\+Names}}
+\index{m\+\_\+load\+Quote\+Names@{m\+\_\+load\+Quote\+Names}!Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+load\+Quote\+Names}{m\_loadQuoteNames}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::string$>$ Load\+Screen\+Manager\+Class\+::m\+\_\+load\+Quote\+Names\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Имена текстов для загрузочной цитаты 
+
+\mbox{\Hypertarget{class_load_screen_manager_class_a78865abb74cee7409a95fe6378fdd80a}\label{class_load_screen_manager_class_a78865abb74cee7409a95fe6378fdd80a}} 
+\index{Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}!m\+\_\+quote\+Change\+Interval@{m\+\_\+quote\+Change\+Interval}}
+\index{m\+\_\+quote\+Change\+Interval@{m\+\_\+quote\+Change\+Interval}!Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+quote\+Change\+Interval}{m\_quoteChangeInterval}}
+{\footnotesize\ttfamily int Load\+Screen\+Manager\+Class\+::m\+\_\+quote\+Change\+Interval\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Интервал смены цитаты 
+
+\mbox{\Hypertarget{class_load_screen_manager_class_acb4939c8fd42e0ab79e4426151a57f58}\label{class_load_screen_manager_class_acb4939c8fd42e0ab79e4426151a57f58}} 
+\index{Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}!m\+\_\+quote\+Change\+Rand@{m\+\_\+quote\+Change\+Rand}}
+\index{m\+\_\+quote\+Change\+Rand@{m\+\_\+quote\+Change\+Rand}!Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+quote\+Change\+Rand}{m\_quoteChangeRand}}
+{\footnotesize\ttfamily bool Load\+Screen\+Manager\+Class\+::m\+\_\+quote\+Change\+Rand\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Тип смены цитаты (1 -\/ рандом, 0 -\/ порядок) 
+
+\mbox{\Hypertarget{class_load_screen_manager_class_a4e31f6e1bbc0435e6017f69909c53b9b}\label{class_load_screen_manager_class_a4e31f6e1bbc0435e6017f69909c53b9b}} 
+\index{Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}!m\+\_\+quote\+Current\+Interval@{m\+\_\+quote\+Current\+Interval}}
+\index{m\+\_\+quote\+Current\+Interval@{m\+\_\+quote\+Current\+Interval}!Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+quote\+Current\+Interval}{m\_quoteCurrentInterval}}
+{\footnotesize\ttfamily int Load\+Screen\+Manager\+Class\+::m\+\_\+quote\+Current\+Interval\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Время с последнего изменения цитаты 
+
+\mbox{\Hypertarget{class_load_screen_manager_class_ac034597d07c48042e9dde3e4e1bd489e}\label{class_load_screen_manager_class_ac034597d07c48042e9dde3e4e1bd489e}} 
+\index{Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}!m\+\_\+quote\+Element\+Name@{m\+\_\+quote\+Element\+Name}}
+\index{m\+\_\+quote\+Element\+Name@{m\+\_\+quote\+Element\+Name}!Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+quote\+Element\+Name}{m\_quoteElementName}}
+{\footnotesize\ttfamily \hyperlink{class_path_class}{Path\+Class}$\ast$ Load\+Screen\+Manager\+Class\+::m\+\_\+quote\+Element\+Name\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Путь до элемента загрузочной цитаты 
+
+\mbox{\Hypertarget{class_load_screen_manager_class_ad305583a33b79d2f1ad7e9551f8197c7}\label{class_load_screen_manager_class_ad305583a33b79d2f1ad7e9551f8197c7}} 
+\index{Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}!m\+\_\+shaders@{m\+\_\+shaders}}
+\index{m\+\_\+shaders@{m\+\_\+shaders}!Load\+Screen\+Manager\+Class@{Load\+Screen\+Manager\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+shaders}{m\_shaders}}
+{\footnotesize\ttfamily \hyperlink{class_shader_manager_class}{Shader\+Manager\+Class}$\ast$ Load\+Screen\+Manager\+Class\+::m\+\_\+shaders\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Шейдеры 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_load_screen_manager_class_8h}{Load\+Screen\+Manager\+Class.\+h}\item 
+\hyperlink{_load_screen_manager_class_8cpp}{Load\+Screen\+Manager\+Class.\+cpp}\end{DoxyCompactItemize}

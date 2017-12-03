@@ -1,4 +1,4 @@
-#include "IntParamClass.h"
+﻿#include "IntParamClass.h"
 
 IntParamClass::IntParamClass()
 {

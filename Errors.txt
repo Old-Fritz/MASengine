@@ -34,6 +34,7 @@ Error 7-13 Problem with input Frame
 Error 8-1 Problem with Graphics Initialization
 Error 8-2 Problem with Graphics Frame
 Error 8-3 Problem with Graphics Render
+Error 8-4 Problem with Graphics Resourses Initialization
 
 Error 9-1 Problem with Directx fraphics interface factory
 Error 9-2 Problem with creating adapter to video card
@@ -106,3 +107,5 @@ Error 15-12 Problem with updating main load elements
 Error 15-13 Problem with opening file for loadscreen manager
 Error 15-14 Problem with changing load quote
 Error 15-15 Problem with changing load image
+
+Error 16-1 Problem with game mechanics init

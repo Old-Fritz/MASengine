@@ -6,7 +6,9 @@ terrainHeight = 128
 heightMapFilenameBase =  data/terrain/heightMaps/heightmap8
 provFilename = data/terrain/provMaps/provsmap8.dds
 physFilename = data/terrain/physTextures/terrainMap8.dds
-
+waterMeshFilename = data/terrain/water/waterMesh.txt
+waterFilename = data/terrain/water/water.dds
+waterNormalFilename = data/terrain/water/waterNormal.dds
 
 8: {
 color = 0 0 1 1

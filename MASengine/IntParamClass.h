@@ -1,4 +1,4 @@
-////////////////////////////////////////////////////////////////////////////////
+﻿////////////////////////////////////////////////////////////////////////////////
 // Filename: IntParamClass.h
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -12,6 +12,13 @@
 // Class name: SetParamClass
 ////////////////////////////////////////////////////////////////////////////////
 
+/*!
+\addtogroup Params
+@{
+*/
+/*!
+Целочисленный параметр
+*/
 class IntParamClass : public SetParamClass
 {
 public:
@@ -19,14 +26,18 @@ public:
 	IntParamClass(const IntParamClass&);
 	~IntParamClass();
 
+	//! Получение параметра в виде строки \return параметр в виде строки
 	virtual std::string getStr();
+	//! Установка параметра в виде строки \param[in] str - параметр в виде строки
 	void setStr(const std::string& str);
 
-	int getParam();
+	//! Получение параметра \return целочисленный параметр
+ 	int getParam();
+	//! Установка параметра \param[in] param - целочисленный параметр
 	void setParam(int param);
 
 private:
-	int m_param;
+	int m_param; //!<Параметр
 };
-
+/*! @} */
 #endif

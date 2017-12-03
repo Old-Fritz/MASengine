@@ -14,6 +14,7 @@ TextureManagerClass::~TextureManagerClass()
 
 void TextureManagerClass::Shutdown()
 {
+	// delete all textures
 	while (!m_textures.empty())
 	{
 		m_textures.begin()->second->Shutdown(); //delete texture
@@ -21,6 +22,7 @@ void TextureManagerClass::Shutdown()
 		m_textures.erase(m_textures.begin());
 	}
 
+	//delete instance
 	if (m_instance)
 	{
 		::operator delete(m_instance, sizeof(*m_instance), 1);
@@ -30,6 +32,7 @@ void TextureManagerClass::Shutdown()
 
 TextureManagerClass & TextureManagerClass::getI()
 {
+	//create instance if not exist
 	if (!m_instance)
 		m_instance = new(1) TextureManagerClass;
 	return *m_instance;

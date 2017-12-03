@@ -1,0 +1,267 @@
+\hypertarget{class_height_map_loader_class}{}\section{Height\+Map\+Loader\+Class Class Reference}
+\label{class_height_map_loader_class}\index{Height\+Map\+Loader\+Class@{Height\+Map\+Loader\+Class}}
+
+
+{\ttfamily \#include $<$Height\+Map\+Loader\+Class.\+h$>$}
+
+Inheritance diagram for Height\+Map\+Loader\+Class\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_height_map_loader_class}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_height_map_loader_class_a23d62d515602dca8fbaf826704e4d479}{Height\+Map\+Loader\+Class} ()
+\item 
+\hyperlink{class_height_map_loader_class_a6efab3bc5ca2feb5bc1f250eb22ceeeb}{Height\+Map\+Loader\+Class} (const \hyperlink{class_height_map_loader_class}{Height\+Map\+Loader\+Class} \&)
+\item 
+\hyperlink{class_height_map_loader_class_ac99f21f7ee38e388974bfd710d800ea0}{$\sim$\+Height\+Map\+Loader\+Class} ()
+\item 
+bool \hyperlink{class_height_map_loader_class_a9b6d6734cb3121838708ca16e24a8d3c}{load\+Model} (\hyperlink{class_path_class}{Path\+Class} $\ast$filename, float sizeX=0, float sizeY=0, float sizeZ=0)
+\begin{DoxyCompactList}\small\item\em Загрузка меша из файла и прменение масштаба \end{DoxyCompactList}\item 
+bool \hyperlink{class_height_map_loader_class_a998e195c69462da5cf46307e14ee976a}{create\+Verts\+And\+Inds} (void $\ast$$\ast$vertices, unsigned long $\ast$$\ast$indices)
+\item 
+void \hyperlink{class_height_map_loader_class_adb0bc9eb87f5bcfd376ccc2d2e0f8220}{calc\+Vert\+And\+Ind\+Count} (int \&vertex\+Count, int \&index\+Count)
+\begin{DoxyCompactList}\small\item\em Подсчет кол-\/ва вершин и индексов \end{DoxyCompactList}\item 
+void \hyperlink{class_height_map_loader_class_a7d0685c6784bb9c525085a87fcecae0b}{Shutdown} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_mesh_loader_class_1_1_model_type}{Model\+Type} $\ast$ \hyperlink{class_mesh_loader_class_a5b4adc40305c32c8afbe737cfebf6de4}{m\+\_\+model}
+\begin{DoxyCompactList}\small\item\em Временные данные о загружаемом меше \end{DoxyCompactList}\item 
+int \hyperlink{class_mesh_loader_class_a6a6f55e4d4e2321460d941d68e8a6a1c}{m\+\_\+vertex\+Count}
+\item 
+int \hyperlink{class_mesh_loader_class_a295180d6e2a2d0df952c53da7098ec20}{m\+\_\+index\+Count}
+\begin{DoxyCompactList}\small\item\em Количество вершин и индексов \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_height_map_loader_class_aa4650d025c9b14a3d7b898eb10ceb500}{load\+Height\+Map} (\hyperlink{class_path_class}{Path\+Class} $\ast$filename)
+\begin{DoxyCompactList}\small\item\em Загрузка карты высот из файла \end{DoxyCompactList}\item 
+void \hyperlink{class_height_map_loader_class_a8c16c7f42e9bef2754ae98236f3728c3}{normalize\+Height\+Map} (float sizeX, float sizeY, float sizeZ)
+\begin{DoxyCompactList}\small\item\em Изменение размеров карты высот \end{DoxyCompactList}\item 
+bool \hyperlink{class_height_map_loader_class_a8474fae8a6fb8e4d2b1cddbcf24c0311}{calculate\+Normals} ()
+\begin{DoxyCompactList}\small\item\em Расчет нормальных векторов \end{DoxyCompactList}\item 
+void \hyperlink{class_height_map_loader_class_ae5f92c8fde8e3d2e677cfa3c6309d68e}{calculate\+Texture\+Coordinates} ()
+\begin{DoxyCompactList}\small\item\em Расчет координат текстур \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{class_height_map_loader_class_aa1cc45b7f99736e979546d0fb15c3e9b}{m\+\_\+terrain\+Width}
+\item 
+int \hyperlink{class_height_map_loader_class_ae05731d557fcfd4371a9d230d720090e}{m\+\_\+terrain\+Height}
+\begin{DoxyCompactList}\small\item\em Ширина и высота карты высот \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Загрузчик карт высот 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_height_map_loader_class_a23d62d515602dca8fbaf826704e4d479}\label{class_height_map_loader_class_a23d62d515602dca8fbaf826704e4d479}} 
+\index{Height\+Map\+Loader\+Class@{Height\+Map\+Loader\+Class}!Height\+Map\+Loader\+Class@{Height\+Map\+Loader\+Class}}
+\index{Height\+Map\+Loader\+Class@{Height\+Map\+Loader\+Class}!Height\+Map\+Loader\+Class@{Height\+Map\+Loader\+Class}}
+\subsubsection{\texorpdfstring{Height\+Map\+Loader\+Class()}{HeightMapLoaderClass()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Height\+Map\+Loader\+Class\+::\+Height\+Map\+Loader\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_height_map_loader_class_a6efab3bc5ca2feb5bc1f250eb22ceeeb}\label{class_height_map_loader_class_a6efab3bc5ca2feb5bc1f250eb22ceeeb}} 
+\index{Height\+Map\+Loader\+Class@{Height\+Map\+Loader\+Class}!Height\+Map\+Loader\+Class@{Height\+Map\+Loader\+Class}}
+\index{Height\+Map\+Loader\+Class@{Height\+Map\+Loader\+Class}!Height\+Map\+Loader\+Class@{Height\+Map\+Loader\+Class}}
+\subsubsection{\texorpdfstring{Height\+Map\+Loader\+Class()}{HeightMapLoaderClass()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Height\+Map\+Loader\+Class\+::\+Height\+Map\+Loader\+Class (\begin{DoxyParamCaption}\item[{const \hyperlink{class_height_map_loader_class}{Height\+Map\+Loader\+Class} \&}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_height_map_loader_class_ac99f21f7ee38e388974bfd710d800ea0}\label{class_height_map_loader_class_ac99f21f7ee38e388974bfd710d800ea0}} 
+\index{Height\+Map\+Loader\+Class@{Height\+Map\+Loader\+Class}!````~Height\+Map\+Loader\+Class@{$\sim$\+Height\+Map\+Loader\+Class}}
+\index{````~Height\+Map\+Loader\+Class@{$\sim$\+Height\+Map\+Loader\+Class}!Height\+Map\+Loader\+Class@{Height\+Map\+Loader\+Class}}
+\subsubsection{\texorpdfstring{$\sim$\+Height\+Map\+Loader\+Class()}{~HeightMapLoaderClass()}}
+{\footnotesize\ttfamily Height\+Map\+Loader\+Class\+::$\sim$\+Height\+Map\+Loader\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_height_map_loader_class_a8474fae8a6fb8e4d2b1cddbcf24c0311}\label{class_height_map_loader_class_a8474fae8a6fb8e4d2b1cddbcf24c0311}} 
+\index{Height\+Map\+Loader\+Class@{Height\+Map\+Loader\+Class}!calculate\+Normals@{calculate\+Normals}}
+\index{calculate\+Normals@{calculate\+Normals}!Height\+Map\+Loader\+Class@{Height\+Map\+Loader\+Class}}
+\subsubsection{\texorpdfstring{calculate\+Normals()}{calculateNormals()}}
+{\footnotesize\ttfamily bool Height\+Map\+Loader\+Class\+::calculate\+Normals (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Расчет нормальных векторов 
+
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_height_map_loader_class_ae5f92c8fde8e3d2e677cfa3c6309d68e}\label{class_height_map_loader_class_ae5f92c8fde8e3d2e677cfa3c6309d68e}} 
+\index{Height\+Map\+Loader\+Class@{Height\+Map\+Loader\+Class}!calculate\+Texture\+Coordinates@{calculate\+Texture\+Coordinates}}
+\index{calculate\+Texture\+Coordinates@{calculate\+Texture\+Coordinates}!Height\+Map\+Loader\+Class@{Height\+Map\+Loader\+Class}}
+\subsubsection{\texorpdfstring{calculate\+Texture\+Coordinates()}{calculateTextureCoordinates()}}
+{\footnotesize\ttfamily void Height\+Map\+Loader\+Class\+::calculate\+Texture\+Coordinates (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Расчет координат текстур 
+
+\mbox{\Hypertarget{class_height_map_loader_class_adb0bc9eb87f5bcfd376ccc2d2e0f8220}\label{class_height_map_loader_class_adb0bc9eb87f5bcfd376ccc2d2e0f8220}} 
+\index{Height\+Map\+Loader\+Class@{Height\+Map\+Loader\+Class}!calc\+Vert\+And\+Ind\+Count@{calc\+Vert\+And\+Ind\+Count}}
+\index{calc\+Vert\+And\+Ind\+Count@{calc\+Vert\+And\+Ind\+Count}!Height\+Map\+Loader\+Class@{Height\+Map\+Loader\+Class}}
+\subsubsection{\texorpdfstring{calc\+Vert\+And\+Ind\+Count()}{calcVertAndIndCount()}}
+{\footnotesize\ttfamily void Height\+Map\+Loader\+Class\+::calc\+Vert\+And\+Ind\+Count (\begin{DoxyParamCaption}\item[{int \&}]{vertex\+Count,  }\item[{int \&}]{index\+Count }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Подсчет кол-\/ва вершин и индексов 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em vertex\+Count} & -\/ кол-\/во вершин \\
+\hline
+\mbox{\tt out}  & {\em index\+Count} & -\/ кол-\/во индексов \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_mesh_loader_class_a887583be3507cc1af5ce7b3d966bc4e5}{Mesh\+Loader\+Class}.
+
+\mbox{\Hypertarget{class_height_map_loader_class_a998e195c69462da5cf46307e14ee976a}\label{class_height_map_loader_class_a998e195c69462da5cf46307e14ee976a}} 
+\index{Height\+Map\+Loader\+Class@{Height\+Map\+Loader\+Class}!create\+Verts\+And\+Inds@{create\+Verts\+And\+Inds}}
+\index{create\+Verts\+And\+Inds@{create\+Verts\+And\+Inds}!Height\+Map\+Loader\+Class@{Height\+Map\+Loader\+Class}}
+\subsubsection{\texorpdfstring{create\+Verts\+And\+Inds()}{createVertsAndInds()}}
+{\footnotesize\ttfamily bool Height\+Map\+Loader\+Class\+::create\+Verts\+And\+Inds (\begin{DoxyParamCaption}\item[{void $\ast$$\ast$}]{vertices,  }\item[{unsigned long $\ast$$\ast$}]{indices }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Создание массивов вершин и индексов 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em device\+Context} & -\/ графическое устройство \\
+\hline
+\mbox{\tt out}  & {\em vertices} & -\/ массив вершин \\
+\hline
+\mbox{\tt out}  & {\em indices} & массив индексов вершин \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{class_mesh_loader_class_afc7193c50cad8d9b6c280d1046fed468}{Mesh\+Loader\+Class}.
+
+\mbox{\Hypertarget{class_height_map_loader_class_aa4650d025c9b14a3d7b898eb10ceb500}\label{class_height_map_loader_class_aa4650d025c9b14a3d7b898eb10ceb500}} 
+\index{Height\+Map\+Loader\+Class@{Height\+Map\+Loader\+Class}!load\+Height\+Map@{load\+Height\+Map}}
+\index{load\+Height\+Map@{load\+Height\+Map}!Height\+Map\+Loader\+Class@{Height\+Map\+Loader\+Class}}
+\subsubsection{\texorpdfstring{load\+Height\+Map()}{loadHeightMap()}}
+{\footnotesize\ttfamily bool Height\+Map\+Loader\+Class\+::load\+Height\+Map (\begin{DoxyParamCaption}\item[{\hyperlink{class_path_class}{Path\+Class} $\ast$}]{filename }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Загрузка карты высот из файла 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em filename} & -\/ путь до файла меша \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_height_map_loader_class_a9b6d6734cb3121838708ca16e24a8d3c}\label{class_height_map_loader_class_a9b6d6734cb3121838708ca16e24a8d3c}} 
+\index{Height\+Map\+Loader\+Class@{Height\+Map\+Loader\+Class}!load\+Model@{load\+Model}}
+\index{load\+Model@{load\+Model}!Height\+Map\+Loader\+Class@{Height\+Map\+Loader\+Class}}
+\subsubsection{\texorpdfstring{load\+Model()}{loadModel()}}
+{\footnotesize\ttfamily bool Height\+Map\+Loader\+Class\+::load\+Model (\begin{DoxyParamCaption}\item[{\hyperlink{class_path_class}{Path\+Class} $\ast$}]{filename,  }\item[{float}]{sizeX = {\ttfamily 0},  }\item[{float}]{sizeY = {\ttfamily 0},  }\item[{float}]{sizeZ = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Загрузка меша из файла и прменение масштаба 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em filename} & -\/ путь до файла меша \\
+\hline
+\mbox{\tt in}  & {\em sizeX,sizeY,sizeZ} & -\/ размеры карты высот \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{class_mesh_loader_class_a781bb1f7e19e1a96a1e7f56d67ab4b8e}{Mesh\+Loader\+Class}.
+
+\mbox{\Hypertarget{class_height_map_loader_class_a8c16c7f42e9bef2754ae98236f3728c3}\label{class_height_map_loader_class_a8c16c7f42e9bef2754ae98236f3728c3}} 
+\index{Height\+Map\+Loader\+Class@{Height\+Map\+Loader\+Class}!normalize\+Height\+Map@{normalize\+Height\+Map}}
+\index{normalize\+Height\+Map@{normalize\+Height\+Map}!Height\+Map\+Loader\+Class@{Height\+Map\+Loader\+Class}}
+\subsubsection{\texorpdfstring{normalize\+Height\+Map()}{normalizeHeightMap()}}
+{\footnotesize\ttfamily void Height\+Map\+Loader\+Class\+::normalize\+Height\+Map (\begin{DoxyParamCaption}\item[{float}]{sizeX,  }\item[{float}]{sizeY,  }\item[{float}]{sizeZ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Изменение размеров карты высот 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em sizeX,sizeY,sizeZ} & -\/ размеры карты высот \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_height_map_loader_class_a7d0685c6784bb9c525085a87fcecae0b}\label{class_height_map_loader_class_a7d0685c6784bb9c525085a87fcecae0b}} 
+\index{Height\+Map\+Loader\+Class@{Height\+Map\+Loader\+Class}!Shutdown@{Shutdown}}
+\index{Shutdown@{Shutdown}!Height\+Map\+Loader\+Class@{Height\+Map\+Loader\+Class}}
+\subsubsection{\texorpdfstring{Shutdown()}{Shutdown()}}
+{\footnotesize\ttfamily void Height\+Map\+Loader\+Class\+::\+Shutdown (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \hyperlink{class_mesh_loader_class_a7d91e4ba3144e686c1215ad161d5a6b0}{Mesh\+Loader\+Class}.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_mesh_loader_class_a295180d6e2a2d0df952c53da7098ec20}\label{class_mesh_loader_class_a295180d6e2a2d0df952c53da7098ec20}} 
+\index{Height\+Map\+Loader\+Class@{Height\+Map\+Loader\+Class}!m\+\_\+index\+Count@{m\+\_\+index\+Count}}
+\index{m\+\_\+index\+Count@{m\+\_\+index\+Count}!Height\+Map\+Loader\+Class@{Height\+Map\+Loader\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+index\+Count}{m\_indexCount}}
+{\footnotesize\ttfamily int Mesh\+Loader\+Class\+::m\+\_\+index\+Count\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+Количество вершин и индексов 
+
+\mbox{\Hypertarget{class_mesh_loader_class_a5b4adc40305c32c8afbe737cfebf6de4}\label{class_mesh_loader_class_a5b4adc40305c32c8afbe737cfebf6de4}} 
+\index{Height\+Map\+Loader\+Class@{Height\+Map\+Loader\+Class}!m\+\_\+model@{m\+\_\+model}}
+\index{m\+\_\+model@{m\+\_\+model}!Height\+Map\+Loader\+Class@{Height\+Map\+Loader\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+model}{m\_model}}
+{\footnotesize\ttfamily \hyperlink{struct_mesh_loader_class_1_1_model_type}{Model\+Type}$\ast$ Mesh\+Loader\+Class\+::m\+\_\+model\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+Временные данные о загружаемом меше 
+
+\mbox{\Hypertarget{class_height_map_loader_class_ae05731d557fcfd4371a9d230d720090e}\label{class_height_map_loader_class_ae05731d557fcfd4371a9d230d720090e}} 
+\index{Height\+Map\+Loader\+Class@{Height\+Map\+Loader\+Class}!m\+\_\+terrain\+Height@{m\+\_\+terrain\+Height}}
+\index{m\+\_\+terrain\+Height@{m\+\_\+terrain\+Height}!Height\+Map\+Loader\+Class@{Height\+Map\+Loader\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+terrain\+Height}{m\_terrainHeight}}
+{\footnotesize\ttfamily int Height\+Map\+Loader\+Class\+::m\+\_\+terrain\+Height\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ширина и высота карты высот 
+
+\mbox{\Hypertarget{class_height_map_loader_class_aa1cc45b7f99736e979546d0fb15c3e9b}\label{class_height_map_loader_class_aa1cc45b7f99736e979546d0fb15c3e9b}} 
+\index{Height\+Map\+Loader\+Class@{Height\+Map\+Loader\+Class}!m\+\_\+terrain\+Width@{m\+\_\+terrain\+Width}}
+\index{m\+\_\+terrain\+Width@{m\+\_\+terrain\+Width}!Height\+Map\+Loader\+Class@{Height\+Map\+Loader\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+terrain\+Width}{m\_terrainWidth}}
+{\footnotesize\ttfamily int Height\+Map\+Loader\+Class\+::m\+\_\+terrain\+Width\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_mesh_loader_class_a6a6f55e4d4e2321460d941d68e8a6a1c}\label{class_mesh_loader_class_a6a6f55e4d4e2321460d941d68e8a6a1c}} 
+\index{Height\+Map\+Loader\+Class@{Height\+Map\+Loader\+Class}!m\+\_\+vertex\+Count@{m\+\_\+vertex\+Count}}
+\index{m\+\_\+vertex\+Count@{m\+\_\+vertex\+Count}!Height\+Map\+Loader\+Class@{Height\+Map\+Loader\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+vertex\+Count}{m\_vertexCount}}
+{\footnotesize\ttfamily int Mesh\+Loader\+Class\+::m\+\_\+vertex\+Count\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_height_map_loader_class_8h}{Height\+Map\+Loader\+Class.\+h}\item 
+\hyperlink{_height_map_loader_class_8cpp}{Height\+Map\+Loader\+Class.\+cpp}\end{DoxyCompactItemize}

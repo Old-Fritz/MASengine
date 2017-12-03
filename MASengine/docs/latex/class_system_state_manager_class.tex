@@ -1,0 +1,203 @@
+\hypertarget{class_system_state_manager_class}{}\section{System\+State\+Manager\+Class Class Reference}
+\label{class_system_state_manager_class}\index{System\+State\+Manager\+Class@{System\+State\+Manager\+Class}}
+
+
+{\ttfamily \#include $<$System\+State\+Manager\+Class.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_system_state_manager_class_aba060cf68a7240e41a8d8d4370acf28a}{Initialize} ()
+\begin{DoxyCompactList}\small\item\em Инициализировать класс \end{DoxyCompactList}\item 
+void \hyperlink{class_system_state_manager_class_a9f20907fb689668c4f828b6b87be7b37}{Frame} ()
+\begin{DoxyCompactList}\small\item\em Обновить данные, выполняется на каждом кадре \end{DoxyCompactList}\item 
+void \hyperlink{class_system_state_manager_class_a41f390159f5f7e5e3c37c979442a6faf}{Shutdown} ()
+\item 
+float \hyperlink{class_system_state_manager_class_a3aaa7d15e2a88c31dce17811cd88762e}{Get\+Time} ()
+\begin{DoxyCompactList}\small\item\em Получить точное время между кадрами \end{DoxyCompactList}\item 
+int \hyperlink{class_system_state_manager_class_a7a79d6eaabb2778652531ca2a8292e88}{Get\+Cpu\+Percentage} ()
+\begin{DoxyCompactList}\small\item\em Получить загруженность процессора \end{DoxyCompactList}\item 
+int \hyperlink{class_system_state_manager_class_aef966c133ee68cee9d15cc5853a6aa2b}{Get\+Fps} ()
+\begin{DoxyCompactList}\small\item\em Получить fps. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_system_state_manager_class}{System\+State\+Manager\+Class} \& \hyperlink{class_system_state_manager_class_a9ea50fc6dfccf6fe9cbf79d00ef70b0e}{getI} ()
+\begin{DoxyCompactList}\small\item\em Получить экземпляр класса \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_system_state_manager_class_a83d355c7a99ed86fa46c7fce3d054927}{System\+State\+Manager\+Class} ()
+\item 
+\hyperlink{class_system_state_manager_class_a879661dbbac7b5a581425f8c6de77a99}{System\+State\+Manager\+Class} (const \hyperlink{class_system_state_manager_class}{System\+State\+Manager\+Class} \&)
+\item 
+\hyperlink{class_system_state_manager_class_a18fcccaa9a79eaedb5ba00fc6f2564c5}{$\sim$\+System\+State\+Manager\+Class} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_cpu_class}{Cpu\+Class} $\ast$ \hyperlink{class_system_state_manager_class_a2cd9a74a86368c924e66fbf587cb3e78}{m\+\_\+cpu}
+\begin{DoxyCompactList}\small\item\em блок состояния ЦП \end{DoxyCompactList}\item 
+\hyperlink{class_fps_class}{Fps\+Class} $\ast$ \hyperlink{class_system_state_manager_class_a025f9db3bfb88ca6b32359ed2c993b95}{m\+\_\+fps}
+\begin{DoxyCompactList}\small\item\em блок состояния fps. \end{DoxyCompactList}\item 
+\hyperlink{class_timer_class}{Timer\+Class} $\ast$ \hyperlink{class_system_state_manager_class_a86f7046c272727db4655c3ad3b0aa507}{m\+\_\+timer}
+\begin{DoxyCompactList}\small\item\em блок состояния межкадрового времени \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_system_state_manager_class}{System\+State\+Manager\+Class} $\ast$ \hyperlink{class_system_state_manager_class_a39700084963f2d7f4fd63d6049a09de2}{m\+\_\+instance} = 0
+\begin{DoxyCompactList}\small\item\em Единственный экземпляр класса \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Класс для управления модулями сведений о системе, синглтон 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_system_state_manager_class_a83d355c7a99ed86fa46c7fce3d054927}\label{class_system_state_manager_class_a83d355c7a99ed86fa46c7fce3d054927}} 
+\index{System\+State\+Manager\+Class@{System\+State\+Manager\+Class}!System\+State\+Manager\+Class@{System\+State\+Manager\+Class}}
+\index{System\+State\+Manager\+Class@{System\+State\+Manager\+Class}!System\+State\+Manager\+Class@{System\+State\+Manager\+Class}}
+\subsubsection{\texorpdfstring{System\+State\+Manager\+Class()}{SystemStateManagerClass()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily System\+State\+Manager\+Class\+::\+System\+State\+Manager\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_system_state_manager_class_a879661dbbac7b5a581425f8c6de77a99}\label{class_system_state_manager_class_a879661dbbac7b5a581425f8c6de77a99}} 
+\index{System\+State\+Manager\+Class@{System\+State\+Manager\+Class}!System\+State\+Manager\+Class@{System\+State\+Manager\+Class}}
+\index{System\+State\+Manager\+Class@{System\+State\+Manager\+Class}!System\+State\+Manager\+Class@{System\+State\+Manager\+Class}}
+\subsubsection{\texorpdfstring{System\+State\+Manager\+Class()}{SystemStateManagerClass()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily System\+State\+Manager\+Class\+::\+System\+State\+Manager\+Class (\begin{DoxyParamCaption}\item[{const \hyperlink{class_system_state_manager_class}{System\+State\+Manager\+Class} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_system_state_manager_class_a18fcccaa9a79eaedb5ba00fc6f2564c5}\label{class_system_state_manager_class_a18fcccaa9a79eaedb5ba00fc6f2564c5}} 
+\index{System\+State\+Manager\+Class@{System\+State\+Manager\+Class}!````~System\+State\+Manager\+Class@{$\sim$\+System\+State\+Manager\+Class}}
+\index{````~System\+State\+Manager\+Class@{$\sim$\+System\+State\+Manager\+Class}!System\+State\+Manager\+Class@{System\+State\+Manager\+Class}}
+\subsubsection{\texorpdfstring{$\sim$\+System\+State\+Manager\+Class()}{~SystemStateManagerClass()}}
+{\footnotesize\ttfamily System\+State\+Manager\+Class\+::$\sim$\+System\+State\+Manager\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_system_state_manager_class_a9f20907fb689668c4f828b6b87be7b37}\label{class_system_state_manager_class_a9f20907fb689668c4f828b6b87be7b37}} 
+\index{System\+State\+Manager\+Class@{System\+State\+Manager\+Class}!Frame@{Frame}}
+\index{Frame@{Frame}!System\+State\+Manager\+Class@{System\+State\+Manager\+Class}}
+\subsubsection{\texorpdfstring{Frame()}{Frame()}}
+{\footnotesize\ttfamily void System\+State\+Manager\+Class\+::\+Frame (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Обновить данные, выполняется на каждом кадре 
+
+\mbox{\Hypertarget{class_system_state_manager_class_a7a79d6eaabb2778652531ca2a8292e88}\label{class_system_state_manager_class_a7a79d6eaabb2778652531ca2a8292e88}} 
+\index{System\+State\+Manager\+Class@{System\+State\+Manager\+Class}!Get\+Cpu\+Percentage@{Get\+Cpu\+Percentage}}
+\index{Get\+Cpu\+Percentage@{Get\+Cpu\+Percentage}!System\+State\+Manager\+Class@{System\+State\+Manager\+Class}}
+\subsubsection{\texorpdfstring{Get\+Cpu\+Percentage()}{GetCpuPercentage()}}
+{\footnotesize\ttfamily int System\+State\+Manager\+Class\+::\+Get\+Cpu\+Percentage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Получить загруженность процессора 
+
+\begin{DoxyReturn}{Returns}
+число от 0 до 100 -\/ загруженность процессора в процентах 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_system_state_manager_class_aef966c133ee68cee9d15cc5853a6aa2b}\label{class_system_state_manager_class_aef966c133ee68cee9d15cc5853a6aa2b}} 
+\index{System\+State\+Manager\+Class@{System\+State\+Manager\+Class}!Get\+Fps@{Get\+Fps}}
+\index{Get\+Fps@{Get\+Fps}!System\+State\+Manager\+Class@{System\+State\+Manager\+Class}}
+\subsubsection{\texorpdfstring{Get\+Fps()}{GetFps()}}
+{\footnotesize\ttfamily int System\+State\+Manager\+Class\+::\+Get\+Fps (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Получить fps. 
+
+\begin{DoxyReturn}{Returns}
+значение fps 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_system_state_manager_class_a9ea50fc6dfccf6fe9cbf79d00ef70b0e}\label{class_system_state_manager_class_a9ea50fc6dfccf6fe9cbf79d00ef70b0e}} 
+\index{System\+State\+Manager\+Class@{System\+State\+Manager\+Class}!getI@{getI}}
+\index{getI@{getI}!System\+State\+Manager\+Class@{System\+State\+Manager\+Class}}
+\subsubsection{\texorpdfstring{get\+I()}{getI()}}
+{\footnotesize\ttfamily \hyperlink{class_system_state_manager_class}{System\+State\+Manager\+Class} \& System\+State\+Manager\+Class\+::getI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Получить экземпляр класса 
+
+\mbox{\Hypertarget{class_system_state_manager_class_a3aaa7d15e2a88c31dce17811cd88762e}\label{class_system_state_manager_class_a3aaa7d15e2a88c31dce17811cd88762e}} 
+\index{System\+State\+Manager\+Class@{System\+State\+Manager\+Class}!Get\+Time@{Get\+Time}}
+\index{Get\+Time@{Get\+Time}!System\+State\+Manager\+Class@{System\+State\+Manager\+Class}}
+\subsubsection{\texorpdfstring{Get\+Time()}{GetTime()}}
+{\footnotesize\ttfamily float System\+State\+Manager\+Class\+::\+Get\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Получить точное время между кадрами 
+
+\begin{DoxyReturn}{Returns}
+время между кадрами в мс 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_system_state_manager_class_aba060cf68a7240e41a8d8d4370acf28a}\label{class_system_state_manager_class_aba060cf68a7240e41a8d8d4370acf28a}} 
+\index{System\+State\+Manager\+Class@{System\+State\+Manager\+Class}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!System\+State\+Manager\+Class@{System\+State\+Manager\+Class}}
+\subsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily bool System\+State\+Manager\+Class\+::\+Initialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Инициализировать класс 
+
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_system_state_manager_class_a41f390159f5f7e5e3c37c979442a6faf}\label{class_system_state_manager_class_a41f390159f5f7e5e3c37c979442a6faf}} 
+\index{System\+State\+Manager\+Class@{System\+State\+Manager\+Class}!Shutdown@{Shutdown}}
+\index{Shutdown@{Shutdown}!System\+State\+Manager\+Class@{System\+State\+Manager\+Class}}
+\subsubsection{\texorpdfstring{Shutdown()}{Shutdown()}}
+{\footnotesize\ttfamily void System\+State\+Manager\+Class\+::\+Shutdown (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_system_state_manager_class_a2cd9a74a86368c924e66fbf587cb3e78}\label{class_system_state_manager_class_a2cd9a74a86368c924e66fbf587cb3e78}} 
+\index{System\+State\+Manager\+Class@{System\+State\+Manager\+Class}!m\+\_\+cpu@{m\+\_\+cpu}}
+\index{m\+\_\+cpu@{m\+\_\+cpu}!System\+State\+Manager\+Class@{System\+State\+Manager\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+cpu}{m\_cpu}}
+{\footnotesize\ttfamily \hyperlink{class_cpu_class}{Cpu\+Class}$\ast$ System\+State\+Manager\+Class\+::m\+\_\+cpu\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+блок состояния ЦП 
+
+\mbox{\Hypertarget{class_system_state_manager_class_a025f9db3bfb88ca6b32359ed2c993b95}\label{class_system_state_manager_class_a025f9db3bfb88ca6b32359ed2c993b95}} 
+\index{System\+State\+Manager\+Class@{System\+State\+Manager\+Class}!m\+\_\+fps@{m\+\_\+fps}}
+\index{m\+\_\+fps@{m\+\_\+fps}!System\+State\+Manager\+Class@{System\+State\+Manager\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+fps}{m\_fps}}
+{\footnotesize\ttfamily \hyperlink{class_fps_class}{Fps\+Class}$\ast$ System\+State\+Manager\+Class\+::m\+\_\+fps\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+блок состояния fps. 
+
+\mbox{\Hypertarget{class_system_state_manager_class_a39700084963f2d7f4fd63d6049a09de2}\label{class_system_state_manager_class_a39700084963f2d7f4fd63d6049a09de2}} 
+\index{System\+State\+Manager\+Class@{System\+State\+Manager\+Class}!m\+\_\+instance@{m\+\_\+instance}}
+\index{m\+\_\+instance@{m\+\_\+instance}!System\+State\+Manager\+Class@{System\+State\+Manager\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+instance}{m\_instance}}
+{\footnotesize\ttfamily \hyperlink{class_system_state_manager_class}{System\+State\+Manager\+Class} $\ast$ System\+State\+Manager\+Class\+::m\+\_\+instance = 0\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Единственный экземпляр класса 
+
+\mbox{\Hypertarget{class_system_state_manager_class_a86f7046c272727db4655c3ad3b0aa507}\label{class_system_state_manager_class_a86f7046c272727db4655c3ad3b0aa507}} 
+\index{System\+State\+Manager\+Class@{System\+State\+Manager\+Class}!m\+\_\+timer@{m\+\_\+timer}}
+\index{m\+\_\+timer@{m\+\_\+timer}!System\+State\+Manager\+Class@{System\+State\+Manager\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+timer}{m\_timer}}
+{\footnotesize\ttfamily \hyperlink{class_timer_class}{Timer\+Class}$\ast$ System\+State\+Manager\+Class\+::m\+\_\+timer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+блок состояния межкадрового времени 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_system_state_manager_class_8h}{System\+State\+Manager\+Class.\+h}\item 
+\hyperlink{_system_state_manager_class_8cpp}{System\+State\+Manager\+Class.\+cpp}\end{DoxyCompactItemize}

@@ -201,6 +201,7 @@ void InterfaceClass::startDrag(const std::string& elname)
 void InterfaceClass::endDrag(const std::string& elname)
 {
 	InterfaceElementClass* element = findElbyName(elname);
+	// find element and delete it
 	for (int i = 0; i < m_dragElements.size(); i++)
 	{
 		if (m_dragElements[i] == elname)
@@ -462,6 +463,7 @@ bool InterfaceClass::getEl(int posX, int posY, int& ind,  std::string& name)
 		}
 	}
 	ind = 0;
+	name = "";
 	if (m_LBMDown)
 		return true;
 	else

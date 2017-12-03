@@ -1,0 +1,322 @@
+\hypertarget{class_prov_class}{}\section{Prov\+Class Class Reference}
+\label{class_prov_class}\index{Prov\+Class@{Prov\+Class}}
+
+
+{\ttfamily \#include $<$Prov\+Class.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_prov_class_ab977253f809da49728f2e46c4afe5e91}{Prov\+Class} ()
+\item 
+\hyperlink{class_prov_class_a4d4b6fb1dce8565e3760df40f92cab5a}{Prov\+Class} (const \hyperlink{class_prov_class}{Prov\+Class} \&)
+\item 
+\hyperlink{class_prov_class_ae0d2a847764e700a0af245feff912c87}{$\sim$\+Prov\+Class} ()
+\item 
+bool \hyperlink{class_prov_class_add3350b63d3fcbffee08f253d0fef98a}{Initialize} (std\+::ifstream $\ast$file, int id)
+\begin{DoxyCompactList}\small\item\em Инициализация провинции \end{DoxyCompactList}\item 
+void \hyperlink{class_prov_class_aab053eb395e45580e5c65fd74e264361}{Shutdown} ()
+\item 
+int \hyperlink{class_prov_class_a8cb7ae2b2f6bf292b789060fa719436d}{get\+ID} ()
+\begin{DoxyCompactList}\small\item\em Получение ID провинции \end{DoxyCompactList}\item 
+std\+::string \hyperlink{class_prov_class_accc6f1505990cae5065fdcf0669e1f59}{get\+Name} ()
+\begin{DoxyCompactList}\small\item\em Получение имени провинции \end{DoxyCompactList}\item 
+D3\+D\+X\+V\+E\+C\+T\+O\+R3 \hyperlink{class_prov_class_a13be7aabc6416d8390a5e08a3852dbd4}{get\+Coords} ()
+\begin{DoxyCompactList}\small\item\em Получение координат провинции \end{DoxyCompactList}\item 
+\hyperlink{class_layers_class}{Layers\+Class} $\ast$ \hyperlink{class_prov_class_a49e9acf6093021eb11d116c847e07689}{get\+Layers} ()
+\begin{DoxyCompactList}\small\item\em Получение слоев цвета провинции \end{DoxyCompactList}\item 
+void \hyperlink{class_prov_class_abb94b660b07d0b328ebf9f0dff0bf2f4}{add\+Region} (\hyperlink{class_global_manager_class_a794b4a5298c61f8d25d9da44b7826857}{Global\+Manager\+Class\+::region\+Type} type, int region\+ID)
+\begin{DoxyCompactList}\small\item\em Установка принадлежности к новому региону \end{DoxyCompactList}\item 
+void \hyperlink{class_prov_class_a89202c5501d165a556f577b5a6742b58}{delete\+Region} (\hyperlink{class_global_manager_class_a794b4a5298c61f8d25d9da44b7826857}{Global\+Manager\+Class\+::region\+Type} type, int region\+ID)
+\begin{DoxyCompactList}\small\item\em Убирание принадлежности к новому региону \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ \hyperlink{class_prov_class_aa559d5aeecf8df6f7d1c50286575ce04}{get\+Regions} (\hyperlink{class_global_manager_class_a794b4a5298c61f8d25d9da44b7826857}{Global\+Manager\+Class\+::region\+Type} type)
+\begin{DoxyCompactList}\small\item\em Получение ID всех регионов определенного типа, к которому принадлежит провинция \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_prov_class_ab87fcfb3b02e5beb1e30f03059f2928b}{read\+From\+File} (std\+::ifstream $\ast$file)
+\begin{DoxyCompactList}\small\item\em Чтение из файла \end{DoxyCompactList}\item 
+void \hyperlink{class_prov_class_a7da473dcff63f556364ec6f5c1d94442}{erase} (std\+::vector$<$ int $>$ \&vec, int value)
+\begin{DoxyCompactList}\small\item\em Удаление определенного элемента из вектора целых чисел \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{class_prov_class_aaff00dcc3c5e75767133ec05ace7fdf6}{m\+\_\+id}
+\begin{DoxyCompactList}\small\item\em ID провинции \end{DoxyCompactList}\item 
+std\+::string \hyperlink{class_prov_class_ad6197fa9253423daa8bfe5d8020547b5}{m\+\_\+name}
+\begin{DoxyCompactList}\small\item\em Имя провинции \end{DoxyCompactList}\item 
+\hyperlink{class_layers_class}{Layers\+Class} $\ast$ \hyperlink{class_prov_class_ac52eab12a254ed06d4365215db03c103}{m\+\_\+layers}
+\begin{DoxyCompactList}\small\item\em Слои цветов \end{DoxyCompactList}\item 
+D3\+D\+X\+V\+E\+C\+T\+O\+R3 \hyperlink{class_prov_class_aef01dac0cdeabad98fb67a03f66f1b7d}{m\+\_\+coords}
+\begin{DoxyCompactList}\small\item\em Координаты провинции \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ \hyperlink{class_prov_class_aa24dfaa725d9920c7602b04c4084a798}{m\+\_\+base\+Region}
+\begin{DoxyCompactList}\small\item\em Вектор ID базовых регионов, к которым принадлежит прова \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ \hyperlink{class_prov_class_a0d008978d66ba3543ad2890161125ee6}{m\+\_\+block\+Region}
+\begin{DoxyCompactList}\small\item\em Вектор ID блоковых регионов, к которым принадлежит прова \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ \hyperlink{class_prov_class_a8a75f6c2e83d2b02a94105ebdfb8aa56}{m\+\_\+nation\+Region}
+\begin{DoxyCompactList}\small\item\em Вектор ID регионов страны, к которым принадлежит прова \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_prov_class_ab977253f809da49728f2e46c4afe5e91}\label{class_prov_class_ab977253f809da49728f2e46c4afe5e91}} 
+\index{Prov\+Class@{Prov\+Class}!Prov\+Class@{Prov\+Class}}
+\index{Prov\+Class@{Prov\+Class}!Prov\+Class@{Prov\+Class}}
+\subsubsection{\texorpdfstring{Prov\+Class()}{ProvClass()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Prov\+Class\+::\+Prov\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_prov_class_a4d4b6fb1dce8565e3760df40f92cab5a}\label{class_prov_class_a4d4b6fb1dce8565e3760df40f92cab5a}} 
+\index{Prov\+Class@{Prov\+Class}!Prov\+Class@{Prov\+Class}}
+\index{Prov\+Class@{Prov\+Class}!Prov\+Class@{Prov\+Class}}
+\subsubsection{\texorpdfstring{Prov\+Class()}{ProvClass()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Prov\+Class\+::\+Prov\+Class (\begin{DoxyParamCaption}\item[{const \hyperlink{class_prov_class}{Prov\+Class} \&}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_prov_class_ae0d2a847764e700a0af245feff912c87}\label{class_prov_class_ae0d2a847764e700a0af245feff912c87}} 
+\index{Prov\+Class@{Prov\+Class}!````~Prov\+Class@{$\sim$\+Prov\+Class}}
+\index{````~Prov\+Class@{$\sim$\+Prov\+Class}!Prov\+Class@{Prov\+Class}}
+\subsubsection{\texorpdfstring{$\sim$\+Prov\+Class()}{~ProvClass()}}
+{\footnotesize\ttfamily Prov\+Class\+::$\sim$\+Prov\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_prov_class_abb94b660b07d0b328ebf9f0dff0bf2f4}\label{class_prov_class_abb94b660b07d0b328ebf9f0dff0bf2f4}} 
+\index{Prov\+Class@{Prov\+Class}!add\+Region@{add\+Region}}
+\index{add\+Region@{add\+Region}!Prov\+Class@{Prov\+Class}}
+\subsubsection{\texorpdfstring{add\+Region()}{addRegion()}}
+{\footnotesize\ttfamily void Prov\+Class\+::add\+Region (\begin{DoxyParamCaption}\item[{\hyperlink{class_global_manager_class_a794b4a5298c61f8d25d9da44b7826857}{Global\+Manager\+Class\+::region\+Type}}]{type,  }\item[{int}]{region\+ID }\end{DoxyParamCaption})}
+
+
+
+Установка принадлежности к новому региону 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em type} & -\/ тип региона, к которому добавляется эта прова \\
+\hline
+\mbox{\tt in}  & {\em region\+ID} & -\/ ID региона, к которому добавляется эта прова \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_prov_class_a89202c5501d165a556f577b5a6742b58}\label{class_prov_class_a89202c5501d165a556f577b5a6742b58}} 
+\index{Prov\+Class@{Prov\+Class}!delete\+Region@{delete\+Region}}
+\index{delete\+Region@{delete\+Region}!Prov\+Class@{Prov\+Class}}
+\subsubsection{\texorpdfstring{delete\+Region()}{deleteRegion()}}
+{\footnotesize\ttfamily void Prov\+Class\+::delete\+Region (\begin{DoxyParamCaption}\item[{\hyperlink{class_global_manager_class_a794b4a5298c61f8d25d9da44b7826857}{Global\+Manager\+Class\+::region\+Type}}]{type,  }\item[{int}]{region\+ID }\end{DoxyParamCaption})}
+
+
+
+Убирание принадлежности к новому региону 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em type} & -\/ тип региона, из которого удалется эта прова \\
+\hline
+\mbox{\tt in}  & {\em region\+ID} & -\/ ID региона, из которого удалется эта прова \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_prov_class_a7da473dcff63f556364ec6f5c1d94442}\label{class_prov_class_a7da473dcff63f556364ec6f5c1d94442}} 
+\index{Prov\+Class@{Prov\+Class}!erase@{erase}}
+\index{erase@{erase}!Prov\+Class@{Prov\+Class}}
+\subsubsection{\texorpdfstring{erase()}{erase()}}
+{\footnotesize\ttfamily void Prov\+Class\+::erase (\begin{DoxyParamCaption}\item[{std\+::vector$<$ int $>$ \&}]{vec,  }\item[{int}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Удаление определенного элемента из вектора целых чисел 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em vec} & -\/ исходный вектор целых чисел \\
+\hline
+\mbox{\tt in}  & {\em -\/} & значение, которое надо удалить \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_prov_class_a13be7aabc6416d8390a5e08a3852dbd4}\label{class_prov_class_a13be7aabc6416d8390a5e08a3852dbd4}} 
+\index{Prov\+Class@{Prov\+Class}!get\+Coords@{get\+Coords}}
+\index{get\+Coords@{get\+Coords}!Prov\+Class@{Prov\+Class}}
+\subsubsection{\texorpdfstring{get\+Coords()}{getCoords()}}
+{\footnotesize\ttfamily D3\+D\+X\+V\+E\+C\+T\+O\+R3 Prov\+Class\+::get\+Coords (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Получение координат провинции 
+
+\begin{DoxyReturn}{Returns}
+Координаты провинции 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_prov_class_a8cb7ae2b2f6bf292b789060fa719436d}\label{class_prov_class_a8cb7ae2b2f6bf292b789060fa719436d}} 
+\index{Prov\+Class@{Prov\+Class}!get\+ID@{get\+ID}}
+\index{get\+ID@{get\+ID}!Prov\+Class@{Prov\+Class}}
+\subsubsection{\texorpdfstring{get\+I\+D()}{getID()}}
+{\footnotesize\ttfamily int Prov\+Class\+::get\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Получение ID провинции 
+
+\begin{DoxyReturn}{Returns}
+ID провинции 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_prov_class_a49e9acf6093021eb11d116c847e07689}\label{class_prov_class_a49e9acf6093021eb11d116c847e07689}} 
+\index{Prov\+Class@{Prov\+Class}!get\+Layers@{get\+Layers}}
+\index{get\+Layers@{get\+Layers}!Prov\+Class@{Prov\+Class}}
+\subsubsection{\texorpdfstring{get\+Layers()}{getLayers()}}
+{\footnotesize\ttfamily \hyperlink{class_layers_class}{Layers\+Class} $\ast$ Prov\+Class\+::get\+Layers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Получение слоев цвета провинции 
+
+\begin{DoxyReturn}{Returns}
+Слои цвета провинции 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_prov_class_accc6f1505990cae5065fdcf0669e1f59}\label{class_prov_class_accc6f1505990cae5065fdcf0669e1f59}} 
+\index{Prov\+Class@{Prov\+Class}!get\+Name@{get\+Name}}
+\index{get\+Name@{get\+Name}!Prov\+Class@{Prov\+Class}}
+\subsubsection{\texorpdfstring{get\+Name()}{getName()}}
+{\footnotesize\ttfamily std\+::string Prov\+Class\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Получение имени провинции 
+
+\begin{DoxyReturn}{Returns}
+Имя провинции 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_prov_class_aa559d5aeecf8df6f7d1c50286575ce04}\label{class_prov_class_aa559d5aeecf8df6f7d1c50286575ce04}} 
+\index{Prov\+Class@{Prov\+Class}!get\+Regions@{get\+Regions}}
+\index{get\+Regions@{get\+Regions}!Prov\+Class@{Prov\+Class}}
+\subsubsection{\texorpdfstring{get\+Regions()}{getRegions()}}
+{\footnotesize\ttfamily std\+::vector$<$ int $>$ Prov\+Class\+::get\+Regions (\begin{DoxyParamCaption}\item[{\hyperlink{class_global_manager_class_a794b4a5298c61f8d25d9da44b7826857}{Global\+Manager\+Class\+::region\+Type}}]{type }\end{DoxyParamCaption})}
+
+
+
+Получение ID всех регионов определенного типа, к которому принадлежит провинция 
+
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_prov_class_add3350b63d3fcbffee08f253d0fef98a}\label{class_prov_class_add3350b63d3fcbffee08f253d0fef98a}} 
+\index{Prov\+Class@{Prov\+Class}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!Prov\+Class@{Prov\+Class}}
+\subsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily bool Prov\+Class\+::\+Initialize (\begin{DoxyParamCaption}\item[{std\+::ifstream $\ast$}]{file,  }\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Инициализация провинции 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em file} & -\/ файл, откуда берется информация о провинции \\
+\hline
+\mbox{\tt in}  & {\em id} & -\/ ID текущей провинции \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_prov_class_ab87fcfb3b02e5beb1e30f03059f2928b}\label{class_prov_class_ab87fcfb3b02e5beb1e30f03059f2928b}} 
+\index{Prov\+Class@{Prov\+Class}!read\+From\+File@{read\+From\+File}}
+\index{read\+From\+File@{read\+From\+File}!Prov\+Class@{Prov\+Class}}
+\subsubsection{\texorpdfstring{read\+From\+File()}{readFromFile()}}
+{\footnotesize\ttfamily bool Prov\+Class\+::read\+From\+File (\begin{DoxyParamCaption}\item[{std\+::ifstream $\ast$}]{file }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Чтение из файла 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em file} & -\/ файл, откуда берется информация \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_prov_class_aab053eb395e45580e5c65fd74e264361}\label{class_prov_class_aab053eb395e45580e5c65fd74e264361}} 
+\index{Prov\+Class@{Prov\+Class}!Shutdown@{Shutdown}}
+\index{Shutdown@{Shutdown}!Prov\+Class@{Prov\+Class}}
+\subsubsection{\texorpdfstring{Shutdown()}{Shutdown()}}
+{\footnotesize\ttfamily void Prov\+Class\+::\+Shutdown (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_prov_class_aa24dfaa725d9920c7602b04c4084a798}\label{class_prov_class_aa24dfaa725d9920c7602b04c4084a798}} 
+\index{Prov\+Class@{Prov\+Class}!m\+\_\+base\+Region@{m\+\_\+base\+Region}}
+\index{m\+\_\+base\+Region@{m\+\_\+base\+Region}!Prov\+Class@{Prov\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+base\+Region}{m\_baseRegion}}
+{\footnotesize\ttfamily std\+::vector$<$int$>$ Prov\+Class\+::m\+\_\+base\+Region\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Вектор ID базовых регионов, к которым принадлежит прова 
+
+\mbox{\Hypertarget{class_prov_class_a0d008978d66ba3543ad2890161125ee6}\label{class_prov_class_a0d008978d66ba3543ad2890161125ee6}} 
+\index{Prov\+Class@{Prov\+Class}!m\+\_\+block\+Region@{m\+\_\+block\+Region}}
+\index{m\+\_\+block\+Region@{m\+\_\+block\+Region}!Prov\+Class@{Prov\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+block\+Region}{m\_blockRegion}}
+{\footnotesize\ttfamily std\+::vector$<$int$>$ Prov\+Class\+::m\+\_\+block\+Region\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Вектор ID блоковых регионов, к которым принадлежит прова 
+
+\mbox{\Hypertarget{class_prov_class_aef01dac0cdeabad98fb67a03f66f1b7d}\label{class_prov_class_aef01dac0cdeabad98fb67a03f66f1b7d}} 
+\index{Prov\+Class@{Prov\+Class}!m\+\_\+coords@{m\+\_\+coords}}
+\index{m\+\_\+coords@{m\+\_\+coords}!Prov\+Class@{Prov\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+coords}{m\_coords}}
+{\footnotesize\ttfamily D3\+D\+X\+V\+E\+C\+T\+O\+R3 Prov\+Class\+::m\+\_\+coords\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Координаты провинции 
+
+\mbox{\Hypertarget{class_prov_class_aaff00dcc3c5e75767133ec05ace7fdf6}\label{class_prov_class_aaff00dcc3c5e75767133ec05ace7fdf6}} 
+\index{Prov\+Class@{Prov\+Class}!m\+\_\+id@{m\+\_\+id}}
+\index{m\+\_\+id@{m\+\_\+id}!Prov\+Class@{Prov\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+id}{m\_id}}
+{\footnotesize\ttfamily int Prov\+Class\+::m\+\_\+id\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ID провинции 
+
+\mbox{\Hypertarget{class_prov_class_ac52eab12a254ed06d4365215db03c103}\label{class_prov_class_ac52eab12a254ed06d4365215db03c103}} 
+\index{Prov\+Class@{Prov\+Class}!m\+\_\+layers@{m\+\_\+layers}}
+\index{m\+\_\+layers@{m\+\_\+layers}!Prov\+Class@{Prov\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+layers}{m\_layers}}
+{\footnotesize\ttfamily \hyperlink{class_layers_class}{Layers\+Class}$\ast$ Prov\+Class\+::m\+\_\+layers\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Слои цветов 
+
+\mbox{\Hypertarget{class_prov_class_ad6197fa9253423daa8bfe5d8020547b5}\label{class_prov_class_ad6197fa9253423daa8bfe5d8020547b5}} 
+\index{Prov\+Class@{Prov\+Class}!m\+\_\+name@{m\+\_\+name}}
+\index{m\+\_\+name@{m\+\_\+name}!Prov\+Class@{Prov\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+name}{m\_name}}
+{\footnotesize\ttfamily std\+::string Prov\+Class\+::m\+\_\+name\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Имя провинции 
+
+\mbox{\Hypertarget{class_prov_class_a8a75f6c2e83d2b02a94105ebdfb8aa56}\label{class_prov_class_a8a75f6c2e83d2b02a94105ebdfb8aa56}} 
+\index{Prov\+Class@{Prov\+Class}!m\+\_\+nation\+Region@{m\+\_\+nation\+Region}}
+\index{m\+\_\+nation\+Region@{m\+\_\+nation\+Region}!Prov\+Class@{Prov\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+nation\+Region}{m\_nationRegion}}
+{\footnotesize\ttfamily std\+::vector$<$int$>$ Prov\+Class\+::m\+\_\+nation\+Region\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Вектор ID регионов страны, к которым принадлежит прова 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_prov_class_8h}{Prov\+Class.\+h}\item 
+\hyperlink{_prov_class_8cpp}{Prov\+Class.\+cpp}\end{DoxyCompactItemize}

@@ -50,7 +50,7 @@ void TerrainManagerClass::Shutdown()
 	m_terrain.clear();
 }
 
-bool TerrainManagerClass::Render(TerrainShaderClass * terrainShader, ID3D11DeviceContext * deviceContext, D3DXMATRIX worldMatrix,
+bool TerrainManagerClass::Render(TerrainShaderClass * terrainShader, WaterShaderClass* waterShader, ID3D11DeviceContext * deviceContext, D3DXMATRIX worldMatrix,
 	D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, D3DXVECTOR3 lightDirection, D3DXVECTOR4 ambientColor,
 	D3DXVECTOR4 diffuseColor, D3DXVECTOR3 cameraPosition, D3DXVECTOR4 specularColor, float specularPower,
 	float SCREEN_DEPTH, FrustumClass * frustum)
@@ -68,7 +68,7 @@ bool TerrainManagerClass::Render(TerrainShaderClass * terrainShader, ID3D11Devic
 		MeshClass::translateMatrix(worldMatrix, (*block)->getPosition());
 
 		//render block
-		result = (*block)->Render(terrainShader, deviceContext, worldMatrix, viewMatrix, projectionMatrix, mapTextures, lightDirection,
+		result = (*block)->Render(terrainShader, waterShader, deviceContext, worldMatrix, viewMatrix, projectionMatrix, mapTextures, lightDirection,
 			ambientColor, diffuseColor, cameraPosition, specularColor, specularPower, SCREEN_DEPTH, frustum);
 		if (!result)
 			return false;

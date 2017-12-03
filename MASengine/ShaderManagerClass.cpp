@@ -73,12 +73,32 @@ bool ShaderManagerClass::Initialize(ID3D11Device * device, HWND hwnd)
 	}
 	LogManagerClass::getI().addLog("Model Shader Initialization");
 
+	//Initialize water Shader
+	m_waterShader = new(1) WaterShaderClass;
+	if (!m_waterShader)
+		return false;
+	PathClass* waterPS = PathManagerClass::getI().makePath("waterPS.fx");
+	PathClass* waterVS = PathManagerClass::getI().makePath("terrainVS.fx");
+	result = m_waterShader->Initialize(device, hwnd, waterVS, waterPS);
+	if (!result)
+	{
+		LogManagerClass::getI().addLog("Error 10-x");
+		return false;
+	}
+	LogManagerClass::getI().addLog("Water Shader Initialization");
 
 	return true;
 }
 
 void ShaderManagerClass::Shutdown()
 {
+	if (m_waterShader)
+	{
+		m_waterShader->Shutdown();
+		::operator delete(m_waterShader, sizeof(*m_waterShader), 1);
+		m_waterShader = 0;
+	}
+
 	if (m_modelShader)
 	{
 		m_modelShader->Shutdown();
@@ -128,4 +148,9 @@ TerrainShaderClass * ShaderManagerClass::getTerrainShader()
 ModelShaderClass * ShaderManagerClass::getModelShader()
 {
 	return m_modelShader;
+}
+
+WaterShaderClass * ShaderManagerClass::getWaterShader()
+{
+	return m_waterShader;
 }

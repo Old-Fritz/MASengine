@@ -1,0 +1,278 @@
+\hypertarget{class_path_class}{}\section{Path\+Class Class Reference}
+\label{class_path_class}\index{Path\+Class@{Path\+Class}}
+
+
+{\ttfamily \#include $<$Path\+Class.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_path_class_a13b1f0b300889f096151e0fc2a6890a6}{Path\+Class} ()
+\item 
+\hyperlink{class_path_class_ac14304bfe63bb472ea21311226e706c0}{Path\+Class} (const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em Создает путь по строке \end{DoxyCompactList}\item 
+\hyperlink{class_path_class_a46518182c742d1fa71a574bbf13654c4}{Path\+Class} (const std\+::wstring \&filename)
+\begin{DoxyCompactList}\small\item\em Создает путь по строке в U\+N\+I\+C\+O\+DE. \end{DoxyCompactList}\item 
+\hyperlink{class_path_class_ad5bad062639725c865cd5c1826a4da3e}{Path\+Class} (const \hyperlink{class_path_class}{Path\+Class} \&)
+\item 
+\hyperlink{class_path_class_a7eea4d10f8252ba6963e8fd770e53e29}{$\sim$\+Path\+Class} ()
+\item 
+void \hyperlink{class_path_class_a1ec074523795b82189f6c0ac6e4371f6}{Shutdown} ()
+\item 
+std\+::string \hyperlink{class_path_class_a4f6e38c297fca1b064e38d03b7876024}{get\+Path} ()
+\begin{DoxyCompactList}\small\item\em Получение пути со всеми модификациями \end{DoxyCompactList}\item 
+std\+::wstring \hyperlink{class_path_class_a1056eec1f69de932c586b01c100b4549}{get\+W\+Path} ()
+\begin{DoxyCompactList}\small\item\em Получение пути со всеми модификациями \end{DoxyCompactList}\item 
+std\+::string \hyperlink{class_path_class_a152fffeff3269d3fbcec37be7fc8b9a7}{get\+Short\+Path} ()
+\begin{DoxyCompactList}\small\item\em Получение пути без учета модификаций \end{DoxyCompactList}\item 
+std\+::wstring \hyperlink{class_path_class_ae6687a83d981a24ff5f4f0e2cb3f1914}{get\+Short\+W\+Path} ()
+\begin{DoxyCompactList}\small\item\em Получение пути без учета модификаций \end{DoxyCompactList}\item 
+void \hyperlink{class_path_class_a86c71455f3a42e46f3f29d8c289d3e6d}{change\+Path} (const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em Изменение пути (модификации меняются автоматически) \end{DoxyCompactList}\item 
+void \hyperlink{class_path_class_a8eaba9bf62b07b9ad641c28ff17a9817}{change\+Path} (const std\+::wstring \&filename)
+\begin{DoxyCompactList}\small\item\em Изменение пути (модификации меняются автоматически) в U\+N\+I\+C\+O\+DE. \end{DoxyCompactList}\item 
+void \hyperlink{class_path_class_a2ca417e8d9cc0e071470b00681a834d8}{change\+Prefix} (const std\+::string \&prefix)
+\begin{DoxyCompactList}\small\item\em Ручное изменение модификаций \end{DoxyCompactList}\item 
+void \hyperlink{class_path_class_a078c9eafbd2ef04faa7df37fde842cb8}{change\+Prefix} (const std\+::wstring \&prefix)
+\begin{DoxyCompactList}\small\item\em Ручное изменение модификаций в U\+N\+I\+C\+O\+DE. \end{DoxyCompactList}\item 
+int \hyperlink{class_path_class_aba7fd7fbc4fd3d093a91c9d57590887b}{get\+Hash} ()
+\begin{DoxyCompactList}\small\item\em Получение хэша от всего пути \end{DoxyCompactList}\item 
+std\+::string \hyperlink{class_path_class_a4a5fc3904f0d147a0dbab055c0b9c143}{get\+Expansion} ()
+\begin{DoxyCompactList}\small\item\em Получение расширения файла (расширение должно быть выделено точкой последней) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \hyperlink{class_path_class_a538100c80041baadecabc35738609eaf}{m\+\_\+path}
+\begin{DoxyCompactList}\small\item\em Оригинальный путь \end{DoxyCompactList}\item 
+std\+::string \hyperlink{class_path_class_ab43e04cf7461f1d27d27d5733d42351f}{m\+\_\+prefix}
+\begin{DoxyCompactList}\small\item\em Специальная модификация, которая меняет путь до файла в зависимости от модов \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Путь до файла 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_path_class_a13b1f0b300889f096151e0fc2a6890a6}\label{class_path_class_a13b1f0b300889f096151e0fc2a6890a6}} 
+\index{Path\+Class@{Path\+Class}!Path\+Class@{Path\+Class}}
+\index{Path\+Class@{Path\+Class}!Path\+Class@{Path\+Class}}
+\subsubsection{\texorpdfstring{Path\+Class()}{PathClass()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily Path\+Class\+::\+Path\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_path_class_ac14304bfe63bb472ea21311226e706c0}\label{class_path_class_ac14304bfe63bb472ea21311226e706c0}} 
+\index{Path\+Class@{Path\+Class}!Path\+Class@{Path\+Class}}
+\index{Path\+Class@{Path\+Class}!Path\+Class@{Path\+Class}}
+\subsubsection{\texorpdfstring{Path\+Class()}{PathClass()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily Path\+Class\+::\+Path\+Class (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+Создает путь по строке 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em filename} & -\/ путь до файла \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_path_class_a46518182c742d1fa71a574bbf13654c4}\label{class_path_class_a46518182c742d1fa71a574bbf13654c4}} 
+\index{Path\+Class@{Path\+Class}!Path\+Class@{Path\+Class}}
+\index{Path\+Class@{Path\+Class}!Path\+Class@{Path\+Class}}
+\subsubsection{\texorpdfstring{Path\+Class()}{PathClass()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily Path\+Class\+::\+Path\+Class (\begin{DoxyParamCaption}\item[{const std\+::wstring \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+Создает путь по строке в U\+N\+I\+C\+O\+DE. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em filename} & -\/ путь до файла в U\+N\+I\+C\+O\+DE \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_path_class_ad5bad062639725c865cd5c1826a4da3e}\label{class_path_class_ad5bad062639725c865cd5c1826a4da3e}} 
+\index{Path\+Class@{Path\+Class}!Path\+Class@{Path\+Class}}
+\index{Path\+Class@{Path\+Class}!Path\+Class@{Path\+Class}}
+\subsubsection{\texorpdfstring{Path\+Class()}{PathClass()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily Path\+Class\+::\+Path\+Class (\begin{DoxyParamCaption}\item[{const \hyperlink{class_path_class}{Path\+Class} \&}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_path_class_a7eea4d10f8252ba6963e8fd770e53e29}\label{class_path_class_a7eea4d10f8252ba6963e8fd770e53e29}} 
+\index{Path\+Class@{Path\+Class}!````~Path\+Class@{$\sim$\+Path\+Class}}
+\index{````~Path\+Class@{$\sim$\+Path\+Class}!Path\+Class@{Path\+Class}}
+\subsubsection{\texorpdfstring{$\sim$\+Path\+Class()}{~PathClass()}}
+{\footnotesize\ttfamily Path\+Class\+::$\sim$\+Path\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_path_class_a86c71455f3a42e46f3f29d8c289d3e6d}\label{class_path_class_a86c71455f3a42e46f3f29d8c289d3e6d}} 
+\index{Path\+Class@{Path\+Class}!change\+Path@{change\+Path}}
+\index{change\+Path@{change\+Path}!Path\+Class@{Path\+Class}}
+\subsubsection{\texorpdfstring{change\+Path()}{changePath()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Path\+Class\+::change\+Path (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+Изменение пути (модификации меняются автоматически) 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em filename} & -\/ путь до файла \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_path_class_a8eaba9bf62b07b9ad641c28ff17a9817}\label{class_path_class_a8eaba9bf62b07b9ad641c28ff17a9817}} 
+\index{Path\+Class@{Path\+Class}!change\+Path@{change\+Path}}
+\index{change\+Path@{change\+Path}!Path\+Class@{Path\+Class}}
+\subsubsection{\texorpdfstring{change\+Path()}{changePath()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Path\+Class\+::change\+Path (\begin{DoxyParamCaption}\item[{const std\+::wstring \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+Изменение пути (модификации меняются автоматически) в U\+N\+I\+C\+O\+DE. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em filename} & -\/ путь до файла в U\+N\+I\+C\+O\+DE \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_path_class_a2ca417e8d9cc0e071470b00681a834d8}\label{class_path_class_a2ca417e8d9cc0e071470b00681a834d8}} 
+\index{Path\+Class@{Path\+Class}!change\+Prefix@{change\+Prefix}}
+\index{change\+Prefix@{change\+Prefix}!Path\+Class@{Path\+Class}}
+\subsubsection{\texorpdfstring{change\+Prefix()}{changePrefix()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Path\+Class\+::change\+Prefix (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{prefix }\end{DoxyParamCaption})}
+
+
+
+Ручное изменение модификаций 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em prefix} & -\/ модификации, вставляемые перед оригинальным именем файла \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_path_class_a078c9eafbd2ef04faa7df37fde842cb8}\label{class_path_class_a078c9eafbd2ef04faa7df37fde842cb8}} 
+\index{Path\+Class@{Path\+Class}!change\+Prefix@{change\+Prefix}}
+\index{change\+Prefix@{change\+Prefix}!Path\+Class@{Path\+Class}}
+\subsubsection{\texorpdfstring{change\+Prefix()}{changePrefix()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Path\+Class\+::change\+Prefix (\begin{DoxyParamCaption}\item[{const std\+::wstring \&}]{prefix }\end{DoxyParamCaption})}
+
+
+
+Ручное изменение модификаций в U\+N\+I\+C\+O\+DE. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em prefix} & -\/ модификации, вставляемые перед оригинальным именем файла в U\+N\+I\+C\+O\+DE \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_path_class_a4a5fc3904f0d147a0dbab055c0b9c143}\label{class_path_class_a4a5fc3904f0d147a0dbab055c0b9c143}} 
+\index{Path\+Class@{Path\+Class}!get\+Expansion@{get\+Expansion}}
+\index{get\+Expansion@{get\+Expansion}!Path\+Class@{Path\+Class}}
+\subsubsection{\texorpdfstring{get\+Expansion()}{getExpansion()}}
+{\footnotesize\ttfamily std\+::string Path\+Class\+::get\+Expansion (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Получение расширения файла (расширение должно быть выделено точкой последней) 
+
+\begin{DoxyReturn}{Returns}
+расширение файла без \textquotesingle{}.\textquotesingle{} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_path_class_aba7fd7fbc4fd3d093a91c9d57590887b}\label{class_path_class_aba7fd7fbc4fd3d093a91c9d57590887b}} 
+\index{Path\+Class@{Path\+Class}!get\+Hash@{get\+Hash}}
+\index{get\+Hash@{get\+Hash}!Path\+Class@{Path\+Class}}
+\subsubsection{\texorpdfstring{get\+Hash()}{getHash()}}
+{\footnotesize\ttfamily int Path\+Class\+::get\+Hash (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Получение хэша от всего пути 
+
+\begin{DoxyReturn}{Returns}
+хэш только оригинального пути 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_path_class_a4f6e38c297fca1b064e38d03b7876024}\label{class_path_class_a4f6e38c297fca1b064e38d03b7876024}} 
+\index{Path\+Class@{Path\+Class}!get\+Path@{get\+Path}}
+\index{get\+Path@{get\+Path}!Path\+Class@{Path\+Class}}
+\subsubsection{\texorpdfstring{get\+Path()}{getPath()}}
+{\footnotesize\ttfamily std\+::string Path\+Class\+::get\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Получение пути со всеми модификациями 
+
+\begin{DoxyReturn}{Returns}
+путь до файла в виде строки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_path_class_a152fffeff3269d3fbcec37be7fc8b9a7}\label{class_path_class_a152fffeff3269d3fbcec37be7fc8b9a7}} 
+\index{Path\+Class@{Path\+Class}!get\+Short\+Path@{get\+Short\+Path}}
+\index{get\+Short\+Path@{get\+Short\+Path}!Path\+Class@{Path\+Class}}
+\subsubsection{\texorpdfstring{get\+Short\+Path()}{getShortPath()}}
+{\footnotesize\ttfamily std\+::string Path\+Class\+::get\+Short\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Получение пути без учета модификаций 
+
+\begin{DoxyReturn}{Returns}
+путь до файла в виде строки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_path_class_ae6687a83d981a24ff5f4f0e2cb3f1914}\label{class_path_class_ae6687a83d981a24ff5f4f0e2cb3f1914}} 
+\index{Path\+Class@{Path\+Class}!get\+Short\+W\+Path@{get\+Short\+W\+Path}}
+\index{get\+Short\+W\+Path@{get\+Short\+W\+Path}!Path\+Class@{Path\+Class}}
+\subsubsection{\texorpdfstring{get\+Short\+W\+Path()}{getShortWPath()}}
+{\footnotesize\ttfamily std\+::wstring Path\+Class\+::get\+Short\+W\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Получение пути без учета модификаций 
+
+\begin{DoxyReturn}{Returns}
+путь до файла в виде строки в U\+N\+I\+C\+O\+DE 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_path_class_a1056eec1f69de932c586b01c100b4549}\label{class_path_class_a1056eec1f69de932c586b01c100b4549}} 
+\index{Path\+Class@{Path\+Class}!get\+W\+Path@{get\+W\+Path}}
+\index{get\+W\+Path@{get\+W\+Path}!Path\+Class@{Path\+Class}}
+\subsubsection{\texorpdfstring{get\+W\+Path()}{getWPath()}}
+{\footnotesize\ttfamily std\+::wstring Path\+Class\+::get\+W\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Получение пути со всеми модификациями 
+
+\begin{DoxyReturn}{Returns}
+путь до файла в виде строки в U\+N\+I\+C\+O\+DE 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_path_class_a1ec074523795b82189f6c0ac6e4371f6}\label{class_path_class_a1ec074523795b82189f6c0ac6e4371f6}} 
+\index{Path\+Class@{Path\+Class}!Shutdown@{Shutdown}}
+\index{Shutdown@{Shutdown}!Path\+Class@{Path\+Class}}
+\subsubsection{\texorpdfstring{Shutdown()}{Shutdown()}}
+{\footnotesize\ttfamily void Path\+Class\+::\+Shutdown (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_path_class_a538100c80041baadecabc35738609eaf}\label{class_path_class_a538100c80041baadecabc35738609eaf}} 
+\index{Path\+Class@{Path\+Class}!m\+\_\+path@{m\+\_\+path}}
+\index{m\+\_\+path@{m\+\_\+path}!Path\+Class@{Path\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+path}{m\_path}}
+{\footnotesize\ttfamily std\+::string Path\+Class\+::m\+\_\+path\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Оригинальный путь 
+
+\mbox{\Hypertarget{class_path_class_ab43e04cf7461f1d27d27d5733d42351f}\label{class_path_class_ab43e04cf7461f1d27d27d5733d42351f}} 
+\index{Path\+Class@{Path\+Class}!m\+\_\+prefix@{m\+\_\+prefix}}
+\index{m\+\_\+prefix@{m\+\_\+prefix}!Path\+Class@{Path\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+prefix}{m\_prefix}}
+{\footnotesize\ttfamily std\+::string Path\+Class\+::m\+\_\+prefix\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Специальная модификация, которая меняет путь до файла в зависимости от модов 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_path_class_8h}{Path\+Class.\+h}\item 
+\hyperlink{_path_class_8cpp}{Path\+Class.\+cpp}\end{DoxyCompactItemize}

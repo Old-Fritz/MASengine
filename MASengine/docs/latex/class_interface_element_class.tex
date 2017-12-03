@@ -1,0 +1,1190 @@
+\hypertarget{class_interface_element_class}{}\section{Interface\+Element\+Class Class Reference}
+\label{class_interface_element_class}\index{Interface\+Element\+Class@{Interface\+Element\+Class}}
+
+
+{\ttfamily \#include $<$Interface\+Element\+Class.\+h$>$}
+
+Inheritance diagram for Interface\+Element\+Class\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_interface_element_class}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_interface_element_class_1_1_bitmap_info}{Bitmap\+Info}
+\begin{DoxyCompactList}\small\item\em Информация о bitmap. \end{DoxyCompactList}\item 
+struct \hyperlink{struct_interface_element_class_1_1_string_info}{String\+Info}
+\begin{DoxyCompactList}\small\item\em Информация о строках \end{DoxyCompactList}\item 
+struct \hyperlink{struct_interface_element_class_1_1_text_info}{Text\+Info}
+\begin{DoxyCompactList}\small\item\em Информация о тексте \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_interface_element_class_aefb7fd1e3f6292cc38992d1dfa3d7efd}{Interface\+Element\+Class} ()
+\item 
+\hyperlink{class_interface_element_class_ab3fd5ab4cf98254b4ea1a0faf60f0f04}{Interface\+Element\+Class} (const \hyperlink{class_interface_element_class}{Interface\+Element\+Class} \&)
+\item 
+\hyperlink{class_interface_element_class_a8a9d3cf0dfe277e439bc98a5ff285023}{$\sim$\+Interface\+Element\+Class} ()
+\item 
+virtual bool \hyperlink{class_interface_element_class_ac2c55670417d747393bd77337464551f}{Initialize} (I\+D3\+D11\+Device $\ast$device, I\+D3\+D11\+Device\+Context $\ast$device\+Context, H\+W\+ND hwnd, \hyperlink{class_path_class}{Path\+Class} $\ast$filename, int screen\+Width, int screen\+Height)
+\item 
+virtual void \hyperlink{class_interface_element_class_aa710f6d66c3aa4c2d0a23fdd2b75a1f0}{Shutdown} ()
+\item 
+virtual bool \hyperlink{class_interface_element_class_a18b876383a39bb3fb1a6325f6518befc}{Render} (\hyperlink{class_font_shader_class}{Font\+Shader\+Class} $\ast$font\+Shader, \hyperlink{class_interface_shader_class}{Interface\+Shader\+Class} $\ast$interface\+Shader, I\+D3\+D11\+Device\+Context $\ast$device\+Context, D3\+D\+X\+M\+A\+T\+R\+IX world\+Matrix, D3\+D\+X\+M\+A\+T\+R\+IX ortho\+Matrix, D3\+D\+X\+M\+A\+T\+R\+IX base\+View\+Matrix)
+\item 
+std\+::string \hyperlink{class_interface_element_class_a7815b1d9629ff4dc8a83c170dbb171fc}{get\+Name} ()
+\begin{DoxyCompactList}\small\item\em Получение имени элемента интерфейса \end{DoxyCompactList}\item 
+bool \hyperlink{class_interface_element_class_a8d2250d84fd5bd69683dd3fe98becafd}{is\+Visible} ()
+\begin{DoxyCompactList}\small\item\em Получение состояния видимости элемента интерфейса \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_interface_element_class_ad7981e5bad3db0c073ca1301dee44d6f}{set\+Visible} (bool visible)
+\begin{DoxyCompactList}\small\item\em Отобразить/скрыть элемент \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_interface_element_class_aabea82698bf88460ebc619195fdd6f83}{update\+Drag} (I\+D3\+D11\+Device\+Context $\ast$device\+Context, int posX, int posY)
+\begin{DoxyCompactList}\small\item\em Обновить положение перетаскиваемых элементов \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_interface_element_class_a4eabfb2943783e107dfe0aaa6a08da62}{start\+Drag} (int posX, int posY)
+\begin{DoxyCompactList}\small\item\em Начать перетаскивание элемента \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_interface_element_class_a15833d13e7a9c045032bf8498f25b9e6}{set\+Pos} (I\+D3\+D11\+Device\+Context $\ast$device\+Context, int posX, int posY)
+\begin{DoxyCompactList}\small\item\em Установить позицию элемента \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_interface_element_class_ac92bb66665d96a17c7ab6204adcf03cd}{end\+Drag} ()
+\begin{DoxyCompactList}\small\item\em Окончить перетаскивание элемента \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_interface_element_class_a1d9f9ffdb2f5e00c78d692ccfe50ce2f}{add\+Element} (I\+D3\+D11\+Device $\ast$device, I\+D3\+D11\+Device\+Context $\ast$device\+Context, H\+W\+ND hwnd)
+\item 
+virtual void \hyperlink{class_interface_element_class_ab8f17e3c917732a8d2ef85cb0cd65eda}{delete\+Element} (I\+D3\+D11\+Device\+Context $\ast$device\+Context, int ind)
+\begin{DoxyCompactList}\small\item\em Удаление элемента, если это возможно \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_interface_element_class_a0bc6d608e1d1c6bebb6507b7f9a8a220}{clear} ()
+\begin{DoxyCompactList}\small\item\em Удаление всех элементов \end{DoxyCompactList}\item 
+virtual \hyperlink{class_interface_element_class}{Interface\+Element\+Class} $\ast$ \hyperlink{class_interface_element_class_aee5a321eaf772ef561bab59b51fb36b9}{get\+Element} (int ind)
+\begin{DoxyCompactList}\small\item\em Получение элемента \end{DoxyCompactList}\item 
+int \hyperlink{class_interface_element_class_aa878a2296a5fe72fb7a92e833f276961}{find\+B\+Mby\+Name} (const std\+::string \&name)
+\begin{DoxyCompactList}\small\item\em Нахождение индекса bitmap по имени \end{DoxyCompactList}\item 
+int \hyperlink{class_interface_element_class_a2d7805e3c6f80068b76618e3ad43f31f}{find\+Tby\+Name} (const std\+::string \&name)
+\begin{DoxyCompactList}\small\item\em Нахождение индекса текста по имени \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_interface_element_class_a2148ae1a7b93246c9e89724340347de0}{set\+B\+Mvisible} (const std\+::string \&name, bool visible)
+\begin{DoxyCompactList}\small\item\em Отобразить/скрыть bitmap элемента \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_interface_element_class_aefde245f4498eaed30056ba83515b3e7}{update\+B\+MposX} (const std\+::string \&name, int posX)
+\begin{DoxyCompactList}\small\item\em Обновить положение bitmap элемента на X. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_interface_element_class_aef92fb02c9e353893485939eaff5f8ee}{update\+B\+MposY} (const std\+::string \&name, int posY)
+\begin{DoxyCompactList}\small\item\em Обновить положение bitmap элемента на Y. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_interface_element_class_aaf28d020efdb4ff5ad334e6577198e59}{update\+B\+Mvert\+Percent} (const std\+::string \&name, float vert\+Percent)
+\item 
+virtual void \hyperlink{class_interface_element_class_a4891a40d50c2cdad0227bf4d45651f25}{update\+B\+Mhor\+Percent} (const std\+::string \&name, float hor\+Percent)
+\item 
+virtual void \hyperlink{class_interface_element_class_adecf79076fdb4192adab5f74239b6b62}{update\+B\+Mtranspar} (const std\+::string \&name, float transparency)
+\item 
+virtual void \hyperlink{class_interface_element_class_a3855f9b8395a0d7571ebf86a55596ffa}{update\+B\+Msel\+Intens} (const std\+::string \&name, float sel\+Intensivity)
+\item 
+virtual void \hyperlink{class_interface_element_class_acd05ce4f703284b47bbfe6abb7a5026c}{update\+B\+Msel\+Col} (const std\+::string \&name, D3\+D\+X\+V\+E\+C\+T\+O\+R4 sel\+Col)
+\item 
+bool \hyperlink{class_interface_element_class_a91cdf8dd0c4ca5ec1a51588572ac07d4}{set\+New\+BM} (I\+D3\+D11\+Device $\ast$device, const std\+::string \&name, \hyperlink{class_path_class}{Path\+Class} $\ast$filename)
+\item 
+virtual void \hyperlink{class_interface_element_class_afbfd6e575119dee8d3bbca739354754e}{set\+Tvisible} (const std\+::string \&name, bool visible)
+\begin{DoxyCompactList}\small\item\em Отобразить/скрыть текста элемента \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_interface_element_class_afa2b0141aaaad7223ef087627aaa8570}{update\+T\+SposY} (I\+D3\+D11\+Device\+Context $\ast$device\+Context, const std\+::string \&name, int ind, int posY)
+\item 
+virtual bool \hyperlink{class_interface_element_class_a662b70e734c36fb0b792b7f9d8ab4eb1}{update\+T\+SposX} (I\+D3\+D11\+Device\+Context $\ast$device\+Context, const std\+::string \&name, int ind, int posX)
+\item 
+virtual bool \hyperlink{class_interface_element_class_a0cc96e120484d53c600515fefda32945}{update\+T\+Stext} (I\+D3\+D11\+Device\+Context $\ast$device\+Context, const std\+::string \&name, int ind, const std\+::string \&text)
+\item 
+virtual bool \hyperlink{class_interface_element_class_aceae624832991064f6b6e6f363911a5b}{update\+T\+Scolor} (I\+D3\+D11\+Device\+Context $\ast$device\+Context, const std\+::string \&name, int ind, D3\+D\+X\+V\+E\+C\+T\+O\+R4 color)
+\item 
+virtual bool \hyperlink{class_interface_element_class_ae505d58cae330457c8b5bbdd23bb644f}{update\+T\+Sadding} (I\+D3\+D11\+Device\+Context $\ast$device\+Context, const std\+::string \&name, int ind, const std\+::string \&text)
+\item 
+int \hyperlink{class_interface_element_class_ac7b96d7196906f80b377e293cc36404c}{get\+T\+Ssize} (const std\+::string \&name, int ind)
+\item 
+std\+::string \hyperlink{class_interface_element_class_aef459140ce6fc4cfcf0b6fd017e73617}{get\+T\+Stext} (const std\+::string \&name, int ind)
+\item 
+virtual std\+::string \hyperlink{class_interface_element_class_a6dbf6a318a5e4b60b58a7652d2e54b0a}{pick} (int posX, int posY)
+\begin{DoxyCompactList}\small\item\em Получить элемент по координатам \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_interface_element_class_a47b6374245f1b3a2c56366b8819f1569}{add\+Sel\+Command} (const std\+::string \&name)
+\begin{DoxyCompactList}\small\item\em Выполнить выделение bitmap. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_interface_element_class_a906729d7cf4a4db85520c8e516007685}{add\+Un\+Sel\+Command} (const std\+::string \&name)
+\begin{DoxyCompactList}\small\item\em Выполнить отмнеу выделения bitmap. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_interface_element_class_af1061f10847c0c30a5815e64892e8d60}{add\+Pick\+Command} (const std\+::string \&name)
+\begin{DoxyCompactList}\small\item\em Выполнить клик на bitmap. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_interface_element_class_a318c70a834096462e9ed764f32fe3065}{add\+Un\+Pick\+Command} (const std\+::string \&name)
+\begin{DoxyCompactList}\small\item\em Выполнить отклик на bitmap. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_interface_element_class_a0e55bb0f0037715b19c29ce05a57abdc}{set\+Sel\+Command} (const std\+::string \&name, const std\+::string \&action)
+\begin{DoxyCompactList}\small\item\em Изменить команду на выделение bitmap. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_interface_element_class_ac327534caba198bf3347e1513cfe8491}{set\+Un\+Sel\+Command} (const std\+::string \&name, const std\+::string \&action)
+\begin{DoxyCompactList}\small\item\em Изменить команду на отмену выделения bitmap. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_interface_element_class_a866babb9cc309763567529771467fb76}{set\+Pick\+Command} (const std\+::string \&name, const std\+::string \&action)
+\begin{DoxyCompactList}\small\item\em Изменить команду на клик на bitmap. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_interface_element_class_a3823d61803f374b60458c9e8a7ff1505}{set\+Un\+Pick\+Command} (const std\+::string \&name, const std\+::string \&action)
+\begin{DoxyCompactList}\small\item\em Изменить команду на отклик на bitmap. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual bool \hyperlink{class_interface_element_class_aadd932731787c60b3f395422188f2f58}{read\+From\+File} (\hyperlink{class_path_class}{Path\+Class} $\ast$filename)
+\begin{DoxyCompactList}\small\item\em Получить данные об элементе из файла \end{DoxyCompactList}\item 
+bool \hyperlink{class_interface_element_class_a80958e5556a2970645b65a56431c88ca}{read\+Bitmaps\+Info\+From\+File} (std\+::ifstream $\ast$file)
+\begin{DoxyCompactList}\small\item\em Получить данные о bitmap из файла \end{DoxyCompactList}\item 
+bool \hyperlink{class_interface_element_class_afc8ee340b6aa0b99e3280b424aa5c519}{read\+Texts\+Info\+From\+File} (std\+::ifstream $\ast$file)
+\begin{DoxyCompactList}\small\item\em Получить данные о текстах из файла \end{DoxyCompactList}\item 
+bool \hyperlink{class_interface_element_class_aa1908c476bd6d840acd22dd137fcbd00}{update\+Sentence} (I\+D3\+D11\+Device\+Context $\ast$device\+Context, int text\+Ind, int sentence\+Ind)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{class_interface_element_class_a48d190b730dbfe3cde14dae381828c0a}{m\+\_\+screen\+Width}
+\item 
+int \hyperlink{class_interface_element_class_a67ebc91d7b5867dae25ef0d7246779dd}{m\+\_\+screen\+Height}
+\begin{DoxyCompactList}\small\item\em Размеры экрана \end{DoxyCompactList}\item 
+std\+::string \hyperlink{class_interface_element_class_aeb7bbd3373c67d0182643ac538f1d0c5}{m\+\_\+name}
+\begin{DoxyCompactList}\small\item\em Имя элемента \end{DoxyCompactList}\item 
+int \hyperlink{class_interface_element_class_a8eca1a33dad30ecbaf071529bf47b0b3}{m\+\_\+posX}
+\item 
+int \hyperlink{class_interface_element_class_ada43f9167fc56f5aca7ff0984171069a}{m\+\_\+posY}
+\item 
+int \hyperlink{class_interface_element_class_a0327b9790dee1416249b9cdedeb0154c}{m\+\_\+width}
+\item 
+int \hyperlink{class_interface_element_class_a4740f34c849aa414ad73862581cc239e}{m\+\_\+height}
+\begin{DoxyCompactList}\small\item\em Позиция и размеры элемента \end{DoxyCompactList}\item 
+int \hyperlink{class_interface_element_class_ac9e301c833f8291663c5beb125c26cc9}{m\+\_\+bitmaps\+Num}
+\begin{DoxyCompactList}\small\item\em Количество bitmap. \end{DoxyCompactList}\item 
+int \hyperlink{class_interface_element_class_abcea7224c180196b1eee96a4e0e61ea2}{m\+\_\+texts\+Num}
+\begin{DoxyCompactList}\small\item\em Количество текстов \end{DoxyCompactList}\item 
+\hyperlink{class_path_class}{Path\+Class} $\ast$ \hyperlink{class_interface_element_class_a686d61c39e4e1a34c87e00bd25c25ec9}{m\+\_\+actions\+Filename}
+\begin{DoxyCompactList}\small\item\em Путь до файла с коммандами \end{DoxyCompactList}\item 
+\hyperlink{class_path_class}{Path\+Class} $\ast$ \hyperlink{class_interface_element_class_a50f30f1e18f7c0a3756959c7b9ed42ce}{m\+\_\+fonts\+Filename}
+\begin{DoxyCompactList}\small\item\em Путь до файла со шрифтами \end{DoxyCompactList}\item 
+\hyperlink{struct_interface_element_class_1_1_bitmap_info}{Bitmap\+Info} $\ast$ \hyperlink{class_interface_element_class_a4a8fb4fa3b790b2d0eaf80825a9d0fa6}{m\+\_\+bitmaps\+Info}
+\begin{DoxyCompactList}\small\item\em Информация о bitmap. \end{DoxyCompactList}\item 
+\hyperlink{struct_interface_element_class_1_1_text_info}{Text\+Info} $\ast$ \hyperlink{class_interface_element_class_ad88939553c9fb78800fb538e9157c98f}{m\+\_\+texts\+Info}
+\begin{DoxyCompactList}\small\item\em Информация о текстах \end{DoxyCompactList}\item 
+\hyperlink{class_bitmap_class}{Bitmap\+Class} $\ast$$\ast$ \hyperlink{class_interface_element_class_a255444637943a29562ceb781706d664b}{m\+\_\+bitmaps}
+\begin{DoxyCompactList}\small\item\em bitmaps \end{DoxyCompactList}\item 
+\hyperlink{class_text_class}{Text\+Class} $\ast$$\ast$ \hyperlink{class_interface_element_class_a1356c46a8fcce7dd60c63e5531acc3a4}{m\+\_\+texts}
+\begin{DoxyCompactList}\small\item\em Тексты \end{DoxyCompactList}\item 
+bool \hyperlink{class_interface_element_class_a8bfae460b4034a9e9bdcaccadb7df367}{m\+\_\+vert\+Orien}
+\begin{DoxyCompactList}\small\item\em Ориентация элемента по вертикали \end{DoxyCompactList}\item 
+bool \hyperlink{class_interface_element_class_a029cdb3ead496730b2aac67d0f22ba34}{m\+\_\+hor\+Orien}
+\begin{DoxyCompactList}\small\item\em Ориентация элемента по горизонтали \end{DoxyCompactList}\item 
+bool \hyperlink{class_interface_element_class_a734e2f12d7ca918619dda46ac2c4e56e}{m\+\_\+visible} = false
+\begin{DoxyCompactList}\small\item\em Состояние видимости элемента \end{DoxyCompactList}\item 
+int \hyperlink{class_interface_element_class_aa543f71120067c5cb3f4208a6e0fe3aa}{m\+\_\+lastX} = 0
+\begin{DoxyCompactList}\small\item\em Предыдыущее положение элемента при перетаскивании по оси X. \end{DoxyCompactList}\item 
+int \hyperlink{class_interface_element_class_abbd9a7e0ff18d4bb41d01aad1653f167}{m\+\_\+lastY} = 0
+\begin{DoxyCompactList}\small\item\em Предыдыущее положение элемента при перетаскивании по оси Y. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Основной элемент интерфейса 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_interface_element_class_aefb7fd1e3f6292cc38992d1dfa3d7efd}\label{class_interface_element_class_aefb7fd1e3f6292cc38992d1dfa3d7efd}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{Interface\+Element\+Class()}{InterfaceElementClass()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Interface\+Element\+Class\+::\+Interface\+Element\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_interface_element_class_ab3fd5ab4cf98254b4ea1a0faf60f0f04}\label{class_interface_element_class_ab3fd5ab4cf98254b4ea1a0faf60f0f04}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{Interface\+Element\+Class()}{InterfaceElementClass()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Interface\+Element\+Class\+::\+Interface\+Element\+Class (\begin{DoxyParamCaption}\item[{const \hyperlink{class_interface_element_class}{Interface\+Element\+Class} \&}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_interface_element_class_a8a9d3cf0dfe277e439bc98a5ff285023}\label{class_interface_element_class_a8a9d3cf0dfe277e439bc98a5ff285023}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!````~Interface\+Element\+Class@{$\sim$\+Interface\+Element\+Class}}
+\index{````~Interface\+Element\+Class@{$\sim$\+Interface\+Element\+Class}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{$\sim$\+Interface\+Element\+Class()}{~InterfaceElementClass()}}
+{\footnotesize\ttfamily Interface\+Element\+Class\+::$\sim$\+Interface\+Element\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_interface_element_class_a1d9f9ffdb2f5e00c78d692ccfe50ce2f}\label{class_interface_element_class_a1d9f9ffdb2f5e00c78d692ccfe50ce2f}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!add\+Element@{add\+Element}}
+\index{add\+Element@{add\+Element}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{add\+Element()}{addElement()}}
+{\footnotesize\ttfamily bool Interface\+Element\+Class\+::add\+Element (\begin{DoxyParamCaption}\item[{I\+D3\+D11\+Device $\ast$}]{device,  }\item[{I\+D3\+D11\+Device\+Context $\ast$}]{device\+Context,  }\item[{H\+W\+ND}]{hwnd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Добавление элемента, если это возможно 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em device,device\+Context} & -\/ графическое устройство \\
+\hline
+\mbox{\tt in}  & {\em hwnd} & -\/ идентификатор окна \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{class_group_element_class_aa2a2b83ed4e4be2008cb632fdf6ecabf}{Group\+Element\+Class}, and \hyperlink{class_list_element_class_a79d3904e6f0b533bada46b9e55ae5ede}{List\+Element\+Class}.
+
+\mbox{\Hypertarget{class_interface_element_class_af1061f10847c0c30a5815e64892e8d60}\label{class_interface_element_class_af1061f10847c0c30a5815e64892e8d60}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!add\+Pick\+Command@{add\+Pick\+Command}}
+\index{add\+Pick\+Command@{add\+Pick\+Command}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{add\+Pick\+Command()}{addPickCommand()}}
+{\footnotesize\ttfamily void Interface\+Element\+Class\+::add\+Pick\+Command (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Выполнить клик на bitmap. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em name} & -\/ имя bitmap \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \hyperlink{class_slider_element_class_a2466f36f541259a81c690b366ca66bd4}{Slider\+Element\+Class}, \hyperlink{class_group_element_class_a4c6f9a1a30f7998884e90049e9532689}{Group\+Element\+Class}, and \hyperlink{class_list_element_class_afa7a26828a046b781f52255b78a4ba2e}{List\+Element\+Class}.
+
+\mbox{\Hypertarget{class_interface_element_class_a47b6374245f1b3a2c56366b8819f1569}\label{class_interface_element_class_a47b6374245f1b3a2c56366b8819f1569}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!add\+Sel\+Command@{add\+Sel\+Command}}
+\index{add\+Sel\+Command@{add\+Sel\+Command}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{add\+Sel\+Command()}{addSelCommand()}}
+{\footnotesize\ttfamily void Interface\+Element\+Class\+::add\+Sel\+Command (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Выполнить выделение bitmap. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em name} & -\/ имя bitmap \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \hyperlink{class_slider_element_class_a37d2eff7e6d2a0f2c0cd628dafb096e5}{Slider\+Element\+Class}, \hyperlink{class_group_element_class_a09a79779143779b0c6e5088bbdbed8ca}{Group\+Element\+Class}, and \hyperlink{class_list_element_class_ad76028165b37c10e2315fa0c678d51fc}{List\+Element\+Class}.
+
+\mbox{\Hypertarget{class_interface_element_class_a318c70a834096462e9ed764f32fe3065}\label{class_interface_element_class_a318c70a834096462e9ed764f32fe3065}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!add\+Un\+Pick\+Command@{add\+Un\+Pick\+Command}}
+\index{add\+Un\+Pick\+Command@{add\+Un\+Pick\+Command}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{add\+Un\+Pick\+Command()}{addUnPickCommand()}}
+{\footnotesize\ttfamily void Interface\+Element\+Class\+::add\+Un\+Pick\+Command (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Выполнить отклик на bitmap. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em name} & -\/ имя bitmap \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \hyperlink{class_slider_element_class_a2844280cd2d938b7f96e5e9640de4d09}{Slider\+Element\+Class}, \hyperlink{class_group_element_class_a253deff7c95f9311405dc99ba0ffe7c2}{Group\+Element\+Class}, and \hyperlink{class_list_element_class_a0dc213a87089450f5b18297b6e56673e}{List\+Element\+Class}.
+
+\mbox{\Hypertarget{class_interface_element_class_a906729d7cf4a4db85520c8e516007685}\label{class_interface_element_class_a906729d7cf4a4db85520c8e516007685}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!add\+Un\+Sel\+Command@{add\+Un\+Sel\+Command}}
+\index{add\+Un\+Sel\+Command@{add\+Un\+Sel\+Command}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{add\+Un\+Sel\+Command()}{addUnSelCommand()}}
+{\footnotesize\ttfamily void Interface\+Element\+Class\+::add\+Un\+Sel\+Command (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Выполнить отмнеу выделения bitmap. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em name} & -\/ имя bitmap \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \hyperlink{class_slider_element_class_aab0bdceef3fb3407c0d56d0011806a21}{Slider\+Element\+Class}, \hyperlink{class_group_element_class_aa7a5120c46e4f73cbc818c2835b3e40a}{Group\+Element\+Class}, and \hyperlink{class_list_element_class_a8a8930b7a1872ec1aa78be2a1fe4adc6}{List\+Element\+Class}.
+
+\mbox{\Hypertarget{class_interface_element_class_a0bc6d608e1d1c6bebb6507b7f9a8a220}\label{class_interface_element_class_a0bc6d608e1d1c6bebb6507b7f9a8a220}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!clear@{clear}}
+\index{clear@{clear}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void Interface\+Element\+Class\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Удаление всех элементов 
+
+
+
+Reimplemented in \hyperlink{class_group_element_class_a162a930551375f92238a3d1604e05e6a}{Group\+Element\+Class}, and \hyperlink{class_list_element_class_a3c18a56481ec0a07b834eeccf111ea95}{List\+Element\+Class}.
+
+\mbox{\Hypertarget{class_interface_element_class_ab8f17e3c917732a8d2ef85cb0cd65eda}\label{class_interface_element_class_ab8f17e3c917732a8d2ef85cb0cd65eda}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!delete\+Element@{delete\+Element}}
+\index{delete\+Element@{delete\+Element}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{delete\+Element()}{deleteElement()}}
+{\footnotesize\ttfamily void Interface\+Element\+Class\+::delete\+Element (\begin{DoxyParamCaption}\item[{I\+D3\+D11\+Device\+Context $\ast$}]{device\+Context,  }\item[{int}]{ind }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Удаление элемента, если это возможно 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em device\+Context} & -\/ графическое устройство \\
+\hline
+\mbox{\tt in}  & {\em ind} & -\/ индекс элемента в списке \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \hyperlink{class_list_element_class_a5cef68e71760862404d66baf55e526af}{List\+Element\+Class}.
+
+\mbox{\Hypertarget{class_interface_element_class_ac92bb66665d96a17c7ab6204adcf03cd}\label{class_interface_element_class_ac92bb66665d96a17c7ab6204adcf03cd}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!end\+Drag@{end\+Drag}}
+\index{end\+Drag@{end\+Drag}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{end\+Drag()}{endDrag()}}
+{\footnotesize\ttfamily void Interface\+Element\+Class\+::end\+Drag (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Окончить перетаскивание элемента 
+
+
+
+Reimplemented in \hyperlink{class_slider_element_class_a95fc13291bdbe865cb169e94b88092c8}{Slider\+Element\+Class}, \hyperlink{class_group_element_class_aed915a4255b64767a847d058d9c7bc64}{Group\+Element\+Class}, and \hyperlink{class_list_element_class_ab592a2b28ec7af2aaff955c5d4f68a33}{List\+Element\+Class}.
+
+\mbox{\Hypertarget{class_interface_element_class_aa878a2296a5fe72fb7a92e833f276961}\label{class_interface_element_class_aa878a2296a5fe72fb7a92e833f276961}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!find\+B\+Mby\+Name@{find\+B\+Mby\+Name}}
+\index{find\+B\+Mby\+Name@{find\+B\+Mby\+Name}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{find\+B\+Mby\+Name()}{findBMbyName()}}
+{\footnotesize\ttfamily int Interface\+Element\+Class\+::find\+B\+Mby\+Name (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})}
+
+
+
+Нахождение индекса bitmap по имени 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em name} & -\/ имя bitmap \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+индекс bitmap, 0, если такого нет 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_interface_element_class_a2d7805e3c6f80068b76618e3ad43f31f}\label{class_interface_element_class_a2d7805e3c6f80068b76618e3ad43f31f}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!find\+Tby\+Name@{find\+Tby\+Name}}
+\index{find\+Tby\+Name@{find\+Tby\+Name}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{find\+Tby\+Name()}{findTbyName()}}
+{\footnotesize\ttfamily int Interface\+Element\+Class\+::find\+Tby\+Name (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})}
+
+
+
+Нахождение индекса текста по имени 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em name} & -\/ имя текста \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+индекс текста, 0, если такого нет 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_interface_element_class_aee5a321eaf772ef561bab59b51fb36b9}\label{class_interface_element_class_aee5a321eaf772ef561bab59b51fb36b9}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!get\+Element@{get\+Element}}
+\index{get\+Element@{get\+Element}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{get\+Element()}{getElement()}}
+{\footnotesize\ttfamily \hyperlink{class_interface_element_class}{Interface\+Element\+Class} $\ast$ Interface\+Element\+Class\+::get\+Element (\begin{DoxyParamCaption}\item[{int}]{ind }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Получение элемента 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em ind} & -\/ индекс элемента \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+подэлемент, если возможно 
+\end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{class_group_element_class_ac30e4152465fa8409dfe3bf38e75cce7}{Group\+Element\+Class}, and \hyperlink{class_list_element_class_aaec0cdf8ec3c6a2e9e92cbc33d366b65}{List\+Element\+Class}.
+
+\mbox{\Hypertarget{class_interface_element_class_a7815b1d9629ff4dc8a83c170dbb171fc}\label{class_interface_element_class_a7815b1d9629ff4dc8a83c170dbb171fc}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!get\+Name@{get\+Name}}
+\index{get\+Name@{get\+Name}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{get\+Name()}{getName()}}
+{\footnotesize\ttfamily std\+::string Interface\+Element\+Class\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Получение имени элемента интерфейса 
+
+\begin{DoxyReturn}{Returns}
+Имя элемента 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_interface_element_class_ac7b96d7196906f80b377e293cc36404c}\label{class_interface_element_class_ac7b96d7196906f80b377e293cc36404c}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!get\+T\+Ssize@{get\+T\+Ssize}}
+\index{get\+T\+Ssize@{get\+T\+Ssize}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{get\+T\+Ssize()}{getTSsize()}}
+{\footnotesize\ttfamily int Interface\+Element\+Class\+::get\+T\+Ssize (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{int}]{ind }\end{DoxyParamCaption})}
+
+Получение длины текста 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em name} & -\/ имя текста \\
+\hline
+\mbox{\tt in}  & {\em ind} & -\/ индекс строки return длина строки в тексте, 0, если такой нет \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_interface_element_class_aef459140ce6fc4cfcf0b6fd017e73617}\label{class_interface_element_class_aef459140ce6fc4cfcf0b6fd017e73617}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!get\+T\+Stext@{get\+T\+Stext}}
+\index{get\+T\+Stext@{get\+T\+Stext}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{get\+T\+Stext()}{getTStext()}}
+{\footnotesize\ttfamily std\+::string Interface\+Element\+Class\+::get\+T\+Stext (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{int}]{ind }\end{DoxyParamCaption})}
+
+Получение текста 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em name} & -\/ имя текста \\
+\hline
+\mbox{\tt in}  & {\em ind} & -\/ индекс строки return строка в тексте, \char`\"{}\char`\"{}, если такой нет \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_interface_element_class_ac2c55670417d747393bd77337464551f}\label{class_interface_element_class_ac2c55670417d747393bd77337464551f}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily bool Interface\+Element\+Class\+::\+Initialize (\begin{DoxyParamCaption}\item[{I\+D3\+D11\+Device $\ast$}]{device,  }\item[{I\+D3\+D11\+Device\+Context $\ast$}]{device\+Context,  }\item[{H\+W\+ND}]{hwnd,  }\item[{\hyperlink{class_path_class}{Path\+Class} $\ast$}]{filename,  }\item[{int}]{screen\+Width,  }\item[{int}]{screen\+Height }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Загрузка элемента интерфейса 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em device,device\+Context} & -\/ графическое устройство \\
+\hline
+\mbox{\tt in}  & {\em hwnd} & -\/ идентификатор окна \\
+\hline
+\mbox{\tt in}  & {\em screen\+Width,screen\+Height} & -\/ ширина и высота экрана \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{class_slider_element_class_af0f6ef5d1951738bcd89b4bbfa2446fd}{Slider\+Element\+Class}, \hyperlink{class_group_element_class_ae24f5eb744d0e4d7354dc7b1f0fcaa57}{Group\+Element\+Class}, and \hyperlink{class_list_element_class_a1e11770280b39bce2cb887ec6c03b182}{List\+Element\+Class}.
+
+\mbox{\Hypertarget{class_interface_element_class_a8d2250d84fd5bd69683dd3fe98becafd}\label{class_interface_element_class_a8d2250d84fd5bd69683dd3fe98becafd}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!is\+Visible@{is\+Visible}}
+\index{is\+Visible@{is\+Visible}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{is\+Visible()}{isVisible()}}
+{\footnotesize\ttfamily bool Interface\+Element\+Class\+::is\+Visible (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Получение состояния видимости элемента интерфейса 
+
+\begin{DoxyReturn}{Returns}
+true, если элемент требует отображения, false, если нет 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_interface_element_class_a6dbf6a318a5e4b60b58a7652d2e54b0a}\label{class_interface_element_class_a6dbf6a318a5e4b60b58a7652d2e54b0a}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!pick@{pick}}
+\index{pick@{pick}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{pick()}{pick()}}
+{\footnotesize\ttfamily std\+::string Interface\+Element\+Class\+::pick (\begin{DoxyParamCaption}\item[{int}]{posX,  }\item[{int}]{posY }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Получить элемент по координатам 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em ind} & -\/ индекс элемента в классе \\
+\hline
+\mbox{\tt in}  & {\em name} & -\/ имя элемента \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+имя bitmap 
+\end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{class_slider_element_class_a7f09508006fbf9e6aee6c3c0e8b059ed}{Slider\+Element\+Class}, \hyperlink{class_group_element_class_aae9fb33c11d5273e33d7ad6dda5b3909}{Group\+Element\+Class}, and \hyperlink{class_list_element_class_a7db3d5f126aa03b9f220648c60a120fa}{List\+Element\+Class}.
+
+\mbox{\Hypertarget{class_interface_element_class_a80958e5556a2970645b65a56431c88ca}\label{class_interface_element_class_a80958e5556a2970645b65a56431c88ca}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!read\+Bitmaps\+Info\+From\+File@{read\+Bitmaps\+Info\+From\+File}}
+\index{read\+Bitmaps\+Info\+From\+File@{read\+Bitmaps\+Info\+From\+File}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{read\+Bitmaps\+Info\+From\+File()}{readBitmapsInfoFromFile()}}
+{\footnotesize\ttfamily bool Interface\+Element\+Class\+::read\+Bitmaps\+Info\+From\+File (\begin{DoxyParamCaption}\item[{std\+::ifstream $\ast$}]{file }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Получить данные о bitmap из файла 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em file} & -\/ открытый файл с данными элемента \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_interface_element_class_aadd932731787c60b3f395422188f2f58}\label{class_interface_element_class_aadd932731787c60b3f395422188f2f58}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!read\+From\+File@{read\+From\+File}}
+\index{read\+From\+File@{read\+From\+File}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{read\+From\+File()}{readFromFile()}}
+{\footnotesize\ttfamily bool Interface\+Element\+Class\+::read\+From\+File (\begin{DoxyParamCaption}\item[{\hyperlink{class_path_class}{Path\+Class} $\ast$}]{filename }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Получить данные об элементе из файла 
+
+P\+R\+I\+V\+A\+T\+E///.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em filename} & -\/ путь до файла с данными элемента \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{class_group_element_class_aaf510a287861dc4096cbe14f0551c8f5}{Group\+Element\+Class}, \hyperlink{class_slider_element_class_a68082cc20a1c0940aa5057e5ece89a60}{Slider\+Element\+Class}, and \hyperlink{class_list_element_class_a92e91862b4f1a5280d9465f90a7eefb5}{List\+Element\+Class}.
+
+\mbox{\Hypertarget{class_interface_element_class_afc8ee340b6aa0b99e3280b424aa5c519}\label{class_interface_element_class_afc8ee340b6aa0b99e3280b424aa5c519}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!read\+Texts\+Info\+From\+File@{read\+Texts\+Info\+From\+File}}
+\index{read\+Texts\+Info\+From\+File@{read\+Texts\+Info\+From\+File}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{read\+Texts\+Info\+From\+File()}{readTextsInfoFromFile()}}
+{\footnotesize\ttfamily bool Interface\+Element\+Class\+::read\+Texts\+Info\+From\+File (\begin{DoxyParamCaption}\item[{std\+::ifstream $\ast$}]{file }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Получить данные о текстах из файла 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em file} & -\/ открытый файл с данными элемента \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+rework \mbox{\Hypertarget{class_interface_element_class_a18b876383a39bb3fb1a6325f6518befc}\label{class_interface_element_class_a18b876383a39bb3fb1a6325f6518befc}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!Render@{Render}}
+\index{Render@{Render}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{Render()}{Render()}}
+{\footnotesize\ttfamily bool Interface\+Element\+Class\+::\+Render (\begin{DoxyParamCaption}\item[{\hyperlink{class_font_shader_class}{Font\+Shader\+Class} $\ast$}]{font\+Shader,  }\item[{\hyperlink{class_interface_shader_class}{Interface\+Shader\+Class} $\ast$}]{interface\+Shader,  }\item[{I\+D3\+D11\+Device\+Context $\ast$}]{device\+Context,  }\item[{D3\+D\+X\+M\+A\+T\+R\+IX}]{world\+Matrix,  }\item[{D3\+D\+X\+M\+A\+T\+R\+IX}]{ortho\+Matrix,  }\item[{D3\+D\+X\+M\+A\+T\+R\+IX}]{base\+View\+Matrix }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Прорисовка элемента интерфейса 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em interface\+Shader} & -\/ шейдер интерфейса \\
+\hline
+\mbox{\tt in}  & {\em font\+Shader} & -\/ шейдер текста \\
+\hline
+\mbox{\tt in}  & {\em device\+Context} & -\/ графическое устройство \\
+\hline
+\mbox{\tt in}  & {\em world\+Matrix,view\+Matrix,ortho\+Matrix} & -\/ матрицы с параметрами \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{class_group_element_class_ad4ff33d4a63c778c200177dbea7c18ce}{Group\+Element\+Class}, and \hyperlink{class_list_element_class_a646a703bc701884f664769fab21b25d6}{List\+Element\+Class}.
+
+\mbox{\Hypertarget{class_interface_element_class_a2148ae1a7b93246c9e89724340347de0}\label{class_interface_element_class_a2148ae1a7b93246c9e89724340347de0}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!set\+B\+Mvisible@{set\+B\+Mvisible}}
+\index{set\+B\+Mvisible@{set\+B\+Mvisible}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{set\+B\+Mvisible()}{setBMvisible()}}
+{\footnotesize\ttfamily void Interface\+Element\+Class\+::set\+B\+Mvisible (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{bool}]{visible }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Отобразить/скрыть bitmap элемента 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em name} & -\/ имя bitmap \\
+\hline
+\mbox{\tt in}  & {\em visible} & -\/ 0, если необходимо скрыть, 1, если отобразить \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_interface_element_class_a91cdf8dd0c4ca5ec1a51588572ac07d4}\label{class_interface_element_class_a91cdf8dd0c4ca5ec1a51588572ac07d4}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!set\+New\+BM@{set\+New\+BM}}
+\index{set\+New\+BM@{set\+New\+BM}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{set\+New\+B\+M()}{setNewBM()}}
+{\footnotesize\ttfamily bool Interface\+Element\+Class\+::set\+New\+BM (\begin{DoxyParamCaption}\item[{I\+D3\+D11\+Device $\ast$}]{device,  }\item[{const std\+::string \&}]{name,  }\item[{\hyperlink{class_path_class}{Path\+Class} $\ast$}]{filename }\end{DoxyParamCaption})}
+
+Обновить текстуру bitmap элемента 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em device} & -\/ графическое устройство \\
+\hline
+\mbox{\tt in}  & {\em name} & -\/ имя bitmap \\
+\hline
+\mbox{\tt in}  & {\em filename} & -\/ путь до новой текстуры \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_interface_element_class_a866babb9cc309763567529771467fb76}\label{class_interface_element_class_a866babb9cc309763567529771467fb76}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!set\+Pick\+Command@{set\+Pick\+Command}}
+\index{set\+Pick\+Command@{set\+Pick\+Command}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{set\+Pick\+Command()}{setPickCommand()}}
+{\footnotesize\ttfamily void Interface\+Element\+Class\+::set\+Pick\+Command (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const std\+::string \&}]{action }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Изменить команду на клик на bitmap. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em name} & -\/ имя bitmap \\
+\hline
+\mbox{\tt in}  & {\em action} & -\/ имя новой команды \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_interface_element_class_a15833d13e7a9c045032bf8498f25b9e6}\label{class_interface_element_class_a15833d13e7a9c045032bf8498f25b9e6}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!set\+Pos@{set\+Pos}}
+\index{set\+Pos@{set\+Pos}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{set\+Pos()}{setPos()}}
+{\footnotesize\ttfamily void Interface\+Element\+Class\+::set\+Pos (\begin{DoxyParamCaption}\item[{I\+D3\+D11\+Device\+Context $\ast$}]{device\+Context,  }\item[{int}]{posX,  }\item[{int}]{posY }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Установить позицию элемента 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em device\+Context} & -\/ графическое устройство \\
+\hline
+\mbox{\tt in}  & {\em elname} & -\/ имя элемента \\
+\hline
+\mbox{\tt in}  & {\em posX,posY} & -\/ новая позиция элемента \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_interface_element_class_a0e55bb0f0037715b19c29ce05a57abdc}\label{class_interface_element_class_a0e55bb0f0037715b19c29ce05a57abdc}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!set\+Sel\+Command@{set\+Sel\+Command}}
+\index{set\+Sel\+Command@{set\+Sel\+Command}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{set\+Sel\+Command()}{setSelCommand()}}
+{\footnotesize\ttfamily void Interface\+Element\+Class\+::set\+Sel\+Command (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const std\+::string \&}]{action }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Изменить команду на выделение bitmap. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em name} & -\/ имя bitmap \\
+\hline
+\mbox{\tt in}  & {\em action} & -\/ имя новой команды \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_interface_element_class_afbfd6e575119dee8d3bbca739354754e}\label{class_interface_element_class_afbfd6e575119dee8d3bbca739354754e}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!set\+Tvisible@{set\+Tvisible}}
+\index{set\+Tvisible@{set\+Tvisible}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{set\+Tvisible()}{setTvisible()}}
+{\footnotesize\ttfamily void Interface\+Element\+Class\+::set\+Tvisible (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{bool}]{visible }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Отобразить/скрыть текста элемента 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em name} & -\/ имя текста \\
+\hline
+\mbox{\tt in}  & {\em visible} & -\/ 0, если необходимо скрыть, 1, если отобразить \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_interface_element_class_a3823d61803f374b60458c9e8a7ff1505}\label{class_interface_element_class_a3823d61803f374b60458c9e8a7ff1505}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!set\+Un\+Pick\+Command@{set\+Un\+Pick\+Command}}
+\index{set\+Un\+Pick\+Command@{set\+Un\+Pick\+Command}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{set\+Un\+Pick\+Command()}{setUnPickCommand()}}
+{\footnotesize\ttfamily void Interface\+Element\+Class\+::set\+Un\+Pick\+Command (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const std\+::string \&}]{action }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Изменить команду на отклик на bitmap. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em name} & -\/ имя bitmap \\
+\hline
+\mbox{\tt in}  & {\em action} & -\/ имя новой команды \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_interface_element_class_ac327534caba198bf3347e1513cfe8491}\label{class_interface_element_class_ac327534caba198bf3347e1513cfe8491}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!set\+Un\+Sel\+Command@{set\+Un\+Sel\+Command}}
+\index{set\+Un\+Sel\+Command@{set\+Un\+Sel\+Command}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{set\+Un\+Sel\+Command()}{setUnSelCommand()}}
+{\footnotesize\ttfamily void Interface\+Element\+Class\+::set\+Un\+Sel\+Command (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const std\+::string \&}]{action }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Изменить команду на отмену выделения bitmap. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em name} & -\/ имя bitmap \\
+\hline
+\mbox{\tt in}  & {\em action} & -\/ имя новой команды \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_interface_element_class_ad7981e5bad3db0c073ca1301dee44d6f}\label{class_interface_element_class_ad7981e5bad3db0c073ca1301dee44d6f}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!set\+Visible@{set\+Visible}}
+\index{set\+Visible@{set\+Visible}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{set\+Visible()}{setVisible()}}
+{\footnotesize\ttfamily void Interface\+Element\+Class\+::set\+Visible (\begin{DoxyParamCaption}\item[{bool}]{visible }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Отобразить/скрыть элемент 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em visible} & -\/ 0, если необходимо скрыть, 1, если отобразить \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \hyperlink{class_slider_element_class_a454f7659d2a5cac808115a77d409fbf6}{Slider\+Element\+Class}, \hyperlink{class_group_element_class_af6aad54e794162fa3776fd849c644461}{Group\+Element\+Class}, and \hyperlink{class_list_element_class_a0d9f88e3b8079aec852bac9e83e0d954}{List\+Element\+Class}.
+
+\mbox{\Hypertarget{class_interface_element_class_aa710f6d66c3aa4c2d0a23fdd2b75a1f0}\label{class_interface_element_class_aa710f6d66c3aa4c2d0a23fdd2b75a1f0}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!Shutdown@{Shutdown}}
+\index{Shutdown@{Shutdown}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{Shutdown()}{Shutdown()}}
+{\footnotesize\ttfamily void Interface\+Element\+Class\+::\+Shutdown (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented in \hyperlink{class_group_element_class_add2c48701e28e7a05fbb0e5aa14e58a3}{Group\+Element\+Class}, and \hyperlink{class_list_element_class_a7238c462dd3783162f5ccf213b9f55f1}{List\+Element\+Class}.
+
+\mbox{\Hypertarget{class_interface_element_class_a4eabfb2943783e107dfe0aaa6a08da62}\label{class_interface_element_class_a4eabfb2943783e107dfe0aaa6a08da62}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!start\+Drag@{start\+Drag}}
+\index{start\+Drag@{start\+Drag}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{start\+Drag()}{startDrag()}}
+{\footnotesize\ttfamily void Interface\+Element\+Class\+::start\+Drag (\begin{DoxyParamCaption}\item[{int}]{posX,  }\item[{int}]{posY }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Начать перетаскивание элемента 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em elname} & -\/ имя элемента \\
+\hline
+\mbox{\tt in}  & {\em posX,posY} & -\/ начальная позиция элементов \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \hyperlink{class_group_element_class_ad278bfc85cfc469a37ba0292bc944504}{Group\+Element\+Class}, and \hyperlink{class_list_element_class_a4e3e228819764836ddf2904396b903a9}{List\+Element\+Class}.
+
+\mbox{\Hypertarget{class_interface_element_class_a4891a40d50c2cdad0227bf4d45651f25}\label{class_interface_element_class_a4891a40d50c2cdad0227bf4d45651f25}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!update\+B\+Mhor\+Percent@{update\+B\+Mhor\+Percent}}
+\index{update\+B\+Mhor\+Percent@{update\+B\+Mhor\+Percent}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{update\+B\+Mhor\+Percent()}{updateBMhorPercent()}}
+{\footnotesize\ttfamily void Interface\+Element\+Class\+::update\+B\+Mhor\+Percent (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{float}]{hor\+Percent }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Обновить уровень отоброжения bitmap элемента по горизонтали 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em name} & -\/ имя bitmap \\
+\hline
+\mbox{\tt in}  & {\em hor\+Percent} & -\/ новая отображаемая доля (если отрицательная, то удаляется часть с другой стороны) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_interface_element_class_aefde245f4498eaed30056ba83515b3e7}\label{class_interface_element_class_aefde245f4498eaed30056ba83515b3e7}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!update\+B\+MposX@{update\+B\+MposX}}
+\index{update\+B\+MposX@{update\+B\+MposX}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{update\+B\+Mpos\+X()}{updateBMposX()}}
+{\footnotesize\ttfamily void Interface\+Element\+Class\+::update\+B\+MposX (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{int}]{posX }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Обновить положение bitmap элемента на X. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em name} & -\/ имя bitmap \\
+\hline
+\mbox{\tt in}  & {\em posX} & -\/ новая позиция на X \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_interface_element_class_aef92fb02c9e353893485939eaff5f8ee}\label{class_interface_element_class_aef92fb02c9e353893485939eaff5f8ee}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!update\+B\+MposY@{update\+B\+MposY}}
+\index{update\+B\+MposY@{update\+B\+MposY}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{update\+B\+Mpos\+Y()}{updateBMposY()}}
+{\footnotesize\ttfamily void Interface\+Element\+Class\+::update\+B\+MposY (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{int}]{posY }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Обновить положение bitmap элемента на Y. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em name} & -\/ имя bitmap \\
+\hline
+\mbox{\tt in}  & {\em posY} & -\/ новая позиция на Y \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_interface_element_class_acd05ce4f703284b47bbfe6abb7a5026c}\label{class_interface_element_class_acd05ce4f703284b47bbfe6abb7a5026c}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!update\+B\+Msel\+Col@{update\+B\+Msel\+Col}}
+\index{update\+B\+Msel\+Col@{update\+B\+Msel\+Col}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{update\+B\+Msel\+Col()}{updateBMselCol()}}
+{\footnotesize\ttfamily void Interface\+Element\+Class\+::update\+B\+Msel\+Col (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R4}]{sel\+Col }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Обновить цвет выделения bitmap элемента 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em name} & -\/ имя bitmap \\
+\hline
+\mbox{\tt in}  & {\em sel\+Col} & -\/ новый цвет выделения \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_interface_element_class_a3855f9b8395a0d7571ebf86a55596ffa}\label{class_interface_element_class_a3855f9b8395a0d7571ebf86a55596ffa}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!update\+B\+Msel\+Intens@{update\+B\+Msel\+Intens}}
+\index{update\+B\+Msel\+Intens@{update\+B\+Msel\+Intens}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{update\+B\+Msel\+Intens()}{updateBMselIntens()}}
+{\footnotesize\ttfamily void Interface\+Element\+Class\+::update\+B\+Msel\+Intens (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{float}]{sel\+Intensivity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Обновить уровень интенсивности выделения bitmap элемента 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em name} & -\/ имя bitmap \\
+\hline
+\mbox{\tt in}  & {\em sel\+Intensivity} & -\/ новый уровень интенсивности выделения \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_interface_element_class_adecf79076fdb4192adab5f74239b6b62}\label{class_interface_element_class_adecf79076fdb4192adab5f74239b6b62}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!update\+B\+Mtranspar@{update\+B\+Mtranspar}}
+\index{update\+B\+Mtranspar@{update\+B\+Mtranspar}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{update\+B\+Mtranspar()}{updateBMtranspar()}}
+{\footnotesize\ttfamily void Interface\+Element\+Class\+::update\+B\+Mtranspar (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{float}]{transparency }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Обновить уровень прозрачности bitmap элемента 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em name} & -\/ имя bitmap \\
+\hline
+\mbox{\tt in}  & {\em transparency} & -\/ новый уровень прозрачности \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_interface_element_class_aaf28d020efdb4ff5ad334e6577198e59}\label{class_interface_element_class_aaf28d020efdb4ff5ad334e6577198e59}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!update\+B\+Mvert\+Percent@{update\+B\+Mvert\+Percent}}
+\index{update\+B\+Mvert\+Percent@{update\+B\+Mvert\+Percent}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{update\+B\+Mvert\+Percent()}{updateBMvertPercent()}}
+{\footnotesize\ttfamily void Interface\+Element\+Class\+::update\+B\+Mvert\+Percent (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{float}]{vert\+Percent }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Обновить уровень отоброжения bitmap элемента по вертикали 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em name} & -\/ имя bitmap \\
+\hline
+\mbox{\tt in}  & {\em vert\+Percent} & -\/ новая отображаемая доля (если отрицательная, то удаляется часть с другой стороны) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_interface_element_class_aabea82698bf88460ebc619195fdd6f83}\label{class_interface_element_class_aabea82698bf88460ebc619195fdd6f83}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!update\+Drag@{update\+Drag}}
+\index{update\+Drag@{update\+Drag}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{update\+Drag()}{updateDrag()}}
+{\footnotesize\ttfamily void Interface\+Element\+Class\+::update\+Drag (\begin{DoxyParamCaption}\item[{I\+D3\+D11\+Device\+Context $\ast$}]{device\+Context,  }\item[{int}]{posX,  }\item[{int}]{posY }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Обновить положение перетаскиваемых элементов 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em device\+Context} & -\/ графическое устройство \\
+\hline
+\mbox{\tt in}  & {\em posX,posY} & -\/ новая позиция элементов \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \hyperlink{class_slider_element_class_a9047a46ab94c4bf702ba5507720c38ae}{Slider\+Element\+Class}, \hyperlink{class_group_element_class_a7363e5aee8dfc5a09b52aabea0f6ce44}{Group\+Element\+Class}, and \hyperlink{class_list_element_class_a251ae7920112c0ab8ee9108982431436}{List\+Element\+Class}.
+
+\mbox{\Hypertarget{class_interface_element_class_aa1908c476bd6d840acd22dd137fcbd00}\label{class_interface_element_class_aa1908c476bd6d840acd22dd137fcbd00}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!update\+Sentence@{update\+Sentence}}
+\index{update\+Sentence@{update\+Sentence}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{update\+Sentence()}{updateSentence()}}
+{\footnotesize\ttfamily bool Interface\+Element\+Class\+::update\+Sentence (\begin{DoxyParamCaption}\item[{I\+D3\+D11\+Device\+Context $\ast$}]{device\+Context,  }\item[{int}]{text\+Ind,  }\item[{int}]{sentence\+Ind }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Обновить предложение, на случай возмлжных изменений данных о нем 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em device\+Context} & -\/ графическое устройство \\
+\hline
+\mbox{\tt in}  & {\em text\+Ind} & -\/ индекс текста \\
+\hline
+\mbox{\tt in}  & {\em sentence\+Ind} & -\/ индекс предложения \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_interface_element_class_ae505d58cae330457c8b5bbdd23bb644f}\label{class_interface_element_class_ae505d58cae330457c8b5bbdd23bb644f}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!update\+T\+Sadding@{update\+T\+Sadding}}
+\index{update\+T\+Sadding@{update\+T\+Sadding}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{update\+T\+Sadding()}{updateTSadding()}}
+{\footnotesize\ttfamily bool Interface\+Element\+Class\+::update\+T\+Sadding (\begin{DoxyParamCaption}\item[{I\+D3\+D11\+Device\+Context $\ast$}]{device\+Context,  }\item[{const std\+::string \&}]{name,  }\item[{int}]{ind,  }\item[{const std\+::string \&}]{text }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Обновить содержимое дополнения к строке текста элемента 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em name} & -\/ имя текста \\
+\hline
+\mbox{\tt in}  & {\em ind} & -\/ индекс строки \\
+\hline
+\mbox{\tt in}  & {\em adding} & -\/ новое дополнение к строке \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_interface_element_class_aceae624832991064f6b6e6f363911a5b}\label{class_interface_element_class_aceae624832991064f6b6e6f363911a5b}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!update\+T\+Scolor@{update\+T\+Scolor}}
+\index{update\+T\+Scolor@{update\+T\+Scolor}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{update\+T\+Scolor()}{updateTScolor()}}
+{\footnotesize\ttfamily bool Interface\+Element\+Class\+::update\+T\+Scolor (\begin{DoxyParamCaption}\item[{I\+D3\+D11\+Device\+Context $\ast$}]{device\+Context,  }\item[{const std\+::string \&}]{name,  }\item[{int}]{ind,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R4}]{color }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Обновить цвет текста элемента 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em name} & -\/ имя текста \\
+\hline
+\mbox{\tt in}  & {\em ind} & -\/ индекс строки \\
+\hline
+\mbox{\tt in}  & {\em color} & -\/ новый цвет \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_interface_element_class_a662b70e734c36fb0b792b7f9d8ab4eb1}\label{class_interface_element_class_a662b70e734c36fb0b792b7f9d8ab4eb1}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!update\+T\+SposX@{update\+T\+SposX}}
+\index{update\+T\+SposX@{update\+T\+SposX}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{update\+T\+Spos\+X()}{updateTSposX()}}
+{\footnotesize\ttfamily bool Interface\+Element\+Class\+::update\+T\+SposX (\begin{DoxyParamCaption}\item[{I\+D3\+D11\+Device\+Context $\ast$}]{device\+Context,  }\item[{const std\+::string \&}]{name,  }\item[{int}]{ind,  }\item[{int}]{posX }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Обновить положение текста элемента на X 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em name} & -\/ имя текста \\
+\hline
+\mbox{\tt in}  & {\em ind} & -\/ индекс строки \\
+\hline
+\mbox{\tt in}  & {\em posX} & -\/ новая позиция на X \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_interface_element_class_afa2b0141aaaad7223ef087627aaa8570}\label{class_interface_element_class_afa2b0141aaaad7223ef087627aaa8570}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!update\+T\+SposY@{update\+T\+SposY}}
+\index{update\+T\+SposY@{update\+T\+SposY}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{update\+T\+Spos\+Y()}{updateTSposY()}}
+{\footnotesize\ttfamily bool Interface\+Element\+Class\+::update\+T\+SposY (\begin{DoxyParamCaption}\item[{I\+D3\+D11\+Device\+Context $\ast$}]{device\+Context,  }\item[{const std\+::string \&}]{name,  }\item[{int}]{ind,  }\item[{int}]{posY }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Обновить положение текста элемента на Y 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em name} & -\/ имя текста \\
+\hline
+\mbox{\tt in}  & {\em ind} & -\/ индекс строки \\
+\hline
+\mbox{\tt in}  & {\em posY} & -\/ новая позиция на Y \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_interface_element_class_a0cc96e120484d53c600515fefda32945}\label{class_interface_element_class_a0cc96e120484d53c600515fefda32945}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!update\+T\+Stext@{update\+T\+Stext}}
+\index{update\+T\+Stext@{update\+T\+Stext}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{update\+T\+Stext()}{updateTStext()}}
+{\footnotesize\ttfamily bool Interface\+Element\+Class\+::update\+T\+Stext (\begin{DoxyParamCaption}\item[{I\+D3\+D11\+Device\+Context $\ast$}]{device\+Context,  }\item[{const std\+::string \&}]{name,  }\item[{int}]{ind,  }\item[{const std\+::string \&}]{text }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Обновить содержимое текста элемента 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em name} & -\/ имя текста \\
+\hline
+\mbox{\tt in}  & {\em ind} & -\/ индекс строки \\
+\hline
+\mbox{\tt in}  & {\em text} & -\/ новый текст \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_interface_element_class_a686d61c39e4e1a34c87e00bd25c25ec9}\label{class_interface_element_class_a686d61c39e4e1a34c87e00bd25c25ec9}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!m\+\_\+actions\+Filename@{m\+\_\+actions\+Filename}}
+\index{m\+\_\+actions\+Filename@{m\+\_\+actions\+Filename}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+actions\+Filename}{m\_actionsFilename}}
+{\footnotesize\ttfamily \hyperlink{class_path_class}{Path\+Class}$\ast$ Interface\+Element\+Class\+::m\+\_\+actions\+Filename\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Путь до файла с коммандами 
+
+\mbox{\Hypertarget{class_interface_element_class_a255444637943a29562ceb781706d664b}\label{class_interface_element_class_a255444637943a29562ceb781706d664b}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!m\+\_\+bitmaps@{m\+\_\+bitmaps}}
+\index{m\+\_\+bitmaps@{m\+\_\+bitmaps}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+bitmaps}{m\_bitmaps}}
+{\footnotesize\ttfamily \hyperlink{class_bitmap_class}{Bitmap\+Class}$\ast$$\ast$ Interface\+Element\+Class\+::m\+\_\+bitmaps\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+bitmaps 
+
+\mbox{\Hypertarget{class_interface_element_class_a4a8fb4fa3b790b2d0eaf80825a9d0fa6}\label{class_interface_element_class_a4a8fb4fa3b790b2d0eaf80825a9d0fa6}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!m\+\_\+bitmaps\+Info@{m\+\_\+bitmaps\+Info}}
+\index{m\+\_\+bitmaps\+Info@{m\+\_\+bitmaps\+Info}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+bitmaps\+Info}{m\_bitmapsInfo}}
+{\footnotesize\ttfamily \hyperlink{struct_interface_element_class_1_1_bitmap_info}{Bitmap\+Info}$\ast$ Interface\+Element\+Class\+::m\+\_\+bitmaps\+Info\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Информация о bitmap. 
+
+\mbox{\Hypertarget{class_interface_element_class_ac9e301c833f8291663c5beb125c26cc9}\label{class_interface_element_class_ac9e301c833f8291663c5beb125c26cc9}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!m\+\_\+bitmaps\+Num@{m\+\_\+bitmaps\+Num}}
+\index{m\+\_\+bitmaps\+Num@{m\+\_\+bitmaps\+Num}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+bitmaps\+Num}{m\_bitmapsNum}}
+{\footnotesize\ttfamily int Interface\+Element\+Class\+::m\+\_\+bitmaps\+Num\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Количество bitmap. 
+
+\mbox{\Hypertarget{class_interface_element_class_a50f30f1e18f7c0a3756959c7b9ed42ce}\label{class_interface_element_class_a50f30f1e18f7c0a3756959c7b9ed42ce}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!m\+\_\+fonts\+Filename@{m\+\_\+fonts\+Filename}}
+\index{m\+\_\+fonts\+Filename@{m\+\_\+fonts\+Filename}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+fonts\+Filename}{m\_fontsFilename}}
+{\footnotesize\ttfamily \hyperlink{class_path_class}{Path\+Class}$\ast$ Interface\+Element\+Class\+::m\+\_\+fonts\+Filename\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Путь до файла со шрифтами 
+
+\mbox{\Hypertarget{class_interface_element_class_a4740f34c849aa414ad73862581cc239e}\label{class_interface_element_class_a4740f34c849aa414ad73862581cc239e}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!m\+\_\+height@{m\+\_\+height}}
+\index{m\+\_\+height@{m\+\_\+height}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+height}{m\_height}}
+{\footnotesize\ttfamily int Interface\+Element\+Class\+::m\+\_\+height\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Позиция и размеры элемента 
+
+\mbox{\Hypertarget{class_interface_element_class_a029cdb3ead496730b2aac67d0f22ba34}\label{class_interface_element_class_a029cdb3ead496730b2aac67d0f22ba34}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!m\+\_\+hor\+Orien@{m\+\_\+hor\+Orien}}
+\index{m\+\_\+hor\+Orien@{m\+\_\+hor\+Orien}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+hor\+Orien}{m\_horOrien}}
+{\footnotesize\ttfamily bool Interface\+Element\+Class\+::m\+\_\+hor\+Orien\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Ориентация элемента по горизонтали 
+
+\mbox{\Hypertarget{class_interface_element_class_aa543f71120067c5cb3f4208a6e0fe3aa}\label{class_interface_element_class_aa543f71120067c5cb3f4208a6e0fe3aa}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!m\+\_\+lastX@{m\+\_\+lastX}}
+\index{m\+\_\+lastX@{m\+\_\+lastX}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+lastX}{m\_lastX}}
+{\footnotesize\ttfamily int Interface\+Element\+Class\+::m\+\_\+lastX = 0\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Предыдыущее положение элемента при перетаскивании по оси X. 
+
+\mbox{\Hypertarget{class_interface_element_class_abbd9a7e0ff18d4bb41d01aad1653f167}\label{class_interface_element_class_abbd9a7e0ff18d4bb41d01aad1653f167}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!m\+\_\+lastY@{m\+\_\+lastY}}
+\index{m\+\_\+lastY@{m\+\_\+lastY}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+lastY}{m\_lastY}}
+{\footnotesize\ttfamily int Interface\+Element\+Class\+::m\+\_\+lastY = 0\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Предыдыущее положение элемента при перетаскивании по оси Y. 
+
+\mbox{\Hypertarget{class_interface_element_class_aeb7bbd3373c67d0182643ac538f1d0c5}\label{class_interface_element_class_aeb7bbd3373c67d0182643ac538f1d0c5}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!m\+\_\+name@{m\+\_\+name}}
+\index{m\+\_\+name@{m\+\_\+name}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+name}{m\_name}}
+{\footnotesize\ttfamily std\+::string Interface\+Element\+Class\+::m\+\_\+name\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Имя элемента 
+
+\mbox{\Hypertarget{class_interface_element_class_a8eca1a33dad30ecbaf071529bf47b0b3}\label{class_interface_element_class_a8eca1a33dad30ecbaf071529bf47b0b3}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!m\+\_\+posX@{m\+\_\+posX}}
+\index{m\+\_\+posX@{m\+\_\+posX}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+posX}{m\_posX}}
+{\footnotesize\ttfamily int Interface\+Element\+Class\+::m\+\_\+posX\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_interface_element_class_ada43f9167fc56f5aca7ff0984171069a}\label{class_interface_element_class_ada43f9167fc56f5aca7ff0984171069a}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!m\+\_\+posY@{m\+\_\+posY}}
+\index{m\+\_\+posY@{m\+\_\+posY}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+posY}{m\_posY}}
+{\footnotesize\ttfamily int Interface\+Element\+Class\+::m\+\_\+posY\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_interface_element_class_a67ebc91d7b5867dae25ef0d7246779dd}\label{class_interface_element_class_a67ebc91d7b5867dae25ef0d7246779dd}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!m\+\_\+screen\+Height@{m\+\_\+screen\+Height}}
+\index{m\+\_\+screen\+Height@{m\+\_\+screen\+Height}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+screen\+Height}{m\_screenHeight}}
+{\footnotesize\ttfamily int Interface\+Element\+Class\+::m\+\_\+screen\+Height\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Размеры экрана 
+
+\mbox{\Hypertarget{class_interface_element_class_a48d190b730dbfe3cde14dae381828c0a}\label{class_interface_element_class_a48d190b730dbfe3cde14dae381828c0a}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!m\+\_\+screen\+Width@{m\+\_\+screen\+Width}}
+\index{m\+\_\+screen\+Width@{m\+\_\+screen\+Width}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+screen\+Width}{m\_screenWidth}}
+{\footnotesize\ttfamily int Interface\+Element\+Class\+::m\+\_\+screen\+Width\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_interface_element_class_a1356c46a8fcce7dd60c63e5531acc3a4}\label{class_interface_element_class_a1356c46a8fcce7dd60c63e5531acc3a4}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!m\+\_\+texts@{m\+\_\+texts}}
+\index{m\+\_\+texts@{m\+\_\+texts}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+texts}{m\_texts}}
+{\footnotesize\ttfamily \hyperlink{class_text_class}{Text\+Class}$\ast$$\ast$ Interface\+Element\+Class\+::m\+\_\+texts\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Тексты 
+
+\mbox{\Hypertarget{class_interface_element_class_ad88939553c9fb78800fb538e9157c98f}\label{class_interface_element_class_ad88939553c9fb78800fb538e9157c98f}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!m\+\_\+texts\+Info@{m\+\_\+texts\+Info}}
+\index{m\+\_\+texts\+Info@{m\+\_\+texts\+Info}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+texts\+Info}{m\_textsInfo}}
+{\footnotesize\ttfamily \hyperlink{struct_interface_element_class_1_1_text_info}{Text\+Info}$\ast$ Interface\+Element\+Class\+::m\+\_\+texts\+Info\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Информация о текстах 
+
+\mbox{\Hypertarget{class_interface_element_class_abcea7224c180196b1eee96a4e0e61ea2}\label{class_interface_element_class_abcea7224c180196b1eee96a4e0e61ea2}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!m\+\_\+texts\+Num@{m\+\_\+texts\+Num}}
+\index{m\+\_\+texts\+Num@{m\+\_\+texts\+Num}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+texts\+Num}{m\_textsNum}}
+{\footnotesize\ttfamily int Interface\+Element\+Class\+::m\+\_\+texts\+Num\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Количество текстов 
+
+\mbox{\Hypertarget{class_interface_element_class_a8bfae460b4034a9e9bdcaccadb7df367}\label{class_interface_element_class_a8bfae460b4034a9e9bdcaccadb7df367}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!m\+\_\+vert\+Orien@{m\+\_\+vert\+Orien}}
+\index{m\+\_\+vert\+Orien@{m\+\_\+vert\+Orien}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+vert\+Orien}{m\_vertOrien}}
+{\footnotesize\ttfamily bool Interface\+Element\+Class\+::m\+\_\+vert\+Orien\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Ориентация элемента по вертикали 
+
+\mbox{\Hypertarget{class_interface_element_class_a734e2f12d7ca918619dda46ac2c4e56e}\label{class_interface_element_class_a734e2f12d7ca918619dda46ac2c4e56e}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!m\+\_\+visible@{m\+\_\+visible}}
+\index{m\+\_\+visible@{m\+\_\+visible}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+visible}{m\_visible}}
+{\footnotesize\ttfamily bool Interface\+Element\+Class\+::m\+\_\+visible = false\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Состояние видимости элемента 
+
+\mbox{\Hypertarget{class_interface_element_class_a0327b9790dee1416249b9cdedeb0154c}\label{class_interface_element_class_a0327b9790dee1416249b9cdedeb0154c}} 
+\index{Interface\+Element\+Class@{Interface\+Element\+Class}!m\+\_\+width@{m\+\_\+width}}
+\index{m\+\_\+width@{m\+\_\+width}!Interface\+Element\+Class@{Interface\+Element\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+width}{m\_width}}
+{\footnotesize\ttfamily int Interface\+Element\+Class\+::m\+\_\+width\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_interface_element_class_8h}{Interface\+Element\+Class.\+h}\item 
+\hyperlink{_interface_element_class_8cpp}{Interface\+Element\+Class.\+cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,396 @@
+\hypertarget{class_mesh_class}{}\section{Mesh\+Class Class Reference}
+\label{class_mesh_class}\index{Mesh\+Class@{Mesh\+Class}}
+
+
+{\ttfamily \#include $<$Mesh\+Class.\+h$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_mesh_class_1_1_model_type}{Model\+Type}
+\begin{DoxyCompactList}\small\item\em Помежуточный тип данных для обозначения вершины \end{DoxyCompactList}\item 
+struct \hyperlink{struct_mesh_class_1_1_vertex_type}{Vertex\+Type}
+\begin{DoxyCompactList}\small\item\em Вершина меша \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_mesh_class_ad4b527f72e1bb03475c0e2787feb02e3}{Mesh\+Class} ()
+\item 
+\hyperlink{class_mesh_class_aeeb396b4935649d8e0f60d63babe757b}{Mesh\+Class} (const \hyperlink{class_mesh_class}{Mesh\+Class} \&)
+\item 
+\hyperlink{class_mesh_class_ac819d21abb650939eb29702a6ac44462}{$\sim$\+Mesh\+Class} ()
+\item 
+bool \hyperlink{class_mesh_class_a5ea913605f7b16c509cfe7437d89495f}{Initialize} (I\+D3\+D11\+Device $\ast$device, \hyperlink{class_path_class}{Path\+Class} $\ast$filename, int sizeX=1, int sizeY=1, int sizeZ=1)
+\item 
+void \hyperlink{class_mesh_class_a9730e1855e06ba21d4b7fca72bee0816}{Shutdown} ()
+\item 
+void \hyperlink{class_mesh_class_a863828a039d453dc9d11f2775dc4a854}{Render} (I\+D3\+D11\+Device\+Context $\ast$device\+Context)
+\begin{DoxyCompactList}\small\item\em Установка меша в цепь рендринга \end{DoxyCompactList}\item 
+void \hyperlink{class_mesh_class_aa194aacaac0a3658a4b583df9002aaf4}{Render\+Box\+Mesh} (I\+D3\+D11\+Device\+Context $\ast$device\+Context)
+\begin{DoxyCompactList}\small\item\em Установка меша box в цепь рендринга \end{DoxyCompactList}\item 
+int \hyperlink{class_mesh_class_a36b81689c72db7acd226879125ba3a9c}{Get\+Index\+Count} ()
+\begin{DoxyCompactList}\small\item\em Получение количества индексов вершин \end{DoxyCompactList}\item 
+bool \hyperlink{class_mesh_class_a741b239a20d3a11f463b8953db5bda5e}{check\+Frustum} (\hyperlink{class_frustum_class}{Frustum\+Class} $\ast$frustum, D3\+D\+X\+V\+E\+C\+T\+O\+R3 position)
+\begin{DoxyCompactList}\small\item\em Проверка меша на соответствие области видимости \end{DoxyCompactList}\item 
+bool \hyperlink{class_mesh_class_a929236a79769290c108d1eebbffee6e8}{intersect} (I\+D3\+D11\+Device\+Context $\ast$device\+Context, D3\+D\+X\+V\+E\+C\+T\+O\+R3 ray\+Origin, D3\+D\+X\+V\+E\+C\+T\+O\+R3 ray\+Direction, D3\+D\+X\+V\+E\+C\+T\+O\+R3 \&point)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{class_mesh_class_a5f44b0d568183d300e2a08539c4232c1}{translate\+Matrix} (D3\+D\+X\+M\+A\+T\+R\+IX \&matrix, D3\+D\+X\+V\+E\+C\+T\+O\+R3 trans\+Vector)
+\begin{DoxyCompactList}\small\item\em Смещение матрицы \end{DoxyCompactList}\item 
+static void \hyperlink{class_mesh_class_a960255c0f0f255f6a4a97487eadbeae4}{rotate\+Matrix} (D3\+D\+X\+M\+A\+T\+R\+IX \&matrix, D3\+D\+X\+V\+E\+C\+T\+O\+R3 rot\+Vector)
+\begin{DoxyCompactList}\small\item\em Поворот матрицы \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_mesh_class_a0a11d7bc06ff88f194b33229ce19ca62}{Initialize\+Buffers} (I\+D3\+D11\+Device $\ast$device, \hyperlink{struct_mesh_class_1_1_vertex_type}{Vertex\+Type} $\ast$vertices, unsigned long $\ast$indices)
+\begin{DoxyCompactList}\small\item\em Инициализация буферов \end{DoxyCompactList}\item 
+void \hyperlink{class_mesh_class_a6df03981f5d387453ea016abd6c185f4}{Shutdown\+Buffers} ()
+\item 
+void \hyperlink{class_mesh_class_a98e3d97acabf6b48d17152af2efb214c}{Render\+Buffers} (I\+D3\+D11\+Device\+Context $\ast$device\+Context)
+\begin{DoxyCompactList}\small\item\em Установка буферов в цепь рендринга \end{DoxyCompactList}\item 
+bool \hyperlink{class_mesh_class_a631e96de86a30d8773f46016d4bf0882}{build\+Box\+Mesh} (I\+D3\+D11\+Device $\ast$device, D3\+D\+X\+V\+E\+C\+T\+O\+R3 min\+Point, D3\+D\+X\+V\+E\+C\+T\+O\+R3 max\+Point)
+\begin{DoxyCompactList}\small\item\em Создание box меша \end{DoxyCompactList}\item 
+void \hyperlink{class_mesh_class_af0ed8e886d7c25ee730c067ad7ddbe4f}{find\+Extr\+Points} (\hyperlink{struct_mesh_class_1_1_vertex_type}{Vertex\+Type} $\ast$vertices, D3\+D\+X\+V\+E\+C\+T\+O\+R3 \&min\+Point, D3\+D\+X\+V\+E\+C\+T\+O\+R3 \&max\+Point)
+\begin{DoxyCompactList}\small\item\em Нахождение крайних точек меша \end{DoxyCompactList}\item 
+bool \hyperlink{class_mesh_class_aebf62f68c2b2420cfe1ff42d9201fb87}{get\+Verts\+And\+Inds} (I\+D3\+D11\+Device\+Context $\ast$device\+Context, \hyperlink{struct_mesh_class_1_1_vertex_type}{Vertex\+Type} $\ast$$\ast$verticies, unsigned long $\ast$$\ast$indices)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+I\+D3\+D11\+Buffer $\ast$ \hyperlink{class_mesh_class_a1e3f5f36653333151ef6a0b7a4db1cfe}{m\+\_\+vertex\+Buffer}
+\item 
+I\+D3\+D11\+Buffer $\ast$ \hyperlink{class_mesh_class_ae4fd98071bdb2b885db47a217939ca95}{m\+\_\+index\+Buffer}
+\begin{DoxyCompactList}\small\item\em Вершинный и индексный буферы \end{DoxyCompactList}\item 
+int \hyperlink{class_mesh_class_aae7894f0edb7f03f4b8bbc7ac6166bb1}{m\+\_\+vertex\+Count}
+\item 
+int \hyperlink{class_mesh_class_ad0cd85b7880bff244c22b7b04c3990c4}{m\+\_\+index\+Count}
+\begin{DoxyCompactList}\small\item\em Количество вершин и индексов \end{DoxyCompactList}\item 
+\hyperlink{class_box_mesh_class}{Box\+Mesh\+Class} $\ast$ \hyperlink{class_mesh_class_a8f38b73423d64141f220e4c2b1c2dcba}{m\+\_\+box\+Mesh}
+\begin{DoxyCompactList}\small\item\em меш box. \end{DoxyCompactList}\item 
+bool \hyperlink{class_mesh_class_a8b7bb6f5707c8b941e6afaaca8b91472}{m\+\_\+is\+Box\+Mesh\+Rendering} = 0
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Базовый меш 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_mesh_class_ad4b527f72e1bb03475c0e2787feb02e3}\label{class_mesh_class_ad4b527f72e1bb03475c0e2787feb02e3}} 
+\index{Mesh\+Class@{Mesh\+Class}!Mesh\+Class@{Mesh\+Class}}
+\index{Mesh\+Class@{Mesh\+Class}!Mesh\+Class@{Mesh\+Class}}
+\subsubsection{\texorpdfstring{Mesh\+Class()}{MeshClass()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Mesh\+Class\+::\+Mesh\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_mesh_class_aeeb396b4935649d8e0f60d63babe757b}\label{class_mesh_class_aeeb396b4935649d8e0f60d63babe757b}} 
+\index{Mesh\+Class@{Mesh\+Class}!Mesh\+Class@{Mesh\+Class}}
+\index{Mesh\+Class@{Mesh\+Class}!Mesh\+Class@{Mesh\+Class}}
+\subsubsection{\texorpdfstring{Mesh\+Class()}{MeshClass()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Mesh\+Class\+::\+Mesh\+Class (\begin{DoxyParamCaption}\item[{const \hyperlink{class_mesh_class}{Mesh\+Class} \&}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_mesh_class_ac819d21abb650939eb29702a6ac44462}\label{class_mesh_class_ac819d21abb650939eb29702a6ac44462}} 
+\index{Mesh\+Class@{Mesh\+Class}!````~Mesh\+Class@{$\sim$\+Mesh\+Class}}
+\index{````~Mesh\+Class@{$\sim$\+Mesh\+Class}!Mesh\+Class@{Mesh\+Class}}
+\subsubsection{\texorpdfstring{$\sim$\+Mesh\+Class()}{~MeshClass()}}
+{\footnotesize\ttfamily Mesh\+Class\+::$\sim$\+Mesh\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_mesh_class_a631e96de86a30d8773f46016d4bf0882}\label{class_mesh_class_a631e96de86a30d8773f46016d4bf0882}} 
+\index{Mesh\+Class@{Mesh\+Class}!build\+Box\+Mesh@{build\+Box\+Mesh}}
+\index{build\+Box\+Mesh@{build\+Box\+Mesh}!Mesh\+Class@{Mesh\+Class}}
+\subsubsection{\texorpdfstring{build\+Box\+Mesh()}{buildBoxMesh()}}
+{\footnotesize\ttfamily bool Mesh\+Class\+::build\+Box\+Mesh (\begin{DoxyParamCaption}\item[{I\+D3\+D11\+Device $\ast$}]{device,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R3}]{min\+Point,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R3}]{max\+Point }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Создание box меша 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em device} & -\/ графическое устройство \\
+\hline
+\mbox{\tt in}  & {\em min\+Point,max\+Point} & -\/ крайние точки \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_mesh_class_a741b239a20d3a11f463b8953db5bda5e}\label{class_mesh_class_a741b239a20d3a11f463b8953db5bda5e}} 
+\index{Mesh\+Class@{Mesh\+Class}!check\+Frustum@{check\+Frustum}}
+\index{check\+Frustum@{check\+Frustum}!Mesh\+Class@{Mesh\+Class}}
+\subsubsection{\texorpdfstring{check\+Frustum()}{checkFrustum()}}
+{\footnotesize\ttfamily bool Mesh\+Class\+::check\+Frustum (\begin{DoxyParamCaption}\item[{\hyperlink{class_frustum_class}{Frustum\+Class} $\ast$}]{frustum,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R3}]{position }\end{DoxyParamCaption})}
+
+
+
+Проверка меша на соответствие области видимости 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em frustum} & -\/ усеченный конус \\
+\hline
+\mbox{\tt in}  & {\em position} & -\/ позиция меша \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если меш не входит в область видимости, true, если входит 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_mesh_class_af0ed8e886d7c25ee730c067ad7ddbe4f}\label{class_mesh_class_af0ed8e886d7c25ee730c067ad7ddbe4f}} 
+\index{Mesh\+Class@{Mesh\+Class}!find\+Extr\+Points@{find\+Extr\+Points}}
+\index{find\+Extr\+Points@{find\+Extr\+Points}!Mesh\+Class@{Mesh\+Class}}
+\subsubsection{\texorpdfstring{find\+Extr\+Points()}{findExtrPoints()}}
+{\footnotesize\ttfamily void Mesh\+Class\+::find\+Extr\+Points (\begin{DoxyParamCaption}\item[{\hyperlink{struct_mesh_class_1_1_vertex_type}{Vertex\+Type} $\ast$}]{vertices,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R3 \&}]{min\+Point,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R3 \&}]{max\+Point }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Нахождение крайних точек меша 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em vertices} & -\/ массив вершин \\
+\hline
+\mbox{\tt out}  & {\em min\+Point,max\+Point} & -\/ крайние точки \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_mesh_class_a36b81689c72db7acd226879125ba3a9c}\label{class_mesh_class_a36b81689c72db7acd226879125ba3a9c}} 
+\index{Mesh\+Class@{Mesh\+Class}!Get\+Index\+Count@{Get\+Index\+Count}}
+\index{Get\+Index\+Count@{Get\+Index\+Count}!Mesh\+Class@{Mesh\+Class}}
+\subsubsection{\texorpdfstring{Get\+Index\+Count()}{GetIndexCount()}}
+{\footnotesize\ttfamily int Mesh\+Class\+::\+Get\+Index\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Получение количества индексов вершин 
+
+\begin{DoxyReturn}{Returns}
+Кол-\/во индексов вершин основного меша, или один раз меша box, если вызывалось \hyperlink{class_mesh_class_aa194aacaac0a3658a4b583df9002aaf4}{Render\+Box\+Mesh()} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_mesh_class_aebf62f68c2b2420cfe1ff42d9201fb87}\label{class_mesh_class_aebf62f68c2b2420cfe1ff42d9201fb87}} 
+\index{Mesh\+Class@{Mesh\+Class}!get\+Verts\+And\+Inds@{get\+Verts\+And\+Inds}}
+\index{get\+Verts\+And\+Inds@{get\+Verts\+And\+Inds}!Mesh\+Class@{Mesh\+Class}}
+\subsubsection{\texorpdfstring{get\+Verts\+And\+Inds()}{getVertsAndInds()}}
+{\footnotesize\ttfamily bool Mesh\+Class\+::get\+Verts\+And\+Inds (\begin{DoxyParamCaption}\item[{I\+D3\+D11\+Device\+Context $\ast$}]{device\+Context,  }\item[{\hyperlink{struct_mesh_class_1_1_vertex_type}{Vertex\+Type} $\ast$$\ast$}]{verticies,  }\item[{unsigned long $\ast$$\ast$}]{indices }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Создание массивов вершин и индексов 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em device\+Context} & -\/ графическое устройство \\
+\hline
+\mbox{\tt out}  & {\em vertices} & -\/ массив вершин \\
+\hline
+\mbox{\tt out}  & {\em indices} & массив индексов вершин \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_mesh_class_a5ea913605f7b16c509cfe7437d89495f}\label{class_mesh_class_a5ea913605f7b16c509cfe7437d89495f}} 
+\index{Mesh\+Class@{Mesh\+Class}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!Mesh\+Class@{Mesh\+Class}}
+\subsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily bool Mesh\+Class\+::\+Initialize (\begin{DoxyParamCaption}\item[{I\+D3\+D11\+Device $\ast$}]{device,  }\item[{\hyperlink{class_path_class}{Path\+Class} $\ast$}]{filename,  }\item[{int}]{sizeX = {\ttfamily 1},  }\item[{int}]{sizeY = {\ttfamily 1},  }\item[{int}]{sizeZ = {\ttfamily 1} }\end{DoxyParamCaption})}
+
+Создание меша 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em device} & -\/ графическое устройство \\
+\hline
+\mbox{\tt in}  & {\em filename} & -\/ путь до файла меша \\
+\hline
+\mbox{\tt in}  & {\em sizeX,sizeY,sizeZ} & -\/ масштаб меша \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_mesh_class_a0a11d7bc06ff88f194b33229ce19ca62}\label{class_mesh_class_a0a11d7bc06ff88f194b33229ce19ca62}} 
+\index{Mesh\+Class@{Mesh\+Class}!Initialize\+Buffers@{Initialize\+Buffers}}
+\index{Initialize\+Buffers@{Initialize\+Buffers}!Mesh\+Class@{Mesh\+Class}}
+\subsubsection{\texorpdfstring{Initialize\+Buffers()}{InitializeBuffers()}}
+{\footnotesize\ttfamily bool Mesh\+Class\+::\+Initialize\+Buffers (\begin{DoxyParamCaption}\item[{I\+D3\+D11\+Device $\ast$}]{device,  }\item[{\hyperlink{struct_mesh_class_1_1_vertex_type}{Vertex\+Type} $\ast$}]{vertices,  }\item[{unsigned long $\ast$}]{indices }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Инициализация буферов 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em device} & -\/ графическое устройство \\
+\hline
+\mbox{\tt in}  & {\em vertices} & -\/ массив вершин \\
+\hline
+\mbox{\tt in}  & {\em indices} & -\/ массив индексов вершин \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_mesh_class_a929236a79769290c108d1eebbffee6e8}\label{class_mesh_class_a929236a79769290c108d1eebbffee6e8}} 
+\index{Mesh\+Class@{Mesh\+Class}!intersect@{intersect}}
+\index{intersect@{intersect}!Mesh\+Class@{Mesh\+Class}}
+\subsubsection{\texorpdfstring{intersect()}{intersect()}}
+{\footnotesize\ttfamily bool Mesh\+Class\+::intersect (\begin{DoxyParamCaption}\item[{I\+D3\+D11\+Device\+Context $\ast$}]{device\+Context,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R3}]{ray\+Origin,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R3}]{ray\+Direction,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R3 \&}]{point }\end{DoxyParamCaption})}
+
+Проверка меша на пересечение с лучом 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em device\+Context} & -\/ графическое устройство \\
+\hline
+\mbox{\tt in}  & {\em ray\+Origin} & -\/ основание луча \\
+\hline
+\mbox{\tt in}  & {\em ray\+Direction} & -\/ направление луча \\
+\hline
+\mbox{\tt out}  & {\em point} & -\/ точка пересечения луча и меша ((0,0,0), если не было пересечения) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если не было пересечений, true, если были 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_mesh_class_a863828a039d453dc9d11f2775dc4a854}\label{class_mesh_class_a863828a039d453dc9d11f2775dc4a854}} 
+\index{Mesh\+Class@{Mesh\+Class}!Render@{Render}}
+\index{Render@{Render}!Mesh\+Class@{Mesh\+Class}}
+\subsubsection{\texorpdfstring{Render()}{Render()}}
+{\footnotesize\ttfamily void Mesh\+Class\+::\+Render (\begin{DoxyParamCaption}\item[{I\+D3\+D11\+Device\+Context $\ast$}]{device\+Context }\end{DoxyParamCaption})}
+
+
+
+Установка меша в цепь рендринга 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em device\+Context} & -\/ графическое устройство \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_mesh_class_aa194aacaac0a3658a4b583df9002aaf4}\label{class_mesh_class_aa194aacaac0a3658a4b583df9002aaf4}} 
+\index{Mesh\+Class@{Mesh\+Class}!Render\+Box\+Mesh@{Render\+Box\+Mesh}}
+\index{Render\+Box\+Mesh@{Render\+Box\+Mesh}!Mesh\+Class@{Mesh\+Class}}
+\subsubsection{\texorpdfstring{Render\+Box\+Mesh()}{RenderBoxMesh()}}
+{\footnotesize\ttfamily void Mesh\+Class\+::\+Render\+Box\+Mesh (\begin{DoxyParamCaption}\item[{I\+D3\+D11\+Device\+Context $\ast$}]{device\+Context }\end{DoxyParamCaption})}
+
+
+
+Установка меша box в цепь рендринга 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em device\+Context} & -\/ графическое устройство \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_mesh_class_a98e3d97acabf6b48d17152af2efb214c}\label{class_mesh_class_a98e3d97acabf6b48d17152af2efb214c}} 
+\index{Mesh\+Class@{Mesh\+Class}!Render\+Buffers@{Render\+Buffers}}
+\index{Render\+Buffers@{Render\+Buffers}!Mesh\+Class@{Mesh\+Class}}
+\subsubsection{\texorpdfstring{Render\+Buffers()}{RenderBuffers()}}
+{\footnotesize\ttfamily void Mesh\+Class\+::\+Render\+Buffers (\begin{DoxyParamCaption}\item[{I\+D3\+D11\+Device\+Context $\ast$}]{device\+Context }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Установка буферов в цепь рендринга 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em device\+Context} & -\/ графическое устройство \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_mesh_class_a960255c0f0f255f6a4a97487eadbeae4}\label{class_mesh_class_a960255c0f0f255f6a4a97487eadbeae4}} 
+\index{Mesh\+Class@{Mesh\+Class}!rotate\+Matrix@{rotate\+Matrix}}
+\index{rotate\+Matrix@{rotate\+Matrix}!Mesh\+Class@{Mesh\+Class}}
+\subsubsection{\texorpdfstring{rotate\+Matrix()}{rotateMatrix()}}
+{\footnotesize\ttfamily void Mesh\+Class\+::rotate\+Matrix (\begin{DoxyParamCaption}\item[{D3\+D\+X\+M\+A\+T\+R\+IX \&}]{matrix,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R3}]{rot\+Vector }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Поворот матрицы 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em matrix} & -\/ поворачиваемая матрица \\
+\hline
+\mbox{\tt in}  & {\em rot\+Vector} & -\/ вектор поворота (ypr) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_mesh_class_a9730e1855e06ba21d4b7fca72bee0816}\label{class_mesh_class_a9730e1855e06ba21d4b7fca72bee0816}} 
+\index{Mesh\+Class@{Mesh\+Class}!Shutdown@{Shutdown}}
+\index{Shutdown@{Shutdown}!Mesh\+Class@{Mesh\+Class}}
+\subsubsection{\texorpdfstring{Shutdown()}{Shutdown()}}
+{\footnotesize\ttfamily void Mesh\+Class\+::\+Shutdown (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_mesh_class_a6df03981f5d387453ea016abd6c185f4}\label{class_mesh_class_a6df03981f5d387453ea016abd6c185f4}} 
+\index{Mesh\+Class@{Mesh\+Class}!Shutdown\+Buffers@{Shutdown\+Buffers}}
+\index{Shutdown\+Buffers@{Shutdown\+Buffers}!Mesh\+Class@{Mesh\+Class}}
+\subsubsection{\texorpdfstring{Shutdown\+Buffers()}{ShutdownBuffers()}}
+{\footnotesize\ttfamily void Mesh\+Class\+::\+Shutdown\+Buffers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_mesh_class_a5f44b0d568183d300e2a08539c4232c1}\label{class_mesh_class_a5f44b0d568183d300e2a08539c4232c1}} 
+\index{Mesh\+Class@{Mesh\+Class}!translate\+Matrix@{translate\+Matrix}}
+\index{translate\+Matrix@{translate\+Matrix}!Mesh\+Class@{Mesh\+Class}}
+\subsubsection{\texorpdfstring{translate\+Matrix()}{translateMatrix()}}
+{\footnotesize\ttfamily void Mesh\+Class\+::translate\+Matrix (\begin{DoxyParamCaption}\item[{D3\+D\+X\+M\+A\+T\+R\+IX \&}]{matrix,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R3}]{trans\+Vector }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Смещение матрицы 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em matrix} & -\/ смещаемая матрица \\
+\hline
+\mbox{\tt in}  & {\em trans\+Vector} & -\/ вектор смещения \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_mesh_class_a8f38b73423d64141f220e4c2b1c2dcba}\label{class_mesh_class_a8f38b73423d64141f220e4c2b1c2dcba}} 
+\index{Mesh\+Class@{Mesh\+Class}!m\+\_\+box\+Mesh@{m\+\_\+box\+Mesh}}
+\index{m\+\_\+box\+Mesh@{m\+\_\+box\+Mesh}!Mesh\+Class@{Mesh\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+box\+Mesh}{m\_boxMesh}}
+{\footnotesize\ttfamily \hyperlink{class_box_mesh_class}{Box\+Mesh\+Class}$\ast$ Mesh\+Class\+::m\+\_\+box\+Mesh\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+меш box. 
+
+\mbox{\Hypertarget{class_mesh_class_ae4fd98071bdb2b885db47a217939ca95}\label{class_mesh_class_ae4fd98071bdb2b885db47a217939ca95}} 
+\index{Mesh\+Class@{Mesh\+Class}!m\+\_\+index\+Buffer@{m\+\_\+index\+Buffer}}
+\index{m\+\_\+index\+Buffer@{m\+\_\+index\+Buffer}!Mesh\+Class@{Mesh\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+index\+Buffer}{m\_indexBuffer}}
+{\footnotesize\ttfamily I\+D3\+D11\+Buffer $\ast$ Mesh\+Class\+::m\+\_\+index\+Buffer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Вершинный и индексный буферы 
+
+\mbox{\Hypertarget{class_mesh_class_ad0cd85b7880bff244c22b7b04c3990c4}\label{class_mesh_class_ad0cd85b7880bff244c22b7b04c3990c4}} 
+\index{Mesh\+Class@{Mesh\+Class}!m\+\_\+index\+Count@{m\+\_\+index\+Count}}
+\index{m\+\_\+index\+Count@{m\+\_\+index\+Count}!Mesh\+Class@{Mesh\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+index\+Count}{m\_indexCount}}
+{\footnotesize\ttfamily int Mesh\+Class\+::m\+\_\+index\+Count\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Количество вершин и индексов 
+
+\mbox{\Hypertarget{class_mesh_class_a8b7bb6f5707c8b941e6afaaca8b91472}\label{class_mesh_class_a8b7bb6f5707c8b941e6afaaca8b91472}} 
+\index{Mesh\+Class@{Mesh\+Class}!m\+\_\+is\+Box\+Mesh\+Rendering@{m\+\_\+is\+Box\+Mesh\+Rendering}}
+\index{m\+\_\+is\+Box\+Mesh\+Rendering@{m\+\_\+is\+Box\+Mesh\+Rendering}!Mesh\+Class@{Mesh\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+is\+Box\+Mesh\+Rendering}{m\_isBoxMeshRendering}}
+{\footnotesize\ttfamily bool Mesh\+Class\+::m\+\_\+is\+Box\+Mesh\+Rendering = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_mesh_class_a1e3f5f36653333151ef6a0b7a4db1cfe}\label{class_mesh_class_a1e3f5f36653333151ef6a0b7a4db1cfe}} 
+\index{Mesh\+Class@{Mesh\+Class}!m\+\_\+vertex\+Buffer@{m\+\_\+vertex\+Buffer}}
+\index{m\+\_\+vertex\+Buffer@{m\+\_\+vertex\+Buffer}!Mesh\+Class@{Mesh\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+vertex\+Buffer}{m\_vertexBuffer}}
+{\footnotesize\ttfamily I\+D3\+D11\+Buffer$\ast$ Mesh\+Class\+::m\+\_\+vertex\+Buffer\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_mesh_class_aae7894f0edb7f03f4b8bbc7ac6166bb1}\label{class_mesh_class_aae7894f0edb7f03f4b8bbc7ac6166bb1}} 
+\index{Mesh\+Class@{Mesh\+Class}!m\+\_\+vertex\+Count@{m\+\_\+vertex\+Count}}
+\index{m\+\_\+vertex\+Count@{m\+\_\+vertex\+Count}!Mesh\+Class@{Mesh\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+vertex\+Count}{m\_vertexCount}}
+{\footnotesize\ttfamily int Mesh\+Class\+::m\+\_\+vertex\+Count\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_mesh_class_8h}{Mesh\+Class.\+h}\item 
+\hyperlink{_mesh_class_8cpp}{Mesh\+Class.\+cpp}\end{DoxyCompactItemize}

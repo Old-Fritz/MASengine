@@ -1,0 +1,107 @@
+\hypertarget{class_texture_class}{}\section{Texture\+Class Class Reference}
+\label{class_texture_class}\index{Texture\+Class@{Texture\+Class}}
+
+
+{\ttfamily \#include $<$Texture\+Class.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_texture_class_a3ef8a8e22f2319b20f45f78b8b37f496}{Texture\+Class} ()
+\item 
+\hyperlink{class_texture_class_ae1a2a78cd218da2e31eb7754984c10a2}{Texture\+Class} (const \hyperlink{class_texture_class}{Texture\+Class} \&)
+\item 
+\hyperlink{class_texture_class_a990ce1e7783727cde9cb4a88a4281b08}{$\sim$\+Texture\+Class} ()
+\item 
+bool \hyperlink{class_texture_class_a1cbc48c69f24ce15a587b2c6e5fec5b6}{Initialize} (I\+D3\+D11\+Device $\ast$device, const W\+C\+H\+AR $\ast$filename)
+\begin{DoxyCompactList}\small\item\em Создание текстуры \end{DoxyCompactList}\item 
+void \hyperlink{class_texture_class_a9c9ca3b3b2b8cbe3d8b0f2bdfc498f20}{Shutdown} ()
+\item 
+I\+D3\+D11\+Shader\+Resource\+View $\ast$ \hyperlink{class_texture_class_a8250285fb8e8f3c595e83e529ba88fd6}{Get\+Texture} ()
+\begin{DoxyCompactList}\small\item\em Получение текстуры \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+I\+D3\+D11\+Shader\+Resource\+View $\ast$ \hyperlink{class_texture_class_a9f4a1ba96054c4e3201e272cf7d1ae14}{m\+\_\+texture}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Текстура 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_texture_class_a3ef8a8e22f2319b20f45f78b8b37f496}\label{class_texture_class_a3ef8a8e22f2319b20f45f78b8b37f496}} 
+\index{Texture\+Class@{Texture\+Class}!Texture\+Class@{Texture\+Class}}
+\index{Texture\+Class@{Texture\+Class}!Texture\+Class@{Texture\+Class}}
+\subsubsection{\texorpdfstring{Texture\+Class()}{TextureClass()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Texture\+Class\+::\+Texture\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_texture_class_ae1a2a78cd218da2e31eb7754984c10a2}\label{class_texture_class_ae1a2a78cd218da2e31eb7754984c10a2}} 
+\index{Texture\+Class@{Texture\+Class}!Texture\+Class@{Texture\+Class}}
+\index{Texture\+Class@{Texture\+Class}!Texture\+Class@{Texture\+Class}}
+\subsubsection{\texorpdfstring{Texture\+Class()}{TextureClass()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Texture\+Class\+::\+Texture\+Class (\begin{DoxyParamCaption}\item[{const \hyperlink{class_texture_class}{Texture\+Class} \&}]{other }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_texture_class_a990ce1e7783727cde9cb4a88a4281b08}\label{class_texture_class_a990ce1e7783727cde9cb4a88a4281b08}} 
+\index{Texture\+Class@{Texture\+Class}!````~Texture\+Class@{$\sim$\+Texture\+Class}}
+\index{````~Texture\+Class@{$\sim$\+Texture\+Class}!Texture\+Class@{Texture\+Class}}
+\subsubsection{\texorpdfstring{$\sim$\+Texture\+Class()}{~TextureClass()}}
+{\footnotesize\ttfamily Texture\+Class\+::$\sim$\+Texture\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_texture_class_a8250285fb8e8f3c595e83e529ba88fd6}\label{class_texture_class_a8250285fb8e8f3c595e83e529ba88fd6}} 
+\index{Texture\+Class@{Texture\+Class}!Get\+Texture@{Get\+Texture}}
+\index{Get\+Texture@{Get\+Texture}!Texture\+Class@{Texture\+Class}}
+\subsubsection{\texorpdfstring{Get\+Texture()}{GetTexture()}}
+{\footnotesize\ttfamily I\+D3\+D11\+Shader\+Resource\+View $\ast$ Texture\+Class\+::\+Get\+Texture (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Получение текстуры 
+
+\begin{DoxyReturn}{Returns}
+текстуру в виде ресурса directx 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_texture_class_a1cbc48c69f24ce15a587b2c6e5fec5b6}\label{class_texture_class_a1cbc48c69f24ce15a587b2c6e5fec5b6}} 
+\index{Texture\+Class@{Texture\+Class}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!Texture\+Class@{Texture\+Class}}
+\subsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily bool Texture\+Class\+::\+Initialize (\begin{DoxyParamCaption}\item[{I\+D3\+D11\+Device $\ast$}]{device,  }\item[{const W\+C\+H\+AR $\ast$}]{filename }\end{DoxyParamCaption})}
+
+
+
+Создание текстуры 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em device} & -\/ графическое устройство \\
+\hline
+\mbox{\tt in}  & {\em filename} & -\/ путь до файла текстуры \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_texture_class_a9c9ca3b3b2b8cbe3d8b0f2bdfc498f20}\label{class_texture_class_a9c9ca3b3b2b8cbe3d8b0f2bdfc498f20}} 
+\index{Texture\+Class@{Texture\+Class}!Shutdown@{Shutdown}}
+\index{Shutdown@{Shutdown}!Texture\+Class@{Texture\+Class}}
+\subsubsection{\texorpdfstring{Shutdown()}{Shutdown()}}
+{\footnotesize\ttfamily void Texture\+Class\+::\+Shutdown (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_texture_class_a9f4a1ba96054c4e3201e272cf7d1ae14}\label{class_texture_class_a9f4a1ba96054c4e3201e272cf7d1ae14}} 
+\index{Texture\+Class@{Texture\+Class}!m\+\_\+texture@{m\+\_\+texture}}
+\index{m\+\_\+texture@{m\+\_\+texture}!Texture\+Class@{Texture\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+texture}{m\_texture}}
+{\footnotesize\ttfamily I\+D3\+D11\+Shader\+Resource\+View$\ast$ Texture\+Class\+::m\+\_\+texture\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_texture_class_8h}{Texture\+Class.\+h}\item 
+\hyperlink{_texture_class_8cpp}{Texture\+Class.\+cpp}\end{DoxyCompactItemize}

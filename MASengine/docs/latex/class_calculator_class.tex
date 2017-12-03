@@ -1,0 +1,165 @@
+\hypertarget{class_calculator_class}{}\section{Calculator\+Class Class Reference}
+\label{class_calculator_class}\index{Calculator\+Class@{Calculator\+Class}}
+
+
+{\ttfamily \#include $<$Calculator\+Class.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_calculator_class_a626df0251eb67897ea4a0d85535462d4}{Calculator\+Class} ()
+\item 
+double \hyperlink{class_calculator_class_a88a60d0c23c67a06c8e62b217607d24d}{calculate} (const std\+::string \&expression)
+\begin{DoxyCompactList}\small\item\em Расчитать выражение \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{class_calculator_class_aaf44bb6d897096a70f657b66b6ae5b0e}{next} ()
+\begin{DoxyCompactList}\small\item\em Главная функция \end{DoxyCompactList}\item 
+void \hyperlink{class_calculator_class_a5f90ae6f846a004d51d9eacec3340370}{skip} (int t)
+\begin{DoxyCompactList}\small\item\em skiping symbols like ( and ) after \end{DoxyCompactList}\item 
+double \hyperlink{class_calculator_class_adf79d91e70a4c7218dadf3814e518ad5}{numpar} ()
+\begin{DoxyCompactList}\small\item\em Dealing with ( and ) and continuing to calculate. \end{DoxyCompactList}\item 
+double \hyperlink{class_calculator_class_a62e618b9d78a224ec8651b7bc1b63aaa}{factor} ()
+\begin{DoxyCompactList}\small\item\em Dealing with pow. \end{DoxyCompactList}\item 
+double \hyperlink{class_calculator_class_ad61dfc91b354cc8c9dc45c8ee47a11d5}{term} ()
+\begin{DoxyCompactList}\small\item\em Dealing with $\ast$ and /. \end{DoxyCompactList}\item 
+double \hyperlink{class_calculator_class_aed5fb4ee064e28ef02c806de466b3008}{expr} ()
+\begin{DoxyCompactList}\small\item\em Dealing with + and -\/. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \hyperlink{class_calculator_class_aac8875c105e259165e83fe627221cfcd}{m\+\_\+expression}
+\item 
+int \hyperlink{class_calculator_class_a06e41f94f4b3c9f6452ea34041100adf}{m\+\_\+position} = 0
+\item 
+int \hyperlink{class_calculator_class_aaf297978d3d340d012e118c39671ee3d}{m\+\_\+group}
+\item 
+double \hyperlink{class_calculator_class_af0634375d7137106773bc6a06a69ae49}{m\+\_\+groupval}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Переводит строковое выражение в число (не шарю особо, как робит) 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_calculator_class_a626df0251eb67897ea4a0d85535462d4}\label{class_calculator_class_a626df0251eb67897ea4a0d85535462d4}} 
+\index{Calculator\+Class@{Calculator\+Class}!Calculator\+Class@{Calculator\+Class}}
+\index{Calculator\+Class@{Calculator\+Class}!Calculator\+Class@{Calculator\+Class}}
+\subsubsection{\texorpdfstring{Calculator\+Class()}{CalculatorClass()}}
+{\footnotesize\ttfamily Calculator\+Class\+::\+Calculator\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_calculator_class_a88a60d0c23c67a06c8e62b217607d24d}\label{class_calculator_class_a88a60d0c23c67a06c8e62b217607d24d}} 
+\index{Calculator\+Class@{Calculator\+Class}!calculate@{calculate}}
+\index{calculate@{calculate}!Calculator\+Class@{Calculator\+Class}}
+\subsubsection{\texorpdfstring{calculate()}{calculate()}}
+{\footnotesize\ttfamily double Calculator\+Class\+::calculate (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{expression }\end{DoxyParamCaption})}
+
+
+
+Расчитать выражение 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em expression} & -\/ строковое выражение \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+результат выражения 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_calculator_class_aed5fb4ee064e28ef02c806de466b3008}\label{class_calculator_class_aed5fb4ee064e28ef02c806de466b3008}} 
+\index{Calculator\+Class@{Calculator\+Class}!expr@{expr}}
+\index{expr@{expr}!Calculator\+Class@{Calculator\+Class}}
+\subsubsection{\texorpdfstring{expr()}{expr()}}
+{\footnotesize\ttfamily double Calculator\+Class\+::expr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Dealing with + and -\/. 
+
+\mbox{\Hypertarget{class_calculator_class_a62e618b9d78a224ec8651b7bc1b63aaa}\label{class_calculator_class_a62e618b9d78a224ec8651b7bc1b63aaa}} 
+\index{Calculator\+Class@{Calculator\+Class}!factor@{factor}}
+\index{factor@{factor}!Calculator\+Class@{Calculator\+Class}}
+\subsubsection{\texorpdfstring{factor()}{factor()}}
+{\footnotesize\ttfamily double Calculator\+Class\+::factor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Dealing with pow. 
+
+\mbox{\Hypertarget{class_calculator_class_aaf44bb6d897096a70f657b66b6ae5b0e}\label{class_calculator_class_aaf44bb6d897096a70f657b66b6ae5b0e}} 
+\index{Calculator\+Class@{Calculator\+Class}!next@{next}}
+\index{next@{next}!Calculator\+Class@{Calculator\+Class}}
+\subsubsection{\texorpdfstring{next()}{next()}}
+{\footnotesize\ttfamily int Calculator\+Class\+::next (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Главная функция 
+
+проверяет E\+OF, \textquotesingle{} \textquotesingle{}, floats и некорректный ввод. Работает с +-\/$\ast$=()/ и управляет другими функциями. \mbox{\Hypertarget{class_calculator_class_adf79d91e70a4c7218dadf3814e518ad5}\label{class_calculator_class_adf79d91e70a4c7218dadf3814e518ad5}} 
+\index{Calculator\+Class@{Calculator\+Class}!numpar@{numpar}}
+\index{numpar@{numpar}!Calculator\+Class@{Calculator\+Class}}
+\subsubsection{\texorpdfstring{numpar()}{numpar()}}
+{\footnotesize\ttfamily double Calculator\+Class\+::numpar (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Dealing with ( and ) and continuing to calculate. 
+
+\mbox{\Hypertarget{class_calculator_class_a5f90ae6f846a004d51d9eacec3340370}\label{class_calculator_class_a5f90ae6f846a004d51d9eacec3340370}} 
+\index{Calculator\+Class@{Calculator\+Class}!skip@{skip}}
+\index{skip@{skip}!Calculator\+Class@{Calculator\+Class}}
+\subsubsection{\texorpdfstring{skip()}{skip()}}
+{\footnotesize\ttfamily void Calculator\+Class\+::skip (\begin{DoxyParamCaption}\item[{int}]{t }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+skiping symbols like ( and ) after 
+
+\mbox{\Hypertarget{class_calculator_class_ad61dfc91b354cc8c9dc45c8ee47a11d5}\label{class_calculator_class_ad61dfc91b354cc8c9dc45c8ee47a11d5}} 
+\index{Calculator\+Class@{Calculator\+Class}!term@{term}}
+\index{term@{term}!Calculator\+Class@{Calculator\+Class}}
+\subsubsection{\texorpdfstring{term()}{term()}}
+{\footnotesize\ttfamily double Calculator\+Class\+::term (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Dealing with $\ast$ and /. 
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_calculator_class_aac8875c105e259165e83fe627221cfcd}\label{class_calculator_class_aac8875c105e259165e83fe627221cfcd}} 
+\index{Calculator\+Class@{Calculator\+Class}!m\+\_\+expression@{m\+\_\+expression}}
+\index{m\+\_\+expression@{m\+\_\+expression}!Calculator\+Class@{Calculator\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+expression}{m\_expression}}
+{\footnotesize\ttfamily std\+::string Calculator\+Class\+::m\+\_\+expression\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_calculator_class_aaf297978d3d340d012e118c39671ee3d}\label{class_calculator_class_aaf297978d3d340d012e118c39671ee3d}} 
+\index{Calculator\+Class@{Calculator\+Class}!m\+\_\+group@{m\+\_\+group}}
+\index{m\+\_\+group@{m\+\_\+group}!Calculator\+Class@{Calculator\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+group}{m\_group}}
+{\footnotesize\ttfamily int Calculator\+Class\+::m\+\_\+group\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_calculator_class_af0634375d7137106773bc6a06a69ae49}\label{class_calculator_class_af0634375d7137106773bc6a06a69ae49}} 
+\index{Calculator\+Class@{Calculator\+Class}!m\+\_\+groupval@{m\+\_\+groupval}}
+\index{m\+\_\+groupval@{m\+\_\+groupval}!Calculator\+Class@{Calculator\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+groupval}{m\_groupval}}
+{\footnotesize\ttfamily double Calculator\+Class\+::m\+\_\+groupval\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_calculator_class_a06e41f94f4b3c9f6452ea34041100adf}\label{class_calculator_class_a06e41f94f4b3c9f6452ea34041100adf}} 
+\index{Calculator\+Class@{Calculator\+Class}!m\+\_\+position@{m\+\_\+position}}
+\index{m\+\_\+position@{m\+\_\+position}!Calculator\+Class@{Calculator\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+position}{m\_position}}
+{\footnotesize\ttfamily int Calculator\+Class\+::m\+\_\+position = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_calculator_class_8h}{Calculator\+Class.\+h}\item 
+\hyperlink{_calculator_class_8cpp}{Calculator\+Class.\+cpp}\end{DoxyCompactItemize}

@@ -7,6 +7,7 @@ Vsync = {0}
 NumOFBlocks = {16}
 
 HeightMapModifier = {-15.0f}
+WaterHeight = {-14.0f}
 
 ButCommandFilename = {data/interface/actions/butACTION.txt}
 TerrainCommandFilename = {data/terrainCommand.txt}

@@ -1,0 +1,598 @@
+\hypertarget{class_position_class}{}\section{Position\+Class Class Reference}
+\label{class_position_class}\index{Position\+Class@{Position\+Class}}
+
+
+{\ttfamily \#include $<$Position\+Class.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_position_class_a830ac0c2129c3eed555e5d8dfa8615f0}{Position\+Class} ()
+\item 
+\hyperlink{class_position_class_a1dab30bc7383d297338c30feaf114b1f}{Position\+Class} (const \hyperlink{class_position_class}{Position\+Class} \&)
+\item 
+\hyperlink{class_position_class_a39bd95edb5d298465c173143b193a5ad}{$\sim$\+Position\+Class} ()
+\item 
+void \hyperlink{class_position_class_a58b43a83d2cae0db050dda8fcd2dd5c7}{Set\+Position} (D3\+D\+X\+V\+E\+C\+T\+O\+R3 position)
+\begin{DoxyCompactList}\small\item\em Установка позиции (происходит не мгновенно) \end{DoxyCompactList}\item 
+void \hyperlink{class_position_class_ab4924d608eb5db276a3320019b695343}{Set\+Rotation} (D3\+D\+X\+V\+E\+C\+T\+O\+R3 rotation)
+\begin{DoxyCompactList}\small\item\em Установка поворота (происходит не мгновенно) \end{DoxyCompactList}\item 
+D3\+D\+X\+V\+E\+C\+T\+O\+R3 \hyperlink{class_position_class_aa824239d761127efe43d1718f1e68b79}{Get\+Position} ()
+\begin{DoxyCompactList}\small\item\em Получение текущей позиции \end{DoxyCompactList}\item 
+D3\+D\+X\+V\+E\+C\+T\+O\+R3 \hyperlink{class_position_class_acbd3167d621af1d35496b7be3347165a}{Get\+Real\+Position} ()
+\begin{DoxyCompactList}\small\item\em Получение позиции с учетом незавершенной анимации \end{DoxyCompactList}\item 
+D3\+D\+X\+V\+E\+C\+T\+O\+R3 \hyperlink{class_position_class_a69c69980d0ca1dbfab93ea46f6019e99}{Get\+Rotation} ()
+\begin{DoxyCompactList}\small\item\em Получение текущего поворота \end{DoxyCompactList}\item 
+D3\+D\+X\+V\+E\+C\+T\+O\+R3 \hyperlink{class_position_class_ad57c43e85e9b23ce99ce651bba05a609}{Get\+Real\+Rotation} ()
+\begin{DoxyCompactList}\small\item\em Получение поворота с учетом незавершенной анимации \end{DoxyCompactList}\item 
+void \hyperlink{class_position_class_a110e6895159c6e5335f1afaa27e7f0c8}{Set\+Frame\+Time} (float time)
+\begin{DoxyCompactList}\small\item\em Установка кадрового времени \end{DoxyCompactList}\item 
+void \hyperlink{class_position_class_ab710ce7a18e9102c8e9d83ad46d876c4}{set\+Move} (int ind, bool type)
+\begin{DoxyCompactList}\small\item\em Установка движения в одну из сторон \end{DoxyCompactList}\item 
+void \hyperlink{class_position_class_ac0870f878bebd15005ebfc010a60c397}{Move} ()
+\begin{DoxyCompactList}\small\item\em Расчитать смещение позиции \end{DoxyCompactList}\item 
+void \hyperlink{class_position_class_a52e44d399211839638b927e1aa74d585}{Move\+Leftward} (bool keydown)
+\begin{DoxyCompactList}\small\item\em Расчитать смещение влево \end{DoxyCompactList}\item 
+void \hyperlink{class_position_class_a541daa8f1f943f69f8406cec69c2b2d4}{Move\+Rightward} (bool keydown)
+\begin{DoxyCompactList}\small\item\em Расчитать смещение влево \end{DoxyCompactList}\item 
+void \hyperlink{class_position_class_aa777754a1af56bda1ebf153a117cef85}{Move\+Forward} (bool keydown)
+\begin{DoxyCompactList}\small\item\em Расчитать смещение прямо \end{DoxyCompactList}\item 
+void \hyperlink{class_position_class_a76269efeeb56583019ae5c90a7b38b64}{Move\+Backward} (bool keydown)
+\begin{DoxyCompactList}\small\item\em Расчитать смещение назад \end{DoxyCompactList}\item 
+void \hyperlink{class_position_class_a1f52e86807015fe0be8216a954e763cd}{Move\+Upward} (bool keydown)
+\begin{DoxyCompactList}\small\item\em Расчитать смещение наверх \end{DoxyCompactList}\item 
+void \hyperlink{class_position_class_a44c53730208a688ec5f1fbcbf358a848}{Move\+Downward} (bool keydown)
+\begin{DoxyCompactList}\small\item\em Расчитать смещение вниз \end{DoxyCompactList}\item 
+void \hyperlink{class_position_class_ae75cc0ecd43a510136b7df82f1f83ccd}{Turn\+Left} (bool keydown)
+\begin{DoxyCompactList}\small\item\em Расчитать поворот влево \end{DoxyCompactList}\item 
+void \hyperlink{class_position_class_a05ceeb5f95a3a800dea17f4a090fd288}{Turn\+Right} (bool keydown)
+\begin{DoxyCompactList}\small\item\em Расчитать поворот вправо \end{DoxyCompactList}\item 
+void \hyperlink{class_position_class_a1643d2ad4f9807b464f1ea9d40fe6ad6}{Look\+Upward} (bool keydown)
+\begin{DoxyCompactList}\small\item\em Расчитать поворот вверх \end{DoxyCompactList}\item 
+void \hyperlink{class_position_class_a244538ba3f1719f4d72798d41500df2a}{Look\+Downward} (bool keydown)
+\begin{DoxyCompactList}\small\item\em Расчитать поворот вниз \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+D3\+D\+X\+V\+E\+C\+T\+O\+R3 \hyperlink{class_position_class_aa217d89b940ef5fdb462e8caa0d265f2}{m\+\_\+position}
+\begin{DoxyCompactList}\small\item\em Текущая позиция \end{DoxyCompactList}\item 
+D3\+D\+X\+V\+E\+C\+T\+O\+R3 \hyperlink{class_position_class_a1e690785eacec06ababe95e2e4fc72b0}{m\+\_\+rotation}
+\begin{DoxyCompactList}\small\item\em Текущий поворот \end{DoxyCompactList}\item 
+float \hyperlink{class_position_class_ac047fe3cfb109182205266dc5c843efc}{m\+\_\+frame\+Time}
+\begin{DoxyCompactList}\small\item\em Время, прошедшее за предыдущий кадр \end{DoxyCompactList}\item 
+int \hyperlink{class_position_class_a9ceed19ae5c1008e551315c2cc3573a1}{m\+\_\+pos\+Animation\+Speed}
+\begin{DoxyCompactList}\small\item\em Время в мс для одной анимации по перемещению \end{DoxyCompactList}\item 
+int \hyperlink{class_position_class_a60ba4c2e14e90da4f250b7e47ffea4d0}{m\+\_\+rot\+Animation\+Speed}
+\begin{DoxyCompactList}\small\item\em Время в мс для одной анимации по повороту \end{DoxyCompactList}\item 
+int \hyperlink{class_position_class_a2b8254c12435937ad154bf730c7e2e6a}{m\+\_\+rot\+Temp\+Speed}
+\begin{DoxyCompactList}\small\item\em Время в мс до конца текущей анимации по повороту \end{DoxyCompactList}\item 
+int \hyperlink{class_position_class_af67477235577ff5df8a6a68d0a884312}{m\+\_\+pos\+Temp\+Speed}
+\begin{DoxyCompactList}\small\item\em Время в мс до конца текущей анимации по перемещению \end{DoxyCompactList}\item 
+bool \hyperlink{class_position_class_ab60b9c377f649dd1056d675892827628}{m\+\_\+is\+Moving} \mbox{[}\hyperlink{_position_class_8h_a7e6f6ecb4b80834476cbb67e51a918d5}{N\+U\+M\+\_\+\+O\+F\+\_\+\+M\+O\+V\+ES}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Направления, по которым происходят смещения \end{DoxyCompactList}\item 
+float \hyperlink{class_position_class_a9114107a26907652defd68fbb53dd349}{m\+\_\+move\+Speed}
+\begin{DoxyCompactList}\small\item\em Модификатор скорости, определяющий зависимость высоты от скорости смещений \end{DoxyCompactList}\item 
+float \hyperlink{class_position_class_abbbf26ad76dcafa2db2bfb1e01d62e8b}{m\+\_\+leftward\+Speed}
+\item 
+float \hyperlink{class_position_class_a02d8de811a5f2327fbde7163cdcd37ba}{m\+\_\+rightward\+Speed}
+\begin{DoxyCompactList}\small\item\em Текущая скорость смещения влево/вправо \end{DoxyCompactList}\item 
+float \hyperlink{class_position_class_a79d96ce3323c65c045c60e7ef6c548ae}{m\+\_\+forward\+Speed}
+\item 
+float \hyperlink{class_position_class_a924a1e9210ce92204220ff25c56ee9b8}{m\+\_\+backward\+Speed}
+\begin{DoxyCompactList}\small\item\em Текущая скорость смещения прямо/назад \end{DoxyCompactList}\item 
+float \hyperlink{class_position_class_af0324bb22bef036aff2374066fdd6a3b}{m\+\_\+upward\+Speed}
+\item 
+float \hyperlink{class_position_class_a7047144c07127876870163d964778d19}{m\+\_\+downward\+Speed}
+\begin{DoxyCompactList}\small\item\em Текущая скорость смещения вверх/вниз \end{DoxyCompactList}\item 
+float \hyperlink{class_position_class_a11d92082c39a01a7e050c75ad287d414}{m\+\_\+left\+Turn\+Speed}
+\item 
+float \hyperlink{class_position_class_a045c4bb067c1219b6b65e3e6d723db84}{m\+\_\+right\+Turn\+Speed}
+\begin{DoxyCompactList}\small\item\em Текущая скорость поворота влево/вправо \end{DoxyCompactList}\item 
+float \hyperlink{class_position_class_aa0be8eccceabf9725d2fd43b7730cef8}{m\+\_\+look\+Up\+Speed}
+\item 
+float \hyperlink{class_position_class_acb6764e0ad4b5a325ba37f0d5a827380}{m\+\_\+look\+Down\+Speed}
+\begin{DoxyCompactList}\small\item\em Текущая скорость поворота вверх/вниз \end{DoxyCompactList}\item 
+D3\+D\+X\+V\+E\+C\+T\+O\+R3 \hyperlink{class_position_class_a73a75e3e007f83baf562ff7b9a0eb501}{m\+\_\+pos\+Speed}
+\begin{DoxyCompactList}\small\item\em Текущая скорость анимации по позиции \end{DoxyCompactList}\item 
+D3\+D\+X\+V\+E\+C\+T\+O\+R3 \hyperlink{class_position_class_aeadcd89f8d93f83d3d215f06d41bd179}{m\+\_\+rot\+Speed}
+\begin{DoxyCompactList}\small\item\em Текущая скорость анимации по повороту \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Позиция игрока 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_position_class_a830ac0c2129c3eed555e5d8dfa8615f0}\label{class_position_class_a830ac0c2129c3eed555e5d8dfa8615f0}} 
+\index{Position\+Class@{Position\+Class}!Position\+Class@{Position\+Class}}
+\index{Position\+Class@{Position\+Class}!Position\+Class@{Position\+Class}}
+\subsubsection{\texorpdfstring{Position\+Class()}{PositionClass()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Position\+Class\+::\+Position\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_position_class_a1dab30bc7383d297338c30feaf114b1f}\label{class_position_class_a1dab30bc7383d297338c30feaf114b1f}} 
+\index{Position\+Class@{Position\+Class}!Position\+Class@{Position\+Class}}
+\index{Position\+Class@{Position\+Class}!Position\+Class@{Position\+Class}}
+\subsubsection{\texorpdfstring{Position\+Class()}{PositionClass()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Position\+Class\+::\+Position\+Class (\begin{DoxyParamCaption}\item[{const \hyperlink{class_position_class}{Position\+Class} \&}]{other }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_position_class_a39bd95edb5d298465c173143b193a5ad}\label{class_position_class_a39bd95edb5d298465c173143b193a5ad}} 
+\index{Position\+Class@{Position\+Class}!````~Position\+Class@{$\sim$\+Position\+Class}}
+\index{````~Position\+Class@{$\sim$\+Position\+Class}!Position\+Class@{Position\+Class}}
+\subsubsection{\texorpdfstring{$\sim$\+Position\+Class()}{~PositionClass()}}
+{\footnotesize\ttfamily Position\+Class\+::$\sim$\+Position\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_position_class_aa824239d761127efe43d1718f1e68b79}\label{class_position_class_aa824239d761127efe43d1718f1e68b79}} 
+\index{Position\+Class@{Position\+Class}!Get\+Position@{Get\+Position}}
+\index{Get\+Position@{Get\+Position}!Position\+Class@{Position\+Class}}
+\subsubsection{\texorpdfstring{Get\+Position()}{GetPosition()}}
+{\footnotesize\ttfamily D3\+D\+X\+V\+E\+C\+T\+O\+R3 Position\+Class\+::\+Get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Получение текущей позиции 
+
+\begin{DoxyReturn}{Returns}
+позиция игрока 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_position_class_acbd3167d621af1d35496b7be3347165a}\label{class_position_class_acbd3167d621af1d35496b7be3347165a}} 
+\index{Position\+Class@{Position\+Class}!Get\+Real\+Position@{Get\+Real\+Position}}
+\index{Get\+Real\+Position@{Get\+Real\+Position}!Position\+Class@{Position\+Class}}
+\subsubsection{\texorpdfstring{Get\+Real\+Position()}{GetRealPosition()}}
+{\footnotesize\ttfamily D3\+D\+X\+V\+E\+C\+T\+O\+R3 Position\+Class\+::\+Get\+Real\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Получение позиции с учетом незавершенной анимации 
+
+\begin{DoxyReturn}{Returns}
+позиция игрока 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_position_class_ad57c43e85e9b23ce99ce651bba05a609}\label{class_position_class_ad57c43e85e9b23ce99ce651bba05a609}} 
+\index{Position\+Class@{Position\+Class}!Get\+Real\+Rotation@{Get\+Real\+Rotation}}
+\index{Get\+Real\+Rotation@{Get\+Real\+Rotation}!Position\+Class@{Position\+Class}}
+\subsubsection{\texorpdfstring{Get\+Real\+Rotation()}{GetRealRotation()}}
+{\footnotesize\ttfamily D3\+D\+X\+V\+E\+C\+T\+O\+R3 Position\+Class\+::\+Get\+Real\+Rotation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Получение поворота с учетом незавершенной анимации 
+
+\begin{DoxyReturn}{Returns}
+поворот игрока 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_position_class_a69c69980d0ca1dbfab93ea46f6019e99}\label{class_position_class_a69c69980d0ca1dbfab93ea46f6019e99}} 
+\index{Position\+Class@{Position\+Class}!Get\+Rotation@{Get\+Rotation}}
+\index{Get\+Rotation@{Get\+Rotation}!Position\+Class@{Position\+Class}}
+\subsubsection{\texorpdfstring{Get\+Rotation()}{GetRotation()}}
+{\footnotesize\ttfamily D3\+D\+X\+V\+E\+C\+T\+O\+R3 Position\+Class\+::\+Get\+Rotation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Получение текущего поворота 
+
+\begin{DoxyReturn}{Returns}
+поворот игрока 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_position_class_a244538ba3f1719f4d72798d41500df2a}\label{class_position_class_a244538ba3f1719f4d72798d41500df2a}} 
+\index{Position\+Class@{Position\+Class}!Look\+Downward@{Look\+Downward}}
+\index{Look\+Downward@{Look\+Downward}!Position\+Class@{Position\+Class}}
+\subsubsection{\texorpdfstring{Look\+Downward()}{LookDownward()}}
+{\footnotesize\ttfamily void Position\+Class\+::\+Look\+Downward (\begin{DoxyParamCaption}\item[{bool}]{keydown }\end{DoxyParamCaption})}
+
+
+
+Расчитать поворот вниз 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em keydown} & -\/ 1, если идет поворот, 0, если не идет \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_position_class_a1643d2ad4f9807b464f1ea9d40fe6ad6}\label{class_position_class_a1643d2ad4f9807b464f1ea9d40fe6ad6}} 
+\index{Position\+Class@{Position\+Class}!Look\+Upward@{Look\+Upward}}
+\index{Look\+Upward@{Look\+Upward}!Position\+Class@{Position\+Class}}
+\subsubsection{\texorpdfstring{Look\+Upward()}{LookUpward()}}
+{\footnotesize\ttfamily void Position\+Class\+::\+Look\+Upward (\begin{DoxyParamCaption}\item[{bool}]{keydown }\end{DoxyParamCaption})}
+
+
+
+Расчитать поворот вверх 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em keydown} & -\/ 1, если идет поворот, 0, если не идет \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_position_class_ac0870f878bebd15005ebfc010a60c397}\label{class_position_class_ac0870f878bebd15005ebfc010a60c397}} 
+\index{Position\+Class@{Position\+Class}!Move@{Move}}
+\index{Move@{Move}!Position\+Class@{Position\+Class}}
+\subsubsection{\texorpdfstring{Move()}{Move()}}
+{\footnotesize\ttfamily void Position\+Class\+::\+Move (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Расчитать смещение позиции 
+
+\mbox{\Hypertarget{class_position_class_a76269efeeb56583019ae5c90a7b38b64}\label{class_position_class_a76269efeeb56583019ae5c90a7b38b64}} 
+\index{Position\+Class@{Position\+Class}!Move\+Backward@{Move\+Backward}}
+\index{Move\+Backward@{Move\+Backward}!Position\+Class@{Position\+Class}}
+\subsubsection{\texorpdfstring{Move\+Backward()}{MoveBackward()}}
+{\footnotesize\ttfamily void Position\+Class\+::\+Move\+Backward (\begin{DoxyParamCaption}\item[{bool}]{keydown }\end{DoxyParamCaption})}
+
+
+
+Расчитать смещение назад 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em keydown} & -\/ 1, если идет смещение, 0, если не идет \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_position_class_a44c53730208a688ec5f1fbcbf358a848}\label{class_position_class_a44c53730208a688ec5f1fbcbf358a848}} 
+\index{Position\+Class@{Position\+Class}!Move\+Downward@{Move\+Downward}}
+\index{Move\+Downward@{Move\+Downward}!Position\+Class@{Position\+Class}}
+\subsubsection{\texorpdfstring{Move\+Downward()}{MoveDownward()}}
+{\footnotesize\ttfamily void Position\+Class\+::\+Move\+Downward (\begin{DoxyParamCaption}\item[{bool}]{keydown }\end{DoxyParamCaption})}
+
+
+
+Расчитать смещение вниз 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em keydown} & -\/ 1, если идет смещение, 0, если не идет \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_position_class_aa777754a1af56bda1ebf153a117cef85}\label{class_position_class_aa777754a1af56bda1ebf153a117cef85}} 
+\index{Position\+Class@{Position\+Class}!Move\+Forward@{Move\+Forward}}
+\index{Move\+Forward@{Move\+Forward}!Position\+Class@{Position\+Class}}
+\subsubsection{\texorpdfstring{Move\+Forward()}{MoveForward()}}
+{\footnotesize\ttfamily void Position\+Class\+::\+Move\+Forward (\begin{DoxyParamCaption}\item[{bool}]{keydown }\end{DoxyParamCaption})}
+
+
+
+Расчитать смещение прямо 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em keydown} & -\/ 1, если идет смещение, 0, если не идет \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_position_class_a52e44d399211839638b927e1aa74d585}\label{class_position_class_a52e44d399211839638b927e1aa74d585}} 
+\index{Position\+Class@{Position\+Class}!Move\+Leftward@{Move\+Leftward}}
+\index{Move\+Leftward@{Move\+Leftward}!Position\+Class@{Position\+Class}}
+\subsubsection{\texorpdfstring{Move\+Leftward()}{MoveLeftward()}}
+{\footnotesize\ttfamily void Position\+Class\+::\+Move\+Leftward (\begin{DoxyParamCaption}\item[{bool}]{keydown }\end{DoxyParamCaption})}
+
+
+
+Расчитать смещение влево 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em keydown} & -\/ 1, если идет смещение, 0, если не идет \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_position_class_a541daa8f1f943f69f8406cec69c2b2d4}\label{class_position_class_a541daa8f1f943f69f8406cec69c2b2d4}} 
+\index{Position\+Class@{Position\+Class}!Move\+Rightward@{Move\+Rightward}}
+\index{Move\+Rightward@{Move\+Rightward}!Position\+Class@{Position\+Class}}
+\subsubsection{\texorpdfstring{Move\+Rightward()}{MoveRightward()}}
+{\footnotesize\ttfamily void Position\+Class\+::\+Move\+Rightward (\begin{DoxyParamCaption}\item[{bool}]{keydown }\end{DoxyParamCaption})}
+
+
+
+Расчитать смещение влево 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em keydown} & -\/ 1, если идет смещение, 0, если не идет \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_position_class_a1f52e86807015fe0be8216a954e763cd}\label{class_position_class_a1f52e86807015fe0be8216a954e763cd}} 
+\index{Position\+Class@{Position\+Class}!Move\+Upward@{Move\+Upward}}
+\index{Move\+Upward@{Move\+Upward}!Position\+Class@{Position\+Class}}
+\subsubsection{\texorpdfstring{Move\+Upward()}{MoveUpward()}}
+{\footnotesize\ttfamily void Position\+Class\+::\+Move\+Upward (\begin{DoxyParamCaption}\item[{bool}]{keydown }\end{DoxyParamCaption})}
+
+
+
+Расчитать смещение наверх 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em keydown} & -\/ 1, если идет смещение, 0, если не идет \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_position_class_a110e6895159c6e5335f1afaa27e7f0c8}\label{class_position_class_a110e6895159c6e5335f1afaa27e7f0c8}} 
+\index{Position\+Class@{Position\+Class}!Set\+Frame\+Time@{Set\+Frame\+Time}}
+\index{Set\+Frame\+Time@{Set\+Frame\+Time}!Position\+Class@{Position\+Class}}
+\subsubsection{\texorpdfstring{Set\+Frame\+Time()}{SetFrameTime()}}
+{\footnotesize\ttfamily void Position\+Class\+::\+Set\+Frame\+Time (\begin{DoxyParamCaption}\item[{float}]{time }\end{DoxyParamCaption})}
+
+
+
+Установка кадрового времени 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em time} & -\/ Время, прошедшее за предыдущий кадр \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_position_class_ab710ce7a18e9102c8e9d83ad46d876c4}\label{class_position_class_ab710ce7a18e9102c8e9d83ad46d876c4}} 
+\index{Position\+Class@{Position\+Class}!set\+Move@{set\+Move}}
+\index{set\+Move@{set\+Move}!Position\+Class@{Position\+Class}}
+\subsubsection{\texorpdfstring{set\+Move()}{setMove()}}
+{\footnotesize\ttfamily void Position\+Class\+::set\+Move (\begin{DoxyParamCaption}\item[{int}]{ind,  }\item[{bool}]{type }\end{DoxyParamCaption})}
+
+
+
+Установка движения в одну из сторон 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em ind} & -\/ индекс направления смещения \\
+\hline
+\mbox{\tt in}  & {\em type} & -\/ тип смещения (0-\/остановить, 1-\/начать) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_position_class_a58b43a83d2cae0db050dda8fcd2dd5c7}\label{class_position_class_a58b43a83d2cae0db050dda8fcd2dd5c7}} 
+\index{Position\+Class@{Position\+Class}!Set\+Position@{Set\+Position}}
+\index{Set\+Position@{Set\+Position}!Position\+Class@{Position\+Class}}
+\subsubsection{\texorpdfstring{Set\+Position()}{SetPosition()}}
+{\footnotesize\ttfamily void Position\+Class\+::\+Set\+Position (\begin{DoxyParamCaption}\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R3}]{position }\end{DoxyParamCaption})}
+
+
+
+Установка позиции (происходит не мгновенно) 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em position} & -\/ новая позиция \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_position_class_ab4924d608eb5db276a3320019b695343}\label{class_position_class_ab4924d608eb5db276a3320019b695343}} 
+\index{Position\+Class@{Position\+Class}!Set\+Rotation@{Set\+Rotation}}
+\index{Set\+Rotation@{Set\+Rotation}!Position\+Class@{Position\+Class}}
+\subsubsection{\texorpdfstring{Set\+Rotation()}{SetRotation()}}
+{\footnotesize\ttfamily void Position\+Class\+::\+Set\+Rotation (\begin{DoxyParamCaption}\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R3}]{rotation }\end{DoxyParamCaption})}
+
+
+
+Установка поворота (происходит не мгновенно) 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em rotation} & -\/ новый поворот \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_position_class_ae75cc0ecd43a510136b7df82f1f83ccd}\label{class_position_class_ae75cc0ecd43a510136b7df82f1f83ccd}} 
+\index{Position\+Class@{Position\+Class}!Turn\+Left@{Turn\+Left}}
+\index{Turn\+Left@{Turn\+Left}!Position\+Class@{Position\+Class}}
+\subsubsection{\texorpdfstring{Turn\+Left()}{TurnLeft()}}
+{\footnotesize\ttfamily void Position\+Class\+::\+Turn\+Left (\begin{DoxyParamCaption}\item[{bool}]{keydown }\end{DoxyParamCaption})}
+
+
+
+Расчитать поворот влево 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em keydown} & -\/ 1, если идет поворот, 0, если не идет \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_position_class_a05ceeb5f95a3a800dea17f4a090fd288}\label{class_position_class_a05ceeb5f95a3a800dea17f4a090fd288}} 
+\index{Position\+Class@{Position\+Class}!Turn\+Right@{Turn\+Right}}
+\index{Turn\+Right@{Turn\+Right}!Position\+Class@{Position\+Class}}
+\subsubsection{\texorpdfstring{Turn\+Right()}{TurnRight()}}
+{\footnotesize\ttfamily void Position\+Class\+::\+Turn\+Right (\begin{DoxyParamCaption}\item[{bool}]{keydown }\end{DoxyParamCaption})}
+
+
+
+Расчитать поворот вправо 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em keydown} & -\/ 1, если идет поворот, 0, если не идет \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_position_class_a924a1e9210ce92204220ff25c56ee9b8}\label{class_position_class_a924a1e9210ce92204220ff25c56ee9b8}} 
+\index{Position\+Class@{Position\+Class}!m\+\_\+backward\+Speed@{m\+\_\+backward\+Speed}}
+\index{m\+\_\+backward\+Speed@{m\+\_\+backward\+Speed}!Position\+Class@{Position\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+backward\+Speed}{m\_backwardSpeed}}
+{\footnotesize\ttfamily float Position\+Class\+::m\+\_\+backward\+Speed\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Текущая скорость смещения прямо/назад 
+
+\mbox{\Hypertarget{class_position_class_a7047144c07127876870163d964778d19}\label{class_position_class_a7047144c07127876870163d964778d19}} 
+\index{Position\+Class@{Position\+Class}!m\+\_\+downward\+Speed@{m\+\_\+downward\+Speed}}
+\index{m\+\_\+downward\+Speed@{m\+\_\+downward\+Speed}!Position\+Class@{Position\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+downward\+Speed}{m\_downwardSpeed}}
+{\footnotesize\ttfamily float Position\+Class\+::m\+\_\+downward\+Speed\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Текущая скорость смещения вверх/вниз 
+
+\mbox{\Hypertarget{class_position_class_a79d96ce3323c65c045c60e7ef6c548ae}\label{class_position_class_a79d96ce3323c65c045c60e7ef6c548ae}} 
+\index{Position\+Class@{Position\+Class}!m\+\_\+forward\+Speed@{m\+\_\+forward\+Speed}}
+\index{m\+\_\+forward\+Speed@{m\+\_\+forward\+Speed}!Position\+Class@{Position\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+forward\+Speed}{m\_forwardSpeed}}
+{\footnotesize\ttfamily float Position\+Class\+::m\+\_\+forward\+Speed\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_position_class_ac047fe3cfb109182205266dc5c843efc}\label{class_position_class_ac047fe3cfb109182205266dc5c843efc}} 
+\index{Position\+Class@{Position\+Class}!m\+\_\+frame\+Time@{m\+\_\+frame\+Time}}
+\index{m\+\_\+frame\+Time@{m\+\_\+frame\+Time}!Position\+Class@{Position\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+frame\+Time}{m\_frameTime}}
+{\footnotesize\ttfamily float Position\+Class\+::m\+\_\+frame\+Time\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Время, прошедшее за предыдущий кадр 
+
+\mbox{\Hypertarget{class_position_class_ab60b9c377f649dd1056d675892827628}\label{class_position_class_ab60b9c377f649dd1056d675892827628}} 
+\index{Position\+Class@{Position\+Class}!m\+\_\+is\+Moving@{m\+\_\+is\+Moving}}
+\index{m\+\_\+is\+Moving@{m\+\_\+is\+Moving}!Position\+Class@{Position\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+is\+Moving}{m\_isMoving}}
+{\footnotesize\ttfamily bool Position\+Class\+::m\+\_\+is\+Moving\mbox{[}\hyperlink{_position_class_8h_a7e6f6ecb4b80834476cbb67e51a918d5}{N\+U\+M\+\_\+\+O\+F\+\_\+\+M\+O\+V\+ES}\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Направления, по которым происходят смещения 
+
+\mbox{\Hypertarget{class_position_class_a11d92082c39a01a7e050c75ad287d414}\label{class_position_class_a11d92082c39a01a7e050c75ad287d414}} 
+\index{Position\+Class@{Position\+Class}!m\+\_\+left\+Turn\+Speed@{m\+\_\+left\+Turn\+Speed}}
+\index{m\+\_\+left\+Turn\+Speed@{m\+\_\+left\+Turn\+Speed}!Position\+Class@{Position\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+left\+Turn\+Speed}{m\_leftTurnSpeed}}
+{\footnotesize\ttfamily float Position\+Class\+::m\+\_\+left\+Turn\+Speed\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_position_class_abbbf26ad76dcafa2db2bfb1e01d62e8b}\label{class_position_class_abbbf26ad76dcafa2db2bfb1e01d62e8b}} 
+\index{Position\+Class@{Position\+Class}!m\+\_\+leftward\+Speed@{m\+\_\+leftward\+Speed}}
+\index{m\+\_\+leftward\+Speed@{m\+\_\+leftward\+Speed}!Position\+Class@{Position\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+leftward\+Speed}{m\_leftwardSpeed}}
+{\footnotesize\ttfamily float Position\+Class\+::m\+\_\+leftward\+Speed\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_position_class_acb6764e0ad4b5a325ba37f0d5a827380}\label{class_position_class_acb6764e0ad4b5a325ba37f0d5a827380}} 
+\index{Position\+Class@{Position\+Class}!m\+\_\+look\+Down\+Speed@{m\+\_\+look\+Down\+Speed}}
+\index{m\+\_\+look\+Down\+Speed@{m\+\_\+look\+Down\+Speed}!Position\+Class@{Position\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+look\+Down\+Speed}{m\_lookDownSpeed}}
+{\footnotesize\ttfamily float Position\+Class\+::m\+\_\+look\+Down\+Speed\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Текущая скорость поворота вверх/вниз 
+
+\mbox{\Hypertarget{class_position_class_aa0be8eccceabf9725d2fd43b7730cef8}\label{class_position_class_aa0be8eccceabf9725d2fd43b7730cef8}} 
+\index{Position\+Class@{Position\+Class}!m\+\_\+look\+Up\+Speed@{m\+\_\+look\+Up\+Speed}}
+\index{m\+\_\+look\+Up\+Speed@{m\+\_\+look\+Up\+Speed}!Position\+Class@{Position\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+look\+Up\+Speed}{m\_lookUpSpeed}}
+{\footnotesize\ttfamily float Position\+Class\+::m\+\_\+look\+Up\+Speed\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_position_class_a9114107a26907652defd68fbb53dd349}\label{class_position_class_a9114107a26907652defd68fbb53dd349}} 
+\index{Position\+Class@{Position\+Class}!m\+\_\+move\+Speed@{m\+\_\+move\+Speed}}
+\index{m\+\_\+move\+Speed@{m\+\_\+move\+Speed}!Position\+Class@{Position\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+move\+Speed}{m\_moveSpeed}}
+{\footnotesize\ttfamily float Position\+Class\+::m\+\_\+move\+Speed\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Модификатор скорости, определяющий зависимость высоты от скорости смещений 
+
+\mbox{\Hypertarget{class_position_class_a9ceed19ae5c1008e551315c2cc3573a1}\label{class_position_class_a9ceed19ae5c1008e551315c2cc3573a1}} 
+\index{Position\+Class@{Position\+Class}!m\+\_\+pos\+Animation\+Speed@{m\+\_\+pos\+Animation\+Speed}}
+\index{m\+\_\+pos\+Animation\+Speed@{m\+\_\+pos\+Animation\+Speed}!Position\+Class@{Position\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+pos\+Animation\+Speed}{m\_posAnimationSpeed}}
+{\footnotesize\ttfamily int Position\+Class\+::m\+\_\+pos\+Animation\+Speed\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Время в мс для одной анимации по перемещению 
+
+\mbox{\Hypertarget{class_position_class_aa217d89b940ef5fdb462e8caa0d265f2}\label{class_position_class_aa217d89b940ef5fdb462e8caa0d265f2}} 
+\index{Position\+Class@{Position\+Class}!m\+\_\+position@{m\+\_\+position}}
+\index{m\+\_\+position@{m\+\_\+position}!Position\+Class@{Position\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+position}{m\_position}}
+{\footnotesize\ttfamily D3\+D\+X\+V\+E\+C\+T\+O\+R3 Position\+Class\+::m\+\_\+position\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Текущая позиция 
+
+\mbox{\Hypertarget{class_position_class_a73a75e3e007f83baf562ff7b9a0eb501}\label{class_position_class_a73a75e3e007f83baf562ff7b9a0eb501}} 
+\index{Position\+Class@{Position\+Class}!m\+\_\+pos\+Speed@{m\+\_\+pos\+Speed}}
+\index{m\+\_\+pos\+Speed@{m\+\_\+pos\+Speed}!Position\+Class@{Position\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+pos\+Speed}{m\_posSpeed}}
+{\footnotesize\ttfamily D3\+D\+X\+V\+E\+C\+T\+O\+R3 Position\+Class\+::m\+\_\+pos\+Speed\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Текущая скорость анимации по позиции 
+
+\mbox{\Hypertarget{class_position_class_af67477235577ff5df8a6a68d0a884312}\label{class_position_class_af67477235577ff5df8a6a68d0a884312}} 
+\index{Position\+Class@{Position\+Class}!m\+\_\+pos\+Temp\+Speed@{m\+\_\+pos\+Temp\+Speed}}
+\index{m\+\_\+pos\+Temp\+Speed@{m\+\_\+pos\+Temp\+Speed}!Position\+Class@{Position\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+pos\+Temp\+Speed}{m\_posTempSpeed}}
+{\footnotesize\ttfamily int Position\+Class\+::m\+\_\+pos\+Temp\+Speed\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Время в мс до конца текущей анимации по перемещению 
+
+\mbox{\Hypertarget{class_position_class_a045c4bb067c1219b6b65e3e6d723db84}\label{class_position_class_a045c4bb067c1219b6b65e3e6d723db84}} 
+\index{Position\+Class@{Position\+Class}!m\+\_\+right\+Turn\+Speed@{m\+\_\+right\+Turn\+Speed}}
+\index{m\+\_\+right\+Turn\+Speed@{m\+\_\+right\+Turn\+Speed}!Position\+Class@{Position\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+right\+Turn\+Speed}{m\_rightTurnSpeed}}
+{\footnotesize\ttfamily float Position\+Class\+::m\+\_\+right\+Turn\+Speed\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Текущая скорость поворота влево/вправо 
+
+\mbox{\Hypertarget{class_position_class_a02d8de811a5f2327fbde7163cdcd37ba}\label{class_position_class_a02d8de811a5f2327fbde7163cdcd37ba}} 
+\index{Position\+Class@{Position\+Class}!m\+\_\+rightward\+Speed@{m\+\_\+rightward\+Speed}}
+\index{m\+\_\+rightward\+Speed@{m\+\_\+rightward\+Speed}!Position\+Class@{Position\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+rightward\+Speed}{m\_rightwardSpeed}}
+{\footnotesize\ttfamily float Position\+Class\+::m\+\_\+rightward\+Speed\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Текущая скорость смещения влево/вправо 
+
+\mbox{\Hypertarget{class_position_class_a60ba4c2e14e90da4f250b7e47ffea4d0}\label{class_position_class_a60ba4c2e14e90da4f250b7e47ffea4d0}} 
+\index{Position\+Class@{Position\+Class}!m\+\_\+rot\+Animation\+Speed@{m\+\_\+rot\+Animation\+Speed}}
+\index{m\+\_\+rot\+Animation\+Speed@{m\+\_\+rot\+Animation\+Speed}!Position\+Class@{Position\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+rot\+Animation\+Speed}{m\_rotAnimationSpeed}}
+{\footnotesize\ttfamily int Position\+Class\+::m\+\_\+rot\+Animation\+Speed\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Время в мс для одной анимации по повороту 
+
+\mbox{\Hypertarget{class_position_class_a1e690785eacec06ababe95e2e4fc72b0}\label{class_position_class_a1e690785eacec06ababe95e2e4fc72b0}} 
+\index{Position\+Class@{Position\+Class}!m\+\_\+rotation@{m\+\_\+rotation}}
+\index{m\+\_\+rotation@{m\+\_\+rotation}!Position\+Class@{Position\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+rotation}{m\_rotation}}
+{\footnotesize\ttfamily D3\+D\+X\+V\+E\+C\+T\+O\+R3 Position\+Class\+::m\+\_\+rotation\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Текущий поворот 
+
+\mbox{\Hypertarget{class_position_class_aeadcd89f8d93f83d3d215f06d41bd179}\label{class_position_class_aeadcd89f8d93f83d3d215f06d41bd179}} 
+\index{Position\+Class@{Position\+Class}!m\+\_\+rot\+Speed@{m\+\_\+rot\+Speed}}
+\index{m\+\_\+rot\+Speed@{m\+\_\+rot\+Speed}!Position\+Class@{Position\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+rot\+Speed}{m\_rotSpeed}}
+{\footnotesize\ttfamily D3\+D\+X\+V\+E\+C\+T\+O\+R3 Position\+Class\+::m\+\_\+rot\+Speed\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Текущая скорость анимации по повороту 
+
+\mbox{\Hypertarget{class_position_class_a2b8254c12435937ad154bf730c7e2e6a}\label{class_position_class_a2b8254c12435937ad154bf730c7e2e6a}} 
+\index{Position\+Class@{Position\+Class}!m\+\_\+rot\+Temp\+Speed@{m\+\_\+rot\+Temp\+Speed}}
+\index{m\+\_\+rot\+Temp\+Speed@{m\+\_\+rot\+Temp\+Speed}!Position\+Class@{Position\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+rot\+Temp\+Speed}{m\_rotTempSpeed}}
+{\footnotesize\ttfamily int Position\+Class\+::m\+\_\+rot\+Temp\+Speed\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Время в мс до конца текущей анимации по повороту 
+
+\mbox{\Hypertarget{class_position_class_af0324bb22bef036aff2374066fdd6a3b}\label{class_position_class_af0324bb22bef036aff2374066fdd6a3b}} 
+\index{Position\+Class@{Position\+Class}!m\+\_\+upward\+Speed@{m\+\_\+upward\+Speed}}
+\index{m\+\_\+upward\+Speed@{m\+\_\+upward\+Speed}!Position\+Class@{Position\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+upward\+Speed}{m\_upwardSpeed}}
+{\footnotesize\ttfamily float Position\+Class\+::m\+\_\+upward\+Speed\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_position_class_8h}{Position\+Class.\+h}\item 
+\hyperlink{_position_class_8cpp}{Position\+Class.\+cpp}\end{DoxyCompactItemize}

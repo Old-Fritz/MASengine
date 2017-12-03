@@ -1,0 +1,453 @@
+\hypertarget{class_input_class}{}\section{Input\+Class Class Reference}
+\label{class_input_class}\index{Input\+Class@{Input\+Class}}
+
+
+{\ttfamily \#include $<$Input\+Class.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_input_class_a5bdb6c4005f53a1e7da0cf5d520c96c1}{Input\+Class} ()
+\item 
+\hyperlink{class_input_class_a90666acaee782bd2f19f09053d3a4f8b}{Input\+Class} (const \hyperlink{class_input_class}{Input\+Class} \&)
+\item 
+\hyperlink{class_input_class_a861f917dd9d8148175570da894131c14}{$\sim$\+Input\+Class} ()
+\item 
+bool \hyperlink{class_input_class_a6ced28e35340b1bf5d8bdca393516a29}{Initialize} (H\+I\+N\+S\+T\+A\+N\+CE hinstance, H\+W\+ND hwnd)
+\begin{DoxyCompactList}\small\item\em Инициализация класса \end{DoxyCompactList}\item 
+void \hyperlink{class_input_class_adf350e0bf594df0c34cd995b799b5eee}{Shutdown} ()
+\item 
+bool \hyperlink{class_input_class_a5c5cec23229834dc6627e211bb1f59cb}{Frame} ()
+\begin{DoxyCompactList}\small\item\em Покадровое считывание данных с устройств ввода \end{DoxyCompactList}\item 
+bool \hyperlink{class_input_class_afdb28f06d2d6fb17e16e9b51a8237fed}{Is\+Escape\+Pressed} ()
+\begin{DoxyCompactList}\small\item\em Проверка на нажатие esc. \end{DoxyCompactList}\item 
+void \hyperlink{class_input_class_a447bd4da31fb87f8ce2dc964449a3566}{Get\+Mouse\+Location} (int \&mouseX, int \&mouseY)
+\begin{DoxyCompactList}\small\item\em Получение позиции курсора \end{DoxyCompactList}\item 
+unsigned char $\ast$ \hyperlink{class_input_class_ae197c072cb2056b75793f9d21be97787}{Get\+Keyboard\+State} ()
+\begin{DoxyCompactList}\small\item\em Получение состояния клавиатуры \end{DoxyCompactList}\item 
+void \hyperlink{class_input_class_a43d122fa4e954bd81ff46d5d7961da32}{set\+Pick\+Command} (int but\+Num, const std\+::string \&command)
+\begin{DoxyCompactList}\small\item\em Изменение команды, выполняемой при нажатии на кнопку \end{DoxyCompactList}\item 
+void \hyperlink{class_input_class_afbfa97735bac9adac4f70f9ddf02eed5}{set\+Un\+Pick\+Command} (int but\+Num, const std\+::string \&command)
+\begin{DoxyCompactList}\small\item\em Изменение команды, выполняемой при отпускании кнопки \end{DoxyCompactList}\item 
+void \hyperlink{class_input_class_ac1731c7de884d6fd26b2a56f1117ba7a}{set\+Up\+Wheel\+Command} (const std\+::string \&command)
+\begin{DoxyCompactList}\small\item\em Изменение команды, выполняемой при повороте колеса мыши вверх \end{DoxyCompactList}\item 
+void \hyperlink{class_input_class_a1abf408475290b47e68b438d2fc3f840}{set\+Down\+Wheel\+Command} (const std\+::string \&command)
+\begin{DoxyCompactList}\small\item\em Изменение команды, выполняемой при повороте колеса мыши вниз \end{DoxyCompactList}\item 
+bool \hyperlink{class_input_class_a39a7f997cbdd609f4bfcdd96444c585e}{Is\+Left\+Mouse\+Button\+Down} ()
+\begin{DoxyCompactList}\small\item\em Проверка на нажатие лкм \end{DoxyCompactList}\item 
+bool \hyperlink{class_input_class_a70052a24e82456ba33b38a41851e030b}{Is\+Middle\+Mouse\+Button\+Down} ()
+\begin{DoxyCompactList}\small\item\em Проверка на нажатие скм \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_input_class_ae7280f9f29e4638b3a031548913f05ea}{Read\+Keyboard} ()
+\begin{DoxyCompactList}\small\item\em Прочитать данные с клавиатуры \end{DoxyCompactList}\item 
+bool \hyperlink{class_input_class_ab15b53b43aef926cb37dbbefee25dc5e}{Read\+Mouse} ()
+\begin{DoxyCompactList}\small\item\em Прочитать данные с мыши \end{DoxyCompactList}\item 
+void \hyperlink{class_input_class_a60e882f90d3028cde15caa0ee39df7e7}{Process\+Input} ()
+\begin{DoxyCompactList}\small\item\em Расчитать позицию курсора \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+I\+Direct\+Input8 $\ast$ \hyperlink{class_input_class_ae46114e00a43f1d7e4c8a3c3e0166d58}{m\+\_\+direct\+Input}
+\begin{DoxyCompactList}\small\item\em Класс ввода от directx. \end{DoxyCompactList}\item 
+I\+Direct\+Input\+Device8 $\ast$ \hyperlink{class_input_class_ae46f5bf1888ae6b081790296f593b8a9}{m\+\_\+keyboard}
+\begin{DoxyCompactList}\small\item\em Класс управления клавиатурой от directx. \end{DoxyCompactList}\item 
+I\+Direct\+Input\+Device8 $\ast$ \hyperlink{class_input_class_a44789cd3a335ec6dfed8d0a43d817fa7}{m\+\_\+mouse}
+\begin{DoxyCompactList}\small\item\em Класс управления мышью от directx. \end{DoxyCompactList}\item 
+unsigned char \hyperlink{class_input_class_a610f4d5c886d009b4591b73746bc6307}{m\+\_\+keyboard\+State} \mbox{[}256\mbox{]}
+\begin{DoxyCompactList}\small\item\em Текущее состояние клавиатуры \end{DoxyCompactList}\item 
+unsigned char \hyperlink{class_input_class_a1dd991dc90cd8a2c200273776198ec42}{m\+\_\+last\+Keyboard\+State} \mbox{[}256\mbox{]}
+\begin{DoxyCompactList}\small\item\em Прошлое состояние клавиатуры \end{DoxyCompactList}\item 
+D\+I\+M\+O\+U\+S\+E\+S\+T\+A\+TE \hyperlink{class_input_class_addf19105e308be4cfddd626ddf24ac1c}{m\+\_\+last\+Mouse\+State}
+\item 
+D\+I\+M\+O\+U\+S\+E\+S\+T\+A\+TE \hyperlink{class_input_class_a00ef77a110a2bfe97ff90bf72f42e81a}{m\+\_\+mouse\+State}
+\begin{DoxyCompactList}\small\item\em Прошлое состояние мыши \end{DoxyCompactList}\item 
+std\+::string \hyperlink{class_input_class_a6345bf3d141b9092bfbad05449ca0859}{m\+\_\+pick\+Commands\+Names} \mbox{[}259\mbox{]}
+\begin{DoxyCompactList}\small\item\em Имена комманд для нажатия для каждой кнопки \end{DoxyCompactList}\item 
+std\+::string \hyperlink{class_input_class_a834ce66d4c8c80df12d7a8070d4aab2a}{m\+\_\+un\+Pick\+Commands\+Names} \mbox{[}259\mbox{]}
+\begin{DoxyCompactList}\small\item\em Имена комманд для отпуска для каждой кнопки \end{DoxyCompactList}\item 
+std\+::string \hyperlink{class_input_class_a636e5eea20ce8e5bf9851f9cbcd19cc4}{m\+\_\+up\+Wheel\+Command}
+\begin{DoxyCompactList}\small\item\em Комманда для прокрутки колеса мыши вверх \end{DoxyCompactList}\item 
+std\+::string \hyperlink{class_input_class_a0516cd35aa419204c0beca88e0cb3e3e}{m\+\_\+down\+Wheel\+Command}
+\begin{DoxyCompactList}\small\item\em Комманда для прокрутки колеса мыши вниз \end{DoxyCompactList}\item 
+\hyperlink{class_path_class}{Path\+Class} $\ast$ \hyperlink{class_input_class_a766a94a9e69d9f18b967b37a54ae5365}{m\+\_\+commands\+File\+Name}
+\begin{DoxyCompactList}\small\item\em Файл с кодом комманд \end{DoxyCompactList}\item 
+int \hyperlink{class_input_class_a9066eae901d347df0c15d954d1c772db}{m\+\_\+mouseX}
+\item 
+int \hyperlink{class_input_class_a81ccc085f069fe97e28fbbb9bc9b3b22}{m\+\_\+mouseY}
+\begin{DoxyCompactList}\small\item\em Положение курсора \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Обработка ввода 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_input_class_a5bdb6c4005f53a1e7da0cf5d520c96c1}\label{class_input_class_a5bdb6c4005f53a1e7da0cf5d520c96c1}} 
+\index{Input\+Class@{Input\+Class}!Input\+Class@{Input\+Class}}
+\index{Input\+Class@{Input\+Class}!Input\+Class@{Input\+Class}}
+\subsubsection{\texorpdfstring{Input\+Class()}{InputClass()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Input\+Class\+::\+Input\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_input_class_a90666acaee782bd2f19f09053d3a4f8b}\label{class_input_class_a90666acaee782bd2f19f09053d3a4f8b}} 
+\index{Input\+Class@{Input\+Class}!Input\+Class@{Input\+Class}}
+\index{Input\+Class@{Input\+Class}!Input\+Class@{Input\+Class}}
+\subsubsection{\texorpdfstring{Input\+Class()}{InputClass()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Input\+Class\+::\+Input\+Class (\begin{DoxyParamCaption}\item[{const \hyperlink{class_input_class}{Input\+Class} \&}]{other }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_input_class_a861f917dd9d8148175570da894131c14}\label{class_input_class_a861f917dd9d8148175570da894131c14}} 
+\index{Input\+Class@{Input\+Class}!````~Input\+Class@{$\sim$\+Input\+Class}}
+\index{````~Input\+Class@{$\sim$\+Input\+Class}!Input\+Class@{Input\+Class}}
+\subsubsection{\texorpdfstring{$\sim$\+Input\+Class()}{~InputClass()}}
+{\footnotesize\ttfamily Input\+Class\+::$\sim$\+Input\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_input_class_a5c5cec23229834dc6627e211bb1f59cb}\label{class_input_class_a5c5cec23229834dc6627e211bb1f59cb}} 
+\index{Input\+Class@{Input\+Class}!Frame@{Frame}}
+\index{Frame@{Frame}!Input\+Class@{Input\+Class}}
+\subsubsection{\texorpdfstring{Frame()}{Frame()}}
+{\footnotesize\ttfamily bool Input\+Class\+::\+Frame (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Покадровое считывание данных с устройств ввода 
+
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_input_class_ae197c072cb2056b75793f9d21be97787}\label{class_input_class_ae197c072cb2056b75793f9d21be97787}} 
+\index{Input\+Class@{Input\+Class}!Get\+Keyboard\+State@{Get\+Keyboard\+State}}
+\index{Get\+Keyboard\+State@{Get\+Keyboard\+State}!Input\+Class@{Input\+Class}}
+\subsubsection{\texorpdfstring{Get\+Keyboard\+State()}{GetKeyboardState()}}
+{\footnotesize\ttfamily unsigned char $\ast$ Input\+Class\+::\+Get\+Keyboard\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Получение состояния клавиатуры 
+
+\begin{DoxyReturn}{Returns}
+массив символов, размер которого равен числу кнопок. Ели символ -\/ 0, то кнопка не нажата, иначе если 1, то нажата 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_input_class_a447bd4da31fb87f8ce2dc964449a3566}\label{class_input_class_a447bd4da31fb87f8ce2dc964449a3566}} 
+\index{Input\+Class@{Input\+Class}!Get\+Mouse\+Location@{Get\+Mouse\+Location}}
+\index{Get\+Mouse\+Location@{Get\+Mouse\+Location}!Input\+Class@{Input\+Class}}
+\subsubsection{\texorpdfstring{Get\+Mouse\+Location()}{GetMouseLocation()}}
+{\footnotesize\ttfamily void Input\+Class\+::\+Get\+Mouse\+Location (\begin{DoxyParamCaption}\item[{int \&}]{mouseX,  }\item[{int \&}]{mouseY }\end{DoxyParamCaption})}
+
+
+
+Получение позиции курсора 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em mouseX,mouseY} & -\/ позиция курсора \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_input_class_a6ced28e35340b1bf5d8bdca393516a29}\label{class_input_class_a6ced28e35340b1bf5d8bdca393516a29}} 
+\index{Input\+Class@{Input\+Class}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!Input\+Class@{Input\+Class}}
+\subsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily bool Input\+Class\+::\+Initialize (\begin{DoxyParamCaption}\item[{H\+I\+N\+S\+T\+A\+N\+CE}]{hinstance,  }\item[{H\+W\+ND}]{hwnd }\end{DoxyParamCaption})}
+
+
+
+Инициализация класса 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em hinstance} & -\/ текущий процесс \\
+\hline
+\mbox{\tt in}  & {\em hwnd} & -\/ текущее окно \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_input_class_afdb28f06d2d6fb17e16e9b51a8237fed}\label{class_input_class_afdb28f06d2d6fb17e16e9b51a8237fed}} 
+\index{Input\+Class@{Input\+Class}!Is\+Escape\+Pressed@{Is\+Escape\+Pressed}}
+\index{Is\+Escape\+Pressed@{Is\+Escape\+Pressed}!Input\+Class@{Input\+Class}}
+\subsubsection{\texorpdfstring{Is\+Escape\+Pressed()}{IsEscapePressed()}}
+{\footnotesize\ttfamily bool Input\+Class\+::\+Is\+Escape\+Pressed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Проверка на нажатие esc. 
+
+\begin{DoxyReturn}{Returns}
+false, если esc не нажата, true, если нажата 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_input_class_a39a7f997cbdd609f4bfcdd96444c585e}\label{class_input_class_a39a7f997cbdd609f4bfcdd96444c585e}} 
+\index{Input\+Class@{Input\+Class}!Is\+Left\+Mouse\+Button\+Down@{Is\+Left\+Mouse\+Button\+Down}}
+\index{Is\+Left\+Mouse\+Button\+Down@{Is\+Left\+Mouse\+Button\+Down}!Input\+Class@{Input\+Class}}
+\subsubsection{\texorpdfstring{Is\+Left\+Mouse\+Button\+Down()}{IsLeftMouseButtonDown()}}
+{\footnotesize\ttfamily bool Input\+Class\+::\+Is\+Left\+Mouse\+Button\+Down (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Проверка на нажатие лкм 
+
+\begin{DoxyReturn}{Returns}
+false, если лкм не нажата, true, если нажата 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_input_class_a70052a24e82456ba33b38a41851e030b}\label{class_input_class_a70052a24e82456ba33b38a41851e030b}} 
+\index{Input\+Class@{Input\+Class}!Is\+Middle\+Mouse\+Button\+Down@{Is\+Middle\+Mouse\+Button\+Down}}
+\index{Is\+Middle\+Mouse\+Button\+Down@{Is\+Middle\+Mouse\+Button\+Down}!Input\+Class@{Input\+Class}}
+\subsubsection{\texorpdfstring{Is\+Middle\+Mouse\+Button\+Down()}{IsMiddleMouseButtonDown()}}
+{\footnotesize\ttfamily bool Input\+Class\+::\+Is\+Middle\+Mouse\+Button\+Down (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Проверка на нажатие скм 
+
+\begin{DoxyReturn}{Returns}
+false, если скм не нажата, true, если нажата 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_input_class_a60e882f90d3028cde15caa0ee39df7e7}\label{class_input_class_a60e882f90d3028cde15caa0ee39df7e7}} 
+\index{Input\+Class@{Input\+Class}!Process\+Input@{Process\+Input}}
+\index{Process\+Input@{Process\+Input}!Input\+Class@{Input\+Class}}
+\subsubsection{\texorpdfstring{Process\+Input()}{ProcessInput()}}
+{\footnotesize\ttfamily void Input\+Class\+::\+Process\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Расчитать позицию курсора 
+
+\mbox{\Hypertarget{class_input_class_ae7280f9f29e4638b3a031548913f05ea}\label{class_input_class_ae7280f9f29e4638b3a031548913f05ea}} 
+\index{Input\+Class@{Input\+Class}!Read\+Keyboard@{Read\+Keyboard}}
+\index{Read\+Keyboard@{Read\+Keyboard}!Input\+Class@{Input\+Class}}
+\subsubsection{\texorpdfstring{Read\+Keyboard()}{ReadKeyboard()}}
+{\footnotesize\ttfamily bool Input\+Class\+::\+Read\+Keyboard (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Прочитать данные с клавиатуры 
+
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_input_class_ab15b53b43aef926cb37dbbefee25dc5e}\label{class_input_class_ab15b53b43aef926cb37dbbefee25dc5e}} 
+\index{Input\+Class@{Input\+Class}!Read\+Mouse@{Read\+Mouse}}
+\index{Read\+Mouse@{Read\+Mouse}!Input\+Class@{Input\+Class}}
+\subsubsection{\texorpdfstring{Read\+Mouse()}{ReadMouse()}}
+{\footnotesize\ttfamily bool Input\+Class\+::\+Read\+Mouse (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Прочитать данные с мыши 
+
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_input_class_a1abf408475290b47e68b438d2fc3f840}\label{class_input_class_a1abf408475290b47e68b438d2fc3f840}} 
+\index{Input\+Class@{Input\+Class}!set\+Down\+Wheel\+Command@{set\+Down\+Wheel\+Command}}
+\index{set\+Down\+Wheel\+Command@{set\+Down\+Wheel\+Command}!Input\+Class@{Input\+Class}}
+\subsubsection{\texorpdfstring{set\+Down\+Wheel\+Command()}{setDownWheelCommand()}}
+{\footnotesize\ttfamily void Input\+Class\+::set\+Down\+Wheel\+Command (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{command }\end{DoxyParamCaption})}
+
+
+
+Изменение команды, выполняемой при повороте колеса мыши вниз 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em command} & -\/ имя новой команды \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_input_class_a43d122fa4e954bd81ff46d5d7961da32}\label{class_input_class_a43d122fa4e954bd81ff46d5d7961da32}} 
+\index{Input\+Class@{Input\+Class}!set\+Pick\+Command@{set\+Pick\+Command}}
+\index{set\+Pick\+Command@{set\+Pick\+Command}!Input\+Class@{Input\+Class}}
+\subsubsection{\texorpdfstring{set\+Pick\+Command()}{setPickCommand()}}
+{\footnotesize\ttfamily void Input\+Class\+::set\+Pick\+Command (\begin{DoxyParamCaption}\item[{int}]{but\+Num,  }\item[{const std\+::string \&}]{command }\end{DoxyParamCaption})}
+
+
+
+Изменение команды, выполняемой при нажатии на кнопку 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em but\+Num} & -\/ номер кнопки \\
+\hline
+\mbox{\tt in}  & {\em command} & -\/ имя новой команды \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_input_class_afbfa97735bac9adac4f70f9ddf02eed5}\label{class_input_class_afbfa97735bac9adac4f70f9ddf02eed5}} 
+\index{Input\+Class@{Input\+Class}!set\+Un\+Pick\+Command@{set\+Un\+Pick\+Command}}
+\index{set\+Un\+Pick\+Command@{set\+Un\+Pick\+Command}!Input\+Class@{Input\+Class}}
+\subsubsection{\texorpdfstring{set\+Un\+Pick\+Command()}{setUnPickCommand()}}
+{\footnotesize\ttfamily void Input\+Class\+::set\+Un\+Pick\+Command (\begin{DoxyParamCaption}\item[{int}]{but\+Num,  }\item[{const std\+::string \&}]{command }\end{DoxyParamCaption})}
+
+
+
+Изменение команды, выполняемой при отпускании кнопки 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em but\+Num} & -\/ номер кнопки \\
+\hline
+\mbox{\tt in}  & {\em command} & -\/ имя новой команды \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_input_class_ac1731c7de884d6fd26b2a56f1117ba7a}\label{class_input_class_ac1731c7de884d6fd26b2a56f1117ba7a}} 
+\index{Input\+Class@{Input\+Class}!set\+Up\+Wheel\+Command@{set\+Up\+Wheel\+Command}}
+\index{set\+Up\+Wheel\+Command@{set\+Up\+Wheel\+Command}!Input\+Class@{Input\+Class}}
+\subsubsection{\texorpdfstring{set\+Up\+Wheel\+Command()}{setUpWheelCommand()}}
+{\footnotesize\ttfamily void Input\+Class\+::set\+Up\+Wheel\+Command (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{command }\end{DoxyParamCaption})}
+
+
+
+Изменение команды, выполняемой при повороте колеса мыши вверх 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em command} & -\/ имя новой команды \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_input_class_adf350e0bf594df0c34cd995b799b5eee}\label{class_input_class_adf350e0bf594df0c34cd995b799b5eee}} 
+\index{Input\+Class@{Input\+Class}!Shutdown@{Shutdown}}
+\index{Shutdown@{Shutdown}!Input\+Class@{Input\+Class}}
+\subsubsection{\texorpdfstring{Shutdown()}{Shutdown()}}
+{\footnotesize\ttfamily void Input\+Class\+::\+Shutdown (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_input_class_a766a94a9e69d9f18b967b37a54ae5365}\label{class_input_class_a766a94a9e69d9f18b967b37a54ae5365}} 
+\index{Input\+Class@{Input\+Class}!m\+\_\+commands\+File\+Name@{m\+\_\+commands\+File\+Name}}
+\index{m\+\_\+commands\+File\+Name@{m\+\_\+commands\+File\+Name}!Input\+Class@{Input\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+commands\+File\+Name}{m\_commandsFileName}}
+{\footnotesize\ttfamily \hyperlink{class_path_class}{Path\+Class}$\ast$ Input\+Class\+::m\+\_\+commands\+File\+Name\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Файл с кодом комманд 
+
+\mbox{\Hypertarget{class_input_class_ae46114e00a43f1d7e4c8a3c3e0166d58}\label{class_input_class_ae46114e00a43f1d7e4c8a3c3e0166d58}} 
+\index{Input\+Class@{Input\+Class}!m\+\_\+direct\+Input@{m\+\_\+direct\+Input}}
+\index{m\+\_\+direct\+Input@{m\+\_\+direct\+Input}!Input\+Class@{Input\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+direct\+Input}{m\_directInput}}
+{\footnotesize\ttfamily I\+Direct\+Input8$\ast$ Input\+Class\+::m\+\_\+direct\+Input\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Класс ввода от directx. 
+
+\mbox{\Hypertarget{class_input_class_a0516cd35aa419204c0beca88e0cb3e3e}\label{class_input_class_a0516cd35aa419204c0beca88e0cb3e3e}} 
+\index{Input\+Class@{Input\+Class}!m\+\_\+down\+Wheel\+Command@{m\+\_\+down\+Wheel\+Command}}
+\index{m\+\_\+down\+Wheel\+Command@{m\+\_\+down\+Wheel\+Command}!Input\+Class@{Input\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+down\+Wheel\+Command}{m\_downWheelCommand}}
+{\footnotesize\ttfamily std\+::string Input\+Class\+::m\+\_\+down\+Wheel\+Command\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Комманда для прокрутки колеса мыши вниз 
+
+\mbox{\Hypertarget{class_input_class_ae46f5bf1888ae6b081790296f593b8a9}\label{class_input_class_ae46f5bf1888ae6b081790296f593b8a9}} 
+\index{Input\+Class@{Input\+Class}!m\+\_\+keyboard@{m\+\_\+keyboard}}
+\index{m\+\_\+keyboard@{m\+\_\+keyboard}!Input\+Class@{Input\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+keyboard}{m\_keyboard}}
+{\footnotesize\ttfamily I\+Direct\+Input\+Device8$\ast$ Input\+Class\+::m\+\_\+keyboard\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Класс управления клавиатурой от directx. 
+
+\mbox{\Hypertarget{class_input_class_a610f4d5c886d009b4591b73746bc6307}\label{class_input_class_a610f4d5c886d009b4591b73746bc6307}} 
+\index{Input\+Class@{Input\+Class}!m\+\_\+keyboard\+State@{m\+\_\+keyboard\+State}}
+\index{m\+\_\+keyboard\+State@{m\+\_\+keyboard\+State}!Input\+Class@{Input\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+keyboard\+State}{m\_keyboardState}}
+{\footnotesize\ttfamily unsigned char Input\+Class\+::m\+\_\+keyboard\+State\mbox{[}256\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Текущее состояние клавиатуры 
+
+\mbox{\Hypertarget{class_input_class_a1dd991dc90cd8a2c200273776198ec42}\label{class_input_class_a1dd991dc90cd8a2c200273776198ec42}} 
+\index{Input\+Class@{Input\+Class}!m\+\_\+last\+Keyboard\+State@{m\+\_\+last\+Keyboard\+State}}
+\index{m\+\_\+last\+Keyboard\+State@{m\+\_\+last\+Keyboard\+State}!Input\+Class@{Input\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+last\+Keyboard\+State}{m\_lastKeyboardState}}
+{\footnotesize\ttfamily unsigned char Input\+Class\+::m\+\_\+last\+Keyboard\+State\mbox{[}256\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Прошлое состояние клавиатуры 
+
+\mbox{\Hypertarget{class_input_class_addf19105e308be4cfddd626ddf24ac1c}\label{class_input_class_addf19105e308be4cfddd626ddf24ac1c}} 
+\index{Input\+Class@{Input\+Class}!m\+\_\+last\+Mouse\+State@{m\+\_\+last\+Mouse\+State}}
+\index{m\+\_\+last\+Mouse\+State@{m\+\_\+last\+Mouse\+State}!Input\+Class@{Input\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+last\+Mouse\+State}{m\_lastMouseState}}
+{\footnotesize\ttfamily D\+I\+M\+O\+U\+S\+E\+S\+T\+A\+TE Input\+Class\+::m\+\_\+last\+Mouse\+State\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_input_class_a44789cd3a335ec6dfed8d0a43d817fa7}\label{class_input_class_a44789cd3a335ec6dfed8d0a43d817fa7}} 
+\index{Input\+Class@{Input\+Class}!m\+\_\+mouse@{m\+\_\+mouse}}
+\index{m\+\_\+mouse@{m\+\_\+mouse}!Input\+Class@{Input\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+mouse}{m\_mouse}}
+{\footnotesize\ttfamily I\+Direct\+Input\+Device8$\ast$ Input\+Class\+::m\+\_\+mouse\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Класс управления мышью от directx. 
+
+\mbox{\Hypertarget{class_input_class_a00ef77a110a2bfe97ff90bf72f42e81a}\label{class_input_class_a00ef77a110a2bfe97ff90bf72f42e81a}} 
+\index{Input\+Class@{Input\+Class}!m\+\_\+mouse\+State@{m\+\_\+mouse\+State}}
+\index{m\+\_\+mouse\+State@{m\+\_\+mouse\+State}!Input\+Class@{Input\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+mouse\+State}{m\_mouseState}}
+{\footnotesize\ttfamily D\+I\+M\+O\+U\+S\+E\+S\+T\+A\+TE Input\+Class\+::m\+\_\+mouse\+State\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Прошлое состояние мыши 
+
+Текущее состояние мыши \mbox{\Hypertarget{class_input_class_a9066eae901d347df0c15d954d1c772db}\label{class_input_class_a9066eae901d347df0c15d954d1c772db}} 
+\index{Input\+Class@{Input\+Class}!m\+\_\+mouseX@{m\+\_\+mouseX}}
+\index{m\+\_\+mouseX@{m\+\_\+mouseX}!Input\+Class@{Input\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+mouseX}{m\_mouseX}}
+{\footnotesize\ttfamily int Input\+Class\+::m\+\_\+mouseX\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_input_class_a81ccc085f069fe97e28fbbb9bc9b3b22}\label{class_input_class_a81ccc085f069fe97e28fbbb9bc9b3b22}} 
+\index{Input\+Class@{Input\+Class}!m\+\_\+mouseY@{m\+\_\+mouseY}}
+\index{m\+\_\+mouseY@{m\+\_\+mouseY}!Input\+Class@{Input\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+mouseY}{m\_mouseY}}
+{\footnotesize\ttfamily int Input\+Class\+::m\+\_\+mouseY\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Положение курсора 
+
+\mbox{\Hypertarget{class_input_class_a6345bf3d141b9092bfbad05449ca0859}\label{class_input_class_a6345bf3d141b9092bfbad05449ca0859}} 
+\index{Input\+Class@{Input\+Class}!m\+\_\+pick\+Commands\+Names@{m\+\_\+pick\+Commands\+Names}}
+\index{m\+\_\+pick\+Commands\+Names@{m\+\_\+pick\+Commands\+Names}!Input\+Class@{Input\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+pick\+Commands\+Names}{m\_pickCommandsNames}}
+{\footnotesize\ttfamily std\+::string Input\+Class\+::m\+\_\+pick\+Commands\+Names\mbox{[}259\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Имена комманд для нажатия для каждой кнопки 
+
+\mbox{\Hypertarget{class_input_class_a834ce66d4c8c80df12d7a8070d4aab2a}\label{class_input_class_a834ce66d4c8c80df12d7a8070d4aab2a}} 
+\index{Input\+Class@{Input\+Class}!m\+\_\+un\+Pick\+Commands\+Names@{m\+\_\+un\+Pick\+Commands\+Names}}
+\index{m\+\_\+un\+Pick\+Commands\+Names@{m\+\_\+un\+Pick\+Commands\+Names}!Input\+Class@{Input\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+un\+Pick\+Commands\+Names}{m\_unPickCommandsNames}}
+{\footnotesize\ttfamily std\+::string Input\+Class\+::m\+\_\+un\+Pick\+Commands\+Names\mbox{[}259\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Имена комманд для отпуска для каждой кнопки 
+
+\mbox{\Hypertarget{class_input_class_a636e5eea20ce8e5bf9851f9cbcd19cc4}\label{class_input_class_a636e5eea20ce8e5bf9851f9cbcd19cc4}} 
+\index{Input\+Class@{Input\+Class}!m\+\_\+up\+Wheel\+Command@{m\+\_\+up\+Wheel\+Command}}
+\index{m\+\_\+up\+Wheel\+Command@{m\+\_\+up\+Wheel\+Command}!Input\+Class@{Input\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+up\+Wheel\+Command}{m\_upWheelCommand}}
+{\footnotesize\ttfamily std\+::string Input\+Class\+::m\+\_\+up\+Wheel\+Command\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Комманда для прокрутки колеса мыши вверх 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_input_class_8h}{Input\+Class.\+h}\item 
+\hyperlink{_input_class_8cpp}{Input\+Class.\+cpp}\end{DoxyCompactItemize}

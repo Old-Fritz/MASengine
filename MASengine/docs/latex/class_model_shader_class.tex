@@ -1,0 +1,302 @@
+\hypertarget{class_model_shader_class}{}\section{Model\+Shader\+Class Class Reference}
+\label{class_model_shader_class}\index{Model\+Shader\+Class@{Model\+Shader\+Class}}
+
+
+{\ttfamily \#include $<$Model\+Shader\+Class.\+h$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_model_shader_class_1_1_matrix_buffer_type}{Matrix\+Buffer\+Type}
+\begin{DoxyCompactList}\small\item\em Тип матричного буфера \end{DoxyCompactList}\item 
+struct \hyperlink{struct_model_shader_class_1_1_params_buffer_type}{Params\+Buffer\+Type}
+\begin{DoxyCompactList}\small\item\em Тип параметрического буфера \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_model_shader_class_acf6dec65a8a8678a47e51b538ba48bb5}{Model\+Shader\+Class} ()
+\item 
+\hyperlink{class_model_shader_class_ab8cd7cdc75f235d76b1333a71d34999f}{Model\+Shader\+Class} (const \hyperlink{class_model_shader_class}{Model\+Shader\+Class} \&)
+\item 
+\hyperlink{class_model_shader_class_a0fc46a27cc0efb0c55cf6e44d7104d7d}{$\sim$\+Model\+Shader\+Class} ()
+\item 
+bool \hyperlink{class_model_shader_class_a0389c116d147ff39db92f0abb0660a16}{Initialize} (I\+D3\+D11\+Device $\ast$device, H\+W\+ND hwnd, \hyperlink{class_path_class}{Path\+Class} $\ast$filename\+VS, \hyperlink{class_path_class}{Path\+Class} $\ast$filename\+PS)
+\item 
+void \hyperlink{class_model_shader_class_a36bbd82766c9b415c0ea14309ba82876}{Shutdown} ()
+\item 
+bool \hyperlink{class_model_shader_class_a54685860c5bd9f843f11230f225fe42b}{Render} (I\+D3\+D11\+Device\+Context $\ast$device\+Context, int index\+Count, D3\+D\+X\+M\+A\+T\+R\+IX world\+Matrix, D3\+D\+X\+M\+A\+T\+R\+IX view\+Matrix, D3\+D\+X\+M\+A\+T\+R\+IX projection\+Matrix, I\+D3\+D11\+Shader\+Resource\+View $\ast$texture, D3\+D\+X\+V\+E\+C\+T\+O\+R3 light\+Direction, D3\+D\+X\+V\+E\+C\+T\+O\+R4 ambient\+Color, D3\+D\+X\+V\+E\+C\+T\+O\+R4 diffuse\+Color, D3\+D\+X\+V\+E\+C\+T\+O\+R3 camera\+Position, D3\+D\+X\+V\+E\+C\+T\+O\+R4 specular\+Color, float specular\+Power)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_model_shader_class_ac0848d724234e07aee2f9ee713839ad2}{Initialize\+Shader} (I\+D3\+D11\+Device $\ast$device, H\+W\+ND hwnd, const W\+C\+H\+AR $\ast$vs\+Filename, const W\+C\+H\+AR $\ast$ps\+Filename)
+\item 
+void \hyperlink{class_model_shader_class_a7a8d03ca2f55a8032ad02e648c2587a3}{Shutdown\+Shader} ()
+\item 
+void \hyperlink{class_model_shader_class_a4152702fb1740e700c9ad97e82ab3739}{Output\+Shader\+Error\+Message} (I\+D3\+D10\+Blob $\ast$error\+Message, H\+W\+ND hwnd, const W\+C\+H\+AR $\ast$shader\+Filename)
+\begin{DoxyCompactList}\small\item\em Вывести сообщение об ошибке \end{DoxyCompactList}\item 
+bool \hyperlink{class_model_shader_class_a381f4da444ab26ae37d383580e3528c5}{Set\+Shader\+Parameters} (I\+D3\+D11\+Device\+Context $\ast$device\+Context, D3\+D\+X\+M\+A\+T\+R\+IX world\+Matrix, D3\+D\+X\+M\+A\+T\+R\+IX view\+Matrix, D3\+D\+X\+M\+A\+T\+R\+IX projection\+Matrix, I\+D3\+D11\+Shader\+Resource\+View $\ast$texture, D3\+D\+X\+V\+E\+C\+T\+O\+R3 light\+Direction, D3\+D\+X\+V\+E\+C\+T\+O\+R4 ambient\+Color, D3\+D\+X\+V\+E\+C\+T\+O\+R4 diffuse\+Color, D3\+D\+X\+V\+E\+C\+T\+O\+R3 camera\+Position, D3\+D\+X\+V\+E\+C\+T\+O\+R4 specular\+Color, float specular\+Power)
+\item 
+void \hyperlink{class_model_shader_class_a7831409d29e5923e090255d2b2c080c2}{Render\+Shader} (I\+D3\+D11\+Device\+Context $\ast$device\+Context, int index\+Count)
+\begin{DoxyCompactList}\small\item\em Выполнение шейдера \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+I\+D3\+D11\+Vertex\+Shader $\ast$ \hyperlink{class_model_shader_class_a777f211c55c31fee5facf4b579856de3}{m\+\_\+vertex\+Shader}
+\begin{DoxyCompactList}\small\item\em Вершинный шейдер \end{DoxyCompactList}\item 
+I\+D3\+D11\+Pixel\+Shader $\ast$ \hyperlink{class_model_shader_class_a98386d05b75e06bcc4671f16d413d2a4}{m\+\_\+pixel\+Shader}
+\begin{DoxyCompactList}\small\item\em Пиксельный шейдер \end{DoxyCompactList}\item 
+I\+D3\+D11\+Input\+Layout $\ast$ \hyperlink{class_model_shader_class_a6a8a3d9e47108b1e3953a5b981d15b66}{m\+\_\+layout}
+\begin{DoxyCompactList}\small\item\em Макет \end{DoxyCompactList}\item 
+I\+D3\+D11\+Buffer $\ast$ \hyperlink{class_model_shader_class_a0ea5fc7202be41bb166cac94653e0b9f}{m\+\_\+matrix\+Buffer}
+\begin{DoxyCompactList}\small\item\em Матричный буфер \end{DoxyCompactList}\item 
+I\+D3\+D11\+Buffer $\ast$ \hyperlink{class_model_shader_class_a86d885b139c1675798d1e61372f30daa}{m\+\_\+params\+Buffer}
+\begin{DoxyCompactList}\small\item\em Параментрический буфер \end{DoxyCompactList}\item 
+I\+D3\+D11\+Sampler\+State $\ast$ \hyperlink{class_model_shader_class_a6b6ed136ba9c1252d21bcac7100f431b}{m\+\_\+sample\+State}
+\begin{DoxyCompactList}\small\item\em Образцовая форма \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Шейдер моделей 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_model_shader_class_acf6dec65a8a8678a47e51b538ba48bb5}\label{class_model_shader_class_acf6dec65a8a8678a47e51b538ba48bb5}} 
+\index{Model\+Shader\+Class@{Model\+Shader\+Class}!Model\+Shader\+Class@{Model\+Shader\+Class}}
+\index{Model\+Shader\+Class@{Model\+Shader\+Class}!Model\+Shader\+Class@{Model\+Shader\+Class}}
+\subsubsection{\texorpdfstring{Model\+Shader\+Class()}{ModelShaderClass()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Model\+Shader\+Class\+::\+Model\+Shader\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_model_shader_class_ab8cd7cdc75f235d76b1333a71d34999f}\label{class_model_shader_class_ab8cd7cdc75f235d76b1333a71d34999f}} 
+\index{Model\+Shader\+Class@{Model\+Shader\+Class}!Model\+Shader\+Class@{Model\+Shader\+Class}}
+\index{Model\+Shader\+Class@{Model\+Shader\+Class}!Model\+Shader\+Class@{Model\+Shader\+Class}}
+\subsubsection{\texorpdfstring{Model\+Shader\+Class()}{ModelShaderClass()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Model\+Shader\+Class\+::\+Model\+Shader\+Class (\begin{DoxyParamCaption}\item[{const \hyperlink{class_model_shader_class}{Model\+Shader\+Class} \&}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_model_shader_class_a0fc46a27cc0efb0c55cf6e44d7104d7d}\label{class_model_shader_class_a0fc46a27cc0efb0c55cf6e44d7104d7d}} 
+\index{Model\+Shader\+Class@{Model\+Shader\+Class}!````~Model\+Shader\+Class@{$\sim$\+Model\+Shader\+Class}}
+\index{````~Model\+Shader\+Class@{$\sim$\+Model\+Shader\+Class}!Model\+Shader\+Class@{Model\+Shader\+Class}}
+\subsubsection{\texorpdfstring{$\sim$\+Model\+Shader\+Class()}{~ModelShaderClass()}}
+{\footnotesize\ttfamily Model\+Shader\+Class\+::$\sim$\+Model\+Shader\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_model_shader_class_a0389c116d147ff39db92f0abb0660a16}\label{class_model_shader_class_a0389c116d147ff39db92f0abb0660a16}} 
+\index{Model\+Shader\+Class@{Model\+Shader\+Class}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!Model\+Shader\+Class@{Model\+Shader\+Class}}
+\subsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily bool Model\+Shader\+Class\+::\+Initialize (\begin{DoxyParamCaption}\item[{I\+D3\+D11\+Device $\ast$}]{device,  }\item[{H\+W\+ND}]{hwnd,  }\item[{\hyperlink{class_path_class}{Path\+Class} $\ast$}]{filename\+VS,  }\item[{\hyperlink{class_path_class}{Path\+Class} $\ast$}]{filename\+PS }\end{DoxyParamCaption})}
+
+Загрузка шейдера 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em device} & -\/ графическое устрйоство \\
+\hline
+\mbox{\tt in}  & {\em hwnd} & -\/ ID окна \\
+\hline
+\mbox{\tt in}  & {\em filename\+VS} & -\/ Расположение вершинного шейдера \\
+\hline
+\mbox{\tt in}  & {\em filename\+PS} & -\/ Расположение пиксельного шейдера \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_model_shader_class_ac0848d724234e07aee2f9ee713839ad2}\label{class_model_shader_class_ac0848d724234e07aee2f9ee713839ad2}} 
+\index{Model\+Shader\+Class@{Model\+Shader\+Class}!Initialize\+Shader@{Initialize\+Shader}}
+\index{Initialize\+Shader@{Initialize\+Shader}!Model\+Shader\+Class@{Model\+Shader\+Class}}
+\subsubsection{\texorpdfstring{Initialize\+Shader()}{InitializeShader()}}
+{\footnotesize\ttfamily bool Model\+Shader\+Class\+::\+Initialize\+Shader (\begin{DoxyParamCaption}\item[{I\+D3\+D11\+Device $\ast$}]{device,  }\item[{H\+W\+ND}]{hwnd,  }\item[{const W\+C\+H\+AR $\ast$}]{vs\+Filename,  }\item[{const W\+C\+H\+AR $\ast$}]{ps\+Filename }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Загрузка шейдера 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em device} & -\/ графическое устрйоство \\
+\hline
+\mbox{\tt in}  & {\em hwnd} & -\/ ID окна \\
+\hline
+\mbox{\tt in}  & {\em vs\+Filename} & -\/ Расположение вершинного шейдера \\
+\hline
+\mbox{\tt in}  & {\em ps\+Filename} & -\/ Расположение пиксельного шейдера \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_model_shader_class_a4152702fb1740e700c9ad97e82ab3739}\label{class_model_shader_class_a4152702fb1740e700c9ad97e82ab3739}} 
+\index{Model\+Shader\+Class@{Model\+Shader\+Class}!Output\+Shader\+Error\+Message@{Output\+Shader\+Error\+Message}}
+\index{Output\+Shader\+Error\+Message@{Output\+Shader\+Error\+Message}!Model\+Shader\+Class@{Model\+Shader\+Class}}
+\subsubsection{\texorpdfstring{Output\+Shader\+Error\+Message()}{OutputShaderErrorMessage()}}
+{\footnotesize\ttfamily void Model\+Shader\+Class\+::\+Output\+Shader\+Error\+Message (\begin{DoxyParamCaption}\item[{I\+D3\+D10\+Blob $\ast$}]{error\+Message,  }\item[{H\+W\+ND}]{hwnd,  }\item[{const W\+C\+H\+AR $\ast$}]{shader\+Filename }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Вывести сообщение об ошибке 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em error\+Message} & -\/ сообщение об ошибке \\
+\hline
+\mbox{\tt in}  & {\em hwnd} & -\/ ID окна \\
+\hline
+\mbox{\tt in}  & {\em shader\+Filename} & -\/ имя файла шейдера \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_model_shader_class_a54685860c5bd9f843f11230f225fe42b}\label{class_model_shader_class_a54685860c5bd9f843f11230f225fe42b}} 
+\index{Model\+Shader\+Class@{Model\+Shader\+Class}!Render@{Render}}
+\index{Render@{Render}!Model\+Shader\+Class@{Model\+Shader\+Class}}
+\subsubsection{\texorpdfstring{Render()}{Render()}}
+{\footnotesize\ttfamily bool Model\+Shader\+Class\+::\+Render (\begin{DoxyParamCaption}\item[{I\+D3\+D11\+Device\+Context $\ast$}]{device\+Context,  }\item[{int}]{index\+Count,  }\item[{D3\+D\+X\+M\+A\+T\+R\+IX}]{world\+Matrix,  }\item[{D3\+D\+X\+M\+A\+T\+R\+IX}]{view\+Matrix,  }\item[{D3\+D\+X\+M\+A\+T\+R\+IX}]{projection\+Matrix,  }\item[{I\+D3\+D11\+Shader\+Resource\+View $\ast$}]{texture,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R3}]{light\+Direction,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R4}]{ambient\+Color,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R4}]{diffuse\+Color,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R3}]{camera\+Position,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R4}]{specular\+Color,  }\item[{float}]{specular\+Power }\end{DoxyParamCaption})}
+
+Прорисовка модели 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em device\+Context} & -\/ графическое устройство \\
+\hline
+\mbox{\tt in}  & {\em index\+Count} & -\/ количество прорисовываемых вершин \\
+\hline
+\mbox{\tt in}  & {\em world\+Matrix,view\+Matrix,projection\+Matrix} & -\/ матрицы с параметрами \\
+\hline
+\mbox{\tt in}  & {\em texture} & -\/ текстура модели \\
+\hline
+\mbox{\tt in}  & {\em light\+Direction} & -\/ направление света \\
+\hline
+\mbox{\tt in}  & {\em ambient\+Color} & -\/ цвет обтекающего света \\
+\hline
+\mbox{\tt in}  & {\em diffuse\+Color} & -\/ цвет диффузного света \\
+\hline
+\mbox{\tt in}  & {\em camera\+Position} & -\/ позиция камеры \\
+\hline
+\mbox{\tt in}  & {\em specular\+Color} & -\/ цвет зеркального света \\
+\hline
+\mbox{\tt in}  & {\em specular\+Power} & -\/ мощность зеркального света \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_model_shader_class_a7831409d29e5923e090255d2b2c080c2}\label{class_model_shader_class_a7831409d29e5923e090255d2b2c080c2}} 
+\index{Model\+Shader\+Class@{Model\+Shader\+Class}!Render\+Shader@{Render\+Shader}}
+\index{Render\+Shader@{Render\+Shader}!Model\+Shader\+Class@{Model\+Shader\+Class}}
+\subsubsection{\texorpdfstring{Render\+Shader()}{RenderShader()}}
+{\footnotesize\ttfamily void Model\+Shader\+Class\+::\+Render\+Shader (\begin{DoxyParamCaption}\item[{I\+D3\+D11\+Device\+Context $\ast$}]{device\+Context,  }\item[{int}]{index\+Count }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Выполнение шейдера 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em device\+Context} & -\/ графическое устройство \\
+\hline
+\mbox{\tt in}  & {\em index\+Count} & -\/ количество прорисовываемых вершин \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_model_shader_class_a381f4da444ab26ae37d383580e3528c5}\label{class_model_shader_class_a381f4da444ab26ae37d383580e3528c5}} 
+\index{Model\+Shader\+Class@{Model\+Shader\+Class}!Set\+Shader\+Parameters@{Set\+Shader\+Parameters}}
+\index{Set\+Shader\+Parameters@{Set\+Shader\+Parameters}!Model\+Shader\+Class@{Model\+Shader\+Class}}
+\subsubsection{\texorpdfstring{Set\+Shader\+Parameters()}{SetShaderParameters()}}
+{\footnotesize\ttfamily bool Model\+Shader\+Class\+::\+Set\+Shader\+Parameters (\begin{DoxyParamCaption}\item[{I\+D3\+D11\+Device\+Context $\ast$}]{device\+Context,  }\item[{D3\+D\+X\+M\+A\+T\+R\+IX}]{world\+Matrix,  }\item[{D3\+D\+X\+M\+A\+T\+R\+IX}]{view\+Matrix,  }\item[{D3\+D\+X\+M\+A\+T\+R\+IX}]{projection\+Matrix,  }\item[{I\+D3\+D11\+Shader\+Resource\+View $\ast$}]{texture,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R3}]{light\+Direction,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R4}]{ambient\+Color,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R4}]{diffuse\+Color,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R3}]{camera\+Position,  }\item[{D3\+D\+X\+V\+E\+C\+T\+O\+R4}]{specular\+Color,  }\item[{float}]{specular\+Power }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Установка параметров шейдера 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em device\+Context} & -\/ графическое устройство \\
+\hline
+\mbox{\tt in}  & {\em world\+Matrix,view\+Matrix,projection\+Matrix} & -\/ матрицы с параметрами \\
+\hline
+\mbox{\tt in}  & {\em texture} & -\/ текстура шрифта \\
+\hline
+\mbox{\tt in}  & {\em light\+Direction} & -\/ направление света \\
+\hline
+\mbox{\tt in}  & {\em ambient\+Color} & -\/ цвет обтекающего света \\
+\hline
+\mbox{\tt in}  & {\em diffuse\+Color} & -\/ цвет диффузного света \\
+\hline
+\mbox{\tt in}  & {\em camera\+Position} & -\/ позиция камеры \\
+\hline
+\mbox{\tt in}  & {\em specular\+Color} & -\/ цвет зеркального света \\
+\hline
+\mbox{\tt in}  & {\em specular\+Power} & -\/ мощность зеркального света \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_model_shader_class_a36bbd82766c9b415c0ea14309ba82876}\label{class_model_shader_class_a36bbd82766c9b415c0ea14309ba82876}} 
+\index{Model\+Shader\+Class@{Model\+Shader\+Class}!Shutdown@{Shutdown}}
+\index{Shutdown@{Shutdown}!Model\+Shader\+Class@{Model\+Shader\+Class}}
+\subsubsection{\texorpdfstring{Shutdown()}{Shutdown()}}
+{\footnotesize\ttfamily void Model\+Shader\+Class\+::\+Shutdown (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_model_shader_class_a7a8d03ca2f55a8032ad02e648c2587a3}\label{class_model_shader_class_a7a8d03ca2f55a8032ad02e648c2587a3}} 
+\index{Model\+Shader\+Class@{Model\+Shader\+Class}!Shutdown\+Shader@{Shutdown\+Shader}}
+\index{Shutdown\+Shader@{Shutdown\+Shader}!Model\+Shader\+Class@{Model\+Shader\+Class}}
+\subsubsection{\texorpdfstring{Shutdown\+Shader()}{ShutdownShader()}}
+{\footnotesize\ttfamily void Model\+Shader\+Class\+::\+Shutdown\+Shader (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_model_shader_class_a6a8a3d9e47108b1e3953a5b981d15b66}\label{class_model_shader_class_a6a8a3d9e47108b1e3953a5b981d15b66}} 
+\index{Model\+Shader\+Class@{Model\+Shader\+Class}!m\+\_\+layout@{m\+\_\+layout}}
+\index{m\+\_\+layout@{m\+\_\+layout}!Model\+Shader\+Class@{Model\+Shader\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+layout}{m\_layout}}
+{\footnotesize\ttfamily I\+D3\+D11\+Input\+Layout$\ast$ Model\+Shader\+Class\+::m\+\_\+layout\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Макет 
+
+\mbox{\Hypertarget{class_model_shader_class_a0ea5fc7202be41bb166cac94653e0b9f}\label{class_model_shader_class_a0ea5fc7202be41bb166cac94653e0b9f}} 
+\index{Model\+Shader\+Class@{Model\+Shader\+Class}!m\+\_\+matrix\+Buffer@{m\+\_\+matrix\+Buffer}}
+\index{m\+\_\+matrix\+Buffer@{m\+\_\+matrix\+Buffer}!Model\+Shader\+Class@{Model\+Shader\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+matrix\+Buffer}{m\_matrixBuffer}}
+{\footnotesize\ttfamily I\+D3\+D11\+Buffer$\ast$ Model\+Shader\+Class\+::m\+\_\+matrix\+Buffer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Матричный буфер 
+
+\mbox{\Hypertarget{class_model_shader_class_a86d885b139c1675798d1e61372f30daa}\label{class_model_shader_class_a86d885b139c1675798d1e61372f30daa}} 
+\index{Model\+Shader\+Class@{Model\+Shader\+Class}!m\+\_\+params\+Buffer@{m\+\_\+params\+Buffer}}
+\index{m\+\_\+params\+Buffer@{m\+\_\+params\+Buffer}!Model\+Shader\+Class@{Model\+Shader\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+params\+Buffer}{m\_paramsBuffer}}
+{\footnotesize\ttfamily I\+D3\+D11\+Buffer$\ast$ Model\+Shader\+Class\+::m\+\_\+params\+Buffer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Параментрический буфер 
+
+\mbox{\Hypertarget{class_model_shader_class_a98386d05b75e06bcc4671f16d413d2a4}\label{class_model_shader_class_a98386d05b75e06bcc4671f16d413d2a4}} 
+\index{Model\+Shader\+Class@{Model\+Shader\+Class}!m\+\_\+pixel\+Shader@{m\+\_\+pixel\+Shader}}
+\index{m\+\_\+pixel\+Shader@{m\+\_\+pixel\+Shader}!Model\+Shader\+Class@{Model\+Shader\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+pixel\+Shader}{m\_pixelShader}}
+{\footnotesize\ttfamily I\+D3\+D11\+Pixel\+Shader$\ast$ Model\+Shader\+Class\+::m\+\_\+pixel\+Shader\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Пиксельный шейдер 
+
+\mbox{\Hypertarget{class_model_shader_class_a6b6ed136ba9c1252d21bcac7100f431b}\label{class_model_shader_class_a6b6ed136ba9c1252d21bcac7100f431b}} 
+\index{Model\+Shader\+Class@{Model\+Shader\+Class}!m\+\_\+sample\+State@{m\+\_\+sample\+State}}
+\index{m\+\_\+sample\+State@{m\+\_\+sample\+State}!Model\+Shader\+Class@{Model\+Shader\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+sample\+State}{m\_sampleState}}
+{\footnotesize\ttfamily I\+D3\+D11\+Sampler\+State$\ast$ Model\+Shader\+Class\+::m\+\_\+sample\+State\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Образцовая форма 
+
+\mbox{\Hypertarget{class_model_shader_class_a777f211c55c31fee5facf4b579856de3}\label{class_model_shader_class_a777f211c55c31fee5facf4b579856de3}} 
+\index{Model\+Shader\+Class@{Model\+Shader\+Class}!m\+\_\+vertex\+Shader@{m\+\_\+vertex\+Shader}}
+\index{m\+\_\+vertex\+Shader@{m\+\_\+vertex\+Shader}!Model\+Shader\+Class@{Model\+Shader\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+vertex\+Shader}{m\_vertexShader}}
+{\footnotesize\ttfamily I\+D3\+D11\+Vertex\+Shader$\ast$ Model\+Shader\+Class\+::m\+\_\+vertex\+Shader\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Вершинный шейдер 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_model_shader_class_8h}{Model\+Shader\+Class.\+h}\item 
+\hyperlink{_model_shader_class_8cpp}{Model\+Shader\+Class.\+cpp}\end{DoxyCompactItemize}

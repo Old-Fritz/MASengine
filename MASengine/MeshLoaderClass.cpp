@@ -16,14 +16,14 @@ bool MeshLoaderClass::loadModel(PathClass * filename, float sizeX, float sizeY, 
 {
 	bool result;
 
-	// Load in the height map
+	// Load in the mesh
 	result = loadMesh(filename);
 	if (!result)
 	{
 		return false;
 	}
 
-	// Normalize the height of the height map.
+	// Normalize the scale of mesh
 	normalizeMesh(sizeX, sizeY, sizeZ);
 
 	return true;
@@ -128,7 +128,7 @@ bool MeshLoaderClass::loadMesh(PathClass* filename)
 	return true;
 }
 
-bool MeshLoaderClass::normalizeMesh(float scaleX, float scaleY, float scaleZ)
+void MeshLoaderClass::normalizeMesh(float scaleX, float scaleY, float scaleZ)
 {
 	for (int i = 0;i < m_vertexCount;i++)
 	{
@@ -136,6 +136,4 @@ bool MeshLoaderClass::normalizeMesh(float scaleX, float scaleY, float scaleZ)
 		m_model[i].y *= scaleY;
 		m_model[i].z *= scaleZ;
 	}
-
-	return true;
 }

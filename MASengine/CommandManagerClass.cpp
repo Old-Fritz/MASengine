@@ -188,6 +188,16 @@ bool CommandManagerClass::addCommand(const std::string & name, PathClass* filena
 	return true;
 }
 
+void CommandManagerClass::addChange(const std::string & key, const std::string & value)
+{
+	m_commandsQueue.back()->addChange(key, value);
+}
+
+void CommandManagerClass::addChange(const std::string & key, int value)
+{
+	m_commandsQueue.back()->addChange(key, value);
+}
+
 void CommandManagerClass::addChange(const std::string & key, float value)
 {
 	m_commandsQueue.back()->addChange(key, value);

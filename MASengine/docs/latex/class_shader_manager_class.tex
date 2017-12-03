@@ -1,0 +1,219 @@
+\hypertarget{class_shader_manager_class}{}\section{Shader\+Manager\+Class Class Reference}
+\label{class_shader_manager_class}\index{Shader\+Manager\+Class@{Shader\+Manager\+Class}}
+
+
+{\ttfamily \#include $<$Shader\+Manager\+Class.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_shader_manager_class_acb6e9ab51bb5d93fa8222f1b730a00fe}{Shader\+Manager\+Class} ()
+\item 
+\hyperlink{class_shader_manager_class_a71f470bada728d753c28714d2d1f9dad}{Shader\+Manager\+Class} (const \hyperlink{class_shader_manager_class}{Shader\+Manager\+Class} \&)
+\item 
+\hyperlink{class_shader_manager_class_ad121e57c890728aa1107f9ef0626bd0c}{$\sim$\+Shader\+Manager\+Class} ()
+\item 
+bool \hyperlink{class_shader_manager_class_aec1aeb72bc846bee4eb67aa90dec262a}{Initialize} (I\+D3\+D11\+Device $\ast$device, H\+W\+ND hwnd)
+\begin{DoxyCompactList}\small\item\em Инициализация шейдеров \end{DoxyCompactList}\item 
+void \hyperlink{class_shader_manager_class_a00c7397a84cf7055c3b655d92677eba2}{Shutdown} ()
+\item 
+\hyperlink{class_interface_shader_class}{Interface\+Shader\+Class} $\ast$ \hyperlink{class_shader_manager_class_a25f673a421424fa463ce8ccfba96467c}{get\+Interface\+Shader} ()
+\begin{DoxyCompactList}\small\item\em Получение шейдера интерфейса \end{DoxyCompactList}\item 
+\hyperlink{class_font_shader_class}{Font\+Shader\+Class} $\ast$ \hyperlink{class_shader_manager_class_a47b797b06bf218ce516a74ab4e638a11}{get\+Font\+Shader} ()
+\begin{DoxyCompactList}\small\item\em Получение шейдера шрифтов \end{DoxyCompactList}\item 
+\hyperlink{class_terrain_shader_class}{Terrain\+Shader\+Class} $\ast$ \hyperlink{class_shader_manager_class_a55c6138987f24dd93b3173b5a789bfb8}{get\+Terrain\+Shader} ()
+\begin{DoxyCompactList}\small\item\em Получение шейдера блоков \end{DoxyCompactList}\item 
+\hyperlink{class_model_shader_class}{Model\+Shader\+Class} $\ast$ \hyperlink{class_shader_manager_class_a3d029bf8f178ee3fce2eb41e0fdd1ca5}{get\+Model\+Shader} ()
+\begin{DoxyCompactList}\small\item\em Получение шейдера моделей \end{DoxyCompactList}\item 
+\hyperlink{class_water_shader_class}{Water\+Shader\+Class} $\ast$ \hyperlink{class_shader_manager_class_a58ba38e8abececb2aeee26b66cb67f03}{get\+Water\+Shader} ()
+\begin{DoxyCompactList}\small\item\em Получение шейдера воды \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_interface_shader_class}{Interface\+Shader\+Class} $\ast$ \hyperlink{class_shader_manager_class_a8c98e4ff13e14267426cd15686074fb2}{m\+\_\+interface\+Shader}
+\begin{DoxyCompactList}\small\item\em Шейдер интерфейса \end{DoxyCompactList}\item 
+\hyperlink{class_font_shader_class}{Font\+Shader\+Class} $\ast$ \hyperlink{class_shader_manager_class_aebdae8a29f38b27ce1055ba52b6f84dd}{m\+\_\+font\+Shader}
+\begin{DoxyCompactList}\small\item\em Шейдер шрифтов \end{DoxyCompactList}\item 
+\hyperlink{class_terrain_shader_class}{Terrain\+Shader\+Class} $\ast$ \hyperlink{class_shader_manager_class_a481cf6bc2479b88e36e33d71b65ffc98}{m\+\_\+terrain\+Shader}
+\begin{DoxyCompactList}\small\item\em Шейдер блоков \end{DoxyCompactList}\item 
+\hyperlink{class_model_shader_class}{Model\+Shader\+Class} $\ast$ \hyperlink{class_shader_manager_class_ad72f3b6e59577e81e00aac9a4424d997}{m\+\_\+model\+Shader}
+\begin{DoxyCompactList}\small\item\em Шейдер моделей \end{DoxyCompactList}\item 
+\hyperlink{class_water_shader_class}{Water\+Shader\+Class} $\ast$ \hyperlink{class_shader_manager_class_aee012818f0b1fd4c4251cc4c240c074c}{m\+\_\+water\+Shader}
+\begin{DoxyCompactList}\small\item\em Шейдер воды \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Класс для управления шейдерами 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_shader_manager_class_acb6e9ab51bb5d93fa8222f1b730a00fe}\label{class_shader_manager_class_acb6e9ab51bb5d93fa8222f1b730a00fe}} 
+\index{Shader\+Manager\+Class@{Shader\+Manager\+Class}!Shader\+Manager\+Class@{Shader\+Manager\+Class}}
+\index{Shader\+Manager\+Class@{Shader\+Manager\+Class}!Shader\+Manager\+Class@{Shader\+Manager\+Class}}
+\subsubsection{\texorpdfstring{Shader\+Manager\+Class()}{ShaderManagerClass()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Shader\+Manager\+Class\+::\+Shader\+Manager\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_shader_manager_class_a71f470bada728d753c28714d2d1f9dad}\label{class_shader_manager_class_a71f470bada728d753c28714d2d1f9dad}} 
+\index{Shader\+Manager\+Class@{Shader\+Manager\+Class}!Shader\+Manager\+Class@{Shader\+Manager\+Class}}
+\index{Shader\+Manager\+Class@{Shader\+Manager\+Class}!Shader\+Manager\+Class@{Shader\+Manager\+Class}}
+\subsubsection{\texorpdfstring{Shader\+Manager\+Class()}{ShaderManagerClass()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Shader\+Manager\+Class\+::\+Shader\+Manager\+Class (\begin{DoxyParamCaption}\item[{const \hyperlink{class_shader_manager_class}{Shader\+Manager\+Class} \&}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_shader_manager_class_ad121e57c890728aa1107f9ef0626bd0c}\label{class_shader_manager_class_ad121e57c890728aa1107f9ef0626bd0c}} 
+\index{Shader\+Manager\+Class@{Shader\+Manager\+Class}!````~Shader\+Manager\+Class@{$\sim$\+Shader\+Manager\+Class}}
+\index{````~Shader\+Manager\+Class@{$\sim$\+Shader\+Manager\+Class}!Shader\+Manager\+Class@{Shader\+Manager\+Class}}
+\subsubsection{\texorpdfstring{$\sim$\+Shader\+Manager\+Class()}{~ShaderManagerClass()}}
+{\footnotesize\ttfamily Shader\+Manager\+Class\+::$\sim$\+Shader\+Manager\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_shader_manager_class_a47b797b06bf218ce516a74ab4e638a11}\label{class_shader_manager_class_a47b797b06bf218ce516a74ab4e638a11}} 
+\index{Shader\+Manager\+Class@{Shader\+Manager\+Class}!get\+Font\+Shader@{get\+Font\+Shader}}
+\index{get\+Font\+Shader@{get\+Font\+Shader}!Shader\+Manager\+Class@{Shader\+Manager\+Class}}
+\subsubsection{\texorpdfstring{get\+Font\+Shader()}{getFontShader()}}
+{\footnotesize\ttfamily \hyperlink{class_font_shader_class}{Font\+Shader\+Class} $\ast$ Shader\+Manager\+Class\+::get\+Font\+Shader (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Получение шейдера шрифтов 
+
+\begin{DoxyReturn}{Returns}
+Шейдер шрифтов 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_shader_manager_class_a25f673a421424fa463ce8ccfba96467c}\label{class_shader_manager_class_a25f673a421424fa463ce8ccfba96467c}} 
+\index{Shader\+Manager\+Class@{Shader\+Manager\+Class}!get\+Interface\+Shader@{get\+Interface\+Shader}}
+\index{get\+Interface\+Shader@{get\+Interface\+Shader}!Shader\+Manager\+Class@{Shader\+Manager\+Class}}
+\subsubsection{\texorpdfstring{get\+Interface\+Shader()}{getInterfaceShader()}}
+{\footnotesize\ttfamily \hyperlink{class_interface_shader_class}{Interface\+Shader\+Class} $\ast$ Shader\+Manager\+Class\+::get\+Interface\+Shader (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Получение шейдера интерфейса 
+
+\begin{DoxyReturn}{Returns}
+Шейдер интерфейса 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_shader_manager_class_a3d029bf8f178ee3fce2eb41e0fdd1ca5}\label{class_shader_manager_class_a3d029bf8f178ee3fce2eb41e0fdd1ca5}} 
+\index{Shader\+Manager\+Class@{Shader\+Manager\+Class}!get\+Model\+Shader@{get\+Model\+Shader}}
+\index{get\+Model\+Shader@{get\+Model\+Shader}!Shader\+Manager\+Class@{Shader\+Manager\+Class}}
+\subsubsection{\texorpdfstring{get\+Model\+Shader()}{getModelShader()}}
+{\footnotesize\ttfamily \hyperlink{class_model_shader_class}{Model\+Shader\+Class} $\ast$ Shader\+Manager\+Class\+::get\+Model\+Shader (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Получение шейдера моделей 
+
+\begin{DoxyReturn}{Returns}
+Шейдер моделей 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_shader_manager_class_a55c6138987f24dd93b3173b5a789bfb8}\label{class_shader_manager_class_a55c6138987f24dd93b3173b5a789bfb8}} 
+\index{Shader\+Manager\+Class@{Shader\+Manager\+Class}!get\+Terrain\+Shader@{get\+Terrain\+Shader}}
+\index{get\+Terrain\+Shader@{get\+Terrain\+Shader}!Shader\+Manager\+Class@{Shader\+Manager\+Class}}
+\subsubsection{\texorpdfstring{get\+Terrain\+Shader()}{getTerrainShader()}}
+{\footnotesize\ttfamily \hyperlink{class_terrain_shader_class}{Terrain\+Shader\+Class} $\ast$ Shader\+Manager\+Class\+::get\+Terrain\+Shader (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Получение шейдера блоков 
+
+\begin{DoxyReturn}{Returns}
+Шейдер блоков 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_shader_manager_class_a58ba38e8abececb2aeee26b66cb67f03}\label{class_shader_manager_class_a58ba38e8abececb2aeee26b66cb67f03}} 
+\index{Shader\+Manager\+Class@{Shader\+Manager\+Class}!get\+Water\+Shader@{get\+Water\+Shader}}
+\index{get\+Water\+Shader@{get\+Water\+Shader}!Shader\+Manager\+Class@{Shader\+Manager\+Class}}
+\subsubsection{\texorpdfstring{get\+Water\+Shader()}{getWaterShader()}}
+{\footnotesize\ttfamily \hyperlink{class_water_shader_class}{Water\+Shader\+Class} $\ast$ Shader\+Manager\+Class\+::get\+Water\+Shader (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Получение шейдера воды 
+
+\begin{DoxyReturn}{Returns}
+Шейдер воды 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_shader_manager_class_aec1aeb72bc846bee4eb67aa90dec262a}\label{class_shader_manager_class_aec1aeb72bc846bee4eb67aa90dec262a}} 
+\index{Shader\+Manager\+Class@{Shader\+Manager\+Class}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!Shader\+Manager\+Class@{Shader\+Manager\+Class}}
+\subsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily bool Shader\+Manager\+Class\+::\+Initialize (\begin{DoxyParamCaption}\item[{I\+D3\+D11\+Device $\ast$}]{device,  }\item[{H\+W\+ND}]{hwnd }\end{DoxyParamCaption})}
+
+
+
+Инициализация шейдеров 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em device} & -\/ графическое устройство \\
+\hline
+\mbox{\tt in}  & {\em hwnd} & -\/ идентификатор окна \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_shader_manager_class_a00c7397a84cf7055c3b655d92677eba2}\label{class_shader_manager_class_a00c7397a84cf7055c3b655d92677eba2}} 
+\index{Shader\+Manager\+Class@{Shader\+Manager\+Class}!Shutdown@{Shutdown}}
+\index{Shutdown@{Shutdown}!Shader\+Manager\+Class@{Shader\+Manager\+Class}}
+\subsubsection{\texorpdfstring{Shutdown()}{Shutdown()}}
+{\footnotesize\ttfamily void Shader\+Manager\+Class\+::\+Shutdown (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_shader_manager_class_aebdae8a29f38b27ce1055ba52b6f84dd}\label{class_shader_manager_class_aebdae8a29f38b27ce1055ba52b6f84dd}} 
+\index{Shader\+Manager\+Class@{Shader\+Manager\+Class}!m\+\_\+font\+Shader@{m\+\_\+font\+Shader}}
+\index{m\+\_\+font\+Shader@{m\+\_\+font\+Shader}!Shader\+Manager\+Class@{Shader\+Manager\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+font\+Shader}{m\_fontShader}}
+{\footnotesize\ttfamily \hyperlink{class_font_shader_class}{Font\+Shader\+Class}$\ast$ Shader\+Manager\+Class\+::m\+\_\+font\+Shader\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Шейдер шрифтов 
+
+\mbox{\Hypertarget{class_shader_manager_class_a8c98e4ff13e14267426cd15686074fb2}\label{class_shader_manager_class_a8c98e4ff13e14267426cd15686074fb2}} 
+\index{Shader\+Manager\+Class@{Shader\+Manager\+Class}!m\+\_\+interface\+Shader@{m\+\_\+interface\+Shader}}
+\index{m\+\_\+interface\+Shader@{m\+\_\+interface\+Shader}!Shader\+Manager\+Class@{Shader\+Manager\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+interface\+Shader}{m\_interfaceShader}}
+{\footnotesize\ttfamily \hyperlink{class_interface_shader_class}{Interface\+Shader\+Class}$\ast$ Shader\+Manager\+Class\+::m\+\_\+interface\+Shader\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Шейдер интерфейса 
+
+\mbox{\Hypertarget{class_shader_manager_class_ad72f3b6e59577e81e00aac9a4424d997}\label{class_shader_manager_class_ad72f3b6e59577e81e00aac9a4424d997}} 
+\index{Shader\+Manager\+Class@{Shader\+Manager\+Class}!m\+\_\+model\+Shader@{m\+\_\+model\+Shader}}
+\index{m\+\_\+model\+Shader@{m\+\_\+model\+Shader}!Shader\+Manager\+Class@{Shader\+Manager\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+model\+Shader}{m\_modelShader}}
+{\footnotesize\ttfamily \hyperlink{class_model_shader_class}{Model\+Shader\+Class}$\ast$ Shader\+Manager\+Class\+::m\+\_\+model\+Shader\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Шейдер моделей 
+
+\mbox{\Hypertarget{class_shader_manager_class_a481cf6bc2479b88e36e33d71b65ffc98}\label{class_shader_manager_class_a481cf6bc2479b88e36e33d71b65ffc98}} 
+\index{Shader\+Manager\+Class@{Shader\+Manager\+Class}!m\+\_\+terrain\+Shader@{m\+\_\+terrain\+Shader}}
+\index{m\+\_\+terrain\+Shader@{m\+\_\+terrain\+Shader}!Shader\+Manager\+Class@{Shader\+Manager\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+terrain\+Shader}{m\_terrainShader}}
+{\footnotesize\ttfamily \hyperlink{class_terrain_shader_class}{Terrain\+Shader\+Class}$\ast$ Shader\+Manager\+Class\+::m\+\_\+terrain\+Shader\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Шейдер блоков 
+
+\mbox{\Hypertarget{class_shader_manager_class_aee012818f0b1fd4c4251cc4c240c074c}\label{class_shader_manager_class_aee012818f0b1fd4c4251cc4c240c074c}} 
+\index{Shader\+Manager\+Class@{Shader\+Manager\+Class}!m\+\_\+water\+Shader@{m\+\_\+water\+Shader}}
+\index{m\+\_\+water\+Shader@{m\+\_\+water\+Shader}!Shader\+Manager\+Class@{Shader\+Manager\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+water\+Shader}{m\_waterShader}}
+{\footnotesize\ttfamily \hyperlink{class_water_shader_class}{Water\+Shader\+Class}$\ast$ Shader\+Manager\+Class\+::m\+\_\+water\+Shader\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Шейдер воды 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_shader_manager_class_8h}{Shader\+Manager\+Class.\+h}\item 
+\hyperlink{_shader_manager_class_8cpp}{Shader\+Manager\+Class.\+cpp}\end{DoxyCompactItemize}

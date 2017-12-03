@@ -1,0 +1,339 @@
+\hypertarget{class_bitmap_class}{}\section{Bitmap\+Class Class Reference}
+\label{class_bitmap_class}\index{Bitmap\+Class@{Bitmap\+Class}}
+
+
+{\ttfamily \#include $<$Bitmap\+Class.\+h$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_bitmap_class_1_1_vertex_type}{Vertex\+Type}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_bitmap_class_a0f4b9cd7df6c426024269b5c6a44dca9}{Bitmap\+Class} ()
+\item 
+\hyperlink{class_bitmap_class_a0933d9b08bfd5035e80c9c727456dcbb}{Bitmap\+Class} (const \hyperlink{class_bitmap_class}{Bitmap\+Class} \&)
+\item 
+\hyperlink{class_bitmap_class_a3513d51b4fc4219b4ddb09fd23cda528}{$\sim$\+Bitmap\+Class} ()
+\item 
+bool \hyperlink{class_bitmap_class_a6bd2ec2f55bd8dd88b94829779b1ca8e}{Initialize} (I\+D3\+D11\+Device $\ast$device, int screen\+Width, int screen\+Height, \hyperlink{class_path_class}{Path\+Class} $\ast$texture\+Filename, int bitmap\+Width, int bitmap\+Height)
+\item 
+void \hyperlink{class_bitmap_class_a5d8c2363514af59acd8c2f3ee042294b}{Shutdown} ()
+\item 
+bool \hyperlink{class_bitmap_class_acabcd75cf86b16596cfc874fae6a830a}{Render} (I\+D3\+D11\+Device\+Context $\ast$device\+Context, int positionX, int positionY)
+\begin{DoxyCompactList}\small\item\em Отрисовка изображения \end{DoxyCompactList}\item 
+bool \hyperlink{class_bitmap_class_a08e06db84ba1088a4eaa145ef8b1cd6c}{set\+New\+Texture} (I\+D3\+D11\+Device $\ast$device, \hyperlink{class_path_class}{Path\+Class} $\ast$filename)
+\begin{DoxyCompactList}\small\item\em Изменение текстуры изображения \end{DoxyCompactList}\item 
+int \hyperlink{class_bitmap_class_aaafad2742ba7dcf9bcb3556579e7d9e5}{Get\+Index\+Count} ()
+\begin{DoxyCompactList}\small\item\em Получение количества индексов вершин \end{DoxyCompactList}\item 
+I\+D3\+D11\+Shader\+Resource\+View $\ast$ \hyperlink{class_bitmap_class_a9fc1968daa483cea1fede7d6785a7254}{Get\+Texture} ()
+\begin{DoxyCompactList}\small\item\em Получение текстуры изображения \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_bitmap_class_a664110a255531e1dd980ebb85fc6d3ca}{Initialize\+Buffers} (I\+D3\+D11\+Device $\ast$device)
+\begin{DoxyCompactList}\small\item\em Инициализация буферов \end{DoxyCompactList}\item 
+void \hyperlink{class_bitmap_class_a9c3f2964ac428afbb0f448262a9d7489}{Shutdown\+Buffers} ()
+\item 
+bool \hyperlink{class_bitmap_class_a8bc5dbca5283dd7c62a9a1d4e8ac064e}{Update\+Buffers} (I\+D3\+D11\+Device\+Context $\ast$device\+Context, int positionX, int positionY)
+\begin{DoxyCompactList}\small\item\em Изменение буферов \end{DoxyCompactList}\item 
+void \hyperlink{class_bitmap_class_aeb68e813d145f03f6c4681036d8ed2e0}{Render\+Buffers} (I\+D3\+D11\+Device\+Context $\ast$device\+Context)
+\begin{DoxyCompactList}\small\item\em Установка буферов в цепь рендринга \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+I\+D3\+D11\+Buffer $\ast$ \hyperlink{class_bitmap_class_a790fde5c2a8616d0864ff7a2d9bec925}{m\+\_\+vertex\+Buffer}
+\item 
+I\+D3\+D11\+Buffer $\ast$ \hyperlink{class_bitmap_class_ad7d91aa389c9f2d65218fb91d6fc23f4}{m\+\_\+index\+Buffer}
+\begin{DoxyCompactList}\small\item\em Вершинный и индексный буфера \end{DoxyCompactList}\item 
+int \hyperlink{class_bitmap_class_a0e31d5e3c054945918cb5eb95f8938fd}{m\+\_\+vertex\+Count}
+\item 
+int \hyperlink{class_bitmap_class_a269728891a77e49af45401592e77fb1a}{m\+\_\+index\+Count}
+\begin{DoxyCompactList}\small\item\em Количество вершин и индексов \end{DoxyCompactList}\item 
+int \hyperlink{class_bitmap_class_a00a076a742e1d040a28c8b0967d3dc02}{m\+\_\+screen\+Width}
+\item 
+int \hyperlink{class_bitmap_class_ae113e895f269656e2f8221d1a3a4344e}{m\+\_\+screen\+Height}
+\begin{DoxyCompactList}\small\item\em Размеры экрана \end{DoxyCompactList}\item 
+\hyperlink{class_path_class}{Path\+Class} $\ast$ \hyperlink{class_bitmap_class_a34a1f6711f7c091e70707c3823f33d9c}{m\+\_\+filename}
+\begin{DoxyCompactList}\small\item\em Имя файла с текстурой \end{DoxyCompactList}\item 
+int \hyperlink{class_bitmap_class_a73d12c26aad0644d0a5ad7765a586c23}{m\+\_\+bitmap\+Width}
+\item 
+int \hyperlink{class_bitmap_class_ac80cf9ec61bc0eb44c4389083a206411}{m\+\_\+bitmap\+Height}
+\begin{DoxyCompactList}\small\item\em Размеры изображения \end{DoxyCompactList}\item 
+int \hyperlink{class_bitmap_class_af25371dd78b1fb38f9e50e976200bef6}{m\+\_\+previous\+PosX}
+\item 
+int \hyperlink{class_bitmap_class_a60274b76e941d1f8e77cf01b25ed31f5}{m\+\_\+previous\+PosY}
+\begin{DoxyCompactList}\small\item\em Предыдущее положение изображения \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Изображение в интерфейсе 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_bitmap_class_a0f4b9cd7df6c426024269b5c6a44dca9}\label{class_bitmap_class_a0f4b9cd7df6c426024269b5c6a44dca9}} 
+\index{Bitmap\+Class@{Bitmap\+Class}!Bitmap\+Class@{Bitmap\+Class}}
+\index{Bitmap\+Class@{Bitmap\+Class}!Bitmap\+Class@{Bitmap\+Class}}
+\subsubsection{\texorpdfstring{Bitmap\+Class()}{BitmapClass()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Bitmap\+Class\+::\+Bitmap\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_bitmap_class_a0933d9b08bfd5035e80c9c727456dcbb}\label{class_bitmap_class_a0933d9b08bfd5035e80c9c727456dcbb}} 
+\index{Bitmap\+Class@{Bitmap\+Class}!Bitmap\+Class@{Bitmap\+Class}}
+\index{Bitmap\+Class@{Bitmap\+Class}!Bitmap\+Class@{Bitmap\+Class}}
+\subsubsection{\texorpdfstring{Bitmap\+Class()}{BitmapClass()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Bitmap\+Class\+::\+Bitmap\+Class (\begin{DoxyParamCaption}\item[{const \hyperlink{class_bitmap_class}{Bitmap\+Class} \&}]{other }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_bitmap_class_a3513d51b4fc4219b4ddb09fd23cda528}\label{class_bitmap_class_a3513d51b4fc4219b4ddb09fd23cda528}} 
+\index{Bitmap\+Class@{Bitmap\+Class}!````~Bitmap\+Class@{$\sim$\+Bitmap\+Class}}
+\index{````~Bitmap\+Class@{$\sim$\+Bitmap\+Class}!Bitmap\+Class@{Bitmap\+Class}}
+\subsubsection{\texorpdfstring{$\sim$\+Bitmap\+Class()}{~BitmapClass()}}
+{\footnotesize\ttfamily Bitmap\+Class\+::$\sim$\+Bitmap\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_bitmap_class_aaafad2742ba7dcf9bcb3556579e7d9e5}\label{class_bitmap_class_aaafad2742ba7dcf9bcb3556579e7d9e5}} 
+\index{Bitmap\+Class@{Bitmap\+Class}!Get\+Index\+Count@{Get\+Index\+Count}}
+\index{Get\+Index\+Count@{Get\+Index\+Count}!Bitmap\+Class@{Bitmap\+Class}}
+\subsubsection{\texorpdfstring{Get\+Index\+Count()}{GetIndexCount()}}
+{\footnotesize\ttfamily int Bitmap\+Class\+::\+Get\+Index\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Получение количества индексов вершин 
+
+\begin{DoxyReturn}{Returns}
+Кол-\/во индексов вершин прямоугольника с изображением (6 по умолчанию) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_bitmap_class_a9fc1968daa483cea1fede7d6785a7254}\label{class_bitmap_class_a9fc1968daa483cea1fede7d6785a7254}} 
+\index{Bitmap\+Class@{Bitmap\+Class}!Get\+Texture@{Get\+Texture}}
+\index{Get\+Texture@{Get\+Texture}!Bitmap\+Class@{Bitmap\+Class}}
+\subsubsection{\texorpdfstring{Get\+Texture()}{GetTexture()}}
+{\footnotesize\ttfamily I\+D3\+D11\+Shader\+Resource\+View $\ast$ Bitmap\+Class\+::\+Get\+Texture (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Получение текстуры изображения 
+
+\begin{DoxyReturn}{Returns}
+текстуру в виде ресурса directx 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_bitmap_class_a6bd2ec2f55bd8dd88b94829779b1ca8e}\label{class_bitmap_class_a6bd2ec2f55bd8dd88b94829779b1ca8e}} 
+\index{Bitmap\+Class@{Bitmap\+Class}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!Bitmap\+Class@{Bitmap\+Class}}
+\subsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily bool Bitmap\+Class\+::\+Initialize (\begin{DoxyParamCaption}\item[{I\+D3\+D11\+Device $\ast$}]{device,  }\item[{int}]{screen\+Width,  }\item[{int}]{screen\+Height,  }\item[{\hyperlink{class_path_class}{Path\+Class} $\ast$}]{texture\+Filename,  }\item[{int}]{bitmap\+Width,  }\item[{int}]{bitmap\+Height }\end{DoxyParamCaption})}
+
+Инициализация bitmap 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em device} & -\/ графическое устройство /param\mbox{[}in\mbox{]} screen\+Width, screen\+Height -\/ ширина и высота экрана /param\mbox{[}in\mbox{]} texture\+Filename -\/ текстура изображения /param\mbox{[}in\mbox{]} bitmap\+Height, bitmap\+Width -\/ размеры изображения \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_bitmap_class_a664110a255531e1dd980ebb85fc6d3ca}\label{class_bitmap_class_a664110a255531e1dd980ebb85fc6d3ca}} 
+\index{Bitmap\+Class@{Bitmap\+Class}!Initialize\+Buffers@{Initialize\+Buffers}}
+\index{Initialize\+Buffers@{Initialize\+Buffers}!Bitmap\+Class@{Bitmap\+Class}}
+\subsubsection{\texorpdfstring{Initialize\+Buffers()}{InitializeBuffers()}}
+{\footnotesize\ttfamily bool Bitmap\+Class\+::\+Initialize\+Buffers (\begin{DoxyParamCaption}\item[{I\+D3\+D11\+Device $\ast$}]{device }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Инициализация буферов 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em device} & -\/ графическое устройство \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_bitmap_class_acabcd75cf86b16596cfc874fae6a830a}\label{class_bitmap_class_acabcd75cf86b16596cfc874fae6a830a}} 
+\index{Bitmap\+Class@{Bitmap\+Class}!Render@{Render}}
+\index{Render@{Render}!Bitmap\+Class@{Bitmap\+Class}}
+\subsubsection{\texorpdfstring{Render()}{Render()}}
+{\footnotesize\ttfamily bool Bitmap\+Class\+::\+Render (\begin{DoxyParamCaption}\item[{I\+D3\+D11\+Device\+Context $\ast$}]{device\+Context,  }\item[{int}]{positionX,  }\item[{int}]{positionY }\end{DoxyParamCaption})}
+
+
+
+Отрисовка изображения 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em device\+Context} & -\/ графическое устройств \\
+\hline
+\mbox{\tt in}  & {\em positionX,positionY} & -\/ позиция изображения \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_bitmap_class_aeb68e813d145f03f6c4681036d8ed2e0}\label{class_bitmap_class_aeb68e813d145f03f6c4681036d8ed2e0}} 
+\index{Bitmap\+Class@{Bitmap\+Class}!Render\+Buffers@{Render\+Buffers}}
+\index{Render\+Buffers@{Render\+Buffers}!Bitmap\+Class@{Bitmap\+Class}}
+\subsubsection{\texorpdfstring{Render\+Buffers()}{RenderBuffers()}}
+{\footnotesize\ttfamily void Bitmap\+Class\+::\+Render\+Buffers (\begin{DoxyParamCaption}\item[{I\+D3\+D11\+Device\+Context $\ast$}]{device\+Context }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Установка буферов в цепь рендринга 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em device\+Context} & -\/ графическое устройство \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_bitmap_class_a08e06db84ba1088a4eaa145ef8b1cd6c}\label{class_bitmap_class_a08e06db84ba1088a4eaa145ef8b1cd6c}} 
+\index{Bitmap\+Class@{Bitmap\+Class}!set\+New\+Texture@{set\+New\+Texture}}
+\index{set\+New\+Texture@{set\+New\+Texture}!Bitmap\+Class@{Bitmap\+Class}}
+\subsubsection{\texorpdfstring{set\+New\+Texture()}{setNewTexture()}}
+{\footnotesize\ttfamily bool Bitmap\+Class\+::set\+New\+Texture (\begin{DoxyParamCaption}\item[{I\+D3\+D11\+Device $\ast$}]{device,  }\item[{\hyperlink{class_path_class}{Path\+Class} $\ast$}]{filename }\end{DoxyParamCaption})}
+
+
+
+Изменение текстуры изображения 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em device} & -\/ графическое устройство /param\mbox{[}in\mbox{]} texture\+Filename -\/ новая текстура изображения \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_bitmap_class_a5d8c2363514af59acd8c2f3ee042294b}\label{class_bitmap_class_a5d8c2363514af59acd8c2f3ee042294b}} 
+\index{Bitmap\+Class@{Bitmap\+Class}!Shutdown@{Shutdown}}
+\index{Shutdown@{Shutdown}!Bitmap\+Class@{Bitmap\+Class}}
+\subsubsection{\texorpdfstring{Shutdown()}{Shutdown()}}
+{\footnotesize\ttfamily void Bitmap\+Class\+::\+Shutdown (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_bitmap_class_a9c3f2964ac428afbb0f448262a9d7489}\label{class_bitmap_class_a9c3f2964ac428afbb0f448262a9d7489}} 
+\index{Bitmap\+Class@{Bitmap\+Class}!Shutdown\+Buffers@{Shutdown\+Buffers}}
+\index{Shutdown\+Buffers@{Shutdown\+Buffers}!Bitmap\+Class@{Bitmap\+Class}}
+\subsubsection{\texorpdfstring{Shutdown\+Buffers()}{ShutdownBuffers()}}
+{\footnotesize\ttfamily void Bitmap\+Class\+::\+Shutdown\+Buffers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_bitmap_class_a8bc5dbca5283dd7c62a9a1d4e8ac064e}\label{class_bitmap_class_a8bc5dbca5283dd7c62a9a1d4e8ac064e}} 
+\index{Bitmap\+Class@{Bitmap\+Class}!Update\+Buffers@{Update\+Buffers}}
+\index{Update\+Buffers@{Update\+Buffers}!Bitmap\+Class@{Bitmap\+Class}}
+\subsubsection{\texorpdfstring{Update\+Buffers()}{UpdateBuffers()}}
+{\footnotesize\ttfamily bool Bitmap\+Class\+::\+Update\+Buffers (\begin{DoxyParamCaption}\item[{I\+D3\+D11\+Device\+Context $\ast$}]{device\+Context,  }\item[{int}]{positionX,  }\item[{int}]{positionY }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Изменение буферов 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em device\+Context} & -\/ графическое устройств \\
+\hline
+\mbox{\tt in}  & {\em positionX,positionY} & -\/ позиция изображения \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false, если были ошибки 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_bitmap_class_ac80cf9ec61bc0eb44c4389083a206411}\label{class_bitmap_class_ac80cf9ec61bc0eb44c4389083a206411}} 
+\index{Bitmap\+Class@{Bitmap\+Class}!m\+\_\+bitmap\+Height@{m\+\_\+bitmap\+Height}}
+\index{m\+\_\+bitmap\+Height@{m\+\_\+bitmap\+Height}!Bitmap\+Class@{Bitmap\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+bitmap\+Height}{m\_bitmapHeight}}
+{\footnotesize\ttfamily int Bitmap\+Class\+::m\+\_\+bitmap\+Height\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Размеры изображения 
+
+\mbox{\Hypertarget{class_bitmap_class_a73d12c26aad0644d0a5ad7765a586c23}\label{class_bitmap_class_a73d12c26aad0644d0a5ad7765a586c23}} 
+\index{Bitmap\+Class@{Bitmap\+Class}!m\+\_\+bitmap\+Width@{m\+\_\+bitmap\+Width}}
+\index{m\+\_\+bitmap\+Width@{m\+\_\+bitmap\+Width}!Bitmap\+Class@{Bitmap\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+bitmap\+Width}{m\_bitmapWidth}}
+{\footnotesize\ttfamily int Bitmap\+Class\+::m\+\_\+bitmap\+Width\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_bitmap_class_a34a1f6711f7c091e70707c3823f33d9c}\label{class_bitmap_class_a34a1f6711f7c091e70707c3823f33d9c}} 
+\index{Bitmap\+Class@{Bitmap\+Class}!m\+\_\+filename@{m\+\_\+filename}}
+\index{m\+\_\+filename@{m\+\_\+filename}!Bitmap\+Class@{Bitmap\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+filename}{m\_filename}}
+{\footnotesize\ttfamily \hyperlink{class_path_class}{Path\+Class}$\ast$ Bitmap\+Class\+::m\+\_\+filename\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Имя файла с текстурой 
+
+\mbox{\Hypertarget{class_bitmap_class_ad7d91aa389c9f2d65218fb91d6fc23f4}\label{class_bitmap_class_ad7d91aa389c9f2d65218fb91d6fc23f4}} 
+\index{Bitmap\+Class@{Bitmap\+Class}!m\+\_\+index\+Buffer@{m\+\_\+index\+Buffer}}
+\index{m\+\_\+index\+Buffer@{m\+\_\+index\+Buffer}!Bitmap\+Class@{Bitmap\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+index\+Buffer}{m\_indexBuffer}}
+{\footnotesize\ttfamily I\+D3\+D11\+Buffer $\ast$ Bitmap\+Class\+::m\+\_\+index\+Buffer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Вершинный и индексный буфера 
+
+\mbox{\Hypertarget{class_bitmap_class_a269728891a77e49af45401592e77fb1a}\label{class_bitmap_class_a269728891a77e49af45401592e77fb1a}} 
+\index{Bitmap\+Class@{Bitmap\+Class}!m\+\_\+index\+Count@{m\+\_\+index\+Count}}
+\index{m\+\_\+index\+Count@{m\+\_\+index\+Count}!Bitmap\+Class@{Bitmap\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+index\+Count}{m\_indexCount}}
+{\footnotesize\ttfamily int Bitmap\+Class\+::m\+\_\+index\+Count\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Количество вершин и индексов 
+
+\mbox{\Hypertarget{class_bitmap_class_af25371dd78b1fb38f9e50e976200bef6}\label{class_bitmap_class_af25371dd78b1fb38f9e50e976200bef6}} 
+\index{Bitmap\+Class@{Bitmap\+Class}!m\+\_\+previous\+PosX@{m\+\_\+previous\+PosX}}
+\index{m\+\_\+previous\+PosX@{m\+\_\+previous\+PosX}!Bitmap\+Class@{Bitmap\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+previous\+PosX}{m\_previousPosX}}
+{\footnotesize\ttfamily int Bitmap\+Class\+::m\+\_\+previous\+PosX\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_bitmap_class_a60274b76e941d1f8e77cf01b25ed31f5}\label{class_bitmap_class_a60274b76e941d1f8e77cf01b25ed31f5}} 
+\index{Bitmap\+Class@{Bitmap\+Class}!m\+\_\+previous\+PosY@{m\+\_\+previous\+PosY}}
+\index{m\+\_\+previous\+PosY@{m\+\_\+previous\+PosY}!Bitmap\+Class@{Bitmap\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+previous\+PosY}{m\_previousPosY}}
+{\footnotesize\ttfamily int Bitmap\+Class\+::m\+\_\+previous\+PosY\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Предыдущее положение изображения 
+
+\mbox{\Hypertarget{class_bitmap_class_ae113e895f269656e2f8221d1a3a4344e}\label{class_bitmap_class_ae113e895f269656e2f8221d1a3a4344e}} 
+\index{Bitmap\+Class@{Bitmap\+Class}!m\+\_\+screen\+Height@{m\+\_\+screen\+Height}}
+\index{m\+\_\+screen\+Height@{m\+\_\+screen\+Height}!Bitmap\+Class@{Bitmap\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+screen\+Height}{m\_screenHeight}}
+{\footnotesize\ttfamily int Bitmap\+Class\+::m\+\_\+screen\+Height\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Размеры экрана 
+
+\mbox{\Hypertarget{class_bitmap_class_a00a076a742e1d040a28c8b0967d3dc02}\label{class_bitmap_class_a00a076a742e1d040a28c8b0967d3dc02}} 
+\index{Bitmap\+Class@{Bitmap\+Class}!m\+\_\+screen\+Width@{m\+\_\+screen\+Width}}
+\index{m\+\_\+screen\+Width@{m\+\_\+screen\+Width}!Bitmap\+Class@{Bitmap\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+screen\+Width}{m\_screenWidth}}
+{\footnotesize\ttfamily int Bitmap\+Class\+::m\+\_\+screen\+Width\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_bitmap_class_a790fde5c2a8616d0864ff7a2d9bec925}\label{class_bitmap_class_a790fde5c2a8616d0864ff7a2d9bec925}} 
+\index{Bitmap\+Class@{Bitmap\+Class}!m\+\_\+vertex\+Buffer@{m\+\_\+vertex\+Buffer}}
+\index{m\+\_\+vertex\+Buffer@{m\+\_\+vertex\+Buffer}!Bitmap\+Class@{Bitmap\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+vertex\+Buffer}{m\_vertexBuffer}}
+{\footnotesize\ttfamily I\+D3\+D11\+Buffer$\ast$ Bitmap\+Class\+::m\+\_\+vertex\+Buffer\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_bitmap_class_a0e31d5e3c054945918cb5eb95f8938fd}\label{class_bitmap_class_a0e31d5e3c054945918cb5eb95f8938fd}} 
+\index{Bitmap\+Class@{Bitmap\+Class}!m\+\_\+vertex\+Count@{m\+\_\+vertex\+Count}}
+\index{m\+\_\+vertex\+Count@{m\+\_\+vertex\+Count}!Bitmap\+Class@{Bitmap\+Class}}
+\subsubsection{\texorpdfstring{m\+\_\+vertex\+Count}{m\_vertexCount}}
+{\footnotesize\ttfamily int Bitmap\+Class\+::m\+\_\+vertex\+Count\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_bitmap_class_8h}{Bitmap\+Class.\+h}\item 
+\hyperlink{_bitmap_class_8cpp}{Bitmap\+Class.\+cpp}\end{DoxyCompactItemize}
