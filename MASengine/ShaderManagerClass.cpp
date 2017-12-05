@@ -64,7 +64,7 @@ bool ShaderManagerClass::Initialize(ID3D11Device * device, HWND hwnd)
 	if (!m_modelShader)
 		return false;
 	PathClass* modelPS = PathManagerClass::getI().makePath("modelPS.fx");
-	PathClass* modelVS = PathManagerClass::getI().makePath("terrainVS.fx");
+	PathClass* modelVS = PathManagerClass::getI().makePath("modelVS.fx");
 	result = m_modelShader->Initialize(device, hwnd, modelVS, modelPS);
 	if (!result)
 	{
@@ -78,7 +78,7 @@ bool ShaderManagerClass::Initialize(ID3D11Device * device, HWND hwnd)
 	if (!m_waterShader)
 		return false;
 	PathClass* waterPS = PathManagerClass::getI().makePath("waterPS.fx");
-	PathClass* waterVS = PathManagerClass::getI().makePath("terrainVS.fx");
+	PathClass* waterVS = PathManagerClass::getI().makePath("modelVS.fx");
 	result = m_waterShader->Initialize(device, hwnd, waterVS, waterPS);
 	if (!result)
 	{

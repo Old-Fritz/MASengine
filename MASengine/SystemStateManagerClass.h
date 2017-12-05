@@ -38,8 +38,8 @@ public:
 	//! \brief Получить экземпляр класса
 	static SystemStateManagerClass& getI();
 
-	//! Получить точное время между кадрами \return время между кадрами в мс
-	float GetTime();
+	//! Получить таймер \return таймер
+	TimerClass* getTimer();
 	//! Получить загруженность процессора \return число от 0 до 100 - загруженность процессора в процентах
 	int GetCpuPercentage();
 	//! Получить fps \return значение fps

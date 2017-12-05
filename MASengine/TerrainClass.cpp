@@ -84,7 +84,7 @@ void TerrainClass::Shutdown()
 bool TerrainClass::Render(TerrainShaderClass * terrainShader, WaterShaderClass* waterShader, ID3D11DeviceContext * deviceContext, D3DXMATRIX worldMatrix,
 	D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, ID3D11ShaderResourceView** mapTextures, D3DXVECTOR3 lightDirection,
 	D3DXVECTOR4 ambientColor, D3DXVECTOR4 diffuseColor, D3DXVECTOR3 cameraPosition, D3DXVECTOR4 specularColor, float specularPower,
-	float SCREEN_DEPTH, FrustumClass* frustum)
+	float SCREEN_DEPTH, float waterHeight, float waterTranslation, FrustumClass* frustum)
 {
 	bool result;
 
@@ -100,14 +100,14 @@ bool TerrainClass::Render(TerrainShaderClass * terrainShader, WaterShaderClass* 
 	mesh->Render(deviceContext);
 	result = terrainShader->Render(deviceContext, mesh->GetIndexCount(), worldMatrix, viewMatrix, projectionMatrix,
 		TextureManagerClass::getI().getTexture(m_provTextureHash), TextureManagerClass::getI().getTexture(m_physTextureHash),
-		mapTextures, lightDirection, ambientColor, diffuseColor, cameraPosition, specularColor, specularPower, getProvColor());
+		mapTextures, lightDirection, ambientColor, diffuseColor, cameraPosition, specularColor, specularPower, getProvColor(), waterHeight);
 	if (!result)
 	{
 		return false;
 	}
 
 	result = renderWater(waterShader,deviceContext,  worldMatrix, viewMatrix, projectionMatrix,
-		 lightDirection, ambientColor, diffuseColor, cameraPosition, specularColor, specularPower, SCREEN_DEPTH, frustum);
+		 lightDirection, ambientColor, diffuseColor, cameraPosition, specularColor, specularPower, SCREEN_DEPTH, waterHeight, waterTranslation, frustum);
 	if (!result)
 	{
 		return false;
@@ -118,19 +118,19 @@ bool TerrainClass::Render(TerrainShaderClass * terrainShader, WaterShaderClass* 
 
 bool TerrainClass::renderWater(WaterShaderClass * waterShader, ID3D11DeviceContext * deviceContext, D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix,
 	D3DXMATRIX projectionMatrix, D3DXVECTOR3 lightDirection, D3DXVECTOR4 ambientColor, D3DXVECTOR4 diffuseColor,
-	D3DXVECTOR3 cameraPosition, D3DXVECTOR4 specularColor, float specularPower, float SCREEN_DEPTH, FrustumClass * frustum)
+	D3DXVECTOR3 cameraPosition, D3DXVECTOR4 specularColor, float specularPower, float SCREEN_DEPTH, float waterHeight, float waterTranslation, FrustumClass * frustum)
 {
 	bool result;
 
 	MeshClass* mesh = MeshManagerClass::getI().getModel(m_waterHash);
 
-	MeshClass::translateMatrix(worldMatrix,D3DXVECTOR3(0, SettingsClass::getI().getFloatParameter("WaterHeight"),0));
+	MeshClass::translateMatrix(worldMatrix,D3DXVECTOR3(0, waterHeight,0));
 
 	mesh->Render(deviceContext);
 	result = waterShader->Render(deviceContext, mesh->GetIndexCount(), worldMatrix, viewMatrix, projectionMatrix,
 		TextureManagerClass::getI().getTexture(m_waterNormalTexureHash), TextureManagerClass::getI().getTexture(m_waterTextureHash),
 		TextureManagerClass::getI().getTexture(m_provTextureHash), lightDirection, ambientColor, diffuseColor, cameraPosition, specularColor,
-		specularPower, 0);
+		specularPower, waterTranslation);
 	if (!result)
 	{
 		return false;

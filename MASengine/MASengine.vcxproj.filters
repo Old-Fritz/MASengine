@@ -592,5 +592,8 @@
     <None Include="waterPS.fx">
       <Filter>Файлы ресурсов\Shaders</Filter>
     </None>
+    <None Include="modelVS.fx">
+      <Filter>Файлы ресурсов\Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -45,7 +45,7 @@ void TerrainShaderClass::Shutdown()
 bool TerrainShaderClass::Render(ID3D11DeviceContext * deviceContext, int indexCount, D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix,
 	ID3D11ShaderResourceView * texture, ID3D11ShaderResourceView* physTexture, ID3D11ShaderResourceView** mapTextures,
 	D3DXVECTOR3 lightDirection, D3DXVECTOR4 ambientColor, D3DXVECTOR4 diffuseColor,
-	D3DXVECTOR3 cameraPosition, D3DXVECTOR4 specularColor, float specularPower, D3DXVECTOR4* provsColor)
+	D3DXVECTOR3 cameraPosition, D3DXVECTOR4 specularColor, float specularPower, D3DXVECTOR4* provsColor, float waterHeight)
 {
 	bool result;
 
@@ -53,7 +53,7 @@ bool TerrainShaderClass::Render(ID3D11DeviceContext * deviceContext, int indexCo
 	// Set the shader parameters that it will use for rendering.
 	result = SetShaderParameters(deviceContext, worldMatrix, viewMatrix, projectionMatrix,
 		texture, physTexture, mapTextures, lightDirection,  ambientColor,  diffuseColor,
-		 cameraPosition,  specularColor,  specularPower,  provsColor);
+		 cameraPosition,  specularColor,  specularPower,  provsColor, waterHeight);
 	if (!result)
 	{
 		LogManagerClass::getI().addLog("Error 10-2");
@@ -85,7 +85,7 @@ bool TerrainShaderClass::InitializeShader(ID3D11Device * device, HWND hwnd, cons
 	pixelShaderBuffer = 0;
 
 	// Compile the vertex shader code.
-	result = D3DX11CompileFromFile(vsFilename, NULL, NULL, "TerrainVertexShader", "vs_5_0", D3D10_SHADER_ENABLE_STRICTNESS, 0, NULL,
+	result = D3DX11CompileFromFile(vsFilename, NULL, NULL, "vertexShader", "vs_5_0", D3D10_SHADER_ENABLE_STRICTNESS, 0, NULL,
 		&vertexShaderBuffer, &errorMessage, NULL);
 	if (FAILED(result))
 	{
@@ -104,7 +104,7 @@ bool TerrainShaderClass::InitializeShader(ID3D11Device * device, HWND hwnd, cons
 	}
 
 	// Compile the pixel shader code.
-	result = D3DX11CompileFromFile(psFilename, NULL, NULL, "TerrainPixelShader", "ps_5_0", D3D10_SHADER_ENABLE_STRICTNESS, 0, NULL,
+	result = D3DX11CompileFromFile(psFilename, NULL, NULL, "pixelShader", "ps_5_0", D3D10_SHADER_ENABLE_STRICTNESS, 0, NULL,
 		&pixelShaderBuffer, &errorMessage, NULL);
 	if (FAILED(result))
 	{
@@ -376,7 +376,7 @@ void TerrainShaderClass::OutputShaderErrorMessage(ID3D10Blob * errorMessage, HWN
 bool TerrainShaderClass::SetShaderParameters(ID3D11DeviceContext* deviceContext, D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix,
 	ID3D11ShaderResourceView * texture, ID3D11ShaderResourceView* physTexture, ID3D11ShaderResourceView** mapTextures,
 	D3DXVECTOR3 lightDirection, D3DXVECTOR4 ambientColor, D3DXVECTOR4 diffuseColor,
-	D3DXVECTOR3 cameraPosition, D3DXVECTOR4 specularColor, float specularPower, D3DXVECTOR4* provsColor)
+	D3DXVECTOR3 cameraPosition, D3DXVECTOR4 specularColor, float specularPower, D3DXVECTOR4* provsColor, float waterHeight)
 {
 	HRESULT result;
 	D3D11_MAPPED_SUBRESOURCE mappedResource;
@@ -403,6 +403,7 @@ bool TerrainShaderClass::SetShaderParameters(ID3D11DeviceContext* deviceContext,
 	dataPtr->world = worldMatrix;
 	dataPtr->view = viewMatrix;
 	dataPtr->projection = projectionMatrix;
+	dataPtr->clipPlane = D3DXVECTOR4(0,1,0,-waterHeight);
 	dataPtr->cameraPosition = cameraPosition;
 
 	// Unlock the constant buffer.

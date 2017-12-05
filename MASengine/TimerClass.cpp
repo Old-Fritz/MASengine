@@ -3,7 +3,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 #include "timerclass.h"
 
-
 TimerClass::TimerClass()
 {
 }
@@ -52,10 +51,44 @@ void TimerClass::Frame()
 
 	m_startTime = currentTime;
 
+	// count all counters
+	for (auto counter = m_counters.begin();counter != m_counters.end();counter++)
+	{
+		counter->second.currentPos += counter->second.step * m_frameTime;
+		if (counter->second.currentPos > counter->second.maxValue)
+			counter->second.currentPos = 0;
+	}
+
 	return;
 }
 
 float TimerClass::GetTime()
 {
 	return m_frameTime;
+}
+
+void TimerClass::addCounter(std::string name, float step, float maxValue, float currentPos)
+{
+	CounterType counter;
+	counter.step = step;
+	counter.maxValue = maxValue;
+	counter.currentPos = currentPos;
+
+	m_counters.emplace(std::pair<int, CounterType>(Utils::getHash(name), counter));
+}
+
+float TimerClass::getCounter(std::string name)
+{
+	auto counter = m_counters.find(Utils::getHash(name));
+	if (counter != m_counters.end())
+		return counter->second.currentPos;
+	else
+		return 0;
+}
+
+void TimerClass::deleteCounter(std::string name)
+{
+	auto counter = m_counters.find(Utils::getHash(name));
+	if (counter != m_counters.end())
+		m_counters.erase(counter);
 }

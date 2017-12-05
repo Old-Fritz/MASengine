@@ -7,7 +7,7 @@
 // GLOBALS //
 /////////////
 Texture2D shaderTexture[3];
-SamplerState SampleType;
+SamplerState SampleType[2];
 
 //float g_sizeOfShaderTexture = 128;
 
@@ -39,20 +39,27 @@ float4 CalculateLight(float3 normal);
 ////////////////////////////////////////////////////////////////////////////////
 // Pixel Shader
 ////////////////////////////////////////////////////////////////////////////////
-float4 TerrainPixelShader(PixelInputType input) : SV_TARGET
+float4 pixelShader(PixelInputType input) : SV_TARGET
 {
 	float4 color;
 	float4 lightColor;
-	float4 textureColor;
+	float4 textureColor, provColor, normalColor;
+	float2 newTex;
 
-	///CALCULATE LIGHT///
-	lightColor = CalculateLight(input.normal);
-	textureColor = shaderTexture[1].Sample(SampleType, input.tex);
+	provColor = shaderTexture[2].Sample(SampleType[1], input.tex);
+	if (provColor.z <= 0.95f)
+		return float4(0,0,0,0);
 
-	color = lightColor * textureColor;
+	input.tex *= 4.0f;
+	input.tex.y += waterTranslation;
 
-	if (textureColor.z != 1)
-		textureColor.w = 0;
+	normalColor = shaderTexture[0].Sample(SampleType[0], input.tex);
+	lightColor = CalculateLight(normalColor.xyz);
+	textureColor = shaderTexture[1].Sample(SampleType[0], input.tex);
+
+	color = lightColor*textureColor;
+
+	
 
 	return color;
 }

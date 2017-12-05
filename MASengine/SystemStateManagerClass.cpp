@@ -89,9 +89,9 @@ SystemStateManagerClass & SystemStateManagerClass::getI()
 	return *m_instance;
 }
 
-float SystemStateManagerClass::GetTime()
+TimerClass* SystemStateManagerClass::getTimer()
 {
-	return m_timer->GetTime();
+	return m_timer;
 }
 int SystemStateManagerClass::GetCpuPercentage()
 {

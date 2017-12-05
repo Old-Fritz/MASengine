@@ -9,9 +9,6 @@ GraphicsClass::GraphicsClass()
 	m_interface = 0;
 	m_light = 0;
 	m_terrain = 0;
-
-
-	m_lightPos = 0;
 }
 
 GraphicsClass::GraphicsClass(const GraphicsClass &)
@@ -95,6 +92,8 @@ bool GraphicsClass::Initialize(HWND hwnd)
 		return false;
 	}
 
+	//crete light pos counter
+	SystemStateManagerClass::getI().getTimer()->addCounter("lightPos", 0.00001f,0.8f,0.0f);
 
 	return true;
 }
@@ -200,11 +199,7 @@ bool GraphicsClass::Frame(D3DXVECTOR3 pos, D3DXVECTOR3 rot, int mouseX, int mous
 	//updating denug info
 	m_interface->UpdateDebug(m_D3D->GetDeviceContext(), pos, rot, mouseX, mouseY);
 
-	m_lightPos += 0.0001f * SystemStateManagerClass::getI().GetTime();
-	if (m_lightPos > 1.0f)
-		m_lightPos = -1.0f;
-
-	m_light->SetDirection(D3DXVECTOR3(m_lightPos,-0.5f,0));
+	m_light->SetDirection(D3DXVECTOR3(SystemStateManagerClass::getI().getTimer()->getCounter("lightPos")-0.8f,-0.5f,0));
 
 	return true;
 }

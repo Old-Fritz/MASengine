@@ -36,6 +36,9 @@ bool TerrainManagerClass::Initialize(ID3D11Device * device, ID3D11DeviceContext 
 	m_pickCommand = "terrainPick";
 	m_unPickCommand = "terrainUnPick";
 
+	// create water translation counter
+	SystemStateManagerClass::getI().getTimer()->addCounter("waterTranslation", 0.00001f, 1.0f, 0);
+
 	return true;
 }
 
@@ -57,9 +60,14 @@ bool TerrainManagerClass::Render(TerrainShaderClass * terrainShader, WaterShader
 {
 	bool result;
 	ID3D11ShaderResourceView** mapTextures;
+	float waterHeight, waterTranslation;
 
 	//get map textures
 	mapTextures = TextureManagerClass::getI().getTexturesArray(m_mapTextureHashes, NUM_OF_MAP_TEXTURES);
+
+	//set water params
+	waterHeight = SettingsClass::getI().getFloatParameter("WaterHeight");
+	waterTranslation = SystemStateManagerClass::getI().getTimer()->getCounter("waterTranslation");
 
 	//render all blocks
 	for (auto block = m_terrain.begin();block != m_terrain.end();block++)
@@ -69,7 +77,7 @@ bool TerrainManagerClass::Render(TerrainShaderClass * terrainShader, WaterShader
 
 		//render block
 		result = (*block)->Render(terrainShader, waterShader, deviceContext, worldMatrix, viewMatrix, projectionMatrix, mapTextures, lightDirection,
-			ambientColor, diffuseColor, cameraPosition, specularColor, specularPower, SCREEN_DEPTH, frustum);
+			ambientColor, diffuseColor, cameraPosition, specularColor, specularPower, SCREEN_DEPTH, waterHeight, waterTranslation, frustum);
 		if (!result)
 			return false;
 

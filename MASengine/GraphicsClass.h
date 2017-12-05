@@ -92,8 +92,6 @@ private:
 	LightClass * m_light;  //!<Свет
 	InterfaceClass* m_interface; //!<Интерфейс
 	TerrainManagerClass* m_terrain; //!<Блоки ландшафта
-
-	float m_lightPos; //!<Временный параметр, обозначающий направление света
 };
 /*! @} */
 #endif

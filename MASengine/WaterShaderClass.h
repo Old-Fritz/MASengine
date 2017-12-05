@@ -97,7 +97,7 @@ private:
 	ID3D11InputLayout* m_layout; //!<Макет
 	ID3D11Buffer* m_matrixBuffer; //!<Матричный буфер
 	ID3D11Buffer* m_paramsBuffer; //!<Параментрический буфер
-	ID3D11SamplerState* m_sampleState; //!<Образцовая форма
+	ID3D11SamplerState* m_sampleState[2]; //!<Образцовая форма
 };
 /*! @} */
 #endif

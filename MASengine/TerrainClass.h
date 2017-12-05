@@ -47,12 +47,13 @@ public:
 	\param[in] worldMatrix, viewMatrix, projectionMatrix - матрицы с параметрами  \param[in] mapTextures - текстуры физ. карты
 	\param[in] lightDirection - направление света \param[in] ambientColor - цвет обтеквющего света \param[in] diffuseColor - цвет диффузного света
 	\param[in] cameraPosition - позиция камеры \param[in] specularColor - цвет зеркального света \param[in] specularPower - мощность зеркального света
-	\param[in] SCREEN_DEPTH - глубина экрана \param[in] frustum - конус усечения  \return false, если были ошибки
+	\param[in] SCREEN_DEPTH - глубина экрана \param[in] frustum - конус усечения  \param[in] waterHeight - уровень воды
+	\param[in] waterTranslation - смещение воды     \return false, если были ошибки
 	*/
 	bool Render(TerrainShaderClass* terrainShader, WaterShaderClass* waterShader, ID3D11DeviceContext* deviceContext, D3DXMATRIX worldMatrix,
 		D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, ID3D11ShaderResourceView** mapTextures, D3DXVECTOR3 lightDirection,
 		D3DXVECTOR4 ambientColor, D3DXVECTOR4 diffuseColor, D3DXVECTOR3 cameraPosition, D3DXVECTOR4 specularColor, float specularPower,
-		float SCREEN_DEPTH, FrustumClass* frustum);
+		float SCREEN_DEPTH, float waterHeight, float waterTranslation, FrustumClass* frustum);
 
 
 	//pick actions
@@ -76,12 +77,13 @@ private:
 	\param[in] worldMatrix, viewMatrix, projectionMatrix - матрицы с параметрами
 	\param[in] lightDirection - направление света \param[in] ambientColor - цвет обтекающего света \param[in] diffuseColor - цвет диффузного света
 	\param[in] cameraPosition - позиция камеры \param[in] specularColor - цвет зеркального света \param[in] specularPower - мощность зеркального света
-	\param[in] SCREEN_DEPTH - глубина экрана \param[in] frustum - конус усечения  \return false, если были ошибки
+	\param[in] SCREEN_DEPTH - глубина экрана \param[in] frustum - конус усечения  \param[in] waterHeight - уровень воды
+	\param[in] waterTranslation - смещение воды \return false, если были ошибки
 	*/
 	bool renderWater(WaterShaderClass* waterShader, ID3D11DeviceContext* deviceContext, D3DXMATRIX worldMatrix,
 		D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, D3DXVECTOR3 lightDirection,
 		D3DXVECTOR4 ambientColor, D3DXVECTOR4 diffuseColor, D3DXVECTOR3 cameraPosition, D3DXVECTOR4 specularColor, float specularPower,
-		float SCREEN_DEPTH, FrustumClass* frustum);
+		float SCREEN_DEPTH, float waterHeight, float waterTranslation, FrustumClass* frustum);
 
 	//block info
 	//! Получение данных из файла \param[in] blockFilename - путь до файла блока \return false, если были ошибки

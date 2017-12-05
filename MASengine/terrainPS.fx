@@ -34,6 +34,7 @@ struct PixelInputType
     float2 tex : TEXCOORD0;
     float3 normal : NORMAL;
     float3 viewDirection : TEXCOORD1;
+	float clip : SV_ClipDistance0;
 };
 
 float4 CalculateLight(float3 normal);
@@ -45,7 +46,7 @@ float4 ConvertRGB256(float r, float g, float b);
 ////////////////////////////////////////////////////////////////////////////////
 // Pixel Shader
 ////////////////////////////////////////////////////////////////////////////////
-float4 TerrainPixelShader(PixelInputType input) : SV_TARGET
+float4 pixelShader(PixelInputType input) : SV_TARGET
 {
 	float4 terrainColor;
 	float4 lightColor;
@@ -117,7 +118,7 @@ float4 TerrainPixelShader(PixelInputType input) : SV_TARGET
         color = float4(0.3f, 0.3f, 0.7f, 1.0f);
 
     //return textures[1].Sample(SampleType[1], input.tex);
-	return  textures[0].Sample(SampleType[1], input.tex);
+	return  terrainColor* lightColor;
 }
 
 
@@ -226,7 +227,7 @@ float4 CalculateCurrentPhysical(float4 color, float2 mapCoord)
 	else if (NearColor(color, ConvertRGB256(30, 30, 30))) //cities
 		textureColor = textures[8].Sample(SampleType[2], mapCoord);
 	else
-		textureColor = color;
+		textureColor = textures[2].Sample(SampleType[2], mapCoord);
 
 	return textureColor;
 }

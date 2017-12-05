@@ -36,6 +36,7 @@ private:
 		D3DXMATRIX world; //!<Матрица мира
 		D3DXMATRIX view; //!<Видовая матрица
 		D3DXMATRIX projection; //!<Проекционная матрица
+		D3DXVECTOR4 clipPlane; //!<Усекающая плоскость
 		D3DXVECTOR3 cameraPosition; //!<Позиция камеры
 	};
 	//!Тип параметрического буфера
@@ -64,13 +65,13 @@ public:
 	\param[in] texture - текстура с провами \param[in] physTexture - физическая карта \param[in] mapTextures - физические текстуры
 	\param[in] lightDirection - направление света \param[in] ambientColor - цвет обтекающего света
 	\param[in] diffuseColor - цвет диффузного света \param[in] cameraPosition - позиция камеры \param[in] specularColor - цвет зеркального света
-	\param[in] specularPower - мощность зеркального света \param[in] provsColor - Цвета провинций
+	\param[in] specularPower - мощность зеркального света \param[in] provsColor - Цвета провинций \param[in] waterHeight - уровень воды
 	\return false, если были ошибки
 	*/
 	bool Render(ID3D11DeviceContext* deviceContext, int indexCount, D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix,
 		ID3D11ShaderResourceView* texture, ID3D11ShaderResourceView* physTexture, ID3D11ShaderResourceView** mapTextures,
 		D3DXVECTOR3 lightDirection, D3DXVECTOR4 ambientColor, D3DXVECTOR4 diffuseColor,
-		D3DXVECTOR3 cameraPosition, D3DXVECTOR4 specularColor, float specularPower, D3DXVECTOR4* provsColor);
+		D3DXVECTOR3 cameraPosition, D3DXVECTOR4 specularColor, float specularPower, D3DXVECTOR4* provsColor,float waterHeight);
 
 private:
 	//! Загрузка шейдера \param[in] device - графическое устрйоство \param[in] hwnd - ID окна \param[in] vsFilename - Расположение вершинного шейдера
@@ -86,13 +87,13 @@ private:
 	\param[in] texture - текстура с провами \param[in] physTexture - физическая карта \param[in] mapTextures - физические текстуры
 	\param[in] lightDirection - направление света \param[in] ambientColor - цвет обтекающего света
 	\param[in] diffuseColor - цвет диффузного света \param[in] cameraPosition - позиция камеры \param[in] specularColor - цвет зеркального света
-	\param[in] specularPower - мощность зеркального света \param[in] provsColor - Цвета провинций
+	\param[in] specularPower - мощность зеркального света \param[in] provsColor - Цвета провинций \param[in] waterHeight - уровень воды
 	\return false, если были ошибки
 	*/
 	bool SetShaderParameters(ID3D11DeviceContext* deviceContext, D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix,
 		ID3D11ShaderResourceView* texture, ID3D11ShaderResourceView* physTexture, ID3D11ShaderResourceView** mapTextures,
 		D3DXVECTOR3 lightDirection, D3DXVECTOR4 ambientColor, D3DXVECTOR4 diffuseColor,
-		D3DXVECTOR3 cameraPosition, D3DXVECTOR4 specularColor, float specularPower, D3DXVECTOR4* provsColor);
+		D3DXVECTOR3 cameraPosition, D3DXVECTOR4 specularColor, float specularPower, D3DXVECTOR4* provsColor, float waterHeight);
 	//! Выполнение шейдера \param[in] deviceContext - графическое устройство \param[in] indexCount - количество прорисовываемых вершин
 	void RenderShader(ID3D11DeviceContext* deviceContext, int indexCount);
 

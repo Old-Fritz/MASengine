@@ -196,7 +196,7 @@ bool SystemClass::Frame()
 	m_input->GetMouseLocation(mouseX, mouseY);
 
 	//process position
-	m_position->SetFrameTime(SystemStateManagerClass::getI().GetTime());
+	m_position->SetFrameTime(SystemStateManagerClass::getI().getTimer()->GetTime());
 	m_position->Move();
 
 	//process graphics
