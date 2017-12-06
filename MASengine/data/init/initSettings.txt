@@ -1,6 +1,6 @@
 Settings.txt
 data/init/defSettings.txt
-20
+21
 0 ScreenWidth
 0 ScreenHeight
 0 Fullscreen
@@ -11,6 +11,7 @@ data/init/defSettings.txt
 
 1 HeightMapModifier
 1 WaterHeight
+1 FieldOfView
 
 3 ButCommandFilename
 3 TerrainCommandFilename

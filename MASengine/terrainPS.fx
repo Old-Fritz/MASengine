@@ -114,11 +114,11 @@ float4 pixelShader(PixelInputType input) : SV_TARGET
 	color = color * lightColor;
     color.w = 1.0f;
 	
-    if (provnum == 400)
-        color = float4(0.3f, 0.3f, 0.7f, 1.0f);
+   if (provnum == 400)
+        color = terrainColor * lightColor;
 
     //return textures[1].Sample(SampleType[1], input.tex);
-	return  terrainColor* lightColor;
+	return  color;
 }
 
 

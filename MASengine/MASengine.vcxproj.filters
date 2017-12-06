@@ -43,9 +43,6 @@
     <Filter Include="Заголовочные файлы\Resources">
       <UniqueIdentifier>{ae9ae0ac-5a7b-404b-bedc-60c585aeb757}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Файлы исходного кода\Resources">
-      <UniqueIdentifier>{780c8322-112b-4443-b5d5-da16c7e35a17}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Заголовочные файлы\Graphics">
       <UniqueIdentifier>{2a2a5fb8-2296-4b3a-bb97-6fdfa15abbee}</UniqueIdentifier>
     </Filter>
@@ -142,17 +139,20 @@
     <Filter Include="Заголовочные файлы\Resources\Meshes\loaders">
       <UniqueIdentifier>{9ced67b3-e138-42b3-9e7b-a6681113e3a2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Файлы исходного кода\Resources\Meshes">
-      <UniqueIdentifier>{7374422f-95ae-4e51-b67d-0f62d571830c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Файлы исходного кода\Resources\Meshes\Loaders">
-      <UniqueIdentifier>{3bcca09f-cdb8-42f8-9d12-f25a81272194}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Заголовочные файлы\GameMechaniks\ProvRegions">
       <UniqueIdentifier>{8205c59c-9ba9-4bde-a1c6-2ef062636b5e}</UniqueIdentifier>
     </Filter>
     <Filter Include="Файлы исходного кода\GameMechanics\provRegions">
       <UniqueIdentifier>{6e28f495-e5d6-4b8b-8c8b-326d4494274c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\Graphics\Resources">
+      <UniqueIdentifier>{780c8322-112b-4443-b5d5-da16c7e35a17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\Graphics\Resources\Meshes">
+      <UniqueIdentifier>{7374422f-95ae-4e51-b67d-0f62d571830c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\Graphics\Resources\Meshes\Loaders">
+      <UniqueIdentifier>{3bcca09f-cdb8-42f8-9d12-f25a81272194}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -199,7 +199,7 @@
       <Filter>Файлы исходного кода\GlobalManager\ResourceManagment</Filter>
     </ClCompile>
     <ClCompile Include="TextureClass.cpp">
-      <Filter>Файлы исходного кода\Resources</Filter>
+      <Filter>Файлы исходного кода\Graphics\Resources</Filter>
     </ClCompile>
     <ClCompile Include="TextManagerClass.cpp">
       <Filter>Файлы исходного кода\GlobalManager\ResourceManagment</Filter>
@@ -241,7 +241,7 @@
       <Filter>Файлы исходного кода\GlobalManager\ResourceManagment</Filter>
     </ClCompile>
     <ClCompile Include="FontClass.cpp">
-      <Filter>Файлы исходного кода\Resources</Filter>
+      <Filter>Файлы исходного кода\Graphics\Resources</Filter>
     </ClCompile>
     <ClCompile Include="TextClass.cpp">
       <Filter>Файлы исходного кода\Graphics\Interface\InterfaceBocks</Filter>
@@ -313,10 +313,10 @@
       <Filter>Файлы исходного кода\Graphics\Blocks</Filter>
     </ClCompile>
     <ClCompile Include="MeshLoaderClass.cpp">
-      <Filter>Файлы исходного кода\Resources\Meshes\Loaders</Filter>
+      <Filter>Файлы исходного кода\Graphics\Resources\Meshes\Loaders</Filter>
     </ClCompile>
     <ClCompile Include="HeightMapLoaderClass.cpp">
-      <Filter>Файлы исходного кода\Resources\Meshes\Loaders</Filter>
+      <Filter>Файлы исходного кода\Graphics\Resources\Meshes\Loaders</Filter>
     </ClCompile>
     <ClCompile Include="FrustumClass.cpp">
       <Filter>Файлы исходного кода\Utils</Filter>
@@ -355,13 +355,19 @@
       <Filter>Файлы исходного кода\GlobalManager\ResourceManagment</Filter>
     </ClCompile>
     <ClCompile Include="MeshClass.cpp">
-      <Filter>Файлы исходного кода\Resources\Meshes</Filter>
+      <Filter>Файлы исходного кода\Graphics\Resources\Meshes</Filter>
     </ClCompile>
     <ClCompile Include="BoxMeshClass.cpp">
-      <Filter>Файлы исходного кода\Resources\Meshes</Filter>
+      <Filter>Файлы исходного кода\Graphics\Resources\Meshes</Filter>
     </ClCompile>
     <ClCompile Include="ModelManagerClass.cpp">
       <Filter>Файлы исходного кода\Graphics\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="FillShaderClass.cpp">
+      <Filter>Файлы исходного кода\Graphics\ShaderManagment\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderTextureClass.cpp">
+      <Filter>Файлы исходного кода\Graphics\Sysyems</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -569,6 +575,12 @@
     <ClInclude Include="BoxMeshClass.h">
       <Filter>Заголовочные файлы\Resources\Meshes</Filter>
     </ClInclude>
+    <ClInclude Include="FillShaderClass.h">
+      <Filter>Заголовочные файлы\Graphics\ShaderManagment\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderTextureClass.h">
+      <Filter>Заголовочные файлы\Graphics\Systems</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="interfaceVS.fx">
@@ -595,5 +607,13 @@
     <None Include="modelVS.fx">
       <Filter>Файлы ресурсов\Shaders</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="fillPS.fx">
+      <Filter>Файлы ресурсов\Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="fillVS.fx">
+      <Filter>Файлы ресурсов\Shaders</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

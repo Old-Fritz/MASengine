@@ -5,6 +5,9 @@ ShaderManagerClass::ShaderManagerClass()
 	m_interfaceShader = 0;
 	m_fontShader = 0;
 	m_terrainShader = 0;
+	m_modelShader = 0;
+	m_waterShader = 0;
+	m_fillShader = 0;
 }
 ShaderManagerClass::ShaderManagerClass(const ShaderManagerClass &)
 {
@@ -87,11 +90,32 @@ bool ShaderManagerClass::Initialize(ID3D11Device * device, HWND hwnd)
 	}
 	LogManagerClass::getI().addLog("Water Shader Initialization");
 
+	//Initialize fill Shader
+	m_fillShader = new(1) FillShaderClass;
+	if (!m_waterShader)
+		return false;
+	PathClass* fillPS = PathManagerClass::getI().makePath("fillPS.fx");
+	PathClass* fillVS = PathManagerClass::getI().makePath("fillVS.fx");
+	result = m_fillShader->Initialize(device, hwnd, fillVS, fillPS);
+	if (!result)
+	{
+		LogManagerClass::getI().addLog("Error 10-x");
+		return false;
+	}
+	LogManagerClass::getI().addLog("Fill Shader Initialization");
+
 	return true;
 }
 
 void ShaderManagerClass::Shutdown()
 {
+	if (m_fillShader)
+	{
+		m_fillShader->Shutdown();
+		::operator delete(m_fillShader, sizeof(*m_fillShader), 1);
+		m_fillShader = 0;
+	}
+
 	if (m_waterShader)
 	{
 		m_waterShader->Shutdown();
@@ -153,4 +177,9 @@ ModelShaderClass * ShaderManagerClass::getModelShader()
 WaterShaderClass * ShaderManagerClass::getWaterShader()
 {
 	return m_waterShader;
+}
+
+FillShaderClass * ShaderManagerClass::getFillShader()
+{
+	return m_fillShader;
 }

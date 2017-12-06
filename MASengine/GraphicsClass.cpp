@@ -379,7 +379,7 @@ bool GraphicsClass::updateGraphics(CommandClass * command,int ind)
 
 bool GraphicsClass::Render()
 {
-	D3DXMATRIX worldMatrix, viewMatrix, projectionMatrix, orthoMatrix;
+	D3DXMATRIX worldMatrix, viewMatrix, projectionMatrix, orthoMatrix, blockTopViewMatrix;
 	bool result;
 	FrustumClass* frustum = new(2) FrustumClass;
 
@@ -399,9 +399,10 @@ bool GraphicsClass::Render()
 	frustum->ConstructFrustum(SCREEN_DEPTH, projectionMatrix, viewMatrix);
 
 	//render terrain
+	blockTopViewMatrix = m_camera->createViewMatrix(m_terrain->getBlockTopCameraPos(), D3DXVECTOR3(90, 0, 0));
 
-	result = m_terrain->Render(m_shaderManager->getTerrainShader(), m_shaderManager->getWaterShader(), m_D3D->GetDeviceContext(), worldMatrix,
-			viewMatrix, projectionMatrix, m_light->GetDirection(), m_light->GetAmbientColor(),
+	result = m_terrain->Render(m_D3D, m_shaderManager->getTerrainShader(), m_shaderManager->getWaterShader(), m_shaderManager->getFillShader(), worldMatrix,
+			viewMatrix, projectionMatrix, blockTopViewMatrix, m_light->GetDirection(), m_light->GetAmbientColor(),
 			m_light->GetDiffuseColor(), m_camera->GetPosition(), m_light->GetSpecularColor(),
 			m_light->GetSpecularPower(), SCREEN_DEPTH, frustum);
 	if (!result)

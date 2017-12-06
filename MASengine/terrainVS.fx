@@ -45,7 +45,6 @@ PixelInputType vertexShader(VertexInputType input)
 {
     PixelInputType output;
     float4 worldPosition;
-	float4 corClipPlane;
 
 	// Change the position vector to be 4 units for proper matrix calculations.
     input.position.w = 1.0f;
@@ -77,10 +76,8 @@ PixelInputType vertexShader(VertexInputType input)
     output.viewDirection = normalize(output.viewDirection);
 
 	//correct clip plane
-	corClipPlane = clipPlane;
-	corClipPlane.w += 1;
 	// Set the clipping plane.
-	output.clip = dot(mul(input.position, worldMatrix), corClipPlane);
+	output.clip = dot(mul(input.position, worldMatrix), clipPlane);
 
     return output;
 }

@@ -8,6 +8,7 @@ NumOFBlocks = {16}
 
 HeightMapModifier = {-15.0f}
 WaterHeight = {-14.0f}
+FieldOfView = {0.785398185f}
 
 ButCommandFilename = {data/interface/actions/butACTION.txt}
 TerrainCommandFilename = {data/terrainCommand.txt}

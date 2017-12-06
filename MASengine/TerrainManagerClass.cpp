@@ -2,6 +2,7 @@
 
 TerrainManagerClass::TerrainManagerClass()
 {
+	m_fillTexture = 0;
 }
 TerrainManagerClass::TerrainManagerClass(const TerrainManagerClass &)
 {
@@ -39,11 +40,33 @@ bool TerrainManagerClass::Initialize(ID3D11Device * device, ID3D11DeviceContext 
 	// create water translation counter
 	SystemStateManagerClass::getI().getTimer()->addCounter("waterTranslation", 0.00001f, 1.0f, 0);
 
+	// init render textures
+	m_fillTexture = new(1) RenderTextureClass;
+	if (!m_fillTexture)
+		return false;
+
+	//result = m_fillTexture->Initialize(device, m_terrain[0]->getTerrainWidth()*5, m_terrain[0]->getTerrainHeight()*5);
+	result = m_fillTexture->Initialize(device, (float)SettingsClass::getI().getIntParameter("ScreenHeight") / pow(2, 3), (float)SettingsClass::getI().getIntParameter("ScreenHeight") / pow(2, 3));
+	if (!result)
+		return false;
+
+	// Set render textures to all blocks
+	for (int i = 0;i < m_terrain.size();i++)
+	{
+		m_terrain[i]->setRenderTextures(m_fillTexture);
+	}
+
 	return true;
 }
 
 void TerrainManagerClass::Shutdown()
 {
+	if (m_fillTexture)
+	{
+		m_fillTexture->Shutdown();
+		::operator delete(m_fillTexture, sizeof(*m_fillTexture), 1);
+		m_fillTexture = 0;
+	}
 	for (int i = m_terrain.size()-1;i >= 0;i--)
 	{
 		m_terrain[i]->Shutdown();
@@ -53,8 +76,8 @@ void TerrainManagerClass::Shutdown()
 	m_terrain.clear();
 }
 
-bool TerrainManagerClass::Render(TerrainShaderClass * terrainShader, WaterShaderClass* waterShader, ID3D11DeviceContext * deviceContext, D3DXMATRIX worldMatrix,
-	D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, D3DXVECTOR3 lightDirection, D3DXVECTOR4 ambientColor,
+bool TerrainManagerClass::Render(D3DClass* D3D, TerrainShaderClass * terrainShader, WaterShaderClass* waterShader, FillShaderClass* fillShader, D3DXMATRIX worldMatrix,
+	D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, D3DXMATRIX topViewMatrix, D3DXVECTOR3 lightDirection, D3DXVECTOR4 ambientColor,
 	D3DXVECTOR4 diffuseColor, D3DXVECTOR3 cameraPosition, D3DXVECTOR4 specularColor, float specularPower,
 	float SCREEN_DEPTH, FrustumClass * frustum)
 {
@@ -72,17 +95,11 @@ bool TerrainManagerClass::Render(TerrainShaderClass * terrainShader, WaterShader
 	//render all blocks
 	for (auto block = m_terrain.begin();block != m_terrain.end();block++)
 	{
-		//translate world Matrix first
-		MeshClass::translateMatrix(worldMatrix, (*block)->getPosition());
-
 		//render block
-		result = (*block)->Render(terrainShader, waterShader, deviceContext, worldMatrix, viewMatrix, projectionMatrix, mapTextures, lightDirection,
+		result = (*block)->Render(D3D, terrainShader, waterShader, fillShader, worldMatrix, viewMatrix, projectionMatrix, topViewMatrix, mapTextures, lightDirection,
 			ambientColor, diffuseColor, cameraPosition, specularColor, specularPower, SCREEN_DEPTH, waterHeight, waterTranslation, frustum);
 		if (!result)
 			return false;
-
-		//translate world matrix back
-		MeshClass::translateMatrix(worldMatrix, -(*block)->getPosition());
 	}
 
 	return true;
@@ -115,6 +132,20 @@ std::string TerrainManagerClass::getUnPickCommandName()
 	return m_unPickCommand;
 }
 
+D3DXVECTOR3 TerrainManagerClass::getBlockTopCameraPos()
+{
+	int lvl = 3;
+
+	D3DXVECTOR3 output;
+	float terrainHeight = m_terrain[0]->getTerrainHeight() / 2;
+	float terrainWidth = m_terrain[0]->getTerrainWidth() / 2;
+	float shift = (float)SettingsClass::getI().getIntParameter("ScreenWidth") / (float)SettingsClass::getI().getIntParameter("ScreenHeight");
+	//normilize position
+	output.x = terrainHeight*shift*pow(2, lvl);
+	output.y = (terrainHeight / tan(SettingsClass::getI().getFloatParameter("FieldOfView") / 2.0f)* pow(2, lvl) + SettingsClass::getI().getFloatParameter("WaterHeight")) ;
+	output.z = terrainWidth - terrainWidth * (pow(2, lvl)-1);
+	return output;
+}
 
 
 

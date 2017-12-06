@@ -10,8 +10,10 @@ D3DClass::D3DClass()
 	m_swapChain = 0;
 	m_renderTargetView = 0;
 	m_depthStencilBuffer = 0;
+	m_depthStencilBuffer = 0;
 	m_depthStencilState = 0;
 	m_depthStencilView = 0;
+	m_textureDepthStencilView = 0;
 	m_rasterState = 0;
 
 	m_depthDisabledStencilState = 0;
@@ -43,9 +45,9 @@ bool D3DClass::Initialize(HWND hwnd, float screenDepth, float screenNear)
 	DXGI_SWAP_CHAIN_DESC swapChainDesc;
 	D3D_FEATURE_LEVEL featureLevel;
 	ID3D11Texture2D* backBufferPtr;
-	D3D11_TEXTURE2D_DESC depthBufferDesc;
+	D3D11_TEXTURE2D_DESC depthBufferDesc, textureDepthBufferDesc;
 	D3D11_DEPTH_STENCIL_DESC depthStencilDesc;
-	D3D11_DEPTH_STENCIL_VIEW_DESC depthStencilViewDesc;
+	D3D11_DEPTH_STENCIL_VIEW_DESC depthStencilViewDesc, textureDepthStencilViewDesc;
 	D3D11_RASTERIZER_DESC rasterDesc;
 	D3D11_VIEWPORT viewport;
 	float fieldOfView, screenAspect;
@@ -264,6 +266,29 @@ bool D3DClass::Initialize(HWND hwnd, float screenDepth, float screenNear)
 		return false;
 	}
 
+	// Initialize the description of the texture depth buffer.
+	ZeroMemory(&textureDepthBufferDesc, sizeof(textureDepthBufferDesc));
+
+	// Set up the description of the texture depth buffer.
+	textureDepthBufferDesc.Width = SettingsClass::getI().getIntParameter("ScreenWidth");
+	textureDepthBufferDesc.Height = SettingsClass::getI().getIntParameter("ScreenHeight");
+	textureDepthBufferDesc.MipLevels = 1;
+	textureDepthBufferDesc.ArraySize = 1;
+	textureDepthBufferDesc.Format = DXGI_FORMAT_D24_UNORM_S8_UINT;
+	textureDepthBufferDesc.SampleDesc.Count = 1;
+	textureDepthBufferDesc.SampleDesc.Quality = 0;
+	textureDepthBufferDesc.Usage = D3D11_USAGE_DEFAULT;
+	textureDepthBufferDesc.BindFlags = D3D11_BIND_DEPTH_STENCIL;
+	textureDepthBufferDesc.CPUAccessFlags = 0;
+	textureDepthBufferDesc.MiscFlags = 0;
+
+	// Create the texture for the depth buffer using the filled out description.
+	result = m_device->CreateTexture2D(&textureDepthBufferDesc, NULL, &m_textureDepthStencilBuffer);
+	if (FAILED(result))
+	{
+		LogManagerClass::getI().addLog("Error 9-12");
+		return false;
+	}
 	// Initialize the description of the stencil state.
 	ZeroMemory(&depthStencilDesc, sizeof(depthStencilDesc));
 
@@ -317,6 +342,22 @@ bool D3DClass::Initialize(HWND hwnd, float screenDepth, float screenNear)
 		return false;
 	}
 
+	// Initailze the texture depth stencil view.
+	ZeroMemory(&textureDepthStencilViewDesc, sizeof(textureDepthStencilViewDesc));
+
+	// Set up the texture depth stencil view description.
+	textureDepthStencilViewDesc.Format = DXGI_FORMAT_D24_UNORM_S8_UINT;
+	textureDepthStencilViewDesc.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2D;
+	textureDepthStencilViewDesc.Texture2D.MipSlice = 0;
+
+	// Create the texture depth stencil view.
+	result = m_device->CreateDepthStencilView(m_textureDepthStencilBuffer, &textureDepthStencilViewDesc, &m_textureDepthStencilView);
+	if (FAILED(result))
+	{
+		LogManagerClass::getI().addLog("Error 9-14");
+		return false;
+	}
+
 	// Bind the render target view and depth stencil buffer to the output render pipeline.
 	m_deviceContext->OMSetRenderTargets(1, &m_renderTargetView, m_depthStencilView);
 
@@ -356,7 +397,8 @@ bool D3DClass::Initialize(HWND hwnd, float screenDepth, float screenNear)
 	m_deviceContext->RSSetViewports(1, &viewport);
 
 	// Setup the projection matrix.
-	fieldOfView = (float)D3DX_PI / 4.0f;
+	//fieldOfView = (float)D3DX_PI / 4.0f;
+	fieldOfView = SettingsClass::getI().getFloatParameter("FieldOfView");
 	screenAspect = (float)SettingsClass::getI().getIntParameter("ScreenWidth") / (float)SettingsClass::getI().getIntParameter("ScreenHeight");
 
 	// Create the projection matrix for 3D rendering.
@@ -602,12 +644,22 @@ ID3D11DepthStencilView* D3DClass::GetDepthStencilView()
 	return m_depthStencilView;
 }
 
+ID3D11DepthStencilView * D3DClass::GetTextureDepthStencilView()
+{
+	return m_textureDepthStencilView;
+}
+
 void D3DClass::SetBackBufferRenderTarget()
 {
 	// Bind the render target view and depth stencil buffer to the output render pipeline.
 	m_deviceContext->OMSetRenderTargets(1, &m_renderTargetView, m_depthStencilView);
 
 	return;
+}
+
+void D3DClass::ClearBackBufferRenderTarget()
+{
+	m_deviceContext->ClearRenderTargetView(m_renderTargetView, D3DXVECTOR4(0, 0, 0, 1));
 }
 
 void D3DClass::TurnOnAlphaBlending()

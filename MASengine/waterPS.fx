@@ -46,11 +46,14 @@ float4 pixelShader(PixelInputType input) : SV_TARGET
 	float4 textureColor, provColor, normalColor;
 	float2 newTex;
 
+
+	//return shaderTexture[2].Sample(SampleType[1], input.tex);
+
 	provColor = shaderTexture[2].Sample(SampleType[1], input.tex);
-	if (provColor.z <= 0.95f)
+	if (provColor.z == 1)
 		return float4(0,0,0,0);
 
-	input.tex *= 4.0f;
+	input.tex *= 2.0f;
 	input.tex.y += waterTranslation;
 
 	normalColor = shaderTexture[0].Sample(SampleType[0], input.tex);

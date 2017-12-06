@@ -54,6 +54,8 @@ public:
 	ID3D11DeviceContext* GetDeviceContext();
 	//! Получение Depth Stencil View \return основной Depth Stencil View
 	ID3D11DepthStencilView* GetDepthStencilView();
+	//! Получение Depth Stencil View для рендринга в текстуру \return дополнительный Depth Stencil View
+	ID3D11DepthStencilView* GetTextureDepthStencilView();
 
 	//! Получение проекционной матрицы \param[out] projectionMatrix проекционная матрица
 	void GetProjectionMatrix(D3DXMATRIX& projectionMatrix);
@@ -72,6 +74,8 @@ public:
 
 	//! Возвращение к оригинальной цели для рендринга
 	void SetBackBufferRenderTarget();
+	//! Очистка основной цели для рендринга
+	void ClearBackBufferRenderTarget();
 
 	//! Включение AlphaBlending
 	void TurnOnAlphaBlending();
@@ -85,9 +89,11 @@ private:
 	ID3D11Device* m_device; //!<Графическое устрйоство
 	ID3D11DeviceContext* m_deviceContext; //!<Графическое устройство 2
 	ID3D11RenderTargetView* m_renderTargetView; //!<Базовая цель для рендринга
-	ID3D11Texture2D* m_depthStencilBuffer; 
+	ID3D11Texture2D* m_depthStencilBuffer; //!< depth Stencil буффер для рендринга в текстуры
+	ID3D11Texture2D* m_textureDepthStencilBuffer;
 	ID3D11DepthStencilState* m_depthStencilState;
 	ID3D11DepthStencilView* m_depthStencilView;
+	ID3D11DepthStencilView* m_textureDepthStencilView; //!< depth Stencil View для рендринга в текстуры
 	ID3D11RasterizerState* m_rasterState;
 	D3DXMATRIX m_projectionMatrix; //!<Проекционная матрица
 	D3DXMATRIX m_worldMatrix; //!<Матрица мира

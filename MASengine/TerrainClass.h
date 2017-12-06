@@ -12,6 +12,9 @@
 #include "ProvRegionManagerClass.h"
 #include "TerrainShaderClass.h"
 #include "WaterShaderClass.h"
+#include "FillShaderClass.h"
+#include "RenderTextureClass.h"
+
 
 //////////////
 // GLOBALS //
@@ -42,19 +45,31 @@ public:
 	//! \param[in] id - ID блока  \return false, если были ошибки
 	bool Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, PathClass* blockFilename, int id);
 	void Shutdown();
+	//! Установка рендрируемых текстур из главного менджера \paran[in] fillTexture - текстура заполнения блока
+	void setRenderTextures(RenderTextureClass* fillTexture);
+
 	/*!
-	Прорисовка блока \param[in] terrainShader - шейдер блоков \param[in] waterShader - шейдер воды \param[in] deviceContext - графическое устройство
-	\param[in] worldMatrix, viewMatrix, projectionMatrix - матрицы с параметрами  \param[in] mapTextures - текстуры физ. карты
+	Прорисовка блок \param[in] D3D - API Directx для рендринга в текстуру \param[in] terrainShader - шейдер блоков 	\param[in] waterShader - шейдер воды 
+	\param[in] fillShader - шейдер заполнения \param[in] worldMatrix, viewMatrix, projectionMatrix - матрицы с параметрам 
+	\param[in] topViewMatrix - матрица для камеры сверху блока   \param[in] mapTextures - текстуры физ. карты
 	\param[in] lightDirection - направление света \param[in] ambientColor - цвет обтеквющего света \param[in] diffuseColor - цвет диффузного света
 	\param[in] cameraPosition - позиция камеры \param[in] specularColor - цвет зеркального света \param[in] specularPower - мощность зеркального света
 	\param[in] SCREEN_DEPTH - глубина экрана \param[in] frustum - конус усечения  \param[in] waterHeight - уровень воды
 	\param[in] waterTranslation - смещение воды     \return false, если были ошибки
 	*/
-	bool Render(TerrainShaderClass* terrainShader, WaterShaderClass* waterShader, ID3D11DeviceContext* deviceContext, D3DXMATRIX worldMatrix,
-		D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, ID3D11ShaderResourceView** mapTextures, D3DXVECTOR3 lightDirection,
+	bool Render(D3DClass* D3D, TerrainShaderClass* terrainShader, WaterShaderClass* waterShader, FillShaderClass* fillShader, D3DXMATRIX worldMatrix,
+		D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, D3DXMATRIX topViewMatrix, ID3D11ShaderResourceView** mapTextures, D3DXVECTOR3 lightDirection,
 		D3DXVECTOR4 ambientColor, D3DXVECTOR4 diffuseColor, D3DXVECTOR3 cameraPosition, D3DXVECTOR4 specularColor, float specularPower,
 		float SCREEN_DEPTH, float waterHeight, float waterTranslation, FrustumClass* frustum);
 
+	/*
+	Прорисовка блока сверху в текстуру  
+	\param[in] D3D - API Directx для рендринга в текстуру \param[in] fillShader - шейдер заполнения
+	\param[in] worldMatrix, viewMatrix, projectionMatrix - матрицы с параметрами \param[in] terrainMesh - меш ландшафта 
+	\param[in] waterHeight - уровень воды \return false, если были ошибки
+	*/
+	bool renderToTexture(D3DClass* D3D, FillShaderClass* fillShader, D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix,
+		MeshClass* terrainMesh, float waterHeight);
 
 	//pick actions
 	//! Получение провинции, выбранной при клике \param[in] deviceContext - графическое устройство \param[in] mouseX, mouseY - позиция курсора 
@@ -69,6 +84,12 @@ public:
 	//Getters
 	//! Получение позиции блока \return позиция блока
 	D3DXVECTOR3 getPosition();
+
+	//! Получение длины вертикальной стороны \return terrainHeight
+	float getTerrainHeight();
+
+	//! Получение длины горизонтальной стороны \return terrainWidth
+	float getTerrainWidth();
 
 	
 private:
@@ -119,6 +140,8 @@ private:
 
 	//info from file
 	D3DXVECTOR3 m_position; //!<Позиция блока на карте
+
+	RenderTextureClass* m_fillTexture; //!< Текстура заполнения блока
 };
 /*! @} */
 #endif

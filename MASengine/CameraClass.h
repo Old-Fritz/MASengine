@@ -16,12 +16,12 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 /*!
-\defgroup Systems ¬спомогательные графические системы
+\defgroup Systems Вспомогательные графические системы
 \ingroup Graphics
 @{
 */
 /*!
- амера
+ Камера
 */
 class CameraClass
 {
@@ -30,31 +30,34 @@ public:
 	CameraClass(const CameraClass&);
 	~CameraClass();
 
-	//! ”становка позици¤ камеры \param[in] pos - координаты камеры
+	//! Установка позици¤ камеры \param[in] pos - координаты камеры
 	void SetPosition(D3DXVECTOR3 pos);
-	//! ”становка поворота камеры \param[in] rot - координаты поворота камеры (ypr)
+	//! Установка поворота камеры \param[in] rot - координаты поворота камеры (ypr)
 	void SetRotation(D3DXVECTOR3 rot);
 
-	//! ѕолучение позици¤ камеры \return координаты модели
+	//! Получение позиции камеры \return координаты модели
 	D3DXVECTOR3 GetPosition();
-	//! ѕолучение поворота камеры \return координаты поворота модели (ypr)
+	//! Получение поворота камеры \return координаты поворота модели (ypr)
 	D3DXVECTOR3 GetRotation();
 
-	//! ќбновление видовой матрицы в зависимости от позиции и поворота
+	//! Обновление видовой матрицы в зависимости от позиции и поворота
 	void Render();
-	//! ѕолучение видовой матрицы \param[in] viewMatrix - полученна¤ видова¤ матрица
+	//! Получение видовой матрицы \param[in] viewMatrix - полученная видовая матрица
 	void GetViewMatrix(D3DXMATRIX& viewMatrix);
 
-	//! ќбновление видовой отраженной матрицы \param[in] height - высота отражени¤
+	//! Обновление видовой отраженной матрицы \param[in] height - высота отражения
 	void RenderReflection(float height);
-	//! ѕолучение отраженной видовой матрицы \return полученна¤ видова¤ отраженна¤ матрица
+	//! Получение отраженной видовой матрицы \return полученная видовая отраженная матрица
 	D3DXMATRIX GetReflectionViewMatrix();
 
+	//! Создание специальной матрицы вида \param[in] pos - позиция камеры \param[in] rot - поворот камеры \return полученная матрица
+	D3DXMATRIX createViewMatrix(D3DXVECTOR3 pos, D3DXVECTOR3 rot);
+
 private:
-	D3DXVECTOR3 m_position; //!<ѕозици¤ камеры
-	D3DXVECTOR3 m_rotation; //!<ѕоворот камеры
-	D3DXMATRIX m_viewMatrix; //!<¬идова¤ матрица
-	D3DXMATRIX m_reflectionViewMatrix;  //!<¬идова¤ отраженна¤ матрица
+	D3DXVECTOR3 m_position; //!<Позиция камеры
+	D3DXVECTOR3 m_rotation; //!<Поворот камеры
+	D3DXMATRIX m_viewMatrix; //!<Видовая матрица
+	D3DXMATRIX m_reflectionViewMatrix;  //!<Видовая отраженная матрица
 };
 /*! @} */
 #endif

@@ -33,14 +33,14 @@ public:
 	bool Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, std::string terrainFilenameBase, int numOfBlocks);
 	void Shutdown();
 	/*!
-	Прорисовка блоков \param[in] terrainShader - шейдер блоков \param[in] waterShader - шейдер воды \param[in] deviceContext - графическое устройство
-	\param[in] worldMatrix, viewMatrix, projectionMatrix - матрицы с параметрами
+	Прорисовка блоков \param[in] D3D - API Directx для рендринга в текстуру \param[in] terrainShader - шейдер блоков \param[in] waterShader - шейдер воды 
+	\param[in] fillShader - шейдер заполнения \param[in] worldMatrix, viewMatrix, projectionMatrix - матрицы с параметрами  \param[in] topViewMatrix - матрица для камеры сверху блока
 	\param[in] lightDirection - направление света \param[in] ambientColor - цвет обтеквющего света \param[in] diffuseColor - цвет диффузного света
 	\param[in] cameraPosition - позиция камеры \param[in] specularColor - цвет зеркального света \param[in] specularPower - мощность зеркального света
 	\param[in] SCREEN_DEPTH - глубина экрана \param[in] frustum - конус усечения  \return false, если были ошибки
 	*/
-	bool Render(TerrainShaderClass* terrainShader, WaterShaderClass* waterShader, ID3D11DeviceContext* deviceContext, D3DXMATRIX worldMatrix,
-		D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, D3DXVECTOR3 lightDirection, D3DXVECTOR4 ambientColor,
+	bool Render(D3DClass* D3D, TerrainShaderClass* terrainShader, WaterShaderClass* waterShader, FillShaderClass* fillShader, D3DXMATRIX worldMatrix,
+		D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, D3DXMATRIX topViewMatrix, D3DXVECTOR3 lightDirection, D3DXVECTOR4 ambientColor,
 		D3DXVECTOR4 diffuseColor, D3DXVECTOR3 cameraPosition, D3DXVECTOR4 specularColor, float specularPower,
 		float SCREEN_DEPTH, FrustumClass* frustum);
 
@@ -55,6 +55,9 @@ public:
 	std::string getPickCommandName();
 	//! Получение имени команды, выпоняемой отжатии клиика \return имя команды
 	std::string getUnPickCommandName();
+
+	//! Получение позиции камеры, необходимой для рендринга в текстуру блока \return координаты камеры
+	D3DXVECTOR3 getBlockTopCameraPos();
 private:
 	//! Загрузка текстур для физических карт  \param[in] device - графическое устройство
 	bool initializeMapTextures(ID3D11Device* device);
@@ -65,6 +68,8 @@ private:
 
 	std::string m_pickCommand; //!< Имя команды, выпоняемой при клике
 	std::string m_unPickCommand; //!< Имя команды, выпоняемой отжатии клиика
+
+	RenderTextureClass* m_fillTexture; //!< Текстура заполнения блока
 };
 /*! @} */
 #endif

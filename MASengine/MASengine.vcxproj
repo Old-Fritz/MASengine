@@ -125,6 +125,7 @@
     <ClCompile Include="ConditionCheckerClass.cpp" />
     <ClCompile Include="CpuClass.cpp" />
     <ClCompile Include="D3DClass.cpp" />
+    <ClCompile Include="FillShaderClass.cpp" />
     <ClCompile Include="FloatParamClass.cpp" />
     <ClCompile Include="FontClass.cpp" />
     <ClCompile Include="FontManagerClass.cpp" />
@@ -165,6 +166,7 @@
     <ClCompile Include="ProvManagerClass.cpp" />
     <ClCompile Include="ProvRegionClass.cpp" />
     <ClCompile Include="ProvRegionManagerClass.cpp" />
+    <ClCompile Include="RenderTextureClass.cpp" />
     <ClCompile Include="ResourceManagerClass.cpp" />
     <ClCompile Include="SetParamClass.cpp" />
     <ClCompile Include="SettingsClass.cpp" />
@@ -195,6 +197,7 @@
     <ClInclude Include="ConditionCheckerClass.h" />
     <ClInclude Include="CpuClass.h" />
     <ClInclude Include="D3DClass.h" />
+    <ClInclude Include="FillShaderClass.h" />
     <ClInclude Include="FloatParamClass.h" />
     <ClInclude Include="BoxMeshClass.h" />
     <ClInclude Include="FrustumClass.h" />
@@ -235,6 +238,7 @@
     <ClInclude Include="ProvManagerClass.h" />
     <ClInclude Include="ProvRegionClass.h" />
     <ClInclude Include="ProvRegionManagerClass.h" />
+    <ClInclude Include="RenderTextureClass.h" />
     <ClInclude Include="ResourceManagerClass.h" />
     <ClInclude Include="SetParamClass.h" />
     <ClInclude Include="SettingsClass.h" />
@@ -294,6 +298,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="modelVS.fx">
+      <FileType>Document</FileType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="fillPS.fx">
+      <FileType>Document</FileType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="fillVS.fx">
       <FileType>Document</FileType>
     </None>
   </ItemGroup>

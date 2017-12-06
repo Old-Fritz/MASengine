@@ -14,6 +14,7 @@
 #include "TerrainShaderClass.h"
 #include "ModelShaderClass.h"
 #include "WaterShaderClass.h"
+#include "FillShaderClass.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // Class name: ShaderManagerClass
@@ -49,6 +50,8 @@ public:
 	ModelShaderClass* getModelShader();
 	//! Получение шейдера воды \return Шейдер воды
 	WaterShaderClass* getWaterShader();
+	//! Получение шейдера заполнения \return Шейдер воды
+	FillShaderClass* getFillShader();
 private:
 	//shaders
 	InterfaceShaderClass* m_interfaceShader; //!<Шейдер интерфейса
@@ -56,6 +59,7 @@ private:
 	TerrainShaderClass* m_terrainShader; //!<Шейдер блоков
 	ModelShaderClass* m_modelShader; //!<Шейдер моделей
 	WaterShaderClass* m_waterShader; //!<Шейдер воды
+	FillShaderClass* m_fillShader; //!<Шейдер заполнения
 };
 /*! @} */
 #endif

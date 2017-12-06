@@ -81,8 +81,13 @@ void TerrainClass::Shutdown()
 {
 }
 
-bool TerrainClass::Render(TerrainShaderClass * terrainShader, WaterShaderClass* waterShader, ID3D11DeviceContext * deviceContext, D3DXMATRIX worldMatrix,
-	D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, ID3D11ShaderResourceView** mapTextures, D3DXVECTOR3 lightDirection,
+void TerrainClass::setRenderTextures(RenderTextureClass * fillTexture)
+{
+	m_fillTexture = fillTexture;
+}
+
+bool TerrainClass::Render(D3DClass* D3D, TerrainShaderClass* terrainShader, WaterShaderClass* waterShader, FillShaderClass* fillShader, D3DXMATRIX worldMatrix,
+	D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, D3DXMATRIX topViewMatrix, ID3D11ShaderResourceView** mapTextures, D3DXVECTOR3 lightDirection,
 	D3DXVECTOR4 ambientColor, D3DXVECTOR4 diffuseColor, D3DXVECTOR3 cameraPosition, D3DXVECTOR4 specularColor, float specularPower,
 	float SCREEN_DEPTH, float waterHeight, float waterTranslation, FrustumClass* frustum)
 {
@@ -96,23 +101,34 @@ bool TerrainClass::Render(TerrainShaderClass * terrainShader, WaterShaderClass* 
 	if (!mesh->checkFrustum(frustum,m_position))
 		return true;
 
+	// render something in texture
+	result = renderToTexture(D3D, fillShader, worldMatrix, topViewMatrix, projectionMatrix, mesh, waterHeight);
+	if (!result)
+	{
+		return false;
+	}
+
+	//translate world Matrix first
+	MeshClass::translateMatrix(worldMatrix, m_position);
+	
 	// Render mesh
-	mesh->Render(deviceContext);
-	result = terrainShader->Render(deviceContext, mesh->GetIndexCount(), worldMatrix, viewMatrix, projectionMatrix,
+	mesh->Render(D3D->GetDeviceContext());
+	result = terrainShader->Render(D3D->GetDeviceContext(), mesh->GetIndexCount(), worldMatrix, viewMatrix, projectionMatrix,
 		TextureManagerClass::getI().getTexture(m_provTextureHash), TextureManagerClass::getI().getTexture(m_physTextureHash),
 		mapTextures, lightDirection, ambientColor, diffuseColor, cameraPosition, specularColor, specularPower, getProvColor(), waterHeight);
 	if (!result)
 	{
 		return false;
 	}
-
-	result = renderWater(waterShader,deviceContext,  worldMatrix, viewMatrix, projectionMatrix,
-		 lightDirection, ambientColor, diffuseColor, cameraPosition, specularColor, specularPower, SCREEN_DEPTH, waterHeight, waterTranslation, frustum);
+	
+	// Render water
+	result = renderWater(waterShader, D3D->GetDeviceContext(), worldMatrix, viewMatrix, projectionMatrix,
+		lightDirection, ambientColor, diffuseColor, cameraPosition, specularColor, specularPower, SCREEN_DEPTH, waterHeight, waterTranslation, frustum);
 	if (!result)
 	{
 		return false;
 	}
-	
+
 	return true;
 }
 
@@ -129,12 +145,36 @@ bool TerrainClass::renderWater(WaterShaderClass * waterShader, ID3D11DeviceConte
 	mesh->Render(deviceContext);
 	result = waterShader->Render(deviceContext, mesh->GetIndexCount(), worldMatrix, viewMatrix, projectionMatrix,
 		TextureManagerClass::getI().getTexture(m_waterNormalTexureHash), TextureManagerClass::getI().getTexture(m_waterTextureHash),
-		TextureManagerClass::getI().getTexture(m_provTextureHash), lightDirection, ambientColor, diffuseColor, cameraPosition, specularColor,
+		m_fillTexture->GetShaderResourceView(), lightDirection, ambientColor, diffuseColor, cameraPosition, specularColor,
 		specularPower, waterTranslation);
 	if (!result)
 	{
 		return false;
 	}
+
+	return true;
+}
+
+bool TerrainClass::renderToTexture(D3DClass * D3D, FillShaderClass * fillShader, D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix,
+	MeshClass* terrainMesh, float waterHeight)
+{
+	bool result;
+
+	
+	//prepare render to texture
+	//D3D->ClearBackBufferRenderTarget();
+	m_fillTexture->SetRenderTarget(D3D->GetDeviceContext(), D3D->GetTextureDepthStencilView());
+	m_fillTexture->ClearRenderTarget(D3D->GetDeviceContext(), D3D->GetTextureDepthStencilView(), D3DXVECTOR4(1, 0, 0, 1));
+	// Render mesh
+	terrainMesh->Render(D3D->GetDeviceContext());
+	result = fillShader->Render(D3D->GetDeviceContext(), terrainMesh->GetIndexCount(), worldMatrix, viewMatrix, projectionMatrix, D3DXVECTOR4(0, 1, 0, -waterHeight));
+	if (!result)
+	{
+		return false;
+	}
+	
+	// return to original target
+	D3D->SetBackBufferRenderTarget();
 
 	return true;
 }
@@ -232,6 +272,16 @@ bool TerrainClass::getColorFromBMP(float x, float y, D3DXVECTOR3 & color, PathCl
 D3DXVECTOR3 TerrainClass::getPosition()
 {
 	return m_position;
+}
+
+float TerrainClass::getTerrainHeight()
+{
+	return m_terrainHeight;
+}
+
+float TerrainClass::getTerrainWidth()
+{
+	return m_terrainWidth;
 }
 
 bool TerrainClass::readFromFile(PathClass* filename)

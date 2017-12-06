@@ -13,6 +13,7 @@ WaterHeight {-9.500000}
 TerrainCommandFilename {data/terrainCommand.txt}
 ScreenWidth {1280}
 Fullscreen {0}
+FieldOfView {0.785398}
 Language {ENG}
 Vsync {0}
 ScreenHeight {720}
