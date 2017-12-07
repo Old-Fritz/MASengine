@@ -607,13 +607,14 @@
     <None Include="modelVS.fx">
       <Filter>Файлы ресурсов\Shaders</Filter>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <FxCompile Include="fillPS.fx">
+    <None Include="fillPS.fx">
       <Filter>Файлы ресурсов\Shaders</Filter>
-    </FxCompile>
-    <FxCompile Include="fillVS.fx">
+    </None>
+    <None Include="fillVS.fx">
       <Filter>Файлы ресурсов\Shaders</Filter>
-    </FxCompile>
+    </None>
+    <None Include="waterVS.fx">
+      <Filter>Файлы ресурсов\Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

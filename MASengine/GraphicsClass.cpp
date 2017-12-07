@@ -72,10 +72,10 @@ bool GraphicsClass::Initialize(HWND hwnd)
 		return false;
 
 	m_light->SetAmbientColor(D3DXVECTOR4(0.05f, 0.05f, 0.05f, 1.0f));
-	m_light->SetDiffuseColor(D3DXVECTOR4(1.0f, 1.0f, 1.0f, 1.0f));
-	m_light->SetDirection(D3DXVECTOR3(0.9f, 0.0f, 0.0f));
+	m_light->SetDiffuseColor(D3DXVECTOR4(1.7f, 1.2f, 1.2f, 1.0f));
+	m_light->SetDirection(D3DXVECTOR3(1.2f, -0.1f, 0.0f));
 	m_light->SetSpecularColor(D3DXVECTOR4(1.0f, 1.0f, 1.0f, 1.0f));
-	m_light->SetSpecularPower(4000.0f);
+	m_light->SetSpecularPower(40.0f);
 
 	//Init loadscreen manager
 	result = LoadScreenManagerClass::getI().Initialize(m_D3D,m_shaderManager,m_baseViewMatrix,m_hwnd,SettingsClass::getI().getPathParameter("loadScreenManagerFilename"));
@@ -93,7 +93,7 @@ bool GraphicsClass::Initialize(HWND hwnd)
 	}
 
 	//crete light pos counter
-	SystemStateManagerClass::getI().getTimer()->addCounter("lightPos", 0.00001f,0.8f,0.0f);
+	SystemStateManagerClass::getI().getTimer()->addCounter("lightPos", 0.0001f,0.8f,0.0f);
 
 	return true;
 }
@@ -199,7 +199,7 @@ bool GraphicsClass::Frame(D3DXVECTOR3 pos, D3DXVECTOR3 rot, int mouseX, int mous
 	//updating denug info
 	m_interface->UpdateDebug(m_D3D->GetDeviceContext(), pos, rot, mouseX, mouseY);
 
-	m_light->SetDirection(D3DXVECTOR3(SystemStateManagerClass::getI().getTimer()->getCounter("lightPos")-0.8f,-0.5f,0));
+	//m_light->SetDirection(D3DXVECTOR3(SystemStateManagerClass::getI().getTimer()->getCounter("lightPos")-0.8f,-0.5f,0));
 
 	return true;
 }

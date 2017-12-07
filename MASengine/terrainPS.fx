@@ -37,7 +37,7 @@ struct PixelInputType
 	float clip : SV_ClipDistance0;
 };
 
-float4 CalculateLight(float3 normal);
+float4 CalculateLight(float3 normal, float3 viewDirection);
 float4 CalculatePhysicalMap(PixelInputType input);
 float4 CalculateCurrentPhysical(float4 color, float2 mapCoord);
 bool NearColor(float4 color1, float4 color2);
@@ -96,7 +96,7 @@ float4 pixelShader(PixelInputType input) : SV_TARGET
 	
 
 	///CALCULATE LIGHT///
-	lightColor = CalculateLight(input.normal);
+	lightColor = CalculateLight(input.normal,input.viewDirection);
 	//return color;
 
 
@@ -122,12 +122,13 @@ float4 pixelShader(PixelInputType input) : SV_TARGET
 }
 
 
-float4 CalculateLight(float3 normal)
+float4 CalculateLight(float3 normal,float3 viewDirection)
 {
 	float4 color;
 	float4 specular;
 	float3 lightDir;
 	float lightIntensity;
+	float3 reflection;
 
 	// Set the default output color to the ambient light value for all pixels.
 	color = ambientColor;
@@ -145,12 +146,23 @@ float4 CalculateLight(float3 normal)
 	{
 		// Determine the final diffuse color based on the diffuse color and the amount of light intensity.
 		color += (diffuseColor * lightIntensity);
+
+		// Saturate the ambient and diffuse color.
+		color = saturate(color);
+
+		// Calculate the reflection vector based on the light intensity, normal vector, and light direction.
+		reflection = normalize(2 * lightIntensity * normal - lightDir);
+
+		// Determine the amount of specular light based on the reflection vector, viewing direction, and specular power.
+		specular = pow(saturate(dot(reflection, viewDirection)), specularPower);
 	}
 
-	// Saturate the ambient and diffuse color.
-	color = saturate(color);
+	// Add the specular component last to the output color.
+	color = saturate(color + specular);
 
 	return color;
+
+	
 }
 
 float4 CalculatePhysicalMap(PixelInputType input)
