@@ -8,6 +8,7 @@ ShaderManagerClass::ShaderManagerClass()
 	m_modelShader = 0;
 	m_waterShader = 0;
 	m_fillShader = 0;
+	m_skyShader = 0;
 }
 ShaderManagerClass::ShaderManagerClass(const ShaderManagerClass &)
 {
@@ -81,7 +82,7 @@ bool ShaderManagerClass::Initialize(ID3D11Device * device, HWND hwnd)
 	if (!m_waterShader)
 		return false;
 	PathClass* waterPS = PathManagerClass::getI().makePath("waterPS.fx");
-	PathClass* waterVS = PathManagerClass::getI().makePath("modelVS.fx");
+	PathClass* waterVS = PathManagerClass::getI().makePath("waterVS.fx");
 	result = m_waterShader->Initialize(device, hwnd, waterVS, waterPS);
 	if (!result)
 	{
@@ -104,11 +105,32 @@ bool ShaderManagerClass::Initialize(ID3D11Device * device, HWND hwnd)
 	}
 	LogManagerClass::getI().addLog("Fill Shader Initialization");
 
+	//Initialize sky Shader
+	m_skyShader = new(1) SkyShaderClass;
+	if (!m_waterShader)
+		return false;
+	PathClass* skyPS = PathManagerClass::getI().makePath("skyPS.fx");
+	PathClass* skyVS = PathManagerClass::getI().makePath("skyVS.fx");
+	result = m_skyShader->Initialize(device, hwnd, skyVS, skyPS);
+	if (!result)
+	{
+		LogManagerClass::getI().addLog("Error 10-x");
+		return false;
+	}
+	LogManagerClass::getI().addLog("Sky Shader Initialization");
+
 	return true;
 }
 
 void ShaderManagerClass::Shutdown()
 {
+	if (m_skyShader)
+	{
+		m_skyShader->Shutdown();
+		::operator delete(m_skyShader, sizeof(*m_skyShader), 1);
+		m_skyShader = 0;
+	}
+
 	if (m_fillShader)
 	{
 		m_fillShader->Shutdown();
@@ -182,4 +204,9 @@ WaterShaderClass * ShaderManagerClass::getWaterShader()
 FillShaderClass * ShaderManagerClass::getFillShader()
 {
 	return m_fillShader;
+}
+
+SkyShaderClass * ShaderManagerClass::getSkyShader()
+{
+	return m_skyShader;
 }

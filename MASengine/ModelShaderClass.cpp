@@ -39,15 +39,16 @@ void ModelShaderClass::Shutdown()
 	return;
 }
 
-bool ModelShaderClass::Render(ID3D11DeviceContext * deviceContext, int indexCount, D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, ID3D11ShaderResourceView * texture, D3DXVECTOR3 lightDirection, D3DXVECTOR4 ambientColor, D3DXVECTOR4 diffuseColor, D3DXVECTOR3 cameraPosition, D3DXVECTOR4 specularColor, float specularPower)
+bool ModelShaderClass::Render(ID3D11DeviceContext* deviceContext, int indexCount, D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix,
+	ID3D11ShaderResourceView* texture, std::vector<LightClass::PointLightType*> lights, D3DXVECTOR3 cameraPosition)
 {
 	bool result;
 
 
 	// Set the shader parameters that it will use for rendering.
 	result = SetShaderParameters(deviceContext, worldMatrix, viewMatrix, projectionMatrix,
-		texture, lightDirection, ambientColor, diffuseColor,
-		cameraPosition, specularColor, specularPower);
+		texture, lights,
+		cameraPosition);
 	if (!result)
 	{
 		LogManagerClass::getI().addLog("Error 10-2");
@@ -198,7 +199,7 @@ bool ModelShaderClass::InitializeShader(ID3D11Device * device, HWND hwnd, const 
 
 	// Setup the description of the dynamic matrix constant buffer that is in the vertex shader.
 	matrixBufferDesc.Usage = D3D11_USAGE_DYNAMIC;
-	matrixBufferDesc.ByteWidth = sizeof(MatrixBufferType) + 4;
+	matrixBufferDesc.ByteWidth = sizeof(MatrixBufferType) + 12;
 	matrixBufferDesc.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
 	matrixBufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
 	matrixBufferDesc.MiscFlags = 0;
@@ -215,7 +216,7 @@ bool ModelShaderClass::InitializeShader(ID3D11Device * device, HWND hwnd, const 
 	// Setup the description of the light dynamic constant buffer that is in the pixel shader.
 	// Note that ByteWidth always needs to be a multiple of 16 if using D3D11_BIND_CONSTANT_BUFFER or CreateBuffer will fail.
 	paramsBufferDesc.Usage = D3D11_USAGE_DYNAMIC;
-	paramsBufferDesc.ByteWidth = sizeof(ParamsBufferType) + 4;
+	paramsBufferDesc.ByteWidth = sizeof(ParamsBufferType) + 12;
 	paramsBufferDesc.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
 	paramsBufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
 	paramsBufferDesc.MiscFlags = 0;
@@ -313,8 +314,10 @@ void ModelShaderClass::OutputShaderErrorMessage(ID3D10Blob * errorMessage, HWND 
 	return;
 }
 
-bool ModelShaderClass::SetShaderParameters(ID3D11DeviceContext * deviceContext, D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, ID3D11ShaderResourceView * texture, D3DXVECTOR3 lightDirection, D3DXVECTOR4 ambientColor, D3DXVECTOR4 diffuseColor, D3DXVECTOR3 cameraPosition, D3DXVECTOR4 specularColor, float specularPower)
+bool ModelShaderClass::SetShaderParameters(ID3D11DeviceContext* deviceContext, D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix,
+	ID3D11ShaderResourceView* texture, std::vector<LightClass::PointLightType*> lights, D3DXVECTOR3 cameraPosition)
 {
+
 	HRESULT result;
 	D3D11_MAPPED_SUBRESOURCE mappedResource;
 	unsigned int bufferNumber;
@@ -341,6 +344,8 @@ bool ModelShaderClass::SetShaderParameters(ID3D11DeviceContext * deviceContext, 
 	dataPtr->view = viewMatrix;
 	dataPtr->projection = projectionMatrix;
 	dataPtr->cameraPosition = cameraPosition;
+	dataPtr->lightPosition1 = lights[0]->position;
+	dataPtr->lightPosition2 = lights[1]->position;
 
 	// Unlock the constant buffer.
 	deviceContext->Unmap(m_matrixBuffer, 0);
@@ -367,12 +372,15 @@ bool ModelShaderClass::SetShaderParameters(ID3D11DeviceContext * deviceContext, 
 	dataPtr2 = (ParamsBufferType*)mappedResource.pData;
 
 	// Copy the lighting variables into the light constant buffer.
-	dataPtr2->lightDirection = lightDirection;
-	dataPtr2->ambientColor = ambientColor;
-	dataPtr2->diffuseColor = diffuseColor;
 	dataPtr2->cameraPosition = cameraPosition;
-	dataPtr2->specularColor = specularColor;
-	dataPtr2->specularPower = specularPower;
+	dataPtr2->ambientColor1 = lights[0]->ambientColor;
+	dataPtr2->diffuseColor1 = lights[0]->diffuseColor;
+	dataPtr2->specularColor1 = lights[0]->specularColor;
+	dataPtr2->specularPower1 = lights[0]->specularPower;
+	dataPtr2->ambientColor2 = lights[1]->ambientColor;
+	dataPtr2->diffuseColor2 = lights[1]->diffuseColor;
+	dataPtr2->specularColor2 = lights[1]->specularColor;
+	dataPtr2->specularPower2 = lights[1]->specularPower;
 
 	// Unlock the light constant buffer.
 	deviceContext->Unmap(m_paramsBuffer, 0);

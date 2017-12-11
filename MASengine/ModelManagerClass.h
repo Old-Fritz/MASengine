@@ -44,13 +44,11 @@ public:
 	/*!
 	Прорисовка блока \param[in] modelShader - шейдер моделелей \param[in] deviceContext - графическое устройство
 	\param[in] worldMatrix, viewMatrix, projectionMatrix - матрицы с параметрами
-	\param[in] lightDirection - направление света \param[in] ambientColor - цвет обтеквющего света \param[in] diffuseColor - цвет диффузного света
-	\param[in] cameraPosition - позиция камеры \param[in] specularColor - цвет зеркального света \param[in] specularPower - мощность зеркального света
+	\param[in] lights - источники света \param[in] cameraPosition - позиция камеры
 	\param[in] SCREEN_DEPTH - глубина экрана \param[in] frustum - конус усечения  \return false, если были ошибки
 	*/
 	bool Render(ModelShaderClass* modelShader, ID3D11DeviceContext* deviceContext, D3DXMATRIX worldMatrix,
-		D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, D3DXVECTOR3 lightDirection,
-		D3DXVECTOR4 ambientColor, D3DXVECTOR4 diffuseColor, D3DXVECTOR3 cameraPosition, D3DXVECTOR4 specularColor, float specularPower,
+		D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, std::vector<LightClass::PointLightType*> lights, D3DXVECTOR3 cameraPosition,
 		float SCREEN_DEPTH, FrustumClass* frustum);
 private:
 	ModelManagerClass();

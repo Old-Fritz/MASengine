@@ -71,18 +71,20 @@ void CameraClass::RenderReflection(float height)
 
 	// Setup the position of the camera in the world.
 	// For planar reflection invert the Y position of the camera.
-	position = m_position;
+	position.x = m_position.x;
 	position.y = -m_position.y + (height * 2.0f);
+	position.z = m_position.z;
 
 	// Calculate the rotation in radians.
 	radians = m_rotation.y * 0.0174532925f;
 
 	// Setup where the camera is looking.
-	lookAt.x = sinf(radians) + m_position.y;
+	lookAt.x = sinf(radians) + m_position.x;
 	lookAt.y = position.y;
 	lookAt.z = cosf(radians) + m_position.z;
 
-	// Create the reflection view matrix from the three vectors.
+	lookAt = up;
+	// Create the view matrix from the three vectors.
 	D3DXMatrixLookAtLH(&m_reflectionViewMatrix, &position, &lookAt, &up);
 
 	return;

@@ -21,3 +21,4 @@ GeneralActionsFilename = {data/interface/GeneralActions.txt}
 TerrainFilenameBase = {data/terrain/desc/block}
 BaseRegionFilename = {data/baseRegions.txt}
 MapTextureFilenameBase = {data/terrain/mapTextures/terrain}
+SkyDescFilename = {data/terrain/sky/desc.txt}

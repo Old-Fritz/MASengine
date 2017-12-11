@@ -3,13 +3,14 @@ ElementsFilename {data/interface/elements.txt}
 NumOFBlocks {16}
 MapTextureFilenameBase {data/terrain/mapTextures/terrain}
 ButCommandFilename {data/interface/actions/butACTION.txt}
-Sample {1}
+Sample {8}
 MouseSensitivity {30}
 HeightMapModifier {-15.000000}
 loadScreenManagerFilename {data/loadscreenManager.txt}
 GeneralActionsFilename {data/interface/GeneralActions.txt}
 ProvFilename {data/provs.txt}
 WaterHeight {-9.500000}
+SkyDescFilename {data/terrain/sky/desc.txt}
 TerrainCommandFilename {data/terrainCommand.txt}
 ScreenWidth {1280}
 Fullscreen {0}

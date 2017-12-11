@@ -15,6 +15,7 @@
 #include "ModelShaderClass.h"
 #include "WaterShaderClass.h"
 #include "FillShaderClass.h"
+#include "SkyShaderClass.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // Class name: ShaderManagerClass
@@ -52,6 +53,8 @@ public:
 	WaterShaderClass* getWaterShader();
 	//! Получение шейдера заполнения \return Шейдер воды
 	FillShaderClass* getFillShader();
+	//! Получение шейдера неба \return Шейдер воды
+	SkyShaderClass* getSkyShader();
 private:
 	//shaders
 	InterfaceShaderClass* m_interfaceShader; //!<Шейдер интерфейса
@@ -60,6 +63,7 @@ private:
 	ModelShaderClass* m_modelShader; //!<Шейдер моделей
 	WaterShaderClass* m_waterShader; //!<Шейдер воды
 	FillShaderClass* m_fillShader; //!<Шейдер заполнения
+	SkyShaderClass* m_skyShader; //!<Шейдер неба
 };
 /*! @} */
 #endif

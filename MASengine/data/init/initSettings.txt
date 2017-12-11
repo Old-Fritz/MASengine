@@ -1,6 +1,6 @@
 Settings.txt
 data/init/defSettings.txt
-21
+22
 0 ScreenWidth
 0 ScreenHeight
 0 Fullscreen
@@ -24,3 +24,4 @@ data/init/defSettings.txt
 3 GeneralActionsFilename
 3 ProvRegionFilename
 3 BaseRegionFilename
+3 SkyDescFilename

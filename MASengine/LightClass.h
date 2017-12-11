@@ -9,6 +9,7 @@
 // INCLUDES //
 //////////////
 #include <d3dx10math.h>
+#include <vector>
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -19,44 +20,51 @@
 \addtogroup Systems
 @{
 */
+
+
+
 /*!
 Свет
 */
 class LightClass
 {
+
+public:
+	//! Точечный свет
+	struct PointLightType {
+		D3DXVECTOR4 ambientColor; //!<цвет обтекающего света
+		D3DXVECTOR4 diffuseColor; //!<цвет диффузного света
+		D3DXVECTOR3 position; //!<позиция света
+		D3DXVECTOR4 specularColor; //!<цвет зеркального света
+		float specularPower; //!<мощность зеркального света
+	};
+	//! Направленный свет
+	struct DirectedLightType {
+		D3DXVECTOR4 ambientColor; //!<цвет обтекающего света
+		D3DXVECTOR4 diffuseColor; //!<цвет диффузного света
+		D3DXVECTOR3 direction; //!<направление света
+		D3DXVECTOR4 specularColor; //!<цвет зеркального света
+		float specularPower; //!<мощность зеркального света
+	};
+
 public:
 	LightClass();
 	LightClass(const LightClass&);
 	~LightClass();
 
-	//! Установка цвета обтекающего света \param[in] color - цвет обтекающего света
-	void SetAmbientColor(D3DXVECTOR4 color);
-	//! Установка цвета диффузного света \param[in] color - цвет диффузного света
-	void SetDiffuseColor(D3DXVECTOR4 color);
-	//! Установка направления света \param[in] direction - направление света
-	void SetDirection(D3DXVECTOR3 direction);
-	//! Установка цвета зеркального света \param[in] color - цвет зеркального света
-	void SetSpecularColor(D3DXVECTOR4 color);
-	//! Установка мощности зеркального света \param[in] power - мощность зеркального света
-	void SetSpecularPower(float power);
+	//! Добавление точечного света \param[in] light - источник света
+	void addPointLight(PointLightType* light);
+	//! Добавление направленного света \param[in] light - источник света
+	void addDirectedLight(DirectedLightType* light);
 
-	//! Получение цвета обтекающего света \return цвет обтекающего света
-	D3DXVECTOR4 GetAmbientColor();
-	//! Получение цвета диффузного света \return цвет диффузного света
-	D3DXVECTOR4 GetDiffuseColor();
-	//! Получение направления света \return направление света
-	D3DXVECTOR3 GetDirection();
-	//! Получение цвета зеркального света \return цвет зеркального света
-	D3DXVECTOR4 GetSpecularColor();
-	//! Получение мощности зеркального света \return мощность зеркального света
-	float GetSpecularPower();
+	//! Получение текущих точечных источников света \return источники света в виде вектора
+	std::vector<PointLightType*> getPointLights();
+	//! Получение текущих направленных источников света \return источники света в виде вектора
+	std::vector<DirectedLightType*> getDirectedLights();
 
 private:
-	D3DXVECTOR4 m_ambientColor; //!<цвет обтекающего света
-	D3DXVECTOR4 m_diffuseColor; //!<цвет диффузного света
-	D3DXVECTOR3 m_direction; //!<направление света
-	D3DXVECTOR4 m_specularColor; //!<цвет зеркального света
-	float m_specularPower; //!<мощность зеркального света
+	std::vector<PointLightType*> m_pointLights; //!< Точечные источники света
+	std::vector<DirectedLightType*> m_directedLights; //!< Направленные источники света
 };
 /*! @} */
 #endif

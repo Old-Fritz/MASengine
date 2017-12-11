@@ -41,7 +41,8 @@ void ModelClass::Shutdown()
 {
 }
 
-bool ModelClass::Render(ModelShaderClass * modelShader, ID3D11DeviceContext * deviceContext, D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, D3DXVECTOR3 lightDirection, D3DXVECTOR4 ambientColor, D3DXVECTOR4 diffuseColor, D3DXVECTOR3 cameraPosition, D3DXVECTOR4 specularColor, float specularPower, float SCREEN_DEPTH, FrustumClass * frustum)
+bool ModelClass::Render(ModelShaderClass * modelShader, ID3D11DeviceContext * deviceContext, D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix,
+	std::vector<LightClass::PointLightType*> lights, D3DXVECTOR3 cameraPosition, float SCREEN_DEPTH, FrustumClass * frustum)
 {
 	bool result;
 
@@ -55,8 +56,8 @@ bool ModelClass::Render(ModelShaderClass * modelShader, ID3D11DeviceContext * de
 	// Render mesh
 	mesh->Render(deviceContext);
 	result = modelShader->Render(deviceContext, mesh->GetIndexCount(), worldMatrix, viewMatrix, projectionMatrix,
-		TextureManagerClass::getI().getTexture(m_textureHash), lightDirection, ambientColor, diffuseColor,
-		cameraPosition, specularColor, specularPower);
+		TextureManagerClass::getI().getTexture(m_textureHash), lights,
+		cameraPosition);
 	if (!result)
 	{
 		return false;

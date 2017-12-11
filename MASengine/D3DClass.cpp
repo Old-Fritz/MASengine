@@ -53,7 +53,10 @@ bool D3DClass::Initialize(HWND hwnd, float screenDepth, float screenNear)
 	float fieldOfView, screenAspect;
 	D3D11_DEPTH_STENCIL_DESC depthDisabledStencilDesc;
 	D3D11_BLEND_DESC blendStateDescription;
-
+	int msaaQualityCount;
+	UINT msaaQualityNumber;
+	UINT msaaQualityChoosen;
+	bool enable4xMsaa;
 
 	// Create a DirectX graphics interface factory.
 	result = CreateDXGIFactory(__uuidof(IDXGIFactory), (void**)&factory);
@@ -136,21 +139,7 @@ bool D3DClass::Initialize(HWND hwnd, float screenDepth, float screenNear)
 		return false;
 	}
 
-	// Release the display mode list.
-	MemoryManagerClass::getI().cleanTemp();
-	displayModeList = 0;
-
-	// Release the adapter output.
-	adapterOutput->Release();
-	adapterOutput = 0;
-
-	// Release the adapter.
-	adapter->Release();
-	adapter = 0;
-
-	// Release the factory.
-	factory->Release();
-	factory = 0;
+	
 
 
 	// Initialize the swap chain description.
@@ -185,9 +174,9 @@ bool D3DClass::Initialize(HWND hwnd, float screenDepth, float screenNear)
 	// Set the handle for the window to render to.
 	swapChainDesc.OutputWindow = hwnd;
 
-	// Turn multisampling on.
-	swapChainDesc.SampleDesc.Count = SettingsClass::getI().getIntParameter("Sample");
-	swapChainDesc.SampleDesc.Quality = 0;
+	
+
+	
 
 	// Set to full screen or windowed mode.
 	if (SettingsClass::getI().getIntParameter("Fullscreen"))
@@ -212,9 +201,34 @@ bool D3DClass::Initialize(HWND hwnd, float screenDepth, float screenNear)
 	// Set the feature level to DirectX 11.
 	featureLevel = D3D_FEATURE_LEVEL_11_0;
 
+	result = D3D11CreateDevice(NULL, D3D_DRIVER_TYPE_HARDWARE, NULL, 0, &featureLevel, 1,
+		D3D11_SDK_VERSION, &m_device, NULL, &m_deviceContext);
+	if (FAILED(result))
+	{
+		LogManagerClass::getI().addLog("Error 9-9");
+		return false;
+	}
+
+	// Turn multisampling on.
+	msaaQualityCount = SettingsClass::getI().getIntParameter("Sample");
+	result = m_device->CheckMultisampleQualityLevels(DXGI_FORMAT_R8G8B8A8_UNORM,
+		msaaQualityCount, &msaaQualityNumber);
+	if (FAILED(result))
+	{
+		return false;
+	}
+	if (msaaQualityCount > 1)
+		enable4xMsaa = true;
+	else
+		enable4xMsaa = false;
+
+	msaaQualityChoosen = msaaQualityNumber - 1;
+
+	swapChainDesc.SampleDesc.Count = msaaQualityCount;
+	swapChainDesc.SampleDesc.Quality = msaaQualityChoosen;
+
 	// Create the swap chain, Direct3D device, and Direct3D device context.
-	result = D3D11CreateDeviceAndSwapChain(NULL, D3D_DRIVER_TYPE_HARDWARE, NULL, 0, &featureLevel, 1,
-		D3D11_SDK_VERSION, &swapChainDesc, &m_swapChain, &m_device, NULL, &m_deviceContext);
+	result = factory->CreateSwapChain(m_device, &swapChainDesc, &m_swapChain);
 	if (FAILED(result))
 	{
 		LogManagerClass::getI().addLog("Error 9-9");
@@ -251,8 +265,8 @@ bool D3DClass::Initialize(HWND hwnd, float screenDepth, float screenNear)
 	depthBufferDesc.MipLevels = 1;
 	depthBufferDesc.ArraySize = 1;
 	depthBufferDesc.Format = DXGI_FORMAT_D24_UNORM_S8_UINT;
-	depthBufferDesc.SampleDesc.Count = 1;
-	depthBufferDesc.SampleDesc.Quality = 0;
+	depthBufferDesc.SampleDesc.Count = msaaQualityCount;
+	depthBufferDesc.SampleDesc.Quality = msaaQualityChoosen;
 	depthBufferDesc.Usage = D3D11_USAGE_DEFAULT;
 	depthBufferDesc.BindFlags = D3D11_BIND_DEPTH_STENCIL;
 	depthBufferDesc.CPUAccessFlags = 0;
@@ -335,7 +349,7 @@ bool D3DClass::Initialize(HWND hwnd, float screenDepth, float screenNear)
 	depthStencilViewDesc.Texture2D.MipSlice = 0;
 
 	// Create the depth stencil view.
-	result = m_device->CreateDepthStencilView(m_depthStencilBuffer, &depthStencilViewDesc, &m_depthStencilView);
+	result = m_device->CreateDepthStencilView(m_depthStencilBuffer, NULL, &m_depthStencilView);
 	if (FAILED(result))
 	{
 		LogManagerClass::getI().addLog("Error 9-14");
@@ -351,7 +365,7 @@ bool D3DClass::Initialize(HWND hwnd, float screenDepth, float screenNear)
 	textureDepthStencilViewDesc.Texture2D.MipSlice = 0;
 
 	// Create the texture depth stencil view.
-	result = m_device->CreateDepthStencilView(m_textureDepthStencilBuffer, &textureDepthStencilViewDesc, &m_textureDepthStencilView);
+	result = m_device->CreateDepthStencilView(m_textureDepthStencilBuffer, NULL, &m_textureDepthStencilView);
 	if (FAILED(result))
 	{
 		LogManagerClass::getI().addLog("Error 9-14");
@@ -370,7 +384,7 @@ bool D3DClass::Initialize(HWND hwnd, float screenDepth, float screenNear)
 	rasterDesc.DepthClipEnable = true;
 	rasterDesc.FillMode = D3D11_FILL_SOLID;
 	rasterDesc.FrontCounterClockwise = false;
-	rasterDesc.MultisampleEnable = false;
+	rasterDesc.MultisampleEnable = enable4xMsaa;
 	rasterDesc.ScissorEnable = false;
 	rasterDesc.SlopeScaledDepthBias = 0.0f;
 
@@ -473,6 +487,22 @@ bool D3DClass::Initialize(HWND hwnd, float screenDepth, float screenNear)
 
 	//By default alpha blending is on
 	TurnOnAlphaBlending();
+
+	// Release the display mode list.
+	MemoryManagerClass::getI().cleanTemp();
+	displayModeList = 0;
+
+	// Release the adapter output.
+	adapterOutput->Release();
+	adapterOutput = 0;
+
+	// Release the adapter.
+	adapter->Release();
+	adapter = 0;
+
+	// Release the factory.
+	factory->Release();
+	factory = 0;
 
 	return true;
 

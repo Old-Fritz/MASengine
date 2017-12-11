@@ -8,7 +8,8 @@
 // MY CLASS INCLUDES //
 ///////////////////////
 #include "TerrainClass.h"
-
+#include "LoadScreenManagerClass.h"
+#include<string>
 
 ////////////////////////////////////////////////////////////////////////////////
 // Class name: TerrainManagerClass
@@ -34,15 +35,13 @@ public:
 	void Shutdown();
 	/*!
 	Прорисовка блоков \param[in] D3D - API Directx для рендринга в текстуру \param[in] terrainShader - шейдер блоков \param[in] waterShader - шейдер воды 
-	\param[in] fillShader - шейдер заполнения \param[in] worldMatrix, viewMatrix, projectionMatrix - матрицы с параметрами  \param[in] topViewMatrix - матрица для камеры сверху блока
-	\param[in] lightDirection - направление света \param[in] ambientColor - цвет обтеквющего света \param[in] diffuseColor - цвет диффузного света
-	\param[in] cameraPosition - позиция камеры \param[in] specularColor - цвет зеркального света \param[in] specularPower - мощность зеркального света
+	\param[in] fillShader - шейдер заполнения  \param[in] skyShader - шейдер неба  \param[in] worldMatrix, viewMatrix, projectionMatrix - матрицы с параметрами 
+	\param[in] topViewMatrix - матрица для камеры сверху блока \param[in] reflectionMatrix - матрица отражения \param[in] lights - источники света \param[in] cameraPosition - позиция камеры
 	\param[in] SCREEN_DEPTH - глубина экрана \param[in] frustum - конус усечения  \return false, если были ошибки
 	*/
-	bool Render(D3DClass* D3D, TerrainShaderClass* terrainShader, WaterShaderClass* waterShader, FillShaderClass* fillShader, D3DXMATRIX worldMatrix,
-		D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, D3DXMATRIX topViewMatrix, D3DXVECTOR3 lightDirection, D3DXVECTOR4 ambientColor,
-		D3DXVECTOR4 diffuseColor, D3DXVECTOR3 cameraPosition, D3DXVECTOR4 specularColor, float specularPower,
-		float SCREEN_DEPTH, FrustumClass* frustum);
+	bool Render(D3DClass* D3D, TerrainShaderClass* terrainShader, WaterShaderClass* waterShader, FillShaderClass* fillShader, SkyShaderClass* skyShader, 
+		D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, D3DXMATRIX topViewMatrix, D3DXMATRIX reflectionMatrix, std::vector<LightClass::PointLightType*> lights,
+		D3DXVECTOR3 cameraPosition, float SCREEN_DEPTH, FrustumClass* frustum);
 
 	//pick actions
 	//! Получение провинции, выбранной при клике \param[in] deviceContext - графическое устройство \param[in] mouseX, mouseY - позиция курсора 
@@ -63,6 +62,7 @@ private:
 	bool initializeMapTextures(ID3D11Device* device);
 private:
 	std::vector<TerrainClass*> m_terrain; //!< Блоки
+	SkyModelClass* m_sky; //!< Небо
 
 	int m_mapTextureHashes[NUM_OF_MAP_TEXTURES]; //!< Хэши текстур для физических карт
 
@@ -70,6 +70,7 @@ private:
 	std::string m_unPickCommand; //!< Имя команды, выпоняемой отжатии клиика
 
 	RenderTextureClass* m_fillTexture; //!< Текстура заполнения блока
+	RenderTextureClass* m_skyTexture; //!< Текстура отраженного неба для воды
 };
 /*! @} */
 #endif

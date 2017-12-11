@@ -31,18 +31,14 @@ bool MeshClass::Initialize(ID3D11Device * device, PathClass* filename, int sizeX
 	// Load in the model data.
 	result = loader->loadModel(filename,sizeX,sizeY,sizeZ);
 	if (!result)
-	{
 		return false;
-	}
 
 	//get vertex and index count
 	loader->calcVertAndIndCount(m_vertexCount, m_indexCount);
 
 	result = loader->createVertsAndInds((void**)&verticies, &indicies);
 	if (!result)
-	{
 		return false;
-	}
 
 	// find points of extremum to create box mesh
 	findExtrPoints(verticies, minPoint, maxPoint);
@@ -55,9 +51,7 @@ bool MeshClass::Initialize(ID3D11Device * device, PathClass* filename, int sizeX
 	// Initialize the vertex and index buffer that hold the geometry for the triangle.
 	result = InitializeBuffers(device, verticies, indicies);
 	if (!result)
-	{
 		return false;
-	}
 
 
 	MemoryManagerClass::getI().cleanTemp();

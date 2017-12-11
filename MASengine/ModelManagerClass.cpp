@@ -39,8 +39,7 @@ void ModelManagerClass::deleteModel(ModelClass * model)
 }
 
 bool ModelManagerClass::Render(ModelShaderClass * modelShader, ID3D11DeviceContext * deviceContext, D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix,
-	D3DXMATRIX projectionMatrix, D3DXVECTOR3 lightDirection, D3DXVECTOR4 ambientColor, D3DXVECTOR4 diffuseColor, D3DXVECTOR3 cameraPosition,
-	D3DXVECTOR4 specularColor, float specularPower, float SCREEN_DEPTH, FrustumClass * frustum)
+	D3DXMATRIX projectionMatrix, std::vector<LightClass::PointLightType*> lights, D3DXVECTOR3 cameraPosition, float SCREEN_DEPTH, FrustumClass * frustum)
 {
 	bool result;
 
@@ -53,8 +52,7 @@ bool ModelManagerClass::Render(ModelShaderClass * modelShader, ID3D11DeviceConte
 		MeshClass::rotateMatrix(worldMatrix, (*model)->getRotation());
 		MeshClass::translateMatrix(worldMatrix, (*model)->getPosition());
 
-		result = (*model)->Render(modelShader, deviceContext, worldMatrix, viewMatrix, projectionMatrix, lightDirection, ambientColor,
-			diffuseColor, cameraPosition, specularColor, specularPower, SCREEN_DEPTH, frustum);
+		result = (*model)->Render(modelShader, deviceContext, worldMatrix, viewMatrix, projectionMatrix, lights, cameraPosition, SCREEN_DEPTH, frustum);
 		if (!result)
 			return false;
 

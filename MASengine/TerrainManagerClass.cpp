@@ -3,6 +3,8 @@
 TerrainManagerClass::TerrainManagerClass()
 {
 	m_fillTexture = 0;
+	m_skyTexture = 0;
+	m_sky = 0;
 }
 TerrainManagerClass::TerrainManagerClass(const TerrainManagerClass &)
 {
@@ -31,6 +33,8 @@ bool TerrainManagerClass::Initialize(ID3D11Device * device, ID3D11DeviceContext 
 			return false;
 
 		m_terrain.emplace_back(terrain);
+
+		LoadScreenManagerClass::getI().changeLine("block" +std::to_string(i)+ "_init", 0.3f + 0.25f*(i / numOfBlocks));
 	}
 
 	//init base commands names
@@ -45,15 +49,35 @@ bool TerrainManagerClass::Initialize(ID3D11Device * device, ID3D11DeviceContext 
 	if (!m_fillTexture)
 		return false;
 
-	//result = m_fillTexture->Initialize(device, m_terrain[0]->getTerrainWidth()*5, m_terrain[0]->getTerrainHeight()*5);
 	result = m_fillTexture->Initialize(device, (float)SettingsClass::getI().getIntParameter("ScreenHeight") / pow(2, 3), (float)SettingsClass::getI().getIntParameter("ScreenHeight") / pow(2, 3));
+	if (!result)
+		return false;
+
+	// init render textures
+	m_skyTexture = new(1) RenderTextureClass;
+	if (!m_skyTexture)
+		return false;
+
+	result = m_skyTexture->Initialize(device, (float)SettingsClass::getI().getIntParameter("ScreenHeight") / pow(2, 3), (float)SettingsClass::getI().getIntParameter("ScreenHeight") / pow(2, 3));
+	if (!result)
+		return false;
+
+	
+
+	// create sky
+	m_sky = new(1) SkyModelClass;
+	if (!m_sky)
+	{
+		return false;
+	}
+	result = m_sky->Initialize(device, deviceContext, SettingsClass::getI().getPathParameter("SkyDescFilename"));
 	if (!result)
 		return false;
 
 	// Set render textures to all blocks
 	for (int i = 0;i < m_terrain.size();i++)
 	{
-		m_terrain[i]->setRenderTextures(m_fillTexture);
+		m_terrain[i]->setRenderTextures(m_fillTexture, m_skyTexture, m_sky);
 	}
 
 	return true;
@@ -61,6 +85,18 @@ bool TerrainManagerClass::Initialize(ID3D11Device * device, ID3D11DeviceContext 
 
 void TerrainManagerClass::Shutdown()
 {
+	if (m_sky)
+	{
+		m_sky->Shutdown();
+		::operator delete(m_sky, sizeof(*m_sky), 1);
+		m_sky = 0;
+	}
+	if (m_skyTexture)
+	{
+		m_skyTexture->Shutdown();
+		::operator delete(m_skyTexture, sizeof(*m_skyTexture), 1);
+		m_skyTexture = 0;
+	}
 	if (m_fillTexture)
 	{
 		m_fillTexture->Shutdown();
@@ -76,10 +112,9 @@ void TerrainManagerClass::Shutdown()
 	m_terrain.clear();
 }
 
-bool TerrainManagerClass::Render(D3DClass* D3D, TerrainShaderClass * terrainShader, WaterShaderClass* waterShader, FillShaderClass* fillShader, D3DXMATRIX worldMatrix,
-	D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, D3DXMATRIX topViewMatrix, D3DXVECTOR3 lightDirection, D3DXVECTOR4 ambientColor,
-	D3DXVECTOR4 diffuseColor, D3DXVECTOR3 cameraPosition, D3DXVECTOR4 specularColor, float specularPower,
-	float SCREEN_DEPTH, FrustumClass * frustum)
+bool TerrainManagerClass::Render(D3DClass* D3D, TerrainShaderClass * terrainShader, WaterShaderClass* waterShader, FillShaderClass* fillShader, SkyShaderClass* skyShader,
+	D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, D3DXMATRIX topViewMatrix, D3DXMATRIX reflectionMatrix, std::vector<LightClass::PointLightType*> lights,
+	D3DXVECTOR3 cameraPosition, float SCREEN_DEPTH, FrustumClass * frustum)
 {
 	bool result;
 	ID3D11ShaderResourceView** mapTextures;
@@ -96,11 +131,17 @@ bool TerrainManagerClass::Render(D3DClass* D3D, TerrainShaderClass * terrainShad
 	for (auto block = m_terrain.begin();block != m_terrain.end();block++)
 	{
 		//render block
-		result = (*block)->Render(D3D, terrainShader, waterShader, fillShader, worldMatrix, viewMatrix, projectionMatrix, topViewMatrix, mapTextures, lightDirection,
-			ambientColor, diffuseColor, cameraPosition, specularColor, specularPower, SCREEN_DEPTH, waterHeight, waterTranslation, frustum);
+		result = (*block)->Render(D3D, terrainShader, waterShader, fillShader, skyShader, worldMatrix, viewMatrix, projectionMatrix, topViewMatrix, reflectionMatrix, mapTextures, lights,
+			cameraPosition, SCREEN_DEPTH, waterHeight, waterTranslation, frustum);
 		if (!result)
 			return false;
 	}
+
+
+	//render sky
+	//result = m_sky->Render(D3D->GetDeviceContext(), skyShader, worldMatrix, viewMatrix, projectionMatrix);
+	if (!result)
+		return false;
 
 	return true;
 }

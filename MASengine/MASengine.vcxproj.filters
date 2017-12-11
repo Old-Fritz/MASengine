@@ -369,6 +369,12 @@
     <ClCompile Include="RenderTextureClass.cpp">
       <Filter>Файлы исходного кода\Graphics\Sysyems</Filter>
     </ClCompile>
+    <ClCompile Include="SkyShaderClass.cpp">
+      <Filter>Файлы исходного кода\Graphics\ShaderManagment\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="SkyModelClass.cpp">
+      <Filter>Файлы исходного кода\Graphics\Blocks</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SystemClass.h">
@@ -581,6 +587,12 @@
     <ClInclude Include="RenderTextureClass.h">
       <Filter>Заголовочные файлы\Graphics\Systems</Filter>
     </ClInclude>
+    <ClInclude Include="SkyModelClass.h">
+      <Filter>Заголовочные файлы\Graphics\Blocks</Filter>
+    </ClInclude>
+    <ClInclude Include="SkyShaderClass.h">
+      <Filter>Заголовочные файлы\Graphics\ShaderManagment\Shaders</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="interfaceVS.fx">
@@ -614,6 +626,12 @@
       <Filter>Файлы ресурсов\Shaders</Filter>
     </None>
     <None Include="waterVS.fx">
+      <Filter>Файлы ресурсов\Shaders</Filter>
+    </None>
+    <None Include="skyPS.fx">
+      <Filter>Файлы ресурсов\Shaders</Filter>
+    </None>
+    <None Include="skyVS.fx">
       <Filter>Файлы ресурсов\Shaders</Filter>
     </None>
   </ItemGroup>

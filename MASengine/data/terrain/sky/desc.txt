@@ -1,0 +1,8 @@
+posX = -5000
+posY = 0
+posZ = -5000
+skyWidth = 10240
+terrainHeight = 10240
+texture1Filename =  data/terrain/sky/texture1.dds
+texture2Filename =  data/terrain/sky/texture2.dds
+meshFilename = data/terrain/sky/sky.txt

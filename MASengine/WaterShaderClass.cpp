@@ -40,18 +40,16 @@ void WaterShaderClass::Shutdown()
 	return;
 }
 
-bool WaterShaderClass::Render(ID3D11DeviceContext* deviceContext, int indexCount, D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix,
-	ID3D11ShaderResourceView* normalTexture, ID3D11ShaderResourceView* texture, ID3D11ShaderResourceView* provTtexture,
-	D3DXVECTOR3 lightDirection, D3DXVECTOR4 ambientColor, D3DXVECTOR4 diffuseColor,
-	D3DXVECTOR3 cameraPosition, D3DXVECTOR4 specularColor, float specularPower, float waterTranslation)
+bool WaterShaderClass::Render(ID3D11DeviceContext* deviceContext, int indexCount, D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, 
+	D3DXMATRIX reflectionMatrix, ID3D11ShaderResourceView* normalTexture, ID3D11ShaderResourceView* texture, ID3D11ShaderResourceView* provTtexture,
+	std::vector<LightClass::PointLightType*> lights, D3DXVECTOR3 cameraPosition, float waterTranslation)
 {
 	bool result;
 
 
 	// Set the shader parameters that it will use for rendering.
-	result = SetShaderParameters(deviceContext, worldMatrix, viewMatrix, projectionMatrix,
-		normalTexture, texture, provTtexture, lightDirection, ambientColor, diffuseColor,
-		cameraPosition, specularColor, specularPower, waterTranslation);
+	result = SetShaderParameters(deviceContext, worldMatrix, viewMatrix, projectionMatrix, reflectionMatrix,
+		normalTexture, texture, provTtexture, lights, cameraPosition, waterTranslation);
 	if (!result)
 	{
 		LogManagerClass::getI().addLog("Error 10-2");
@@ -225,7 +223,7 @@ bool WaterShaderClass::InitializeShader(ID3D11Device * device, HWND hwnd, const 
 
 	// Setup the description of the dynamic matrix constant buffer that is in the vertex shader.
 	matrixBufferDesc.Usage = D3D11_USAGE_DYNAMIC;
-	matrixBufferDesc.ByteWidth = sizeof(MatrixBufferType) + 4;
+	matrixBufferDesc.ByteWidth = sizeof(MatrixBufferType);
 	matrixBufferDesc.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
 	matrixBufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
 	matrixBufferDesc.MiscFlags = 0;
@@ -242,7 +240,7 @@ bool WaterShaderClass::InitializeShader(ID3D11Device * device, HWND hwnd, const 
 	// Setup the description of the light dynamic constant buffer that is in the pixel shader.
 	// Note that ByteWidth always needs to be a multiple of 16 if using D3D11_BIND_CONSTANT_BUFFER or CreateBuffer will fail.
 	paramsBufferDesc.Usage = D3D11_USAGE_DYNAMIC;
-	paramsBufferDesc.ByteWidth = sizeof(ParamsBufferType);
+	paramsBufferDesc.ByteWidth = sizeof(ParamsBufferType) + 4;
 	paramsBufferDesc.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
 	paramsBufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
 	paramsBufferDesc.MiscFlags = 0;
@@ -344,10 +342,9 @@ void WaterShaderClass::OutputShaderErrorMessage(ID3D10Blob * errorMessage, HWND 
 	return;
 }
 
-bool WaterShaderClass::SetShaderParameters(ID3D11DeviceContext* deviceContext, D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix,
-	ID3D11ShaderResourceView* normalTexture, ID3D11ShaderResourceView* texture, ID3D11ShaderResourceView* provTtexture,
-	D3DXVECTOR3 lightDirection, D3DXVECTOR4 ambientColor, D3DXVECTOR4 diffuseColor,
-	D3DXVECTOR3 cameraPosition, D3DXVECTOR4 specularColor, float specularPower, float waterTranslation)
+bool WaterShaderClass::SetShaderParameters(ID3D11DeviceContext* deviceContext, D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, 
+	D3DXMATRIX reflectionMatrix, ID3D11ShaderResourceView* normalTexture, ID3D11ShaderResourceView* texture, ID3D11ShaderResourceView* provTtexture,
+	std::vector<LightClass::PointLightType*> lights, D3DXVECTOR3 cameraPosition, float waterTranslation)
 {
 	HRESULT result;
 	D3D11_MAPPED_SUBRESOURCE mappedResource;
@@ -374,7 +371,10 @@ bool WaterShaderClass::SetShaderParameters(ID3D11DeviceContext* deviceContext, D
 	dataPtr->world = worldMatrix;
 	dataPtr->view = viewMatrix;
 	dataPtr->projection = projectionMatrix;
-	dataPtr->cameraPosition = cameraPosition;
+	dataPtr->reflection = reflectionMatrix;
+	dataPtr->cameraPosition = D3DXVECTOR4(cameraPosition, 0);
+	dataPtr->lightPosition1 = D3DXVECTOR4(lights[0]->position, 0);
+	dataPtr->lightPosition2 = D3DXVECTOR4(lights[1]->position, 0);
 
 	// Unlock the constant buffer.
 	deviceContext->Unmap(m_matrixBuffer, 0);
@@ -403,12 +403,15 @@ bool WaterShaderClass::SetShaderParameters(ID3D11DeviceContext* deviceContext, D
 	dataPtr2 = (ParamsBufferType*)mappedResource.pData;
 
 	// Copy the lighting variables into the light constant buffer.
-	dataPtr2->lightDirection = lightDirection;
-	dataPtr2->ambientColor = ambientColor;
-	dataPtr2->diffuseColor = diffuseColor;
-	dataPtr2->cameraPosition = cameraPosition;
-	dataPtr2->specularColor = specularColor;
-	dataPtr2->specularPower = specularPower;
+	dataPtr2->cameraPosition = D3DXVECTOR4(cameraPosition, 0);
+	dataPtr2->ambientColor1 = lights[0]->ambientColor;
+	dataPtr2->diffuseColor1 = lights[0]->diffuseColor;
+	dataPtr2->specularColor1 = lights[0]->specularColor;
+	dataPtr2->specularPower1 = lights[0]->specularPower;
+	dataPtr2->ambientColor2 = lights[1]->ambientColor;
+	dataPtr2->diffuseColor2 = lights[1]->diffuseColor;
+	dataPtr2->specularColor2 = lights[1]->specularColor;
+	dataPtr2->specularPower2 = lights[1]->specularPower;
 	dataPtr2->waterTranslation = waterTranslation;
 
 	// Unlock the light constant buffer.

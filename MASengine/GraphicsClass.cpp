@@ -71,11 +71,26 @@ bool GraphicsClass::Initialize(HWND hwnd)
 	if (!m_light)
 		return false;
 
-	m_light->SetAmbientColor(D3DXVECTOR4(0.05f, 0.05f, 0.05f, 1.0f));
-	m_light->SetDiffuseColor(D3DXVECTOR4(1.7f, 1.2f, 1.2f, 1.0f));
-	m_light->SetDirection(D3DXVECTOR3(1.2f, -0.1f, 0.0f));
-	m_light->SetSpecularColor(D3DXVECTOR4(1.0f, 1.0f, 1.0f, 1.0f));
-	m_light->SetSpecularPower(40.0f);
+	LightClass::PointLightType* light1 = new(1) LightClass::PointLightType;
+	if (!light1)
+		return false;
+	LightClass::PointLightType* light2 = new(1) LightClass::PointLightType;
+	if (!light2)
+		return false;
+	light1->ambientColor = D3DXVECTOR4(0.0f, 0.0f, 0.0f, 0.0f);
+	light1->diffuseColor = D3DXVECTOR4(0.0f, 0.0f, 0.0f, 0.0f);
+	light1->position = D3DXVECTOR3(1.2f, -10000.0f, -0.6f);
+	light1->specularColor = D3DXVECTOR4(0.0f, 0.0f, 0.0f, 0.0f);
+	light1->specularPower = 0.0f;
+
+	light2->ambientColor = D3DXVECTOR4(0.05f, 0.05f, 0.05f, 1.0f);
+	light2->diffuseColor = D3DXVECTOR4(1.2f, 1.2f, 1.2f, 1.0f);
+	light2->position = D3DXVECTOR3(256, 800.0f, 1560);
+	light2->specularColor = D3DXVECTOR4(1.0f, 0.0f, 0.0f, 1.0f);
+	light2->specularPower = 600.5f;
+
+	m_light->addPointLight(light1);
+	m_light->addPointLight(light2);
 
 	//Init loadscreen manager
 	result = LoadScreenManagerClass::getI().Initialize(m_D3D,m_shaderManager,m_baseViewMatrix,m_hwnd,SettingsClass::getI().getPathParameter("loadScreenManagerFilename"));
@@ -93,7 +108,7 @@ bool GraphicsClass::Initialize(HWND hwnd)
 	}
 
 	//crete light pos counter
-	SystemStateManagerClass::getI().getTimer()->addCounter("lightPos", 0.0001f,0.8f,0.0f);
+	SystemStateManagerClass::getI().getTimer()->addCounter("lightPos", 0.1f,1000.0f,0.0f);
 
 	return true;
 }
@@ -199,7 +214,7 @@ bool GraphicsClass::Frame(D3DXVECTOR3 pos, D3DXVECTOR3 rot, int mouseX, int mous
 	//updating denug info
 	m_interface->UpdateDebug(m_D3D->GetDeviceContext(), pos, rot, mouseX, mouseY);
 
-	//m_light->SetDirection(D3DXVECTOR3(SystemStateManagerClass::getI().getTimer()->getCounter("lightPos")-0.8f,-0.5f,0));
+	//m_light->getPointLights()[1]->position.x = SystemStateManagerClass::getI().getTimer()->getCounter("lightPos")-500;
 
 	return true;
 }
@@ -394,6 +409,7 @@ bool GraphicsClass::Render()
 	m_D3D->GetWorldMatrix(worldMatrix);
 	m_D3D->GetProjectionMatrix(projectionMatrix);
 	m_D3D->GetOrthoMatrix(orthoMatrix);
+	m_camera->RenderReflection(SettingsClass::getI().getFloatParameter("WaterHeight"));
 
 	//construct frustum
 	frustum->ConstructFrustum(SCREEN_DEPTH, projectionMatrix, viewMatrix);
@@ -401,18 +417,16 @@ bool GraphicsClass::Render()
 	//render terrain
 	blockTopViewMatrix = m_camera->createViewMatrix(m_terrain->getBlockTopCameraPos(), D3DXVECTOR3(90, 0, 0));
 
-	result = m_terrain->Render(m_D3D, m_shaderManager->getTerrainShader(), m_shaderManager->getWaterShader(), m_shaderManager->getFillShader(), worldMatrix,
-			viewMatrix, projectionMatrix, blockTopViewMatrix, m_light->GetDirection(), m_light->GetAmbientColor(),
-			m_light->GetDiffuseColor(), m_camera->GetPosition(), m_light->GetSpecularColor(),
-			m_light->GetSpecularPower(), SCREEN_DEPTH, frustum);
+	
+	result = m_terrain->Render(m_D3D, m_shaderManager->getTerrainShader(), m_shaderManager->getWaterShader(), m_shaderManager->getFillShader(),
+		m_shaderManager->getSkyShader(), worldMatrix, viewMatrix, projectionMatrix, blockTopViewMatrix, m_camera->GetReflectionViewMatrix(),
+		m_light->getPointLights(), m_camera->GetPosition(), SCREEN_DEPTH, frustum);
 	if (!result)
 		return false;
 	
 	//render models
 	result = ModelManagerClass::getI().Render(m_shaderManager->getModelShader(), m_D3D->GetDeviceContext(), worldMatrix,
-		viewMatrix, projectionMatrix, m_light->GetDirection(), m_light->GetAmbientColor(),
-		m_light->GetDiffuseColor(), m_camera->GetPosition(), m_light->GetSpecularColor(),
-		m_light->GetSpecularPower(), SCREEN_DEPTH, frustum);
+		viewMatrix, projectionMatrix, m_light->getPointLights(), m_camera->GetPosition(), SCREEN_DEPTH, frustum);
 	if (!result)
 		return false;
 	

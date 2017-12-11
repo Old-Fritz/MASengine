@@ -171,6 +171,8 @@
     <ClCompile Include="SetParamClass.cpp" />
     <ClCompile Include="SettingsClass.cpp" />
     <ClCompile Include="ShaderManagerClass.cpp" />
+    <ClCompile Include="SkyModelClass.cpp" />
+    <ClCompile Include="SkyShaderClass.cpp" />
     <ClCompile Include="SliderElementClass.cpp" />
     <ClCompile Include="StackAllocatorClass.cpp" />
     <ClCompile Include="StrParamClass.cpp" />
@@ -243,6 +245,8 @@
     <ClInclude Include="SetParamClass.h" />
     <ClInclude Include="SettingsClass.h" />
     <ClInclude Include="ShaderManagerClass.h" />
+    <ClInclude Include="SkyModelClass.h" />
+    <ClInclude Include="SkyShaderClass.h" />
     <ClInclude Include="SliderElementClass.h" />
     <ClInclude Include="StackAllocatorClass.h" />
     <ClInclude Include="StrParamClass.h" />
@@ -313,6 +317,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="waterVS.fx">
+      <FileType>Document</FileType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="skyPS.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="skyVS.fx">
       <FileType>Document</FileType>
     </None>
   </ItemGroup>
