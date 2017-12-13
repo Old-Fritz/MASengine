@@ -36,7 +36,6 @@ private:
 		D3DXMATRIX world; //!<Матрица мира
 		D3DXMATRIX view; //!<Видовая матрица
 		D3DXMATRIX projection; //!<Проекционная матрица
-		D3DXMATRIX reflection; //!<Отраженная матрица
 		D3DXVECTOR4 cameraPosition; //!<Позиция камеры
 		D3DXVECTOR4 lightPosition1; //!<направление света
 		D3DXVECTOR4 lightPosition2; //!<направление света
@@ -64,13 +63,14 @@ public:
 	//! \param[in] filenamePS - Расположение пиксельного шейдера \return false, если были ошибки
 	bool Initialize(ID3D11Device* device, HWND hwnd, PathClass* filenameVS, PathClass* filenamePS);
 	void Shutdown();
+
 	/*!
 	Прорисовка модели \param[in] deviceContext - графическое устройство \param[in] indexCount - количество прорисовываемых вершин
 	\param[in] worldMatrix, viewMatrix, projectionMatrix, reflectionMatrix - матрицы с параметрами \param[in] texture - текстура модели \param[in] lights - источники света
 	\param[in] cameraPosition - позиция камеры \param[in] waterTranslation - Смещение воды \return false, если были ошибки
 	*/
-	bool Render(ID3D11DeviceContext* deviceContext, int indexCount, D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, D3DXMATRIX reflectionMatrix,
-		ID3D11ShaderResourceView* normalTexture, ID3D11ShaderResourceView* texture, ID3D11ShaderResourceView* provTtexture,
+	bool Render(ID3D11DeviceContext* deviceContext, int indexCount, D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix,
+		ID3D11ShaderResourceView* normalTexture, ID3D11ShaderResourceView* depthTexture, ID3D11ShaderResourceView* provTtexture, ID3D11ShaderResourceView* skyTtexture,
 		std::vector<LightClass::PointLightType*> lights, D3DXVECTOR3 cameraPosition, float waterTranslation);
 
 private:
@@ -86,8 +86,8 @@ private:
 	\param[in] worldMatrix, viewMatrix, projectionMatrix,reflectionMatrix - матрицы с параметрами \param[in] texture - текстура модели \param[in] lights - источники света
 	\param[in] cameraPosition - позиция камеры \param[in] waterTranslation - Смещение воды \return false, если были ошибки
 	*/
-	bool SetShaderParameters(ID3D11DeviceContext* deviceContext, D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, D3DXMATRIX reflectionMatrix,
-		ID3D11ShaderResourceView* normalTexture, ID3D11ShaderResourceView* texture, ID3D11ShaderResourceView* provTtexture,
+	bool SetShaderParameters(ID3D11DeviceContext* deviceContext, D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, 
+		ID3D11ShaderResourceView* normalTexture, ID3D11ShaderResourceView* depthTexture, ID3D11ShaderResourceView* provTtexture, ID3D11ShaderResourceView* skyTtexture,
 		std::vector<LightClass::PointLightType*> lights, D3DXVECTOR3 cameraPosition, float waterTranslation);
 	//! Выполнение шейдера \param[in] deviceContext - графическое устройство \param[in] indexCount - количество прорисовываемых вершин
 	void RenderShader(ID3D11DeviceContext* deviceContext, int indexCount);

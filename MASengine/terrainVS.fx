@@ -39,6 +39,7 @@ struct PixelInputType
 	float clip : SV_ClipDistance0;
 	float3 lightPos1 : TEXCOORD2;
 	float3 lightPos2 : TEXCOORD3;
+	float3 worldPos : TEXCOORD4;
 };
 
 
@@ -55,6 +56,7 @@ PixelInputType vertexShader(VertexInputType input)
 
 	// Calculate the position of the vertex against the world, view, and projection matrices.
     output.position = mul(input.position, worldMatrix);
+	output.worldPos = output.position;
     output.position = mul(output.position, viewMatrix);
     output.position = mul(output.position, projectionMatrix);
 

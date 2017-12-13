@@ -37,7 +37,7 @@ float4 pixelShader(PixelInputType input) : SV_TARGET
 	float4 textureColor2;
 	float4 finalColor;
 
-	input.tex *= 15;
+	//input.tex *= 2;
 	// Translate the position where we sample the pixel from using the first texture translation values.
 	sampleLocation.x = input.tex.x + firstTranslation.x;
 	sampleLocation.y = input.tex.y + firstTranslation.y;
@@ -58,7 +58,7 @@ float4 pixelShader(PixelInputType input) : SV_TARGET
 	// Reduce brightness of the combined cloud textures by the input brightness value.
 	finalColor = finalColor * brightness;
 
-	finalColor = saturate(finalColor + float4(0.05f, 0.1f, 0.98f, 1));
+	//finalColor = saturate(finalColor + float4(0.05f, 0.35f, 0.95f, 0.0f));
 
 	return finalColor;
 }

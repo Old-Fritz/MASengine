@@ -6,7 +6,11 @@
 /////////////
 // GLOBALS //
 /////////////
-Texture2D shaderTexture[3];
+Texture2D normalTexture : register(t0);
+Texture2D depthTexture : register(t1);
+Texture2D provTexture : register(t2);
+Texture2D skyTexture : register(t3);
+
 SamplerState SampleType[2];
 
 //float g_sizeOfShaderTexture = 128;
@@ -39,7 +43,7 @@ struct PixelInputType
 	float3 viewDirection : TEXCOORD1;
 	float3 lightPos1 : TEXCOORD2;
 	float3 lightPos2 : TEXCOORD3;
-	float4 reflectionPosition : TEXCOORD4;
+	float3 worldPos : TEXCOORD4;
 };
 
 float4 CalculateLight(float3 normal, float3 viewDirection, float3 lightPos1, float3 lightPos2);
@@ -48,50 +52,46 @@ float4 CalculateLight(float3 normal, float3 viewDirection, float3 lightPos1, flo
 ////////////////////////////////////////////////////////////////////////////////
 float4 pixelShader(PixelInputType input) : SV_TARGET
 {
-	float2 reflectTexCoord;
+	float2 reflectTexCoord, refractTexCoord;
 	float3 normal;
 	float4 color;
 	float4 lightColor;
-	float4 textureColor, provColor, normalColor;
-	float2 newTex;
-
+	float4 skyColor, depthColor, provColor, normalColor;
+	float reflectRefractScale = 1.6f;
 
 	
-	// Re-position the texture coordinate sampling position by the normal map value to simulate the rippling wave effect.
-	//reflectTexCoord = input.tex;
-
-	// Sample the texture pixels from the textures using the updated texture coordinates.
 	
-
-	//return shaderTexture[2].Sample(SampleType[1], input.tex);
-
-	provColor = shaderTexture[2].Sample(SampleType[1], input.tex);
+	provColor = provTexture.Sample(SampleType[1], input.tex);
 	if (provColor.z == 1)
 		return float4(0,0,0,0);
 
 	// Calculate the projected reflection texture coordinates.
-	reflectTexCoord = input.tex;
-
+	reflectTexCoord.x = input.worldPos.x/512;
+	reflectTexCoord.y = (512-input.worldPos.z) / 512;
+	refractTexCoord = input.tex;
 	
-
-	input.tex /= 4;
+	input.tex*=4;
 	input.tex.y += waterTranslation;
 
-	normalColor = shaderTexture[0].Sample(SampleType[0], input.tex);
+	normalColor = normalTexture.Sample(SampleType[0], input.tex);
 
 	// Expand the range of the normal from (0,1) to (-1,+1).
 	normal = (normalColor.xyz * 2.0f) - 1.0f;
 
-	reflectTexCoord += normal.xy;
+	// Re-position the texture coordinate sampling position by the normal map value to simulate the rippling wave effect
+	reflectTexCoord += normal.xy*reflectRefractScale;
+	refractTexCoord += normal.xy*reflectRefractScale;
 
-	textureColor = shaderTexture[1].Sample(SampleType[1], reflectTexCoord);
+	depthColor = depthTexture.Sample(SampleType[1], refractTexCoord) + float4(0.05f, 0.3f, 0, 0);
+	skyColor = skyTexture.Sample(SampleType[1], reflectTexCoord);
+	
+
+	color = lerp(skyColor, depthColor, 0.7f);
 
 	lightColor = CalculateLight(float3(normal.x, normal.z, normal.y),input.viewDirection, input.lightPos1, input.lightPos2);
 	//textureColor = shaderTexture[1].Sample(SampleType[0], input.tex)
 
-	color = lightColor*textureColor;
-
-	
+	color = lightColor*color;
 
 	return color;
 }
@@ -136,6 +136,9 @@ float4 CalculateLight(float3 normal, float3 viewDirection, float3 lightPos1, flo
 
 	// Add the specular component last to the output color.
 	color1 = saturate(color1 + specular1);
+
+	if (lightIntensity2 < 0.2f)
+		lightIntensity2 += 0.4f;
 
 	if (lightIntensity2 > 0.0f)
 	{

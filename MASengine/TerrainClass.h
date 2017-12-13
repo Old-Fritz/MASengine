@@ -20,7 +20,7 @@
 // GLOBALS //
 /////////////
 const int NUM_OF_LVLS = 4;
-
+const int MAX_WATER_FILL_LEVEL = 2;
 
 ////////////////////////////////////////////////////////////////////////////////
 // Class name: TerrainClass
@@ -47,30 +47,29 @@ public:
 	void Shutdown();
 	//! Установка рендрируемых текстур из главного менджера \param[in] fillTexture - текстура заполнения блока \param[in] skyTexture -  текстура отраженного неба для воды
 	//! \param[in] skyModel - глобальная модель неба
-	void setRenderTextures(RenderTextureClass* fillTexture, RenderTextureClass* skyTexture, SkyModelClass* skyModel);
+	void setRenderTextures(RenderTextureClass* skyTexture);
 
 	/*!
 	Прорисовка блок \param[in] D3D - API Directx для рендринга в текстуру \param[in] terrainShader - шейдер блоков 	\param[in] waterShader - шейдер воды 
 	\param[in] fillShader - шейдер заполнения \param[in] skyShader - шейдер неба  \param[in] worldMatrix, viewMatrix, projectionMatrix - матрицы с параметрам 
-	\param[in] topViewMatrix - матрица для камеры сверху блока  \param[in] reflectionMatrix - матрица отражения \param[in] mapTextures - текстуры физ. карты
+	\param[in] topViewMatrix - 10 матриц для камеры сверху блока   \param[in] mapTextures - текстуры физ. карты
 	\param[in] lights - источники света \param[in] cameraPosition - позиция камеры
 	\param[in] SCREEN_DEPTH - глубина экрана \param[in] frustum - конус усечения  \param[in] waterHeight - уровень воды
 	\param[in] waterTranslation - смещение воды     \return false, если были ошибки
 	*/
 	bool Render(D3DClass* D3D, TerrainShaderClass* terrainShader, WaterShaderClass* waterShader, FillShaderClass* fillShader, SkyShaderClass* skyShader, D3DXMATRIX worldMatrix,
-		D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, D3DXMATRIX topViewMatrix, D3DXMATRIX reflectionMatrix, ID3D11ShaderResourceView** mapTextures,
+		D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, std::vector<D3DXMATRIX> topViewMatrix, ID3D11ShaderResourceView** mapTextures,
 		std::vector<LightClass::PointLightType*> lights, D3DXVECTOR3 cameraPosition,
 		float SCREEN_DEPTH, float waterHeight, float waterTranslation, FrustumClass* frustum);
 
 	/*
 	Прорисовка блока сверху в текстуру  
 	\param[in] D3D - API Directx для рендринга в текстуру \param[in] fillShader - шейдер заполнения
-	\param[in] worldMatrix, viewMatrix, projectionMatrix - матрицы с параметрами \param[in] topViewMatrix - матрица для камеры сверху блока 
-	\param[in] reflectionMatrix - матрица отражения \param[in] terrainMesh - меш ландшафта 
-	\param[in] waterHeight - уровень воды \return false, если были ошибки
+	\param[in] worldMatrix, viewMatrix, projectionMatrix - матрицы с параметрами \param[in] topViewMatrix - 10 матриц для камеры сверху блока 
+	\param[in] terrainMesh - меш ландшафта \param[in] waterHeight - уровень воды \param[in] lvl - уровень детализации \return false, если были ошибки
 	*/
-	bool renderToTexture(D3DClass* D3D, FillShaderClass* fillShader, SkyShaderClass* skyShader, D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix,
-		D3DXMATRIX topViewMatrix, D3DXMATRIX reflectionMatrix, MeshClass* terrainMesh, float waterHeight);
+	bool renderToTexture(D3DClass* D3D, FillShaderClass* fillShader, SkyShaderClass* skyShader, D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix,
+		D3DXMATRIX projectionMatrix, std::vector<D3DXMATRIX> topViewMatrix, MeshClass* terrainMesh, float waterHeight,int lvl);
 
 	//pick actions
 	//! Получение провинции, выбранной при клике \param[in] deviceContext - графическое устройство \param[in] mouseX, mouseY - позиция курсора 
@@ -96,14 +95,13 @@ public:
 private:
 	/*!
 	Прорисовка воды \param[in] waterShader - шейдер воды \param[in] deviceContext - графическое устройство
-	\param[in] worldMatrix, viewMatrix, projectionMatrix - матрицы с параметрами \param[in] reflectionMatrix - матрица отражения
-	\param[in] lights - источники света \param[in] cameraPosition - позиция камеры
-	\param[in] SCREEN_DEPTH - глубина экрана \param[in] frustum - конус усечения  \param[in] waterHeight - уровень воды
-	\param[in] waterTranslation - смещение воды \return false, если были ошибки
+	\param[in] worldMatrix, viewMatrix, projectionMatrix - матрицы с параметрами
+	\param[in] lights - источники света \param[in] cameraPosition - позиция камеры  \param[in] waterHeight - уровень воды
+	\param[in] waterTranslation - смещение воды \param[in] lvl - уровень детализации \return false, если были ошибки
 	*/
 	bool renderWater(WaterShaderClass* waterShader, ID3D11DeviceContext* deviceContext, D3DXMATRIX worldMatrix,
-		D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, D3DXMATRIX reflectionMatrix, std::vector<LightClass::PointLightType*> lights, D3DXVECTOR3 cameraPosition,
-		float SCREEN_DEPTH, float waterHeight, float waterTranslation, FrustumClass* frustum);
+		D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix,  std::vector<LightClass::PointLightType*> lights, D3DXVECTOR3 cameraPosition,
+		 float waterHeight, float waterTranslation,  int lvl);
 
 	//block info
 	//! Получение данных из файла \param[in] blockFilename - путь до файла блока \return false, если были ошибки
@@ -140,8 +138,7 @@ private:
 	//info from file
 	D3DXVECTOR3 m_position; //!<Позиция блока на карте
 
-	SkyModelClass* m_skyModel; //!< Глобальная модель неба
-	RenderTextureClass* m_fillTexture; //!< Текстура заполнения блока
+	std::pair<int, RenderTextureClass*> m_fillTexture; //!< Текстуры заполнения блока разного уровня детализации с модификатором заполненности
 	RenderTextureClass* m_skyTexture; //!< Текстура отраженного неба для воды
 
 };

@@ -12,7 +12,6 @@ cbuffer MatrixBuffer
 	matrix worldMatrix;
 	matrix viewMatrix;
 	matrix projectionMatrix;
-	matrix reflectionMatrix;
 	float4 cameraPosition;
 	float4 lightPosition1;
 	float4 lightPosition2;
@@ -38,7 +37,7 @@ struct PixelInputType
 	float3 viewDirection : TEXCOORD1;
 	float3 lightPos1 : TEXCOORD2;
 	float3 lightPos2 : TEXCOORD3;
-	float4 reflectionPosition : TEXCOORD4;
+	float3 worldPos : TEXCOORD4;
 };
 
 
@@ -49,13 +48,13 @@ PixelInputType vertexShader(VertexInputType input)
 {
 	PixelInputType output;
 	float4 worldPosition;
-	matrix reflectProjectWorld;
 
 	// Change the position vector to be 4 units for proper matrix calculations.
 	input.position.w = 1.0f;
 
 	// Calculate the position of the vertex against the world, view, and projection matrices.
 	output.position = mul(input.position, worldMatrix);
+	output.worldPos = output.position;
 	output.position = mul(output.position, viewMatrix);
 	output.position = mul(output.position, projectionMatrix);
 
@@ -87,13 +86,6 @@ PixelInputType vertexShader(VertexInputType input)
 	// Normalize the light position vectors.
 	output.lightPos1 = normalize(output.lightPos1);
 	output.lightPos2 = normalize(output.lightPos2);
-
-	// Create the reflection projection world matrix.
-	reflectProjectWorld = mul(reflectionMatrix, projectionMatrix);
-	reflectProjectWorld = mul(worldMatrix, reflectProjectWorld);
-
-	// Calculate the input position against the reflectProjectWorld matrix.
-	output.reflectionPosition = mul(input.position, reflectProjectWorld);
 
 	return output;
 }

@@ -45,10 +45,10 @@ bool SkyModelClass::Initialize(ID3D11Device * device, ID3D11DeviceContext * devi
 	m_meshHash = m_meshFilename->getHash();
 
 	// create counters
-	SystemStateManagerClass::getI().getTimer()->addCounter("firstSkyTranslationX",0.00005f,1,0);
-	SystemStateManagerClass::getI().getTimer()->addCounter("firstSkyTranslationY", 0.0001f, 1, 0);
-	SystemStateManagerClass::getI().getTimer()->addCounter("secondSkyTranslationX", 0.00001f, 1, 0);
-	SystemStateManagerClass::getI().getTimer()->addCounter("secondSkyTranslationY", 0.00002f, 1, 0);
+	SystemStateManagerClass::getI().getTimer()->addCounter("firstSkyTranslationX",0.000005f,1,0);
+	SystemStateManagerClass::getI().getTimer()->addCounter("firstSkyTranslationY", 0.00001f, 1, 0);
+	SystemStateManagerClass::getI().getTimer()->addCounter("secondSkyTranslationX", 0.000001f, 1, 0);
+	SystemStateManagerClass::getI().getTimer()->addCounter("secondSkyTranslationY", 0.000002f, 1, 0);
 
 	return true;
 }

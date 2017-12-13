@@ -409,17 +409,23 @@ bool GraphicsClass::Render()
 	m_D3D->GetWorldMatrix(worldMatrix);
 	m_D3D->GetProjectionMatrix(projectionMatrix);
 	m_D3D->GetOrthoMatrix(orthoMatrix);
-	m_camera->RenderReflection(SettingsClass::getI().getFloatParameter("WaterHeight"));
 
 	//construct frustum
 	frustum->ConstructFrustum(SCREEN_DEPTH, projectionMatrix, viewMatrix);
 
 	//render terrain
-	blockTopViewMatrix = m_camera->createViewMatrix(m_terrain->getBlockTopCameraPos(), D3DXVECTOR3(90, 0, 0));
+	auto cameraPos = m_terrain->getBlockTopCameraPos();
+	std::vector<D3DXMATRIX> matrix;
+	for (int i = 0;i < cameraPos.size();i++)
+	{
+		blockTopViewMatrix = m_camera->createViewMatrix(cameraPos[i], D3DXVECTOR3(90, 0, 0));
+		matrix.emplace_back(blockTopViewMatrix);
+	}
+	
 
 	
 	result = m_terrain->Render(m_D3D, m_shaderManager->getTerrainShader(), m_shaderManager->getWaterShader(), m_shaderManager->getFillShader(),
-		m_shaderManager->getSkyShader(), worldMatrix, viewMatrix, projectionMatrix, blockTopViewMatrix, m_camera->GetReflectionViewMatrix(),
+		m_shaderManager->getSkyShader(), worldMatrix, viewMatrix, projectionMatrix, matrix,
 		m_light->getPointLights(), m_camera->GetPosition(), SCREEN_DEPTH, frustum);
 	if (!result)
 		return false;

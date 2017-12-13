@@ -6,7 +6,7 @@
 /////////////
 // GLOBALS //
 /////////////
-Texture2D textures[12];
+Texture2D textures[13];
 SamplerState SampleType[3];
 
 //float g_sizeOfShaderTexture = 128;
@@ -39,6 +39,7 @@ struct PixelInputType
 	float clip : SV_ClipDistance0;
 	float3 lightPos1 : TEXCOORD2;
 	float3 lightPos2 : TEXCOORD3;
+	float3 worldPos : TEXCOORD4;
 };
 
 float4 CalculateLight(float3 normal, float3 viewDirection, float3 lightPos1, float3 lightPos2);
@@ -46,6 +47,7 @@ float4 CalculatePhysicalMap(PixelInputType input);
 float4 CalculateCurrentPhysical(float4 color, float2 mapCoord);
 bool NearColor(float4 color1, float4 color2);
 float4 ConvertRGB256(float r, float g, float b);
+float4 CalculateSkyColor(float3 pos);
 
 ////////////////////////////////////////////////////////////////////////////////
 // Pixel Shader
@@ -61,6 +63,7 @@ float4 pixelShader(PixelInputType input) : SV_TARGET
     int provnum;
     int provnum2;
     float2 mapCoord;
+	float4 skyColor;
 
 	///CALCULATE BORDERS///
     provColor = textures[0].Sample(SampleType[0], input.tex);
@@ -101,6 +104,8 @@ float4 pixelShader(PixelInputType input) : SV_TARGET
 
 	///CALCULATE LIGHT///
 	lightColor = CalculateLight(input.normal, input.viewDirection, input.lightPos1, input.lightPos2);
+	skyColor = CalculateSkyColor(input.worldPos);
+	lightColor *= skyColor;
 	//return color;
 
 
@@ -258,21 +263,21 @@ float4 CalculateCurrentPhysical(float4 color, float2 mapCoord)
 
 		
 	if (NearColor(color, ConvertRGB256(0.0f, 165.0f, 232.0f))) //sea
-		textureColor = textures[2].Sample(SampleType[2], mapCoord);
-	else if (NearColor(color, ConvertRGB256(243.0f, 237.0f, 99.0f))) //beach
 		textureColor = textures[3].Sample(SampleType[2], mapCoord);
-	else if (NearColor(color, ConvertRGB256(0, 135.0f, 71.0f))) //forest
+	else if (NearColor(color, ConvertRGB256(243.0f, 237.0f, 99.0f))) //beach
 		textureColor = textures[4].Sample(SampleType[2], mapCoord);
-	else if (NearColor(color, ConvertRGB256(161.0f, 194.0f, 49.0f))) //hills
+	else if (NearColor(color, ConvertRGB256(0, 135.0f, 71.0f))) //forest
 		textureColor = textures[5].Sample(SampleType[2], mapCoord);
-	else if (NearColor(color, ConvertRGB256(128.0f, 104.0f, 24.0f))) //middle mountains
+	else if (NearColor(color, ConvertRGB256(161.0f, 194.0f, 49.0f))) //hills
 		textureColor = textures[6].Sample(SampleType[2], mapCoord);
-	else if (NearColor(color, ConvertRGB256(128.0f, 104.0f, 103.0f))) //big mountains
+	else if (NearColor(color, ConvertRGB256(128.0f, 104.0f, 24.0f))) //middle mountains
 		textureColor = textures[7].Sample(SampleType[2], mapCoord);
-	else if (NearColor(color, ConvertRGB256(30, 30, 30))) //cities
+	else if (NearColor(color, ConvertRGB256(128.0f, 104.0f, 103.0f))) //big mountains
 		textureColor = textures[8].Sample(SampleType[2], mapCoord);
+	else if (NearColor(color, ConvertRGB256(30, 30, 30))) //cities
+		textureColor = textures[9].Sample(SampleType[2], mapCoord);
 	else
-		textureColor = textures[2].Sample(SampleType[2], mapCoord);
+		textureColor = textures[3].Sample(SampleType[2], mapCoord);
 
 	return textureColor;
 }
@@ -285,4 +290,20 @@ bool NearColor(float4 color1, float4 color2)
 float4 ConvertRGB256(float r, float g, float b)
 {
 	return float4(r / 256.0f, g / 256.0f, b / 256.0f, 1.0f);
+}
+
+float4 CalculateSkyColor(float3 pos)
+{
+	pos.x = pos.x / 512;
+	pos.y = (512 - pos.z) / 512;
+
+	float4 skyColor = textures[2].Sample(SampleType[0], pos.xy);
+	skyColor = float4(1 - skyColor.x, 1 - skyColor.y, 1 - skyColor.z, skyColor.w);
+	if (skyColor.x > 1)
+		skyColor.x = 1;
+	if (skyColor.y > 1)
+		skyColor.y = 1;
+	if (skyColor.z > 1)
+		skyColor.z = 1;
+	return skyColor;
 }

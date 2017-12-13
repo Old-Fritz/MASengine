@@ -43,7 +43,7 @@ void TerrainShaderClass::Shutdown()
 }
 
 bool TerrainShaderClass::Render(ID3D11DeviceContext* deviceContext, int indexCount, D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix,
-	ID3D11ShaderResourceView* texture, ID3D11ShaderResourceView* physTexture, ID3D11ShaderResourceView** mapTextures,
+	ID3D11ShaderResourceView* texture, ID3D11ShaderResourceView* physTexture, ID3D11ShaderResourceView* skyTexture, ID3D11ShaderResourceView** mapTextures,
 	std::vector<LightClass::PointLightType*> lights, D3DXVECTOR3 cameraPosition, D3DXVECTOR4* provsColor, float waterHeight)
 {
 	bool result;
@@ -51,7 +51,7 @@ bool TerrainShaderClass::Render(ID3D11DeviceContext* deviceContext, int indexCou
 
 	// Set the shader parameters that it will use for rendering.
 	result = SetShaderParameters(deviceContext, worldMatrix, viewMatrix, projectionMatrix,
-		texture, physTexture, mapTextures, lights, cameraPosition,  provsColor, waterHeight);
+		texture, physTexture, skyTexture, mapTextures, lights, cameraPosition,  provsColor, waterHeight);
 	if (!result)
 	{
 		LogManagerClass::getI().addLog("Error 10-2");
@@ -372,7 +372,7 @@ void TerrainShaderClass::OutputShaderErrorMessage(ID3D10Blob * errorMessage, HWN
 }
 
 bool TerrainShaderClass::SetShaderParameters(ID3D11DeviceContext* deviceContext, D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix,
-	ID3D11ShaderResourceView* texture, ID3D11ShaderResourceView* physTexture, ID3D11ShaderResourceView** mapTextures,
+	ID3D11ShaderResourceView* texture, ID3D11ShaderResourceView* physTexture, ID3D11ShaderResourceView* skyTexture, ID3D11ShaderResourceView** mapTextures,
 	std::vector<LightClass::PointLightType*> lights, D3DXVECTOR3 cameraPosition, D3DXVECTOR4* provsColor, float waterHeight)
 {
 	HRESULT result;
@@ -419,7 +419,8 @@ bool TerrainShaderClass::SetShaderParameters(ID3D11DeviceContext* deviceContext,
 	// Set shader texture resource in the pixel shader.
 	deviceContext->PSSetShaderResources(0, 1, &texture);
 	deviceContext->PSSetShaderResources(1, 1, &physTexture);
-	deviceContext->PSSetShaderResources(2, NUM_OF_MAP_TEXTURES, mapTextures);
+	deviceContext->PSSetShaderResources(2, 1, &skyTexture);
+	deviceContext->PSSetShaderResources(3, NUM_OF_MAP_TEXTURES, mapTextures);
 
 	// Lock the light constant buffer so it can be written to.
 	result = deviceContext->Map(m_paramsBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource);

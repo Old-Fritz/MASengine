@@ -73,23 +73,43 @@ bool TerrainClass::Initialize(ID3D11Device * device, ID3D11DeviceContext * devic
 	}
 	m_waterHash = m_waterMeshFilename->getHash();
 
+	//create render to textures
+
+	m_fillTexture.second = new(1) RenderTextureClass;
+	if (!m_fillTexture.second)
+		return false;
+
+	result = m_fillTexture.second->Initialize(device, (float)SettingsClass::getI().getIntParameter("ScreenHeight") / pow(2, MAX_WATER_FILL_LEVEL),
+		(float)SettingsClass::getI().getIntParameter("ScreenHeight") / pow(2, MAX_WATER_FILL_LEVEL));
+	if (!result)
+		return false;
+
+	m_fillTexture.first = -1;
+
 	return true;
 }
 
 
 void TerrainClass::Shutdown()
 {
+	
+	if (m_fillTexture.second)
+	{
+		m_fillTexture.second->Shutdown();
+		::operator delete(m_fillTexture.second, sizeof(*m_fillTexture.second), 1);
+		m_fillTexture.second = 0;
+	}
+	
+	
 }
 
-void TerrainClass::setRenderTextures(RenderTextureClass* fillTexture, RenderTextureClass* skyTexture, SkyModelClass* skyModel)
+void TerrainClass::setRenderTextures(RenderTextureClass* skyTexture)
 {
-	m_skyModel = skyModel;
-	m_fillTexture = fillTexture;
 	m_skyTexture = skyTexture;
 }
 
 bool TerrainClass::Render(D3DClass* D3D, TerrainShaderClass* terrainShader, WaterShaderClass* waterShader, FillShaderClass* fillShader, SkyShaderClass* skyShader, D3DXMATRIX worldMatrix,
-	D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, D3DXMATRIX topViewMatrix, D3DXMATRIX reflectionMatrix, ID3D11ShaderResourceView** mapTextures,
+	D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, std::vector<D3DXMATRIX> topViewMatrix, ID3D11ShaderResourceView** mapTextures,
 	std::vector<LightClass::PointLightType*> lights, D3DXVECTOR3 cameraPosition,
 	float SCREEN_DEPTH, float waterHeight, float waterTranslation, FrustumClass* frustum)
 {
@@ -105,7 +125,7 @@ bool TerrainClass::Render(D3DClass* D3D, TerrainShaderClass* terrainShader, Wate
 
 	// render something in texture
 	//MeshClass::translateMatrix(reflectionMatrix, D3DXVECTOR3(m_position.x, 0, m_position.z));
-	result = renderToTexture(D3D, fillShader, skyShader, worldMatrix, viewMatrix, projectionMatrix,topViewMatrix, reflectionMatrix,  mesh, waterHeight);
+	result = renderToTexture(D3D, fillShader, skyShader, worldMatrix, viewMatrix, projectionMatrix, topViewMatrix,  mesh, waterHeight,lvl);
 	if (!result)
 	{
 		return false;
@@ -113,11 +133,11 @@ bool TerrainClass::Render(D3DClass* D3D, TerrainShaderClass* terrainShader, Wate
 
 	//translate world Matrix first
 	MeshClass::translateMatrix(worldMatrix, m_position);
-	
+
 	// Render mesh
 	mesh->Render(D3D->GetDeviceContext());
 	result = terrainShader->Render(D3D->GetDeviceContext(), mesh->GetIndexCount(), worldMatrix, viewMatrix, projectionMatrix,
-		TextureManagerClass::getI().getTexture(m_provTextureHash), TextureManagerClass::getI().getTexture(m_physTextureHash),
+		TextureManagerClass::getI().getTexture(m_provTextureHash), TextureManagerClass::getI().getTexture(m_physTextureHash), m_skyTexture->GetShaderResourceView(),
 		mapTextures, lights, cameraPosition, getProvColor(), waterHeight);
 	if (!result)
 	{
@@ -125,19 +145,19 @@ bool TerrainClass::Render(D3DClass* D3D, TerrainShaderClass* terrainShader, Wate
 	}
 	
 	// Render water
-	result = renderWater(waterShader, D3D->GetDeviceContext(), worldMatrix, viewMatrix, projectionMatrix, reflectionMatrix,
-		lights, cameraPosition,  SCREEN_DEPTH, waterHeight, waterTranslation, frustum);
+	result = renderWater(waterShader, D3D->GetDeviceContext(), worldMatrix, viewMatrix, projectionMatrix,
+		lights, cameraPosition, waterHeight, waterTranslation,lvl);
 	if (!result)
 	{
 		return false;
 	}
-
+	
 	return true;
 }
 
-bool TerrainClass::renderWater(WaterShaderClass * waterShader, ID3D11DeviceContext * deviceContext, D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix,
-	D3DXMATRIX projectionMatrix, D3DXMATRIX reflectionMatrix, std::vector<LightClass::PointLightType*> lights, D3DXVECTOR3 cameraPosition, float SCREEN_DEPTH, float waterHeight,
-	float waterTranslation, FrustumClass * frustum)
+bool TerrainClass::renderWater(WaterShaderClass* waterShader, ID3D11DeviceContext* deviceContext, D3DXMATRIX worldMatrix,
+	D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, std::vector<LightClass::PointLightType*> lights, D3DXVECTOR3 cameraPosition,
+	float waterHeight, float waterTranslation, int lvl)
 {
 	bool result;
 
@@ -146,9 +166,9 @@ bool TerrainClass::renderWater(WaterShaderClass * waterShader, ID3D11DeviceConte
 	MeshClass::translateMatrix(worldMatrix,D3DXVECTOR3(0, waterHeight,0));
 
 	mesh->Render(deviceContext);
-	result = waterShader->Render(deviceContext, mesh->GetIndexCount(), worldMatrix, viewMatrix, projectionMatrix, reflectionMatrix,
-		TextureManagerClass::getI().getTexture(m_waterNormalTexureHash), m_skyTexture->GetShaderResourceView(),
-		m_fillTexture->GetShaderResourceView(), lights, cameraPosition, waterTranslation);
+	result = waterShader->Render(deviceContext, mesh->GetIndexCount(), worldMatrix, viewMatrix, projectionMatrix,
+		TextureManagerClass::getI().getTexture(m_waterNormalTexureHash), TextureManagerClass::getI().getTexture(m_waterTextureHash),
+		m_fillTexture.second->GetShaderResourceView(), m_skyTexture->GetShaderResourceView(), lights, cameraPosition, waterTranslation);
 	if (!result)
 	{
 		return false;
@@ -158,40 +178,27 @@ bool TerrainClass::renderWater(WaterShaderClass * waterShader, ID3D11DeviceConte
 }
 
 bool TerrainClass::renderToTexture(D3DClass * D3D, FillShaderClass * fillShader, SkyShaderClass* skyShader, D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix,
-	D3DXMATRIX topViewMatrix, D3DXMATRIX reflectionMatrix, MeshClass* terrainMesh, float waterHeight)
+	std::vector<D3DXMATRIX> topViewMatrix, MeshClass* terrainMesh, float waterHeight, int lvl)
 {
 	bool result;
 
 	
 	//prepare render to texture
-
-
-	//D3D->ClearBackBufferRenderTarget();
-	m_fillTexture->SetRenderTarget(D3D->GetDeviceContext(), D3D->GetTextureDepthStencilView());
-	m_fillTexture->ClearRenderTarget(D3D->GetDeviceContext(), D3D->GetTextureDepthStencilView(), D3DXVECTOR4(1, 0, 0, 1));
-	// Render mesh
-	terrainMesh->Render(D3D->GetDeviceContext());
-	result = fillShader->Render(D3D->GetDeviceContext(), terrainMesh->GetIndexCount(), worldMatrix, topViewMatrix, projectionMatrix, D3DXVECTOR4(0, 1, 0, -waterHeight));
-	if (!result)
+	//check texture for rendering
+	if (m_fillTexture.first!=lvl)
 	{
-		return false;
+		m_fillTexture.second->SetRenderTarget(D3D->GetDeviceContext(), D3D->GetTextureDepthStencilView());
+		m_fillTexture.second->ClearRenderTarget(D3D->GetDeviceContext(), D3D->GetTextureDepthStencilView(), D3DXVECTOR4(1, 0, 0, 1));
+		// Render mesh
+		terrainMesh->Render(D3D->GetDeviceContext());
+		result = fillShader->Render(D3D->GetDeviceContext(), terrainMesh->GetIndexCount(), worldMatrix, topViewMatrix[MAX_WATER_FILL_LEVEL], projectionMatrix, D3DXVECTOR4(0, 1, 0, -waterHeight));
+		if (!result)
+		{
+			return false;
+		}
+		D3D->SetBackBufferRenderTarget();
+		m_fillTexture.first = lvl;
 	}
-	D3D->SetBackBufferRenderTarget();
-
-	MeshClass::translateMatrix(worldMatrix, -m_position);
-
-	m_skyTexture->SetRenderTarget(D3D->GetDeviceContext(), D3D->GetTextureDepthStencilView());
-	m_skyTexture->ClearRenderTarget(D3D->GetDeviceContext(), D3D->GetTextureDepthStencilView(), D3DXVECTOR4(1, 0, 0, 1));
-
-	// Render mesh
-	result = m_skyModel->Render(D3D->GetDeviceContext(),skyShader,worldMatrix, topViewMatrix,projectionMatrix);
-	if (!result)
-	{
-		return false;
-	}
-	// return to original target
-
-	D3D->SetBackBufferRenderTarget();
 
 	return true;
 }

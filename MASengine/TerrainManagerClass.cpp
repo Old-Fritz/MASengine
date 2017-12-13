@@ -2,7 +2,6 @@
 
 TerrainManagerClass::TerrainManagerClass()
 {
-	m_fillTexture = 0;
 	m_skyTexture = 0;
 	m_sky = 0;
 }
@@ -28,14 +27,15 @@ bool TerrainManagerClass::Initialize(ID3D11Device * device, ID3D11DeviceContext 
 		if (!result)
 			return false;
 
-		result = initializeMapTextures(device);
-		if (!result)
-			return false;
-
 		m_terrain.emplace_back(terrain);
 
-		LoadScreenManagerClass::getI().changeLine("block" +std::to_string(i)+ "_init", 0.3f + 0.25f*(i / numOfBlocks));
+		if(i%10==0)
+			LoadScreenManagerClass::getI().changeLine("block" +std::to_string(i)+ "_init", 0.3f + 0.25f*(i / numOfBlocks));
 	}
+
+	result = initializeMapTextures(device);
+	if (!result)
+		return false;
 
 	//init base commands names
 	m_pickCommand = "terrainPick";
@@ -45,20 +45,11 @@ bool TerrainManagerClass::Initialize(ID3D11Device * device, ID3D11DeviceContext 
 	SystemStateManagerClass::getI().getTimer()->addCounter("waterTranslation", 0.00001f, 1.0f, 0);
 
 	// init render textures
-	m_fillTexture = new(1) RenderTextureClass;
-	if (!m_fillTexture)
-		return false;
-
-	result = m_fillTexture->Initialize(device, (float)SettingsClass::getI().getIntParameter("ScreenHeight") / pow(2, 3), (float)SettingsClass::getI().getIntParameter("ScreenHeight") / pow(2, 3));
-	if (!result)
-		return false;
-
-	// init render textures
 	m_skyTexture = new(1) RenderTextureClass;
 	if (!m_skyTexture)
 		return false;
 
-	result = m_skyTexture->Initialize(device, (float)SettingsClass::getI().getIntParameter("ScreenHeight") / pow(2, 3), (float)SettingsClass::getI().getIntParameter("ScreenHeight") / pow(2, 3));
+	result = m_skyTexture->Initialize(device, (float)SettingsClass::getI().getIntParameter("ScreenHeight"), (float)SettingsClass::getI().getIntParameter("ScreenHeight"));
 	if (!result)
 		return false;
 
@@ -77,7 +68,7 @@ bool TerrainManagerClass::Initialize(ID3D11Device * device, ID3D11DeviceContext 
 	// Set render textures to all blocks
 	for (int i = 0;i < m_terrain.size();i++)
 	{
-		m_terrain[i]->setRenderTextures(m_fillTexture, m_skyTexture, m_sky);
+		m_terrain[i]->setRenderTextures(m_skyTexture);
 	}
 
 	return true;
@@ -97,12 +88,7 @@ void TerrainManagerClass::Shutdown()
 		::operator delete(m_skyTexture, sizeof(*m_skyTexture), 1);
 		m_skyTexture = 0;
 	}
-	if (m_fillTexture)
-	{
-		m_fillTexture->Shutdown();
-		::operator delete(m_fillTexture, sizeof(*m_fillTexture), 1);
-		m_fillTexture = 0;
-	}
+
 	for (int i = m_terrain.size()-1;i >= 0;i--)
 	{
 		m_terrain[i]->Shutdown();
@@ -113,7 +99,7 @@ void TerrainManagerClass::Shutdown()
 }
 
 bool TerrainManagerClass::Render(D3DClass* D3D, TerrainShaderClass * terrainShader, WaterShaderClass* waterShader, FillShaderClass* fillShader, SkyShaderClass* skyShader,
-	D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, D3DXMATRIX topViewMatrix, D3DXMATRIX reflectionMatrix, std::vector<LightClass::PointLightType*> lights,
+	D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, std::vector<D3DXMATRIX> topViewMatrix, std::vector<LightClass::PointLightType*> lights,
 	D3DXVECTOR3 cameraPosition, float SCREEN_DEPTH, FrustumClass * frustum)
 {
 	bool result;
@@ -127,15 +113,36 @@ bool TerrainManagerClass::Render(D3DClass* D3D, TerrainShaderClass * terrainShad
 	waterHeight = SettingsClass::getI().getFloatParameter("WaterHeight");
 	waterTranslation = SystemStateManagerClass::getI().getTimer()->getCounter("waterTranslation");
 
+	//render sky to texture
+	m_skyTexture->SetRenderTarget(D3D->GetDeviceContext(), D3D->GetTextureDepthStencilView());
+	m_skyTexture->ClearRenderTarget(D3D->GetDeviceContext(), D3D->GetTextureDepthStencilView(), D3DXVECTOR4(1, 0, 0, 1));
+
+	// Render mesh
+	D3DXMATRIX skyMatrix = topViewMatrix[0];
+	MeshClass::translateMatrix(skyMatrix, D3DXVECTOR3(0,0, -waterHeight));
+	result = m_sky->Render(D3D->GetDeviceContext(), skyShader, worldMatrix, skyMatrix, projectionMatrix);
+	if (!result)
+	{
+		return false;
+	}
+	// return to original target
+
+	D3D->SetBackBufferRenderTarget();
+
 	//render all blocks
+	
+	
 	for (auto block = m_terrain.begin();block != m_terrain.end();block++)
 	{
 		//render block
-		result = (*block)->Render(D3D, terrainShader, waterShader, fillShader, skyShader, worldMatrix, viewMatrix, projectionMatrix, topViewMatrix, reflectionMatrix, mapTextures, lights,
+		result = (*block)->Render(D3D, terrainShader, waterShader, fillShader, skyShader, worldMatrix, viewMatrix, projectionMatrix, topViewMatrix, mapTextures, lights,
 			cameraPosition, SCREEN_DEPTH, waterHeight, waterTranslation, frustum);
 		if (!result)
 			return false;
+
 	}
+			
+	
 
 
 	//render sky
@@ -173,22 +180,26 @@ std::string TerrainManagerClass::getUnPickCommandName()
 	return m_unPickCommand;
 }
 
-D3DXVECTOR3 TerrainManagerClass::getBlockTopCameraPos()
+std::vector<D3DXVECTOR3> TerrainManagerClass::getBlockTopCameraPos()
 {
-	int lvl = 3;
 
-	D3DXVECTOR3 output;
+	std::vector<D3DXVECTOR3> output;
 	float terrainHeight = m_terrain[0]->getTerrainHeight() / 2;
 	float terrainWidth = m_terrain[0]->getTerrainWidth() / 2;
 	float shift = (float)SettingsClass::getI().getIntParameter("ScreenWidth") / (float)SettingsClass::getI().getIntParameter("ScreenHeight");
+
 	//normilize position
-	output.x = terrainHeight*shift*pow(2, lvl);
-	output.y = (terrainHeight / tan(SettingsClass::getI().getFloatParameter("FieldOfView") / 2.0f)* pow(2, lvl) + SettingsClass::getI().getFloatParameter("WaterHeight")) ;
-	output.z = terrainWidth - terrainWidth * (pow(2, lvl)-1);
+	for (int i = 0;i < 10;i++)
+	{
+		D3DXVECTOR3 pos;
+		pos.x = terrainHeight*shift*pow(2, i);
+		pos.y = (terrainHeight / tan(SettingsClass::getI().getFloatParameter("FieldOfView") / 2.0f)* pow(2, i) + SettingsClass::getI().getFloatParameter("WaterHeight"));
+		pos.z = terrainWidth - terrainWidth * (pow(2, i) - 1);
+		output.emplace_back(pos);
+	}
+	
 	return output;
 }
-
-
 
 bool TerrainManagerClass::initializeMapTextures(ID3D11Device * device)
 {

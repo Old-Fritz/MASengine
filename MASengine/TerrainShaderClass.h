@@ -67,13 +67,13 @@ public:
 	void Shutdown();
 	/*!
 	Прорисовка модели \param[in] deviceContext - графическое устройство \param[in] indexCount - количество прорисовываемых вершин
-	\param[in] worldMatrix, viewMatrix, projectionMatrix - матрицы с параметрами
-	\param[in] texture - текстура с провами \param[in] physTexture - физическая карта \param[in] mapTextures - физические текстуры
+	\param[in] worldMatrix, viewMatrix, projectionMatrix - матрицы с параметрами \param[in] texture - текстура с провами
+	\param[in] physTexture - физическая карта \param[in] skyTexture - текстура неба \param[in] mapTextures - физические текстуры
 	\param[in] lights - источники света  \param[in] cameraPosition - позиция камеры \param[in] provsColor - Цвета провинций
 	\param[in] waterHeight - уровень воды \return false, если были ошибки
 	*/
 	bool Render(ID3D11DeviceContext* deviceContext, int indexCount, D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix,
-		ID3D11ShaderResourceView* texture, ID3D11ShaderResourceView* physTexture, ID3D11ShaderResourceView** mapTextures,
+		ID3D11ShaderResourceView* texture, ID3D11ShaderResourceView* physTexture, ID3D11ShaderResourceView* skyTexture, ID3D11ShaderResourceView** mapTextures,
 		std::vector<LightClass::PointLightType*> lights, D3DXVECTOR3 cameraPosition, D3DXVECTOR4* provsColor,float waterHeight);
 
 private:
@@ -86,13 +86,13 @@ private:
 
 	/*!
 	Установка параметров шейдера \param[in] deviceContext - графическое устройство
-	\param[in] worldMatrix, viewMatrix, projectionMatrix - матрицы с параметрами
-	\param[in] texture - текстура с провами \param[in] texture - текстура с провами \param[in] physTexture - физическая карта 
+	\param[in] worldMatrix, viewMatrix, projectionMatrix - матрицы с параметрами \param[in] texture - текстура с провами 
+	\param[in] texture - текстура с провами \param[in] physTexture - физическая карта \param[in] skyTexture - текстура неба
 	\param[in] mapTextures - физические текстуры \param[in] lights - источники света  \param[in] cameraPosition - позиция камеры
 	\param[in] provsColor - Цвета провинций  \param[in] waterHeight - уровень воды \return false, если были ошибки
 	*/
 	bool SetShaderParameters(ID3D11DeviceContext* deviceContext, D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix,
-		ID3D11ShaderResourceView* texture, ID3D11ShaderResourceView* physTexture, ID3D11ShaderResourceView** mapTextures,
+		ID3D11ShaderResourceView* texture, ID3D11ShaderResourceView* physTexture, ID3D11ShaderResourceView* skyTexture, ID3D11ShaderResourceView** mapTextures,
 		std::vector<LightClass::PointLightType*> lights, D3DXVECTOR3 cameraPosition, D3DXVECTOR4* provsColor, float waterHeight);
 
 	//! Выполнение шейдера \param[in] deviceContext - графическое устройство \param[in] indexCount - количество прорисовываемых вершин

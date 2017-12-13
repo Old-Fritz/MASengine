@@ -7,7 +7,7 @@ heightMapFilenameBase =  data/terrain/heightMaps/heightmap2
 provFilename =  data/terrain/provmaps/provsmap2.dds
 physFilename = data/terrain/physTextures/terrainMap2.dds
 waterMeshFilename = data/terrain/water/waterMesh.txt
-waterFilename = data/terrain/water/water.dds
+waterFilename = data/terrain/water/water2.dds
 waterNormalFilename = data/terrain/water/waterNormal.dds
 
 2: {

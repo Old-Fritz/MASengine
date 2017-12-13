@@ -41,15 +41,15 @@ void WaterShaderClass::Shutdown()
 }
 
 bool WaterShaderClass::Render(ID3D11DeviceContext* deviceContext, int indexCount, D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, 
-	D3DXMATRIX reflectionMatrix, ID3D11ShaderResourceView* normalTexture, ID3D11ShaderResourceView* texture, ID3D11ShaderResourceView* provTtexture,
-	std::vector<LightClass::PointLightType*> lights, D3DXVECTOR3 cameraPosition, float waterTranslation)
+	ID3D11ShaderResourceView* normalTexture, ID3D11ShaderResourceView* depthTexture, ID3D11ShaderResourceView* provTexture,
+	ID3D11ShaderResourceView* skyTexture, std::vector<LightClass::PointLightType*> lights, D3DXVECTOR3 cameraPosition, float waterTranslation)
 {
 	bool result;
 
 
 	// Set the shader parameters that it will use for rendering.
-	result = SetShaderParameters(deviceContext, worldMatrix, viewMatrix, projectionMatrix, reflectionMatrix,
-		normalTexture, texture, provTtexture, lights, cameraPosition, waterTranslation);
+	result = SetShaderParameters(deviceContext, worldMatrix, viewMatrix, projectionMatrix,
+		normalTexture, depthTexture, provTexture, skyTexture, lights, cameraPosition, waterTranslation);
 	if (!result)
 	{
 		LogManagerClass::getI().addLog("Error 10-2");
@@ -343,8 +343,8 @@ void WaterShaderClass::OutputShaderErrorMessage(ID3D10Blob * errorMessage, HWND 
 }
 
 bool WaterShaderClass::SetShaderParameters(ID3D11DeviceContext* deviceContext, D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, 
-	D3DXMATRIX reflectionMatrix, ID3D11ShaderResourceView* normalTexture, ID3D11ShaderResourceView* texture, ID3D11ShaderResourceView* provTtexture,
-	std::vector<LightClass::PointLightType*> lights, D3DXVECTOR3 cameraPosition, float waterTranslation)
+	ID3D11ShaderResourceView* normalTexture, ID3D11ShaderResourceView* depthTexture, ID3D11ShaderResourceView* provTexture,
+	ID3D11ShaderResourceView* skyTexture, std::vector<LightClass::PointLightType*> lights, D3DXVECTOR3 cameraPosition, float waterTranslation)
 {
 	HRESULT result;
 	D3D11_MAPPED_SUBRESOURCE mappedResource;
@@ -371,7 +371,6 @@ bool WaterShaderClass::SetShaderParameters(ID3D11DeviceContext* deviceContext, D
 	dataPtr->world = worldMatrix;
 	dataPtr->view = viewMatrix;
 	dataPtr->projection = projectionMatrix;
-	dataPtr->reflection = reflectionMatrix;
 	dataPtr->cameraPosition = D3DXVECTOR4(cameraPosition, 0);
 	dataPtr->lightPosition1 = D3DXVECTOR4(lights[0]->position, 0);
 	dataPtr->lightPosition2 = D3DXVECTOR4(lights[1]->position, 0);
@@ -389,8 +388,9 @@ bool WaterShaderClass::SetShaderParameters(ID3D11DeviceContext* deviceContext, D
 
 	// Set shader texture resource in the pixel shader.
 	deviceContext->PSSetShaderResources(0, 1, &normalTexture);
-	deviceContext->PSSetShaderResources(1, 1, &texture);
-	deviceContext->PSSetShaderResources(2, 1, &provTtexture);
+	deviceContext->PSSetShaderResources(1, 1, &depthTexture);
+	deviceContext->PSSetShaderResources(2, 1, &provTexture);
+	deviceContext->PSSetShaderResources(3, 1, &skyTexture);
 
 	// Lock the light constant buffer so it can be written to.
 	result = deviceContext->Map(m_paramsBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource);

@@ -18,7 +18,7 @@
 /////////////
 // GLOBALS //
 /////////////
-const float SCREEN_DEPTH = 5000.0f;
+const float SCREEN_DEPTH = 500000.0f;
 const float SCREEN_NEAR = 0.1f;
 const int TEST_NUM = 1;
 

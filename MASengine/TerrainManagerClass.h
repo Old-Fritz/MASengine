@@ -36,11 +36,11 @@ public:
 	/*!
 	Прорисовка блоков \param[in] D3D - API Directx для рендринга в текстуру \param[in] terrainShader - шейдер блоков \param[in] waterShader - шейдер воды 
 	\param[in] fillShader - шейдер заполнения  \param[in] skyShader - шейдер неба  \param[in] worldMatrix, viewMatrix, projectionMatrix - матрицы с параметрами 
-	\param[in] topViewMatrix - матрица для камеры сверху блока \param[in] reflectionMatrix - матрица отражения \param[in] lights - источники света \param[in] cameraPosition - позиция камеры
+	\param[in] topViewMatrix - 10 матриц для камеры сверху блока \param[in] lights - источники света \param[in] cameraPosition - позиция камеры
 	\param[in] SCREEN_DEPTH - глубина экрана \param[in] frustum - конус усечения  \return false, если были ошибки
 	*/
 	bool Render(D3DClass* D3D, TerrainShaderClass* terrainShader, WaterShaderClass* waterShader, FillShaderClass* fillShader, SkyShaderClass* skyShader, 
-		D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, D3DXMATRIX topViewMatrix, D3DXMATRIX reflectionMatrix, std::vector<LightClass::PointLightType*> lights,
+		D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, std::vector<D3DXMATRIX> topViewMatrix, std::vector<LightClass::PointLightType*> lights,
 		D3DXVECTOR3 cameraPosition, float SCREEN_DEPTH, FrustumClass* frustum);
 
 	//pick actions
@@ -55,8 +55,8 @@ public:
 	//! Получение имени команды, выпоняемой отжатии клиика \return имя команды
 	std::string getUnPickCommandName();
 
-	//! Получение позиции камеры, необходимой для рендринга в текстуру блока \return координаты камеры
-	D3DXVECTOR3 getBlockTopCameraPos();
+	//! Получение позиций камеры, необходимой для рендринга в текстуру блока для 10-ти уровней детализации \return 10 координат камер
+	std::vector<D3DXVECTOR3> getBlockTopCameraPos();
 private:
 	//! Загрузка текстур для физических карт  \param[in] device - графическое устройство
 	bool initializeMapTextures(ID3D11Device* device);
@@ -69,7 +69,6 @@ private:
 	std::string m_pickCommand; //!< Имя команды, выпоняемой при клике
 	std::string m_unPickCommand; //!< Имя команды, выпоняемой отжатии клиика
 
-	RenderTextureClass* m_fillTexture; //!< Текстура заполнения блока
 	RenderTextureClass* m_skyTexture; //!< Текстура отраженного неба для воды
 };
 /*! @} */

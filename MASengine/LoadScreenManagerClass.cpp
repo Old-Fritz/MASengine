@@ -372,6 +372,8 @@ bool LoadScreenManagerClass::changeLineText(const std::string & text)
 	{
 		return false;
 	}
+
+	return true;
 }
 
 bool LoadScreenManagerClass::changeImage()

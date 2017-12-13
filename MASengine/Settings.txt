@@ -3,7 +3,7 @@ ElementsFilename {data/interface/elements.txt}
 NumOFBlocks {16}
 MapTextureFilenameBase {data/terrain/mapTextures/terrain}
 ButCommandFilename {data/interface/actions/butACTION.txt}
-Sample {8}
+Sample {1}
 MouseSensitivity {30}
 HeightMapModifier {-15.000000}
 loadScreenManagerFilename {data/loadscreenManager.txt}
