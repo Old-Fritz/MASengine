@@ -14,6 +14,7 @@
 #include <fstream>
 #include "GlobalManagerClass.h"
 #include "LightClass.h"
+#include "TextureManagerClass.h"
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -71,7 +72,7 @@ public:
 	*/
 	bool Render(ID3D11DeviceContext* deviceContext, int indexCount, D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix,
 		ID3D11ShaderResourceView* normalTexture, ID3D11ShaderResourceView* depthTexture, ID3D11ShaderResourceView* provTtexture, ID3D11ShaderResourceView* skyTtexture,
-		std::vector<LightClass::PointLightType*> lights, D3DXVECTOR3 cameraPosition, float waterTranslation);
+		ID3D11ShaderResourceView* waterTexture, std::vector<LightClass::PointLightType*> lights, D3DXVECTOR3 cameraPosition, float waterTranslation);
 
 private:
 	//! Загрузка шейдера \param[in] device - графическое устрйоство \param[in] hwnd - ID окна \param[in] vsFilename - Расположение вершинного шейдера
@@ -88,7 +89,7 @@ private:
 	*/
 	bool SetShaderParameters(ID3D11DeviceContext* deviceContext, D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, 
 		ID3D11ShaderResourceView* normalTexture, ID3D11ShaderResourceView* depthTexture, ID3D11ShaderResourceView* provTtexture, ID3D11ShaderResourceView* skyTtexture,
-		std::vector<LightClass::PointLightType*> lights, D3DXVECTOR3 cameraPosition, float waterTranslation);
+		ID3D11ShaderResourceView* waterTexture, std::vector<LightClass::PointLightType*> lights, D3DXVECTOR3 cameraPosition, float waterTranslation);
 	//! Выполнение шейдера \param[in] deviceContext - графическое устройство \param[in] indexCount - количество прорисовываемых вершин
 	void RenderShader(ID3D11DeviceContext* deviceContext, int indexCount);
 

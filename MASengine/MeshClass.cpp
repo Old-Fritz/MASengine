@@ -36,23 +36,17 @@ bool MeshClass::Initialize(ID3D11Device * device, PathClass* filename, int sizeX
 	//get vertex and index count
 	loader->calcVertAndIndCount(m_vertexCount, m_indexCount);
 
-	result = loader->createVertsAndInds((void**)&verticies, &indicies);
+
+	// Initialize the vertex and index buffer that hold the geometry for the triangle.
+	result = loader->createBuffers(device, &m_vertexBuffer, &m_indexBuffer);
 	if (!result)
 		return false;
-
-	// find points of extremum to create box mesh
-	findExtrPoints(verticies, minPoint, maxPoint);
-
+	
 	//create box
+	loader->getExtrPoints(minPoint, maxPoint);
 	result = buildBoxMesh(device, minPoint, maxPoint);
 	if (!result)
 		return false;
-
-	// Initialize the vertex and index buffer that hold the geometry for the triangle.
-	result = InitializeBuffers(device, verticies, indicies);
-	if (!result)
-		return false;
-
 
 	MemoryManagerClass::getI().cleanTemp();
 
@@ -92,52 +86,6 @@ int MeshClass::GetIndexCount()
 		m_isBoxMeshRendering = 0;
 	}
 	
-}
-
-bool MeshClass::InitializeBuffers(ID3D11Device * device, VertexType* vertices, unsigned long * indices)
-{
-	D3D11_BUFFER_DESC vertexBufferDesc, indexBufferDesc;
-	D3D11_SUBRESOURCE_DATA vertexData, indexData;
-	HRESULT result;
-
-
-	// Set up the description of the vertex buffer.
-	vertexBufferDesc.Usage = D3D11_USAGE_STAGING;
-	vertexBufferDesc.ByteWidth = sizeof(VertexType)* m_vertexCount;
-	//vertexBufferDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
-	vertexBufferDesc.BindFlags = 0;
-	vertexBufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_READ | D3D11_CPU_ACCESS_WRITE;
-	vertexBufferDesc.MiscFlags = 0;
-
-	// Give the subresource structure a pointer to the vertex data.
-	vertexData.pSysMem = vertices;
-
-	// Now finally create the vertex buffer.
-	result = device->CreateBuffer(&vertexBufferDesc, &vertexData, &m_vertexBuffer);
-	if (FAILED(result))
-	{
-		return false;
-	}
-
-	// Set up the description of the index buffer.
-	indexBufferDesc.Usage = D3D11_USAGE_STAGING;
-	indexBufferDesc.ByteWidth = sizeof(unsigned long)* m_indexCount;
-	//indexBufferDesc.BindFlags = D3D11_BIND_INDEX_BUFFER;
-	indexBufferDesc.BindFlags = 0;
-	indexBufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_READ | D3D11_CPU_ACCESS_WRITE;
-	indexBufferDesc.MiscFlags = 0;
-
-	// Give the subresource structure a pointer to the index data.
-	indexData.pSysMem = indices;
-
-	// Create the index buffer.
-	result = device->CreateBuffer(&indexBufferDesc, &indexData, &m_indexBuffer);
-	if (FAILED(result))
-	{
-		return false;
-	}
-
-	return true;
 }
 
 void MeshClass::ShutdownBuffers()

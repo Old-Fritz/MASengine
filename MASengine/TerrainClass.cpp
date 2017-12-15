@@ -37,12 +37,12 @@ bool TerrainClass::Initialize(ID3D11Device * device, ID3D11DeviceContext * devic
 	}
 	m_physTextureHash = m_physFilename->getHash();
 
-	result = TextureManagerClass::getI().addTexture(device, m_waterFilename);
+	result = TextureManagerClass::getI().addTexture(device, m_depthFilename);
 	if (!result)
 	{
 		return false;
 	}
-	m_waterTextureHash = m_waterFilename->getHash();
+	m_depthTextureHash = m_depthFilename->getHash();
 
 	result = TextureManagerClass::getI().addTexture(device, m_waterNormalFilename);
 	if (!result)
@@ -50,6 +50,13 @@ bool TerrainClass::Initialize(ID3D11Device * device, ID3D11DeviceContext * devic
 		return false;
 	}
 	m_waterNormalTexureHash = m_waterNormalFilename->getHash();
+
+	m_waterTextureHash = Utils::getHash("data/terrain/water/water.dds");
+	result = TextureManagerClass::getI().addTexture(device, m_waterNormalFilename);
+	if (!result)
+	{
+		return false;
+	}
 
 	//add meshes
 	for (int i = NUM_OF_LVLS - 1; i >= 0; i--)
@@ -167,13 +174,13 @@ bool TerrainClass::renderWater(WaterShaderClass* waterShader, ID3D11DeviceContex
 
 	mesh->Render(deviceContext);
 	result = waterShader->Render(deviceContext, mesh->GetIndexCount(), worldMatrix, viewMatrix, projectionMatrix,
-		TextureManagerClass::getI().getTexture(m_waterNormalTexureHash), TextureManagerClass::getI().getTexture(m_waterTextureHash),
-		m_fillTexture.second->GetShaderResourceView(), m_skyTexture->GetShaderResourceView(), lights, cameraPosition, waterTranslation);
+		TextureManagerClass::getI().getTexture(m_waterNormalTexureHash), TextureManagerClass::getI().getTexture(m_depthTextureHash), 
+		m_fillTexture.second->GetShaderResourceView(), m_skyTexture->GetShaderResourceView(), TextureManagerClass::getI().getTexture(m_waterTextureHash), lights, cameraPosition, waterTranslation);
 	if (!result)
 	{
 		return false;
 	}
-
+	
 	return true;
 }
 
@@ -342,8 +349,8 @@ bool TerrainClass::readFromFile(PathClass* filename)
 	m_waterMeshFilename = PathManagerClass::getI().makePath();
 	file >> m_waterMeshFilename;
 	file >> temp >> temp;
-	m_waterFilename = PathManagerClass::getI().makePath();
-	file >> m_waterFilename;
+	m_depthFilename = PathManagerClass::getI().makePath();
+	file >> m_depthFilename;
 	file >> temp >> temp;
 	m_waterNormalFilename = PathManagerClass::getI().makePath();
 	file >> m_waterNormalFilename;

@@ -129,11 +129,13 @@ private:
 	int m_physTextureHash; //!<Хэш физической текстуры
 	PathClass* m_physFilename; //!<ПУть до физической текстуры
 
-	int m_waterTextureHash; //!<Хэш водной текстуры
-	PathClass* m_waterFilename; //!<Путь до водной текстуры
+	int m_depthTextureHash; //!<Хэш водной текстуры
+	PathClass* m_depthFilename; //!<Путь до водной текстуры
 
 	int m_waterNormalTexureHash; //!<Хэш нормальной водной текстуры
 	PathClass*  m_waterNormalFilename; //!<Путь до нормальной водной текстуры
+
+	int m_waterTextureHash; //!<Хэш водной текстуры
 
 	//info from file
 	D3DXVECTOR3 m_position; //!<Позиция блока на карте

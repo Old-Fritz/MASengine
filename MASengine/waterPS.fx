@@ -10,6 +10,7 @@ Texture2D normalTexture : register(t0);
 Texture2D depthTexture : register(t1);
 Texture2D provTexture : register(t2);
 Texture2D skyTexture : register(t3);
+Texture2D waterTexture : register(t4);
 
 SamplerState SampleType[2];
 
@@ -47,6 +48,7 @@ struct PixelInputType
 };
 
 float4 CalculateLight(float3 normal, float3 viewDirection, float3 lightPos1, float3 lightPos2);
+float4 CalculateSkyColor(float3 pos);
 ////////////////////////////////////////////////////////////////////////////////
 // Pixel Shader
 ////////////////////////////////////////////////////////////////////////////////
@@ -56,7 +58,7 @@ float4 pixelShader(PixelInputType input) : SV_TARGET
 	float3 normal;
 	float4 color;
 	float4 lightColor;
-	float4 skyColor, depthColor, provColor, normalColor;
+	float4 skyColor, depthColor, provColor, normalColor,waterColor, skyShadowColor;
 	float reflectRefractScale = 1.6f;
 
 	
@@ -66,8 +68,8 @@ float4 pixelShader(PixelInputType input) : SV_TARGET
 		return float4(0,0,0,0);
 
 	// Calculate the projected reflection texture coordinates.
-	reflectTexCoord.x = input.worldPos.x/512;
-	reflectTexCoord.y = (512-input.worldPos.z) / 512;
+	reflectTexCoord.x = input.worldPos.x/768;
+	reflectTexCoord.y = (768-input.worldPos.z) / 768;
 	refractTexCoord = input.tex;
 	
 	input.tex*=4;
@@ -83,12 +85,22 @@ float4 pixelShader(PixelInputType input) : SV_TARGET
 	refractTexCoord += normal.xy*reflectRefractScale;
 
 	depthColor = depthTexture.Sample(SampleType[1], refractTexCoord) + float4(0.05f, 0.3f, 0, 0);
-	skyColor = skyTexture.Sample(SampleType[1], reflectTexCoord);
+	waterColor = waterTexture.Sample(SampleType[0], reflectTexCoord);
+	skyColor = skyTexture.Sample(SampleType[0], reflectTexCoord);
 	
+	waterColor = lerp(waterColor, depthColor, 0.6f);
+	color = lerp(skyColor, waterColor, 0.75f);
 
-	color = lerp(skyColor, depthColor, 0.7f);
+	skyShadowColor = CalculateSkyColor(input.worldPos);
+
+	normalColor = normalTexture.Sample(SampleType[0], input.tex *= 4+ normal.xy*reflectRefractScale- waterTranslation*2);
+
+	// Expand the range of the normal from (0,1) to (-1,+1).
+	normal = (normalColor.xyz * 2.0f) - 1.0f;
 
 	lightColor = CalculateLight(float3(normal.x, normal.z, normal.y),input.viewDirection, input.lightPos1, input.lightPos2);
+	//lightColor *= skyShadowColor;
+	lightColor = lerp(lightColor, skyShadowColor, 0.5f);
 	//textureColor = shaderTexture[1].Sample(SampleType[0], input.tex)
 
 	color = lightColor*color;
@@ -159,7 +171,7 @@ float4 CalculateLight(float3 normal, float3 viewDirection, float3 lightPos1, flo
 		if (specular2 > 0.0f)
 		{
 			// Increase the specular light by the shininess value.
-			specular2 = pow(specular2, specularPower2);
+			specular2 = pow(specular2, specularPower2/10.0f);
 
 			// Add the specular to the final color.
 			color2 = saturate(color2 + specular2);
@@ -170,4 +182,21 @@ float4 CalculateLight(float3 normal, float3 viewDirection, float3 lightPos1, flo
 	color = saturate(color1 + color2);
 
 	return color;
+}
+
+float4 CalculateSkyColor(float3 pos)
+{
+	pos.x = pos.x / 768;
+	pos.y = (768 - pos.z) / 768;
+
+	float4 skyColor = skyTexture.Sample(SampleType[0], pos.xy);
+	skyColor = float4(1 - skyColor.x, 1 - skyColor.y, 1 - skyColor.z, skyColor.w);
+	if (skyColor.x > 1)
+		skyColor.x = 1;
+	if (skyColor.y > 1)
+		skyColor.y = 1;
+	if (skyColor.z > 1)
+		skyColor.z = 1;
+	//skyColor.w = 0.5f;
+	return skyColor;
 }

@@ -29,7 +29,7 @@ bool TerrainManagerClass::Initialize(ID3D11Device * device, ID3D11DeviceContext 
 
 		m_terrain.emplace_back(terrain);
 
-		if(i%10==0)
+		if(i%100==0)
 			LoadScreenManagerClass::getI().changeLine("block" +std::to_string(i)+ "_init", 0.3f + 0.25f*(i / numOfBlocks));
 	}
 

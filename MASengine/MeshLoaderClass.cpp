@@ -12,6 +12,61 @@ MeshLoaderClass::~MeshLoaderClass()
 {
 }
 
+bool MeshLoaderClass::createBuffers(ID3D11Device * device, ID3D11Buffer** vertexBuffer, ID3D11Buffer** indexBuffer)
+{
+	D3D11_BUFFER_DESC vertexBufferDesc, indexBufferDesc;
+	D3D11_SUBRESOURCE_DATA vertexData, indexData;
+	HRESULT result;
+
+	VertexType* vertices;
+	unsigned long * indices;
+
+	// Get data
+	result = createVertsAndInds(&vertices, &indices);
+	if (!result)
+		return false;
+
+	findExtrPoints(vertices);
+
+	// Set up the description of the vertex buffer.
+	vertexBufferDesc.Usage = D3D11_USAGE_STAGING;
+	vertexBufferDesc.ByteWidth = sizeof(VertexType)* m_vertexCount;
+	//vertexBufferDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
+	vertexBufferDesc.BindFlags = 0;
+	vertexBufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_READ | D3D11_CPU_ACCESS_WRITE;
+	vertexBufferDesc.MiscFlags = 0;
+
+	// Give the subresource structure a pointer to the vertex data.
+	vertexData.pSysMem = vertices;
+
+	// Now finally create the vertex buffer.
+	result = device->CreateBuffer(&vertexBufferDesc, &vertexData, vertexBuffer);
+	if (FAILED(result))
+	{
+		return false;
+	}
+
+	// Set up the description of the index buffer.
+	indexBufferDesc.Usage = D3D11_USAGE_STAGING;
+	indexBufferDesc.ByteWidth = sizeof(unsigned long)* m_indexCount;
+	//indexBufferDesc.BindFlags = D3D11_BIND_INDEX_BUFFER;
+	indexBufferDesc.BindFlags = 0;
+	indexBufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_READ | D3D11_CPU_ACCESS_WRITE;
+	indexBufferDesc.MiscFlags = 0;
+
+	// Give the subresource structure a pointer to the index data.
+	indexData.pSysMem = indices;
+
+	// Create the index buffer.
+	result = device->CreateBuffer(&indexBufferDesc, &indexData, indexBuffer);
+	if (FAILED(result))
+	{
+		return false;
+	}
+
+	return true;
+}
+
 bool MeshLoaderClass::loadModel(PathClass * filename, float sizeX, float sizeY, float sizeZ)
 {
 	bool result;
@@ -29,7 +84,37 @@ bool MeshLoaderClass::loadModel(PathClass * filename, float sizeX, float sizeY, 
 	return true;
 }
 
-bool MeshLoaderClass::createVertsAndInds(void ** vertices, unsigned long ** indices)
+void MeshLoaderClass::getExtrPoints(D3DXVECTOR3 & minPoint, D3DXVECTOR3 & maxPoint)
+{
+	minPoint = m_minPoint;
+	maxPoint = m_maxPoint;
+}
+
+void MeshLoaderClass::findExtrPoints(VertexType* vertices)
+{
+	//create default values
+	m_minPoint = m_maxPoint = vertices[0].position;
+	for (int i = 0;i < m_vertexCount;i++)
+	{
+		//find minimum
+		if (vertices[i].position.x < m_minPoint.x)
+			m_minPoint.x = vertices[i].position.x;
+		if (vertices[i].position.y < m_minPoint.y)
+			m_minPoint.y = vertices[i].position.y;
+		if (vertices[i].position.z < m_minPoint.z)
+			m_minPoint.z = vertices[i].position.z;
+
+		//find maximum
+		if (vertices[i].position.x > m_maxPoint.x)
+			m_maxPoint.x = vertices[i].position.x;
+		if (vertices[i].position.y > m_maxPoint.y)
+			m_maxPoint.y = vertices[i].position.y;
+		if (vertices[i].position.z > m_maxPoint.z)
+			m_maxPoint.z = vertices[i].position.z;
+	}
+}
+
+bool MeshLoaderClass::createVertsAndInds(VertexType ** vertices, unsigned long ** indices)
 {
 	// Create the vertex array.
 	(*(VertexType**)vertices) = new(3) VertexType[m_vertexCount];

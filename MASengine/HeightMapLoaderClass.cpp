@@ -1,5 +1,7 @@
 #include "HeightMapLoaderClass.h"
 
+ std::map<std::pair<int, int>, ID3D11Buffer*> HeightMapLoaderClass::m_indexBuffers;
+
 HeightMapLoaderClass::HeightMapLoaderClass()
 {
 }
@@ -39,7 +41,7 @@ bool HeightMapLoaderClass::loadModel(PathClass * filename, float sizeX, float si
 	return true;
 }
 
-bool HeightMapLoaderClass::createVertsAndInds(void ** vertices, unsigned long ** indices)
+bool HeightMapLoaderClass::createVertsAndInds(VertexType ** vertices, unsigned long ** indices)
 {
 	
 	int index;
@@ -48,19 +50,19 @@ bool HeightMapLoaderClass::createVertsAndInds(void ** vertices, unsigned long **
 
 
 	// Calculate the number of vertices in the terrain mesh.
-	int vertexCount = (m_terrainWidth - 1) * (m_terrainHeight - 1) * 6;
+	int vertexCount = (m_terrainWidth) * (m_terrainHeight);
 	// Set the index count to the same as the vertex count.
-	int indexCount = vertexCount;
+	int indexCount = (m_terrainWidth - 1) * (m_terrainHeight - 1) * 6;
 
 	// Create the vertex array.
-	(*(VertexType**)vertices) = new(3) VertexType[vertexCount];
-	if (!(*(VertexType**)vertices))
+	(*vertices) = new(3) VertexType[vertexCount];
+	if (!(*vertices))
 	{
 		return false;
 	}
 
 	// Create the index array.
-	(*indices) = new unsigned long[indexCount];
+	(*indices) = new(3) unsigned long[indexCount];
 	if (!(*indices))
 	{
 		return false;
@@ -85,14 +87,13 @@ bool HeightMapLoaderClass::createVertsAndInds(void ** vertices, unsigned long **
 			// Modify the texture coordinates to cover the top edge.
 			//if (tv == 1.0f) { tv = 0.0f; }
 
-			(*(VertexType**)vertices)[index].position = D3DXVECTOR3(m_model[index3].x, m_model[index3].y, m_model[index3].z);
-			(*(VertexType**)vertices)[index].texture = D3DXVECTOR2(m_model[index3].tu, tv);
-			(*(VertexType**)vertices)[index].normal = D3DXVECTOR3(m_model[index3].nx, m_model[index3].ny, m_model[index3].nz);
-			(*indices)[index] = index;
+			(*vertices)[index3].position = D3DXVECTOR3(m_model[index3].x, m_model[index3].y, m_model[index3].z);
+			(*vertices)[index3].texture = D3DXVECTOR2(m_model[index3].tu, tv);
+			(*vertices)[index3].normal = D3DXVECTOR3(m_model[index3].nx, m_model[index3].ny, m_model[index3].nz);
+			(*indices)[index] = index3;
 			index++;
 
-			if (abs((*(VertexType**)vertices)[index - 1].position.y) < 13)
-				index = index;
+		
 			// Upper right.
 			tu = m_model[index4].tu;
 			tv = m_model[index4].tv;
@@ -101,33 +102,28 @@ bool HeightMapLoaderClass::createVertsAndInds(void ** vertices, unsigned long **
 			//if (tu == 0.0f) { tu = 1.0f; }
 			//if (tv == 1.0f) { tv = 0.0f; }
 
-			(*(VertexType**)vertices)[index].position = D3DXVECTOR3(m_model[index4].x, m_model[index4].y, m_model[index4].z);
-			(*(VertexType**)vertices)[index].texture = D3DXVECTOR2(tu, tv);
-			(*(VertexType**)vertices)[index].normal = D3DXVECTOR3(m_model[index4].nx, m_model[index4].ny, m_model[index4].nz);
-			(*indices)[index] = index;
+			(*vertices)[index4].position = D3DXVECTOR3(m_model[index4].x, m_model[index4].y, m_model[index4].z);
+			(*vertices)[index4].texture = D3DXVECTOR2(tu, tv);
+			(*vertices)[index4].normal = D3DXVECTOR3(m_model[index4].nx, m_model[index4].ny, m_model[index4].nz);
+			(*indices)[index] = index4;
 			index++;
 
-			if (abs((*(VertexType**)vertices)[index - 1].position.y) < 13)
-				index = index;
+	
 			// Bottom left.
-			(*(VertexType**)vertices)[index].position = D3DXVECTOR3(m_model[index1].x, m_model[index1].y, m_model[index1].z);
-			(*(VertexType**)vertices)[index].texture = D3DXVECTOR2(m_model[index1].tu, m_model[index1].tv);
-			(*(VertexType**)vertices)[index].normal = D3DXVECTOR3(m_model[index1].nx, m_model[index1].ny, m_model[index1].nz);
-			(*indices)[index] = index;
+			(*vertices)[index1].position = D3DXVECTOR3(m_model[index1].x, m_model[index1].y, m_model[index1].z);
+			(*vertices)[index1].texture = D3DXVECTOR2(m_model[index1].tu, m_model[index1].tv);
+			(*vertices)[index1].normal = D3DXVECTOR3(m_model[index1].nx, m_model[index1].ny, m_model[index1].nz);
+			(*indices)[index] = index1;
 			index++;
 
-			if (abs((*(VertexType**)vertices)[index - 1].position.y) < 13)
-				index = index;
-
+			
 			// Bottom left.
-			(*(VertexType**)vertices)[index].position = D3DXVECTOR3(m_model[index1].x, m_model[index1].y, m_model[index1].z);
-			(*(VertexType**)vertices)[index].texture = D3DXVECTOR2(m_model[index1].tu, m_model[index1].tv);
-			(*(VertexType**)vertices)[index].normal = D3DXVECTOR3(m_model[index1].nx, m_model[index1].ny, m_model[index1].nz);
-			(*indices)[index] = index;
+			(*vertices)[index1].position = D3DXVECTOR3(m_model[index1].x, m_model[index1].y, m_model[index1].z);
+			(*vertices)[index1].texture = D3DXVECTOR2(m_model[index1].tu, m_model[index1].tv);
+			(*vertices)[index1].normal = D3DXVECTOR3(m_model[index1].nx, m_model[index1].ny, m_model[index1].nz);
+			(*indices)[index] = index1;
 			index++;
 
-			if (abs((*(VertexType**)vertices)[index - 1].position.y) < 13)
-				index = index;
 
 			// Upper right.
 			tu = m_model[index4].tu;
@@ -137,14 +133,12 @@ bool HeightMapLoaderClass::createVertsAndInds(void ** vertices, unsigned long **
 			//if (tu == 0.0f) { tu = 1.0f; }
 			//if (tv == 1.0f) { tv = 0.0f; }
 
-			(*(VertexType**)vertices)[index].position = D3DXVECTOR3(m_model[index4].x, m_model[index4].y, m_model[index4].z);
-			(*(VertexType**)vertices)[index].texture = D3DXVECTOR2(tu, tv);
-			(*(VertexType**)vertices)[index].normal = D3DXVECTOR3(m_model[index4].nx, m_model[index4].ny, m_model[index4].nz);
-			(*indices)[index] = index;
+			(*vertices)[index4].position = D3DXVECTOR3(m_model[index4].x, m_model[index4].y, m_model[index4].z);
+			(*vertices)[index4].texture = D3DXVECTOR2(tu, tv);
+			(*vertices)[index4].normal = D3DXVECTOR3(m_model[index4].nx, m_model[index4].ny, m_model[index4].nz);
+			(*indices)[index] = index4;
 			index++;
 
-			if (abs((*(VertexType**)vertices)[index - 1].position.y) < 13)
-				index = index;
 
 			// Bottom right.
 			tu = m_model[index2].tu;
@@ -152,24 +146,91 @@ bool HeightMapLoaderClass::createVertsAndInds(void ** vertices, unsigned long **
 			// Modify the texture coordinates to cover the right edge.
 			//if (tu == 0.0f) { tu = 1.0f; }
 
-			(*(VertexType**)vertices)[index].position = D3DXVECTOR3(m_model[index2].x, m_model[index2].y, m_model[index2].z);
-			(*(VertexType**)vertices)[index].texture = D3DXVECTOR2(tu, m_model[index2].tv);
-			(*(VertexType**)vertices)[index].normal = D3DXVECTOR3(m_model[index2].nx, m_model[index2].ny, m_model[index2].nz);
-			(*indices)[index] = index;
+			(*vertices)[index2].position = D3DXVECTOR3(m_model[index2].x, m_model[index2].y, m_model[index2].z);
+			(*vertices)[index2].texture = D3DXVECTOR2(tu, m_model[index2].tv);
+			(*vertices)[index2].normal = D3DXVECTOR3(m_model[index2].nx, m_model[index2].ny, m_model[index2].nz);
+			(*indices)[index] = index2;
 			index++;
-			if (abs((*(VertexType**)vertices)[index - 1].position.y) < 13)
-				index = index;
+			
 		}
 	}
 }
 
 void HeightMapLoaderClass::calcVertAndIndCount(int & vertexCount, int & indexCount)
 {
-	m_vertexCount = (m_terrainWidth - 1) * (m_terrainHeight - 1) * 6;
-	m_indexCount = m_vertexCount;
+	m_vertexCount = (m_terrainWidth) * (m_terrainHeight);
+	m_indexCount = (m_terrainWidth - 1) * (m_terrainHeight - 1) * 6;
 
 	vertexCount = m_vertexCount;
 	indexCount = m_indexCount;
+}
+
+bool HeightMapLoaderClass::createBuffers(ID3D11Device * device, ID3D11Buffer ** vertexBuffer, ID3D11Buffer ** indexBuffer)
+{
+	D3D11_BUFFER_DESC vertexBufferDesc, indexBufferDesc;
+	D3D11_SUBRESOURCE_DATA vertexData, indexData;
+	HRESULT result;
+
+	VertexType* vertices;
+	unsigned long * indices;
+
+	// Get data
+	result = createVertsAndInds(&vertices, &indices);
+	if (!result)
+		return false;
+
+	findExtrPoints(vertices);
+
+	// Set up the description of the vertex buffer.
+	vertexBufferDesc.Usage = D3D11_USAGE_STAGING;
+	vertexBufferDesc.ByteWidth = sizeof(VertexType)* m_vertexCount;
+	//vertexBufferDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
+	vertexBufferDesc.BindFlags = 0;
+	vertexBufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_READ | D3D11_CPU_ACCESS_WRITE;
+	vertexBufferDesc.MiscFlags = 0;
+
+	// Give the subresource structure a pointer to the vertex data.
+	vertexData.pSysMem = vertices;
+
+	// Now finally create the vertex buffer.
+	result = device->CreateBuffer(&vertexBufferDesc, &vertexData, vertexBuffer);
+	if (FAILED(result))
+	{
+		return false;
+	}
+
+	// Check for existing of this buffer
+	auto buffer = m_indexBuffers.find(std::pair<int,int>(m_terrainHeight,m_terrainWidth));
+
+	if (buffer == m_indexBuffers.end())
+	{
+		// Set up the description of the index buffer.
+		indexBufferDesc.Usage = D3D11_USAGE_STAGING;
+		indexBufferDesc.ByteWidth = sizeof(unsigned long)* m_indexCount;
+		//indexBufferDesc.BindFlags = D3D11_BIND_INDEX_BUFFER;
+		indexBufferDesc.BindFlags = 0;
+		indexBufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_READ | D3D11_CPU_ACCESS_WRITE;
+		indexBufferDesc.MiscFlags = 0;
+
+		// Give the subresource structure a pointer to the index data.
+		indexData.pSysMem = indices;
+
+		// Create the index buffer.
+		result = device->CreateBuffer(&indexBufferDesc, &indexData, indexBuffer);
+		if (FAILED(result))
+		{
+			return false;
+		}
+		//add new buffer
+		m_indexBuffers.emplace(std::pair<std::pair<int, int>, ID3D11Buffer*>( std::pair<int, int>(m_terrainHeight, m_terrainWidth), *indexBuffer));
+	}
+	else
+	{
+		*indexBuffer = buffer->second;
+	}
+	
+
+	return true;
 }
 
 void HeightMapLoaderClass::Shutdown()

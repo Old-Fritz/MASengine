@@ -78,8 +78,6 @@ public:
 	//! Поворот матрицы \param[in, out] matrix - поворачиваемая матрица \param[in] rotVector - вектор поворота (ypr)
 	static void rotateMatrix(D3DXMATRIX& matrix, D3DXVECTOR3 rotVector);
 private:
-	//! Инициализация буферов \param[in] device - графическое устройство \param[in] vertices - массив вершин \param[in] indices - массив индексов вершин \return false, если были ошибки
-	bool InitializeBuffers(ID3D11Device* device, VertexType* vertices, unsigned long* indices);
 	void ShutdownBuffers();
 	//! Установка буферов в цепь рендринга \param[in] deviceContext - графическое устройство
 	void RenderBuffers(ID3D11DeviceContext* deviceContext);
@@ -100,6 +98,7 @@ private:
 
 	BoxMeshClass* m_boxMesh; //!<меш box
 	bool m_isBoxMeshRendering = 0; //! Необходимость в рендринге меша box
+
 };
 /*! @} */
 #endif

@@ -42,14 +42,14 @@ void WaterShaderClass::Shutdown()
 
 bool WaterShaderClass::Render(ID3D11DeviceContext* deviceContext, int indexCount, D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, 
 	ID3D11ShaderResourceView* normalTexture, ID3D11ShaderResourceView* depthTexture, ID3D11ShaderResourceView* provTexture,
-	ID3D11ShaderResourceView* skyTexture, std::vector<LightClass::PointLightType*> lights, D3DXVECTOR3 cameraPosition, float waterTranslation)
+	ID3D11ShaderResourceView* skyTexture, ID3D11ShaderResourceView* waterTexture, std::vector<LightClass::PointLightType*> lights, D3DXVECTOR3 cameraPosition, float waterTranslation)
 {
 	bool result;
 
 
 	// Set the shader parameters that it will use for rendering.
 	result = SetShaderParameters(deviceContext, worldMatrix, viewMatrix, projectionMatrix,
-		normalTexture, depthTexture, provTexture, skyTexture, lights, cameraPosition, waterTranslation);
+		normalTexture, depthTexture, provTexture, skyTexture, waterTexture, lights, cameraPosition, waterTranslation);
 	if (!result)
 	{
 		LogManagerClass::getI().addLog("Error 10-2");
@@ -344,7 +344,7 @@ void WaterShaderClass::OutputShaderErrorMessage(ID3D10Blob * errorMessage, HWND 
 
 bool WaterShaderClass::SetShaderParameters(ID3D11DeviceContext* deviceContext, D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, 
 	ID3D11ShaderResourceView* normalTexture, ID3D11ShaderResourceView* depthTexture, ID3D11ShaderResourceView* provTexture,
-	ID3D11ShaderResourceView* skyTexture, std::vector<LightClass::PointLightType*> lights, D3DXVECTOR3 cameraPosition, float waterTranslation)
+	ID3D11ShaderResourceView* skyTexture, ID3D11ShaderResourceView* waterTexture, std::vector<LightClass::PointLightType*> lights, D3DXVECTOR3 cameraPosition, float waterTranslation)
 {
 	HRESULT result;
 	D3D11_MAPPED_SUBRESOURCE mappedResource;
@@ -391,6 +391,7 @@ bool WaterShaderClass::SetShaderParameters(ID3D11DeviceContext* deviceContext, D
 	deviceContext->PSSetShaderResources(1, 1, &depthTexture);
 	deviceContext->PSSetShaderResources(2, 1, &provTexture);
 	deviceContext->PSSetShaderResources(3, 1, &skyTexture);
+	deviceContext->PSSetShaderResources(4, 1, &waterTexture);
 
 	// Lock the light constant buffer so it can be written to.
 	result = deviceContext->Map(m_paramsBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource);

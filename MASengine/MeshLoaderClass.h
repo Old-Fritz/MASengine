@@ -52,16 +52,27 @@ public:
 	MeshLoaderClass(const MeshLoaderClass&);
 	~MeshLoaderClass();
 
-	//! Загрузка меша из файла и прменение масштаба \param[in] filename - путь до файла меша \param[in] sizeX, sizeY, sizeZ - масштаб меша \return false, если были ошибки
-	virtual bool loadModel(PathClass* filename, float sizeX = 1, float sizeY = 1, float sizeZ = 1);
-	//! Создание массивов вершин и индексов \param[in] deviceContext - графическое устройство \param[out] vertices - массив вершин
-	//! \param[out] indices массив индексов вершин \return false, если были ошибки
-	virtual bool createVertsAndInds(void** vertices, unsigned long** indices);
 	//! Подсчет кол-ва вершин и индексов \param[out] vertexCount - кол-во вершин \param[out] indexCount - кол-во индексов
 	virtual void calcVertAndIndCount(int& vertexCount, int& indexCount);
 
+	//! Инициализация буферов \param[in] device - графическое устройство \param[in] vertices - массив вершин 
+	//! \param[in] indices - массив индексов вершин \return false, если были
+	virtual bool createBuffers(ID3D11Device* device, ID3D11Buffer** vertexBuffer, ID3D11Buffer** indexBuffer);
+
+	//! Загрузка меша из файла и прменение масштаба \param[in] filename - путь до файла меша \param[in] sizeX, sizeY, sizeZ - масштаб меша \return false, если были ошибки
+	virtual bool loadModel(PathClass* filename, float sizeX = 1, float sizeY = 1, float sizeZ = 1);
+	
+	virtual void getExtrPoints(D3DXVECTOR3& minPoint, D3DXVECTOR3& maxPoint);
+	
+
 	virtual void Shutdown();
-private:
+protected:
+	//! Создание массивов вершин и индексов \param[in] deviceContext - графическое устройство \param[out] vertices - массив вершин
+	//! \param[out] indices массив индексов вершин \return false, если были ошибки
+	virtual bool createVertsAndInds(VertexType** vertices, unsigned long** indices);
+
+	virtual void findExtrPoints(VertexType* vertices);
+	
 	//! Загрузка меша из файла \param[in] filename - путь до файла меша \return false, если были ошибки
 	bool loadMesh(PathClass* filename);
 	//! Масштабировать меш \param[in] sizeX, sizeY, sizeZ - масштаб меша
@@ -69,6 +80,9 @@ private:
 protected:
 	ModelType* m_model; //!<Временные данные о загружаемом меше
 	int m_vertexCount, m_indexCount; //!<Количество вершин и индексов
+
+	D3DXVECTOR3 m_minPoint, m_maxPoint;
+
 };
 /*! @} */
 #endif

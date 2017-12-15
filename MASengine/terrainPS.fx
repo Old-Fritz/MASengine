@@ -294,8 +294,8 @@ float4 ConvertRGB256(float r, float g, float b)
 
 float4 CalculateSkyColor(float3 pos)
 {
-	pos.x = pos.x / 512;
-	pos.y = (512 - pos.z) / 512;
+	pos.x = pos.x / 768;
+	pos.y = (768 - pos.z) / 768;
 
 	float4 skyColor = textures[2].Sample(SampleType[0], pos.xy);
 	skyColor = float4(1 - skyColor.x, 1 - skyColor.y, 1 - skyColor.z, skyColor.w);
