@@ -29,13 +29,15 @@ bool TerrainManagerClass::Initialize(ID3D11Device * device, ID3D11DeviceContext 
 
 		m_terrain.emplace_back(terrain);
 
-		if(i%100==0)
+		//if(i%100==0)
 			LoadScreenManagerClass::getI().changeLine("block" +std::to_string(i)+ "_init", 0.3f + 0.25f*(i / numOfBlocks));
 	}
 
 	result = initializeMapTextures(device);
 	if (!result)
 		return false;
+
+	LoadScreenManagerClass::getI().changeLine("1", 0.3f + 0.25f);
 
 	//init base commands names
 	m_pickCommand = "terrainPick";
@@ -44,15 +46,22 @@ bool TerrainManagerClass::Initialize(ID3D11Device * device, ID3D11DeviceContext 
 	// create water translation counter
 	SystemStateManagerClass::getI().getTimer()->addCounter("waterTranslation", 0.00001f, 1.0f, 0);
 
+	LoadScreenManagerClass::getI().changeLine("2", 0.3f + 0.25f);
+
 	// init render textures
 	m_skyTexture = new(1) RenderTextureClass;
 	if (!m_skyTexture)
 		return false;
 
+	LoadScreenManagerClass::getI().changeLine("3", 0.3f + 0.25f);
+
 	result = m_skyTexture->Initialize(device, (float)SettingsClass::getI().getIntParameter("ScreenHeight"), (float)SettingsClass::getI().getIntParameter("ScreenHeight"));
 	if (!result)
+	{
 		return false;
+	}
 
+	LoadScreenManagerClass::getI().changeLine("4", 0.3f + 0.25f);
 	
 
 	// create sky
@@ -61,15 +70,21 @@ bool TerrainManagerClass::Initialize(ID3D11Device * device, ID3D11DeviceContext 
 	{
 		return false;
 	}
+	LoadScreenManagerClass::getI().changeLine("5", 0.3f + 0.25f);
+
 	result = m_sky->Initialize(device, deviceContext, SettingsClass::getI().getPathParameter("SkyDescFilename"));
 	if (!result)
 		return false;
+
+	LoadScreenManagerClass::getI().changeLine("6", 0.3f + 0.25f);
 
 	// Set render textures to all blocks
 	for (int i = 0;i < m_terrain.size();i++)
 	{
 		m_terrain[i]->setRenderTextures(m_skyTexture);
 	}
+
+	LoadScreenManagerClass::getI().changeLine("7", 0.3f + 0.25f);
 
 	return true;
 }

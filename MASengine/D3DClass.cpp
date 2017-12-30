@@ -43,7 +43,14 @@ bool D3DClass::Initialize(HWND hwnd, float screenDepth, float screenNear)
 	DXGI_ADAPTER_DESC adapterDesc;
 	int error;
 	DXGI_SWAP_CHAIN_DESC swapChainDesc;
-	D3D_FEATURE_LEVEL featureLevel;
+	D3D_FEATURE_LEVEL featureLevel[6] = {
+		D3D_FEATURE_LEVEL_11_0,
+		D3D_FEATURE_LEVEL_10_1,
+		D3D_FEATURE_LEVEL_10_0,
+		D3D_FEATURE_LEVEL_9_3,
+		D3D_FEATURE_LEVEL_9_2,
+		D3D_FEATURE_LEVEL_9_1,
+	};
 	ID3D11Texture2D* backBufferPtr;
 	D3D11_TEXTURE2D_DESC depthBufferDesc, textureDepthBufferDesc;
 	D3D11_DEPTH_STENCIL_DESC depthStencilDesc;
@@ -56,7 +63,7 @@ bool D3DClass::Initialize(HWND hwnd, float screenDepth, float screenNear)
 	int msaaQualityCount;
 	UINT msaaQualityNumber;
 	UINT msaaQualityChoosen;
-	bool enable4xMsaa;
+	bool enable4xMsaa = false;
 
 	// Create a DirectX graphics interface factory.
 	result = CreateDXGIFactory(__uuidof(IDXGIFactory), (void**)&factory);
@@ -176,8 +183,6 @@ bool D3DClass::Initialize(HWND hwnd, float screenDepth, float screenNear)
 
 	
 
-	
-
 	// Set to full screen or windowed mode.
 	if (SettingsClass::getI().getIntParameter("Fullscreen"))
 	{
@@ -198,43 +203,67 @@ bool D3DClass::Initialize(HWND hwnd, float screenDepth, float screenNear)
 	// Don't set the advanced flags.
 	swapChainDesc.Flags = 0;
 
-	// Set the feature level to DirectX 11.
-	featureLevel = D3D_FEATURE_LEVEL_11_0;
+	// Set the feature level to DirectX 11. 
+	D3D_FEATURE_LEVEL featureLevelSuccess;
 
-	result = D3D11CreateDevice(NULL, D3D_DRIVER_TYPE_HARDWARE, NULL, 0, &featureLevel, 1,
-		D3D11_SDK_VERSION, &m_device, NULL, &m_deviceContext);
+	swapChainDesc.SampleDesc.Count = msaaQualityCount = 1;
+	swapChainDesc.SampleDesc.Quality = msaaQualityChoosen = 0;
+
+	result = D3D11CreateDeviceAndSwapChain(NULL, D3D_DRIVER_TYPE_HARDWARE, NULL, 0, featureLevel, 1,
+		D3D11_SDK_VERSION, &swapChainDesc, &m_swapChain, &m_device, &featureLevelSuccess, &m_deviceContext);
 	if (FAILED(result))
 	{
-		LogManagerClass::getI().addLog("Error 9-9");
+		MessageBox(0, L"Никита - пидор", 0, 0);
+		LogManagerClass::getI().addLog("Error 9-92");
 		return false;
 	}
 
-	// Turn multisampling on.
-	msaaQualityCount = SettingsClass::getI().getIntParameter("Sample");
-	result = m_device->CheckMultisampleQualityLevels(DXGI_FORMAT_R8G8B8A8_UNORM,
-		msaaQualityCount, &msaaQualityNumber);
-	if (FAILED(result))
-	{
-		return false;
-	}
-	if (msaaQualityCount > 1)
-		enable4xMsaa = true;
-	else
-		enable4xMsaa = false;
+	//result = D3D11CreateDevice(NULL, D3D_DRIVER_TYPE_HARDWARE, NULL, 0, featureLevel, 1,
+	//	D3D11_SDK_VERSION, &m_device, &featureLevelSuccess, &m_deviceContext);
+	//if (FAILED(result))
+	//{
+	//	MessageBox(0, L"Ты охуел? 1", 0, 0);
+	//	LogManagerClass::getI().addLog("Error 9-91");
+	//	return false;
+	//}
+	//if (featureLevelSuccess != D3D_FEATURE_LEVEL_11_0)
+	//{
+	//	MessageBox(0, L"Direct3D Feature Level 11 unsupported.", 0, 0);
+	//	return false;
+	//}
 
-	msaaQualityChoosen = msaaQualityNumber - 1;
+	//// Turn multisampling on.
+	//msaaQualityCount = SettingsClass::getI().getIntParameter("Sample");
+	//result = m_device->CheckMultisampleQualityLevels(DXGI_FORMAT_R8G8B8A8_UNORM,
+	//	msaaQualityCount, &msaaQualityNumber);
+	//if (FAILED(result))
+	//{
+	//	MessageBox(0, L"Ты охуел? 3", 0, 0);
+	//	return false;
+	//}
+	//if (msaaQualityCount > 1)
+	//	enable4xMsaa = true;
+	//else
+	//	enable4xMsaa = false;
 
-	swapChainDesc.SampleDesc.Count = msaaQualityCount;
-	swapChainDesc.SampleDesc.Quality = msaaQualityChoosen;
+	//msaaQualityChoosen = msaaQualityNumber - 1;
 
-	// Create the swap chain, Direct3D device, and Direct3D device context.
-	result = factory->CreateSwapChain(m_device, &swapChainDesc, &m_swapChain);
-	if (FAILED(result))
-	{
-		LogManagerClass::getI().addLog("Error 9-9");
-		return false;
-	}
-	//m_device->CheckMultisampleQualityLevels(DXGI_FORMAT_R8G8B8A8_UNORM, m4xMsaaQualityCount, &m4xMsaaQualityNumber);
+	//swapChainDesc.SampleDesc.Count = msaaQualityCount = 1;
+	//swapChainDesc.SampleDesc.Quality = msaaQualityChoosen = 0;
+
+	//
+
+	//// Create the swap chain, Direct3D device, and Direct3D device context.
+	//result = factory->CreateSwapChain(m_device, &swapChainDesc, &m_swapChain);
+	//if (FAILED(result))
+	//{
+	//	_com_error err(result);
+	//	LPCWSTR errMsg = err.ErrorMessage();
+	//	MessageBox(0, errMsg, 0, 0);
+	//	LogManagerClass::getI().addLog("Error 9-92");
+	//	return false;
+	//}
+	////m_device->CheckMultisampleQualityLevels(DXGI_FORMAT_R8G8B8A8_UNORM, m4xMsaaQualityCount, &m4xMsaaQualityNumber);
 
 	// Get the pointer to the back buffer.
 	result = m_swapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (LPVOID*)&backBufferPtr);

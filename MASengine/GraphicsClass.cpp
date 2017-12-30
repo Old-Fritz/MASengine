@@ -85,7 +85,7 @@ bool GraphicsClass::Initialize(HWND hwnd)
 
 	light2->ambientColor = D3DXVECTOR4(0.05f, 0.05f, 0.05f, 1.0f);
 	light2->diffuseColor = D3DXVECTOR4(1.2f, 1.2f, 1.2f, 1.0f);
-	light2->position = D3DXVECTOR3(256, 800.0f, 1560);
+	light2->position = D3DXVECTOR3(256, 800.0f, 560);
 	light2->specularColor = D3DXVECTOR4(1.0f, 0.0f, 0.0f, 1.0f);
 	light2->specularPower = 600.5f;
 
