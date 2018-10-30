@@ -20,7 +20,6 @@
 #include <d3d11.h>
 #include <d3dx10math.h>
 #include "GlobalManagerClass.h"
-#include <comdef.h>
 
 ////////////////////////////////////////////////////////////////////////////////
 // Class name: D3DClass

@@ -61,98 +61,18 @@ float4 pixelShader(PixelInputType input) : SV_TARGET
     float4 provColor2;
     float4 tempColor;
     int provnum;
-	int borderProvNum;
     int provnum2;
     float2 mapCoord;
 	float4 skyColor;
 
 	///CALCULATE BORDERS///
-
-	provColor = textures[0].Sample(SampleType[1], input.tex);
-	
-
-	provnum = provColor.z* 255.01f;
-	borderProvNum = provColor.w * 255.01f;
-
-	if (borderProvNum > 0)
-	{
-		float k;
-		float b;
-		int ik = provColor.x * 255.01f;
-		int ib = provColor.y * 255.01f;
-		if (ib >= 128)
-			ib = -(ib - 128);
-		int kmode = ik / 64;
-		if (kmode == 0)
-		{
-			k = (float)ik / 64.0f;
-			b = (float)ib / 128.0f;
-			
-		}
-		else if (kmode == 1)
-		{
-			k = ik - 63;
-			b = -(float)ib / 128.0f*k;
-		}
-		else if (kmode == 2)
-		{
-			k = -(float)(ik - 128) / 64.0f;
-			b = (float)ib / 128.0f - k;
-		}
-		else if (kmode == 3)
-		{
-			k = -(ik - 191);
-			b = (float)ib / 128.0f*k - k;
-			
-		}
-
-		float x, y;
-		x = (input.tex.x + 0.000006f) * 256 - (int)((input.tex.x + 0.000006f) * 256);
-		y = (1 - (input.tex.y + 0.000006f)) * 256 - (int)((1 - (input.tex.y + 0.000006f)) * 256);
-		//x = (x + 0.05f)*0.9f;
-		//y = (y + 0.05f)*0.9f;
-		float d = abs(k*x - y + b) / sqrt(k*k + 1);
-		if (y > k*x + b)
-			provColor = provsColor[borderProvNum];
-		else if (y <= k*x + b)
-			provColor = provsColor[provnum];
-		//if(d <0.3f)
-			//provColor = float4(0, 0, 0, 1);
-	}
-	else
-		provColor = provsColor[provnum];
-	
-	//return provColor;
-    /*provColor = textures[0].Sample(SampleType[0], input.tex);
+    provColor = textures[0].Sample(SampleType[0], input.tex);
 	provColor2 = textures[0].Sample(SampleType[1], input.tex);
 
-	borderProvNum = provColor2.y * 255.01f;
-	provnum2 = provColor2.z * 255.01f;
-	provnum = provnum2;
+    provnum2 = provColor2.z * 255.01f;
+    provnum = provColor.z * 255.01f;
 
-
-	if ((provsColor[borderProvNum].x != provsColor[provnum2].x) && (borderProvNum != 0) && (provColor.x >= 0.02f))
-		provColor = (1 - provColor.x)*provsColor[provnum2];
-	else if((provColor.x >= 0.7f) && (borderProvNum != 0))
-		provColor = (1 - (provColor.x-0.7f)*3.33f)*provsColor[provnum2];
-	else
-	{
-		provColor = provsColor[borderProvNum];
-	}*/
-		//if ((provnum < 255) && ((borderProvNum == 0) || (provColor.x < 0.02f)))
-		//{
-		//	provColor = provsColor[provnum];
-		//	//provColor = lerp(provColor, yellow, provColor.w / 1.6f);
-		//}
-	//return provColor;
-	/*if (provColor.x >= 0.9f)
-		return float4(0, 0, 0, 1);
-*/
-	
-	
-    //provnum = provColor.z * 255.01f;
-
-    /*if (provColor.x > 0 || provColor.y > 0)
+    if (provColor.x > 0 || provColor.y > 0)
     {
         if (provColor.x >= 0.9f || provColor.y >= 0.9f)
         {
@@ -179,7 +99,7 @@ float4 pixelShader(PixelInputType input) : SV_TARGET
     {
         provColor = provColor2;
         provnum = provnum2;
-    }*/
+    }
 	
 
 	///CALCULATE LIGHT///
@@ -193,11 +113,11 @@ float4 pixelShader(PixelInputType input) : SV_TARGET
 
 	///CALCULATE FINAL///
 
-    //if ((provnum < 255) && ((borderProvNum == 0) || (provColor.x < 0.02f)))
-    //{
-    //    provColor = provsColor[provnum];
-    //    //provColor = lerp(provColor, yellow, provColor.w / 1.6f);
-    //}
+    if (provnum < 255)
+    {
+        provColor = provsColor[provnum];
+        //provColor = lerp(provColor, yellow, provColor.w / 1.6f);
+    }
 	color = lerp(terrainColor, provColor, 0.6f);
     //color = lerp(lightColor, color, 0.35f);
 	color = color * lightColor;
@@ -207,7 +127,7 @@ float4 pixelShader(PixelInputType input) : SV_TARGET
         color = terrainColor * lightColor;
 
     //return textures[1].Sample(SampleType[1], input.tex);
-	return  terrainColor * lightColor;
+	return  color;
 }
 
 
@@ -307,11 +227,10 @@ float4 CalculatePhysicalMap(PixelInputType input)
 	textureColorDown = textures[1].Sample(SampleType[1], texCoordDown);
 	//return textureColorLeft;
 
-	mapCoord = input.tex*16;
+	mapCoord = input.tex * 16;
 
-	//return textureColor;
 	textureColor = CalculateCurrentPhysical(textureColor, mapCoord);
-	return textureColor;
+	//return textureColor;
 	textureColorLeft = CalculateCurrentPhysical(textureColorLeft, mapCoord);
 	textureColorRight = CalculateCurrentPhysical(textureColorRight, mapCoord);
 	textureColorUp = CalculateCurrentPhysical(textureColorUp, mapCoord);
@@ -342,76 +261,23 @@ float4 CalculateCurrentPhysical(float4 color, float2 mapCoord)
 {
 	float4 textureColor;
 
-	float size = 256.0f/ 2048.0f;
-	float2 uv = float2(0, 0);
-	float2 tex;
-	
-	//mapCoord = (frac(mapCoord));
-
+		
 	if (NearColor(color, ConvertRGB256(0.0f, 165.0f, 232.0f))) //sea
-		return textures[3].Sample(SampleType[2], float2(0 + (0.5f + frac(mapCoord.x))*size, 0 + (0.5f + frac(mapCoord.y))*size));
+		textureColor = textures[3].Sample(SampleType[2], mapCoord);
 	else if (NearColor(color, ConvertRGB256(243.0f, 237.0f, 99.0f))) //beach
-		return textures[3].Sample(SampleType[2], float2(0.25f + (0.5f + frac(mapCoord.x))*size, 0 + (0.5f + frac(mapCoord.y))*size));
+		textureColor = textures[4].Sample(SampleType[2], mapCoord);
 	else if (NearColor(color, ConvertRGB256(0, 135.0f, 71.0f))) //forest
-		return textures[3].Sample(SampleType[2], float2(0.5f + (0.5f + frac(mapCoord.x))*size, 0 + (0.5f + frac(mapCoord.y))*size));
+		textureColor = textures[5].Sample(SampleType[2], mapCoord);
 	else if (NearColor(color, ConvertRGB256(161.0f, 194.0f, 49.0f))) //hills
-		return textures[3].Sample(SampleType[2], float2(0.75f + (0.5f + frac(mapCoord.x))*size, 0 + (0.5f + frac(mapCoord.y))*size));
+		textureColor = textures[6].Sample(SampleType[2], mapCoord);
 	else if (NearColor(color, ConvertRGB256(128.0f, 104.0f, 24.0f))) //middle mountains
-		return textures[3].Sample(SampleType[2], float2(0 + (0.5f + frac(mapCoord.x))*size, 0.25f + (0.5f + frac(mapCoord.y))*size));
+		textureColor = textures[7].Sample(SampleType[2], mapCoord);
 	else if (NearColor(color, ConvertRGB256(128.0f, 104.0f, 103.0f))) //big mountains
-		return textures[3].Sample(SampleType[2], float2(0.25f + (0.5f + frac(mapCoord.x))*size, 0.25f + (0.5f + frac(mapCoord.y))*size));
+		textureColor = textures[8].Sample(SampleType[2], mapCoord);
 	else if (NearColor(color, ConvertRGB256(30, 30, 30))) //cities
-		return textures[3].Sample(SampleType[2], float2(0.5f + (0.5f + frac(mapCoord.x))*size, 0.25f + (0.5f + frac(mapCoord.y))*size));
+		textureColor = textures[9].Sample(SampleType[2], mapCoord);
 	else
-		return textures[3].Sample(SampleType[2], float2(0 + (0.5f + frac(mapCoord.x))*size, 0 + (0.5f + frac(mapCoord.y))*size));
-
-
-	if (NearColor(color, ConvertRGB256(0.0f, 165.0f, 232.0f))) //sea
-	{
-		uv.x = 0;
-		uv.y = 0;
-	}
-	else if (NearColor(color, ConvertRGB256(243.0f, 237.0f, 99.0f))) //beach
-	{
-		uv.x = 0.25f;
-		uv.y = 0;
-	}
-	else if (NearColor(color, ConvertRGB256(0, 135.0f, 71.0f))) //forest
-	{
-		uv.x = 0.5f;
-		uv.y = 0;
-	}
-	else if (NearColor(color, ConvertRGB256(161.0f, 194.0f, 49.0f))) //hills
-	{
-		uv.x = 0.75f;
-		uv.y = 0;
-	}
-	else if (NearColor(color, ConvertRGB256(128.0f, 104.0f, 24.0f))) //middle mountains
-	{
-		uv.x = 0;
-		uv.y = 0.25f;
-	}
-	else if (NearColor(color, ConvertRGB256(128.0f, 104.0f, 103.0f))) //big mountains
-	{
-		uv.x = 0.25f;
-		uv.y = 0.25f;
-	}
-	else if (NearColor(color, ConvertRGB256(30, 30, 30))) //cities
-	{
-		uv.x = 0.5f;
-		uv.y = 0.25f;
-	}
-	else
-	{
-		uv.x = 0;
-		uv.y = 0;
-	}
-
-	//uv = float2(0.5f, 0.25f);
-
-	tex.x = uv.x + (0.5f + frac(mapCoord.x))*size;
-	tex.y = uv.y + (0.5f + frac(mapCoord.y))*size;
-	textureColor = textures[3].Sample(SampleType[1], tex);
+		textureColor = textures[3].Sample(SampleType[2], mapCoord);
 
 	return textureColor;
 }
