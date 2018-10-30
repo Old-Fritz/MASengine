@@ -51,7 +51,7 @@ bool FontManagerClass::addFont(ID3D11Device * device, PathClass* filename)
 	result = newFont->Initialize(device, filename);
 	if (!result)
 	{
-		LogManagerClass::getI().addLog("Error 11-2");
+		GM::LM()->addLog("Error 11-2");
 		return false;
 	}
 

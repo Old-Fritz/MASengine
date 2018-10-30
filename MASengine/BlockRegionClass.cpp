@@ -6,7 +6,7 @@ void BlockRegionClass::add(int provID)
 
 	ProvClass* prov = ProvManagerClass::getI().getProv(provID);
 
-	prov->addRegion(GlobalManagerClass::BLOCK, m_id);
-	prov->getLayers()->setColor(GlobalManagerClass::BLOCK, m_color);
+	prov->addRegion(GM::BLOCK, m_id);
+	prov->getLayers()->setColor(GM::BLOCK, m_color);
 	
 }

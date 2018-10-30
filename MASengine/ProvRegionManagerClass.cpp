@@ -111,21 +111,21 @@ void ProvRegionManagerClass::Shutdown()
 	}
 }
 
-ProvRegionClass * ProvRegionManagerClass::getProvRegion(GlobalManagerClass::regionType type, int provRegionID)
+ProvRegionClass * ProvRegionManagerClass::getProvRegion(GM::regionType type, int provRegionID)
 {
 	switch (type)
 	{
-	case GlobalManagerClass::BASE:
+	case GM::BASE:
 		if (m_provRegions.size() > provRegionID)
 			return m_provRegions[provRegionID];
 		else
 			return m_provRegions[0];
-	case GlobalManagerClass::BLOCK:
+	case GM::BLOCK:
 		if (m_blockRegion.size() > provRegionID)
 			return m_blockRegion[provRegionID];
 		else
 			return m_blockRegion[0];
-	case GlobalManagerClass::NATION:
+	case GM::NATION:
 		if (m_nationRegion.size() > provRegionID)
 			return m_nationRegion[provRegionID];
 		else
@@ -135,17 +135,17 @@ ProvRegionClass * ProvRegionManagerClass::getProvRegion(GlobalManagerClass::regi
 	}
 }
 
-void ProvRegionManagerClass::addProvRegion(GlobalManagerClass::regionType type, ProvRegionClass* region)
+void ProvRegionManagerClass::addProvRegion(GM::regionType type, ProvRegionClass* region)
 {
 	switch (type)
 	{
-	case GlobalManagerClass::BASE:
+	case GM::BASE:
 		m_provRegions.emplace_back(region);
 		break;
-	case GlobalManagerClass::BLOCK:
+	case GM::BLOCK:
 		m_blockRegion.emplace_back((BlockRegionClass*)region);
 		break;
-	case GlobalManagerClass::NATION:
+	case GM::NATION:
 		m_nationRegion.emplace_back((NationRegionClass*)region);
 		break;
 	default:

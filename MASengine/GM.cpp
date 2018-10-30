@@ -1,8 +1,8 @@
-#include "GlobalManagerClass.h"
+#include "GM.h"
 
-GlobalManagerClass* GlobalManagerClass::m_instance = 0;
+GM* GM::m_instance = 0;
 
-GlobalManagerClass::GlobalManagerClass()
+GM::GM()
 {
 	///INIT REGION TYPE MAP
 	m_regionTypeMap.emplace(std::pair<int, regionType>(Utils::getHash("BASE"), BASE));
@@ -10,14 +10,14 @@ GlobalManagerClass::GlobalManagerClass()
 	m_regionTypeMap.emplace(std::pair<int, regionType>(Utils::getHash("BLOCK"), BLOCK));
 	m_regionTypeMap.emplace(std::pair<int, regionType>(Utils::getHash("NATION"), NATION));
 }
-GlobalManagerClass::GlobalManagerClass(const GlobalManagerClass &)
+GM::GM(const GM &)
 {
 }
-GlobalManagerClass::~GlobalManagerClass()
+GM::~GM()
 {
 }
 
-bool GlobalManagerClass::Initialize(const std::string& filepath)
+bool GM::Initialize(const std::string& filepath)
 {
 	bool result;
 
@@ -40,84 +40,87 @@ bool GlobalManagerClass::Initialize(const std::string& filepath)
 	file >> stackSize >> tempSize >> oneFrameSize >> poolSize;
 
 	//Init LogManager
-	result = LogManagerClass::getI().Initialize(logFilepath);
-	if(!result)
-	{
+	m_logManager = new LogManager;
+	if (!m_logManager)
 		return false;
-	}
-	LogManagerClass::getI().addLog("LogManager Initialized");
+
+	result = m_logManager->Initialize(logFilepath);
+	if(!result)
+		return false;
+
+	GM::LM()->addLog("LogManager Initialized");
 
 
 	//Init MemoryManager
-	result = MemoryManagerClass::getI().Initialize(stackSize, tempSize, oneFrameSize, poolSize);
+	result = MemoryManager::getI()->Initialize(stackSize, tempSize, oneFrameSize, poolSize);
 	if (!result)
 	{
-		LogManagerClass::getI().addLog("Error 6-1");
+		GM::LM()->addLog("Problem with memory manager initializtion");
 		return false;
 	}
-	LogManagerClass::getI().addLog("MemoryManager Initialized");
+	GM::LM()->addLog("MemoryManager Initialized");
 
 	//Init ModManager
 	result = ModManagerClass::getI().Initialize(modFilename);
 	if (!result)
 	{
-		LogManagerClass::getI().addLog("Error 6-2");
+		GM::LM()->addLog("Error 6-2");
 		return false;
 	}
-	LogManagerClass::getI().addLog("ModManager Initialized");
+	GM::LM()->addLog("ModManager Initialized");
 
 	//Init Path Manager
 	result = PathManagerClass::getI().Initialize();
 	if (!result)
 	{
-		LogManagerClass::getI().addLog("Error 6-7");
+		GM::LM()->addLog("Error 6-7");
 		return false;
 	}
-	LogManagerClass::getI().addLog("PathManager Initialized");
+	GM::LM()->addLog("PathManager Initialized");
 
 	//Init Settings
 	settingsFilename->changePath(settingsFilenameStr);
 	result = SettingsClass::getI().Initialize(settingsFilename);
 	if (!result)
 	{
-		LogManagerClass::getI().addLog("Error 6-6");
+		GM::LM()->addLog("Error 6-6");
 		return false;
 	}
-	LogManagerClass::getI().addLog("Settings Initialized");
+	GM::LM()->addLog("Settings Initialized");
 
 	//Init CommandManager
 	result = CommandManagerClass::getI().Initialize();
 	if (!result)
 	{
-		LogManagerClass::getI().addLog("Error 6-3");
+		GM::LM()->addLog("Error 6-3");
 		return false;
 	}
-	LogManagerClass::getI().addLog("CommandManager Initialized");
+	GM::LM()->addLog("CommandManager Initialized");
 
 	//Init ResourceManager
 	result = ResourceManagerClass::getI().Initialize();
 	if (!result)
 	{
-		LogManagerClass::getI().addLog("Error 6-4");
+		GM::LM()->addLog("Error 6-4");
 		return false;
 	}
-	LogManagerClass::getI().addLog("ResourceManager Initialized");
+	GM::LM()->addLog("ResourceManager Initialized");
 
 	//Init SystemStateManager
 	result = SystemStateManagerClass::getI().Initialize();
 	if (!result)
 	{
-		LogManagerClass::getI().addLog("Error 6-5");
+		GM::LM()->addLog("Error 6-5");
 		return false;
 	}
-	LogManagerClass::getI().addLog("SystemStateManager Initialized");
+	GM::LM()->addLog("SystemStateManager Initialized");
 
 	
 
 	return true;
 }
 
-void GlobalManagerClass::Shutdown()
+void GM::Shutdown()
 {
 	//Shutdown all managers
 	SystemStateManagerClass::getI().Shutdown();
@@ -126,8 +129,8 @@ void GlobalManagerClass::Shutdown()
 	SettingsClass::getI().Shutdown();
 	PathManagerClass::getI().Shutdown();
 	ModManagerClass::getI().Shutdown();
-	MemoryManagerClass::getI().Shutdown();
-	LogManagerClass::getI().Shutdown();
+	MemoryManager::getI()->Shutdown();
+	GM::LM()->Shutdown();
 
 	if (m_instance)
 	{
@@ -136,7 +139,7 @@ void GlobalManagerClass::Shutdown()
 	}
 }
 
-GlobalManagerClass::regionType GlobalManagerClass::getRegionTypeEnum(int hash)
+GM::regionType GM::getRegionTypeEnum(int hash)
 {
 	auto reg = m_regionTypeMap.find(hash);
 	if (reg != m_regionTypeMap.end())
@@ -145,14 +148,19 @@ GlobalManagerClass::regionType GlobalManagerClass::getRegionTypeEnum(int hash)
 		return BASE;
 }
 
-GlobalManagerClass::regionType GlobalManagerClass::getRegionTypeEnum(const std::string & key)
+GM::regionType GM::getRegionTypeEnum(const std::string & key)
 {
 	return getRegionTypeEnum(Utils::getHash(key));
 }
 
-GlobalManagerClass & GlobalManagerClass::getI()
+GM & GM::getI()
 {
 	if (!m_instance)
-		m_instance = new GlobalManagerClass;
+		m_instance = new GM;
 	return *m_instance;
+}
+
+LogManager * GM::LM()
+{
+	return m_instance->m_logManager;
 }

@@ -1,16 +1,16 @@
 ﻿////////////////////////////////////////////////////////////////////////////////
-// Filename: StackAllocatorClass.h
+// Filename: StackAllocator.h
 ////////////////////////////////////////////////////////////////////////////////
-#ifndef _STACKALLOCATORCLASS_H_
-#define _STACKALLOCATORCLASS_H_
+#ifndef _StackAllocator_H_
+#define _StackAllocator_H_
 
 //////////////
 // INCLUDES //
 //////////////
-#include "LogManagerClass.h"
+#include "LogManager.h"
 
 ////////////////////////////////////////////////////////////////////////////////
-// Class name: StackAllocatorClass
+// Class name: StackAllocator
 ////////////////////////////////////////////////////////////////////////////////
 
 /*!
@@ -20,11 +20,11 @@
 /*!
 Стек памяти
 */
-class StackAllocatorClass {
+class StackAllocator {
 public:
-	StackAllocatorClass();
-	StackAllocatorClass(const StackAllocatorClass&);
-	~StackAllocatorClass();
+	StackAllocator();
+	StackAllocator(const StackAllocator&);
+	~StackAllocator();
 
 	/*!
 	Инициализация класса /param[in] stackSize - размер стека в байтах

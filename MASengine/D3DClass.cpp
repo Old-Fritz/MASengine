@@ -69,7 +69,7 @@ bool D3DClass::Initialize(HWND hwnd, float screenDepth, float screenNear)
 	result = CreateDXGIFactory(__uuidof(IDXGIFactory), (void**)&factory);
 	if (FAILED(result))
 	{
-		LogManagerClass::getI().addLog("Error 9-1");
+		GM::LM()->addLog("Error 9-1");
 		return false;
 	}
 
@@ -77,7 +77,7 @@ bool D3DClass::Initialize(HWND hwnd, float screenDepth, float screenNear)
 	result = factory->EnumAdapters(0, &adapter);
 	if (FAILED(result))
 	{
-		LogManagerClass::getI().addLog("Error 9-2");
+		GM::LM()->addLog("Error 9-2");
 		return false;
 	}
 
@@ -85,7 +85,7 @@ bool D3DClass::Initialize(HWND hwnd, float screenDepth, float screenNear)
 	result = adapter->EnumOutputs(0, &adapterOutput);
 	if (FAILED(result))
 	{
-		LogManagerClass::getI().addLog("Error 9-3");
+		GM::LM()->addLog("Error 9-3");
 		return false;
 	}
 
@@ -93,7 +93,7 @@ bool D3DClass::Initialize(HWND hwnd, float screenDepth, float screenNear)
 	result = adapterOutput->GetDisplayModeList(DXGI_FORMAT_R8G8B8A8_UNORM, DXGI_ENUM_MODES_INTERLACED, &numModes, NULL);
 	if (FAILED(result))
 	{
-		LogManagerClass::getI().addLog("Error 9-4");
+		GM::LM()->addLog("Error 9-4");
 		return false;
 	}
 
@@ -101,7 +101,7 @@ bool D3DClass::Initialize(HWND hwnd, float screenDepth, float screenNear)
 	displayModeList = new(3) DXGI_MODE_DESC[numModes];
 	if (!displayModeList)
 	{
-		LogManagerClass::getI().addLog("Error 9-5");
+		GM::LM()->addLog("Error 9-5");
 		return false;
 	}
 
@@ -109,7 +109,7 @@ bool D3DClass::Initialize(HWND hwnd, float screenDepth, float screenNear)
 	result = adapterOutput->GetDisplayModeList(DXGI_FORMAT_R8G8B8A8_UNORM, DXGI_ENUM_MODES_INTERLACED, &numModes, displayModeList);
 	if (FAILED(result))
 	{
-		LogManagerClass::getI().addLog("Error 9-6");
+		GM::LM()->addLog("Error 9-6");
 		return false;
 	}
 
@@ -131,7 +131,7 @@ bool D3DClass::Initialize(HWND hwnd, float screenDepth, float screenNear)
 	result = adapter->GetDesc(&adapterDesc);
 	if (FAILED(result))
 	{
-		LogManagerClass::getI().addLog("Error 9-7");
+		GM::LM()->addLog("Error 9-7");
 		return false;
 	}
 
@@ -142,7 +142,7 @@ bool D3DClass::Initialize(HWND hwnd, float screenDepth, float screenNear)
 	error = wcstombs_s(&stringLength, m_videoCardDescription, 128, adapterDesc.Description, 128);
 	if (error != 0)
 	{
-		LogManagerClass::getI().addLog("Error 9-8");
+		GM::LM()->addLog("Error 9-8");
 		return false;
 	}
 
@@ -214,7 +214,7 @@ bool D3DClass::Initialize(HWND hwnd, float screenDepth, float screenNear)
 	if (FAILED(result))
 	{
 		MessageBox(0, L"Никита - пидор", 0, 0);
-		LogManagerClass::getI().addLog("Error 9-92");
+		GM::LM()->addLog("Error 9-92");
 		return false;
 	}
 
@@ -223,7 +223,7 @@ bool D3DClass::Initialize(HWND hwnd, float screenDepth, float screenNear)
 	//if (FAILED(result))
 	//{
 	//	MessageBox(0, L"Ты охуел? 1", 0, 0);
-	//	LogManagerClass::getI().addLog("Error 9-91");
+	//	GM::LM()->addLog("Error 9-91");
 	//	return false;
 	//}
 	//if (featureLevelSuccess != D3D_FEATURE_LEVEL_11_0)
@@ -260,7 +260,7 @@ bool D3DClass::Initialize(HWND hwnd, float screenDepth, float screenNear)
 	//	_com_error err(result);
 	//	LPCWSTR errMsg = err.ErrorMessage();
 	//	MessageBox(0, errMsg, 0, 0);
-	//	LogManagerClass::getI().addLog("Error 9-92");
+	//	GM::LM()->addLog("Error 9-92");
 	//	return false;
 	//}
 	////m_device->CheckMultisampleQualityLevels(DXGI_FORMAT_R8G8B8A8_UNORM, m4xMsaaQualityCount, &m4xMsaaQualityNumber);
@@ -269,7 +269,7 @@ bool D3DClass::Initialize(HWND hwnd, float screenDepth, float screenNear)
 	result = m_swapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (LPVOID*)&backBufferPtr);
 	if (FAILED(result))
 	{
-		LogManagerClass::getI().addLog("Error 9-10");
+		GM::LM()->addLog("Error 9-10");
 		return false;
 	}
 
@@ -277,7 +277,7 @@ bool D3DClass::Initialize(HWND hwnd, float screenDepth, float screenNear)
 	result = m_device->CreateRenderTargetView(backBufferPtr, NULL, &m_renderTargetView);
 	if (FAILED(result))
 	{
-		LogManagerClass::getI().addLog("Error 9-11");
+		GM::LM()->addLog("Error 9-11");
 		return false;
 	}
 
@@ -305,7 +305,7 @@ bool D3DClass::Initialize(HWND hwnd, float screenDepth, float screenNear)
 	result = m_device->CreateTexture2D(&depthBufferDesc, NULL, &m_depthStencilBuffer);
 	if (FAILED(result))
 	{
-		LogManagerClass::getI().addLog("Error 9-12");
+		GM::LM()->addLog("Error 9-12");
 		return false;
 	}
 
@@ -329,7 +329,7 @@ bool D3DClass::Initialize(HWND hwnd, float screenDepth, float screenNear)
 	result = m_device->CreateTexture2D(&textureDepthBufferDesc, NULL, &m_textureDepthStencilBuffer);
 	if (FAILED(result))
 	{
-		LogManagerClass::getI().addLog("Error 9-12");
+		GM::LM()->addLog("Error 9-12");
 		return false;
 	}
 	// Initialize the description of the stencil state.
@@ -361,7 +361,7 @@ bool D3DClass::Initialize(HWND hwnd, float screenDepth, float screenNear)
 	result = m_device->CreateDepthStencilState(&depthStencilDesc, &m_depthStencilState);
 	if (FAILED(result))
 	{
-		LogManagerClass::getI().addLog("Error 9-13");
+		GM::LM()->addLog("Error 9-13");
 		return false;
 	}
 
@@ -381,7 +381,7 @@ bool D3DClass::Initialize(HWND hwnd, float screenDepth, float screenNear)
 	result = m_device->CreateDepthStencilView(m_depthStencilBuffer, NULL, &m_depthStencilView);
 	if (FAILED(result))
 	{
-		LogManagerClass::getI().addLog("Error 9-14");
+		GM::LM()->addLog("Error 9-14");
 		return false;
 	}
 
@@ -397,7 +397,7 @@ bool D3DClass::Initialize(HWND hwnd, float screenDepth, float screenNear)
 	result = m_device->CreateDepthStencilView(m_textureDepthStencilBuffer, NULL, &m_textureDepthStencilView);
 	if (FAILED(result))
 	{
-		LogManagerClass::getI().addLog("Error 9-14");
+		GM::LM()->addLog("Error 9-14");
 		return false;
 	}
 
@@ -421,7 +421,7 @@ bool D3DClass::Initialize(HWND hwnd, float screenDepth, float screenNear)
 	result = m_device->CreateRasterizerState(&rasterDesc, &m_rasterState);
 	if (FAILED(result))
 	{
-		LogManagerClass::getI().addLog("Error 9-15");
+		GM::LM()->addLog("Error 9-15");
 		return false;
 	}
 
@@ -478,7 +478,7 @@ bool D3DClass::Initialize(HWND hwnd, float screenDepth, float screenNear)
 	result = m_device->CreateDepthStencilState(&depthDisabledStencilDesc, &m_depthDisabledStencilState);
 	if (FAILED(result))
 	{
-		LogManagerClass::getI().addLog("Error 9-16");
+		GM::LM()->addLog("Error 9-16");
 		return false;
 	}
 
@@ -499,7 +499,7 @@ bool D3DClass::Initialize(HWND hwnd, float screenDepth, float screenNear)
 	result = m_device->CreateBlendState(&blendStateDescription, &m_alphaEnableBlendingState);
 	if (FAILED(result))
 	{
-		LogManagerClass::getI().addLog("Error 9-18");
+		GM::LM()->addLog("Error 9-18");
 		return false;
 	}
 
@@ -510,7 +510,7 @@ bool D3DClass::Initialize(HWND hwnd, float screenDepth, float screenNear)
 	result = m_device->CreateBlendState(&blendStateDescription, &m_alphaDisableBlendingState);
 	if (FAILED(result))
 	{
-		LogManagerClass::getI().addLog("Error 9-19");
+		GM::LM()->addLog("Error 9-19");
 		return false;
 	}
 
@@ -518,7 +518,7 @@ bool D3DClass::Initialize(HWND hwnd, float screenDepth, float screenNear)
 	TurnOnAlphaBlending();
 
 	// Release the display mode list.
-	MemoryManagerClass::getI().cleanTemp();
+	MemoryManager::getI()->cleanTemp();
 	displayModeList = 0;
 
 	// Release the adapter output.

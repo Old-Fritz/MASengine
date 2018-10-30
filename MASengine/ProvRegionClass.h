@@ -7,7 +7,7 @@
 ///////////////////////
 // MY CLASS INCLUDES //
 ///////////////////////
-#include "GlobalManagerClass.h"
+#include "GM.h"
 #include <set>
 #include "ProvManagerClass.h"
 

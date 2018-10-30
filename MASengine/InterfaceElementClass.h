@@ -20,7 +20,7 @@
 #include "Bitmapclass.h"
 #include "Textclass.h"
 #include "InterfaceShaderClass.h"
-#include "GlobalManagerClass.h"
+#include "GM.h"
 
 
 

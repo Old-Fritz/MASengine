@@ -21,7 +21,7 @@ bool SettingsClass::Initialize(PathClass* filename)
 	result = readFromFile(filename);
 	if (!result)
 	{
-		LogManagerClass::getI().addLog("Error 5-1");
+		GM::LM()->addLog("Error 5-1");
 		return false;
 	}
 
@@ -137,7 +137,7 @@ bool SettingsClass::readFromFile(PathClass* filename)
 	generalFile.open(filename->getPath());
 	if (!generalFile.is_open())
 	{
-		LogManagerClass::getI().addLog("Error 5-2");
+		GM::LM()->addLog("Error 5-2");
 		return false;
 	}
 	

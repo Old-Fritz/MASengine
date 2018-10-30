@@ -1,20 +1,20 @@
 ﻿#pragma once
 ////////////////////////////////////////////////////////////////////////////////
-// Filename: MemoryManagerClass.h
+// Filename: MemoryManager.h
 ////////////////////////////////////////////////////////////////////////////////
-#ifndef _MEMORYMANAGERCLASS_H_
-#define _MEMORYMANAGERCLASS_H_
+#ifndef _MemoryManager_H_
+#define _MemoryManager_H_
 
 //////////////
 // INCLUDES //
 //////////////
 
-#include "PoolAllocatorClass.h"
-#include "StackAllocatorClass.h"
+#include "PoolAllocator.h"
+#include "StackAllocator.h"
 #include "Utils.h"
 
 ////////////////////////////////////////////////////////////////////////////////
-// Class name: MemoryManagerClass
+// Class name: MemoryManager
 ////////////////////////////////////////////////////////////////////////////////
 
 void* operator new (size_t size, int type);
@@ -31,7 +31,7 @@ void operator delete[](void* mem, size_t size, int type);
 /*!
 Класс для управления памятью, синглтон
 */
-class MemoryManagerClass {
+class MemoryManager {
 public:
 	/*!
 	Инициализация класса /param[in] stackSize - размер основного стека в байтах
@@ -43,7 +43,7 @@ public:
 	bool Initialize(int stackSize, int tempSize, int oneFrameSize, int poolSize);
 
 	//! \brief Получить экземпляр класса
-	static MemoryManagerClass& getI();
+	static MemoryManager* getI();
 
 	//! Проверка инициализации /return true, если класс был инициализирован, false, если нет
 	static bool isInit();
@@ -78,16 +78,16 @@ public:
 	void Shutdown();
 
 private:
-	MemoryManagerClass();
-	MemoryManagerClass(const MemoryManagerClass&);
-	~MemoryManagerClass();
+	MemoryManager();
+	MemoryManager(const MemoryManager&);
+	~MemoryManager();
 private:
-	static MemoryManagerClass* m_instance; //!<Единственный экземпляр класса
+	static MemoryManager* m_instance; //!<Единственный экземпляр класса
 
-	 StackAllocatorClass* m_stack; //!<Основной стек
-	 StackAllocatorClass* m_oneFrame; //!<Покадровый стек
-	 StackAllocatorClass* m_temp; //!<Временный стек
-	 std::list<PoolAllocatorClass*> m_pools; //!<pool память
+	 StackAllocator* m_stack; //!<Основной стек
+	 StackAllocator* m_oneFrame; //!<Покадровый стек
+	 StackAllocator* m_temp; //!<Временный стек
+	 std::list<PoolAllocator*> m_pools; //!<pool память
 
 	int m_stackSize; //!<Размер основного стека
 	int m_oneFrameSize; //!<Размер покадрового стека

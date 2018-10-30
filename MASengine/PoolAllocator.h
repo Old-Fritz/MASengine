@@ -1,12 +1,12 @@
 ﻿////////////////////////////////////////////////////////////////////////////////
-// Filename: PoolAllocatorClass.h
+// Filename: PoolAllocator.h
 ////////////////////////////////////////////////////////////////////////////////
-#ifndef _POOLALLOCATORCLASS_H_
-#define _POOLALLOCATORCLASS_H_
+#ifndef _PoolAllocator_H_
+#define _PoolAllocator_H_
 
 #include <memory.h>
 #include <list>
-#include "LogManagerClass.h"
+#include "LogManager.h"
 
 //////////////
 // INCLUDES //
@@ -14,7 +14,7 @@
 
 
 ////////////////////////////////////////////////////////////////////////////////
-// Class name: StackAllocatorClass
+// Class name: StackAllocator
 ////////////////////////////////////////////////////////////////////////////////
 
 /*!
@@ -24,11 +24,11 @@
 /*!
 pool память
 */
-class PoolAllocatorClass {
+class PoolAllocator {
 public:
-	PoolAllocatorClass();
-	PoolAllocatorClass(const PoolAllocatorClass&);
-	~PoolAllocatorClass();
+	PoolAllocator();
+	PoolAllocator(const PoolAllocator&);
+	~PoolAllocator();
 
 	/*!
 	Инициализация класса /param[in] stackSize - размер стека в байтах

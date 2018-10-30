@@ -48,7 +48,7 @@ bool MeshClass::Initialize(ID3D11Device * device, PathClass* filename, int sizeX
 	if (!result)
 		return false;
 
-	MemoryManagerClass::getI().cleanTemp();
+	MemoryManager::getI()->cleanTemp();
 
 	return true;
 }

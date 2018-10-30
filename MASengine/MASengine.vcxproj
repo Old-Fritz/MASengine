@@ -141,7 +141,7 @@
     <ClCompile Include="FpsClass.cpp" />
     <ClCompile Include="FrustumClass.cpp" />
     <ClCompile Include="GameMechanicClass.cpp" />
-    <ClCompile Include="GlobalManagerClass.cpp" />
+    <ClCompile Include="GM.cpp" />
     <ClCompile Include="GraphicsClass.cpp" />
     <ClCompile Include="GroupElementClass.cpp" />
     <ClCompile Include="HeightMapLoaderClass.cpp" />
@@ -154,9 +154,9 @@
     <ClCompile Include="LightClass.cpp" />
     <ClCompile Include="ListElementClass.cpp" />
     <ClCompile Include="LoadScreenManagerClass.cpp" />
-    <ClCompile Include="LogManagerClass.cpp" />
+    <ClCompile Include="LogManager.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="MemoryManagerClass.cpp" />
+    <ClCompile Include="MemoryManager.cpp" />
     <ClCompile Include="MeshClass.cpp" />
     <ClCompile Include="MeshLoaderClass.cpp" />
     <ClCompile Include="MeshManagerClass.cpp" />
@@ -168,7 +168,7 @@
     <ClCompile Include="PathClass.cpp" />
     <ClCompile Include="PathManagerClass.cpp" />
     <ClCompile Include="PathParamClass.cpp" />
-    <ClCompile Include="PoolAllocatorClass.cpp" />
+    <ClCompile Include="PoolAllocator.cpp" />
     <ClCompile Include="PositionClass.cpp" />
     <ClCompile Include="ProvClass.cpp" />
     <ClCompile Include="ProvManagerClass.cpp" />
@@ -182,7 +182,7 @@
     <ClCompile Include="SkyModelClass.cpp" />
     <ClCompile Include="SkyShaderClass.cpp" />
     <ClCompile Include="SliderElementClass.cpp" />
-    <ClCompile Include="StackAllocatorClass.cpp" />
+    <ClCompile Include="StackAllocator.cpp" />
     <ClCompile Include="StrParamClass.cpp" />
     <ClCompile Include="SystemClass.cpp" />
     <ClCompile Include="SystemStateManagerClass.cpp" />
@@ -225,7 +225,7 @@
     <ClInclude Include="FontManagerClass.h" />
     <ClInclude Include="FontShaderClass.h" />
     <ClInclude Include="FpsClass.h" />
-    <ClInclude Include="GlobalManagerClass.h" />
+    <ClInclude Include="GM.h" />
     <ClInclude Include="GraphicsClass.h" />
     <ClInclude Include="GroupElementClass.h" />
     <ClInclude Include="InputClass.h" />
@@ -235,14 +235,14 @@
     <ClInclude Include="LayersClass.h" />
     <ClInclude Include="ListElementClass.h" />
     <ClInclude Include="LoadScreenManagerClass.h" />
-    <ClInclude Include="LogManagerClass.h" />
-    <ClInclude Include="MemoryManagerClass.h" />
+    <ClInclude Include="LogManager.h" />
+    <ClInclude Include="MemoryManager.h" />
     <ClInclude Include="MeshClass.h" />
     <ClInclude Include="MeshManagerClass.h" />
     <ClInclude Include="ModManagerClass.h" />
     <ClInclude Include="PathManagerClass.h" />
     <ClInclude Include="PathParamClass.h" />
-    <ClInclude Include="PoolAllocatorClass.h" />
+    <ClInclude Include="PoolAllocator.h" />
     <ClInclude Include="PositionClass.h" />
     <ClInclude Include="ProvClass.h" />
     <ClInclude Include="ProvManagerClass.h" />
@@ -256,7 +256,7 @@
     <ClInclude Include="SkyModelClass.h" />
     <ClInclude Include="SkyShaderClass.h" />
     <ClInclude Include="SliderElementClass.h" />
-    <ClInclude Include="StackAllocatorClass.h" />
+    <ClInclude Include="StackAllocator.h" />
     <ClInclude Include="StrParamClass.h" />
     <ClInclude Include="SystemClass.h" />
     <ClInclude Include="SystemStateManagerClass.h" />

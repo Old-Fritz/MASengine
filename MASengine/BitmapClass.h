@@ -8,7 +8,7 @@
 ///////////////////////
 // MY CLASS INCLUDES //
 ///////////////////////
-#include"GlobalManagerClass.h"
+#include"GM.h"
 
 
 

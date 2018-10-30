@@ -483,13 +483,13 @@ bool ListElementClass::readFromFile(PathClass* filename)
 	//read info about texts and bitmaps
 	if (!readBitmapsInfoFromFile(&file))
 	{
-		LogManagerClass::getI().addLog("Error 13-7");
+		GM::LM()->addLog("Error 13-7");
 		return false;
 	}
 
 	if (!readTextsInfoFromFile(&file))
 	{
-		LogManagerClass::getI().addLog("Error 13-8");
+		GM::LM()->addLog("Error 13-8");
 		return false;
 	}
 

@@ -11,7 +11,7 @@
 #include "CpuClass.h"
 #include "FpsClass.h"
 #include "TimerClass.h"
-#include "MemoryManagerClass.h"
+#include "MemoryManager.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // Class name: SystemStateManagerClass

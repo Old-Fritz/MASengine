@@ -27,8 +27,8 @@ bool GameMechanicClass::Initialize()
 	}
 	else
 		return false;
-	LogManagerClass::getI().addLog("Provs Initialization");
-	ProvManagerClass::getI().setGlobalMainColor(GlobalManagerClass::NATION);
+	GM::LM()->addLog("Provs Initialization");
+	ProvManagerClass::getI().setGlobalMainColor(GM::NATION);
 
 	//Initialize prov region manager
 	if (&(ProvRegionManagerClass::getI()))
@@ -41,7 +41,7 @@ bool GameMechanicClass::Initialize()
 	}
 	else
 		return false;
-	LogManagerClass::getI().addLog("Provs Regions Initialization");
+	GM::LM()->addLog("Provs Regions Initialization");
 
 	//init test regions
 	std::ifstream file;
@@ -50,8 +50,8 @@ bool GameMechanicClass::Initialize()
 	reg1->Initialize(&file, 1);
 	NationRegionClass* reg2 = new(4) NationRegionClass;
 	reg2->Initialize(&file, 2);
-	ProvRegionManagerClass::getI().addProvRegion(GlobalManagerClass::NATION, reg1);
-	ProvRegionManagerClass::getI().addProvRegion(GlobalManagerClass::NATION, reg2);
+	ProvRegionManagerClass::getI().addProvRegion(GM::NATION, reg1);
+	ProvRegionManagerClass::getI().addProvRegion(GM::NATION, reg2);
 
 	return true;
 }
@@ -69,13 +69,13 @@ void GameMechanicClass::Shutdown()
 	}
 }
 
-int GameMechanicClass::getProvRegionID(GlobalManagerClass::regionType region, int provID)
+int GameMechanicClass::getProvRegionID(GM::regionType region, int provID)
 {
 	//get prov and get last region of type
 	return ProvManagerClass::getI().getProv(provID)->getRegions(region).back();
 }
 
-void GameMechanicClass::setProvRegion(GlobalManagerClass::regionType region, int provID, int regionID)
+void GameMechanicClass::setProvRegion(GM::regionType region, int provID, int regionID)
 {
 	// get region and add prov to it
 	ProvRegionManagerClass::getI().getProvRegion(region, regionID)->add(provID);

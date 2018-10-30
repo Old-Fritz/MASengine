@@ -21,14 +21,14 @@ bool SystemClass::Initialize()
 	srand(time(0));
 
 	// Initialize GlobalManager
-	result = GlobalManagerClass::getI().Initialize("data/init/init.txt");
+	result = GM::getI().Initialize("data/init/init.txt");
 	if (!result)
 		return false;
-	LogManagerClass::getI().addLog("All global system Initialized");
+	GM::LM()->addLog("All global system Initialized");
 
 	// Initialize the windows api.
 	InitializeWindows(SettingsClass::getI().getIntParameter("ScreenWidth"), SettingsClass::getI().getIntParameter("ScreenHeight"));
-	LogManagerClass::getI().addLog("Windows Initialization");
+	GM::LM()->addLog("Windows Initialization");
 
 
 	//Initialize input
@@ -38,16 +38,16 @@ bool SystemClass::Initialize()
 	result = m_input->Initialize(m_hinstance, m_hwnd);
 	if (!result)
 	{
-		LogManagerClass::getI().addLog("Error 7-12");
+		GM::LM()->addLog("Error 7-12");
 		return false;
 	}
-	LogManagerClass::getI().addLog("input Initialization");
+	GM::LM()->addLog("input Initialization");
 
 	//Initialize position
 	m_position = new(1) PositionClass;
 	if (!m_position)
 		return false;
-	LogManagerClass::getI().addLog("Position Initialization");
+	GM::LM()->addLog("Position Initialization");
 
 	//Initialize graphics
 	m_graphics = new(1) GraphicsClass;
@@ -56,10 +56,10 @@ bool SystemClass::Initialize()
 	result = m_graphics->Initialize(m_hwnd);
 	if (!result)
 	{
-		LogManagerClass::getI().addLog("Error 8-1");
+		GM::LM()->addLog("Error 8-1");
 		return false;
 	}
-	LogManagerClass::getI().addLog("Graphics Initialization");
+	GM::LM()->addLog("Graphics Initialization");
 
 	//Initialize game mechanics
 	m_gameMech = new(1) GameMechanicClass;
@@ -68,10 +68,10 @@ bool SystemClass::Initialize()
 	result = m_gameMech->Initialize();
 	if (!result)
 	{
-		LogManagerClass::getI().addLog("Error 16-1");
+		GM::LM()->addLog("Error 16-1");
 		return false;
 	}
-	LogManagerClass::getI().addLog("Game Mechanics Initialization");
+	GM::LM()->addLog("Game Mechanics Initialization");
 
 	
 	
@@ -79,10 +79,10 @@ bool SystemClass::Initialize()
 	result = m_graphics->InitializeResources();
 	if (!result)
 	{
-		LogManagerClass::getI().addLog("Error 16-1");
+		GM::LM()->addLog("Error 16-1");
 		return false;
 	}
-	LogManagerClass::getI().addLog("Graphics resources Initialization");
+	GM::LM()->addLog("Graphics resources Initialization");
 	
 	//end load and hide load screen
 	LoadScreenManagerClass::getI().hideElements();
@@ -131,7 +131,7 @@ void SystemClass::Shutdown()
 
 	//Shutdown other
 	ShutdownWindows();
-	GlobalManagerClass::getI().Shutdown();
+	GM::getI().Shutdown();
 }
 void SystemClass::Run()
 {
@@ -188,7 +188,7 @@ bool SystemClass::Frame()
 	result = m_input->Frame();
 	if (!result)
 	{
-		LogManagerClass::getI().addLog("Error 7-13");
+		GM::LM()->addLog("Error 7-13");
 		return false;
 	}
 
@@ -203,7 +203,7 @@ bool SystemClass::Frame()
 	result = m_graphics->Frame(m_position->GetPosition(), m_position->GetRotation(), mouseX, mouseY); 
 	if (!result)
 	{
-		LogManagerClass::getI().addLog("Error 8-2");
+		GM::LM()->addLog("Error 8-2");
 		return false;
 	}
 
@@ -214,7 +214,7 @@ bool SystemClass::Frame()
 		return false;
 	
 	//free frame memory
-	MemoryManagerClass::getI().cleanOneFrame();
+	MemoryManager::getI()->cleanOneFrame();
 
 	return true;
 }
@@ -262,12 +262,12 @@ bool SystemClass::doSingleCommand(CommandClass * command)
 			set(command, i, 1);
 			break;
 		case CommandManagerClass::reboot:
-			LogManagerClass::getI().addLog("REBOOT");
+			GM::LM()->addLog("REBOOT");
 			Shutdown();
 			Initialize();
 			break;
 		case CommandManagerClass::stop:
-			LogManagerClass::getI().addLog("EXIT");
+			GM::LM()->addLog("EXIT");
 			return false;
 			break;
 		default:
@@ -419,7 +419,7 @@ bool SystemClass::get(CommandClass * command, int ind, int firstCommand)
 		break;
 	case CommandManagerClass::getProvRegionId:
 		//get data from game mechanic
-		getValue = std::to_string(m_gameMech->getProvRegionID(GlobalManagerClass::getI().getRegionTypeEnum(command->getParam(ind, firstCommand + 1)),
+		getValue = std::to_string(m_gameMech->getProvRegionID(GM::getI().getRegionTypeEnum(command->getParam(ind, firstCommand + 1)),
 			std::stoi(command->getParam(ind, firstCommand + 2))));
 		command->addChange(command->getInitParam(ind, firstCommand + 3), getValue);
 		break;
@@ -440,7 +440,7 @@ bool SystemClass::set(CommandClass * command, int ind, int firstCommand)
 	{
 	case CommandManagerClass::setProvRegion:
 		//make changes in game mechanic
-		m_gameMech->setProvRegion(GlobalManagerClass::getI().getRegionTypeEnum(command->getParam(ind, firstCommand + 1)),
+		m_gameMech->setProvRegion(GM::getI().getRegionTypeEnum(command->getParam(ind, firstCommand + 1)),
 			std::stoi(command->getParam(ind, firstCommand + 2)),
 			std::stoi(command->getParam(ind, firstCommand + 3)));
 		break;

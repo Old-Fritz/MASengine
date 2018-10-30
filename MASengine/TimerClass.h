@@ -9,7 +9,7 @@
 // INCLUDES //
 //////////////
 #include <windows.h>
-#include "LogManagerClass.h"
+#include "LogManager.h"
 #include<map>
 #include "Utils.h"
 

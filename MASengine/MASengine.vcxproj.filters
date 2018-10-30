@@ -159,15 +159,6 @@
     <ClCompile Include="main.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
-    <ClCompile Include="MemoryManagerClass.cpp">
-      <Filter>Файлы исходного кода\GlobalManager\MemoryManagment</Filter>
-    </ClCompile>
-    <ClCompile Include="PoolAllocatorClass.cpp">
-      <Filter>Файлы исходного кода\GlobalManager\MemoryManagment</Filter>
-    </ClCompile>
-    <ClCompile Include="StackAllocatorClass.cpp">
-      <Filter>Файлы исходного кода\GlobalManager\MemoryManagment</Filter>
-    </ClCompile>
     <ClCompile Include="FpsClass.cpp">
       <Filter>Файлы исходного кода\GlobalManager\SystemStateManagment</Filter>
     </ClCompile>
@@ -189,9 +180,6 @@
     <ClCompile Include="CommandManagerClass.cpp">
       <Filter>Файлы исходного кода\GlobalManager\CommandManagment</Filter>
     </ClCompile>
-    <ClCompile Include="LogManagerClass.cpp">
-      <Filter>Файлы исходного кода\GlobalManager</Filter>
-    </ClCompile>
     <ClCompile Include="ModManagerClass.cpp">
       <Filter>Файлы исходного кода\GlobalManager</Filter>
     </ClCompile>
@@ -206,9 +194,6 @@
     </ClCompile>
     <ClCompile Include="ResourceManagerClass.cpp">
       <Filter>Файлы исходного кода\GlobalManager\ResourceManagment</Filter>
-    </ClCompile>
-    <ClCompile Include="GlobalManagerClass.cpp">
-      <Filter>Файлы исходного кода\GlobalManager</Filter>
     </ClCompile>
     <ClCompile Include="SystemClass.cpp">
       <Filter>Файлы исходного кода</Filter>
@@ -375,19 +360,25 @@
     <ClCompile Include="SkyModelClass.cpp">
       <Filter>Файлы исходного кода\Graphics\Blocks</Filter>
     </ClCompile>
+    <ClCompile Include="MemoryManager.cpp">
+      <Filter>Файлы исходного кода\GlobalManager\MemoryManagment</Filter>
+    </ClCompile>
+    <ClCompile Include="PoolAllocator.cpp">
+      <Filter>Файлы исходного кода\GlobalManager\MemoryManagment</Filter>
+    </ClCompile>
+    <ClCompile Include="StackAllocator.cpp">
+      <Filter>Файлы исходного кода\GlobalManager\MemoryManagment</Filter>
+    </ClCompile>
+    <ClCompile Include="LogManager.cpp">
+      <Filter>Файлы исходного кода\GlobalManager</Filter>
+    </ClCompile>
+    <ClCompile Include="GM.cpp">
+      <Filter>Файлы исходного кода\GlobalManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SystemClass.h">
       <Filter>Заголовочные файлы</Filter>
-    </ClInclude>
-    <ClInclude Include="StackAllocatorClass.h">
-      <Filter>Заголовочные файлы\GlobalManager\MemoryManagment</Filter>
-    </ClInclude>
-    <ClInclude Include="MemoryManagerClass.h">
-      <Filter>Заголовочные файлы\GlobalManager\MemoryManagment</Filter>
-    </ClInclude>
-    <ClInclude Include="PoolAllocatorClass.h">
-      <Filter>Заголовочные файлы\GlobalManager\MemoryManagment</Filter>
     </ClInclude>
     <ClInclude Include="CpuClass.h">
       <Filter>Заголовочные файлы\GlobalManager\SystemStateManagment</Filter>
@@ -410,9 +401,6 @@
     <ClInclude Include="CalculatorClass.h">
       <Filter>Заголовочные файлы\GlobalManager\CommandManagment</Filter>
     </ClInclude>
-    <ClInclude Include="LogManagerClass.h">
-      <Filter>Заголовочные файлы\GlobalManager</Filter>
-    </ClInclude>
     <ClInclude Include="ModManagerClass.h">
       <Filter>Заголовочные файлы\GlobalManager</Filter>
     </ClInclude>
@@ -424,9 +412,6 @@
     </ClInclude>
     <ClInclude Include="TextureClass.h">
       <Filter>Заголовочные файлы\Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="GlobalManagerClass.h">
-      <Filter>Заголовочные файлы\GlobalManager</Filter>
     </ClInclude>
     <ClInclude Include="ResourceManagerClass.h">
       <Filter>Заголовочные файлы\GlobalManager\ResourceManagment</Filter>
@@ -592,6 +577,21 @@
     </ClInclude>
     <ClInclude Include="SkyShaderClass.h">
       <Filter>Заголовочные файлы\Graphics\ShaderManagment\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="StackAllocator.h">
+      <Filter>Заголовочные файлы\GlobalManager\MemoryManagment</Filter>
+    </ClInclude>
+    <ClInclude Include="PoolAllocator.h">
+      <Filter>Заголовочные файлы\GlobalManager\MemoryManagment</Filter>
+    </ClInclude>
+    <ClInclude Include="MemoryManager.h">
+      <Filter>Заголовочные файлы\GlobalManager\MemoryManagment</Filter>
+    </ClInclude>
+    <ClInclude Include="LogManager.h">
+      <Filter>Заголовочные файлы\GlobalManager</Filter>
+    </ClInclude>
+    <ClInclude Include="GM.h">
+      <Filter>Заголовочные файлы\GlobalManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

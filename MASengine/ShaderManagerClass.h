@@ -8,7 +8,7 @@
 //////////////
 // INCLUDES //
 //////////////
-#include "GlobalManagerClass.h"
+#include "GM.h"
 #include "InterfaceShaderClass.h"
 #include "FontShaderClass.h"
 #include "TerrainShaderClass.h"

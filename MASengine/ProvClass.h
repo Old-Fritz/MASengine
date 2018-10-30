@@ -7,7 +7,7 @@
 ///////////////////////
 // MY CLASS INCLUDES //
 ///////////////////////
-#include"GlobalManagerClass.h"
+#include"GM.h"
 #include "LayersClass.h"
 #include <set>
 
@@ -49,13 +49,13 @@ public:
 	//Prov Regions
 	//! Установка принадлежности к новому региону \param[in] type - тип региона, к которому добавляется эта прова
 	//! \param[in] regionID - ID региона, к которому  добавляется эта прова
-	void addRegion(GlobalManagerClass::regionType type, int regionID);
+	void addRegion(GM::regionType type, int regionID);
 	//! Убирание принадлежности к новому региону \param[in] type - тип региона, из которого удалется эта прова
 	//! \param[in] regionID - ID региона, из которого удалется эта прова
-	void deleteRegion(GlobalManagerClass::regionType type, int regionID);
+	void deleteRegion(GM::regionType type, int regionID);
 	//! Получение ID всех регионов определенного типа, к которому принадлежит провинция \param[0] type - тип региона 
 	//! \return Вектор всех ID регионов, к которому принадлежит прова
-	std::vector<int> getRegions(GlobalManagerClass::regionType type);
+	std::vector<int> getRegions(GM::regionType type);
 private:
 	//void readFromFile(string filename, FractionManagerClass* fractions);
 	//! Чтение из файла \param[in] file - файл, откуда берется информация \return false, если были ошибки

@@ -25,7 +25,7 @@ bool TimerClass::Initialize()
 	m_frequency = freq;
 	if (m_frequency == 0)
 	{
-		LogManagerClass::getI().addLog("Error 2-1");
+		GM::LM()->addLog("Error 2-1");
 		return false;
 	}
 

@@ -21,7 +21,7 @@
 // MY CLASS INCLUDES //
 ///////////////////////
 
-#include "GlobalManagerClass.h"
+#include "GM.h"
 #include "InputClass.h"
 #include "PositionClass.h"
 #include "GraphicsClass.h"

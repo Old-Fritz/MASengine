@@ -35,7 +35,7 @@ bool InputClass::Initialize(HINSTANCE hinstance, HWND hwnd)
 	result = DirectInput8Create(hinstance, DIRECTINPUT_VERSION, IID_IDirectInput8, (void**)&m_directInput, NULL);
 	if (FAILED(result))
 	{
-		LogManagerClass::getI().addLog("Error 7-1");
+		GM::LM()->addLog("Error 7-1");
 		return false;
 	}
 
@@ -43,7 +43,7 @@ bool InputClass::Initialize(HINSTANCE hinstance, HWND hwnd)
 	result = m_directInput->CreateDevice(GUID_SysKeyboard, &m_keyboard, NULL);
 	if (FAILED(result))
 	{
-		LogManagerClass::getI().addLog("Error 7-2");
+		GM::LM()->addLog("Error 7-2");
 		return false;
 	}
 
@@ -51,7 +51,7 @@ bool InputClass::Initialize(HINSTANCE hinstance, HWND hwnd)
 	result = m_keyboard->SetDataFormat(&c_dfDIKeyboard);
 	if (FAILED(result))
 	{
-		LogManagerClass::getI().addLog("Error 7-3");
+		GM::LM()->addLog("Error 7-3");
 		return false;
 	}
 
@@ -59,7 +59,7 @@ bool InputClass::Initialize(HINSTANCE hinstance, HWND hwnd)
 	result = m_keyboard->SetCooperativeLevel(hwnd, DISCL_FOREGROUND | DISCL_EXCLUSIVE);
 	if (FAILED(result))
 	{
-		LogManagerClass::getI().addLog("Error 7-4");
+		GM::LM()->addLog("Error 7-4");
 		return false;
 	}
 
@@ -67,7 +67,7 @@ bool InputClass::Initialize(HINSTANCE hinstance, HWND hwnd)
 	result = m_keyboard->Acquire();
 	if (FAILED(result))
 	{
-		LogManagerClass::getI().addLog("Error 7-5");
+		GM::LM()->addLog("Error 7-5");
 		return false;
 	}
 
@@ -75,7 +75,7 @@ bool InputClass::Initialize(HINSTANCE hinstance, HWND hwnd)
 	result = m_directInput->CreateDevice(GUID_SysMouse, &m_mouse, NULL);
 	if (FAILED(result))
 	{
-		LogManagerClass::getI().addLog("Error 7-6");
+		GM::LM()->addLog("Error 7-6");
 		return false;
 	}
 
@@ -83,7 +83,7 @@ bool InputClass::Initialize(HINSTANCE hinstance, HWND hwnd)
 	result = m_mouse->SetDataFormat(&c_dfDIMouse);
 	if (FAILED(result))
 	{
-		LogManagerClass::getI().addLog("Error 7-7");
+		GM::LM()->addLog("Error 7-7");
 		return false;
 	}
 
@@ -91,7 +91,7 @@ bool InputClass::Initialize(HINSTANCE hinstance, HWND hwnd)
 	result = m_mouse->SetCooperativeLevel(hwnd, DISCL_FOREGROUND | DISCL_EXCLUSIVE);
 	if (FAILED(result))
 	{
-		LogManagerClass::getI().addLog("Error 7-8");
+		GM::LM()->addLog("Error 7-8");
 		return false;
 	}
 
@@ -99,7 +99,7 @@ bool InputClass::Initialize(HINSTANCE hinstance, HWND hwnd)
 	result = m_mouse->Acquire();
 	if (FAILED(result))
 	{
-		LogManagerClass::getI().addLog("Error 7-9");
+		GM::LM()->addLog("Error 7-9");
 		return false;
 	}
 
@@ -161,7 +161,7 @@ bool InputClass::Frame()
 	result = ReadKeyboard();
 	if (!result)
 	{
-		LogManagerClass::getI().addLog("Error 7-10");
+		GM::LM()->addLog("Error 7-10");
 		return false;
 	}
 
@@ -169,7 +169,7 @@ bool InputClass::Frame()
 	result = ReadMouse();
 	if (!result)
 	{
-		LogManagerClass::getI().addLog("Error 7-11");
+		GM::LM()->addLog("Error 7-11");
 		return false;
 	}
 

@@ -65,7 +65,7 @@ ProvClass * ProvManagerClass::getProv(int provID)
 		return m_provs[0];
 }
 
-void ProvManagerClass::setGlobalMainColor(GlobalManagerClass::regionType type)
+void ProvManagerClass::setGlobalMainColor(GM::regionType type)
 {
 	// change main color for all provs
 	for (int i = 0;i < m_provs.size();i++)

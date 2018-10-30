@@ -21,7 +21,7 @@
 // INCLUDES //
 //////////////
 #include <dinput.h>
-#include "GlobalManagerClass.h"
+#include "GM.h"
 
 
 

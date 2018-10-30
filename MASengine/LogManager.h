@@ -1,8 +1,8 @@
 ﻿////////////////////////////////////////////////////////////////////////////////
-// Filename: LogManagerClass.h
+// Filename: LogManager.h
 ////////////////////////////////////////////////////////////////////////////////
-#ifndef _LOGMANAGERCLASS_H_
-#define _LOGMANAGERCLASS_H_
+#ifndef _LogManager_H_
+#define _LogManager_H_
 
 
 //////////////
@@ -13,7 +13,7 @@
 #include <ctime>
 
 ////////////////////////////////////////////////////////////////////////////////
-// Class name: LogManagerClass
+// Class name: LogManager
 ////////////////////////////////////////////////////////////////////////////////
 
 /*!
@@ -23,11 +23,13 @@
 /*!
 Класс для управления логами, синглтон
 */
-class LogManagerClass
+class LogManager
 {
 
 public:
-	
+	LogManager();
+	LogManager(const LogManager&);
+	~LogManager();
 	/*!
 	 \brief Инициализировать менеджер логов \param[in] filepath - путь сохранения логов
 	 \details новый файл лога называется LOGММ-ДД-ГГ_ЧЧ-ММ-СС.txt по дате и времени создания
@@ -36,9 +38,6 @@ public:
 	bool Initialize(const std::string& filepath);
 	void Shutdown();
 
-	//! \brief Получить экземпляр класса
-	static LogManagerClass& getI();
-
 	/*!
 	\brief Сделать новую запись в лог-файле \param[in] log - текст записи
 	\details Новая запись появляется в новой строке в файле и записывается в следующем формате: 
@@ -46,15 +45,12 @@ public:
 	*/
 	void addLog(const std::string& log);
 private:
-	LogManagerClass();
-	LogManagerClass(const LogManagerClass&);
-	~LogManagerClass();
+	
 
 	//! Возвращает текущее дату и время в виде строки в формате ММ-ДД-ГГ_ЧЧ-ММ-СС
 	std::string getTime();
 
 private:
-	static LogManagerClass* m_instance; //!<Единственный экземпляр класса
 	std::ofstream m_file; //!<Файл лога
 
 };

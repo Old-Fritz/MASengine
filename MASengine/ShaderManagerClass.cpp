@@ -30,10 +30,10 @@ bool ShaderManagerClass::Initialize(ID3D11Device * device, HWND hwnd)
 	result = m_interfaceShader->Initialize(device, hwnd, interfaceVS, interfacePS);
 	if (!result)
 	{
-		LogManagerClass::getI().addLog("Error 10-1");
+		GM::LM()->addLog("Error 10-1");
 		return false;
 	}
-	LogManagerClass::getI().addLog("Interface Shader Initialization");
+	GM::LM()->addLog("Interface Shader Initialization");
 
 	//Initialize font Shader
 	m_fontShader = new(1) FontShaderClass;
@@ -44,10 +44,10 @@ bool ShaderManagerClass::Initialize(ID3D11Device * device, HWND hwnd)
 	result = m_fontShader->Initialize(device, hwnd, fontVS, fontPS);
 	if (!result)
 	{
-		LogManagerClass::getI().addLog("Error 10-3");
+		GM::LM()->addLog("Error 10-3");
 		return false;
 	}
-	LogManagerClass::getI().addLog("Font Shader Initialization");
+	GM::LM()->addLog("Font Shader Initialization");
 
 	//Initialize terrain Shader
 	m_terrainShader = new(1) TerrainShaderClass;
@@ -58,10 +58,10 @@ bool ShaderManagerClass::Initialize(ID3D11Device * device, HWND hwnd)
 	result = m_terrainShader->Initialize(device, hwnd, terrainVS, terrainPS);
 	if (!result)
 	{
-		LogManagerClass::getI().addLog("Error 10-x");
+		GM::LM()->addLog("Error 10-x");
 		return false;
 	}
-	LogManagerClass::getI().addLog("Terrain Shader Initialization");
+	GM::LM()->addLog("Terrain Shader Initialization");
 
 	//Initialize model Shader
 	m_modelShader = new(1) ModelShaderClass;
@@ -72,10 +72,10 @@ bool ShaderManagerClass::Initialize(ID3D11Device * device, HWND hwnd)
 	result = m_modelShader->Initialize(device, hwnd, modelVS, modelPS);
 	if (!result)
 	{
-		LogManagerClass::getI().addLog("Error 10-x");
+		GM::LM()->addLog("Error 10-x");
 		return false;
 	}
-	LogManagerClass::getI().addLog("Model Shader Initialization");
+	GM::LM()->addLog("Model Shader Initialization");
 
 	//Initialize water Shader
 	m_waterShader = new(1) WaterShaderClass;
@@ -86,10 +86,10 @@ bool ShaderManagerClass::Initialize(ID3D11Device * device, HWND hwnd)
 	result = m_waterShader->Initialize(device, hwnd, waterVS, waterPS);
 	if (!result)
 	{
-		LogManagerClass::getI().addLog("Error 10-x");
+		GM::LM()->addLog("Error 10-x");
 		return false;
 	}
-	LogManagerClass::getI().addLog("Water Shader Initialization");
+	GM::LM()->addLog("Water Shader Initialization");
 
 	//Initialize fill Shader
 	m_fillShader = new(1) FillShaderClass;
@@ -100,10 +100,10 @@ bool ShaderManagerClass::Initialize(ID3D11Device * device, HWND hwnd)
 	result = m_fillShader->Initialize(device, hwnd, fillVS, fillPS);
 	if (!result)
 	{
-		LogManagerClass::getI().addLog("Error 10-x");
+		GM::LM()->addLog("Error 10-x");
 		return false;
 	}
-	LogManagerClass::getI().addLog("Fill Shader Initialization");
+	GM::LM()->addLog("Fill Shader Initialization");
 
 	//Initialize sky Shader
 	m_skyShader = new(1) SkyShaderClass;
@@ -114,10 +114,10 @@ bool ShaderManagerClass::Initialize(ID3D11Device * device, HWND hwnd)
 	result = m_skyShader->Initialize(device, hwnd, skyVS, skyPS);
 	if (!result)
 	{
-		LogManagerClass::getI().addLog("Error 10-x");
+		GM::LM()->addLog("Error 10-x");
 		return false;
 	}
-	LogManagerClass::getI().addLog("Sky Shader Initialization");
+	GM::LM()->addLog("Sky Shader Initialization");
 
 	return true;
 }

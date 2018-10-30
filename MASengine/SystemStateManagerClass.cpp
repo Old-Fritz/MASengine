@@ -43,7 +43,7 @@ bool SystemStateManagerClass::Initialize()
 	result = m_timer->Initialize();
 	if (!result)
 	{
-		LogManagerClass::getI().addLog("Error 2-2");
+		GM::LM()->addLog("Error 2-2");
 		return false;
 	}
 

@@ -7,7 +7,7 @@
 ///////////////////////
 // MY CLASS INCLUDES //
 ///////////////////////
-#include "GlobalManagerClass.h"
+#include "GM.h"
 #include "ProvRegionManagerClass.h"
 #include "LoadScreenManagerClass.h"
 
@@ -35,11 +35,11 @@ public:
 
 	//getters 
 	//! Получение ID региона из провы \param[in] region - тип региона \param[in] provID - ID провы \return ID типа региона, указанного типа
-	int getProvRegionID(GlobalManagerClass::regionType region, int provID);
+	int getProvRegionID(GM::regionType region, int provID);
 
 	//setters
 	//! Добавление новой провинции в регион \param[in] region - тип региона \param[in] provID - ID провы \param[in] regionID - ID региона, в который будет добавлена прова
-	void setProvRegion(GlobalManagerClass::regionType region, int provID, int regionID);
+	void setProvRegion(GM::regionType region, int provID, int regionID);
 };
 /*! @} */
 #endif

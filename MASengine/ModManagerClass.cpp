@@ -19,7 +19,7 @@ bool ModManagerClass::Initialize(const std::string & modDirectory)
 	modFile.open(modDirectory + "/mods.txt", std::ios::in);
 	if (!modFile.is_open())
 	{
-		LogManagerClass::getI().addLog("Error 3-1");
+		GM::LM()->addLog("Error 3-1");
 		modFile.close();
 		return false;
 	}

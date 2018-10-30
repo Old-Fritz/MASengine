@@ -14,34 +14,34 @@ LayersClass::~LayersClass()
 {
 }
 
-void LayersClass::setMainColor(GlobalManagerClass::regionType type)
+void LayersClass::setMainColor(GM::regionType type)
 {
 	switch (type)
 	{
-	case GlobalManagerClass::BASE:
+	case GM::BASE:
 		m_mainColor = &m_baseColor;
 		break;
-	case GlobalManagerClass::BLOCK:
+	case GM::BLOCK:
 		m_mainColor = &m_blockColor;
 		break;
-	case GlobalManagerClass::NATION:
+	case GM::NATION:
 		m_mainColor = &m_nationColor;
 		break;
 	default:
 		break;
 	}
 }
-void LayersClass::setColor(GlobalManagerClass::regionType type, D3DXVECTOR4 color)
+void LayersClass::setColor(GM::regionType type, D3DXVECTOR4 color)
 {
 	switch (type)
 	{
-	case GlobalManagerClass::BASE:
+	case GM::BASE:
 		m_baseColor = color;
 		break;
-	case GlobalManagerClass::BLOCK:
+	case GM::BLOCK:
 		m_blockColor = color;
 		break;
-	case GlobalManagerClass::NATION:
+	case GM::NATION:
 		m_nationColor = color;
 		break;
 	default:
@@ -53,15 +53,15 @@ D3DXVECTOR4 LayersClass::getMainColor()
 	return *m_mainColor;
 }
 
-D3DXVECTOR4 LayersClass::getColor(GlobalManagerClass::regionType type)
+D3DXVECTOR4 LayersClass::getColor(GM::regionType type)
 {
 	switch (type)
 	{
-	case GlobalManagerClass::BASE:
+	case GM::BASE:
 		return m_baseColor;
-	case GlobalManagerClass::BLOCK:
+	case GM::BLOCK:
 		return m_blockColor;
-	case GlobalManagerClass::NATION:
+	case GM::NATION:
 		return m_nationColor;
 	default:
 		return *m_mainColor;

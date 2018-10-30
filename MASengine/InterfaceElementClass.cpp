@@ -39,7 +39,7 @@ bool InterfaceElementClass::Initialize(ID3D11Device* device, ID3D11DeviceContext
 	result = readFromFile(filename); // Loading params from file
 	if (!result)
 	{
-		LogManagerClass::getI().addLog("Error 13-1");
+		GM::LM()->addLog("Error 13-1");
 		return false;
 	}
 
@@ -58,7 +58,7 @@ bool InterfaceElementClass::Initialize(ID3D11Device* device, ID3D11DeviceContext
 			m_bitmapsInfo[i].width, m_bitmapsInfo[i].height);
 		if (!result)
 		{
-			LogManagerClass::getI().addLog("Error 13-2");
+			GM::LM()->addLog("Error 13-2");
 			return false;
 		}
 	}
@@ -79,7 +79,7 @@ bool InterfaceElementClass::Initialize(ID3D11Device* device, ID3D11DeviceContext
 			m_textsInfo[i].maxLength, m_textsInfo[i].orientation, m_textsInfo[i].fontFilename);
 		if (!result)
 		{
-			LogManagerClass::getI().addLog("Error 13-3");
+			GM::LM()->addLog("Error 13-3");
 			return false;
 		}
 
@@ -89,7 +89,7 @@ bool InterfaceElementClass::Initialize(ID3D11Device* device, ID3D11DeviceContext
 			result = updateSentence(deviceContext, i, j);
 			if (!result)
 			{
-				LogManagerClass::getI().addLog("Error 13-4");
+				GM::LM()->addLog("Error 13-4");
 				return false;
 			}
 		}
@@ -555,7 +555,7 @@ bool InterfaceElementClass::readFromFile(PathClass* filename)
 	file.open(filename->getPath(), std::ios::in);
 	if (file.fail())
 	{
-		LogManagerClass::getI().addLog("Error 13-6");
+		GM::LM()->addLog("Error 13-6");
 		return false;
 	}
 
@@ -611,13 +611,13 @@ bool InterfaceElementClass::readFromFile(PathClass* filename)
 	//read info about texts and bitmaps
 	if (!readBitmapsInfoFromFile(&file))
 	{
-		LogManagerClass::getI().addLog("Error 13-7");
+		GM::LM()->addLog("Error 13-7");
 		return false;
 	}
 		
 	if (!readTextsInfoFromFile(&file))
 	{
-		LogManagerClass::getI().addLog("Error 13-8");
+		GM::LM()->addLog("Error 13-8");
 		return false;
 	}
 
@@ -787,7 +787,7 @@ bool InterfaceElementClass::updateSentence(ID3D11DeviceContext* deviceContext, i
 		m_textsInfo[textInd].strings[sentenceInd].maxWidth, m_textsInfo[textInd].strings[sentenceInd].color);
 	if (!result)
 	{
-		LogManagerClass::getI().addLog("Error 13-5");
+		GM::LM()->addLog("Error 13-5");
 		return false;
 	}
 }

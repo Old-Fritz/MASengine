@@ -9,7 +9,7 @@
 // INCLUDES //
 //////////////
 #include "D3DClass.h"
-#include "GlobalManagerClass.h"
+#include "GM.h"
 #include "InterfaceElementClass.h"
 #include "ShaderManagerClass.h"
 

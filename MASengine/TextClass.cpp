@@ -36,7 +36,7 @@ bool TextClass::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceCont
 	result = FontManagerClass::getI().addFont(device, m_fontFilename);
 	if (!result)
 	{
-		LogManagerClass::getI().addLog("Error 12-1");
+		GM::LM()->addLog("Error 12-1");
 		MessageBox(hwnd, L"Could not initialize the font object.", L"Error", MB_OK);
 		return false;
 	}
@@ -57,14 +57,14 @@ bool TextClass::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceCont
 		result = InitializeSentence(device, &m_sentences[i], maxLength);
 		if (!result)
 		{
-			LogManagerClass::getI().addLog("Error 12-2");
+			GM::LM()->addLog("Error 12-2");
 			return false;
 		}
 		// Now update the sentence vertex buffer with the usual information.
 		result = UpdateSentence(deviceContext, i, L" ", 0, 0, 0.35f, 0, D3DXVECTOR4(0,0,0,0));
 		if (!result)
 		{
-			LogManagerClass::getI().addLog("Error 12-3");
+			GM::LM()->addLog("Error 12-3");
 			return false;
 		}
 	}
@@ -93,7 +93,7 @@ bool TextClass::Render(FontShaderClass* FontShader, ID3D11DeviceContext* deviceC
 		result = RenderSentence(FontShader, deviceContext, m_sentences[i], worldMatrix, orthoMatrix, baseViewMatrix);
 		if (!result)
 		{
-			LogManagerClass::getI().addLog("Error 12-9");
+			GM::LM()->addLog("Error 12-9");
 			return false;
 		}
 	}
@@ -171,7 +171,7 @@ bool TextClass::InitializeSentence(ID3D11Device* device, SentenceType** sentence
 	result = device->CreateBuffer(&vertexBufferDesc, &vertexData, &(*sentence)->vertexBuffer);
 	if (FAILED(result))
 	{
-		LogManagerClass::getI().addLog("Error 12-4");
+		GM::LM()->addLog("Error 12-4");
 		return false;
 	}
 
@@ -190,12 +190,12 @@ bool TextClass::InitializeSentence(ID3D11Device* device, SentenceType** sentence
 	result = device->CreateBuffer(&indexBufferDesc, &indexData, &(*sentence)->indexBuffer);
 	if (FAILED(result))
 	{
-		LogManagerClass::getI().addLog("Error 12-5");
+		GM::LM()->addLog("Error 12-5");
 		return false;
 	}
 
 	// Release the vertex and index array as it is no longer needed.
-	MemoryManagerClass::getI().cleanTemp();
+	MemoryManager::getI()->cleanTemp();
 	vertices = 0;
 	indices = 0;
 
@@ -218,7 +218,7 @@ bool TextClass::UpdateSentence(ID3D11DeviceContext* deviceContext, int sentenceN
 	}
 	else
 	{
-		LogManagerClass::getI().addLog("Error 12-6");
+		GM::LM()->addLog("Error 12-6");
 		return false;
 	}
 
@@ -231,7 +231,7 @@ bool TextClass::UpdateSentence(ID3D11DeviceContext* deviceContext, int sentenceN
 	// Check for possible buffer overflow.
 	if (numLetters > sentence->maxLength)
 	{
-		LogManagerClass::getI().addLog("Error 12-7");
+		GM::LM()->addLog("Error 12-7");
 		return false;
 	}
 
@@ -259,7 +259,7 @@ bool TextClass::UpdateSentence(ID3D11DeviceContext* deviceContext, int sentenceN
 	result = deviceContext->Map(sentence->vertexBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource);
 	if (FAILED(result))
 	{
-		LogManagerClass::getI().addLog("Error 12-8");
+		GM::LM()->addLog("Error 12-8");
 		return false;
 	}
 
@@ -273,7 +273,7 @@ bool TextClass::UpdateSentence(ID3D11DeviceContext* deviceContext, int sentenceN
 	deviceContext->Unmap(sentence->vertexBuffer, 0);
 
 	// Release the vertex array as it is no longer needed.
-	MemoryManagerClass::getI().cleanTemp();
+	MemoryManager::getI()->cleanTemp();
 	vertices = 0;
 
 	return true;

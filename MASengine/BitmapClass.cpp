@@ -174,7 +174,7 @@ bool BitmapClass::InitializeBuffers(ID3D11Device* device)
 	}
 
 	// Clear memory
-	MemoryManagerClass::getI().cleanTemp();
+	MemoryManager::getI()->cleanTemp();
 	vertices = 0;
 	indices = 0;
 
@@ -278,7 +278,7 @@ bool BitmapClass::UpdateBuffers(ID3D11DeviceContext* deviceContext, int position
 	deviceContext->Unmap(m_vertexBuffer, 0);
 
 	// Clear memory
-	MemoryManagerClass::getI().cleanTemp();
+	MemoryManager::getI()->cleanTemp();
 	vertices = 0;
 
 	return true;

@@ -35,7 +35,7 @@ public:
 	//! \details Если ID некорректен, то возвращается провинция с ID = 0
 	ProvClass* getProv(int provID);
 	//!Установить новый основной цвет для всех пров \param[in] type - тип региона, цвет которого будет выбран основным
-	void setGlobalMainColor(GlobalManagerClass::regionType type);
+	void setGlobalMainColor(GM::regionType type);
 
 	//! Получение количества пров \return количество инициализированных провинций
 	int getProvNum();

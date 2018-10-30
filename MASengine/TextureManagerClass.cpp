@@ -1,7 +1,5 @@
 #include "TextureManagerClass.h"
 
-TextureManagerClass* TextureManagerClass::m_instance = 0;
-
 TextureManagerClass::TextureManagerClass()
 {
 }
@@ -21,21 +19,11 @@ void TextureManagerClass::Shutdown()
 		::operator delete(m_textures.begin()->second, sizeof(TextureClass), 2);
 		m_textures.erase(m_textures.begin());
 	}
-
-	//delete instance
-	if (m_instance)
-	{
-		::operator delete(m_instance, sizeof(*m_instance), 1);
-		m_instance = 0;
-	}
 }
 
-TextureManagerClass & TextureManagerClass::getI()
+bool TextureManagerClass::Initialize(ID3D11Device * device)
 {
-	//create instance if not exist
-	if (!m_instance)
-		m_instance = new(1) TextureManagerClass;
-	return *m_instance;
+	return false;
 }
 
 bool TextureManagerClass::addTexture(ID3D11Device * device, PathClass* filename)
@@ -54,7 +42,7 @@ bool TextureManagerClass::addTexture(ID3D11Device * device, PathClass* filename)
 		result = newTexture->Initialize(device, filename->getWPath().c_str());
 		if (!result)
 		{
-			LogManagerClass::getI().addLog("Error 4-2");
+			GM::LM()->addLog("Error 4-2");
 			return false;
 		}
 
@@ -79,29 +67,22 @@ void TextureManagerClass::deleteTexture(PathClass* filename)
 
 }
 
-ID3D11ShaderResourceView * TextureManagerClass::getTexture(PathClass* filename)
+void TextureManagerClass::deleteTexture(int hash)
+{
+}
+
+TextureClass * TextureManagerClass::getTexture(ID3D11Device* device, PathClass* filename)
 {
 	return getTexture(filename->getHash());
 }
 
-ID3D11ShaderResourceView * TextureManagerClass::getTexture(int hash)
+TextureClass * TextureManagerClass::getTexture(int hash)
 {
 	auto texture = m_textures.find(hash);
 	if (texture != m_textures.end())
 	{
-		return texture->second->GetTexture();
+		return texture->second;
 	}
 	else
 		return NULL;
-}
-
-ID3D11ShaderResourceView ** TextureManagerClass::getTexturesArray(int * hashes,int num)
-{
-	ID3D11ShaderResourceView** textures = new(2) ID3D11ShaderResourceView*[num];
-	for (int i = 0;i < num;i++)
-	{
-		textures[i] = getTexture(hashes[i]);
-	}
-
-	return textures;
 }

@@ -367,7 +367,7 @@ bool TerrainClass::readFromFile(PathClass* filename)
 	result = region->Initialize(&file, m_id);
 	if (!result)
 		return false;
-	ProvRegionManagerClass::getI().addProvRegion(GlobalManagerClass::BLOCK, region);
+	ProvRegionManagerClass::getI().addProvRegion(GM::BLOCK, region);
 
 	return true;
 }
@@ -375,7 +375,7 @@ bool TerrainClass::readFromFile(PathClass* filename)
 D3DXVECTOR4 * TerrainClass::getProvColor()
 {
 	//get region
-	ProvRegionClass* region = ProvRegionManagerClass::getI().getProvRegion(GlobalManagerClass::BLOCK, m_id);
+	ProvRegionClass* region = ProvRegionManagerClass::getI().getProvRegion(GM::BLOCK, m_id);
 
 	auto provs = region->getProvs();
 	D3DXVECTOR4* provColors = new(2) D3DXVECTOR4[256];
@@ -420,7 +420,7 @@ int TerrainClass::getLvlByDist(float dist)
 int TerrainClass::getProvNum(int index)
 {
 	//get region
-	ProvRegionClass* region = ProvRegionManagerClass::getI().getProvRegion(GlobalManagerClass::BLOCK, m_id);
+	ProvRegionClass* region = ProvRegionManagerClass::getI().getProvRegion(GM::BLOCK, m_id);
 
 	auto provs = region->getProvs();
 

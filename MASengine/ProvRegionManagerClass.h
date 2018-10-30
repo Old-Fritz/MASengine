@@ -35,9 +35,9 @@ public:
 	//Getters
 	//! \brief Получение провинции по ID \param[in] type - тип региона \param[in] provRegionID - ID региона \return регион по указанному ID
 	//! \details Если ID некорректен, то возвращается регион с ID = 0
-	ProvRegionClass* getProvRegion(GlobalManagerClass::regionType type, int provRegionID);
+	ProvRegionClass* getProvRegion(GM::regionType type, int provRegionID);
 	//! Добавление нового региона \param[in] type - тип региона \param[in] region - ссылка на созданный регион
-	void addProvRegion(GlobalManagerClass::regionType type, ProvRegionClass* region);
+	void addProvRegion(GM::regionType type, ProvRegionClass* region);
 
 	//! \brief Получить экземпляр класса
 	static ProvRegionManagerClass& getI();

@@ -20,7 +20,7 @@ bool LoadScreenManagerClass::Initialize(D3DClass* D3D, ShaderManagerClass* shade
 	result = readFromFile(filename);
 	if (!result)
 	{
-		LogManagerClass::getI().addLog("Error 15-1");
+		GM::LM()->addLog("Error 15-1");
 		return false;
 	}
 
@@ -32,7 +32,7 @@ bool LoadScreenManagerClass::Initialize(D3DClass* D3D, ShaderManagerClass* shade
 	result = m_loadImage->Initialize(m_D3D->GetDevice(), m_D3D->GetDeviceContext(), hwnd, m_imageElementName, screenWidth, screenHeight);
 	if (!result)
 	{
-		LogManagerClass::getI().addLog("Error 15-2");
+		GM::LM()->addLog("Error 15-2");
 		return false;
 	}
 
@@ -43,7 +43,7 @@ bool LoadScreenManagerClass::Initialize(D3DClass* D3D, ShaderManagerClass* shade
 	result = m_loadLine->Initialize(m_D3D->GetDevice(), m_D3D->GetDeviceContext(), hwnd, m_lineElementName, screenWidth, screenHeight);
 	if (!result)
 	{
-		LogManagerClass::getI().addLog("Error 15-3");
+		GM::LM()->addLog("Error 15-3");
 		return false;
 	}
 
@@ -54,7 +54,7 @@ bool LoadScreenManagerClass::Initialize(D3DClass* D3D, ShaderManagerClass* shade
 	result = m_loadQuote->Initialize(m_D3D->GetDevice(), m_D3D->GetDeviceContext(), hwnd, m_quoteElementName, screenWidth, screenHeight);
 	if (!result)
 	{
-		LogManagerClass::getI().addLog("Error 15-4");
+		GM::LM()->addLog("Error 15-4");
 		return false;
 	}
 
@@ -67,7 +67,7 @@ bool LoadScreenManagerClass::Initialize(D3DClass* D3D, ShaderManagerClass* shade
 		result = element->Initialize(m_D3D->GetDevice(), m_D3D->GetDeviceContext(), hwnd, m_additionalElementNames[i], screenWidth, screenHeight);
 		if (!result)
 		{
-			LogManagerClass::getI().addLog("Error 15-5");
+			GM::LM()->addLog("Error 15-5");
 			return false;
 		}
 		m_additionalElements.emplace_back(element);
@@ -146,19 +146,19 @@ bool LoadScreenManagerClass::Render()
 	result = m_loadImage->Render(m_shaders->getFontShader(),m_shaders->getInterfaceShader(),m_D3D->GetDeviceContext(),worldMatrix,orthoMatrix,m_baseViewMatrix);
 	if (!result)
 	{
-		LogManagerClass::getI().addLog("Error 15-6");
+		GM::LM()->addLog("Error 15-6");
 		return false;
 	}
 	result = m_loadLine->Render(m_shaders->getFontShader(), m_shaders->getInterfaceShader(), m_D3D->GetDeviceContext(), worldMatrix, orthoMatrix, m_baseViewMatrix);
 	if (!result)
 	{
-		LogManagerClass::getI().addLog("Error 15-7");
+		GM::LM()->addLog("Error 15-7");
 		return false;
 	}
 	result = m_loadQuote->Render(m_shaders->getFontShader(), m_shaders->getInterfaceShader(), m_D3D->GetDeviceContext(), worldMatrix, orthoMatrix, m_baseViewMatrix);
 	if (!result)
 	{
-		LogManagerClass::getI().addLog("Error 15-8");
+		GM::LM()->addLog("Error 15-8");
 		return false;
 	}
 
@@ -167,7 +167,7 @@ bool LoadScreenManagerClass::Render()
 		result = (*element)->Render(m_shaders->getFontShader(), m_shaders->getInterfaceShader(), m_D3D->GetDeviceContext(), worldMatrix, orthoMatrix, m_baseViewMatrix);
 		if (!result)
 		{
-			LogManagerClass::getI().addLog("Error 15-9");
+			GM::LM()->addLog("Error 15-9");
 			return false;
 		}
 	}
@@ -196,18 +196,18 @@ void LoadScreenManagerClass::changeLine(const std::string & text, float perCent)
 	result = changeLineText(text);
 	if (!result)
 	{
-		LogManagerClass::getI().addLog("Error 15-10");
+		GM::LM()->addLog("Error 15-10");
 	}
 	result = Render();
 	if (!result)
 	{
-		LogManagerClass::getI().addLog("Error 15-11");
+		GM::LM()->addLog("Error 15-11");
 	}
 	//changeTime
 	result = updateElements();
 	if (!result)
 	{
-		LogManagerClass::getI().addLog("Error 15-12");
+		GM::LM()->addLog("Error 15-12");
 	}
 	m_lastTime = time(0);
 }
@@ -240,7 +240,7 @@ bool LoadScreenManagerClass::readFromFile(PathClass*  filename)
 	file.open(filename->getPath());
 	if (file.fail())
 	{
-		LogManagerClass::getI().addLog("Error 15-13");
+		GM::LM()->addLog("Error 15-13");
 		return false;
 	}
 
@@ -321,7 +321,7 @@ bool LoadScreenManagerClass::updateElements()
 		result = changeQuote();
 		if (!result)
 		{
-			LogManagerClass::getI().addLog("Error 15-14");
+			GM::LM()->addLog("Error 15-14");
 			return false;
 		}
 	}
@@ -333,7 +333,7 @@ bool LoadScreenManagerClass::updateElements()
 		result = changeImage();
 		if (!result)
 		{
-			LogManagerClass::getI().addLog("Error 15-15");
+			GM::LM()->addLog("Error 15-15");
 			return false;
 		}
 	}

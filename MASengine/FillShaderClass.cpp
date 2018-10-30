@@ -49,7 +49,7 @@ bool FillShaderClass::Render(ID3D11DeviceContext * deviceContext, int indexCount
 	result = SetShaderParameters(deviceContext, worldMatrix, viewMatrix, projectionMatrix, clipPlane);
 	if (!result)
 	{
-		LogManagerClass::getI().addLog("Error 10-4");
+		GM::LM()->addLog("Error 10-4");
 		return false;
 	}
 

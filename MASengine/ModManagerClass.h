@@ -20,7 +20,7 @@
 #include <iostream>
 #include <filesystem>
 #include <string>
-#include "MemoryManagerClass.h"
+#include "MemoryManager.h"
 
 
 using namespace std::tr2::sys;

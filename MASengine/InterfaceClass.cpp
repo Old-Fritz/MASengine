@@ -36,7 +36,7 @@ bool InterfaceClass::Initialize(ID3D11Device * device, ID3D11DeviceContext * dev
 	elementsFile.open(SettingsClass::getI().getPathParameter("ElementsFilename")->getPath());
 	if (elementsFile.fail())
 	{
-		LogManagerClass::getI().addLog("Error 14-1");
+		GM::LM()->addLog("Error 14-1");
 		return false;
 	}
 
@@ -75,7 +75,7 @@ bool InterfaceClass::Initialize(ID3D11Device * device, ID3D11DeviceContext * dev
 		result = m_interfaceElements[i]->Initialize(device, deviceContext, hwnd, elementFilename, m_screenWidth, m_screenHeight);
 		if(!result)
 		{
-			LogManagerClass::getI().addLog("Error 14-2");
+			GM::LM()->addLog("Error 14-2");
 			return false;
 		}
 
@@ -156,7 +156,7 @@ bool InterfaceClass::Render(InterfaceShaderClass* interfaceShader, FontShaderCla
 			result = m_interfaceElements[i]->Render(fontShader, interfaceShader, deviceContext, worldMatrix, orthoMatrix, viewMatrix);
 			if (!result)
 			{
-				LogManagerClass::getI().addLog("Error 14-3");
+				GM::LM()->addLog("Error 14-3");
 				return false;
 			}
 		}

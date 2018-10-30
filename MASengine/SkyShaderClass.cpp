@@ -51,7 +51,7 @@ bool SkyShaderClass::Render(ID3D11DeviceContext * deviceContext, int indexCount,
 		firstTranslation, secondTranslation, brightness);
 	if (!result)
 	{
-		LogManagerClass::getI().addLog("Error 10-2");
+		GM::LM()->addLog("Error 10-2");
 		return false;
 	}
 

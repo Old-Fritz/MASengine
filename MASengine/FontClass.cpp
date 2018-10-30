@@ -28,7 +28,7 @@ bool FontClass::Initialize(ID3D11Device* device, PathClass* filename)
 	file.open(filename->getPath());
 	if (!file.is_open())
 	{
-		LogManagerClass::getI().addLog("Error 11-3");
+		GM::LM()->addLog("Error 11-3");
 		return false;
 	}
 	file >> fontFilename >> textureFilename;
@@ -39,7 +39,7 @@ bool FontClass::Initialize(ID3D11Device* device, PathClass* filename)
 	result = LoadFontData(fontFilename);
 	if (!result)
 	{
-		LogManagerClass::getI().addLog("Error 11-4");
+		GM::LM()->addLog("Error 11-4");
 		return false;
 	}
 
@@ -49,7 +49,7 @@ bool FontClass::Initialize(ID3D11Device* device, PathClass* filename)
 	result = TextureManagerClass::getI().addTexture(device, textureFilename);
 	if (!result)
 	{
-		LogManagerClass::getI().addLog("Error 11-5");
+		GM::LM()->addLog("Error 11-5");
 		return false;
 	}
 
@@ -76,7 +76,7 @@ bool FontClass::LoadFontData(PathClass* filename)
 	fin.open(filename->getPath());
 	if (fin.fail())
 	{
-		LogManagerClass::getI().addLog("Error 11-6");
+		GM::LM()->addLog("Error 11-6");
 		return false;
 	}
 

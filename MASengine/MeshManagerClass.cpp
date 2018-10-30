@@ -44,7 +44,7 @@ bool MeshManagerClass::addModel(ID3D11Device * device, PathClass* filename, floa
 	result = newModel->Initialize(device, filename, sizeX, sizeY, sizeZ);
 	if (!result)
 	{
-		LogManagerClass::getI().addLog("Error 4-1");
+		GM::LM()->addLog("Error 4-1");
 		return false;
 	}
 

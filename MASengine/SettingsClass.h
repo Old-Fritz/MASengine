@@ -13,7 +13,7 @@
 #include<vector>
 #include<fstream>
 #include <map>
-#include "MemoryManagerClass.h"
+#include "MemoryManager.h"
 #include "PathManagerClass.h"
 #include "PathParamClass.h"
 #include "StrParamClass.h"

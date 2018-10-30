@@ -12,7 +12,7 @@
 #include <d3dx11async.h>
 #include <d3dx10math.h>
 #include <fstream>
-#include "GlobalManagerClass.h"
+#include "GM.h"
 #include "LightClass.h"
 
 const int NUM_OF_MAP_TEXTURES = 10;

@@ -68,18 +68,18 @@ LayersClass * ProvClass::getLayers()
 	return m_layers;
 }
 
-void ProvClass::addRegion(GlobalManagerClass::regionType type, int regionID)
+void ProvClass::addRegion(GM::regionType type, int regionID)
 {
 	// add different types of vector in case of type
 	switch (type)
 	{
-	case GlobalManagerClass::BASE:
+	case GM::BASE:
 		m_baseRegion.emplace_back(regionID);
 		break;
-	case GlobalManagerClass::BLOCK:
+	case GM::BLOCK:
 		m_blockRegion.emplace_back(regionID);
 		break;
-	case GlobalManagerClass::NATION:
+	case GM::NATION:
 		m_nationRegion.emplace_back(regionID);
 		break;
 	default:
@@ -87,18 +87,18 @@ void ProvClass::addRegion(GlobalManagerClass::regionType type, int regionID)
 	}
 }
 
-void ProvClass::deleteRegion(GlobalManagerClass::regionType type, int regionID)
+void ProvClass::deleteRegion(GM::regionType type, int regionID)
 {
 	// erase in different types of vector in case of type
 	switch (type)
 	{
-	case GlobalManagerClass::BASE:
+	case GM::BASE:
 		erase(m_baseRegion, regionID);
 		break;
-	case GlobalManagerClass::BLOCK:
+	case GM::BLOCK:
 		erase(m_blockRegion, regionID);
 		break;
-	case GlobalManagerClass::NATION:
+	case GM::NATION:
 		erase(m_nationRegion, regionID);
 		break;
 	default:
@@ -106,16 +106,16 @@ void ProvClass::deleteRegion(GlobalManagerClass::regionType type, int regionID)
 	}
 }
 
-std::vector<int> ProvClass::getRegions(GlobalManagerClass::regionType type)
+std::vector<int> ProvClass::getRegions(GM::regionType type)
 {
 	// return different types of vector in case of type
 	switch (type)
 	{
-	case GlobalManagerClass::BASE:
+	case GM::BASE:
 		return m_baseRegion;
-	case GlobalManagerClass::BLOCK:
+	case GM::BLOCK:
 		return m_blockRegion;
-	case GlobalManagerClass::NATION:
+	case GM::NATION:
 		return m_nationRegion;
 	default:
 		return m_baseRegion;

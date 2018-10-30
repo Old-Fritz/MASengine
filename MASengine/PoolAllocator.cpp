@@ -1,23 +1,23 @@
-#include "PoolAllocatorClass.h"
+#include "PoolAllocator.h"
 
- std::list<void*> PoolAllocatorClass::m_occupEls;
- std::list<void*> PoolAllocatorClass::m_freeEls;
+ std::list<void*> PoolAllocator::m_occupEls;
+ std::list<void*> PoolAllocator::m_freeEls;
 
-PoolAllocatorClass::PoolAllocatorClass()
+PoolAllocator::PoolAllocator()
 {
 	m_elSize = 0;
 	m_poolSize = 0;
 }
 
-PoolAllocatorClass::PoolAllocatorClass(const PoolAllocatorClass &)
+PoolAllocator::PoolAllocator(const PoolAllocator &)
 {
 }
 
-PoolAllocatorClass::~PoolAllocatorClass()
+PoolAllocator::~PoolAllocator()
 {
 }
 
-bool PoolAllocatorClass::Initialize(size_t elSize, long int poolSize)
+bool PoolAllocator::Initialize(size_t elSize, long int poolSize)
 {
 	m_elSize = elSize;
 	m_poolSize = poolSize;
@@ -29,7 +29,7 @@ bool PoolAllocatorClass::Initialize(size_t elSize, long int poolSize)
 		void* element = new char[elSize];
 		if (!element)
 		{
-			LogManagerClass::getI().addLog("Error 1-1");
+			GM::LM()->addLog("Error 1-1");
 			return false;
 		}
 
@@ -40,7 +40,7 @@ bool PoolAllocatorClass::Initialize(size_t elSize, long int poolSize)
 
 }
 
-bool PoolAllocatorClass::doublePool()
+bool PoolAllocator::doublePool()
 {
 	
 	//create new blocks of free memory
@@ -49,7 +49,7 @@ bool PoolAllocatorClass::doublePool()
 		void* element = new char[m_elSize];
 		if (!element)
 		{
-			LogManagerClass::getI().addLog("Error 1-1");
+			GM::LM()->addLog("Error 1-1");
 			return false;
 		}
 
@@ -61,12 +61,12 @@ bool PoolAllocatorClass::doublePool()
 	return true;
 }
 
-size_t PoolAllocatorClass::getSize()
+size_t PoolAllocator::getSize()
 {
 	return m_elSize;
 }
 
-void * PoolAllocatorClass::getMemory()
+void * PoolAllocator::getMemory()
 {
 	//check for existing of size
 	if (!m_freeEls.size())
@@ -82,7 +82,7 @@ void * PoolAllocatorClass::getMemory()
 	return pointer;
 }
 
-void PoolAllocatorClass::deleteEl(void * pointer)
+void PoolAllocator::deleteEl(void * pointer)
 {
 	//search for element in list end replace it
 	for(auto ptr = m_occupEls.begin();ptr!= m_occupEls.end();ptr++)
@@ -95,7 +95,7 @@ void PoolAllocatorClass::deleteEl(void * pointer)
 	return;
 }
 
-void PoolAllocatorClass::clean()
+void PoolAllocator::clean()
 {
 	//sreplace all elements
 	for (auto ptr = m_occupEls.begin();ptr != m_occupEls.end();ptr++)
@@ -106,7 +106,7 @@ void PoolAllocatorClass::clean()
 	return;
 }
 
-void PoolAllocatorClass::Shutdown()
+void PoolAllocator::Shutdown()
 {
 	//delete all elements in both lists
 	for (auto ptr = m_occupEls.begin();ptr != m_occupEls.end();ptr++)

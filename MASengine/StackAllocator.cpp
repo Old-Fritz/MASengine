@@ -1,35 +1,35 @@
 ////////////////////////////////////////////////////////////////////////////////
-// Filename: StackAllocatorClass.cpp
+// Filename: StackAllocator.cpp
 ////////////////////////////////////////////////////////////////////////////////
 
-#include "StackAllocatorClass.h"
+#include "StackAllocator.h"
 
-StackAllocatorClass::StackAllocatorClass()
+StackAllocator::StackAllocator()
 {
 	m_stack = 0;
 	m_position = 0;
 }
-StackAllocatorClass::StackAllocatorClass(const StackAllocatorClass &)
+StackAllocator::StackAllocator(const StackAllocator &)
 {
 }
-StackAllocatorClass::~StackAllocatorClass()
+StackAllocator::~StackAllocator()
 {
 }
 
-bool StackAllocatorClass::Initialize(int stackSize)
+bool StackAllocator::Initialize(int stackSize)
 {
 	m_stack = new char[stackSize];
 	m_stackSize = stackSize;
 	if (!m_stack)
 	{
-		LogManagerClass::getI().addLog("Error 1-3");
+		GM::LM()->addLog("Error 1-3");
 		return false;
 	}
 	else
 		return true;
 }
 
-void* StackAllocatorClass::getMemory(size_t size)
+void* StackAllocator::getMemory(size_t size)
 {
 	//check if stack is full
 	if (m_position + size + sizeof(size) + 1 > m_stackSize)
@@ -52,7 +52,7 @@ void* StackAllocatorClass::getMemory(size_t size)
 	return ptr;
 }
 
-void StackAllocatorClass::deleteEl(void* pointer, size_t size)
+void StackAllocator::deleteEl(void* pointer, size_t size)
 {
 	m_position -= size;
 	
@@ -71,14 +71,14 @@ void StackAllocatorClass::deleteEl(void* pointer, size_t size)
 	return;
 }
 
-void StackAllocatorClass::clean()
+void StackAllocator::clean()
 {
 	m_position = 0;
 
 	return;
 }
 
-void StackAllocatorClass::Shutdown()
+void StackAllocator::Shutdown()
 {
 	clean();
 	delete m_stack;

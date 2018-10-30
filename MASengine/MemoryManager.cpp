@@ -1,9 +1,9 @@
-#include "MemoryManagerClass.h"
+#include "MemoryManager.h"
 
-MemoryManagerClass * MemoryManagerClass::m_instance = 0;
-bool MemoryManagerClass::m_isInit = false;
+MemoryManager * MemoryManager::m_instance = 0;
+bool MemoryManager::m_isInit = false;
 
-MemoryManagerClass::MemoryManagerClass()
+MemoryManager::MemoryManager()
 {
 	m_stackSize = 0;
 	m_oneFrameSize = 0;
@@ -14,14 +14,14 @@ MemoryManagerClass::MemoryManagerClass()
 	m_oneFrame = 0;
 	m_temp = 0;
 }
-MemoryManagerClass::MemoryManagerClass(const MemoryManagerClass &)
+MemoryManager::MemoryManager(const MemoryManager &)
 {
 }
-MemoryManagerClass::~MemoryManagerClass()
+MemoryManager::~MemoryManager()
 {
 }
 
-bool MemoryManagerClass::Initialize(int stackSize, int tempSize, int oneFrameSize, int poolSize)
+bool MemoryManager::Initialize(int stackSize, int tempSize, int oneFrameSize, int poolSize)
 {
 	bool result;
 
@@ -33,45 +33,45 @@ bool MemoryManagerClass::Initialize(int stackSize, int tempSize, int oneFrameSiz
 	m_poolSize = poolSize;
 
 	//initialize all stacks
-	m_stack = new StackAllocatorClass;
+	m_stack = new StackAllocator;
 	if (!m_stack)
 	{
-		LogManagerClass::getI().addLog("Error 1-4");
+		GM::LM()->addLog("Error 1-4");
 		return false;
 	}
 
 	result = m_stack->Initialize(m_stackSize);
 	if (!result)
 	{
-		LogManagerClass::getI().addLog("Error 1-5");
+		GM::LM()->addLog("Error 1-5");
 		return false;
 	}
 
-	m_oneFrame = new StackAllocatorClass;
+	m_oneFrame = new StackAllocator;
 	if (!m_oneFrame)
 	{
-		LogManagerClass::getI().addLog("Error 1-4");
+		GM::LM()->addLog("Error 1-4");
 		return false;
 	}
 
 	result = m_oneFrame->Initialize(m_oneFrameSize);
 	if (!result)
 	{
-		LogManagerClass::getI().addLog("Error 1-5");
+		GM::LM()->addLog("Error 1-5");
 		return false;
 	}
 
-	m_temp = new StackAllocatorClass;
+	m_temp = new StackAllocator;
 	if (!m_temp)
 	{
-		LogManagerClass::getI().addLog("Error 1-4");
+		GM::LM()->addLog("Error 1-4");
 		return false;
 	}
 
 	result = m_temp->Initialize(m_tempSize);
 	if (!result)
 	{
-		LogManagerClass::getI().addLog("Error 1-5");
+		GM::LM()->addLog("Error 1-5");
 		return false;
 	}
 
@@ -81,32 +81,32 @@ bool MemoryManagerClass::Initialize(int stackSize, int tempSize, int oneFrameSiz
 
 }
 
-MemoryManagerClass & MemoryManagerClass::getI()
+MemoryManager* MemoryManager::getI()
 {
 	if (!m_instance)
-		m_instance = new(5) MemoryManagerClass;
-	return *m_instance;
+		m_instance = new(5) MemoryManager;
+	return m_instance;
 }
 
-bool MemoryManagerClass::isInit()
+bool MemoryManager::isInit()
 {
 	return m_isInit;
 }
 
 //allocate memory
-void * MemoryManagerClass::getStackMemory(size_t size)
+void * MemoryManager::getStackMemory(size_t size)
 {
 	return m_stack->getMemory(size);
 }
-void * MemoryManagerClass::getOneFrameMemory(size_t size)
+void * MemoryManager::getOneFrameMemory(size_t size)
 {
 	return m_oneFrame->getMemory(size);
 }
-void * MemoryManagerClass::getTempMemory(size_t size)
+void * MemoryManager::getTempMemory(size_t size)
 {
 	return m_temp->getMemory(size);
 }
-void * MemoryManagerClass::getPoolMemory(size_t size)
+void * MemoryManager::getPoolMemory(size_t size)
 {
 	bool result;
 
@@ -133,7 +133,7 @@ void * MemoryManagerClass::getPoolMemory(size_t size)
 	}
 
 	//create new pool if no best pool
-	PoolAllocatorClass* pool = new PoolAllocatorClass;
+	PoolAllocator* pool = new PoolAllocator;
 	if (!pool)
 		return 0;
 	result = pool->Initialize(poolSize, m_poolSize);
@@ -148,12 +148,12 @@ void * MemoryManagerClass::getPoolMemory(size_t size)
 }
 
 //delete element from memory
-void MemoryManagerClass::deleteStack(void * pointer, size_t size)
+void MemoryManager::deleteStack(void * pointer, size_t size)
 {
 	m_stack->deleteEl(pointer,size);
 	return;
 }
-void MemoryManagerClass::deletePool(void * pointer, size_t size)
+void MemoryManager::deletePool(void * pointer, size_t size)
 {
 	size_t poolSize = 1;
 	//find correct pool
@@ -171,29 +171,29 @@ void MemoryManagerClass::deletePool(void * pointer, size_t size)
 }
 
 //clean type of memory
-void MemoryManagerClass::cleanStack()
+void MemoryManager::cleanStack()
 {
 	m_stack->clean();
 	return;
 }
-void MemoryManagerClass::cleanOneFrame()
+void MemoryManager::cleanOneFrame()
 {
 	m_oneFrame->clean();
 	return;
 }
-void MemoryManagerClass::cleanTemp()
+void MemoryManager::cleanTemp()
 {
 	m_temp->clean();
 	return;
 }
-void MemoryManagerClass::cleanPool()
+void MemoryManager::cleanPool()
 {
 	for (auto pool = m_pools.begin();pool != m_pools.end();pool++)
 		(*pool)->clean();
 	return;
 }
 
-void MemoryManagerClass::Shutdown()
+void MemoryManager::Shutdown()
 {
 	m_isInit = false;
 	//shutdown all stacks
@@ -236,13 +236,13 @@ void * operator new(size_t size, int type)
 	switch (type)
 	{
 	case(1):
-		return ::operator new(size,MemoryManagerClass::getI().getStackMemory(size));
+		return ::operator new(size,MemoryManager::getI()->getStackMemory(size));
 	case(2):
-		return ::operator new(size, MemoryManagerClass::getI().getOneFrameMemory(size));
+		return ::operator new(size, MemoryManager::getI()->getOneFrameMemory(size));
 	case(3):
-		return ::operator new(size, MemoryManagerClass::getI().getTempMemory(size));
+		return ::operator new(size, MemoryManager::getI()->getTempMemory(size));
 	//case(4):
-		//return ::operator new(size, MemoryManagerClass::getI().getPoolMemory(size));
+		//return ::operator new(size, MemoryManager::getI()->getPoolMemory(size));
 	default:
 		return malloc(size);
 		break;
@@ -256,13 +256,13 @@ void* operator new[](size_t size, int type)
 	switch (type)
 	{
 	case(1):
-		return ::operator new[](size, MemoryManagerClass::getI().getStackMemory(size));
+		return ::operator new[](size, MemoryManager::getI()->getStackMemory(size));
 	case(2):
-		return ::operator new[](size, MemoryManagerClass::getI().getOneFrameMemory(size));
+		return ::operator new[](size, MemoryManager::getI()->getOneFrameMemory(size));
 	case(3):
-		return ::operator new[](size, MemoryManagerClass::getI().getTempMemory(size));
+		return ::operator new[](size, MemoryManager::getI()->getTempMemory(size));
 	//case(4):
-		//return ::operator new[](size, MemoryManagerClass::getI().getPoolMemory(size));
+		//return ::operator new[](size, MemoryManager::getI()->getPoolMemory(size));
 	default:
 		return malloc(size);
 		break;
@@ -275,10 +275,10 @@ void operator delete(void * mem, size_t size, int type)
 	switch (type)
 	{
 	case(1):
-		MemoryManagerClass::getI().deleteStack(mem,size);
+		MemoryManager::getI()->deleteStack(mem,size);
 		break;
 	//case(2):
-	//	MemoryManagerClass::getI().deletePool(mem, size);
+	//	MemoryManager::getI()->deletePool(mem, size);
 		//break;
 	default:
 		free(mem);
@@ -294,10 +294,10 @@ void operator delete[](void * mem, size_t size, int type)
 	switch (type)
 	{
 	case(1):
-		MemoryManagerClass::getI().deleteStack(mem, size);
+		MemoryManager::getI()->deleteStack(mem, size);
 		break;
 	//case(2):
-		//MemoryManagerClass::getI().deletePool(mem, size);
+		//MemoryManager::getI()->deletePool(mem, size);
 		//break;
 	default:
 		free(mem);

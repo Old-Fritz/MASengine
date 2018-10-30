@@ -8,7 +8,7 @@
 // MY CLASS INCLUDES //
 ///////////////////////
 #include "ProvManagerClass.h"
-#include "GlobalManagerClass.h"
+#include "GM.h"
 #include "ProvRegionManagerClass.h"
 #include "SkyShaderClass.h"
 #include "MeshClass.h"

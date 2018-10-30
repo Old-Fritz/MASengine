@@ -38,11 +38,11 @@ bool GraphicsClass::Initialize(HWND hwnd)
 	result = m_D3D->Initialize(hwnd, SCREEN_DEPTH, SCREEN_NEAR);
 	if (!result)
 	{
-		LogManagerClass::getI().addLog("Error 9-17");
+		GM::LM()->addLog("Error 9-17");
 		MessageBox(hwnd, L"Could not initialize Direct3D", L"Error", MB_OK);
 		return false;
 	}
-	LogManagerClass::getI().addLog("Directx Initialization");
+	GM::LM()->addLog("Directx Initialization");
 
 	//Initialize Shader Manager
 	m_shaderManager = new(1) ShaderManagerClass;
@@ -54,7 +54,7 @@ bool GraphicsClass::Initialize(HWND hwnd)
 		MessageBox(hwnd, L"Could not initialize Shaders", L"Error", MB_OK);
 		return false;
 	}
-	LogManagerClass::getI().addLog("Shaders Initialization");
+	GM::LM()->addLog("Shaders Initialization");
 
 	//initialize Camera
 	m_camera = new(1) CameraClass;
@@ -96,7 +96,7 @@ bool GraphicsClass::Initialize(HWND hwnd)
 	result = LoadScreenManagerClass::getI().Initialize(m_D3D,m_shaderManager,m_baseViewMatrix,m_hwnd,SettingsClass::getI().getPathParameter("loadScreenManagerFilename"));
 	if (!result)
 	{
-		LogManagerClass::getI().addLog("Error 9-20");
+		GM::LM()->addLog("Error 9-20");
 		return false;
 	}
 	LoadScreenManagerClass::getI().showElements();
@@ -203,7 +203,7 @@ bool GraphicsClass::Frame(D3DXVECTOR3 pos, D3DXVECTOR3 rot, int mouseX, int mous
 	result = Render();
 	if (!result)
 	{
-		LogManagerClass::getI().addLog("Error 8-3");
+		GM::LM()->addLog("Error 8-3");
 		return false;
 	}
 
@@ -502,11 +502,11 @@ void GraphicsClass::unPick(int mouseX, int mouseY)
 			SettingsClass::getI().getPathParameter("TerrainCommandFilename"));
 
 
-		/*int region = ProvManagerClass::getI().getProv(provNum)->getRegions(GlobalManagerClass::NATION).back();
+		/*int region = ProvManagerClass::getI().getProv(provNum)->getRegions(GM::NATION).back();
 		if (region == 0 || region ==2)
-			ProvRegionManagerClass::getI().getProvRegion(GlobalManagerClass::NATION,1)->add(provNum);
+			ProvRegionManagerClass::getI().getProvRegion(GM::NATION,1)->add(provNum);
 		else
-			ProvRegionManagerClass::getI().getProvRegion(GlobalManagerClass::NATION, 2)->add(provNum);*/
+			ProvRegionManagerClass::getI().getProvRegion(GM::NATION, 2)->add(provNum);*/
 
 		return;
 	}
