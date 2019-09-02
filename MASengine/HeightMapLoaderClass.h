@@ -42,7 +42,7 @@ public:
 
 	 //! Инициализация буферов \param[in] device - графическое устройство \param[in] vertices - массив вершин 
 	 //! \param[in] indices - массив индексов вершин \return false, если были
-	 bool createBuffers(ID3D11Device* device, ID3D11Buffer** vertexBuffer, ID3D11Buffer** indexBuffer);
+	 bool createBuffers(ID3D11Device* device, ID3D11Buffer** vertexBuffer, ID3D11Buffer** indexBuffer, VertexType** verticies, unsigned long** indicies);
 
 	void Shutdown();
 private:

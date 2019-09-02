@@ -1,6 +1,6 @@
 ElementName = LoadScreen
 Bitmap_num = 4
-Text_num = 1
+Text_num = 0
 Actions =  data/interface/LoadScreenElementACTION.txt
 width = screenWidth
 height = screenHeight

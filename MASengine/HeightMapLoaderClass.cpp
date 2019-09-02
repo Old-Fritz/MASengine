@@ -165,32 +165,29 @@ void HeightMapLoaderClass::calcVertAndIndCount(int & vertexCount, int & indexCou
 	indexCount = m_indexCount;
 }
 
-bool HeightMapLoaderClass::createBuffers(ID3D11Device * device, ID3D11Buffer ** vertexBuffer, ID3D11Buffer ** indexBuffer)
+bool HeightMapLoaderClass::createBuffers(ID3D11Device * device, ID3D11Buffer ** vertexBuffer, ID3D11Buffer ** indexBuffer, VertexType** vertices, unsigned long** indices)
 {
 	D3D11_BUFFER_DESC vertexBufferDesc, indexBufferDesc;
 	D3D11_SUBRESOURCE_DATA vertexData, indexData;
 	HRESULT result;
 
-	VertexType* vertices;
-	unsigned long * indices;
-
 	// Get data
-	result = createVertsAndInds(&vertices, &indices);
+	result = createVertsAndInds(vertices, indices);
 	if (!result)
 		return false;
 
-	findExtrPoints(vertices);
+	findExtrPoints(*vertices);
 
 	// Set up the description of the vertex buffer.
-	vertexBufferDesc.Usage = D3D11_USAGE_STAGING;
+	vertexBufferDesc.Usage = D3D11_USAGE_DEFAULT;
 	vertexBufferDesc.ByteWidth = sizeof(VertexType)* m_vertexCount;
-	//vertexBufferDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
-	vertexBufferDesc.BindFlags = 0;
-	vertexBufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_READ | D3D11_CPU_ACCESS_WRITE;
+	vertexBufferDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
+	//vertexBufferDesc.BindFlags = 0;
+	vertexBufferDesc.CPUAccessFlags = 0;
 	vertexBufferDesc.MiscFlags = 0;
 
 	// Give the subresource structure a pointer to the vertex data.
-	vertexData.pSysMem = vertices;
+	vertexData.pSysMem = *vertices;
 
 	// Now finally create the vertex buffer.
 	result = device->CreateBuffer(&vertexBufferDesc, &vertexData, vertexBuffer);
@@ -205,15 +202,15 @@ bool HeightMapLoaderClass::createBuffers(ID3D11Device * device, ID3D11Buffer ** 
 	if (buffer == m_indexBuffers.end())
 	{
 		// Set up the description of the index buffer.
-		indexBufferDesc.Usage = D3D11_USAGE_STAGING;
+		indexBufferDesc.Usage = D3D11_USAGE_DEFAULT;
 		indexBufferDesc.ByteWidth = sizeof(unsigned long)* m_indexCount;
-		//indexBufferDesc.BindFlags = D3D11_BIND_INDEX_BUFFER;
-		indexBufferDesc.BindFlags = 0;
-		indexBufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_READ | D3D11_CPU_ACCESS_WRITE;
+		indexBufferDesc.BindFlags = D3D11_BIND_INDEX_BUFFER;
+		//indexBufferDesc.BindFlags = 0;
+		indexBufferDesc.CPUAccessFlags = 0;
 		indexBufferDesc.MiscFlags = 0;
 
 		// Give the subresource structure a pointer to the index data.
-		indexData.pSysMem = indices;
+		indexData.pSysMem = *indices;
 
 		// Create the index buffer.
 		result = device->CreateBuffer(&indexBufferDesc, &indexData, indexBuffer);

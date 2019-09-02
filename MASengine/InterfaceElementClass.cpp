@@ -390,6 +390,8 @@ bool InterfaceElementClass::updateTSposY(ID3D11DeviceContext* deviceContext, con
 			if (!result)
 				return false;
 		}
+
+	return true;
 }
 bool InterfaceElementClass::updateTSposX(ID3D11DeviceContext* deviceContext, const std::string& name, int ind, int posX)
 {
@@ -404,6 +406,8 @@ bool InterfaceElementClass::updateTSposX(ID3D11DeviceContext* deviceContext, con
 			if (!result)
 				return false;
 		}
+
+	return true;
 }
 bool InterfaceElementClass::updateTStext(ID3D11DeviceContext* deviceContext, const std::string& name, int ind, const std::string& text)
 {
@@ -419,6 +423,8 @@ bool InterfaceElementClass::updateTStext(ID3D11DeviceContext* deviceContext, con
 			if (!result)
 				return false;
 		}
+
+	return true;
 }
 bool InterfaceElementClass::updateTScolor(ID3D11DeviceContext* deviceContext, const std::string& name, int ind, D3DXVECTOR4 color)
 {
@@ -433,6 +439,8 @@ bool InterfaceElementClass::updateTScolor(ID3D11DeviceContext* deviceContext, co
 			if (!result)
 				return false;
 		}
+
+	return true;
 }
 bool InterfaceElementClass::updateTSadding(ID3D11DeviceContext* deviceContext, const std::string& name, int ind, const std::string& adding)
 {
@@ -448,6 +456,8 @@ bool InterfaceElementClass::updateTSadding(ID3D11DeviceContext* deviceContext, c
 			if (!result)
 				return false;
 		}
+
+	return true;
 }
 
 //Getting data about strings
@@ -790,4 +800,6 @@ bool InterfaceElementClass::updateSentence(ID3D11DeviceContext* deviceContext, i
 		LogManagerClass::getI().addLog("Error 13-5");
 		return false;
 	}
+
+	return true;
 }

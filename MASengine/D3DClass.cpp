@@ -131,14 +131,15 @@ bool D3DClass::Initialize(HWND hwnd, float screenDepth, float screenNear)
 	// Store the dedicated video card memory in megabytes.
 	m_videoCardMemory = (int)(adapterDesc.DedicatedVideoMemory / 1024 / 1024);
 
+	/*
 	// Convert the name of the video card to a character array and store it.
-	error = wcstombs_s(&stringLength, m_videoCardDescription, 128, adapterDesc.Description, 128);
+	error = wcstombs_s((size_t*)&stringLength, m_videoCardDescription, 128, adapterDesc.Description, 128);
 	if (error != 0)
 	{
 		LogManagerClass::getI().addLog("Error 9-8");
 		return false;
 	}
-
+	*/
 	
 
 

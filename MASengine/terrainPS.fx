@@ -118,7 +118,7 @@ float4 pixelShader(PixelInputType input) : SV_TARGET
         provColor = provsColor[provnum];
         //provColor = lerp(provColor, yellow, provColor.w / 1.6f);
     }
-	color = lerp(terrainColor, provColor, 0.6f);
+	color = lerp(terrainColor, provColor, 0.4f);
     //color = lerp(lightColor, color, 0.35f);
 	color = color * lightColor;
     color.w = 1.0f;

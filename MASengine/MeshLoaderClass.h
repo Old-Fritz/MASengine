@@ -32,7 +32,7 @@
 */
 class MeshLoaderClass
 {
-protected:
+public:
 	//! Вершина меша
 	struct VertexType
 	{
@@ -57,7 +57,7 @@ public:
 
 	//! Инициализация буферов \param[in] device - графическое устройство \param[in] vertices - массив вершин 
 	//! \param[in] indices - массив индексов вершин \return false, если были
-	virtual bool createBuffers(ID3D11Device* device, ID3D11Buffer** vertexBuffer, ID3D11Buffer** indexBuffer);
+	virtual bool createBuffers(ID3D11Device* device, ID3D11Buffer** vertexBuffer, ID3D11Buffer** indexBuffer, VertexType** verticies, unsigned long** indicies);
 
 	//! Загрузка меша из файла и прменение масштаба \param[in] filename - путь до файла меша \param[in] sizeX, sizeY, sizeZ - масштаб меша \return false, если были ошибки
 	virtual bool loadModel(PathClass* filename, float sizeX = 1, float sizeY = 1, float sizeZ = 1);

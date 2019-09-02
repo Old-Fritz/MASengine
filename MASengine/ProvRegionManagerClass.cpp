@@ -40,7 +40,6 @@ bool ProvRegionManagerClass::Initialize(PathClass* filename)
 	if (!result)
 		return false;
 
-	file.close();
 
 	//init nation region
 	NationRegionClass* nationRegion = new(4) NationRegionClass;
@@ -49,6 +48,8 @@ bool ProvRegionManagerClass::Initialize(PathClass* filename)
 	result = nationRegion->Initialize(&file, 0);
 	if (!result)
 		return false;
+
+	file.close();
 
 	//add all provs to base blocks
 	

@@ -38,7 +38,7 @@ bool MeshClass::Initialize(ID3D11Device * device, PathClass* filename, int sizeX
 
 
 	// Initialize the vertex and index buffer that hold the geometry for the triangle.
-	result = loader->createBuffers(device, &m_vertexBuffer, &m_indexBuffer);
+	result = loader->createBuffers(device, &m_vertexBuffer, &m_indexBuffer, (MeshLoaderClass::VertexType**)&m_verticies, &m_indicies);
 	if (!result)
 		return false;
 	
@@ -171,31 +171,9 @@ void MeshClass::findExtrPoints(VertexType* vertices, D3DXVECTOR3 & minPoint, D3D
 
 bool MeshClass::getVertsAndInds(ID3D11DeviceContext* deviceContext, VertexType** verticies, unsigned long** indices)
 {
-	D3D11_MAPPED_SUBRESOURCE verticesPtr;
-	D3D11_MAPPED_SUBRESOURCE indicesPtr;
-	HRESULT result;
+	*verticies = m_verticies;
 
-	// Lock the vertex buffer.
-	result = deviceContext->Map(m_vertexBuffer, 0, D3D11_MAP_READ, 0, &verticesPtr);
-	if (FAILED(result))
-	{
-		return false;
-	}
-
-	*verticies = (VertexType*)verticesPtr.pData;
-
-	// Lock the index buffer.
-	result = deviceContext->Map(m_indexBuffer, 0, D3D11_MAP_READ, 0, &indicesPtr);
-	if (FAILED(result))
-	{
-		return false;
-	}
-
-	*indices = (unsigned long*)indicesPtr.pData;
-
-	//Unlock buffers
-	deviceContext->Unmap(m_vertexBuffer, 0);
-	deviceContext->Unmap(m_indexBuffer, 0);
+	*indices = m_indicies;
 
 	return true;
 }

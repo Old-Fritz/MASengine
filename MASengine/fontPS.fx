@@ -38,7 +38,7 @@ float4 pixelShader(PixelInputType input) : SV_TARGET
     textureColor = shaderTexture.Sample(SampleType, input.tex);
 
      // If the color is black on the texture then treat this pixel as transparent.
-    if (textureColor.r <= 0.1f)
+    if (textureColor.r <= 0.2f)
     {
         textureColor.a = 0.0f;
     }

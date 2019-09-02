@@ -141,8 +141,6 @@ bool TerrainManagerClass::Render(D3DClass* D3D, TerrainShaderClass * terrainShad
 			return false;
 
 	}
-			
-	
 
 
 	//render sky

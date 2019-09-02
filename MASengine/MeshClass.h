@@ -96,6 +96,9 @@ private:
 	ID3D11Buffer *m_vertexBuffer, *m_indexBuffer; //!<Вершинный и индексный буферы
 	int m_vertexCount, m_indexCount; //!<Количество вершин и индексов
 
+	VertexType* m_verticies; //!< Данные вершин
+	unsigned long* m_indicies; //!< Данные индексов
+
 	BoxMeshClass* m_boxMesh; //!<меш box
 	bool m_isBoxMeshRendering = 0; //! Необходимость в рендринге меша box
 
